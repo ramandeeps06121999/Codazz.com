@@ -55,12 +55,22 @@ export default function AppDevelopmentCompaniesNewYorkClient() {
     <>
       <Navbar />
       <main ref={pageRef as React.RefObject<HTMLElement>} style={{ background: '#ffffff', minHeight: '100vh' }}>
+
+        {/* ── FEATURED IMAGE ── */}
         <div className="cb-container" style={{ paddingTop: 100 }}>
-          <Breadcrumb items={[
-            { label: 'Home', href: '/' },
-            { label: 'Blog', href: '/blog' },
-            { label: 'Top 10 App Development Companies in New York' },
-          ]} />
+          <div className="reveal" style={{ marginBottom: 40 }}>
+            <img 
+              src="/blog_images/app-development-companies-new-york.jpg" 
+              alt="App development companies in New York"
+              style={{ 
+                width: '100%', 
+                height: 'auto', 
+                maxHeight: '500px',
+                objectFit: 'cover',
+                borderRadius: 'clamp(16px, 3vw, 24px)',
+              }}
+            />
+          </div>
         </div>
 
         {/* ── ARTICLE HERO ── */}

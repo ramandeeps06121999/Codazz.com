@@ -36,9 +36,11 @@ const GLOBE_CONFIG: COBEOptions = {
 export function Globe({
   className,
   config = GLOBE_CONFIG,
+  interactive = true,
 }: {
   className?: string
   config?: COBEOptions
+  interactive?: boolean
 }) {
   let phi = 0
   let width = 0
@@ -105,17 +107,17 @@ export function Globe({
           "size-full opacity-0 transition-opacity duration-500 [contain:layout_paint_size]",
         )}
         ref={canvasRef}
-        onPointerDown={(e) =>
-          updatePointerInteraction(
-            e.clientX - pointerInteractionMovement.current,
-          )
-        }
-        onPointerUp={() => updatePointerInteraction(null)}
-        onPointerOut={() => updatePointerInteraction(null)}
-        onMouseMove={(e) => updateMovement(e.clientX)}
-        onTouchMove={(e) =>
-          e.touches[0] && updateMovement(e.touches[0].clientX)
-        }
+        {...(interactive ? {
+          onPointerDown: (e: React.PointerEvent) =>
+            updatePointerInteraction(
+              e.clientX - pointerInteractionMovement.current,
+            ),
+          onPointerUp: () => updatePointerInteraction(null),
+          onPointerOut: () => updatePointerInteraction(null),
+          onMouseMove: (e: React.MouseEvent) => updateMovement(e.clientX),
+          onTouchMove: (e: React.TouchEvent) =>
+            e.touches[0] && updateMovement(e.touches[0].clientX),
+        } : {})}
       />
     </div>
   )

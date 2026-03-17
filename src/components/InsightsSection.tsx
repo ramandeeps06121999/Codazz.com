@@ -8,6 +8,7 @@ const featuredCaseStudy = {
   readTime: '5 min read',
   date: 'Mar 2026',
   href: '/case-studies/fintech-trading-platform',
+  image: '/blog_images/ai-development-companies-usa.jpg',
 };
 
 const posts = [
@@ -18,6 +19,7 @@ const posts = [
     readTime: '8 min read',
     date: 'Mar 2026',
     href: '/blog/top-10-unicorn-apps-2026',
+    image: '/blog_images/top-10-unicorn-apps-2026.jpg',
   },
   {
     tag: 'Business',
@@ -26,6 +28,7 @@ const posts = [
     readTime: '7 min read',
     date: 'Mar 2026',
     href: '/blog/saas-guide',
+    image: '/blog_images/saas-guide.jpg',
   },
   {
     tag: 'Digital Marketing',
@@ -34,6 +37,7 @@ const posts = [
     readTime: '9 min read',
     date: 'Mar 2026',
     href: '/blog/top-seo-companies-usa',
+    image: '/blog_images/top-seo-companies-usa.jpg',
   },
 ];
 
@@ -62,7 +66,7 @@ export default function InsightsSection() {
             </h2>
           </div>
           <a href="/blog" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, height: 48, padding: '0 28px', borderRadius: 100, border: '1px solid rgba(0,0,0,0.08)', color: 'rgba(0,0,0,0.5)', fontSize: 13, fontWeight: 600, textDecoration: 'none', transition: '0.3s', whiteSpace: 'nowrap' }}
-            onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(0,0,0,0.2)'; e.currentTarget.style.color = '#fff'; }}
+            onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(0,0,0,0.2)'; e.currentTarget.style.color = '#111827'; }}
             onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(0,0,0,0.08)'; e.currentTarget.style.color = 'rgba(0,0,0,0.5)'; }}
           >
             View All Articles
@@ -81,17 +85,27 @@ export default function InsightsSection() {
             overflow: 'hidden',
             textDecoration: 'none',
             transition: 'all 0.3s cubic-bezier(0.16,1,0.3,1)',
-            background: 'linear-gradient(135deg, rgba(17,24,39,0.04) 0%, rgba(0,0,0,0) 100%)',
+            background: '#ffffff',
             marginBottom: 40,
           }}
-          onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(17,24,39,0.3)'; e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 24px 48px rgba(0,0,0,0.4)'; }}
+          onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(17,24,39,0.3)'; e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 24px 48px rgba(0,0,0,0.08)'; }}
           onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(17,24,39,0.15)'; e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; }}
         >
-          <div style={{ padding: 'clamp(20px, 4vw, 32px) clamp(16px, 4vw, 40px)', display: 'flex', flexDirection: 'column', gap: 16, flex: 1 }}>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, width: 'fit-content', padding: '6px 14px', borderRadius: 100, background: 'rgba(17,24,39,0.1)', border: '1px solid rgba(17,24,39,0.2)' }}>
-              <span style={{ fontSize: 11, fontWeight: 700, color: '#111827', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{featuredCaseStudy.tag}</span>
+          {/* Featured Image */}
+          <div style={{ 
+            width: '40%', 
+            minHeight: 280,
+            backgroundImage: `url(${featuredCaseStudy.image})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            position: 'relative',
+          }}>
+            <div style={{ position: 'absolute', top: 20, left: 20, display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 14px', borderRadius: 100, background: 'rgba(17,24,39,0.9)', border: '1px solid rgba(255,255,255,0.2)' }}>
+              <span style={{ fontSize: 11, fontWeight: 700, color: '#fff', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{featuredCaseStudy.tag}</span>
             </div>
-            <h3 style={{ fontSize: 22, fontWeight: 600, color: '#111827', letterSpacing: '-0.02em', lineHeight: 1.3, margin: 0 }}>{featuredCaseStudy.title}</h3>
+          </div>
+          <div style={{ padding: 'clamp(20px, 4vw, 32px) clamp(16px, 4vw, 40px)', display: 'flex', flexDirection: 'column', gap: 16, flex: 1, justifyContent: 'center' }}>
+            <h3 style={{ fontSize: 24, fontWeight: 600, color: '#111827', letterSpacing: '-0.02em', lineHeight: 1.3, margin: 0 }}>{featuredCaseStudy.title}</h3>
             <p style={{ fontSize: 15, color: 'rgb(0,0,0)', lineHeight: 1.7, margin: 0 }}>{featuredCaseStudy.excerpt}</p>
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginTop: 8, fontSize: 13, fontWeight: 700, color: '#111827' }}>
               Read Case Study
@@ -101,7 +115,7 @@ export default function InsightsSection() {
         </a>
 
         {/* Cards */}
-        <div className="insights-grid">
+        <div className="insights-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 24 }}>
           {posts.map((post, i) => (
             <a
               key={post.title}
@@ -115,26 +129,31 @@ export default function InsightsSection() {
                 flexDirection: 'column',
                 textDecoration: 'none',
                 transition: 'all 0.3s cubic-bezier(0.16,1,0.3,1)',
-                background: 'rgba(0,0,0,0.015)',
+                background: '#ffffff',
               }}
-              onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(17,24,39,0.15)'; e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 24px 48px rgba(0,0,0,0.4)'; }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(17,24,39,0.15)'; e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 24px 48px rgba(0,0,0,0.08)'; }}
               onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(0,0,0,0.06)'; e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; }}
             >
-              {/* Image placeholder */}
-              <div style={{ height: 200, background: 'linear-gradient(135deg, #0a0a0a 0%, #111 50%, #0d0d0d 100%)', position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <div style={{ position: 'absolute', top: '20%', right: '20%', width: '50%', height: '50%', background: 'radial-gradient(circle, rgba(17,24,39,0.12) 0%, transparent 65%)', filter: 'blur(40px)' }} />
-                <div style={{ position: 'relative', zIndex: 1, padding: '12px 20px', background: 'rgba(17,24,39,0.08)', border: '1px solid rgba(17,24,39,0.15)', borderRadius: 100 }}>
-                  <span style={{ fontSize: 11, fontWeight: 700, color: '#111827', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{post.tag}</span>
+              {/* Blog Image */}
+              <div style={{ 
+                height: 220, 
+                backgroundImage: `url(${post.image})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                position: 'relative',
+              }}>
+                <div style={{ position: 'absolute', top: 16, left: 16, display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 14px', borderRadius: 100, background: 'rgba(17,24,39,0.9)', border: '1px solid rgba(255,255,255,0.2)' }}>
+                  <span style={{ fontSize: 11, fontWeight: 700, color: '#fff', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{post.tag}</span>
                 </div>
               </div>
 
               {/* Content */}
-              <div style={{ padding: 'clamp(20px, 4vw, 32px)', display: 'flex', flexDirection: 'column', gap: 16, flex: 1 }}>
+              <div style={{ padding: 'clamp(20px, 4vw, 28px)', display: 'flex', flexDirection: 'column', gap: 12, flex: 1 }}>
                 <h3 style={{ fontSize: 18, fontWeight: 600, color: '#111827', letterSpacing: '-0.02em', lineHeight: 1.4, margin: 0 }}>{post.title}</h3>
                 <p style={{ fontSize: 14, color: 'rgb(0,0,0)', lineHeight: 1.7, margin: 0, flex: 1 }}>{post.excerpt}</p>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: 16, borderTop: '1px solid rgba(0,0,0,0.04)' }}>
-                  <span style={{ fontSize: 12, color: 'rgba(0,0,0,0.2)', fontWeight: 600 }}>{post.date}</span>
-                  <span style={{ fontSize: 12, color: 'rgba(0,0,0,0.2)', fontWeight: 600 }}>{post.readTime}</span>
+                  <span style={{ fontSize: 12, color: 'rgba(0,0,0,0.4)', fontWeight: 500 }}>{post.date}</span>
+                  <span style={{ fontSize: 12, color: 'rgba(0,0,0,0.4)', fontWeight: 500 }}>{post.readTime}</span>
                 </div>
               </div>
             </a>

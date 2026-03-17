@@ -60,7 +60,6 @@ const faqs = [
 
 export default function BrandingPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const heroRef = useRef<HTMLElement>(null);
   const s1 = useReveal() as React.RefObject<HTMLElement>;
   const s2 = useReveal() as React.RefObject<HTMLElement>;
   const s3 = useReveal() as React.RefObject<HTMLElement>;
@@ -69,11 +68,8 @@ export default function BrandingPage() {
   const s6 = useReveal() as React.RefObject<HTMLElement>;
   const s7 = useReveal() as React.RefObject<HTMLElement>;
   const s8 = useReveal() as React.RefObject<HTMLElement>;
+  const heroRef = useReveal() as React.RefObject<HTMLElement>;
   const s9 = useReveal() as React.RefObject<HTMLElement>;
-
-  useEffect(() => {
-    heroRef.current?.querySelectorAll('.reveal').forEach(n => setTimeout(() => n.classList.add('visible'), 100));
-  }, []);
 
   return (
     <>
@@ -96,36 +92,37 @@ export default function BrandingPage() {
         </div>
 
         {/* HERO */}
-        <section ref={heroRef} style={{ position: 'relative', overflow: 'hidden', padding: 'clamp(60px, 8vw, 100px) 0 clamp(60px, 8vw, 120px)', borderBottom: '1px solid rgba(0,0,0,0.05)' }}>
-          <HeroBackground variant="right" />
-          <div className="cb-container" style={{ position: 'relative', zIndex: 1 }}>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 480px), 1fr))', gap: 'clamp(24px, 5vw, 80px)', alignItems: 'center' }}>
-              {/* Left */}
-              <div>
-                <div className="reveal" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, background: 'rgba(17,24,39,0.08)', border: '1px solid rgba(17,24,39,0.2)', borderRadius: 100, padding: '8px 20px', marginBottom: 32 }}>
-                  <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#111827', boxShadow: '0 0 8px #111827' }} />
-                  <span style={{ fontSize: 11, fontWeight: 700, color: '#111827', letterSpacing: '0.12em', textTransform: 'uppercase' }}>Branding & Identity</span>
+        <section ref={heroRef} className="section-padding" style={{ position: 'relative', overflow: 'hidden', minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
+          <HeroBackground variant="center" />
+          <div className="cb-container" style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: 860, margin: '0 auto' }}>
+            <div className="reveal" style={{ display: 'inline-block', border: '1px solid rgba(17,24,39,0.4)', borderRadius: 999, padding: '6px 20px', fontSize: 13, color: '#111827', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>
+              Branding & Identity
+            </div>
+            <h1 className="reveal" style={{ fontSize: 'clamp(2.6rem, 6vw, 5rem)', fontWeight: 800, lineHeight: 1.1, marginBottom: '1.5rem', letterSpacing: '-0.02em' }}>
+              We Build Brands People Remember.
+            </h1>
+            <p className="reveal" style={{ fontSize: '1.2rem', color: 'rgb(0,0,0)', marginBottom: '2.5rem', lineHeight: 1.7 }}>
+              Logo, visual identity, brand strategy and guidelines that make your company instantly recognisable.
+            </p>
+            <div className="reveal" style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '3.5rem' }}>
+              <Link href="/contact" style={{ background: '#111827', color: '#fff', padding: '14px 32px', borderRadius: 999, fontWeight: 700, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
+                Get Started
+              </Link>
+              <Link href="/case-studies" style={{ border: '1px solid rgba(0,0,0,0.1)', color: '#111827', padding: '14px 32px', borderRadius: 999, fontWeight: 600, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
+                See Our Work
+              </Link>
+            </div>
+            <div className="reveal" style={{ display: 'flex', gap: 32, justifyContent: 'center', flexWrap: 'wrap' }}>
+              {[
+                { value: '200+', label: 'Brands Built' },
+                { value: '4.9★', label: 'Client Rating' },
+                { value: '15', label: 'Design Awards' },
+              ].map((s, i) => (
+                <div key={i} style={{ textAlign: 'center' }}>
+                  <div style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 700, color: '#111827' }}>{s.value}</div>
+                  <div style={{ fontSize: 12, color: 'rgba(0,0,0,0.4)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>{s.label}</div>
                 </div>
-                <h1 className="reveal reveal-d1" style={{ fontSize: 'clamp(2.8rem,5vw,5rem)', fontWeight: 500, color: '#111827', letterSpacing: '-0.04em', lineHeight: 1.0, margin: '0 0 24px', maxWidth: 700 }}>
-                  We Build Brands People <span style={{ color: '#111827' }}>Remember.</span>
-                </h1>
-                <p className="reveal reveal-d2" style={{ fontSize: 17, color: 'rgb(0,0,0)', lineHeight: 1.75, maxWidth: 520, margin: '0 0 40px' }}>
-                  Logo, visual identity, brand strategy and guidelines that make your company instantly recognisable.
-                </p>
-                <div className="reveal reveal-d3" style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
-                  <Link href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, height: 56, padding: '0 32px', borderRadius: 100, background: '#111827', color: '#fff', fontSize: 14, fontWeight: 700, textDecoration: 'none', transition: '0.3s' }} onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 16px 40px rgba(17,24,39,0.35)'; }} onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}>
-                    Get Started <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-                  </Link>
-                  <Link href="/case-studies" style={{ display: 'inline-flex', alignItems: 'center', height: 56, padding: '0 32px', borderRadius: 100, border: '1px solid rgba(0,0,0,0.08)', color: '#111827', fontSize: 14, fontWeight: 500, textDecoration: 'none', transition: '0.3s' }} onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(0,0,0,0.15)'} onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(0,0,0,0.08)'}>
-                    See Our Work
-                  </Link>
-                </div>
-              </div>
-
-              {/* Right — contact form */}
-              <div className="reveal reveal-d2">
-                <ServiceHeroForm />
-              </div>
+              ))}
             </div>
           </div>
         </section>

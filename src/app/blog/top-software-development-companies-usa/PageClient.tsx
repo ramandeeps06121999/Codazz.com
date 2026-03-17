@@ -55,6 +55,23 @@ export default function BlogPostPageClient() {
       <Navbar />
       <main ref={pageRef as React.RefObject<HTMLElement>} style={{ background: '#ffffff', minHeight: '100vh' }}>
 
+        {/* ── FEATURED IMAGE ── */}
+        <div className="cb-container" style={{ paddingTop: 100 }}>
+          <div className="reveal" style={{ marginBottom: 40 }}>
+            <img 
+              src="/blog_images/top-software-development-companies-usa.jpg" 
+              alt="Top software development companies in USA"
+              style={{ 
+                width: '100%', 
+                height: 'auto', 
+                maxHeight: '500px',
+                objectFit: 'cover',
+                borderRadius: 'clamp(16px, 3vw, 24px)',
+              }}
+            />
+          </div>
+        </div>
+
         {/* ── ARTICLE HERO ── */}
         <section style={{ padding: 'clamp(100px, 15vw, 140px) 0 clamp(32px, 5vw, 64px)', position: 'relative', overflow: 'hidden' }}>
           <HeroBackground variant="left" />

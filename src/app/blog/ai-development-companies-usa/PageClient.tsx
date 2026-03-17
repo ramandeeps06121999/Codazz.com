@@ -55,12 +55,22 @@ export default function AiDevelopmentCompaniesUSAClient() {
     <>
       <Navbar />
       <main ref={pageRef as React.RefObject<HTMLElement>} style={{ background: '#ffffff', minHeight: '100vh' }}>
+
+        {/* ── FEATURED IMAGE ── */}
         <div className="cb-container" style={{ paddingTop: 100 }}>
-          <Breadcrumb items={[
-            { label: 'Home', href: '/' },
-            { label: 'Blog', href: '/blog' },
-            { label: 'Top 10 AI Development Companies in the USA' },
-          ]} />
+          <div className="reveal" style={{ marginBottom: 40 }}>
+            <img 
+              src="/blog_images/ai-development-companies-usa.jpg" 
+              alt="AI development companies in USA"
+              style={{ 
+                width: '100%', 
+                height: 'auto', 
+                maxHeight: '500px',
+                objectFit: 'cover',
+                borderRadius: 'clamp(16px, 3vw, 24px)',
+              }}
+            />
+          </div>
         </div>
 
         {/* ── ARTICLE HERO ── */}

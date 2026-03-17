@@ -3,8 +3,35 @@ import { useRef, useEffect, useState } from 'react';
 import Link from 'next/link';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { Globe } from '@/components/ui/globe';
+import type { COBEOptions } from 'cobe';
 
 const words = ['Mobile Apps', 'Web Platforms', 'AI Systems', 'SaaS Products', 'Fintech Tools'];
+
+const HERO_GLOBE: COBEOptions = {
+  width: 800,
+  height: 800,
+  onRender: () => {},
+  devicePixelRatio: 1,
+  phi: 0,
+  theta: 0.3,
+  dark: 0,
+  diffuse: 0.4,
+  mapSamples: 8000,
+  mapBrightness: 1.2,
+  baseColor: [1, 1, 1],
+  markerColor: [17 / 255, 24 / 255, 39 / 255],
+  glowColor: [1, 1, 1],
+  markers: [
+    { location: [40.7128, -74.006], size: 0.1 },
+    { location: [25.2048, 55.2708], size: 0.08 },
+    { location: [51.5074, -0.1278], size: 0.06 },
+    { location: [19.076, 72.8777], size: 0.06 },
+    { location: [1.3521, 103.8198], size: 0.05 },
+    { location: [35.6762, 139.6503], size: 0.05 },
+    { location: [-33.8688, 151.2093], size: 0.04 },
+  ],
+};
 
 const codeLines = [
   { indent: 0, tokens: [{ t: 'const ', c: '#111827' }, { t: 'app ', c: '#111827' }, { t: '= ', c: 'rgb(0,0,0)' }, { t: 'await ', c: '#111827' }, { t: 'build(', c: '#111827' }, { t: '{', c: 'rgb(0,0,0)' }] },
@@ -23,6 +50,7 @@ export default function Hero() {
   const ref = useRef<HTMLElement>(null);
   const [wordIndex, setWordIndex] = useState(0);
   const [visible, setVisible] = useState(true);
+  const [showGlobe, setShowGlobe] = useState(false);
 
   useGSAP(() => {
     gsap.from(['.h-badge', '.h-h1', '.h-p', '.h-btns', '.h-stats'], {
@@ -42,6 +70,14 @@ export default function Hero() {
     return () => clearInterval(id);
   }, []);
 
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 769px)');
+    setShowGlobe(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setShowGlobe(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
+
   return (
     <section ref={ref} style={{ background: '#ffffff', minHeight: '100vh', display: 'flex', alignItems: 'center', position: 'relative', overflow: 'hidden', paddingTop: 'clamp(80px, 12vw, 140px)' }}>
       {/* Grid bg */}
@@ -50,6 +86,26 @@ export default function Hero() {
       <div aria-hidden="true" style={{ position: 'absolute', top: '5%', left: '-10%', width: 'min(700px, 100vw)', height: 'min(700px, 100vw)', background: 'radial-gradient(circle, rgba(17,24,39,0.06) 0%, transparent 65%)', filter: 'blur(100px)', pointerEvents: 'none' }} />
       {/* Glow right */}
       <div aria-hidden="true" style={{ position: 'absolute', top: '20%', right: '-5%', width: 'min(600px, 100vw)', height: 'min(600px, 100vw)', background: 'radial-gradient(circle, rgba(17,24,39,0.07) 0%, transparent 65%)', filter: 'blur(80px)', pointerEvents: 'none' }} />
+
+      {/* Globe background */}
+      {showGlobe && (
+        <div
+          className="hero-globe-bg"
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            top: '50%',
+            right: '-10%',
+            transform: 'translateY(-50%)',
+            width: 'min(800px, 90vw)',
+            height: 'min(800px, 90vw)',
+            opacity: 0.07,
+            pointerEvents: 'none',
+          }}
+        >
+          <Globe config={HERO_GLOBE} interactive={false} />
+        </div>
+      )}
 
       <div className="cb-container hero-container" style={{ position: 'relative', zIndex: 1 }}>
 
@@ -177,6 +233,7 @@ export default function Hero() {
       <style>{`
         @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
         @media(max-width:1024px){ .h-code-panel { display: none !important; } }
+        @media(max-width:768px){ .hero-globe-bg { display: none !important; } }
       `}</style>
     </section>
   );

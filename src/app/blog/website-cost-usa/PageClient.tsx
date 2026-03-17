@@ -52,12 +52,22 @@ export default function WebsiteCostUSAClient() {
     <>
       <Navbar />
       <main ref={pageRef as React.RefObject<HTMLElement>} style={{ background: '#ffffff', minHeight: '100vh' }}>
+
+        {/* ── FEATURED IMAGE ── */}
         <div className="cb-container" style={{ paddingTop: 100 }}>
-          <Breadcrumb items={[
-            { label: 'Home', href: '/' },
-            { label: 'Blog', href: '/blog' },
-            { label: 'How Much Does a Custom Website Cost in the USA?' },
-          ]} />
+          <div className="reveal" style={{ marginBottom: 40 }}>
+            <img 
+              src="/blog_images/website-cost-usa.jpg" 
+              alt="Website development cost in USA"
+              style={{ 
+                width: '100%', 
+                height: 'auto', 
+                maxHeight: '500px',
+                objectFit: 'cover',
+                borderRadius: 'clamp(16px, 3vw, 24px)',
+              }}
+            />
+          </div>
         </div>
 
         {/* ── ARTICLE HERO ── */}

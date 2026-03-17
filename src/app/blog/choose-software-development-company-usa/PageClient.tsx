@@ -52,12 +52,22 @@ export default function ChooseSoftwareDevelopmentCompanyUSAClient() {
     <>
       <Navbar />
       <main ref={pageRef as React.RefObject<HTMLElement>} style={{ background: '#ffffff', minHeight: '100vh' }}>
+
+        {/* ── FEATURED IMAGE ── */}
         <div className="cb-container" style={{ paddingTop: 100 }}>
-          <Breadcrumb items={[
-            { label: 'Home', href: '/' },
-            { label: 'Blog', href: '/blog' },
-            { label: 'How to Choose a Software Development Company in the USA' },
-          ]} />
+          <div className="reveal" style={{ marginBottom: 40 }}>
+            <img 
+              src="/blog_images/choose-software-development-company-usa.jpg" 
+              alt="How to choose a software development company in USA"
+              style={{ 
+                width: '100%', 
+                height: 'auto', 
+                maxHeight: '500px',
+                objectFit: 'cover',
+                borderRadius: 'clamp(16px, 3vw, 24px)',
+              }}
+            />
+          </div>
         </div>
 
         {/* ── ARTICLE HERO ── */}

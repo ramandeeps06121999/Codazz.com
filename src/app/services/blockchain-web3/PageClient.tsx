@@ -4,7 +4,6 @@ import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Breadcrumb from '@/components/Breadcrumb';
-import ServiceHeroForm from '@/components/ServiceHeroForm';
 import TrustBadges from '@/components/TrustBadges';
 import HeroBackground from '@/components/HeroBackground';
 
@@ -108,17 +107,13 @@ function useReveal() {
 // ─── PAGE ─────────────────────────────────────────────────────────────────────
 
 export default function BlockchainWeb3Page() {
-  const heroRef = useRef<HTMLElement>(null);
   const statsRef = useReveal() as React.RefObject<HTMLElement>;
   const servicesRef = useReveal() as React.RefObject<HTMLElement>;
   const processRef = useReveal() as React.RefObject<HTMLElement>;
   const techRef = useReveal() as React.RefObject<HTMLElement>;
   const industriesRef = useReveal() as React.RefObject<HTMLElement>;
+  const heroRef = useReveal() as React.RefObject<HTMLElement>;
   const ctaRef = useReveal() as React.RefObject<HTMLElement>;
-
-  useEffect(() => {
-    heroRef.current?.querySelectorAll('.reveal').forEach(n => setTimeout(() => n.classList.add('visible'), 100));
-  }, []);
 
   return (
     <>
@@ -135,46 +130,37 @@ export default function BlockchainWeb3Page() {
         {/* ═══════════════════════════════════════
             HERO
         ═══════════════════════════════════════ */}
-        <section ref={heroRef} style={{ position: 'relative', overflow: 'hidden', padding: 'clamp(60px, 8vw, 100px) 0 clamp(60px, 8vw, 120px)', borderBottom: '1px solid rgba(0,0,0,0.05)' }}>
-          <HeroBackground variant="right" />
-
-          <div className="cb-container" style={{ position: 'relative', zIndex: 1 }}>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 480px), 1fr))', gap: 'clamp(24px, 5vw, 80px)', alignItems: 'center' }}>
-              {/* Left */}
-              <div>
-                {/* Badge */}
-                <div className="reveal" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, background: 'rgba(17,24,39,0.08)', border: '1px solid rgba(17,24,39,0.2)', borderRadius: 100, padding: '8px 20px', marginBottom: 32 }}>
-                  <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#111827', boxShadow: '0 0 8px #111827' }} />
-                  <span style={{ fontSize: 11, fontWeight: 700, color: '#111827', letterSpacing: '0.12em', textTransform: 'uppercase' }}>Blockchain &amp; Web3</span>
+        <section ref={heroRef} className="section-padding" style={{ position: 'relative', overflow: 'hidden', minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
+          <HeroBackground variant="center" />
+          <div className="cb-container" style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: 860, margin: '0 auto' }}>
+            <div className="reveal" style={{ display: 'inline-block', border: '1px solid rgba(17,24,39,0.4)', borderRadius: 999, padding: '6px 20px', fontSize: 13, color: '#111827', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>
+              Blockchain & Web3
+            </div>
+            <h1 className="reveal" style={{ fontSize: 'clamp(2.6rem, 6vw, 5rem)', fontWeight: 800, lineHeight: 1.1, marginBottom: '1.5rem', letterSpacing: '-0.02em' }}>
+              Build on Web3. Build for Tomorrow.
+            </h1>
+            <p className="reveal" style={{ fontSize: '1.2rem', color: 'rgb(0,0,0)', marginBottom: '2.5rem', lineHeight: 1.7 }}>
+              Smart contracts, DeFi protocols, NFT marketplaces and decentralised apps — engineered for security, scale and real-world adoption.
+            </p>
+            <div className="reveal" style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '3.5rem' }}>
+              <Link href="/contact" style={{ background: '#111827', color: '#fff', padding: '14px 32px', borderRadius: 999, fontWeight: 700, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
+                Start Your Project
+              </Link>
+              <Link href="/contact" style={{ border: '1px solid rgba(0,0,0,0.1)', color: '#111827', padding: '14px 32px', borderRadius: 999, fontWeight: 600, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
+                View Our Work
+              </Link>
+            </div>
+            <div className="reveal" style={{ display: 'flex', gap: 32, justifyContent: 'center', flexWrap: 'wrap' }}>
+              {[
+                { value: '80+', label: 'Contracts Audited' },
+                { value: '$2.1B+', label: 'TVL Secured' },
+                { value: '15', label: 'Chains Supported' },
+              ].map((s, i) => (
+                <div key={i} style={{ textAlign: 'center' }}>
+                  <div style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 700, color: '#111827' }}>{s.value}</div>
+                  <div style={{ fontSize: 12, color: 'rgba(0,0,0,0.4)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>{s.label}</div>
                 </div>
-
-                <h1 className="reveal reveal-d1" style={{ fontSize: 'clamp(3rem,6vw,6rem)', fontWeight: 500, color: '#111827', letterSpacing: '-0.04em', lineHeight: 1.0, margin: '0 0 28px' }}>
-                  Build on Web3.<br />Build for <span style={{ color: '#111827' }}>Tomorrow.</span>
-                </h1>
-
-                <p className="reveal reveal-d2" style={{ fontSize: 18, color: 'rgb(0,0,0)', lineHeight: 1.75, maxWidth: 620, margin: '0 0 44px' }}>
-                  Smart contracts, DeFi protocols, NFT marketplaces and decentralised apps — engineered for security, scale and real-world adoption.
-                </p>
-
-                <div className="reveal reveal-d3" style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
-                  <Link href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, height: 56, padding: '0 32px', borderRadius: 100, background: '#111827', color: '#fff', fontSize: 14, fontWeight: 700, textDecoration: 'none', transition: '0.3s' }}
-                    onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 16px 40px rgba(17,24,39,0.35)'; }}
-                    onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}>
-                    Start Your Project
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-                  </Link>
-                  <Link href="/contact" style={{ display: 'inline-flex', alignItems: 'center', height: 56, padding: '0 32px', borderRadius: 100, border: '1px solid rgba(0,0,0,0.08)', color: '#111827', fontSize: 14, fontWeight: 500, textDecoration: 'none', transition: '0.3s' }}
-                    onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(0,0,0,0.15)'}
-                    onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(0,0,0,0.08)'}>
-                    View Our Work
-                  </Link>
-                </div>
-              </div>
-
-              {/* Right — contact form */}
-              <div className="reveal reveal-d2">
-                <ServiceHeroForm />
-              </div>
+              ))}
             </div>
           </div>
         </section>
@@ -353,7 +339,8 @@ export default function BlockchainWeb3Page() {
               </Link>
               <Link href="/contact" style={{ display: 'inline-flex', alignItems: 'center', height: 60, padding: '0 40px', borderRadius: 100, border: '1px solid rgba(0,0,0,0.08)', color: '#111827', fontSize: 15, fontWeight: 500, textDecoration: 'none', transition: '0.3s' }}
                 onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(0,0,0,0.15)'}
-                onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(0,0,0,0.08)'}>
+                onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(0,0,0,0.08)'}
+                onClick={e => { e.preventDefault(); window.location.href = '/contact'; }}>
                 Talk to an Engineer
               </Link>
             </div>

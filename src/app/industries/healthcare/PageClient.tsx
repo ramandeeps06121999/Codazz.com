@@ -6,6 +6,12 @@ import Footer from '@/components/Footer';
 import Breadcrumb from '@/components/Breadcrumb';
 import TrustBadges from '@/components/TrustBadges';
 import HeroBackground from '@/components/HeroBackground';
+import { FloatingIconsBackground } from '@/components/FloatingIconsBackground';
+import {
+  IconReact, IconNextJS, IconNodeJS, IconPython, IconAWS,
+  IconDocker, IconKubernetes, IconTypeScript, IconGraphQL,
+  IconPostgreSQL, IconMongoDB, IconTensorFlow, IconGitHub, IconFigma, IconVSCode
+} from '@/components/tech-icons';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -48,6 +54,25 @@ function Card({ children, style }: { children: React.ReactNode; style?: React.CS
   );
 }
 
+// Floating Icons Configuration
+const floatingIcons = [
+  { id: 1, icon: IconReact, className: 'top-[10%] left-[5%]' },
+  { id: 2, icon: IconNextJS, className: 'top-[15%] right-[8%]' },
+  { id: 3, icon: IconNodeJS, className: 'top-[60%] left-[3%]' },
+  { id: 4, icon: IconPython, className: 'bottom-[20%] right-[5%]' },
+  { id: 5, icon: IconAWS, className: 'top-[5%] left-[25%]' },
+  { id: 6, icon: IconDocker, className: 'top-[70%] right-[15%]' },
+  { id: 7, icon: IconKubernetes, className: 'bottom-[15%] left-[20%]' },
+  { id: 8, icon: IconTypeScript, className: 'top-[40%] left-[8%]' },
+  { id: 9, icon: IconGraphQL, className: 'top-[80%] right-[25%]' },
+  { id: 10, icon: IconPostgreSQL, className: 'top-[25%] right-[5%]' },
+  { id: 11, icon: IconMongoDB, className: 'top-[50%] left-[2%]' },
+  { id: 12, icon: IconTensorFlow, className: 'bottom-[25%] right-[10%]' },
+  { id: 13, icon: IconGitHub, className: 'top-[35%] right-[12%]' },
+  { id: 14, icon: IconFigma, className: 'bottom-[10%] left-[10%]' },
+  { id: 15, icon: IconVSCode, className: 'top-[5%] left-[50%]' },
+];
+
 export default function HealthcarePage() {
   const heroRef = useRef<HTMLElement>(null);
   const s1 = useReveal() as React.RefObject<HTMLElement>;
@@ -76,6 +101,7 @@ export default function HealthcarePage() {
         {/* HERO */}
         <section ref={heroRef} className="section-padding" style={{ position: 'relative', overflow: 'hidden', minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
           <HeroBackground variant="center" />
+          <FloatingIconsBackground icons={floatingIcons} />
           <div className="cb-container" style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: 860, margin: '0 auto' }}>
             <div className="reveal" style={{ display: 'inline-block', border: '1px solid rgba(17,24,39,0.4)', borderRadius: 999, padding: '6px 20px', fontSize: 13, color: '#111827', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>
               Healthcare Technology
@@ -276,7 +302,7 @@ export default function HealthcarePage() {
               </div>
               <div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', flexWrap: 'wrap' }}>
                 {['HIPAA Compliant', 'BAA Ready', 'HL7 FHIR Certified', 'NDA on Request'].map(t => (
-                  <span key={t} style={{ fontSize: '0.85rem', color: 'rgba(0,0,0,0.25)' }}>✓ {t}</span>
+                  <span key={t} style={{ fontSize: '0.85rem', color: '#111827', fontWeight: 600 }}>✓ {t}</span>
                 ))}
               </div>
               <TrustBadges compact />

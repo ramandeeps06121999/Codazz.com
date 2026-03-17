@@ -54,28 +54,50 @@ export default function AdvancedLabs() {
           </div>
 
           <div className="reveal reveal-d1" style={{ position: 'relative' }}>
-            <div style={{ borderRadius: 'clamp(24px, 6vw, 48px)', overflow: 'hidden', border: '1px solid rgba(0,0,0,0.06)', background: '#050505', aspectRatio: '4/5', position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <div style={{ position: 'absolute', top: '20%', left: '20%', width: '60%', height: '60%', background: 'radial-gradient(circle, rgba(17,24,39,0.15) 0%, transparent 65%)', filter: 'blur(60px)' }} />
-              <div style={{ position: 'relative', zIndex: 2, width: '80%', aspectRatio: '1' }}>
-                <svg viewBox="0 0 400 400" style={{ width: '100%', opacity: 0.6 }}>
-                  <circle cx="200" cy="200" r="160" fill="none" stroke="rgba(17,24,39,0.15)" strokeWidth="1" strokeDasharray="4 8" />
-                  <circle cx="200" cy="200" r="110" fill="none" stroke="rgba(17,24,39,0.08)" strokeWidth="1" strokeDasharray="3 6" />
-                  {([[200,40],[340,120],[340,280],[200,360],[60,280],[60,120]] as [number,number][]).map(([cx, cy], i) => (
-                    <g key={i}>
-                      <circle cx={cx} cy={cy} r="8" fill="rgba(17,24,39,0.3)" />
-                      <circle cx={cx} cy={cy} r="16" fill="none" stroke="rgba(17,24,39,0.1)" strokeWidth="1" />
-                      <line x1={cx} y1={cy} x2="200" y2="200" stroke="rgba(17,24,39,0.06)" strokeWidth="1" />
-                    </g>
-                  ))}
-                  <circle cx="200" cy="200" r="30" fill="rgba(17,24,39,0.1)" />
-                  <circle cx="200" cy="200" r="14" fill="#111827" opacity="0.4" />
-                  <circle cx="200" cy="200" r="6" fill="#111827" />
-                </svg>
-              </div>
-              <div style={{ position: 'absolute', bottom: 28, left: 28, display: 'flex', alignItems: 'center', gap: 10, background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.08)', borderRadius: 100, padding: '9px 18px' }}>
-                <div style={{ width: 7, height: 7, borderRadius: '50%', background: '#111827' }} />
-                <span style={{ fontSize: 11, fontWeight: 700, color: '#111827', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Neural Core Active</span>
-              </div>
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: '1fr 1fr',
+              gridTemplateRows: '1fr 1fr',
+              gap: 'clamp(8px, 1.5vw, 14px)',
+              height: '100%',
+            }}>
+              {[
+                { src: '/videos/2.mp4', radius: 'clamp(16px, 4vw, 32px) 8px 8px clamp(16px, 4vw, 32px)' },
+                { src: '/videos/3.mp4', radius: '8px clamp(16px, 4vw, 32px) clamp(16px, 4vw, 32px) 8px' },
+                { src: '/videos/4.mp4', radius: 'clamp(16px, 4vw, 32px) 8px 8px clamp(16px, 4vw, 32px)' },
+                { src: '/videos/5.mp4', radius: '8px clamp(16px, 4vw, 32px) clamp(16px, 4vw, 32px) 8px' },
+              ].map((v, i) => (
+                <div
+                  key={i}
+                  style={{
+                    borderRadius: v.radius,
+                    overflow: 'hidden',
+                    border: '1px solid rgba(0,0,0,0.06)',
+                    aspectRatio: '1/1',
+                    position: 'relative',
+                    transition: 'transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s cubic-bezier(0.16,1,0.3,1)',
+                  }}
+                  onMouseEnter={e => {
+                    e.currentTarget.style.transform = 'scale(1.03)';
+                    e.currentTarget.style.boxShadow = '0 20px 40px rgba(0,0,0,0.12)';
+                    e.currentTarget.style.zIndex = '2';
+                  }}
+                  onMouseLeave={e => {
+                    e.currentTarget.style.transform = 'scale(1)';
+                    e.currentTarget.style.boxShadow = 'none';
+                    e.currentTarget.style.zIndex = '0';
+                  }}
+                >
+                  <video
+                    src={v.src}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                  />
+                </div>
+              ))}
             </div>
           </div>
         </div>
