@@ -14,6 +14,7 @@ import AdvancedLabs from '@/components/AdvancedLabs';
 import TestimonialsSection from '@/components/TestimonialsSection';
 import InsightsSection from '@/components/InsightsSection';
 import FAQSection from '@/components/FAQSection';
+import GlobalPresence from '@/components/GlobalPresence';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 
@@ -46,6 +47,8 @@ export default function Home() {
         <div style={{ height: 1, background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.06) 50%, transparent)', margin: '0 auto', maxWidth: '80%' }} />
         <InsightsSection />
         <FAQSection />
+        <div style={{ height: 1, background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.06) 50%, transparent)', margin: '0 auto', maxWidth: '80%' }} />
+        <GlobalPresence />
         <Contact />
       </main>
       <Footer />

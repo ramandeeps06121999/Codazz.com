@@ -190,8 +190,12 @@ gtag('config', 'G-LLHNY6HD88');`,
             __html: JSON.stringify(organizationSchema),
           }}
         />
-        <TechConstellation />
-        {children}
+        <div style={{ position: 'relative', minHeight: '100vh' }}>
+          <TechConstellation />
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            {children}
+          </div>
+        </div>
         <CookieConsent />
         <ClarityAnalytics />
         <Analytics />
