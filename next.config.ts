@@ -1,0 +1,25 @@
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  images: {
+    remotePatterns: [
+      { protocol: 'https', hostname: 'logo.clearbit.com', pathname: '/**' },
+      { protocol: 'https', hostname: 'cdn.simpleicons.org', pathname: '/**' },
+    ],
+  },
+  async redirects() {
+    return [
+      // Old city+service slug pattern redirects
+      { source: '/software-development-company-in-:city', destination: '/locations/:city/web-development', permanent: true },
+      { source: '/app-development-company-in-:city', destination: '/locations/:city/mobile-app-development', permanent: true },
+      { source: '/web-development-company-in-:city', destination: '/locations/:city/web-development', permanent: true },
+      { source: '/digital-marketing-company-in-:city', destination: '/locations/:city/digital-marketing', permanent: true },
+      { source: '/ai-development-company-in-:city', destination: '/locations/:city/ai-ml', permanent: true },
+      { source: '/mobile-app-development-:city', destination: '/locations/:city/mobile-app-development', permanent: true },
+      { source: '/web-development-:city', destination: '/locations/:city/web-development', permanent: true },
+      { source: '/software-development-:city', destination: '/locations/:city/web-development', permanent: true },
+    ];
+  },
+};
+
+export default nextConfig;
