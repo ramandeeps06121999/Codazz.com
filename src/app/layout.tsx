@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
 import CookieConsent from "@/components/CookieConsent";
 import ClarityAnalytics from "@/components/ClarityAnalytics";
-import TechConstellation from "@/components/TechConstellation";
+
 import { poppins } from "@/lib/fonts";
 import "./globals.css";
 
@@ -190,12 +190,7 @@ gtag('config', 'G-LLHNY6HD88');`,
             __html: JSON.stringify(organizationSchema),
           }}
         />
-        <div style={{ position: 'relative', minHeight: '100vh' }}>
-          <TechConstellation />
-          <div style={{ position: 'relative', zIndex: 1 }}>
-            {children}
-          </div>
-        </div>
+        {children}
         <CookieConsent />
         <ClarityAnalytics />
         <Analytics />
