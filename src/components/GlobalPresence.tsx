@@ -87,6 +87,7 @@ function AnimatedNumber({ target, suffix = '' }: { target: number; suffix?: stri
 
 export default function GlobalPresence() {
   const sectionRef = useRef<HTMLElement>(null);
+  const [globeVisible, setGlobeVisible] = useState(false);
 
   useEffect(() => {
     const el = sectionRef.current;
@@ -98,7 +99,15 @@ export default function GlobalPresence() {
       { threshold: 0.1 }
     );
     el.querySelectorAll('.gp-reveal').forEach(child => io.observe(child));
-    return () => io.disconnect();
+
+    // Only mount the globe when section is near the viewport
+    const globeIo = new IntersectionObserver(
+      ([entry]) => setGlobeVisible(entry.isIntersecting),
+      { rootMargin: '200px' }
+    );
+    globeIo.observe(el);
+
+    return () => { io.disconnect(); globeIo.disconnect(); };
   }, []);
 
   return (
@@ -174,7 +183,7 @@ export default function GlobalPresence() {
             position: 'relative', width: '100%',
             maxWidth: 520, aspectRatio: '1/1', margin: '0 auto',
           }}>
-            <Globe config={GLOBE_CONFIG} />
+            {globeVisible && <Globe config={GLOBE_CONFIG} />}
 
             {/* HQ Labels */}
             <div style={{
