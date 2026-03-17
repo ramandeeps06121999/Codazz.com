@@ -19,7 +19,7 @@ function PartnerPill({ name }: { name: string }) {
       onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(0,0,0,0.15)'; e.currentTarget.style.background = 'rgba(0,0,0,0.03)'; }}
       onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(0,0,0,0.06)'; e.currentTarget.style.background = 'rgba(0,0,0,0.015)'; }}
     >
-      <span style={{ fontSize: 13, fontWeight: 600, color: 'rgba(0,0,0,0.55)', letterSpacing: '-0.01em' }}>{name}</span>
+      <span style={{ fontSize: 13, fontWeight: 600, color: 'rgb(0,0,0)', letterSpacing: '-0.01em' }}>{name}</span>
     </div>
   );
 }

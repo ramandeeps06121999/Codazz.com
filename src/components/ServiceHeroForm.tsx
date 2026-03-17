@@ -68,7 +68,7 @@ export default function ServiceHeroForm({ service, city }: ServiceHeroFormProps 
       boxShadow: '0 24px 64px rgba(0,0,0,0.4)',
     }}>
       {/* Glow accent */}
-      <div style={{ position: 'absolute', top: -1, left: '20%', right: '20%', height: 2, background: 'linear-gradient(90deg, transparent, #4F46E5, transparent)', borderRadius: 2 }} />
+      <div style={{ position: 'absolute', top: -1, left: '20%', right: '20%', height: 2, background: 'linear-gradient(90deg, transparent, #111827, transparent)', borderRadius: 2 }} />
 
       <div style={{ marginBottom: 28 }}>
         <h3 style={{ fontSize: 22, fontWeight: 700, color: '#111827', letterSpacing: '-0.02em', marginBottom: 6 }}>
@@ -85,7 +85,7 @@ export default function ServiceHeroForm({ service, city }: ServiceHeroFormProps 
           <h3 style={{ fontSize: 20, fontWeight: 700, color: '#111827', marginBottom: 12 }}>
             Request Received!
           </h3>
-          <p style={{ fontSize: 15, color: 'rgba(0,0,0,0.55)', lineHeight: 1.7, maxWidth: 360, margin: '0 auto' }}>
+          <p style={{ fontSize: 15, color: 'rgb(0,0,0)', lineHeight: 1.7, maxWidth: 360, margin: '0 auto' }}>
             A senior engineer will review your project details and respond within 4 business hours with a custom assessment.
           </p>
         </div>
@@ -102,7 +102,7 @@ export default function ServiceHeroForm({ service, city }: ServiceHeroFormProps 
               value={form.name}
               onChange={e => setForm({ ...form, name: e.target.value })}
               style={inputStyle}
-              onFocus={e => { e.currentTarget.style.borderColor = 'rgba(79,70,229,0.4)'; e.currentTarget.style.background = 'rgba(0,0,0,0.04)'; }}
+              onFocus={e => { e.currentTarget.style.borderColor = 'rgba(17,24,39,0.4)'; e.currentTarget.style.background = 'rgba(0,0,0,0.04)'; }}
               onBlur={e => { e.currentTarget.style.borderColor = 'rgba(0,0,0,0.08)'; e.currentTarget.style.background = 'rgba(0,0,0,0.02)'; }}
             />
           </div>
@@ -117,7 +117,7 @@ export default function ServiceHeroForm({ service, city }: ServiceHeroFormProps 
               value={form.email}
               onChange={e => setForm({ ...form, email: e.target.value })}
               style={inputStyle}
-              onFocus={e => { e.currentTarget.style.borderColor = 'rgba(79,70,229,0.4)'; e.currentTarget.style.background = 'rgba(0,0,0,0.04)'; }}
+              onFocus={e => { e.currentTarget.style.borderColor = 'rgba(17,24,39,0.4)'; e.currentTarget.style.background = 'rgba(0,0,0,0.04)'; }}
               onBlur={e => { e.currentTarget.style.borderColor = 'rgba(0,0,0,0.08)'; e.currentTarget.style.background = 'rgba(0,0,0,0.02)'; }}
             />
           </div>
@@ -130,7 +130,7 @@ export default function ServiceHeroForm({ service, city }: ServiceHeroFormProps 
               value={form.phone}
               onChange={e => setForm({ ...form, phone: e.target.value })}
               style={inputStyle}
-              onFocus={e => { e.currentTarget.style.borderColor = 'rgba(79,70,229,0.4)'; e.currentTarget.style.background = 'rgba(0,0,0,0.04)'; }}
+              onFocus={e => { e.currentTarget.style.borderColor = 'rgba(17,24,39,0.4)'; e.currentTarget.style.background = 'rgba(0,0,0,0.04)'; }}
               onBlur={e => { e.currentTarget.style.borderColor = 'rgba(0,0,0,0.08)'; e.currentTarget.style.background = 'rgba(0,0,0,0.02)'; }}
             />
           </div>
@@ -143,7 +143,7 @@ export default function ServiceHeroForm({ service, city }: ServiceHeroFormProps 
               value={form.message}
               onChange={e => setForm({ ...form, message: e.target.value })}
               style={{ ...inputStyle, resize: 'none' }}
-              onFocus={e => { e.currentTarget.style.borderColor = 'rgba(79,70,229,0.4)'; e.currentTarget.style.background = 'rgba(0,0,0,0.04)'; }}
+              onFocus={e => { e.currentTarget.style.borderColor = 'rgba(17,24,39,0.4)'; e.currentTarget.style.background = 'rgba(0,0,0,0.04)'; }}
               onBlur={e => { e.currentTarget.style.borderColor = 'rgba(0,0,0,0.08)'; e.currentTarget.style.background = 'rgba(0,0,0,0.02)'; }}
             />
           </div>
@@ -155,7 +155,7 @@ export default function ServiceHeroForm({ service, city }: ServiceHeroFormProps 
               height: 52,
               borderRadius: 12,
               border: 'none',
-              background: 'linear-gradient(135deg, #4F46E5, #06B6D4)',
+              background: 'linear-gradient(135deg, #111827, #374151)',
               color: '#fff',
               fontSize: 15,
               fontWeight: 700,
@@ -167,7 +167,7 @@ export default function ServiceHeroForm({ service, city }: ServiceHeroFormProps 
               justifyContent: 'center',
               gap: 8,
             }}
-            onMouseEnter={e => { if(!isLoading){ e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 12px 32px rgba(79,70,229,0.4)'; } }}
+            onMouseEnter={e => { if(!isLoading){ e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 12px 32px rgba(17,24,39,0.4)'; } }}
             onMouseLeave={e => { if(!isLoading){ e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; } }}
           >
             {isLoading ? 'Sending...' : 'Get Free Quote'}

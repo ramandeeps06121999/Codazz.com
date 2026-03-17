@@ -4,6 +4,7 @@ import { useRef, useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
+import HeroBackground from '@/components/HeroBackground';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -41,7 +42,7 @@ const relatedPosts = [
 const costCards = [
   {
     id: 'seo', title: 'SEO (Search Engine Optimization)', emoji: '🔍',
-    range: '$1,500 - $10,000/month', accentColor: '#4F46E5', bgColor: 'rgba(79,70,229,',
+    range: '$1,500 - $10,000/month', accentColor: '#111827', bgColor: 'rgba(17,24,39,',
     description: 'SEO remains the highest-ROI digital marketing channel for American businesses. At the lower end, you get foundational on-page optimization, Google Business Profile management, and basic keyword targeting. At $5,000+/month, expect comprehensive technical SEO audits, Next.js performance optimization, advanced Schema markup, programmatic content strategies, and aggressive link-building campaigns targeting high-competition national keywords.',
     includes: ['Technical site audits', 'On-page optimization', 'Link building', 'Content strategy', 'Monthly reporting'],
   },
@@ -96,12 +97,7 @@ export default function DigitalMarketingCostUSAClient() {
 
         {/* -- ARTICLE HERO -- */}
         <section style={{ padding: 'clamp(100px, 15vw, 140px) 0 clamp(32px, 5vw, 64px)', position: 'relative', overflow: 'hidden' }}>
-          <div style={{
-            position: 'absolute', top: -300, left: '50%', transform: 'translateX(-50%)',
-            width: 900, height: 900,
-            background: 'radial-gradient(circle, rgba(79,70,229,0.05) 0%, transparent 65%)',
-            pointerEvents: 'none',
-          }} />
+          <HeroBackground variant="left" />
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 24 }}>
               <Link href="/blog" style={{
@@ -119,7 +115,7 @@ export default function DigitalMarketingCostUSAClient() {
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
               <span className="reveal reveal-d1" style={{
                 fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                background: 'rgba(79,70,229,0.12)', color: '#4F46E5',
+                background: 'rgba(17,24,39,0.12)', color: '#111827',
                 padding: '5px 14px', borderRadius: 100,
               }}>Digital Marketing</span>
               <span className="reveal reveal-d1" style={{ fontSize: 13, color: 'rgba(0,0,0,0.25)' }}>March 14, 2026</span>
@@ -160,9 +156,9 @@ export default function DigitalMarketingCostUSAClient() {
               <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
                 <div style={{
                   width: 48, height: 48, borderRadius: '50%',
-                  background: 'rgba(79,70,229,0.12)', border: '1px solid rgba(79,70,229,0.25)',
+                  background: 'rgba(17,24,39,0.12)', border: '1px solid rgba(17,24,39,0.25)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: 15, fontWeight: 700, color: '#4F46E5',
+                  fontSize: 15, fontWeight: 700, color: '#111827',
                 }}>RM</div>
                 <div>
                   <p style={{ fontSize: 15, fontWeight: 600, color: '#111827', margin: 0 }}>Raman Makkar</p>
@@ -184,8 +180,8 @@ export default function DigitalMarketingCostUSAClient() {
                 ))}
                 <button onClick={handleCopy} style={{
                   padding: '8px 16px', borderRadius: 100, border: '1px solid rgba(0,0,0,0.08)',
-                  background: copied ? 'rgba(79,70,229,0.1)' : 'rgba(0,0,0,0.02)',
-                  color: copied ? '#4F46E5' : 'rgba(0,0,0,0.45)',
+                  background: copied ? 'rgba(17,24,39,0.1)' : 'rgba(0,0,0,0.02)',
+                  color: copied ? '#111827' : 'rgba(0,0,0,0.45)',
                   fontSize: 12, fontWeight: 600, cursor: 'pointer',
                   transition: 'all 0.2s',
                 }}>
@@ -207,7 +203,7 @@ export default function DigitalMarketingCostUSAClient() {
                 {/* Intro */}
                 <div className="reveal" style={{ marginBottom: 56 }}>
                   <p style={{
-                    fontSize: 18, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8,
+                    fontSize: 18, color: 'rgb(0,0,0)', lineHeight: 1.8,
                     marginBottom: 20,
                   }}>
                     Every American business owner asks the same question: &ldquo;How much should I spend on digital marketing?&rdquo; The answer is never simple because it depends on your industry, competition level, growth targets, and which channels will deliver the best return. But one thing is clear&mdash;underspending is just as dangerous as overspending.
@@ -225,15 +221,15 @@ export default function DigitalMarketingCostUSAClient() {
                   <div key={card.id} className="reveal" style={{ marginBottom: 56 }} id={card.id}>
                     <div style={{
                       background: card.id === 'seo'
-                        ? 'linear-gradient(135deg, rgba(79,70,229,0.1) 0%, rgba(0,0,0,0.015) 100%)'
+                        ? 'linear-gradient(135deg, rgba(17,24,39,0.1) 0%, rgba(0,0,0,0.015) 100%)'
                         : 'rgba(0,0,0,0.015)',
                       border: card.id === 'seo'
-                        ? '1px solid rgba(79,70,229,0.3)'
+                        ? '1px solid rgba(17,24,39,0.3)'
                         : '1px solid rgba(0,0,0,0.06)',
                       borderRadius: 24, padding: 36, position: 'relative', overflow: 'hidden',
                     }}>
                       {card.id === 'seo' && (
-                        <div style={{ position: 'absolute', top: -40, right: -40, width: 200, height: 200, background: 'radial-gradient(circle, rgba(79,70,229,0.15) 0%, transparent 70%)', filter: 'blur(30px)' }} />
+                        <div style={{ position: 'absolute', top: -40, right: -40, width: 200, height: 200, background: 'radial-gradient(circle, rgba(17,24,39,0.15) 0%, transparent 70%)', filter: 'blur(30px)' }} />
                       )}
                       <div style={{ display: 'flex', alignItems: 'flex-start', gap: 20, marginBottom: 20, position: 'relative', zIndex: 1 }}>
                         <div style={{
@@ -255,7 +251,7 @@ export default function DigitalMarketingCostUSAClient() {
                         </div>
                       </div>
 
-                      <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 20, position: 'relative', zIndex: 1 }}>
+                      <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 20, position: 'relative', zIndex: 1 }}>
                         {card.description}
                       </p>
 
@@ -288,7 +284,7 @@ export default function DigitalMarketingCostUSAClient() {
 
                   {[
                     {
-                      model: 'Monthly Retainer', price: '$2,000 - $25,000/month', accentColor: '#4F46E5', bgColor: 'rgba(79,70,229,',
+                      model: 'Monthly Retainer', price: '$2,000 - $25,000/month', accentColor: '#111827', bgColor: 'rgba(17,24,39,',
                       description: 'The most common model for American agencies. You pay a fixed monthly fee for an agreed scope of work. This provides predictable budgeting and allows the agency to plan long-term strategies. Best for businesses seeking ongoing growth and consistent results across multiple channels.',
                     },
                     {
@@ -328,7 +324,7 @@ export default function DigitalMarketingCostUSAClient() {
 
                   {[
                     { tier: '$2,000 - $5,000/month', label: 'Starter', color: '#94a3b8', expectations: 'Foundation building. Expect improved local search visibility, basic social presence, and initial lead generation. Timeline: 4-6 months to see meaningful results. Best for small businesses and startups in low-competition niches.' },
-                    { tier: '$5,000 - $15,000/month', label: 'Growth', color: '#4F46E5', expectations: 'Aggressive scaling. Expect significant organic traffic growth (50-200%), multi-channel campaigns, and measurable revenue attribution. Timeline: 3-6 months for early wins, 6-12 months for compound growth. Best for established SMBs targeting regional or national markets.' },
+                    { tier: '$5,000 - $15,000/month', label: 'Growth', color: '#111827', expectations: 'Aggressive scaling. Expect significant organic traffic growth (50-200%), multi-channel campaigns, and measurable revenue attribution. Timeline: 3-6 months for early wins, 6-12 months for compound growth. Best for established SMBs targeting regional or national markets.' },
                     { tier: '$15,000 - $25,000+/month', label: 'Enterprise', color: '#fbbf24', expectations: 'Market domination. Expect comprehensive omnichannel strategies, competitive displacement, advanced analytics, and executive-level reporting. Timeline: 2-4 months for quick wins, ongoing optimization. Best for companies with $5M+ revenue targeting category leadership.' },
                   ].map((item) => (
                     <div key={item.tier} style={{
@@ -339,7 +335,7 @@ export default function DigitalMarketingCostUSAClient() {
                         <span style={{
                           fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase',
                           padding: '3px 10px', borderRadius: 100, color: item.color,
-                          background: `rgba(${item.color === '#94a3b8' ? '148,163,184' : item.color === '#4F46E5' ? '245,41,13' : '251,191,36'},0.12)`,
+                          background: `rgba(${item.color === '#94a3b8' ? '148,163,184' : item.color === '#111827' ? '245,41,13' : '251,191,36'},0.12)`,
                         }}>{item.label}</span>
                         <span style={{ fontSize: 14, fontWeight: 700, color: '#111827' }}>{item.tier}</span>
                       </div>
@@ -359,7 +355,7 @@ export default function DigitalMarketingCostUSAClient() {
                     {
                       option: 'Digital Marketing Agency', pros: 'Full team of specialists, scalable resources, proven processes, accountability, cross-industry experience, access to enterprise tools',
                       cons: 'Higher cost ($5K-$25K+/month), less direct control, potential communication layers', best: 'Businesses with $1M+ revenue needing multi-channel expertise',
-                      accentColor: '#4F46E5', bgColor: 'rgba(79,70,229,',
+                      accentColor: '#111827', bgColor: 'rgba(17,24,39,',
                     },
                     {
                       option: 'Freelancer', pros: 'Lower cost ($1K-$5K/month), direct communication, flexibility, niche expertise',
@@ -400,11 +396,11 @@ export default function DigitalMarketingCostUSAClient() {
                 {/* Codazz Approach */}
                 <div className="reveal" style={{ marginBottom: 56 }} id="codazz-approach">
                   <div style={{
-                    background: 'linear-gradient(135deg, rgba(79,70,229,0.1) 0%, rgba(0,0,0,0.015) 100%)',
-                    border: '1px solid rgba(79,70,229,0.3)',
+                    background: 'linear-gradient(135deg, rgba(17,24,39,0.1) 0%, rgba(0,0,0,0.015) 100%)',
+                    border: '1px solid rgba(17,24,39,0.3)',
                     borderRadius: 24, padding: 36, position: 'relative', overflow: 'hidden',
                   }}>
-                    <div style={{ position: 'absolute', top: -40, right: -40, width: 200, height: 200, background: 'radial-gradient(circle, rgba(79,70,229,0.15) 0%, transparent 70%)', filter: 'blur(30px)' }} />
+                    <div style={{ position: 'absolute', top: -40, right: -40, width: 200, height: 200, background: 'radial-gradient(circle, rgba(17,24,39,0.15) 0%, transparent 70%)', filter: 'blur(30px)' }} />
                     <div style={{ position: 'relative', zIndex: 1 }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
                         <span style={{ fontSize: 28 }}>🍁</span>
@@ -414,25 +410,25 @@ export default function DigitalMarketingCostUSAClient() {
                         }}>How Codazz Approaches Digital Marketing Differently</h2>
                       </div>
 
-                      <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 16 }}>
+                      <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 16 }}>
                         Most digital marketing agencies treat SEO, paid ads, and development as separate silos. At Codazz, we believe this fragmentation is why most marketing campaigns underperform. Our approach integrates technical SEO directly into the development process, ensuring your website is built from the ground up for search engine dominance.
                       </p>
-                      <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 16 }}>
+                      <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 16 }}>
                         We build every client project on Next.js with server-side rendering, achieving perfect Google Lighthouse scores that give you a structural advantage over competitors running on bloated WordPress themes. Our data-driven methodology combines real-time analytics, AI-assisted content optimization, and conversion rate engineering to maximize every dollar of your marketing budget.
                       </p>
-                      <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 20 }}>
+                      <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 20 }}>
                         The result? American businesses working with Codazz see 3-5x higher ROI on their digital marketing spend because the technical foundation amplifies every marketing initiative. When your site loads in under 1 second and is architecturally perfect for Google&apos;s crawlers, every piece of content, every backlink, and every ad click converts at a significantly higher rate.
                       </p>
 
                       <div style={{
                         padding: '14px 20px', borderRadius: 12,
-                        background: 'rgba(79,70,229,0.08)', border: '1px solid rgba(79,70,229,0.2)',
+                        background: 'rgba(17,24,39,0.08)', border: '1px solid rgba(17,24,39,0.2)',
                         display: 'flex', alignItems: 'center', gap: 10,
                       }}>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" strokeWidth="2">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#111827" strokeWidth="2">
                           <polyline points="22,7 13.5,15.5 8.5,10.5 2,17"/><polyline points="16,7 22,7 22,13"/>
                         </svg>
-                        <span style={{ fontSize: 13, color: '#4F46E5', fontWeight: 600 }}>
+                        <span style={{ fontSize: 13, color: '#111827', fontWeight: 600 }}>
                           Technical SEO + Custom Development = 3-5x Higher Marketing ROI
                         </span>
                       </div>
@@ -503,8 +499,8 @@ export default function DigitalMarketingCostUSAClient() {
                           transition: 'all 0.15s',
                         }}
                           onMouseEnter={e => {
-                            (e.currentTarget as HTMLAnchorElement).style.color = '#4F46E5';
-                            (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(79,70,229,0.06)';
+                            (e.currentTarget as HTMLAnchorElement).style.color = '#111827';
+                            (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(17,24,39,0.06)';
                           }}
                           onMouseLeave={e => {
                             (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(0,0,0,0.4)';
@@ -530,9 +526,9 @@ export default function DigitalMarketingCostUSAClient() {
                     <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
                       <div style={{
                         width: 44, height: 44, borderRadius: '50%',
-                        background: 'rgba(79,70,229,0.12)', border: '1px solid rgba(79,70,229,0.25)',
+                        background: 'rgba(17,24,39,0.12)', border: '1px solid rgba(17,24,39,0.25)',
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        fontSize: 14, fontWeight: 700, color: '#4F46E5', flexShrink: 0,
+                        fontSize: 14, fontWeight: 700, color: '#111827', flexShrink: 0,
                       }}>RM</div>
                       <div>
                         <p style={{ fontSize: 14, fontWeight: 600, color: '#111827', margin: 0 }}>Raman Makkar</p>
@@ -561,16 +557,16 @@ export default function DigitalMarketingCostUSAClient() {
                           background: 'transparent', transition: 'all 0.2s',
                         }}
                           onMouseEnter={e => {
-                            (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(79,70,229,0.15)';
-                            (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(79,70,229,0.03)';
+                            (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(17,24,39,0.15)';
+                            (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(17,24,39,0.03)';
                           }}
                           onMouseLeave={e => {
                             (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(0,0,0,0.03)';
                             (e.currentTarget as HTMLAnchorElement).style.background = 'transparent';
                           }}
                         >
-                          <p style={{ fontSize: 11, color: '#4F46E5', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', margin: '0 0 6px' }}>{post.category}</p>
-                          <p style={{ fontSize: 13, color: 'rgba(0,0,0,0.55)', lineHeight: 1.4, margin: '0 0 8px', fontWeight: 600 }}>{post.title}</p>
+                          <p style={{ fontSize: 11, color: '#111827', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', margin: '0 0 6px' }}>{post.category}</p>
+                          <p style={{ fontSize: 13, color: 'rgb(0,0,0)', lineHeight: 1.4, margin: '0 0 8px', fontWeight: 600 }}>{post.title}</p>
                           <p style={{ fontSize: 12, color: 'rgba(0,0,0,0.25)', margin: 0 }}>{post.readTime} read</p>
                         </Link>
                       ))}
@@ -589,7 +585,7 @@ export default function DigitalMarketingCostUSAClient() {
             <div
               className="reveal"
               style={{
-                background: 'rgba(79,70,229,0.04)', border: '1px solid rgba(79,70,229,0.15)',
+                background: 'rgba(17,24,39,0.04)', border: '1px solid rgba(17,24,39,0.15)',
                 borderRadius: 28, padding: '64px 56px',
                 display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                 flexWrap: 'wrap', gap: 32,
@@ -598,7 +594,7 @@ export default function DigitalMarketingCostUSAClient() {
               <div>
                 <p style={{
                   fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                  color: '#4F46E5', marginBottom: 12,
+                  color: '#111827', marginBottom: 12,
                 }}>Get Started</p>
                 <h2 style={{
                   fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', fontWeight: 700, color: '#111827',
@@ -612,7 +608,7 @@ export default function DigitalMarketingCostUSAClient() {
               </div>
               <Link href="/contact" style={{ textDecoration: 'none' }}>
                 <button style={{
-                  padding: '18px 40px', borderRadius: 100, background: '#4F46E5', color: '#fff',
+                  padding: '18px 40px', borderRadius: 100, background: '#111827', color: '#fff',
                   fontSize: 15, fontWeight: 700, border: 'none', cursor: 'pointer',
                   transition: 'all 0.2s', whiteSpace: 'nowrap',
                 }}>

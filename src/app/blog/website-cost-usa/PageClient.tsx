@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Breadcrumb from '@/components/Breadcrumb';
 import Link from 'next/link';
+import HeroBackground from '@/components/HeroBackground';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -61,12 +62,7 @@ export default function WebsiteCostUSAClient() {
 
         {/* ── ARTICLE HERO ── */}
         <section style={{ padding: 'clamp(100px, 15vw, 140px) 0 clamp(32px, 5vw, 64px)', position: 'relative', overflow: 'hidden' }}>
-          <div style={{
-            position: 'absolute', top: -300, left: '50%', transform: 'translateX(-50%)',
-            width: 900, height: 900,
-            background: 'radial-gradient(circle, rgba(79,70,229,0.05) 0%, transparent 65%)',
-            pointerEvents: 'none',
-          }} />
+          <HeroBackground variant="left" />
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 24 }}>
               <Link href="/blog" style={{
@@ -84,7 +80,7 @@ export default function WebsiteCostUSAClient() {
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
               <span className="reveal reveal-d1" style={{
                 fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                background: 'rgba(79,70,229,0.12)', color: '#4F46E5',
+                background: 'rgba(17,24,39,0.12)', color: '#111827',
                 padding: '5px 14px', borderRadius: 100,
               }}>Business</span>
               <span className="reveal reveal-d1" style={{ fontSize: 13, color: 'rgba(0,0,0,0.25)' }}>March 14, 2026</span>
@@ -125,9 +121,9 @@ export default function WebsiteCostUSAClient() {
               <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
                 <div style={{
                   width: 48, height: 48, borderRadius: '50%',
-                  background: 'rgba(79,70,229,0.12)', border: '1px solid rgba(79,70,229,0.25)',
+                  background: 'rgba(17,24,39,0.12)', border: '1px solid rgba(17,24,39,0.25)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: 15, fontWeight: 700, color: '#4F46E5',
+                  fontSize: 15, fontWeight: 700, color: '#111827',
                 }}>RM</div>
                 <div>
                   <p style={{ fontSize: 15, fontWeight: 600, color: '#111827', margin: 0 }}><a href="/about/raman-makkar" style={{ color: 'inherit', textDecoration: 'none', borderBottom: '1px solid rgba(0,0,0,0.1)' }}>Raman Makkar</a></p>
@@ -149,8 +145,8 @@ export default function WebsiteCostUSAClient() {
                 ))}
                 <button onClick={handleCopy} style={{
                   padding: '8px 16px', borderRadius: 100, border: '1px solid rgba(0,0,0,0.08)',
-                  background: copied ? 'rgba(79,70,229,0.1)' : 'rgba(0,0,0,0.02)',
-                  color: copied ? '#4F46E5' : 'rgba(0,0,0,0.45)',
+                  background: copied ? 'rgba(17,24,39,0.1)' : 'rgba(0,0,0,0.02)',
+                  color: copied ? '#111827' : 'rgba(0,0,0,0.45)',
                   fontSize: 12, fontWeight: 600, cursor: 'pointer',
                   transition: 'all 0.2s',
                 }}>
@@ -172,7 +168,7 @@ export default function WebsiteCostUSAClient() {
                 {/* Intro */}
                 <div className="reveal" style={{ marginBottom: 56 }}>
                   <p style={{
-                    fontSize: 18, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8,
+                    fontSize: 18, color: 'rgb(0,0,0)', lineHeight: 1.8,
                     marginBottom: 20,
                   }}>
                     &quot;How much does a website cost?&quot; is the single most common question we hear from American businesses. And the honest answer is frustrating: it depends. A simple brochure site on WordPress might cost $2,000, while a complex enterprise web application can run well over $500,000.
@@ -337,11 +333,11 @@ export default function WebsiteCostUSAClient() {
                   </div>
 
                   <div style={{
-                    background: 'linear-gradient(135deg, rgba(79,70,229,0.06) 0%, rgba(0,0,0,0.015) 100%)',
-                    border: '1px solid rgba(79,70,229,0.2)',
+                    background: 'linear-gradient(135deg, rgba(17,24,39,0.06) 0%, rgba(0,0,0,0.015) 100%)',
+                    border: '1px solid rgba(17,24,39,0.2)',
                     borderRadius: 20, padding: 28,
                   }}>
-                    <h3 style={{ fontSize: 17, fontWeight: 700, color: '#4F46E5', margin: '0 0 10px' }}>Custom Development (Next.js / React) — $15,000 - $500,000+</h3>
+                    <h3 style={{ fontSize: 17, fontWeight: 700, color: '#111827', margin: '0 0 10px' }}>Custom Development (Next.js / React) — $15,000 - $500,000+</h3>
                     <p style={{ fontSize: 15, color: 'rgba(0,0,0,0.45)', lineHeight: 1.7, margin: 0 }}>
                       Best for: Businesses where the website IS the product, or companies competing in high-value markets where speed, SEO, and user experience directly impact revenue. Custom development gives you complete control over performance, security, and scalability. This is what Codazz specializes in, and it is the only approach we recommend for businesses with serious growth ambitions.
                     </p>
@@ -391,16 +387,16 @@ export default function WebsiteCostUSAClient() {
                 {/* Why Next.js */}
                 <div className="reveal" style={{ marginBottom: 56 }} id="why-nextjs">
                   <div style={{
-                    background: 'linear-gradient(135deg, rgba(79,70,229,0.08) 0%, rgba(0,0,0,0.015) 100%)',
-                    border: '1px solid rgba(79,70,229,0.2)',
+                    background: 'linear-gradient(135deg, rgba(17,24,39,0.08) 0%, rgba(0,0,0,0.015) 100%)',
+                    border: '1px solid rgba(17,24,39,0.2)',
                     borderRadius: 24, padding: 36, position: 'relative', overflow: 'hidden',
                   }}>
-                    <div style={{ position: 'absolute', top: -40, right: -40, width: 200, height: 200, background: 'radial-gradient(circle, rgba(79,70,229,0.15) 0%, transparent 70%)', filter: 'blur(30px)' }} />
+                    <div style={{ position: 'absolute', top: -40, right: -40, width: 200, height: 200, background: 'radial-gradient(circle, rgba(17,24,39,0.15) 0%, transparent 70%)', filter: 'blur(30px)' }} />
                     <h2 style={{
                       fontSize: 'clamp(1.4rem, 2.5vw, 1.9rem)', fontWeight: 700, color: '#111827',
                       letterSpacing: '-0.03em', marginBottom: 16, position: 'relative', zIndex: 1,
                     }}>Why Codazz Uses Next.js for Every Project</h2>
-                    <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 16, position: 'relative', zIndex: 1 }}>
+                    <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 16, position: 'relative', zIndex: 1 }}>
                       At Codazz, we build every website on Next.js, the React-based framework used by Netflix, Nike, Twitch, and the Washington Post. This is not a trend-chasing decision. It is a strategic one based on measurable outcomes:
                     </p>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: 10, position: 'relative', zIndex: 1 }}>
@@ -413,14 +409,14 @@ export default function WebsiteCostUSAClient() {
                       ].map((point, i) => (
                         <div key={i} style={{
                           padding: '12px 16px', borderRadius: 10,
-                          background: 'rgba(79,70,229,0.06)', border: '1px solid rgba(79,70,229,0.12)',
+                          background: 'rgba(17,24,39,0.06)', border: '1px solid rgba(17,24,39,0.12)',
                           display: 'flex', alignItems: 'flex-start', gap: 10,
                         }}>
-                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" strokeWidth="2" style={{ marginTop: 3, flexShrink: 0 }}>
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#111827" strokeWidth="2" style={{ marginTop: 3, flexShrink: 0 }}>
                             <polyline points="20,6 9,17 4,12"/>
                           </svg>
-                          <span style={{ fontSize: 14, color: 'rgba(0,0,0,0.55)', lineHeight: 1.6 }}>
-                            <strong style={{ color: '#4F46E5' }}>{point.split(':')[0]}:</strong>{point.split(':').slice(1).join(':')}
+                          <span style={{ fontSize: 14, color: 'rgb(0,0,0)', lineHeight: 1.6 }}>
+                            <strong style={{ color: '#111827' }}>{point.split(':')[0]}:</strong>{point.split(':').slice(1).join(':')}
                           </span>
                         </div>
                       ))}
@@ -475,12 +471,12 @@ export default function WebsiteCostUSAClient() {
                     The most common budgeting mistake we see from American businesses is allocating 100% of their budget to the initial build and leaving nothing for maintenance, content, and iteration. A website is not a one-time purchase; it is a living asset that requires ongoing investment.
                   </p>
                   <div style={{
-                    background: 'linear-gradient(135deg, rgba(79,70,229,0.06) 0%, rgba(0,0,0,0.015) 100%)',
-                    border: '1px solid rgba(79,70,229,0.15)',
+                    background: 'linear-gradient(135deg, rgba(17,24,39,0.06) 0%, rgba(0,0,0,0.015) 100%)',
+                    border: '1px solid rgba(17,24,39,0.15)',
                     borderRadius: 20, padding: 28, marginBottom: 20,
                   }}>
-                    <p style={{ fontSize: 16, fontWeight: 600, color: '#4F46E5', margin: '0 0 12px' }}>Our Recommended Budgeting Rule:</p>
-                    <p style={{ fontSize: 17, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, margin: 0 }}>
+                    <p style={{ fontSize: 16, fontWeight: 600, color: '#111827', margin: '0 0 12px' }}>Our Recommended Budgeting Rule:</p>
+                    <p style={{ fontSize: 17, color: 'rgb(0,0,0)', lineHeight: 1.8, margin: 0 }}>
                       Allocate <strong style={{ color: '#111827' }}>15-20% of your initial project cost</strong> for annual maintenance and improvements. If your website costs $50,000 to build, budget $7,500 to $10,000 per year for hosting, security updates, content changes, performance monitoring, and iterative improvements based on analytics data.
                     </p>
                   </div>
@@ -517,8 +513,8 @@ export default function WebsiteCostUSAClient() {
                           transition: 'all 0.15s',
                         }}
                           onMouseEnter={e => {
-                            (e.currentTarget as HTMLAnchorElement).style.color = '#4F46E5';
-                            (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(79,70,229,0.06)';
+                            (e.currentTarget as HTMLAnchorElement).style.color = '#111827';
+                            (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(17,24,39,0.06)';
                           }}
                           onMouseLeave={e => {
                             (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(0,0,0,0.4)';
@@ -544,9 +540,9 @@ export default function WebsiteCostUSAClient() {
                     <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
                       <div style={{
                         width: 44, height: 44, borderRadius: '50%',
-                        background: 'rgba(79,70,229,0.12)', border: '1px solid rgba(79,70,229,0.25)',
+                        background: 'rgba(17,24,39,0.12)', border: '1px solid rgba(17,24,39,0.25)',
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        fontSize: 14, fontWeight: 700, color: '#4F46E5', flexShrink: 0,
+                        fontSize: 14, fontWeight: 700, color: '#111827', flexShrink: 0,
                       }}>RM</div>
                       <div>
                         <p style={{ fontSize: 14, fontWeight: 600, color: '#111827', margin: 0 }}><a href="/about/raman-makkar" style={{ color: 'inherit', textDecoration: 'none', borderBottom: '1px solid rgba(0,0,0,0.1)' }}>Raman Makkar</a></p>
@@ -575,16 +571,16 @@ export default function WebsiteCostUSAClient() {
                           background: 'transparent', transition: 'all 0.2s',
                         }}
                           onMouseEnter={e => {
-                            (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(79,70,229,0.15)';
-                            (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(79,70,229,0.03)';
+                            (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(17,24,39,0.15)';
+                            (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(17,24,39,0.03)';
                           }}
                           onMouseLeave={e => {
                             (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(0,0,0,0.03)';
                             (e.currentTarget as HTMLAnchorElement).style.background = 'transparent';
                           }}
                         >
-                          <p style={{ fontSize: 11, color: '#4F46E5', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', margin: '0 0 6px' }}>{post.category}</p>
-                          <p style={{ fontSize: 13, color: 'rgba(0,0,0,0.55)', lineHeight: 1.4, margin: '0 0 8px', fontWeight: 600 }}>{post.title}</p>
+                          <p style={{ fontSize: 11, color: '#111827', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', margin: '0 0 6px' }}>{post.category}</p>
+                          <p style={{ fontSize: 13, color: 'rgb(0,0,0)', lineHeight: 1.4, margin: '0 0 8px', fontWeight: 600 }}>{post.title}</p>
                           <p style={{ fontSize: 12, color: 'rgba(0,0,0,0.25)', margin: 0 }}>{post.readTime} read</p>
                         </Link>
                       ))}
@@ -603,7 +599,7 @@ export default function WebsiteCostUSAClient() {
             <div
               className="reveal"
               style={{
-                background: 'rgba(79,70,229,0.04)', border: '1px solid rgba(79,70,229,0.15)',
+                background: 'rgba(17,24,39,0.04)', border: '1px solid rgba(17,24,39,0.15)',
                 borderRadius: 28, padding: '64px 56px',
                 display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                 flexWrap: 'wrap', gap: 32,
@@ -612,7 +608,7 @@ export default function WebsiteCostUSAClient() {
               <div>
                 <p style={{
                   fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                  color: '#4F46E5', marginBottom: 12,
+                  color: '#111827', marginBottom: 12,
                 }}>Get a Free Website Quote</p>
                 <h2 style={{
                   fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', fontWeight: 700, color: '#111827',
@@ -626,7 +622,7 @@ export default function WebsiteCostUSAClient() {
               </div>
               <Link href="/contact" style={{ textDecoration: 'none' }}>
                 <button style={{
-                  padding: '18px 40px', borderRadius: 100, background: '#4F46E5', color: '#fff',
+                  padding: '18px 40px', borderRadius: 100, background: '#111827', color: '#fff',
                   fontSize: 15, fontWeight: 700, border: 'none', cursor: 'pointer',
                   transition: 'all 0.2s', whiteSpace: 'nowrap',
                 }}>

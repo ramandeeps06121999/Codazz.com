@@ -73,9 +73,9 @@ function FooterLink({ href, children, lang }: { href: string; children: React.Re
   return (
     <Link
       href={href}
-      style={{ fontSize: 13, color: 'rgba(0,0,0,0.55)', textDecoration: 'none', transition: 'color 0.2s', lineHeight: 1.4, display: 'flex', alignItems: 'center', padding: '8px 0', minHeight: 44 }}
+      style={{ fontSize: 13, color: 'rgb(0,0,0)', textDecoration: 'none', transition: 'color 0.2s', lineHeight: 1.4, display: 'flex', alignItems: 'center', padding: '8px 0', minHeight: 44 }}
       onMouseEnter={e => { e.currentTarget.style.color = '#111827'; }}
-      onMouseLeave={e => { e.currentTarget.style.color = 'rgba(0,0,0,0.55)'; }}
+      onMouseLeave={e => { e.currentTarget.style.color = 'rgb(0,0,0)'; }}
     >
       {lang ? <span lang={lang}>{children}</span> : children}
     </Link>
@@ -101,15 +101,15 @@ export default function Footer() {
             <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2.2rem)', fontWeight: 700, color: '#111827', margin: '0 0 8px', letterSpacing: '-0.02em' }}>
               Ready to build something great?
             </h2>
-            <p style={{ fontSize: 'clamp(0.9rem, 1.5vw, 1.05rem)', color: 'rgba(0,0,0,0.55)', margin: 0, lineHeight: 1.6 }}>
+            <p style={{ fontSize: 'clamp(0.9rem, 1.5vw, 1.05rem)', color: 'rgb(0,0,0)', margin: 0, lineHeight: 1.6 }}>
               Let&apos;s turn your idea into a world-class digital product.
             </p>
           </div>
           <Link
             href="/contact"
-            style={{ display: 'inline-flex', alignItems: 'center', gap: 10, height: 52, padding: '0 32px', borderRadius: 100, background: '#4F46E5', color: '#fff', fontSize: 14, fontWeight: 700, textDecoration: 'none', transition: '0.3s', whiteSpace: 'nowrap', flexShrink: 0 }}
-            onMouseEnter={e => { e.currentTarget.style.background = '#4338CA'; e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 12px 32px rgba(79,70,229,0.35)'; }}
-            onMouseLeave={e => { e.currentTarget.style.background = '#4F46E5'; e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = 'none'; }}
+            style={{ display: 'inline-flex', alignItems: 'center', gap: 10, height: 52, padding: '0 32px', borderRadius: 100, background: '#111827', color: '#fff', fontSize: 14, fontWeight: 700, textDecoration: 'none', transition: '0.3s', whiteSpace: 'nowrap', flexShrink: 0 }}
+            onMouseEnter={e => { e.currentTarget.style.background = '#000000'; e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 12px 32px rgba(17,24,39,0.35)'; }}
+            onMouseLeave={e => { e.currentTarget.style.background = '#111827'; e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = 'none'; }}
           >
             Start a Project
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
@@ -128,7 +128,7 @@ export default function Footer() {
               fontSize: 'clamp(28px, 4vw, 38px)',
               fontWeight: 700,
               letterSpacing: '-0.02em',
-              background: 'linear-gradient(135deg, #4F46E5 0%, #06B6D4 100%)',
+              background: 'linear-gradient(135deg, #111827 0%, #374151 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
@@ -136,22 +136,22 @@ export default function Footer() {
             }}>
               codazz
             </span>
-            <p style={{ fontSize: 13, color: 'rgba(0,0,0,0.55)', lineHeight: 1.7, maxWidth: 280, marginBottom: 20 }}>
+            <p style={{ fontSize: 13, color: 'rgb(0,0,0)', lineHeight: 1.7, maxWidth: 280, marginBottom: 20 }}>
               Dual HQ in New York &amp; Dubai — with the best engineers from around the world working virtually. 99% of our meetings happen online: faster starts, zero travel waste, and a greener way to build software.
             </p>
 
             {/* Contact */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 24 }}>
-              <a href="mailto:hello@codazz.com" style={{ display: 'flex', alignItems: 'center', gap: 8, color: 'rgba(0,0,0,0.55)', textDecoration: 'none', fontSize: 13, transition: 'color 0.2s' }}
+              <a href="mailto:hello@codazz.com" style={{ display: 'flex', alignItems: 'center', gap: 8, color: 'rgb(0,0,0)', textDecoration: 'none', fontSize: 13, transition: 'color 0.2s' }}
                 onMouseEnter={e => e.currentTarget.style.color = '#111827'}
-                onMouseLeave={e => e.currentTarget.style.color = 'rgba(0,0,0,0.55)'}
+                onMouseLeave={e => e.currentTarget.style.color = 'rgb(0,0,0)'}
               >
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                 hello@codazz.com
               </a>
-              <a href="https://calendly.com/townmedialabs/30min" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: 8, color: 'rgba(0,0,0,0.55)', textDecoration: 'none', fontSize: 13, transition: 'color 0.2s' }}
+              <a href="https://calendly.com/townmedialabs/30min" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: 8, color: 'rgb(0,0,0)', textDecoration: 'none', fontSize: 13, transition: 'color 0.2s' }}
                 onMouseEnter={e => e.currentTarget.style.color = '#111827'}
-                onMouseLeave={e => e.currentTarget.style.color = 'rgba(0,0,0,0.55)'}
+                onMouseLeave={e => e.currentTarget.style.color = 'rgb(0,0,0)'}
               >
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="4" width="18" height="18" rx="2" /><path d="M16 2v4M8 2v4M3 10h18" /></svg>
                 Book a Discovery Call
@@ -168,7 +168,7 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="footer-social-icon"
                   style={{ width: 44, height: 44, borderRadius: '50%', border: '1px solid rgba(0,0,0,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'rgba(0,0,0,0.4)', textDecoration: 'none', transition: '0.25s' }}
-                  onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(79,70,229,0.4)'; e.currentTarget.style.color = '#4F46E5'; e.currentTarget.style.background = 'rgba(79,70,229,0.08)'; }}
+                  onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(17,24,39,0.4)'; e.currentTarget.style.color = '#111827'; e.currentTarget.style.background = 'rgba(17,24,39,0.08)'; }}
                   onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(0,0,0,0.06)'; e.currentTarget.style.color = 'rgba(0,0,0,0.4)'; e.currentTarget.style.background = 'transparent'; }}
                   aria-label={s.label}
                 >
@@ -233,7 +233,7 @@ export default function Footer() {
                 key={label}
                 href={href}
                 style={{ fontSize: 12, color: 'rgba(0,0,0,0.2)', textDecoration: 'none', transition: 'color 0.2s' }}
-                onMouseEnter={e => { e.currentTarget.style.color = 'rgba(0,0,0,0.55)'; }}
+                onMouseEnter={e => { e.currentTarget.style.color = 'rgb(0,0,0)'; }}
                 onMouseLeave={e => { e.currentTarget.style.color = 'rgba(0,0,0,0.2)'; }}
               >
                 {label}

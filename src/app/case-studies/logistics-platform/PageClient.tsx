@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Breadcrumb from '@/components/Breadcrumb';
 import Link from 'next/link';
+import HeroBackground from '@/components/HeroBackground';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -38,12 +39,7 @@ export default function LogisticsCaseStudyClient() {
 
         {/* ── HERO ── */}
         <section style={{ padding: 'clamp(100px, 12vw, 140px) 0 clamp(40px, 5vw, 64px)', position: 'relative', overflow: 'hidden' }}>
-          <div style={{
-            position: 'absolute', top: -300, left: '50%', transform: 'translateX(-50%)',
-            width: 900, height: 900,
-            background: 'radial-gradient(circle, rgba(79,70,229,0.05) 0%, transparent 65%)',
-            pointerEvents: 'none',
-          }} />
+          <HeroBackground variant="wide" />
           <div className="cb-container">
             <div className="reveal">
               <Breadcrumb items={[
@@ -56,7 +52,7 @@ export default function LogisticsCaseStudyClient() {
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginTop: 32, marginBottom: 16 }}>
               <span className="reveal reveal-d1" style={{
                 fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                background: 'rgba(79,70,229,0.12)', color: '#4F46E5',
+                background: 'rgba(17,24,39,0.12)', color: '#111827',
                 padding: '5px 14px', borderRadius: 100,
               }}>Logistics</span>
               <span className="reveal reveal-d1" style={{ fontSize: 13, color: 'rgba(0,0,0,0.25)' }}>Logistics Client &middot; Los Angeles</span>
@@ -81,7 +77,7 @@ export default function LogisticsCaseStudyClient() {
               width: '100%',
               aspectRatio: '16/9',
               borderRadius: 20,
-              background: 'linear-gradient(135deg, rgba(79,70,229,0.08), rgba(0,0,0,0.03))',
+              background: 'linear-gradient(135deg, rgba(17,24,39,0.08), rgba(0,0,0,0.03))',
               border: '1px solid rgba(0,0,0,0.06)',
               display: 'flex',
               alignItems: 'center',
@@ -113,7 +109,7 @@ export default function LogisticsCaseStudyClient() {
                 }}>
                   <p style={{
                     fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                    color: '#4F46E5', marginBottom: 16,
+                    color: '#111827', marginBottom: 16,
                   }}>{card.title}</p>
                   <p style={{ fontSize: 15, color: 'rgba(0,0,0,0.5)', lineHeight: 1.8, margin: 0 }}>
                     {card.text}
@@ -130,7 +126,7 @@ export default function LogisticsCaseStudyClient() {
             <div className="reveal" style={{ maxWidth: 760 }}>
               <p style={{
                 fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                color: '#4F46E5', marginBottom: 16,
+                color: '#111827', marginBottom: 16,
               }}>The Challenge</p>
               <h2 style={{
                 fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', fontWeight: 700, color: '#111827',
@@ -156,7 +152,7 @@ export default function LogisticsCaseStudyClient() {
             <div className="reveal" style={{ maxWidth: 760 }}>
               <p style={{
                 fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                color: '#4F46E5', marginBottom: 16,
+                color: '#111827', marginBottom: 16,
               }}>Our Solution</p>
               <h2 style={{
                 fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', fontWeight: 700, color: '#111827',
@@ -192,7 +188,7 @@ export default function LogisticsCaseStudyClient() {
           <div className="cb-container" style={{ paddingTop: 'clamp(48px, 6vw, 80px)' }}>
             <p className="reveal" style={{
               fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-              color: '#4F46E5', marginBottom: 16,
+              color: '#111827', marginBottom: 16,
             }}>Key Results</p>
             <h2 className="reveal" style={{
               fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', fontWeight: 700, color: '#111827',
@@ -208,7 +204,7 @@ export default function LogisticsCaseStudyClient() {
                   padding: 'clamp(20px, 4vw, 36px)', borderRadius: 24, textAlign: 'center',
                   background: 'rgba(0,0,0,0.015)', border: '1px solid rgba(0,0,0,0.06)',
                 }}>
-                  <div style={{ fontSize: 'clamp(28px, 5vw, 40px)', fontWeight: 800, color: '#4F46E5', marginBottom: 8 }}>{m.value}</div>
+                  <div style={{ fontSize: 'clamp(28px, 5vw, 40px)', fontWeight: 800, color: '#111827', marginBottom: 8 }}>{m.value}</div>
                   <div style={{
                     fontSize: 13, fontWeight: 600, color: 'rgba(0,0,0,0.4)',
                     textTransform: 'uppercase', letterSpacing: '0.08em',
@@ -225,13 +221,13 @@ export default function LogisticsCaseStudyClient() {
             <div className="reveal" style={{
               maxWidth: 760,
               padding: 'clamp(24px, 4vw, 48px)', borderRadius: 24,
-              background: 'linear-gradient(135deg, rgba(79,70,229,0.06), rgba(0,0,0,0.015))',
-              border: '1px solid rgba(79,70,229,0.15)',
+              background: 'linear-gradient(135deg, rgba(17,24,39,0.06), rgba(0,0,0,0.015))',
+              border: '1px solid rgba(17,24,39,0.15)',
               position: 'relative',
             }}>
               <svg width="48" height="48" viewBox="0 0 24 24" fill="none" style={{ marginBottom: 24, opacity: 0.15 }}>
-                <path d="M10 11H6a1 1 0 01-1-1V7a1 1 0 011-1h3a1 1 0 011 1v7c0 2.21-1.79 4-4 4" stroke="#4F46E5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M20 11h-4a1 1 0 01-1-1V7a1 1 0 011-1h3a1 1 0 011 1v7c0 2.21-1.79 4-4 4" stroke="#4F46E5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M10 11H6a1 1 0 01-1-1V7a1 1 0 011-1h3a1 1 0 011 1v7c0 2.21-1.79 4-4 4" stroke="#111827" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M20 11h-4a1 1 0 01-1-1V7a1 1 0 011-1h3a1 1 0 011 1v7c0 2.21-1.79 4-4 4" stroke="#111827" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
               <p style={{
                 fontSize: 20, color: 'rgba(0,0,0,0.6)', lineHeight: 1.7,
@@ -251,7 +247,7 @@ export default function LogisticsCaseStudyClient() {
         <section style={{ paddingBottom: 'clamp(60px, 10vw, 120px)', borderTop: '1px solid rgba(0,0,0,0.05)' }}>
           <div className="cb-container" style={{ paddingTop: 'clamp(48px, 6vw, 80px)' }}>
             <div className="reveal" style={{
-              background: 'rgba(79,70,229,0.04)', border: '1px solid rgba(79,70,229,0.15)',
+              background: 'rgba(17,24,39,0.04)', border: '1px solid rgba(17,24,39,0.15)',
               borderRadius: 28, padding: 'clamp(32px, 6vw, 64px) clamp(20px, 4vw, 56px)',
               display: 'flex', alignItems: 'center', justifyContent: 'space-between',
               flexWrap: 'wrap', gap: 32,
@@ -259,7 +255,7 @@ export default function LogisticsCaseStudyClient() {
               <div>
                 <p style={{
                   fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                  color: '#4F46E5', marginBottom: 12,
+                  color: '#111827', marginBottom: 12,
                 }}>Start a Similar Project</p>
                 <h2 style={{
                   fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', fontWeight: 700, color: '#111827',
@@ -273,7 +269,7 @@ export default function LogisticsCaseStudyClient() {
               </div>
               <Link href="/contact" style={{ textDecoration: 'none' }}>
                 <button style={{
-                  padding: '18px 40px', borderRadius: 100, background: '#4F46E5', color: '#fff',
+                  padding: '18px 40px', borderRadius: 100, background: '#111827', color: '#fff',
                   fontSize: 15, fontWeight: 700, border: 'none', cursor: 'pointer',
                   transition: 'all 0.2s', whiteSpace: 'nowrap',
                 }}>

@@ -39,18 +39,18 @@ function StatCard({ s, index, active }: { s: typeof stats[0]; index: number; act
         transition: 'all 0.3s ease',
         cursor: 'default',
       }}
-      onMouseEnter={e => { e.currentTarget.style.background = 'rgba(79,70,229,0.05)'; e.currentTarget.style.borderColor = 'rgba(79,70,229,0.2)'; e.currentTarget.style.boxShadow = '0 0 20px rgba(79,70,229,0.08)'; e.currentTarget.style.transform = 'translateY(-3px)'; }}
+      onMouseEnter={e => { e.currentTarget.style.background = 'rgba(17,24,39,0.05)'; e.currentTarget.style.borderColor = 'rgba(17,24,39,0.2)'; e.currentTarget.style.boxShadow = '0 0 20px rgba(17,24,39,0.08)'; e.currentTarget.style.transform = 'translateY(-3px)'; }}
       onMouseLeave={e => { e.currentTarget.style.background = 'rgba(0,0,0,0.015)'; e.currentTarget.style.borderColor = 'rgba(0,0,0,0.06)'; e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.transform = 'translateY(0)'; }}
     >
-      <div style={{ width: 28, height: 3, background: '#4F46E5', borderRadius: 2, marginBottom: 'clamp(20px, 3vw, 36px)' }} />
+      <div style={{ width: 28, height: 3, background: '#111827', borderRadius: 2, marginBottom: 'clamp(20px, 3vw, 36px)' }} />
       <div style={{ display: 'flex', alignItems: 'baseline', gap: 2, marginBottom: 16 }}>
         <span style={{ fontSize: 'clamp(3rem, 5vw, 4.5rem)', fontWeight: 700, color: '#111827', lineHeight: 1, letterSpacing: '-0.04em' }}>
           {count}
         </span>
-        <span style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2.5rem)', fontWeight: 700, color: '#4F46E5' }}>{s.suffix}</span>
+        <span style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2.5rem)', fontWeight: 700, color: '#111827' }}>{s.suffix}</span>
       </div>
       <div style={{ fontSize: 14, fontWeight: 700, color: '#111827', letterSpacing: '-0.01em', marginBottom: 10 }}>{s.label}</div>
-      <div style={{ fontSize: 13, color: 'rgba(0,0,0,0.55)', lineHeight: 1.6 }}>{s.desc}</div>
+      <div style={{ fontSize: 13, color: 'rgb(0,0,0)', lineHeight: 1.6 }}>{s.desc}</div>
     </div>
   );
 }
@@ -84,7 +84,7 @@ export default function SuccessMetrics() {
               The Results<br /><span style={{ color: 'rgba(0,0,0,0.2)' }}>Speak Loudly.</span>
             </h2>
           </div>
-          <p style={{ fontSize: 'clamp(15px, 2vw, 17px)', color: 'rgba(0,0,0,0.55)', maxWidth: 360, lineHeight: 1.7, margin: 0 }}>
+          <p style={{ fontSize: 'clamp(15px, 2vw, 17px)', color: 'rgb(0,0,0)', maxWidth: 360, lineHeight: 1.7, margin: 0 }}>
             A decade of engineering excellence, measured in outcomes — not outputs.
           </p>
         </div>

@@ -47,10 +47,10 @@ export default function SectionNav() {
           href={`#${s.id}`}
           style={{
             width: 8, height: 8, borderRadius: '50%',
-            background: active === s.id ? '#4F46E5' : 'rgba(255,255,255,0.2)',
+            background: active === s.id ? '#111827' : 'rgba(255,255,255,0.2)',
             transition: 'all 0.2s',
-            border: active === s.id ? '2px solid #4F46E5' : '2px solid transparent',
-            boxShadow: active === s.id ? '0 0 12px rgba(79,70,229,0.5)' : 'none',
+            border: active === s.id ? '2px solid #111827' : '2px solid transparent',
+            boxShadow: active === s.id ? '0 0 12px rgba(17,24,39,0.5)' : 'none',
           }}
           aria-label={`Go to ${s.label}`}
           title={s.label}

@@ -4,7 +4,7 @@ import { useRef, useEffect } from 'react';
 const reasons = [
   {
     icon: (
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#111827" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
       </svg>
     ),
@@ -15,7 +15,7 @@ const reasons = [
   },
   {
     icon: (
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#111827" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="10" /><polyline points="12 6 12 12 16 14" />
       </svg>
     ),
@@ -26,7 +26,7 @@ const reasons = [
   },
   {
     icon: (
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#111827" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <rect x="3" y="11" width="18" height="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" />
       </svg>
     ),
@@ -37,7 +37,7 @@ const reasons = [
   },
   {
     icon: (
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#111827" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" />
         <path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" />
       </svg>
@@ -49,7 +49,7 @@ const reasons = [
   },
   {
     icon: (
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#111827" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
       </svg>
     ),
@@ -60,7 +60,7 @@ const reasons = [
   },
   {
     icon: (
-      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#111827" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" />
         <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
       </svg>
@@ -95,7 +95,7 @@ export default function WhyUs() {
             Built Different.<br />
             <span style={{ color: 'rgba(0,0,0,0.2)' }}>By Design.</span>
           </h2>
-          <p style={{ fontSize: 'clamp(15px, 2vw, 17px)', color: 'rgba(0,0,0,0.55)', maxWidth: 560, margin: '0 auto', lineHeight: 1.7 }}>
+          <p style={{ fontSize: 'clamp(15px, 2vw, 17px)', color: 'rgb(0,0,0)', maxWidth: 560, margin: '0 auto', lineHeight: 1.7 }}>
             We're not a typical agency. Here's exactly what makes us different — and why our clients keep coming back.
           </p>
         </div>
@@ -120,10 +120,10 @@ export default function WhyUs() {
                 overflow: 'hidden',
               }}
               onMouseEnter={e => {
-                e.currentTarget.style.borderColor = 'rgba(79,70,229,0.25)';
-                e.currentTarget.style.background = 'rgba(79,70,229,0.03)';
+                e.currentTarget.style.borderColor = 'rgba(17,24,39,0.25)';
+                e.currentTarget.style.background = 'rgba(17,24,39,0.03)';
                 e.currentTarget.style.transform = 'translateY(-4px)';
-                e.currentTarget.style.boxShadow = '0 24px 60px rgba(0,0,0,0.06), 0 0 40px rgba(79,70,229,0.08)';
+                e.currentTarget.style.boxShadow = '0 24px 60px rgba(0,0,0,0.06), 0 0 40px rgba(17,24,39,0.08)';
               }}
               onMouseLeave={e => {
                 e.currentTarget.style.borderColor = 'rgba(0,0,0,0.06)';
@@ -138,7 +138,7 @@ export default function WhyUs() {
               </div>
 
               {/* Icon */}
-              <div style={{ width: 60, height: 60, borderRadius: 18, background: 'rgba(79,70,229,0.08)', border: '1px solid rgba(79,70,229,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ width: 60, height: 60, borderRadius: 18, background: 'rgba(17,24,39,0.08)', border: '1px solid rgba(17,24,39,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 {r.icon}
               </div>
 
@@ -151,7 +151,7 @@ export default function WhyUs() {
               {/* Text */}
               <div>
                 <h3 style={{ fontSize: 18, fontWeight: 600, color: '#111827', marginBottom: 10, letterSpacing: '-0.02em' }}>{r.title}</h3>
-                <p style={{ fontSize: 14, color: 'rgba(0,0,0,0.55)', lineHeight: 1.7, margin: 0 }}>{r.desc}</p>
+                <p style={{ fontSize: 14, color: 'rgb(0,0,0)', lineHeight: 1.7, margin: 0 }}>{r.desc}</p>
               </div>
             </div>
           ))}

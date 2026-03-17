@@ -4,6 +4,7 @@ import { useRef, useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
+import HeroBackground from '@/components/HeroBackground';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -56,12 +57,7 @@ export default function BlogPostPageClient() {
 
         {/* ── ARTICLE HERO ── */}
         <section style={{ padding: 'clamp(100px, 15vw, 140px) 0 clamp(32px, 5vw, 64px)', position: 'relative', overflow: 'hidden' }}>
-          <div style={{
-            position: 'absolute', top: -300, left: '50%', transform: 'translateX(-50%)',
-            width: 900, height: 900,
-            background: 'radial-gradient(circle, rgba(79,70,229,0.05) 0%, transparent 65%)',
-            pointerEvents: 'none',
-          }} />
+          <HeroBackground variant="left" />
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 24 }}>
               <Link href="/blog" style={{
@@ -79,7 +75,7 @@ export default function BlogPostPageClient() {
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
               <span className="reveal reveal-d1" style={{
                 fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                background: 'rgba(79,70,229,0.12)', color: '#4F46E5',
+                background: 'rgba(17,24,39,0.12)', color: '#111827',
                 padding: '5px 14px', borderRadius: 100,
               }}>Business</span>
               <span className="reveal reveal-d1" style={{ fontSize: 13, color: 'rgba(0,0,0,0.25)' }}>March 13, 2026</span>
@@ -120,9 +116,9 @@ export default function BlogPostPageClient() {
               <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
                 <div style={{
                   width: 48, height: 48, borderRadius: '50%',
-                  background: 'rgba(79,70,229,0.12)', border: '1px solid rgba(79,70,229,0.25)',
+                  background: 'rgba(17,24,39,0.12)', border: '1px solid rgba(17,24,39,0.25)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: 15, fontWeight: 700, color: '#4F46E5',
+                  fontSize: 15, fontWeight: 700, color: '#111827',
                 }}>RM</div>
                 <div>
                   <p style={{ fontSize: 15, fontWeight: 600, color: '#111827', margin: 0 }}><a href="/about/raman-makkar" style={{ color: 'inherit', textDecoration: 'none', borderBottom: '1px solid rgba(0,0,0,0.1)' }}>Raman Makkar</a></p>
@@ -144,8 +140,8 @@ export default function BlogPostPageClient() {
                 ))}
                 <button onClick={handleCopy} style={{
                   padding: '8px 16px', borderRadius: 100, border: '1px solid rgba(0,0,0,0.08)',
-                  background: copied ? 'rgba(79,70,229,0.1)' : 'rgba(0,0,0,0.02)',
-                  color: copied ? '#4F46E5' : 'rgba(0,0,0,0.45)',
+                  background: copied ? 'rgba(17,24,39,0.1)' : 'rgba(0,0,0,0.02)',
+                  color: copied ? '#111827' : 'rgba(0,0,0,0.45)',
                   fontSize: 12, fontWeight: 600, cursor: 'pointer',
                   transition: 'all 0.2s',
                 }}>
@@ -167,7 +163,7 @@ export default function BlogPostPageClient() {
                 {/* Intro */}
                 <div className="reveal" style={{ marginBottom: 56 }}>
                   <p style={{
-                    fontSize: 18, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8,
+                    fontSize: 18, color: 'rgb(0,0,0)', lineHeight: 1.8,
                     marginBottom: 20,
                   }}>
                     The app economy in 2026 is unforgiving. With over 5.7 million apps competing across iOS and Android, achieving product-market fit is harder than ever — and crossing the billion-dollar threshold requires more than a good idea. It demands a specific kind of execution: engineering that scales, design that converts, and product instincts that anticipate what users want before they know it themselves.
@@ -205,13 +201,13 @@ export default function BlogPostPageClient() {
                       </div>
                     </div>
 
-                    <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 16 }}>
+                    <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 16 }}>
                       NovaPay entered the crowded expense management space with a radical thesis: what if the app did 90% of the work for you? Using a custom fine-tuned LLM trained on 14 million transaction records, NovaPay auto-categorises expenses, flags anomalies, and generates reimbursement reports without a single tap from the user. The AI layer isn't a feature — it's the product.
                     </p>
-                    <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 16 }}>
+                    <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 16 }}>
                       The engineering insight that powered their growth was a real-time bank feed architecture built on event-driven microservices. Every transaction hits a Kafka stream, gets enriched through their ML pipeline in under 40ms, and surfaces in the app with full context before the user even opens their notifications. This speed — the sense that NovaPay "just knows" — is what drove their Net Promoter Score to 71, highest in the category.
                     </p>
-                    <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 20 }}>
+                    <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 20 }}>
                       Their mobile stack (React Native with a Rust-powered local ML model) allowed them to ship AI features offline — a critical differentiator for enterprise users in areas with poor connectivity. They also made a bold onboarding decision: zero manual data entry, ever. Connect your bank, and you're done in 28 seconds flat.
                     </p>
                     <div style={{
@@ -257,13 +253,13 @@ export default function BlogPostPageClient() {
                       </div>
                     </div>
 
-                    <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 16 }}>
+                    <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 16 }}>
                       Telehealth peaked and crashed in 2023 when users grew tired of live video consultations that felt like bad Zoom calls with a doctor. HealLink bet on async telehealth — patients record a 90-second video of their symptoms, answer an AI-generated triage questionnaire, and receive a diagnosis and prescription within 4 hours. No scheduling. No waiting rooms. No interrupting your workday.
                     </p>
-                    <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 16 }}>
+                    <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 16 }}>
                       Their engineering team built a HIPAA-compliant video processing pipeline on AWS that runs symptom analysis through a proprietary vision model before the video even reaches a doctor. This pre-triage layer lets each physician handle 3x more cases per day while improving diagnostic accuracy — a rare case of AI genuinely augmenting (not replacing) clinical expertise. The Flutter app uses end-to-end encryption for all health data with keys managed entirely client-side.
                     </p>
-                    <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 20 }}>
+                    <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 20 }}>
                       HealLink's growth was driven by one insight their competitors missed: 73% of non-emergency healthcare interactions don't require real-time communication. They built an entire product around that truth, and it unlocked a market no one else was serving properly.
                     </p>
                     <div style={{
@@ -309,13 +305,13 @@ export default function BlogPostPageClient() {
                       </div>
                     </div>
 
-                    <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 16 }}>
+                    <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 16 }}>
                       Last-mile logistics is where e-commerce profit margins go to die. ShipFast attacked the problem with a dynamic routing engine that replans delivery routes in real time as conditions change — traffic, driver availability, package rescheduling — processing 40,000 routing decisions per minute across their driver network. The result is an average delivery time of 94 minutes from dispatch in covered cities, down from an industry average of 3.2 hours.
                     </p>
-                    <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 16 }}>
+                    <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 16 }}>
                       Their driver app, built natively in Swift and Kotlin, uses on-device ML for predictive navigation — it knows which door a customer uses, when they're actually home based on historical patterns, and what parking spots are available near high-rise buildings. This hyper-local intelligence accumulates over time, creating a network effect that makes ShipFast increasingly hard to displace in cities where it operates.
                     </p>
-                    <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 20 }}>
+                    <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 20 }}>
                       The customer-facing app features predictive ETAs accurate to a 7-minute window, live tracking with a custom map renderer built on MapLibre, and a satisfaction guarantee that auto-issues credits before the customer even complains. The engineering and the product are inseparable here — trust is the product.
                     </p>
                     <div style={{
@@ -361,13 +357,13 @@ export default function BlogPostPageClient() {
                       </div>
                     </div>
 
-                    <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 16 }}>
+                    <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 16 }}>
                       AI code review was broken in 2025 — tools either produced meaningless generic suggestions or hallucinated issues that didn't exist. CodeFlow's breakthrough was a context-aware review engine that understands your codebase holistically, not line by line. It ingests your entire repository, PR history, architectural decisions, and team conventions to produce reviews that read like they're from your most senior engineer.
                     </p>
-                    <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 16 }}>
+                    <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 16 }}>
                       The mobile app — yes, a developer tool with a genuinely useful mobile app — lets engineering leads review and approve PRs from anywhere with a swipe-based interface that surfaces only what matters. Their backend runs a distributed code analysis cluster processing 2.8 million lines of code per second, with results delivered in under 90 seconds for repos up to 500K lines.
                     </p>
-                    <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 20 }}>
+                    <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 20 }}>
                       CodeFlow's growth was almost entirely product-led: teams that integrated it reduced their PR review cycle time by 67% on average, generating the kind of word-of-mouth that no marketing budget can replicate. Their mobile-first approach for review approvals alone drove adoption in engineering organisations where desktop tools had failed to get traction.
                     </p>
                     <div style={{
@@ -394,7 +390,7 @@ export default function BlogPostPageClient() {
                     <div style={{ display: 'flex', alignItems: 'flex-start', gap: 20, marginBottom: 20 }}>
                       <div style={{
                         width: 56, height: 56, borderRadius: 16, flexShrink: 0,
-                        background: 'rgba(79,70,229,0.1)', border: '1px solid rgba(79,70,229,0.2)',
+                        background: 'rgba(17,24,39,0.1)', border: '1px solid rgba(17,24,39,0.2)',
                         display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 28,
                       }}>🌿</div>
                       <div>
@@ -402,7 +398,7 @@ export default function BlogPostPageClient() {
                           <span style={{ fontSize: 12, color: 'rgba(0,0,0,0.35)', fontWeight: 700 }}>05</span>
                           <span style={{
                             fontSize: 11, padding: '3px 10px', borderRadius: 100,
-                            background: 'rgba(79,70,229,0.12)', color: '#4F46E5',
+                            background: 'rgba(17,24,39,0.12)', color: '#111827',
                             fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase',
                           }}>Sustainability</span>
                         </div>
@@ -413,24 +409,24 @@ export default function BlogPostPageClient() {
                       </div>
                     </div>
 
-                    <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 16 }}>
+                    <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 16 }}>
                       GreenCart is what happens when you take sustainability seriously as a product constraint rather than a marketing tagline. Every product in their marketplace comes with a real-time carbon score calculated from supply chain data, manufacturing emissions, and transport distance. Scan a product's barcode anywhere — even in a competitor's store — and GreenCart shows you its carbon footprint and suggests lower-impact alternatives available nearby.
                     </p>
-                    <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 16 }}>
+                    <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 16 }}>
                       Their sustainability data platform, built on a graph database with over 2.4 million product nodes, is the real moat. They spent two years and $12M building the emissions database before launching the consumer app. The barcode scanner uses on-device vision and a lightweight product recognition model (just 14MB) that runs in under 120ms — fast enough to feel instant in the aisle.
                     </p>
-                    <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 20 }}>
+                    <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 20 }}>
                       The gamification layer — monthly carbon budgets, neighbourhood leaderboards, and real offset certificates tied to purchases — drove daily active use rates 4x higher than the category average. GreenCart proved that sustainability commerce, done with technical rigour, can be genuinely addictive.
                     </p>
                     <div style={{
                       padding: '14px 20px', borderRadius: 12,
-                      background: 'rgba(79,70,229,0.06)', border: '1px solid rgba(79,70,229,0.12)',
+                      background: 'rgba(17,24,39,0.06)', border: '1px solid rgba(17,24,39,0.12)',
                       display: 'flex', alignItems: 'center', gap: 10,
                     }}>
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" strokeWidth="2">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#111827" strokeWidth="2">
                         <polyline points="22,7 13.5,15.5 8.5,10.5 2,17"/><polyline points="16,7 22,7 22,13"/>
                       </svg>
-                      <span style={{ fontSize: 13, color: '#4F46E5', fontWeight: 600 }}>
+                      <span style={{ fontSize: 13, color: '#111827', fontWeight: 600 }}>
                         Key Metric: $1.1B valuation, 18M kg CO₂ offset
                       </span>
                     </div>
@@ -518,7 +514,7 @@ export default function BlogPostPageClient() {
                       </div>
                       {app.paragraphs.map((para, pi) => (
                         <p key={pi} style={{
-                          fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8,
+                          fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8,
                           marginBottom: pi < app.paragraphs.length - 1 ? 16 : 20,
                         }}>{para}</p>
                       ))}
@@ -546,13 +542,13 @@ export default function BlogPostPageClient() {
                   }}>
                     What They All Have in Common
                   </h2>
-                  <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 20 }}>
+                  <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 20 }}>
                     Across ten very different industries, the same principles emerge. Every app on this list was designed mobile-first — not as a port of a web product, but as a native mobile experience where constraints became creative forcing functions. They shipped with AI as infrastructure, not as a feature announcement. The AI in these apps is invisible because it's integrated at the level of the data model, not bolted on top.
                   </p>
-                  <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 20 }}>
+                  <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 20 }}>
                     Onboarding was treated as a product problem with the same engineering priority as core functionality. The apps that grew fastest had zero-friction onboarding measured in seconds, not minutes. And performance — real, measured performance — was non-negotiable. Sub-200ms response times for core interactions weren't a stretch goal; they were a launch requirement.
                   </p>
-                  <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8 }}>
+                  <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8 }}>
                     The billion-dollar lesson of 2026 is that execution quality is back as a competitive moat. In a world where anyone can access LLMs and cloud infrastructure, the differentiator is the depth of thought applied to product decisions and the engineering discipline to ship those decisions with integrity. The apps on this list had both — and the market rewarded them accordingly.
                   </p>
                 </div>
@@ -560,11 +556,11 @@ export default function BlogPostPageClient() {
                 {/* ── KEY TAKEAWAYS BOX ── */}
                 <div className="reveal" style={{ marginBottom: 64 }}>
                   <div style={{
-                    background: 'rgba(79,70,229,0.04)', border: '1px solid rgba(79,70,229,0.15)',
+                    background: 'rgba(17,24,39,0.04)', border: '1px solid rgba(17,24,39,0.15)',
                     borderRadius: 24, padding: 36,
                   }}>
                     <h3 style={{
-                      fontSize: 18, fontWeight: 700, color: '#4F46E5',
+                      fontSize: 18, fontWeight: 700, color: '#111827',
                       letterSpacing: '-0.02em', marginBottom: 24,
                     }}>
                       Key Takeaways
@@ -580,11 +576,11 @@ export default function BlogPostPageClient() {
                         <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 14 }}>
                           <span style={{
                             width: 22, height: 22, borderRadius: '50%', flexShrink: 0,
-                            background: 'rgba(79,70,229,0.15)', color: '#4F46E5',
+                            background: 'rgba(17,24,39,0.15)', color: '#111827',
                             fontSize: 12, fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center',
                             marginTop: 2,
                           }}>{i + 1}</span>
-                          <span style={{ fontSize: 15, color: 'rgba(0,0,0,0.55)', lineHeight: 1.7 }}>{point}</span>
+                          <span style={{ fontSize: 15, color: 'rgb(0,0,0)', lineHeight: 1.7 }}>{point}</span>
                         </li>
                       ))}
                     </ul>
@@ -616,8 +612,8 @@ export default function BlogPostPageClient() {
                           transition: 'all 0.15s',
                         }}
                           onMouseEnter={e => {
-                            (e.currentTarget as HTMLAnchorElement).style.color = '#4F46E5';
-                            (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(79,70,229,0.06)';
+                            (e.currentTarget as HTMLAnchorElement).style.color = '#111827';
+                            (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(17,24,39,0.06)';
                           }}
                           onMouseLeave={e => {
                             (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(0,0,0,0.4)';
@@ -644,9 +640,9 @@ export default function BlogPostPageClient() {
                     <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
                       <div style={{
                         width: 44, height: 44, borderRadius: '50%',
-                        background: 'rgba(79,70,229,0.12)', border: '1px solid rgba(79,70,229,0.25)',
+                        background: 'rgba(17,24,39,0.12)', border: '1px solid rgba(17,24,39,0.25)',
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        fontSize: 14, fontWeight: 700, color: '#4F46E5', flexShrink: 0,
+                        fontSize: 14, fontWeight: 700, color: '#111827', flexShrink: 0,
                       }}>RM</div>
                       <div>
                         <p style={{ fontSize: 14, fontWeight: 600, color: '#111827', margin: 0 }}><a href="/about/raman-makkar" style={{ color: 'inherit', textDecoration: 'none', borderBottom: '1px solid rgba(0,0,0,0.1)' }}>Raman Makkar</a></p>
@@ -675,16 +671,16 @@ export default function BlogPostPageClient() {
                           background: 'transparent', transition: 'all 0.2s',
                         }}
                           onMouseEnter={e => {
-                            (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(79,70,229,0.15)';
-                            (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(79,70,229,0.03)';
+                            (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(17,24,39,0.15)';
+                            (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(17,24,39,0.03)';
                           }}
                           onMouseLeave={e => {
                             (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(0,0,0,0.03)';
                             (e.currentTarget as HTMLAnchorElement).style.background = 'transparent';
                           }}
                         >
-                          <p style={{ fontSize: 11, color: '#4F46E5', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', margin: '0 0 6px' }}>{post.category}</p>
-                          <p style={{ fontSize: 13, color: 'rgba(0,0,0,0.55)', lineHeight: 1.4, margin: '0 0 8px', fontWeight: 600 }}>{post.title}</p>
+                          <p style={{ fontSize: 11, color: '#111827', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', margin: '0 0 6px' }}>{post.category}</p>
+                          <p style={{ fontSize: 13, color: 'rgb(0,0,0)', lineHeight: 1.4, margin: '0 0 8px', fontWeight: 600 }}>{post.title}</p>
                           <p style={{ fontSize: 12, color: 'rgba(0,0,0,0.25)', margin: 0 }}>{post.readTime} read</p>
                         </Link>
                       ))}
@@ -703,7 +699,7 @@ export default function BlogPostPageClient() {
             <div
               className="reveal"
               style={{
-                background: 'rgba(79,70,229,0.04)', border: '1px solid rgba(79,70,229,0.15)',
+                background: 'rgba(17,24,39,0.04)', border: '1px solid rgba(17,24,39,0.15)',
                 borderRadius: 28, padding: '64px 56px',
                 display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                 flexWrap: 'wrap', gap: 32,
@@ -712,7 +708,7 @@ export default function BlogPostPageClient() {
               <div>
                 <p style={{
                   fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                  color: '#4F46E5', marginBottom: 12,
+                  color: '#111827', marginBottom: 12,
                 }}>Start Building</p>
                 <h2 style={{
                   fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', fontWeight: 700, color: '#111827',
@@ -726,7 +722,7 @@ export default function BlogPostPageClient() {
               </div>
               <Link href="/contact" style={{ textDecoration: 'none' }}>
                 <button style={{
-                  padding: '18px 40px', borderRadius: 100, background: '#4F46E5', color: '#fff',
+                  padding: '18px 40px', borderRadius: 100, background: '#111827', color: '#fff',
                   fontSize: 15, fontWeight: 700, border: 'none', cursor: 'pointer',
                   transition: 'all 0.2s', whiteSpace: 'nowrap',
                 }}>

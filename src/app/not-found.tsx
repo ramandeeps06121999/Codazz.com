@@ -43,7 +43,7 @@ export default function NotFound() {
           fontWeight: 700,
           letterSpacing: '-0.04em',
           margin: 0,
-          background: 'linear-gradient(135deg, #4F46E5, #ff6b4a)',
+          background: 'linear-gradient(135deg, #111827, #ff6b4a)',
           WebkitBackgroundClip: 'text',
           WebkitTextFillColor: 'transparent',
         }}
@@ -65,7 +65,7 @@ export default function NotFound() {
           height: 48,
           padding: '0 32px',
           borderRadius: 100,
-          background: '#4F46E5',
+          background: '#111827',
           color: '#fff',
           fontSize: 14,
           fontWeight: 600,

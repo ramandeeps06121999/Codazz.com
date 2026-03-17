@@ -91,7 +91,7 @@ export default function PortfolioSection() {
           </div>
           <div className="portfolio-tabs">
             {projects.map((pr, i) => (
-              <button key={pr.category} onClick={() => setActive(i)} style={{ padding: '12px 28px', borderRadius: 100, cursor: 'pointer', fontSize: 13, fontWeight: 600, border: active === i ? '1px solid rgba(79,70,229,0.4)' : '1px solid rgba(0,0,0,0.08)', background: active === i ? 'rgba(79,70,229,0.1)' : 'transparent', color: active === i ? '#4F46E5' : 'rgba(0,0,0,0.55)', transition: '0.3s', fontFamily: 'inherit' }}>{pr.category}</button>
+              <button key={pr.category} onClick={() => setActive(i)} style={{ padding: '12px 28px', borderRadius: 100, cursor: 'pointer', fontSize: 13, fontWeight: 600, border: active === i ? '1px solid rgba(17,24,39,0.4)' : '1px solid rgba(0,0,0,0.08)', background: active === i ? 'rgba(17,24,39,0.1)' : 'transparent', color: active === i ? '#111827' : 'rgb(0,0,0)', transition: '0.3s', fontFamily: 'inherit' }}>{pr.category}</button>
             ))}
           </div>
         </div>
@@ -101,7 +101,7 @@ export default function PortfolioSection() {
             <div>
               <div style={{ fontSize: 11, fontWeight: 700, color: 'rgba(0,0,0,0.25)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: 20 }}>{p.client}</div>
               <h3 style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)', fontWeight: 500, color: '#111827', letterSpacing: '-0.04em', lineHeight: 1.05, marginBottom: 20 }}>{p.title}</h3>
-              <p style={{ fontSize: 17, color: 'rgba(0,0,0,0.55)', lineHeight: 1.7, maxWidth: 480 }}>{p.description}</p>
+              <p style={{ fontSize: 17, color: 'rgb(0,0,0)', lineHeight: 1.7, maxWidth: 480 }}>{p.description}</p>
             </div>
             <div>
               <div className="portfolio-content-row" style={{ marginBottom: 40 }}>
@@ -116,9 +116,9 @@ export default function PortfolioSection() {
                 ))}
               </div>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginBottom: 30 }}>
-                {p.tags.map(t => <span key={t} style={{ fontSize: 12, fontWeight: 600, color: 'rgba(0,0,0,0.55)', padding: '8px 18px', border: '1px solid rgba(0,0,0,0.08)', borderRadius: 100 }}>{t}</span>)}
+                {p.tags.map(t => <span key={t} style={{ fontSize: 12, fontWeight: 600, color: 'rgb(0,0,0)', padding: '8px 18px', border: '1px solid rgba(0,0,0,0.08)', borderRadius: 100 }}>{t}</span>)}
               </div>
-              <a href={p.href} style={{ display: 'inline-flex', alignItems: 'center', gap: 10, height: 52, padding: '0 28px', borderRadius: 100, background: '#4F46E5', color: '#fff', fontSize: 14, fontWeight: 700, textDecoration: 'none', cursor: 'pointer', fontFamily: 'inherit' }}>
+              <a href={p.href} style={{ display: 'inline-flex', alignItems: 'center', gap: 10, height: 52, padding: '0 28px', borderRadius: 100, background: '#111827', color: '#fff', fontSize: 14, fontWeight: 700, textDecoration: 'none', cursor: 'pointer', fontFamily: 'inherit' }}>
                 View Full Story
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
               </a>
@@ -139,9 +139,9 @@ export default function PortfolioSection() {
             {/* Overlay gradient */}
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(0,0,0,0.4) 0%, transparent 60%)' }} />
             {/* Metric badge */}
-            <div style={{ position: 'absolute', bottom: 16, right: 16, padding: '10px 16px', background: 'rgba(0,0,0,0.7)', border: '1px solid rgba(79,70,229,0.3)', borderRadius: 100, display: 'flex', alignItems: 'center', gap: 10, backdropFilter: 'blur(12px)', maxWidth: 'calc(100% - 32px)' }}>
-              <div style={{ width: 7, height: 7, borderRadius: '50%', background: '#4F46E5', boxShadow: '0 0 8px #4F46E5' }} />
-              <span style={{ fontSize: 13, fontWeight: 700, color: '#4F46E5' }}>{p.metrics[0].value} {p.metrics[0].label}</span>
+            <div style={{ position: 'absolute', bottom: 16, right: 16, padding: '10px 16px', background: 'rgba(0,0,0,0.7)', border: '1px solid rgba(17,24,39,0.3)', borderRadius: 100, display: 'flex', alignItems: 'center', gap: 10, backdropFilter: 'blur(12px)', maxWidth: 'calc(100% - 32px)' }}>
+              <div style={{ width: 7, height: 7, borderRadius: '50%', background: '#111827', boxShadow: '0 0 8px #111827' }} />
+              <span style={{ fontSize: 13, fontWeight: 700, color: '#111827' }}>{p.metrics[0].value} {p.metrics[0].label}</span>
             </div>
           </div>
         </div>

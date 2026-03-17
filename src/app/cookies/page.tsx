@@ -19,7 +19,7 @@ export default function CookiesPage() {
             Codazz uses cookies to improve your experience on our website. This policy explains what cookies we use and how you can manage them.
           </p>
           <div style={{ marginTop: 48, fontSize: 15, color: 'rgba(255,255,255,0.7)', lineHeight: 1.9 }}>
-            <p>Last updated: March 2025. For questions, contact us at <a href="mailto:hello@codazz.com" style={{ color: '#4F46E5' }}>hello@codazz.com</a>.</p>
+            <p>Last updated: March 2025. For questions, contact us at <a href="mailto:hello@codazz.com" style={{ color: '#111827' }}>hello@codazz.com</a>.</p>
           </div>
         </div>
       </main>

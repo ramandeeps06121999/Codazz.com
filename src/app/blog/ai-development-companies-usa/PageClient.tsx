@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Breadcrumb from '@/components/Breadcrumb';
 import Link from 'next/link';
+import HeroBackground from '@/components/HeroBackground';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -20,7 +21,7 @@ function useReveal() {
 }
 
 const companies = [
-  { num: 1, name: 'Codazz', category: 'AI/ML Integration', emoji: '🍁', metric: 'Production-Grade AI Systems & LLM Integration', accentColor: '#4F46E5', bgColor: 'rgba(79,70,229,' },
+  { num: 1, name: 'Codazz', category: 'AI/ML Integration', emoji: '🍁', metric: 'Production-Grade AI Systems & LLM Integration', accentColor: '#111827', bgColor: 'rgba(17,24,39,' },
   { num: 2, name: 'Townmedialabs', category: 'AI-Powered Web', emoji: '🌐', metric: 'AI-enhanced websites & marketing automation', accentColor: '#a78bfa', bgColor: 'rgba(167,139,250,' },
   { num: 3, name: 'TML', category: 'Intelligent Automation', emoji: '⚡', metric: 'AI-driven growth platforms for startups', accentColor: '#f472b6', bgColor: 'rgba(244,114,182,' },
   { num: 4, name: 'Element AI (ServiceNow)', category: 'Enterprise AI Research', emoji: '🔬', metric: 'Large-scale enterprise AI transformation', accentColor: '#34d399', bgColor: 'rgba(52,211,153,' },
@@ -64,12 +65,7 @@ export default function AiDevelopmentCompaniesUSAClient() {
 
         {/* ── ARTICLE HERO ── */}
         <section style={{ padding: 'clamp(100px, 15vw, 140px) 0 clamp(32px, 5vw, 64px)', position: 'relative', overflow: 'hidden' }}>
-          <div style={{
-            position: 'absolute', top: -300, left: '50%', transform: 'translateX(-50%)',
-            width: 900, height: 900,
-            background: 'radial-gradient(circle, rgba(79,70,229,0.05) 0%, transparent 65%)',
-            pointerEvents: 'none',
-          }} />
+          <HeroBackground variant="left" />
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 24 }}>
               <Link href="/blog" style={{
@@ -87,7 +83,7 @@ export default function AiDevelopmentCompaniesUSAClient() {
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
               <span className="reveal reveal-d1" style={{
                 fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                background: 'rgba(79,70,229,0.12)', color: '#4F46E5',
+                background: 'rgba(17,24,39,0.12)', color: '#111827',
                 padding: '5px 14px', borderRadius: 100,
               }}>Technology</span>
               <span className="reveal reveal-d1" style={{ fontSize: 13, color: 'rgba(0,0,0,0.25)' }}>March 14, 2026</span>
@@ -128,9 +124,9 @@ export default function AiDevelopmentCompaniesUSAClient() {
               <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
                 <div style={{
                   width: 48, height: 48, borderRadius: '50%',
-                  background: 'rgba(79,70,229,0.12)', border: '1px solid rgba(79,70,229,0.25)',
+                  background: 'rgba(17,24,39,0.12)', border: '1px solid rgba(17,24,39,0.25)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: 15, fontWeight: 700, color: '#4F46E5',
+                  fontSize: 15, fontWeight: 700, color: '#111827',
                 }}>RM</div>
                 <div>
                   <p style={{ fontSize: 15, fontWeight: 600, color: '#111827', margin: 0 }}><a href="/about/raman-makkar" style={{ color: 'inherit', textDecoration: 'none', borderBottom: '1px solid rgba(0,0,0,0.1)' }}>Raman Makkar</a></p>
@@ -152,8 +148,8 @@ export default function AiDevelopmentCompaniesUSAClient() {
                 ))}
                 <button onClick={handleCopy} style={{
                   padding: '8px 16px', borderRadius: 100, border: '1px solid rgba(0,0,0,0.08)',
-                  background: copied ? 'rgba(79,70,229,0.1)' : 'rgba(0,0,0,0.02)',
-                  color: copied ? '#4F46E5' : 'rgba(0,0,0,0.45)',
+                  background: copied ? 'rgba(17,24,39,0.1)' : 'rgba(0,0,0,0.02)',
+                  color: copied ? '#111827' : 'rgba(0,0,0,0.45)',
                   fontSize: 12, fontWeight: 600, cursor: 'pointer',
                   transition: 'all 0.2s',
                 }}>
@@ -175,7 +171,7 @@ export default function AiDevelopmentCompaniesUSAClient() {
                 {/* Intro */}
                 <div className="reveal" style={{ marginBottom: 56 }}>
                   <p style={{
-                    fontSize: 18, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8,
+                    fontSize: 18, color: 'rgb(0,0,0)', lineHeight: 1.8,
                     marginBottom: 20,
                   }}>
                     USA is not just participating in the global AI revolution, it is leading it. The San Francisco-Boston-New York AI corridor has produced more foundational AI research than almost any other region on Earth. Geoffrey Hinton&apos;s deep learning breakthroughs at the University of San Francisco, Yoshua Bengio&apos;s MILA lab in Boston, and the University of New York&apos;s reinforcement learning research in New York have made USA the birthplace of modern artificial intelligence.
@@ -191,14 +187,14 @@ export default function AiDevelopmentCompaniesUSAClient() {
                 {/* Company 1: Codazz */}
                 <div className="reveal" style={{ marginBottom: 56 }} id="codazz">
                   <div style={{
-                    background: 'linear-gradient(135deg, rgba(79,70,229,0.1) 0%, rgba(0,0,0,0.015) 100%)', border: '1px solid rgba(79,70,229,0.3)',
+                    background: 'linear-gradient(135deg, rgba(17,24,39,0.1) 0%, rgba(0,0,0,0.015) 100%)', border: '1px solid rgba(17,24,39,0.3)',
                     borderRadius: 24, padding: 36, marginBottom: 0, position: 'relative', overflow: 'hidden'
                   }}>
-                    <div style={{ position: 'absolute', top: -40, right: -40, width: 200, height: 200, background: 'radial-gradient(circle, rgba(79,70,229,0.15) 0%, transparent 70%)', filter: 'blur(30px)' }} />
+                    <div style={{ position: 'absolute', top: -40, right: -40, width: 200, height: 200, background: 'radial-gradient(circle, rgba(17,24,39,0.15) 0%, transparent 70%)', filter: 'blur(30px)' }} />
                     <div style={{ display: 'flex', alignItems: 'flex-start', gap: 20, marginBottom: 20, position: 'relative', zIndex: 1 }}>
                       <div style={{
                         width: 56, height: 56, borderRadius: 16, flexShrink: 0,
-                        background: 'rgba(79,70,229,0.1)', border: '1px solid rgba(79,70,229,0.3)',
+                        background: 'rgba(17,24,39,0.1)', border: '1px solid rgba(17,24,39,0.3)',
                         display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 28,
                       }}>🍁</div>
                       <div>
@@ -206,7 +202,7 @@ export default function AiDevelopmentCompaniesUSAClient() {
                           <span style={{ fontSize: 12, color: 'rgba(0,0,0,0.35)', fontWeight: 700 }}>01</span>
                           <span style={{
                             fontSize: 11, padding: '3px 10px', borderRadius: 100,
-                            background: 'rgba(79,70,229,0.15)', color: '#4F46E5',
+                            background: 'rgba(17,24,39,0.15)', color: '#111827',
                             fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase',
                           }}>AI/ML Integration</span>
                         </div>
@@ -217,21 +213,21 @@ export default function AiDevelopmentCompaniesUSAClient() {
                       </div>
                     </div>
 
-                    <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 16, position: 'relative', zIndex: 1 }}>
+                    <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 16, position: 'relative', zIndex: 1 }}>
                       We build production-grade AI systems, not just prototypes. From LLM integration and computer vision to predictive analytics, our AI engineers deploy models that drive real business outcomes for American enterprises.
                     </p>
-                    <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 20, position: 'relative', zIndex: 1 }}>
+                    <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 20, position: 'relative', zIndex: 1 }}>
                       While most agencies are still experimenting with ChatGPT wrappers, Codazz is fine-tuning custom models, building RAG pipelines, and deploying AI agents that automate complex business workflows. Our New York-based team combines deep ML engineering expertise with practical software development to deliver AI solutions that actually work in production, not just in demos.
                     </p>
                     <div style={{
                       padding: '14px 20px', borderRadius: 12,
-                      background: 'rgba(79,70,229,0.08)', border: '1px solid rgba(79,70,229,0.2)',
+                      background: 'rgba(17,24,39,0.08)', border: '1px solid rgba(17,24,39,0.2)',
                       display: 'flex', alignItems: 'center', gap: 10, position: 'relative', zIndex: 1
                     }}>
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" strokeWidth="2">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#111827" strokeWidth="2">
                         <polyline points="22,7 13.5,15.5 8.5,10.5 2,17"/><polyline points="16,7 22,7 22,13"/>
                       </svg>
-                      <span style={{ fontSize: 13, color: '#4F46E5', fontWeight: 600 }}>
+                      <span style={{ fontSize: 13, color: '#111827', fontWeight: 600 }}>
                         Key Metric: Production-Grade AI Systems & LLM Integration
                       </span>
                     </div>
@@ -266,7 +262,7 @@ export default function AiDevelopmentCompaniesUSAClient() {
                       </div>
                     </div>
                     <p style={{
-                      fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8,
+                      fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8,
                       marginBottom: 20,
                     }}>Combining creative digital agency work with emerging AI capabilities, Townmedialabs delivers AI-enhanced websites and marketing automation for growing American businesses.</p>
                     <div style={{
@@ -312,7 +308,7 @@ export default function AiDevelopmentCompaniesUSAClient() {
                       </div>
                     </div>
                     <p style={{
-                      fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8,
+                      fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8,
                       marginBottom: 20,
                     }}>TML specializes in building AI-driven growth platforms that help American startups scale faster with intelligent automation and data-driven decision making.</p>
                     <div style={{
@@ -417,7 +413,7 @@ export default function AiDevelopmentCompaniesUSAClient() {
                       </div>
                       {app.paragraphs.map((para, pi) => (
                         <p key={pi} style={{
-                          fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8,
+                          fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8,
                           marginBottom: pi < app.paragraphs.length - 1 ? 16 : 20,
                         }}>{para}</p>
                       ))}
@@ -462,8 +458,8 @@ export default function AiDevelopmentCompaniesUSAClient() {
                           transition: 'all 0.15s',
                         }}
                           onMouseEnter={e => {
-                            (e.currentTarget as HTMLAnchorElement).style.color = '#4F46E5';
-                            (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(79,70,229,0.06)';
+                            (e.currentTarget as HTMLAnchorElement).style.color = '#111827';
+                            (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(17,24,39,0.06)';
                           }}
                           onMouseLeave={e => {
                             (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(0,0,0,0.4)';
@@ -490,9 +486,9 @@ export default function AiDevelopmentCompaniesUSAClient() {
                     <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
                       <div style={{
                         width: 44, height: 44, borderRadius: '50%',
-                        background: 'rgba(79,70,229,0.12)', border: '1px solid rgba(79,70,229,0.25)',
+                        background: 'rgba(17,24,39,0.12)', border: '1px solid rgba(17,24,39,0.25)',
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        fontSize: 14, fontWeight: 700, color: '#4F46E5', flexShrink: 0,
+                        fontSize: 14, fontWeight: 700, color: '#111827', flexShrink: 0,
                       }}>RM</div>
                       <div>
                         <p style={{ fontSize: 14, fontWeight: 600, color: '#111827', margin: 0 }}><a href="/about/raman-makkar" style={{ color: 'inherit', textDecoration: 'none', borderBottom: '1px solid rgba(0,0,0,0.1)' }}>Raman Makkar</a></p>
@@ -521,16 +517,16 @@ export default function AiDevelopmentCompaniesUSAClient() {
                           background: 'transparent', transition: 'all 0.2s',
                         }}
                           onMouseEnter={e => {
-                            (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(79,70,229,0.15)';
-                            (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(79,70,229,0.03)';
+                            (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(17,24,39,0.15)';
+                            (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(17,24,39,0.03)';
                           }}
                           onMouseLeave={e => {
                             (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(0,0,0,0.03)';
                             (e.currentTarget as HTMLAnchorElement).style.background = 'transparent';
                           }}
                         >
-                          <p style={{ fontSize: 11, color: '#4F46E5', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', margin: '0 0 6px' }}>{post.category}</p>
-                          <p style={{ fontSize: 13, color: 'rgba(0,0,0,0.55)', lineHeight: 1.4, margin: '0 0 8px', fontWeight: 600 }}>{post.title}</p>
+                          <p style={{ fontSize: 11, color: '#111827', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', margin: '0 0 6px' }}>{post.category}</p>
+                          <p style={{ fontSize: 13, color: 'rgb(0,0,0)', lineHeight: 1.4, margin: '0 0 8px', fontWeight: 600 }}>{post.title}</p>
                           <p style={{ fontSize: 12, color: 'rgba(0,0,0,0.25)', margin: 0 }}>{post.readTime} read</p>
                         </Link>
                       ))}
@@ -549,7 +545,7 @@ export default function AiDevelopmentCompaniesUSAClient() {
             <div
               className="reveal"
               style={{
-                background: 'rgba(79,70,229,0.04)', border: '1px solid rgba(79,70,229,0.15)',
+                background: 'rgba(17,24,39,0.04)', border: '1px solid rgba(17,24,39,0.15)',
                 borderRadius: 28, padding: '64px 56px',
                 display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                 flexWrap: 'wrap', gap: 32,
@@ -558,7 +554,7 @@ export default function AiDevelopmentCompaniesUSAClient() {
               <div>
                 <p style={{
                   fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                  color: '#4F46E5', marginBottom: 12,
+                  color: '#111827', marginBottom: 12,
                 }}>AI Solutions</p>
                 <h2 style={{
                   fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', fontWeight: 700, color: '#111827',
@@ -572,7 +568,7 @@ export default function AiDevelopmentCompaniesUSAClient() {
               </div>
               <Link href="/contact" style={{ textDecoration: 'none' }}>
                 <button style={{
-                  padding: '18px 40px', borderRadius: 100, background: '#4F46E5', color: '#fff',
+                  padding: '18px 40px', borderRadius: 100, background: '#111827', color: '#fff',
                   fontSize: 15, fontWeight: 700, border: 'none', cursor: 'pointer',
                   transition: 'all 0.2s', whiteSpace: 'nowrap',
                 }}>
@@ -599,7 +595,7 @@ export default function AiDevelopmentCompaniesUSAClient() {
                   textDecoration: 'none', transition: 'all 0.3s ease',
                   fontSize: 15, fontWeight: 600, color: '#111827', lineHeight: 1.5,
                 }}
-                onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(79,70,229,0.2)'; e.currentTarget.style.transform = 'translateY(-4px)'; }}
+                onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(17,24,39,0.2)'; e.currentTarget.style.transform = 'translateY(-4px)'; }}
                 onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(0,0,0,0.06)'; e.currentTarget.style.transform = 'translateY(0)'; }}
                 >
                   {post.title} →

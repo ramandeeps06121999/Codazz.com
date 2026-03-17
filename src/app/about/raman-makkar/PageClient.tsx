@@ -23,7 +23,7 @@ export default function RamanMakkarPageClient() {
             <div style={{ display: 'flex', alignItems: 'center', gap: 24, marginBottom: 40 }}>
               <div style={{
                 width: 80, height: 80, borderRadius: '50%',
-                background: 'linear-gradient(135deg, #4F46E5, #06B6D4)',
+                background: 'linear-gradient(135deg, #111827, #374151)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 fontSize: 28, fontWeight: 700, color: '#111827',
               }}>RM</div>
@@ -31,11 +31,11 @@ export default function RamanMakkarPageClient() {
                 <h1 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 700, letterSpacing: '-0.03em', margin: 0 }}>
                   Raman Makkar
                 </h1>
-                <p style={{ fontSize: 16, color: '#4F46E5', fontWeight: 600, margin: '4px 0 0' }}>CEO & Founder, Codazz</p>
+                <p style={{ fontSize: 16, color: '#111827', fontWeight: 600, margin: '4px 0 0' }}>CEO & Founder, Codazz</p>
               </div>
             </div>
 
-            <div style={{ fontSize: 16, lineHeight: 1.8, color: 'rgba(0,0,0,0.55)' }}>
+            <div style={{ fontSize: 16, lineHeight: 1.8, color: 'rgb(0,0,0)' }}>
               <p style={{ marginBottom: 24 }}>
                 Raman Makkar is the founder and CEO of Codazz, a full-service software development company headquartered in New York, NY with a second headquarters in Dubai, UAE. With over a decade of experience in software engineering, product development, and digital transformation, Raman has led the delivery of 500+ projects for clients across 24 countries worldwide.
               </p>
@@ -58,7 +58,7 @@ export default function RamanMakkarPageClient() {
                   <span key={skill} style={{
                     padding: '8px 16px', borderRadius: 100, fontSize: 13, fontWeight: 500,
                     background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.08)',
-                    color: 'rgba(0,0,0,0.55)',
+                    color: 'rgb(0,0,0)',
                   }}>{skill}</span>
                 ))}
               </div>
@@ -96,7 +96,7 @@ export default function RamanMakkarPageClient() {
               <a href="/contact" style={{
                 display: 'inline-flex', alignItems: 'center', gap: 8,
                 height: 48, padding: '0 28px', borderRadius: 100,
-                background: '#4F46E5', color: '#fff', fontSize: 14, fontWeight: 700,
+                background: '#111827', color: '#fff', fontSize: 14, fontWeight: 700,
                 textDecoration: 'none',
               }}>
                 Schedule a Call

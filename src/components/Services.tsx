@@ -58,7 +58,7 @@ const services = [
       </svg>
     ),
     accent: '#4f46e5',
-    accentBg: 'rgba(79,70,229,0.08)',
+    accentBg: 'rgba(17,24,39,0.08)',
     size: 'col-span-1',
   },
   {

@@ -281,7 +281,7 @@ export default function Navbar() {
                 fontSize: 'clamp(26px, 4vw, 36px)',
                 fontWeight: 700,
                 letterSpacing: '-0.02em',
-                background: 'linear-gradient(135deg, #4F46E5 0%, #06B6D4 100%)',
+                background: 'linear-gradient(135deg, #111827 0%, #374151 100%)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
@@ -299,7 +299,7 @@ export default function Navbar() {
                   display: 'flex', alignItems: 'center', gap: 6, padding: '10px 16px', borderRadius: 100,
                   background: activeMenu === 'services' ? 'rgba(0,0,0,0.03)' : 'transparent',
                   border: 'none', cursor: 'pointer', fontFamily: 'inherit',
-                  fontSize: 15, fontWeight: 500, color: activeMenu === 'services' ? '#111827' : 'rgba(0,0,0,0.55)',
+                  fontSize: 15, fontWeight: 500, color: activeMenu === 'services' ? '#111827' : 'rgb(0,0,0)',
                   transition: '0.2s',
                 }} aria-expanded={activeMenu === 'services'} aria-label="Services menu"
                   onKeyDown={(e) => {
@@ -322,7 +322,7 @@ export default function Navbar() {
                   display: 'flex', alignItems: 'center', gap: 6, padding: '10px 16px', borderRadius: 100,
                   background: activeMenu === 'industries' ? 'rgba(0,0,0,0.03)' : 'transparent',
                   border: 'none', cursor: 'pointer', fontFamily: 'inherit',
-                  fontSize: 15, fontWeight: 500, color: activeMenu === 'industries' ? '#111827' : 'rgba(0,0,0,0.55)',
+                  fontSize: 15, fontWeight: 500, color: activeMenu === 'industries' ? '#111827' : 'rgb(0,0,0)',
                   transition: '0.2s',
                 }} aria-expanded={activeMenu === 'industries'} aria-label="Industries menu"
                   onKeyDown={(e) => {
@@ -345,7 +345,7 @@ export default function Navbar() {
                   display: 'flex', alignItems: 'center', gap: 6, padding: '10px 16px', borderRadius: 100,
                   background: activeMenu === 'company' ? 'rgba(0,0,0,0.03)' : 'transparent',
                   border: 'none', cursor: 'pointer', fontFamily: 'inherit',
-                  fontSize: 15, fontWeight: 500, color: activeMenu === 'company' ? '#111827' : 'rgba(0,0,0,0.55)',
+                  fontSize: 15, fontWeight: 500, color: activeMenu === 'company' ? '#111827' : 'rgb(0,0,0)',
                   transition: '0.2s',
                 }} aria-expanded={activeMenu === 'company'} aria-label="Company menu"
                   onKeyDown={(e) => {
@@ -365,30 +365,30 @@ export default function Navbar() {
               {[{ label: 'Case Studies', href: '/case-studies' }, { label: 'Blog', href: '/blog' }].map(item => (
                 <Link key={item.label} href={item.href} style={{
                   display: 'flex', alignItems: 'center', padding: '10px 16px', borderRadius: 100,
-                  fontSize: 15, fontWeight: 500, color: 'rgba(0,0,0,0.55)',
+                  fontSize: 15, fontWeight: 500, color: 'rgb(0,0,0)',
                   textDecoration: 'none', transition: '0.2s',
                 }}
                   onMouseEnter={e => { e.currentTarget.style.color = '#111827'; e.currentTarget.style.background = 'rgba(0,0,0,0.03)'; }}
-                  onMouseLeave={e => { e.currentTarget.style.color = 'rgba(0,0,0,0.55)'; e.currentTarget.style.background = 'transparent'; }}
+                  onMouseLeave={e => { e.currentTarget.style.color = 'rgb(0,0,0)'; e.currentTarget.style.background = 'transparent'; }}
                 >{item.label}</Link>
               ))}
             </div>
 
             {/* CTA */}
             <div className="nav-desktop" style={{ gap: 12, alignItems: 'center', position: 'relative', zIndex: 2 }}>
-              <Link href="mailto:hello@codazz.com" style={{ fontSize: 15, fontWeight: 500, color: 'rgba(0,0,0,0.55)', textDecoration: 'none', transition: '0.2s', display: 'flex', alignItems: 'center', gap: 6 }}
+              <Link href="mailto:hello@codazz.com" style={{ fontSize: 15, fontWeight: 500, color: 'rgb(0,0,0)', textDecoration: 'none', transition: '0.2s', display: 'flex', alignItems: 'center', gap: 6 }}
                 onMouseEnter={e => { e.currentTarget.style.color = '#111827'; }}
-                onMouseLeave={e => { e.currentTarget.style.color = 'rgba(0,0,0,0.55)'; }}
+                onMouseLeave={e => { e.currentTarget.style.color = 'rgb(0,0,0)'; }}
               >
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
                 hello@codazz.com
               </Link>
               <Link href="/contact" style={{
                 display: 'inline-flex', alignItems: 'center', gap: 8, height: 42, padding: '0 24px', borderRadius: 100,
-                background: 'linear-gradient(135deg, #4F46E5, #06B6D4)', color: '#fff', fontSize: 15, fontWeight: 700,
+                background: 'linear-gradient(135deg, #111827, #374151)', color: '#fff', fontSize: 15, fontWeight: 700,
                 textDecoration: 'none', letterSpacing: '-0.01em', transition: '0.3s',
               }}
-                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(79,70,229,0.4)'; }}
+                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(17,24,39,0.4)'; }}
                 onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}
               >
                 Get a Quote
@@ -427,12 +427,12 @@ export default function Navbar() {
             {/* Header */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20, paddingBottom: 16, borderBottom: '1px solid rgba(0,0,0,0.08)' }}>
               <div>
-                <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#4F46E5', marginBottom: 6 }}>What We Build</div>
+                <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#111827', marginBottom: 6 }}>What We Build</div>
                 <div style={{ fontSize: 22, fontWeight: 500, color: '#111827', letterSpacing: '-0.03em' }}>End-to-End Engineering Services</div>
               </div>
-              <Link href="/services" onClick={() => setActiveMenu(null)} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, height: 40, padding: '0 20px', borderRadius: 100, border: '1px solid rgba(0,0,0,0.08)', color: 'rgba(0,0,0,0.55)', fontSize: 13, fontWeight: 600, textDecoration: 'none', transition: '0.2s' }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(79,70,229,0.4)'; e.currentTarget.style.color = '#4F46E5'; }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(0,0,0,0.08)'; e.currentTarget.style.color = 'rgba(0,0,0,0.55)'; }}
+              <Link href="/services" onClick={() => setActiveMenu(null)} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, height: 40, padding: '0 20px', borderRadius: 100, border: '1px solid rgba(0,0,0,0.08)', color: 'rgb(0,0,0)', fontSize: 13, fontWeight: 600, textDecoration: 'none', transition: '0.2s' }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(17,24,39,0.4)'; e.currentTarget.style.color = '#111827'; }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(0,0,0,0.08)'; e.currentTarget.style.color = 'rgb(0,0,0)'; }}
               >
                 View All Services
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
@@ -443,12 +443,12 @@ export default function Navbar() {
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: 6, marginBottom: 20 }}>
               {serviceCategories.map((cat) => (
                 <div key={cat.title} style={{ padding: '14px 14px', borderRadius: 14, border: '1px solid rgba(0,0,0,0.04)', background: 'rgba(0,0,0,0.02)', transition: '0.3s' }}
-                  onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(79,70,229,0.2)'; e.currentTarget.style.background = 'rgba(79,70,229,0.03)'; }}
+                  onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(17,24,39,0.2)'; e.currentTarget.style.background = 'rgba(17,24,39,0.03)'; }}
                   onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(0,0,0,0.04)'; e.currentTarget.style.background = 'rgba(0,0,0,0.02)'; }}
                 >
                   {/* Category header — whole thing is a link */}
                   <Link href={cat.href} onClick={() => setActiveMenu(null)} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10, textDecoration: 'none' }}>
-                    <div style={{ width: 28, height: 28, borderRadius: 8, background: 'rgba(79,70,229,0.1)', border: '1px solid rgba(79,70,229,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#4F46E5', flexShrink: 0 }}>
+                    <div style={{ width: 28, height: 28, borderRadius: 8, background: 'rgba(17,24,39,0.1)', border: '1px solid rgba(17,24,39,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#111827', flexShrink: 0 }}>
                       {cat.icon}
                     </div>
                     <span style={{ fontSize: 11, fontWeight: 700, color: '#111827', letterSpacing: '-0.01em', lineHeight: 1.25 }}>{cat.title}</span>
@@ -458,11 +458,11 @@ export default function Navbar() {
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
                     {cat.links.map(link => (
                       <Link key={link.label} href={link.href} onClick={() => setActiveMenu(null)}
-                        style={{ fontSize: 10.5, color: 'rgba(0,0,0,0.55)', textDecoration: 'none', padding: '3px 0', transition: '0.15s', display: 'flex', alignItems: 'center', gap: 5, lineHeight: 1.3 }}
-                        onMouseEnter={e => { e.currentTarget.style.color = '#4F46E5'; }}
-                        onMouseLeave={e => { e.currentTarget.style.color = 'rgba(0,0,0,0.55)'; }}
+                        style={{ fontSize: 10.5, color: 'rgb(0,0,0)', textDecoration: 'none', padding: '3px 0', transition: '0.15s', display: 'flex', alignItems: 'center', gap: 5, lineHeight: 1.3 }}
+                        onMouseEnter={e => { e.currentTarget.style.color = '#111827'; }}
+                        onMouseLeave={e => { e.currentTarget.style.color = 'rgb(0,0,0)'; }}
                       >
-                        <span style={{ width: 3, height: 3, borderRadius: '50%', background: 'rgba(79,70,229,0.35)', flexShrink: 0, display: 'inline-block' }} />
+                        <span style={{ width: 3, height: 3, borderRadius: '50%', background: 'rgba(17,24,39,0.35)', flexShrink: 0, display: 'inline-block' }} />
                         {link.label}
                       </Link>
                     ))}
@@ -475,7 +475,7 @@ export default function Navbar() {
             <div style={{ display: 'flex', gap: 32, paddingTop: 20, borderTop: '1px solid rgba(0,0,0,0.04)', flexWrap: 'wrap' }}>
               {[['500+', 'Projects Shipped'], ['8wk', 'MVP Timeline'], ['100%', 'IP Ownership'], ['NDA', 'Signed on Day 1'], ['24/7', 'Post-Launch Support']].map(([val, label]) => (
                 <div key={label} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                  <span style={{ fontSize: 14, fontWeight: 700, color: '#4F46E5' }}>{val}</span>
+                  <span style={{ fontSize: 14, fontWeight: 700, color: '#111827' }}>{val}</span>
                   <span style={{ fontSize: 12, color: 'rgba(0,0,0,0.4)' }}>{label}</span>
                 </div>
               ))}
@@ -501,16 +501,16 @@ export default function Navbar() {
           <div className="cb-container" style={{ padding: '36px 60px 44px' }}>
             <div style={{ display: 'flex', gap: 'clamp(32px, 6vw, 80px)', alignItems: 'flex-start' }}>
               <div>
-                <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#4F46E5', marginBottom: 6 }}>Sectors We Serve</div>
+                <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#111827', marginBottom: 6 }}>Sectors We Serve</div>
                 <div style={{ fontSize: 20, fontWeight: 500, color: '#111827', letterSpacing: '-0.03em', marginBottom: 28 }}>Deep Domain Expertise</div>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 4, minWidth: 'min(440px, 100%)' }}>
                   {industryLinks.map(link => (
                     <Link key={link.label} href={link.href} onClick={() => setActiveMenu(null)}
-                      style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', borderRadius: 10, fontSize: 13, color: 'rgba(0,0,0,0.55)', textDecoration: 'none', transition: '0.2s' }}
+                      style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', borderRadius: 10, fontSize: 13, color: 'rgb(0,0,0)', textDecoration: 'none', transition: '0.2s' }}
                       onMouseEnter={e => { e.currentTarget.style.color = '#111827'; e.currentTarget.style.background = 'rgba(0,0,0,0.03)'; }}
-                      onMouseLeave={e => { e.currentTarget.style.color = 'rgba(0,0,0,0.55)'; e.currentTarget.style.background = 'transparent'; }}
+                      onMouseLeave={e => { e.currentTarget.style.color = 'rgb(0,0,0)'; e.currentTarget.style.background = 'transparent'; }}
                     >
-                      <span style={{ width: 4, height: 4, borderRadius: '50%', background: '#4F46E5', flexShrink: 0 }} />
+                      <span style={{ width: 4, height: 4, borderRadius: '50%', background: '#111827', flexShrink: 0 }} />
                       {link.label}
                     </Link>
                   ))}
@@ -518,12 +518,12 @@ export default function Navbar() {
               </div>
 
               {/* Featured promo */}
-              <div style={{ flex: 1, padding: '28px', borderRadius: 20, border: '1px solid rgba(79,70,229,0.15)', background: 'linear-gradient(135deg, rgba(79,70,229,0.05) 0%, rgba(0,0,0,0) 100%)', position: 'relative', overflow: 'hidden' }}>
-                <div style={{ position: 'absolute', top: -20, right: -20, width: 120, height: 120, background: 'radial-gradient(circle, rgba(79,70,229,0.15) 0%, transparent 70%)', filter: 'blur(20px)' }} />
-                <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#4F46E5', marginBottom: 10 }}>Featured Work</div>
+              <div style={{ flex: 1, padding: '28px', borderRadius: 20, border: '1px solid rgba(17,24,39,0.15)', background: 'linear-gradient(135deg, rgba(17,24,39,0.05) 0%, rgba(0,0,0,0) 100%)', position: 'relative', overflow: 'hidden' }}>
+                <div style={{ position: 'absolute', top: -20, right: -20, width: 120, height: 120, background: 'radial-gradient(circle, rgba(17,24,39,0.15) 0%, transparent 70%)', filter: 'blur(20px)' }} />
+                <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#111827', marginBottom: 10 }}>Featured Work</div>
                 <div style={{ fontSize: 18, fontWeight: 600, color: '#111827', letterSpacing: '-0.03em', marginBottom: 8 }}>AI Trading Engine</div>
-                <div style={{ fontSize: 13, color: 'rgba(0,0,0,0.55)', lineHeight: 1.6, marginBottom: 20 }}>Processing 2M+ transactions daily with real-time ML sentiment analysis for a leading fintech client.</div>
-                <Link href="/case-studies/fintech-trading-platform" onClick={() => setActiveMenu(null)} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 12, fontWeight: 700, color: '#4F46E5', textDecoration: 'none' }}
+                <div style={{ fontSize: 13, color: 'rgb(0,0,0)', lineHeight: 1.6, marginBottom: 20 }}>Processing 2M+ transactions daily with real-time ML sentiment analysis for a leading fintech client.</div>
+                <Link href="/case-studies/fintech-trading-platform" onClick={() => setActiveMenu(null)} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 12, fontWeight: 700, color: '#111827', textDecoration: 'none' }}
                   onMouseEnter={e => { e.currentTarget.style.gap = '12px'; }}
                   onMouseLeave={e => { e.currentTarget.style.gap = '8px'; }}
                 >
@@ -553,16 +553,16 @@ export default function Navbar() {
           <div className="cb-container" style={{ padding: '36px 60px 44px' }}>
             <div style={{ display: 'flex', gap: 80 }}>
               <div>
-                <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#4F46E5', marginBottom: 6 }}>Codazz</div>
+                <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#111827', marginBottom: 6 }}>Codazz</div>
                 <div style={{ fontSize: 20, fontWeight: 500, color: '#111827', letterSpacing: '-0.03em', marginBottom: 24 }}>Who We Are</div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                   {companyLinks.map(link => (
                     <Link key={link.label} href={link.href} onClick={() => setActiveMenu(null)}
-                      style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', borderRadius: 10, fontSize: 14, color: 'rgba(0,0,0,0.55)', textDecoration: 'none', transition: '0.2s' }}
+                      style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', borderRadius: 10, fontSize: 14, color: 'rgb(0,0,0)', textDecoration: 'none', transition: '0.2s' }}
                       onMouseEnter={e => { e.currentTarget.style.color = '#111827'; e.currentTarget.style.background = 'rgba(0,0,0,0.03)'; }}
-                      onMouseLeave={e => { e.currentTarget.style.color = 'rgba(0,0,0,0.55)'; e.currentTarget.style.background = 'transparent'; }}
+                      onMouseLeave={e => { e.currentTarget.style.color = 'rgb(0,0,0)'; e.currentTarget.style.background = 'transparent'; }}
                     >
-                      <span style={{ width: 4, height: 4, borderRadius: '50%', background: '#4F46E5', flexShrink: 0 }} />
+                      <span style={{ width: 4, height: 4, borderRadius: '50%', background: '#111827', flexShrink: 0 }} />
                       {link.label}
                     </Link>
                   ))}
@@ -570,12 +570,12 @@ export default function Navbar() {
               </div>
               <div style={{ padding: '28px 32px', borderRadius: 20, border: '1px solid rgba(0,0,0,0.06)', background: 'rgba(0,0,0,0.02)', display: 'flex', flexDirection: 'column', gap: 16, minWidth: 280 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                  <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#4F46E5', boxShadow: '0 0 8px #4F46E5' }} />
-                  <span style={{ fontSize: 12, fontWeight: 700, color: '#4F46E5', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Available for New Projects</span>
+                  <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#111827', boxShadow: '0 0 8px #111827' }} />
+                  <span style={{ fontSize: 12, fontWeight: 700, color: '#111827', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Available for New Projects</span>
                 </div>
                 <div style={{ fontSize: 16, fontWeight: 600, color: '#111827', letterSpacing: '-0.02em' }}>Ready to start your project?</div>
-                <div style={{ fontSize: 13, color: 'rgba(0,0,0,0.55)', lineHeight: 1.6 }}>Get a free consultation and fixed-price proposal within 24 hours.</div>
-                <Link href="#contact" onClick={() => setActiveMenu(null)} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, height: 40, padding: '0 20px', borderRadius: 100, background: 'linear-gradient(135deg, #4F46E5, #06B6D4)', color: '#fff', fontSize: 13, fontWeight: 700, textDecoration: 'none', width: 'fit-content' }}>
+                <div style={{ fontSize: 13, color: 'rgb(0,0,0)', lineHeight: 1.6 }}>Get a free consultation and fixed-price proposal within 24 hours.</div>
+                <Link href="#contact" onClick={() => setActiveMenu(null)} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, height: 40, padding: '0 20px', borderRadius: 100, background: 'linear-gradient(135deg, #111827, #374151)', color: '#fff', fontSize: 13, fontWeight: 700, textDecoration: 'none', width: 'fit-content' }}>
                   Book Free Call
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
                 </Link>
@@ -599,7 +599,7 @@ export default function Navbar() {
           <div style={{ borderBottom: '1px solid rgba(0,0,0,0.06)' }}>
             <button
               onClick={() => setMobileExpanded(mobileExpanded === 'services' ? null : 'services')}
-              style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', fontSize: 'clamp(22px, 5vw, 28px)', fontWeight: 500, color: 'rgba(0,0,0,0.55)', background: 'none', border: 'none', cursor: 'pointer', letterSpacing: '-0.03em', padding: '14px 0', minHeight: 44, fontFamily: 'inherit' }}
+              style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', fontSize: 'clamp(22px, 5vw, 28px)', fontWeight: 500, color: 'rgb(0,0,0)', background: 'none', border: 'none', cursor: 'pointer', letterSpacing: '-0.03em', padding: '14px 0', minHeight: 44, fontFamily: 'inherit' }}
             >
               Services
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ transition: '0.3s', transform: mobileExpanded === 'services' ? 'rotate(180deg)' : 'none' }}><path d="M6 9l6 6 6-6" /></svg>
@@ -611,7 +611,7 @@ export default function Navbar() {
                     <Link href={cat.href} onClick={() => setMenuOpen(false)}
                       style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '12px 0', minHeight: 44, textDecoration: 'none' }}
                     >
-                      <div style={{ width: 28, height: 28, borderRadius: 8, background: 'rgba(79,70,229,0.1)', border: '1px solid rgba(79,70,229,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#4F46E5', flexShrink: 0 }}>
+                      <div style={{ width: 28, height: 28, borderRadius: 8, background: 'rgba(17,24,39,0.1)', border: '1px solid rgba(17,24,39,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#111827', flexShrink: 0 }}>
                         {cat.icon}
                       </div>
                       <span style={{ fontSize: 15, fontWeight: 600, color: '#111827' }}>{cat.title}</span>
@@ -621,7 +621,7 @@ export default function Navbar() {
                         <Link key={link.label} href={link.href} onClick={() => setMenuOpen(false)}
                           style={{ fontSize: 13, color: 'rgba(0,0,0,0.4)', textDecoration: 'none', padding: '8px 0', minHeight: 44, display: 'flex', alignItems: 'center', gap: 6 }}
                         >
-                          <span style={{ width: 3, height: 3, borderRadius: '50%', background: 'rgba(79,70,229,0.35)', flexShrink: 0 }} />
+                          <span style={{ width: 3, height: 3, borderRadius: '50%', background: 'rgba(17,24,39,0.35)', flexShrink: 0 }} />
                           {link.label}
                         </Link>
                       ))}
@@ -629,7 +629,7 @@ export default function Navbar() {
                   </div>
                 ))}
                 <Link href="/services" onClick={() => setMenuOpen(false)}
-                  style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginTop: 8, padding: '10px 20px', borderRadius: 100, border: '1px solid rgba(79,70,229,0.3)', color: '#4F46E5', fontSize: 13, fontWeight: 600, textDecoration: 'none', width: 'fit-content' }}
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginTop: 8, padding: '10px 20px', borderRadius: 100, border: '1px solid rgba(17,24,39,0.3)', color: '#111827', fontSize: 13, fontWeight: 600, textDecoration: 'none', width: 'fit-content' }}
                 >
                   View All Services
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
@@ -642,7 +642,7 @@ export default function Navbar() {
           <div style={{ borderBottom: '1px solid rgba(0,0,0,0.06)' }}>
             <button
               onClick={() => setMobileExpanded(mobileExpanded === 'industries' ? null : 'industries')}
-              style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', fontSize: 'clamp(22px, 5vw, 28px)', fontWeight: 500, color: 'rgba(0,0,0,0.55)', background: 'none', border: 'none', cursor: 'pointer', letterSpacing: '-0.03em', padding: '14px 0', minHeight: 44, fontFamily: 'inherit' }}
+              style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', fontSize: 'clamp(22px, 5vw, 28px)', fontWeight: 500, color: 'rgb(0,0,0)', background: 'none', border: 'none', cursor: 'pointer', letterSpacing: '-0.03em', padding: '14px 0', minHeight: 44, fontFamily: 'inherit' }}
             >
               Industries
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ transition: '0.3s', transform: mobileExpanded === 'industries' ? 'rotate(180deg)' : 'none' }}><path d="M6 9l6 6 6-6" /></svg>
@@ -651,9 +651,9 @@ export default function Navbar() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: 2, paddingBottom: 16 }}>
                 {industryLinks.map(link => (
                   <Link key={link.label} href={link.href} onClick={() => setMenuOpen(false)}
-                    style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 0', minHeight: 44, fontSize: 15, color: 'rgba(0,0,0,0.55)', textDecoration: 'none' }}
+                    style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 0', minHeight: 44, fontSize: 15, color: 'rgb(0,0,0)', textDecoration: 'none' }}
                   >
-                    <span style={{ width: 4, height: 4, borderRadius: '50%', background: '#4F46E5', flexShrink: 0 }} />
+                    <span style={{ width: 4, height: 4, borderRadius: '50%', background: '#111827', flexShrink: 0 }} />
                     {link.label}
                   </Link>
                 ))}
@@ -670,7 +670,7 @@ export default function Navbar() {
           ].map(item => (
             <Link key={item.label} href={item.href}
               onClick={() => setMenuOpen(false)}
-              style={{ fontSize: 'clamp(22px, 5vw, 28px)', fontWeight: 500, color: 'rgba(0,0,0,0.55)', textDecoration: 'none', letterSpacing: '-0.03em', padding: '14px 0', minHeight: 44, borderBottom: '1px solid rgba(0,0,0,0.06)', transition: '0.2s', display: 'flex', alignItems: 'center' }}
+              style={{ fontSize: 'clamp(22px, 5vw, 28px)', fontWeight: 500, color: 'rgb(0,0,0)', textDecoration: 'none', letterSpacing: '-0.03em', padding: '14px 0', minHeight: 44, borderBottom: '1px solid rgba(0,0,0,0.06)', transition: '0.2s', display: 'flex', alignItems: 'center' }}
             >
               {item.label}
             </Link>
@@ -679,14 +679,14 @@ export default function Navbar() {
 
         {/* Email */}
         <Link href="mailto:hello@codazz.com" onClick={() => setMenuOpen(false)}
-          style={{ fontSize: 16, fontWeight: 500, color: 'rgba(0,0,0,0.55)', textDecoration: 'none', marginBottom: 20, display: 'flex', alignItems: 'center', gap: 8 }}
+          style={{ fontSize: 16, fontWeight: 500, color: 'rgb(0,0,0)', textDecoration: 'none', marginBottom: 20, display: 'flex', alignItems: 'center', gap: 8 }}
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
           hello@codazz.com
         </Link>
 
         <Link href="/contact" onClick={() => setMenuOpen(false)}
-          style={{ display: 'inline-flex', alignItems: 'center', gap: 10, height: 56, padding: '0 36px', borderRadius: 100, background: 'linear-gradient(135deg, #4F46E5, #06B6D4)', color: '#fff', fontSize: 16, fontWeight: 700, textDecoration: 'none', width: 'fit-content' }}
+          style={{ display: 'inline-flex', alignItems: 'center', gap: 10, height: 56, padding: '0 36px', borderRadius: 100, background: 'linear-gradient(135deg, #111827, #374151)', color: '#fff', fontSize: 16, fontWeight: 700, textDecoration: 'none', width: 'fit-content' }}
         >
           Get a Free Quote
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>

@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Breadcrumb from '@/components/Breadcrumb';
 import Link from 'next/link';
+import HeroBackground from '@/components/HeroBackground';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -61,12 +62,7 @@ export default function ChooseSoftwareDevelopmentCompanyUSAClient() {
 
         {/* ── ARTICLE HERO ── */}
         <section style={{ padding: 'clamp(100px, 15vw, 140px) 0 clamp(32px, 5vw, 64px)', position: 'relative', overflow: 'hidden' }}>
-          <div style={{
-            position: 'absolute', top: -300, left: '50%', transform: 'translateX(-50%)',
-            width: 900, height: 900,
-            background: 'radial-gradient(circle, rgba(79,70,229,0.05) 0%, transparent 65%)',
-            pointerEvents: 'none',
-          }} />
+          <HeroBackground variant="left" />
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 24 }}>
               <Link href="/blog" style={{
@@ -84,7 +80,7 @@ export default function ChooseSoftwareDevelopmentCompanyUSAClient() {
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
               <span className="reveal reveal-d1" style={{
                 fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                background: 'rgba(79,70,229,0.12)', color: '#4F46E5',
+                background: 'rgba(17,24,39,0.12)', color: '#111827',
                 padding: '5px 14px', borderRadius: 100,
               }}>Business</span>
               <span className="reveal reveal-d1" style={{ fontSize: 13, color: 'rgba(0,0,0,0.25)' }}>March 14, 2026</span>
@@ -125,9 +121,9 @@ export default function ChooseSoftwareDevelopmentCompanyUSAClient() {
               <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
                 <div style={{
                   width: 48, height: 48, borderRadius: '50%',
-                  background: 'rgba(79,70,229,0.12)', border: '1px solid rgba(79,70,229,0.25)',
+                  background: 'rgba(17,24,39,0.12)', border: '1px solid rgba(17,24,39,0.25)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: 15, fontWeight: 700, color: '#4F46E5',
+                  fontSize: 15, fontWeight: 700, color: '#111827',
                 }}>RM</div>
                 <div>
                   <p style={{ fontSize: 15, fontWeight: 600, color: '#111827', margin: 0 }}><a href="/about/raman-makkar" style={{ color: 'inherit', textDecoration: 'none', borderBottom: '1px solid rgba(0,0,0,0.1)' }}>Raman Makkar</a></p>
@@ -149,8 +145,8 @@ export default function ChooseSoftwareDevelopmentCompanyUSAClient() {
                 ))}
                 <button onClick={handleCopy} style={{
                   padding: '8px 16px', borderRadius: 100, border: '1px solid rgba(0,0,0,0.08)',
-                  background: copied ? 'rgba(79,70,229,0.1)' : 'rgba(0,0,0,0.02)',
-                  color: copied ? '#4F46E5' : 'rgba(0,0,0,0.45)',
+                  background: copied ? 'rgba(17,24,39,0.1)' : 'rgba(0,0,0,0.02)',
+                  color: copied ? '#111827' : 'rgba(0,0,0,0.45)',
                   fontSize: 12, fontWeight: 600, cursor: 'pointer',
                   transition: 'all 0.2s',
                 }}>
@@ -172,10 +168,10 @@ export default function ChooseSoftwareDevelopmentCompanyUSAClient() {
                 {/* Intro */}
                 <div className="reveal" style={{ marginBottom: 56 }}>
                   <p style={{
-                    fontSize: 18, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8,
+                    fontSize: 18, color: 'rgb(0,0,0)', lineHeight: 1.8,
                     marginBottom: 20,
                   }}>
-                    Choosing the wrong software development partner is one of the most expensive mistakes a American business can make. According to industry data, failed software projects cost American companies an average of <strong style={{ color: '#4F46E5' }}>$500,000+</strong> in wasted budget, missed market windows, and opportunity cost — and that number climbs significantly for enterprise-scale initiatives.
+                    Choosing the wrong software development partner is one of the most expensive mistakes a American business can make. According to industry data, failed software projects cost American companies an average of <strong style={{ color: '#111827' }}>$500,000+</strong> in wasted budget, missed market windows, and opportunity cost — and that number climbs significantly for enterprise-scale initiatives.
                   </p>
                   <p style={{ fontSize: 17, color: 'rgba(0,0,0,0.5)', lineHeight: 1.8, marginBottom: 20 }}>
                     The problem is rarely the technology itself. It is almost always the partner. Misaligned expectations, hidden offshore outsourcing, scope creep with no guardrails, and agencies that vanish after launch day — these are the patterns that destroy projects and drain budgets.
@@ -192,7 +188,7 @@ export default function ChooseSoftwareDevelopmentCompanyUSAClient() {
                   }}>
                     <div style={{
                       width: 40, height: 40, borderRadius: 12,
-                      background: 'rgba(79,70,229,0.1)', border: '1px solid rgba(79,70,229,0.25)',
+                      background: 'rgba(17,24,39,0.1)', border: '1px solid rgba(17,24,39,0.25)',
                       display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18,
                     }}>🎯</div>
                     <h2 style={{
@@ -200,10 +196,10 @@ export default function ChooseSoftwareDevelopmentCompanyUSAClient() {
                       letterSpacing: '-0.03em', margin: 0,
                     }}>1. Define Your Project Scope Before You Start Looking</h2>
                   </div>
-                  <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 16 }}>
+                  <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 16 }}>
                     Before you contact a single agency, you need internal clarity. The biggest source of project failure is not bad developers — it is undefined requirements. Companies that approach agencies with vague briefs like "we need an app" or "rebuild our platform" are setting themselves up for scope creep, budget overruns, and a product that satisfies nobody.
                   </p>
-                  <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 20 }}>
+                  <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 20 }}>
                     At minimum, you should be able to answer these questions before reaching out:
                   </p>
                   {[
@@ -218,7 +214,7 @@ export default function ChooseSoftwareDevelopmentCompanyUSAClient() {
                       padding: '10px 16px', borderRadius: 10,
                       background: 'rgba(0,0,0,0.015)', border: '1px solid rgba(0,0,0,0.03)',
                     }}>
-                      <span style={{ color: '#4F46E5', fontWeight: 700, fontSize: 14, marginTop: 2, flexShrink: 0 }}>→</span>
+                      <span style={{ color: '#111827', fontWeight: 700, fontSize: 14, marginTop: 2, flexShrink: 0 }}>→</span>
                       <span style={{ fontSize: 15, color: 'rgba(0,0,0,0.5)', lineHeight: 1.7 }}>{item}</span>
                     </div>
                   ))}
@@ -231,7 +227,7 @@ export default function ChooseSoftwareDevelopmentCompanyUSAClient() {
                   }}>
                     <div style={{
                       width: 40, height: 40, borderRadius: 12,
-                      background: 'rgba(79,70,229,0.1)', border: '1px solid rgba(79,70,229,0.25)',
+                      background: 'rgba(17,24,39,0.1)', border: '1px solid rgba(17,24,39,0.25)',
                       display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18,
                     }}>🌍</div>
                     <h2 style={{
@@ -239,10 +235,10 @@ export default function ChooseSoftwareDevelopmentCompanyUSAClient() {
                       letterSpacing: '-0.03em', margin: 0,
                     }}>2. Onshore vs Nearshore vs Offshore — The American Advantage</h2>
                   </div>
-                  <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 16 }}>
+                  <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 16 }}>
                     The allure of $15/hour offshore developers is powerful — until your project is six months behind schedule, the codebase is unmaintainable, and the team disappears at 2 AM your time. There is a reason enterprise companies overwhelmingly choose onshore American development partners for mission-critical projects.
                   </p>
-                  <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 20 }}>
+                  <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 20 }}>
                     Here is why choosing a American software company gives you a structural advantage:
                   </p>
                   {[
@@ -255,7 +251,7 @@ export default function ChooseSoftwareDevelopmentCompanyUSAClient() {
                       padding: '20px 24px', borderRadius: 14, marginBottom: 12,
                       background: 'rgba(0,0,0,0.015)', border: '1px solid rgba(0,0,0,0.06)',
                     }}>
-                      <p style={{ fontSize: 15, fontWeight: 700, color: '#4F46E5', marginBottom: 6 }}>{item.title}</p>
+                      <p style={{ fontSize: 15, fontWeight: 700, color: '#111827', marginBottom: 6 }}>{item.title}</p>
                       <p style={{ fontSize: 15, color: 'rgba(0,0,0,0.5)', lineHeight: 1.7, margin: 0 }}>{item.desc}</p>
                     </div>
                   ))}
@@ -268,7 +264,7 @@ export default function ChooseSoftwareDevelopmentCompanyUSAClient() {
                   }}>
                     <div style={{
                       width: 40, height: 40, borderRadius: 12,
-                      background: 'rgba(79,70,229,0.1)', border: '1px solid rgba(79,70,229,0.25)',
+                      background: 'rgba(17,24,39,0.1)', border: '1px solid rgba(17,24,39,0.25)',
                       display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18,
                     }}>🚩</div>
                     <h2 style={{
@@ -276,7 +272,7 @@ export default function ChooseSoftwareDevelopmentCompanyUSAClient() {
                       letterSpacing: '-0.03em', margin: 0,
                     }}>3. Seven Red Flags to Watch For</h2>
                   </div>
-                  <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 20 }}>
+                  <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 20 }}>
                     Any one of these should make you pause. Two or more? Walk away immediately.
                   </p>
                   {[
@@ -313,7 +309,7 @@ export default function ChooseSoftwareDevelopmentCompanyUSAClient() {
                       letterSpacing: '-0.03em', margin: 0,
                     }}>4. Seven Green Flags of a Great American Dev Partner</h2>
                   </div>
-                  <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 20 }}>
+                  <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 20 }}>
                     The best software development companies in the USA consistently exhibit these traits:
                   </p>
                   {[
@@ -342,7 +338,7 @@ export default function ChooseSoftwareDevelopmentCompanyUSAClient() {
                   }}>
                     <div style={{
                       width: 40, height: 40, borderRadius: 12,
-                      background: 'rgba(79,70,229,0.1)', border: '1px solid rgba(79,70,229,0.25)',
+                      background: 'rgba(17,24,39,0.1)', border: '1px solid rgba(17,24,39,0.25)',
                       display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18,
                     }}>❓</div>
                     <h2 style={{
@@ -350,7 +346,7 @@ export default function ChooseSoftwareDevelopmentCompanyUSAClient() {
                       letterSpacing: '-0.03em', margin: 0,
                     }}>5. Fifteen Questions to Ask Before Signing a Contract</h2>
                   </div>
-                  <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 20 }}>
+                  <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 20 }}>
                     Print this list. Bring it to every discovery call. Any reputable agency will answer these without hesitation.
                   </p>
                   {[
@@ -375,7 +371,7 @@ export default function ChooseSoftwareDevelopmentCompanyUSAClient() {
                       padding: '10px 16px', borderRadius: 10,
                       background: 'rgba(0,0,0,0.015)', border: '1px solid rgba(0,0,0,0.03)',
                     }}>
-                      <span style={{ color: '#4F46E5', fontWeight: 700, fontSize: 13, marginTop: 2, flexShrink: 0, minWidth: 22 }}>{i + 1}.</span>
+                      <span style={{ color: '#111827', fontWeight: 700, fontSize: 13, marginTop: 2, flexShrink: 0, minWidth: 22 }}>{i + 1}.</span>
                       <span style={{ fontSize: 15, color: 'rgba(0,0,0,0.5)', lineHeight: 1.7 }}>{q}</span>
                     </div>
                   ))}
@@ -384,14 +380,14 @@ export default function ChooseSoftwareDevelopmentCompanyUSAClient() {
                 {/* Section 6: How Codazz Stands Apart */}
                 <div className="reveal" style={{ marginBottom: 56 }} id="codazz-difference">
                   <div style={{
-                    background: 'linear-gradient(135deg, rgba(79,70,229,0.1) 0%, rgba(0,0,0,0.015) 100%)', border: '1px solid rgba(79,70,229,0.3)',
+                    background: 'linear-gradient(135deg, rgba(17,24,39,0.1) 0%, rgba(0,0,0,0.015) 100%)', border: '1px solid rgba(17,24,39,0.3)',
                     borderRadius: 24, padding: 36, position: 'relative', overflow: 'hidden',
                   }}>
-                    <div style={{ position: 'absolute', top: -40, right: -40, width: 200, height: 200, background: 'radial-gradient(circle, rgba(79,70,229,0.15) 0%, transparent 70%)', filter: 'blur(30px)' }} />
+                    <div style={{ position: 'absolute', top: -40, right: -40, width: 200, height: 200, background: 'radial-gradient(circle, rgba(17,24,39,0.15) 0%, transparent 70%)', filter: 'blur(30px)' }} />
                     <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 24, position: 'relative', zIndex: 1 }}>
                       <div style={{
                         width: 48, height: 48, borderRadius: 14,
-                        background: 'rgba(79,70,229,0.1)', border: '1px solid rgba(79,70,229,0.3)',
+                        background: 'rgba(17,24,39,0.1)', border: '1px solid rgba(17,24,39,0.3)',
                         display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22,
                       }}>🍁</div>
                       <h2 style={{
@@ -399,7 +395,7 @@ export default function ChooseSoftwareDevelopmentCompanyUSAClient() {
                         letterSpacing: '-0.03em', margin: 0,
                       }}>6. How Codazz Stands Apart</h2>
                     </div>
-                    <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 16, position: 'relative', zIndex: 1 }}>
+                    <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 16, position: 'relative', zIndex: 1 }}>
                       We built Codazz specifically to solve the problems outlined in this guide. Every red flag listed above? We engineered our company to be the opposite. Here is what sets us apart:
                     </p>
                     {[
@@ -411,10 +407,10 @@ export default function ChooseSoftwareDevelopmentCompanyUSAClient() {
                     ].map((item, i) => (
                       <div key={i} style={{
                         padding: '16px 20px', borderRadius: 12, marginBottom: 10,
-                        background: 'rgba(79,70,229,0.06)', border: '1px solid rgba(79,70,229,0.15)',
+                        background: 'rgba(17,24,39,0.06)', border: '1px solid rgba(17,24,39,0.15)',
                         position: 'relative', zIndex: 1,
                       }}>
-                        <p style={{ fontSize: 14, fontWeight: 700, color: '#4F46E5', marginBottom: 4 }}>{item.title}</p>
+                        <p style={{ fontSize: 14, fontWeight: 700, color: '#111827', marginBottom: 4 }}>{item.title}</p>
                         <p style={{ fontSize: 14, color: 'rgba(0,0,0,0.5)', lineHeight: 1.7, margin: 0 }}>{item.desc}</p>
                       </div>
                     ))}
@@ -428,7 +424,7 @@ export default function ChooseSoftwareDevelopmentCompanyUSAClient() {
                   }}>
                     <div style={{
                       width: 40, height: 40, borderRadius: 12,
-                      background: 'rgba(79,70,229,0.1)', border: '1px solid rgba(79,70,229,0.25)',
+                      background: 'rgba(17,24,39,0.1)', border: '1px solid rgba(17,24,39,0.25)',
                       display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18,
                     }}>💰</div>
                     <h2 style={{
@@ -436,7 +432,7 @@ export default function ChooseSoftwareDevelopmentCompanyUSAClient() {
                       letterSpacing: '-0.03em', margin: 0,
                     }}>7. Average Costs by Project Type in the USA</h2>
                   </div>
-                  <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 20 }}>
+                  <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 20 }}>
                     These ranges reflect 2026 American market rates for quality onshore development. Prices below these ranges typically indicate offshore outsourcing or junior-only teams.
                   </p>
                   {[
@@ -452,8 +448,8 @@ export default function ChooseSoftwareDevelopmentCompanyUSAClient() {
                       padding: '16px 20px', borderRadius: 12, marginBottom: 8,
                       background: 'rgba(0,0,0,0.015)', border: '1px solid rgba(0,0,0,0.06)',
                     }}>
-                      <span style={{ fontSize: 15, color: 'rgba(0,0,0,0.55)', fontWeight: 500 }}>{item.type}</span>
-                      <span style={{ fontSize: 14, color: '#4F46E5', fontWeight: 700, whiteSpace: 'nowrap' }}>{item.range}</span>
+                      <span style={{ fontSize: 15, color: 'rgb(0,0,0)', fontWeight: 500 }}>{item.type}</span>
+                      <span style={{ fontSize: 14, color: '#111827', fontWeight: 700, whiteSpace: 'nowrap' }}>{item.range}</span>
                       <span style={{ fontSize: 13, color: 'rgba(0,0,0,0.4)', whiteSpace: 'nowrap' }}>{item.timeline}</span>
                     </div>
                   ))}
@@ -487,8 +483,8 @@ export default function ChooseSoftwareDevelopmentCompanyUSAClient() {
                           transition: 'all 0.15s',
                         }}
                           onMouseEnter={e => {
-                            (e.currentTarget as HTMLAnchorElement).style.color = '#4F46E5';
-                            (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(79,70,229,0.06)';
+                            (e.currentTarget as HTMLAnchorElement).style.color = '#111827';
+                            (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(17,24,39,0.06)';
                           }}
                           onMouseLeave={e => {
                             (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(0,0,0,0.4)';
@@ -514,9 +510,9 @@ export default function ChooseSoftwareDevelopmentCompanyUSAClient() {
                     <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
                       <div style={{
                         width: 44, height: 44, borderRadius: '50%',
-                        background: 'rgba(79,70,229,0.12)', border: '1px solid rgba(79,70,229,0.25)',
+                        background: 'rgba(17,24,39,0.12)', border: '1px solid rgba(17,24,39,0.25)',
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        fontSize: 14, fontWeight: 700, color: '#4F46E5', flexShrink: 0,
+                        fontSize: 14, fontWeight: 700, color: '#111827', flexShrink: 0,
                       }}>RM</div>
                       <div>
                         <p style={{ fontSize: 14, fontWeight: 600, color: '#111827', margin: 0 }}><a href="/about/raman-makkar" style={{ color: 'inherit', textDecoration: 'none', borderBottom: '1px solid rgba(0,0,0,0.1)' }}>Raman Makkar</a></p>
@@ -545,16 +541,16 @@ export default function ChooseSoftwareDevelopmentCompanyUSAClient() {
                           background: 'transparent', transition: 'all 0.2s',
                         }}
                           onMouseEnter={e => {
-                            (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(79,70,229,0.15)';
-                            (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(79,70,229,0.03)';
+                            (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(17,24,39,0.15)';
+                            (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(17,24,39,0.03)';
                           }}
                           onMouseLeave={e => {
                             (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(0,0,0,0.03)';
                             (e.currentTarget as HTMLAnchorElement).style.background = 'transparent';
                           }}
                         >
-                          <p style={{ fontSize: 11, color: '#4F46E5', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', margin: '0 0 6px' }}>{post.category}</p>
-                          <p style={{ fontSize: 13, color: 'rgba(0,0,0,0.55)', lineHeight: 1.4, margin: '0 0 8px', fontWeight: 600 }}>{post.title}</p>
+                          <p style={{ fontSize: 11, color: '#111827', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', margin: '0 0 6px' }}>{post.category}</p>
+                          <p style={{ fontSize: 13, color: 'rgb(0,0,0)', lineHeight: 1.4, margin: '0 0 8px', fontWeight: 600 }}>{post.title}</p>
                           <p style={{ fontSize: 12, color: 'rgba(0,0,0,0.25)', margin: 0 }}>{post.readTime} read</p>
                         </Link>
                       ))}
@@ -573,7 +569,7 @@ export default function ChooseSoftwareDevelopmentCompanyUSAClient() {
             <div
               className="reveal"
               style={{
-                background: 'rgba(79,70,229,0.04)', border: '1px solid rgba(79,70,229,0.15)',
+                background: 'rgba(17,24,39,0.04)', border: '1px solid rgba(17,24,39,0.15)',
                 borderRadius: 28, padding: '64px 56px',
                 display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                 flexWrap: 'wrap', gap: 32,
@@ -582,7 +578,7 @@ export default function ChooseSoftwareDevelopmentCompanyUSAClient() {
               <div>
                 <p style={{
                   fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                  color: '#4F46E5', marginBottom: 12,
+                  color: '#111827', marginBottom: 12,
                 }}>Get Started</p>
                 <h2 style={{
                   fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', fontWeight: 700, color: '#111827',
@@ -596,7 +592,7 @@ export default function ChooseSoftwareDevelopmentCompanyUSAClient() {
               </div>
               <Link href="/contact" style={{ textDecoration: 'none' }}>
                 <button style={{
-                  padding: '18px 40px', borderRadius: 100, background: '#4F46E5', color: '#fff',
+                  padding: '18px 40px', borderRadius: 100, background: '#111827', color: '#fff',
                   fontSize: 15, fontWeight: 700, border: 'none', cursor: 'pointer',
                   transition: 'all 0.2s', whiteSpace: 'nowrap',
                 }}>

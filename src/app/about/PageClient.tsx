@@ -4,6 +4,10 @@ import { useRef, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
+import { Globe } from '@/components/ui/globe';
+import type { COBEOptions } from 'cobe';
+import { TeamSectionBlock } from '@/components/ui/team-section-block-shadcnui';
+import HeroBackground from '@/components/HeroBackground';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -137,6 +141,55 @@ const offices = [
   { city: 'Auckland', role: 'New Zealand', detail: 'Auckland Office', flag: '🇳🇿' },
 ];
 
+const CODAZZ_GLOBE: COBEOptions = {
+  width: 800,
+  height: 800,
+  onRender: () => {},
+  devicePixelRatio: 2,
+  phi: 0,
+  theta: 0.3,
+  dark: 0,
+  diffuse: 0.4,
+  mapSamples: 16000,
+  mapBrightness: 1.2,
+  baseColor: [1, 1, 1],
+  markerColor: [17 / 255, 24 / 255, 39 / 255],
+  glowColor: [0.95, 0.95, 0.95],
+  markers: [
+    // North America
+    { location: [40.7128, -74.006], size: 0.12 },   // New York (HQ)
+    { location: [34.0522, -118.2437], size: 0.06 },  // Los Angeles
+    { location: [41.8781, -87.6298], size: 0.06 },   // Chicago
+    { location: [37.7749, -122.4194], size: 0.06 },  // San Francisco
+    { location: [30.2672, -97.7431], size: 0.05 },   // Austin
+    { location: [25.7617, -80.1918], size: 0.05 },   // Miami
+    { location: [47.6062, -122.3321], size: 0.05 },  // Seattle
+    { location: [43.6532, -79.3832], size: 0.05 },   // Toronto
+    { location: [49.2827, -123.1207], size: 0.05 },  // Vancouver
+    // Middle East
+    { location: [25.2048, 55.2708], size: 0.1 },     // Dubai (HQ)
+    // Europe
+    { location: [51.5074, -0.1278], size: 0.07 },    // London
+    { location: [52.52, 13.405], size: 0.05 },       // Berlin
+    { location: [48.8566, 2.3522], size: 0.05 },     // Paris
+    { location: [41.9028, 12.4964], size: 0.04 },    // Rome
+    // Asia
+    { location: [19.076, 72.8777], size: 0.07 },     // Mumbai
+    { location: [1.3521, 103.8198], size: 0.06 },    // Singapore
+    { location: [35.6762, 139.6503], size: 0.05 },   // Tokyo
+    { location: [22.3193, 114.1694], size: 0.05 },    // Hong Kong
+    { location: [37.5665, 126.978], size: 0.04 },    // Seoul
+    // South America
+    { location: [-23.5505, -46.6333], size: 0.05 },  // São Paulo
+    { location: [-34.6037, -58.3816], size: 0.04 },  // Buenos Aires
+    // Africa
+    { location: [6.5244, 3.3792], size: 0.04 },      // Lagos
+    { location: [-1.2921, 36.8219], size: 0.04 },    // Nairobi
+    // Oceania
+    { location: [-33.8688, 151.2093], size: 0.05 },  // Sydney
+  ],
+};
+
 export default function AboutPage() {
   const pageRef = useReveal();
 
@@ -148,52 +201,67 @@ export default function AboutPage() {
 
         {/* ── HERO ── */}
         <section style={{ padding: 'clamp(120px, 12vw, 160px) 0 clamp(60px, 8vw, 100px)', position: 'relative', overflow: 'hidden' }}>
-          {/* Ambient glow */}
-          <div aria-hidden="true" style={{
-            position: 'absolute', top: -200, left: '30%',
-            width: 700, height: 700,
-            background: 'radial-gradient(circle, rgba(79,70,229,0.06) 0%, transparent 70%)',
-            pointerEvents: 'none',
-          }} />
+          <HeroBackground variant="right" />
           <div className="cb-container">
-            <div className="reveal" style={{ marginBottom: 24 }}>
-              <span style={{
-                fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                color: '#4F46E5',
-              }}>About Codazz</span>
-            </div>
-            <h1 className="reveal reveal-d1" style={{
-              fontSize: 'clamp(3rem, 7vw, 6rem)', fontWeight: 800, color: '#111827',
-              lineHeight: 1.0, letterSpacing: '-0.05em', marginBottom: 32, maxWidth: 900,
-            }}>
-              We Build Software<br />That Matters.
-            </h1>
-            <p className="reveal reveal-d2" style={{
-              fontSize: 20, color: 'rgba(0,0,0,0.45)', lineHeight: 1.7,
-              maxWidth: 600, marginBottom: 56,
-            }}>
-              Headquartered in New York and Dubai. Founded by Raman Makkar in 2018. We handpick the best engineers from around the world and run 99% of meetings virtually — faster kick-offs, zero travel overhead, and a greener way to build world-class software.
-            </p>
-            <div className="reveal reveal-d3" style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
-              <Link href="/contact" style={{ textDecoration: 'none' }}>
-                <button style={{
-                  padding: '16px 36px', borderRadius: 100, background: '#4F46E5', color: '#fff',
-                  fontSize: 15, fontWeight: 700, border: 'none', cursor: 'pointer',
-                  transition: 'all 0.2s',
+            <div style={{ display: 'grid', gap: 40, alignItems: 'center' }} className="about-hero-grid">
+              {/* Text */}
+              <div>
+                <div className="reveal" style={{ marginBottom: 24 }}>
+                  <span style={{
+                    fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
+                    color: '#111827',
+                  }}>About Codazz</span>
+                </div>
+                <h1 className="reveal reveal-d1" style={{
+                  fontSize: 'clamp(3rem, 7vw, 5rem)', fontWeight: 800, color: '#111827',
+                  lineHeight: 1.0, letterSpacing: '-0.05em', marginBottom: 32, maxWidth: 600,
                 }}>
-                  Work With Us
-                </button>
-              </Link>
-              <Link href="/case-studies" style={{ textDecoration: 'none' }}>
-                <button style={{
-                  padding: '16px 36px', borderRadius: 100,
-                  background: 'rgba(0,0,0,0.03)', color: 'rgba(0,0,0,0.55)',
-                  fontSize: 15, fontWeight: 600, border: '1px solid rgba(0,0,0,0.08)', cursor: 'pointer',
-                  transition: 'all 0.2s',
+                  We Build Software<br />That Matters.
+                </h1>
+                <p className="reveal reveal-d2" style={{
+                  fontSize: 18, color: 'rgba(0,0,0,0.45)', lineHeight: 1.7,
+                  maxWidth: 520, marginBottom: 40,
                 }}>
-                  See Our Work
-                </button>
-              </Link>
+                  Headquartered in New York and Dubai. Founded by Raman Makkar in 2018. We handpick the best engineers from around the world and run 99% of meetings virtually — faster kick-offs, zero travel overhead, and a greener way to build world-class software.
+                </p>
+                <div className="reveal reveal-d3" style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+                  <Link href="/contact" style={{ textDecoration: 'none' }}>
+                    <button style={{
+                      padding: '16px 36px', borderRadius: 100, background: '#111827', color: '#fff',
+                      fontSize: 15, fontWeight: 700, border: 'none', cursor: 'pointer',
+                      transition: 'all 0.2s',
+                    }}>
+                      Work With Us
+                    </button>
+                  </Link>
+                  <Link href="/case-studies" style={{ textDecoration: 'none' }}>
+                    <button style={{
+                      padding: '16px 36px', borderRadius: 100,
+                      background: 'rgba(0,0,0,0.03)', color: 'rgb(0,0,0)',
+                      fontSize: 15, fontWeight: 600, border: '1px solid rgba(0,0,0,0.08)', cursor: 'pointer',
+                      transition: 'all 0.2s',
+                    }}>
+                      See Our Work
+                    </button>
+                  </Link>
+                </div>
+              </div>
+              {/* Globe */}
+              <div className="reveal reveal-d2" style={{ position: 'relative', width: '100%', maxWidth: 500, aspectRatio: '1/1', margin: '0 auto' }}>
+                <Globe config={CODAZZ_GLOBE} />
+                {/* Labels */}
+                <div style={{ position: 'absolute', top: '18%', left: '8%', display: 'flex', alignItems: 'center', gap: 6, pointerEvents: 'none' }}>
+                  <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#111827', boxShadow: '0 0 8px rgba(17,24,39,0.5)' }} />
+                  <span style={{ fontSize: 10, fontWeight: 700, color: 'rgba(0,0,0,0.35)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>New York HQ</span>
+                </div>
+                <div style={{ position: 'absolute', top: '35%', right: '5%', display: 'flex', alignItems: 'center', gap: 6, pointerEvents: 'none' }}>
+                  <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#111827', boxShadow: '0 0 8px rgba(17,24,39,0.5)' }} />
+                  <span style={{ fontSize: 10, fontWeight: 700, color: 'rgba(0,0,0,0.35)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>Dubai HQ</span>
+                </div>
+                <div style={{ position: 'absolute', bottom: '10%', left: '50%', transform: 'translateX(-50%)', textAlign: 'center', pointerEvents: 'none' }}>
+                  <span style={{ fontSize: 11, fontWeight: 700, color: 'rgba(0,0,0,0.2)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>46 Locations · 24 Countries</span>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -233,7 +301,7 @@ export default function AboutPage() {
                   }}
                 >
                   <p style={{
-                    fontSize: 'clamp(2rem, 4vw, 3.2rem)', fontWeight: 800, color: '#4F46E5',
+                    fontSize: 'clamp(2rem, 4vw, 3.2rem)', fontWeight: 800, color: '#111827',
                     letterSpacing: '-0.04em', margin: '0 0 8px',
                   }}>{stat.value}</p>
                   <p style={{ fontSize: 13, color: 'rgba(0,0,0,0.4)', margin: 0, fontWeight: 500 }}>{stat.label}</p>
@@ -284,7 +352,7 @@ export default function AboutPage() {
                   {/* Vertical line */}
                   <div aria-hidden="true" style={{
                     position: 'absolute', left: 0, top: 12, bottom: 12,
-                    width: 1, background: 'linear-gradient(to bottom, #4F46E5, rgba(79,70,229,0.1))',
+                    width: 1, background: 'linear-gradient(to bottom, #111827, rgba(17,24,39,0.1))',
                   }} />
                   {timeline.map((item, i) => (
                     <div key={item.year} style={{
@@ -294,12 +362,12 @@ export default function AboutPage() {
                       <div style={{
                         position: 'absolute', left: -38, top: 4,
                         width: 10, height: 10, borderRadius: '50%',
-                        background: i === timeline.length - 1 ? '#4F46E5' : 'rgba(79,70,229,0.4)',
-                        border: `2px solid ${i === timeline.length - 1 ? '#4F46E5' : 'rgba(79,70,229,0.2)'}`,
+                        background: i === timeline.length - 1 ? '#111827' : 'rgba(17,24,39,0.4)',
+                        border: `2px solid ${i === timeline.length - 1 ? '#111827' : 'rgba(17,24,39,0.2)'}`,
                       }} />
                       <div>
                         <span style={{
-                          fontSize: 12, fontWeight: 800, color: '#4F46E5',
+                          fontSize: 12, fontWeight: 800, color: '#111827',
                           letterSpacing: '0.05em', display: 'block', marginBottom: 4,
                         }}>{item.year}</span>
                         <p style={{
@@ -330,8 +398,8 @@ export default function AboutPage() {
             }}>
               Our Values
             </h2>
-            <div style={{
-              display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 20,
+            <div className="values-grid" style={{
+              display: 'grid', gap: 20,
             }}>
               {values.map((val, i) => (
                 <div
@@ -344,8 +412,8 @@ export default function AboutPage() {
                     cursor: 'default',
                   }}
                   onMouseEnter={e => {
-                    (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(79,70,229,0.2)';
-                    (e.currentTarget as HTMLDivElement).style.background = 'rgba(79,70,229,0.03)';
+                    (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(17,24,39,0.2)';
+                    (e.currentTarget as HTMLDivElement).style.background = 'rgba(17,24,39,0.03)';
                     (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-4px)';
                   }}
                   onMouseLeave={e => {
@@ -389,51 +457,7 @@ export default function AboutPage() {
             }}>
               The best engineers from around the world, working virtually across 46 locations in 24 countries to deliver world-class technology to every builder.
             </p>
-            <div style={{
-              display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: 20,
-            }}>
-              {team.map((member, i) => (
-                <div
-                  key={member.name}
-                  className={`reveal reveal-d${i + 1}`}
-                  style={{
-                    background: 'rgba(0,0,0,0.015)', border: '1px solid rgba(0,0,0,0.06)',
-                    borderRadius: 24, padding: 32, textAlign: 'center',
-                    transition: 'all 0.3s cubic-bezier(0.16,1,0.3,1)',
-                  }}
-                  onMouseEnter={e => {
-                    (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(79,70,229,0.2)';
-                    (e.currentTarget as HTMLDivElement).style.background = 'rgba(79,70,229,0.03)';
-                    (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-4px)';
-                  }}
-                  onMouseLeave={e => {
-                    (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(0,0,0,0.06)';
-                    (e.currentTarget as HTMLDivElement).style.background = 'rgba(0,0,0,0.015)';
-                    (e.currentTarget as HTMLDivElement).style.transform = 'translateY(0)';
-                  }}
-                >
-                  {/* Avatar */}
-                  <div style={{
-                    width: 72, height: 72, borderRadius: '50%', margin: '0 auto 20px',
-                    background: 'rgba(79,70,229,0.1)', border: '2px solid rgba(79,70,229,0.2)',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    fontSize: 22, fontWeight: 800, color: '#4F46E5',
-                  }}>
-                    {member.initials}
-                  </div>
-                  <h3 style={{
-                    fontSize: 16, fontWeight: 700, color: '#111827',
-                    letterSpacing: '-0.02em', marginBottom: 6,
-                  }}>{member.name}</h3>
-                  <p style={{ fontSize: 13, color: '#4F46E5', fontWeight: 600, marginBottom: 14 }}>
-                    {member.role}
-                  </p>
-                  <p style={{ fontSize: 13, color: 'rgba(0,0,0,0.4)', lineHeight: 1.6, margin: 0 }}>
-                    {member.bio}
-                  </p>
-                </div>
-              ))}
-            </div>
+            <TeamSectionBlock />
           </div>
         </section>
 
@@ -466,19 +490,19 @@ export default function AboutPage() {
                   key={office.city}
                   className={`reveal reveal-d${Math.min(i + 1, 6)}`}
                   style={{
-                    background: office.role === 'HQ' ? 'rgba(79,70,229,0.04)' : 'rgba(0,0,0,0.015)',
-                    border: `1px solid ${office.role === 'HQ' ? 'rgba(79,70,229,0.15)' : 'rgba(0,0,0,0.06)'}`,
+                    background: office.role === 'HQ' ? 'rgba(17,24,39,0.04)' : 'rgba(0,0,0,0.015)',
+                    border: `1px solid ${office.role === 'HQ' ? 'rgba(17,24,39,0.15)' : 'rgba(0,0,0,0.06)'}`,
                     borderRadius: 20, padding: '24px 20px',
                     transition: 'all 0.3s cubic-bezier(0.16,1,0.3,1)',
                   }}
                   onMouseEnter={e => {
-                    (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(79,70,229,0.2)';
-                    (e.currentTarget as HTMLDivElement).style.background = 'rgba(79,70,229,0.03)';
+                    (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(17,24,39,0.2)';
+                    (e.currentTarget as HTMLDivElement).style.background = 'rgba(17,24,39,0.03)';
                     (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-4px)';
                   }}
                   onMouseLeave={e => {
-                    (e.currentTarget as HTMLDivElement).style.borderColor = office.role === 'HQ' ? 'rgba(79,70,229,0.15)' : 'rgba(0,0,0,0.06)';
-                    (e.currentTarget as HTMLDivElement).style.background = office.role === 'HQ' ? 'rgba(79,70,229,0.04)' : 'rgba(0,0,0,0.015)';
+                    (e.currentTarget as HTMLDivElement).style.borderColor = office.role === 'HQ' ? 'rgba(17,24,39,0.15)' : 'rgba(0,0,0,0.06)';
+                    (e.currentTarget as HTMLDivElement).style.background = office.role === 'HQ' ? 'rgba(17,24,39,0.04)' : 'rgba(0,0,0,0.015)';
                     (e.currentTarget as HTMLDivElement).style.transform = 'translateY(0)';
                   }}
                 >
@@ -486,7 +510,7 @@ export default function AboutPage() {
                   <h3 style={{ fontSize: 16, fontWeight: 700, color: '#111827', letterSpacing: '-0.02em', marginBottom: 4 }}>
                     {office.city}
                   </h3>
-                  <p style={{ fontSize: 11, fontWeight: 700, color: office.role === 'HQ' ? '#4F46E5' : 'rgba(0,0,0,0.35)', textTransform: 'uppercase', letterSpacing: '0.08em', margin: 0 }}>
+                  <p style={{ fontSize: 11, fontWeight: 700, color: office.role === 'HQ' ? '#111827' : 'rgba(0,0,0,0.35)', textTransform: 'uppercase', letterSpacing: '0.08em', margin: 0 }}>
                     {office.role}
                   </p>
                 </div>
@@ -494,8 +518,8 @@ export default function AboutPage() {
             </div>
             <div className="reveal reveal-d3" style={{ textAlign: 'center', marginTop: 40 }}>
               <Link href="/locations" style={{
-                fontSize: 15, fontWeight: 600, color: '#4F46E5', textDecoration: 'none',
-                borderBottom: '2px solid rgba(79,70,229,0.3)',
+                fontSize: 15, fontWeight: 600, color: '#111827', textDecoration: 'none',
+                borderBottom: '2px solid rgba(17,24,39,0.3)',
                 paddingBottom: 2,
               }}>
                 View All 46 Locations →
@@ -520,12 +544,12 @@ export default function AboutPage() {
                 position: 'absolute', top: '50%', left: '50%',
                 transform: 'translate(-50%, -50%)',
                 width: 500, height: 500,
-                background: 'radial-gradient(circle, rgba(79,70,229,0.05) 0%, transparent 70%)',
+                background: 'radial-gradient(circle, rgba(17,24,39,0.05) 0%, transparent 70%)',
                 pointerEvents: 'none',
               }} />
               <span style={{
                 fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                color: '#4F46E5', display: 'block', marginBottom: 20, position: 'relative',
+                color: '#111827', display: 'block', marginBottom: 20, position: 'relative',
               }}>Join Our Clients</span>
               <h2 style={{
                 fontSize: 'clamp(2rem, 4.5vw, 3.8rem)', fontWeight: 800, color: '#111827',
@@ -542,7 +566,7 @@ export default function AboutPage() {
               <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap', position: 'relative' }}>
                 <Link href="/contact" style={{ textDecoration: 'none' }}>
                   <button style={{
-                    padding: '18px 44px', borderRadius: 100, background: '#4F46E5', color: '#fff',
+                    padding: '18px 44px', borderRadius: 100, background: '#111827', color: '#fff',
                     fontSize: 16, fontWeight: 700, border: 'none', cursor: 'pointer',
                     transition: 'all 0.2s',
                   }}>
@@ -552,7 +576,7 @@ export default function AboutPage() {
                 <Link href="/case-studies" style={{ textDecoration: 'none' }}>
                   <button style={{
                     padding: '18px 44px', borderRadius: 100,
-                    background: 'rgba(0,0,0,0.03)', color: 'rgba(0,0,0,0.55)',
+                    background: 'rgba(0,0,0,0.03)', color: 'rgb(0,0,0)',
                     fontSize: 16, fontWeight: 600, border: '1px solid rgba(0,0,0,0.08)', cursor: 'pointer',
                     transition: 'all 0.2s',
                   }}>

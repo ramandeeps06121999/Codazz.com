@@ -8,7 +8,7 @@ const steps = [
     duration: '1–2 days',
     desc: 'We deep-dive into your vision, market, and technical requirements. You get a detailed scope, timeline, and fixed-price proposal — no surprises.',
     icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#111827" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="11" cy="11" r="8" /><path d="M21 21l-4.35-4.35" />
       </svg>
     ),
@@ -20,7 +20,7 @@ const steps = [
     duration: '1–2 weeks',
     desc: "Our designers craft pixel-perfect wireframes and high-fidelity prototypes. You see exactly what you're getting before a single line of code is written.",
     icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#111827" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 20h9" /><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
       </svg>
     ),
@@ -32,7 +32,7 @@ const steps = [
     duration: '4–10 weeks',
     desc: 'Agile sprints with weekly demos. You have full visibility into progress at every stage. Our engineers build clean, scalable, well-documented code.',
     icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#111827" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <polyline points="16 18 22 12 16 6" /><polyline points="8 6 2 12 8 18" />
       </svg>
     ),
@@ -44,7 +44,7 @@ const steps = [
     duration: '3–5 days',
     desc: 'Zero-downtime deployment with full monitoring setup. We handle App Store submission, cloud infrastructure, and hand over everything — docs, credentials, source code.',
     icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#111827" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M22 2L11 13" /><path d="M22 2L15 22l-4-9-9-4 20-7z" />
       </svg>
     ),
@@ -56,7 +56,7 @@ const steps = [
     duration: 'Ongoing',
     desc: 'Post-launch SLA support, performance optimisation, and feature iterations. Most clients keep us as their dedicated engineering partner for the long term.',
     icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#111827" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" /><polyline points="17 6 23 6 23 12" />
       </svg>
     ),
@@ -89,7 +89,7 @@ export default function ProcessSection() {
               <span style={{ color: 'rgba(0,0,0,0.2)' }}>In 5 Proven Steps.</span>
             </h2>
           </div>
-          <p style={{ fontSize: 17, color: 'rgba(0,0,0,0.55)', maxWidth: 360, lineHeight: 1.7, margin: 0 }}>
+          <p style={{ fontSize: 17, color: 'rgb(0,0,0)', maxWidth: 360, lineHeight: 1.7, margin: 0 }}>
             A battle-tested process refined across 500+ projects — giving you full visibility and zero surprises.
           </p>
         </div>
@@ -103,7 +103,7 @@ export default function ProcessSection() {
             top: 28,
             bottom: 28,
             width: 1,
-            background: 'linear-gradient(to bottom, transparent, rgba(79,70,229,0.3) 20%, rgba(79,70,229,0.3) 80%, transparent)',
+            background: 'linear-gradient(to bottom, transparent, rgba(17,24,39,0.3) 20%, rgba(17,24,39,0.3) 80%, transparent)',
             zIndex: 0,
           }} />
 
@@ -123,11 +123,11 @@ export default function ProcessSection() {
                   position: 'relative',
                 }}
                 onMouseEnter={e => {
-                  e.currentTarget.style.background = 'rgba(79,70,229,0.03)';
-                  e.currentTarget.style.borderColor = 'rgba(79,70,229,0.2)';
+                  e.currentTarget.style.background = 'rgba(17,24,39,0.03)';
+                  e.currentTarget.style.borderColor = 'rgba(17,24,39,0.2)';
                   e.currentTarget.style.boxShadow = '0 20px 60px rgba(0,0,0,0.4)';
                   const circle = e.currentTarget.querySelector('.process-step-circle') as HTMLElement;
-                  if (circle) circle.style.boxShadow = '0 0 20px rgba(79,70,229,0.3)';
+                  if (circle) circle.style.boxShadow = '0 0 20px rgba(17,24,39,0.3)';
                 }}
                 onMouseLeave={e => {
                   e.currentTarget.style.background = 'rgba(0,0,0,0.015)';
@@ -141,17 +141,17 @@ export default function ProcessSection() {
                 <div className="process-step-circle" style={{
                   position: 'absolute', left: 16, top: '50%', transform: 'translateY(-50%)',
                   width: 48, height: 48, borderRadius: '50%',
-                  background: '#ffffff', border: '1px solid rgba(79,70,229,0.3)',
+                  background: '#ffffff', border: '1px solid rgba(17,24,39,0.3)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   zIndex: 1,
                   transition: 'all 0.3s ease',
                 }}>
-                  <span style={{ fontSize: 11, fontWeight: 800, color: '#4F46E5', letterSpacing: '0.05em' }}>{step.num}</span>
+                  <span style={{ fontSize: 11, fontWeight: 800, color: '#111827', letterSpacing: '0.05em' }}>{step.num}</span>
                 </div>
 
                 {/* Icon */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 12, alignItems: 'flex-start', flexShrink: 0 }}>
-                  <div style={{ width: 48, height: 48, borderRadius: 14, background: 'rgba(79,70,229,0.08)', border: '1px solid rgba(79,70,229,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <div style={{ width: 48, height: 48, borderRadius: 14, background: 'rgba(17,24,39,0.08)', border: '1px solid rgba(17,24,39,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     {step.icon}
                   </div>
                 </div>
@@ -159,15 +159,15 @@ export default function ProcessSection() {
                 {/* Title + Desc */}
                 <div>
                   <h3 style={{ fontSize: 'clamp(18px, 3.5vw, 22px)', fontWeight: 600, color: '#111827', marginBottom: 10, letterSpacing: '-0.02em' }}>{step.title}</h3>
-                  <p style={{ fontSize: 'clamp(14px, 2.5vw, 15px)', color: 'rgba(0,0,0,0.55)', lineHeight: 1.7, margin: 0 }}>{step.desc}</p>
+                  <p style={{ fontSize: 'clamp(14px, 2.5vw, 15px)', color: 'rgb(0,0,0)', lineHeight: 1.7, margin: 0 }}>{step.desc}</p>
                 </div>
 
                 {/* Checklist */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                   {step.items.map(item => (
                     <div key={item} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                      <div style={{ width: 18, height: 18, borderRadius: '50%', background: 'rgba(79,70,229,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg>
+                      <div style={{ width: 18, height: 18, borderRadius: '50%', background: 'rgba(17,24,39,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#111827" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg>
                       </div>
                       <span style={{ fontSize: 13, color: 'rgba(0,0,0,0.4)', fontWeight: 500 }}>{item}</span>
                     </div>
@@ -176,7 +176,7 @@ export default function ProcessSection() {
 
                 {/* Duration badge */}
                 <div style={{ display: 'flex', justifyContent: 'flex-end' }} className="process-duration">
-                  <div style={{ padding: '10px 20px', border: '1px solid rgba(0,0,0,0.06)', borderRadius: 100, fontSize: 13, fontWeight: 600, color: 'rgba(0,0,0,0.55)', whiteSpace: 'nowrap' }}>
+                  <div style={{ padding: '10px 20px', border: '1px solid rgba(0,0,0,0.06)', borderRadius: 100, fontSize: 13, fontWeight: 600, color: 'rgb(0,0,0)', whiteSpace: 'nowrap' }}>
                     ⏱ {step.duration}
                   </div>
                 </div>

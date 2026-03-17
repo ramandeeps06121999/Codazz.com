@@ -30,7 +30,7 @@ export default function IndustriesSection() {
             <h2 style={{ fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', fontWeight: 500, color: '#111827', letterSpacing: '-0.04em', lineHeight: 1.05, margin: 0 }}>
               Domain Experts.<br /><span style={{ color: 'rgba(0,0,0,0.2)' }}>Strategic Partners.</span>
             </h2>
-            <p style={{ fontSize: 17, color: 'rgba(0,0,0,0.55)', lineHeight: 1.7, margin: 0 }}>
+            <p style={{ fontSize: 17, color: 'rgb(0,0,0)', lineHeight: 1.7, margin: 0 }}>
               Deep domain knowledge combined with world-class engineering — we build market leaders, not just software.
             </p>
           </div>
@@ -40,7 +40,7 @@ export default function IndustriesSection() {
           {industries.map((ind, i) => (
             <div key={ind.name} className={`reveal reveal-d${Math.min(i + 1, 6)}`}
               style={{ padding: 'clamp(20px, 4vw, 48px)', border: '1px solid rgba(0,0,0,0.06)', borderRadius: 'clamp(20px, 5vw, 36px)', display: 'flex', flexDirection: 'column', gap: 'clamp(16px, 3vw, 24px)', transition: 'all 0.4s ease', cursor: 'default' }}
-              onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(79,70,229,0.25)'; e.currentTarget.style.background = 'rgba(79,70,229,0.03)'; e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 24px 60px rgba(0,0,0,0.5), 0 0 40px rgba(79,70,229,0.08)'; }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(17,24,39,0.25)'; e.currentTarget.style.background = 'rgba(17,24,39,0.03)'; e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 24px 60px rgba(0,0,0,0.5), 0 0 40px rgba(17,24,39,0.08)'; }}
               onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(0,0,0,0.06)'; e.currentTarget.style.background = 'transparent'; e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}
             >
               <div style={{ width: 52, height: 52, borderRadius: 16, background: 'rgba(0,0,0,0.03)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -48,7 +48,7 @@ export default function IndustriesSection() {
               </div>
               <div>
                 <h4 style={{ fontSize: 20, fontWeight: 600, color: '#111827', marginBottom: 10, letterSpacing: '-0.02em' }}>{ind.name}</h4>
-                <p style={{ fontSize: 14, color: 'rgba(0,0,0,0.55)', lineHeight: 1.7, margin: 0 }}>{ind.desc}</p>
+                <p style={{ fontSize: 14, color: 'rgb(0,0,0)', lineHeight: 1.7, margin: 0 }}>{ind.desc}</p>
               </div>
               <div style={{ marginTop: 'auto', display: 'flex', alignItems: 'center', gap: 6, color: 'rgba(0,0,0,0.2)', fontSize: 11, fontWeight: 700, letterSpacing: '0.08em' }}>
                 LEARN MORE

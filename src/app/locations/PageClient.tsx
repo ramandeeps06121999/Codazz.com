@@ -26,8 +26,8 @@ const cardBase: React.CSSProperties = {
 };
 
 const cardHover: React.CSSProperties = {
-  borderColor: 'rgba(79,70,229,0.2)',
-  background: 'rgba(79,70,229,0.03)',
+  borderColor: 'rgba(17,24,39,0.2)',
+  background: 'rgba(17,24,39,0.03)',
   transform: 'translateY(-4px)',
   boxShadow: '0 24px 60px rgba(0,0,0,0.06)',
 };
@@ -136,21 +136,21 @@ export default function LocationsIndexPage() {
         {/* HERO */}
         <section ref={heroRef} className="section-padding loc-city-hero" style={{ position: 'relative', overflow: 'hidden', minHeight: '70vh', display: 'flex', alignItems: 'center' }}>
           <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px)', backgroundSize: '60px 60px', zIndex: 0 }} />
-          <div style={{ position: 'absolute', top: '20%', left: '50%', transform: 'translateX(-50%)', width: 600, height: 600, background: 'radial-gradient(circle, rgba(79,70,229,0.08) 0%, transparent 70%)', zIndex: 0, pointerEvents: 'none' }} />
+          <div style={{ position: 'absolute', top: '20%', left: '50%', transform: 'translateX(-50%)', width: 600, height: 600, background: 'radial-gradient(circle, rgba(17,24,39,0.08) 0%, transparent 70%)', zIndex: 0, pointerEvents: 'none' }} />
           <div className="cb-container" style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: 860, margin: '0 auto' }}>
-            <div className="reveal" style={{ display: 'inline-block', border: '1px solid rgba(79,70,229,0.4)', borderRadius: 999, padding: '6px 20px', fontSize: 13, color: '#4F46E5', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>
+            <div className="reveal" style={{ display: 'inline-block', border: '1px solid rgba(17,24,39,0.4)', borderRadius: 999, padding: '6px 20px', fontSize: 13, color: '#111827', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>
               Our Locations
             </div>
             <h1 className="reveal" style={{ fontSize: 'clamp(2.6rem, 6vw, 5rem)', fontWeight: 800, lineHeight: 1.1, marginBottom: '1.5rem', letterSpacing: '-0.02em' }}>
-              <span style={{ color: '#4F46E5' }}>46 Locations</span> Across 24 Countries
+              <span style={{ color: '#111827' }}>46 Locations</span> Across 24 Countries
             </h1>
-            <p className="reveal" style={{ fontSize: '1.2rem', color: 'rgba(0,0,0,0.55)', marginBottom: '2.5rem', lineHeight: 1.7, maxWidth: 640, margin: '0 auto 2.5rem' }}>
+            <p className="reveal" style={{ fontSize: '1.2rem', color: 'rgb(0,0,0)', marginBottom: '2.5rem', lineHeight: 1.7, maxWidth: 640, margin: '0 auto 2.5rem' }}>
               From New York to Tokyo, Dubai to São Paulo, London to Lagos — Codazz brings world-class software development to businesses across 24 countries. Local expertise, truly global reach.
             </p>
             <div className="reveal loc-city-hero-stats" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem', maxWidth: 600, margin: '0 auto' }}>
               {[['46', 'Locations'], ['24', 'Countries'], ['Global', 'Coverage']].map(([val, label]) => (
                 <div key={label} style={{ textAlign: 'center' }}>
-                  <div style={{ fontSize: '1.6rem', fontWeight: 800, color: '#4F46E5' }}>{val}</div>
+                  <div style={{ fontSize: '1.6rem', fontWeight: 800, color: '#111827' }}>{val}</div>
                   <div style={{ fontSize: '0.8rem', color: 'rgba(0,0,0,0.25)', marginTop: 4, letterSpacing: '0.05em' }}>{label}</div>
                 </div>
               ))}
@@ -163,7 +163,7 @@ export default function LocationsIndexPage() {
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
               <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '1rem' }}>Find Us Near You</h2>
-              <p style={{ color: 'rgba(0,0,0,0.55)', fontSize: '1.1rem' }}>Select a city to learn more about our local presence and services.</p>
+              <p style={{ color: 'rgb(0,0,0)', fontSize: '1.1rem' }}>Select a city to learn more about our local presence and services.</p>
             </div>
             <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 480px), 1fr))', gap: 'clamp(1rem, 2vw, 1.5rem)' }}>
               {cities.map(city => (
@@ -172,12 +172,12 @@ export default function LocationsIndexPage() {
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.75rem' }}>
                       <h3 style={{ fontWeight: 700, fontSize: '1.3rem' }}>{city.name}</h3>
                       {city.isHQ && (
-                        <span style={{ background: 'rgba(79,70,229,0.1)', borderRadius: 8, padding: '4px 12px', fontSize: 12, color: '#4F46E5', letterSpacing: '0.05em', whiteSpace: 'nowrap' }}>HQ</span>
+                        <span style={{ background: 'rgba(17,24,39,0.1)', borderRadius: 8, padding: '4px 12px', fontSize: 12, color: '#111827', letterSpacing: '0.05em', whiteSpace: 'nowrap' }}>HQ</span>
                       )}
                     </div>
                     <p style={{ color: 'rgba(0,0,0,0.4)', fontSize: '0.85rem', marginBottom: '0.5rem' }}>{({ UAE: 'UAE', UK: `${city.state}, UK`, AU: `${city.state}, Australia`, CA: `${city.state}, Canada`, SA: 'Saudi Arabia', QA: 'Qatar', SG: 'Singapore', DE: `${city.state}, Germany`, IN: `${city.state}, India`, JP: 'Japan', KR: 'South Korea', NL: 'Netherlands', IE: 'Ireland', IL: 'Israel', PL: 'Poland', BR: 'Brazil', MX: 'Mexico', NG: 'Nigeria', KE: 'Kenya', VN: 'Vietnam', EG: 'Egypt', NZ: 'New Zealand', CH: 'Switzerland' } as Record<string, string>)[city.country] || city.state}</p>
-                    <p style={{ color: 'rgba(0,0,0,0.55)', fontSize: '0.95rem', lineHeight: 1.6 }}>{city.tagline}</p>
-                    <div style={{ color: '#4F46E5', fontSize: '0.9rem', marginTop: '1rem', fontWeight: 600 }}>Learn more &rarr;</div>
+                    <p style={{ color: 'rgb(0,0,0)', fontSize: '0.95rem', lineHeight: 1.6 }}>{city.tagline}</p>
+                    <div style={{ color: '#111827', fontSize: '0.9rem', marginTop: '1rem', fontWeight: 600 }}>Learn more &rarr;</div>
                   </Card>
                 </Link>
               ))}
@@ -201,7 +201,7 @@ export default function LocationsIndexPage() {
               <a href="/contact" style={{
                 display: 'inline-flex', alignItems: 'center', gap: 8,
                 height: 48, padding: '0 28px', borderRadius: 100,
-                background: '#4F46E5', color: '#fff', fontSize: 14, fontWeight: 700,
+                background: '#111827', color: '#fff', fontSize: 14, fontWeight: 700,
                 textDecoration: 'none',
               }}>
                 Schedule a Call
@@ -218,13 +218,13 @@ export default function LocationsIndexPage() {
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', maxWidth: 700, margin: '0 auto' }}>
               <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 800, lineHeight: 1.15, marginBottom: '1.5rem' }}>
-                Ready to Build <span style={{ color: '#4F46E5' }}>Something Great?</span>
+                Ready to Build <span style={{ color: '#111827' }}>Something Great?</span>
               </h2>
-              <p style={{ color: 'rgba(0,0,0,0.55)', fontSize: '1.15rem', marginBottom: '2.5rem', lineHeight: 1.7 }}>
+              <p style={{ color: 'rgb(0,0,0)', fontSize: '1.15rem', marginBottom: '2.5rem', lineHeight: 1.7 }}>
                 No matter where you are, our team is ready to bring your vision to life.
               </p>
               <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                <Link href="/contact" style={{ background: '#4F46E5', color: '#fff', padding: '16px 36px', borderRadius: 999, fontWeight: 700, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
+                <Link href="/contact" style={{ background: '#111827', color: '#fff', padding: '16px 36px', borderRadius: 999, fontWeight: 700, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
                   Get a Free Quote
                 </Link>
                 <Link href="/services/mobile-app-development" style={{ border: '1px solid rgba(0,0,0,0.1)', color: '#111827', padding: '16px 36px', borderRadius: 999, fontWeight: 600, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>

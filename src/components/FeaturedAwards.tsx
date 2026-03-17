@@ -60,28 +60,27 @@ const awards = [
   },
 ];
 
-function AwardCard({ award, i }: { award: typeof awards[number]; i: number }) {
+function AwardCard({ award }: { award: typeof awards[number] }) {
   return (
     <div
-      className={`reveal-d${Math.min(i + 1, 6)} awards-card`}
       style={{
         display: 'flex',
-        flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'center',
         gap: 14,
-        padding: '28px 20px',
+        padding: '16px 24px',
         border: '1px solid rgba(0,0,0,0.06)',
-        borderRadius: 20,
+        borderRadius: 14,
         background: 'rgba(0,0,0,0.015)',
+        whiteSpace: 'nowrap',
+        flexShrink: 0,
         transition: 'all 0.35s ease',
         cursor: 'default',
       }}
       onMouseEnter={e => {
-        e.currentTarget.style.borderColor = 'rgba(79,70,229,0.25)';
-        e.currentTarget.style.background = 'rgba(79,70,229,0.04)';
-        e.currentTarget.style.transform = 'translateY(-4px)';
-        e.currentTarget.style.boxShadow = '0 16px 40px rgba(0,0,0,0.4)';
+        e.currentTarget.style.borderColor = 'rgba(17,24,39,0.25)';
+        e.currentTarget.style.background = 'rgba(17,24,39,0.04)';
+        e.currentTarget.style.transform = 'translateY(-2px)';
+        e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.08)';
       }}
       onMouseLeave={e => {
         e.currentTarget.style.borderColor = 'rgba(0,0,0,0.06)';
@@ -90,7 +89,7 @@ function AwardCard({ award, i }: { award: typeof awards[number]; i: number }) {
         e.currentTarget.style.boxShadow = '';
       }}
     >
-      <div style={{ width: 80, height: 60, display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative' }}>
+      <div style={{ width: 44, height: 44, display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', flexShrink: 0 }}>
         <Image
           src={award.src}
           alt={award.name}
@@ -98,34 +97,49 @@ function AwardCard({ award, i }: { award: typeof awards[number]; i: number }) {
           style={{ objectFit: 'contain', filter: award.type === 'svg' ? 'brightness(0) invert(0.7)' : 'none' }}
         />
       </div>
-      <div style={{ textAlign: 'center' }}>
-        <div style={{ fontSize: 11, fontWeight: 700, color: 'rgba(0,0,0,0.45)', letterSpacing: '-0.01em', lineHeight: 1.3 }}>{award.name}</div>
-        <div style={{ fontSize: 10, fontWeight: 700, color: 'rgba(0,0,0,0.2)', textTransform: 'uppercase', letterSpacing: '0.1em', marginTop: 4 }}>{award.year}</div>
+      <div>
+        <div style={{ fontSize: 13, fontWeight: 600, color: '#111827', letterSpacing: '-0.01em', lineHeight: 1.3 }}>{award.name}</div>
+        <div style={{ fontSize: 10, fontWeight: 700, color: 'rgba(0,0,0,0.25)', textTransform: 'uppercase', letterSpacing: '0.1em', marginTop: 2 }}>{award.year}</div>
       </div>
     </div>
   );
 }
 
 export default function FeaturedAwards() {
-  const ref = useRef<HTMLElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const io = new IntersectionObserver(
       entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
       { threshold: 0.1 }
     );
-    ref.current?.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    sectionRef.current?.querySelectorAll('.reveal').forEach(el => io.observe(el));
     return () => io.disconnect();
   }, []);
 
+  // Pause animation on hover
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    const pause = () => { track.style.animationPlayState = 'paused'; };
+    const play = () => { track.style.animationPlayState = 'running'; };
+    track.addEventListener('mouseenter', pause);
+    track.addEventListener('mouseleave', play);
+    return () => {
+      track.removeEventListener('mouseenter', pause);
+      track.removeEventListener('mouseleave', play);
+    };
+  }, []);
+
   return (
-    <section ref={ref} id="awards" style={{ background: '#ffffff', padding: '80px 0 100px', borderTop: '1px solid rgba(0,0,0,0.06)', position: 'relative', overflow: 'hidden' }}>
+    <section ref={sectionRef} id="awards" style={{ background: '#ffffff', padding: '80px 0 100px', borderTop: '1px solid rgba(0,0,0,0.06)', position: 'relative', overflow: 'hidden' }}>
       {/* Subtle radial glow */}
-      <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: 800, height: 400, background: 'radial-gradient(ellipse, rgba(79,70,229,0.04) 0%, transparent 65%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: 800, height: 400, background: 'radial-gradient(ellipse, rgba(17,24,39,0.04) 0%, transparent 65%)', pointerEvents: 'none' }} />
 
       <div className="cb-container" style={{ position: 'relative', zIndex: 1 }}>
-
         {/* Header */}
-        <div className="reveal" style={{ textAlign: 'center', marginBottom: 60 }}>
+        <div className="reveal" style={{ textAlign: 'center', marginBottom: 48 }}>
           <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.25)', marginBottom: 16 }}>
             Recognition & Certifications
           </div>
@@ -133,42 +147,39 @@ export default function FeaturedAwards() {
             Trusted, Verified &<br /><span style={{ color: 'rgba(0,0,0,0.2)' }}>Globally Recognised.</span>
           </h2>
         </div>
+      </div>
 
-        {/* Awards grid - desktop only */}
-        <div className="reveal reveal-d1 awards-grid-desktop" style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: 12 }}
-          ref={el => {
-            if (!el) return;
-            const update = () => {
-              const w = el.offsetWidth;
-              el.style.gridTemplateColumns = w < 1200 ? 'repeat(4,1fr)' : 'repeat(6,1fr)';
-            };
-            update();
-            const ro = new ResizeObserver(update);
-            ro.observe(el);
+      {/* Single-line carousel */}
+      <div style={{ position: 'relative', width: '100%', overflow: 'hidden' }}>
+        {/* Fade edges */}
+        <div style={{ position: 'absolute', top: 0, left: 0, width: 80, height: '100%', background: 'linear-gradient(to right, #ffffff, transparent)', zIndex: 2, pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', top: 0, right: 0, width: 80, height: '100%', background: 'linear-gradient(to left, #ffffff, transparent)', zIndex: 2, pointerEvents: 'none' }} />
+
+        <div
+          ref={trackRef}
+          style={{
+            display: 'flex',
+            gap: 16,
+            width: 'max-content',
+            animation: 'awards-scroll 30s linear infinite',
           }}
         >
-          {awards.map((award, i) => (
-            <AwardCard key={award.name} award={award} i={i} />
+          {awards.map((award) => (
+            <AwardCard key={award.name} award={award} />
+          ))}
+          {/* Duplicate for seamless loop */}
+          {awards.map((award) => (
+            <AwardCard key={`dup-${award.name}`} award={award} />
           ))}
         </div>
       </div>
 
-      {/* Awards marquee - mobile only */}
-      <div className="awards-marquee-mobile">
-        <div className="awards-marquee-track">
-          {awards.map((award, i) => (
-            <div key={award.name} className="awards-marquee-item">
-              <AwardCard award={award} i={i} />
-            </div>
-          ))}
-          {/* Duplicate for seamless loop */}
-          {awards.map((award, i) => (
-            <div key={`dup-${award.name}`} className="awards-marquee-item" aria-hidden="true">
-              <AwardCard award={award} i={i} />
-            </div>
-          ))}
-        </div>
-      </div>
+      <style>{`
+        @keyframes awards-scroll {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+      `}</style>
     </section>
   );
 }

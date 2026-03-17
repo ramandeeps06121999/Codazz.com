@@ -4,6 +4,7 @@ import { useRef, useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
+import HeroBackground from '@/components/HeroBackground';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -50,12 +51,7 @@ export default function SaaSGuide2026Client() {
 
         {/* ── ARTICLE HERO ── */}
         <section style={{ padding: 'clamp(100px, 15vw, 140px) 0 clamp(32px, 5vw, 64px)', position: 'relative', overflow: 'hidden' }}>
-          <div style={{
-            position: 'absolute', top: -300, left: '50%', transform: 'translateX(-50%)',
-            width: 900, height: 900,
-            background: 'radial-gradient(circle, rgba(79,70,229,0.05) 0%, transparent 65%)',
-            pointerEvents: 'none',
-          }} />
+          <HeroBackground variant="left" />
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 24 }}>
               <Link href="/blog" style={{
@@ -73,7 +69,7 @@ export default function SaaSGuide2026Client() {
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
               <span className="reveal reveal-d1" style={{
                 fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                background: 'rgba(79,70,229,0.12)', color: '#4F46E5',
+                background: 'rgba(17,24,39,0.12)', color: '#111827',
                 padding: '5px 14px', borderRadius: 100,
               }}>Business</span>
               <span className="reveal reveal-d1" style={{ fontSize: 13, color: 'rgba(0,0,0,0.25)' }}>March 14, 2026</span>
@@ -114,9 +110,9 @@ export default function SaaSGuide2026Client() {
               <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
                 <div style={{
                   width: 48, height: 48, borderRadius: '50%',
-                  background: 'rgba(79,70,229,0.12)', border: '1px solid rgba(79,70,229,0.25)',
+                  background: 'rgba(17,24,39,0.12)', border: '1px solid rgba(17,24,39,0.25)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: 15, fontWeight: 700, color: '#4F46E5',
+                  fontSize: 15, fontWeight: 700, color: '#111827',
                 }}>RM</div>
                 <div>
                   <p style={{ fontSize: 15, fontWeight: 600, color: '#111827', margin: 0 }}>Raman Makkar</p>
@@ -138,8 +134,8 @@ export default function SaaSGuide2026Client() {
                 ))}
                 <button onClick={handleCopy} style={{
                   padding: '8px 16px', borderRadius: 100, border: '1px solid rgba(0,0,0,0.08)',
-                  background: copied ? 'rgba(79,70,229,0.1)' : 'rgba(0,0,0,0.02)',
-                  color: copied ? '#4F46E5' : 'rgba(0,0,0,0.45)',
+                  background: copied ? 'rgba(17,24,39,0.1)' : 'rgba(0,0,0,0.02)',
+                  color: copied ? '#111827' : 'rgba(0,0,0,0.45)',
                   fontSize: 12, fontWeight: 600, cursor: 'pointer',
                   transition: 'all 0.2s',
                 }}>
@@ -161,7 +157,7 @@ export default function SaaSGuide2026Client() {
                 {/* Intro */}
                 <div className="reveal" style={{ marginBottom: 56 }}>
                   <p style={{
-                    fontSize: 18, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8,
+                    fontSize: 18, color: 'rgb(0,0,0)', lineHeight: 1.8,
                     marginBottom: 20,
                   }}>
                     The Software as a Service (SaaS) landscape has shifted dramatically. What worked in 2022 no longer works in 2026. With the rise of advanced AI integrations, hyper-niche B2B solutions, and demanding user expectations, launching a generic tool won't cut it.
@@ -178,10 +174,10 @@ export default function SaaSGuide2026Client() {
                     }}>
                         What Exactly is a SaaS Business Model in 2026?
                     </h2>
-                    <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 16 }}>
+                    <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 16 }}>
                         At its core, SaaS is software hosted in the cloud that customers pay a recurring subscription (Monthly Recurring Revenue or MRR) to access.
                     </p>
-                    <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 20 }}>
+                    <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 20 }}>
                         In 2026, the definition has evolved. Modern SaaS isn't just about providing a digital tool; it's about providing an <strong>automated outcome</strong>. The most successful products today don't just organize data—they use AI to analyze it, act on it, and save the user hours of manual labor.
                     </p>
                     <div style={{
@@ -192,11 +188,11 @@ export default function SaaSGuide2026Client() {
                         <p style={{ fontSize: 15, color: 'rgba(0,0,0,0.5)', margin: 0 }}>Think Netflix or Spotify (high volume, low price).</p>
                     </div>
                     <div style={{
-                      background: 'rgba(79,70,229,0.04)', border: '1px solid rgba(79,70,229,0.15)',
+                      background: 'rgba(17,24,39,0.04)', border: '1px solid rgba(17,24,39,0.15)',
                       borderRadius: 16, padding: 24,
                     }}>
-                        <p style={{ fontSize: 16, color: '#4F46E5', margin: '0 0 8px', fontWeight: 600 }}>B2B SaaS (Business-to-Business):</p>
-                        <p style={{ fontSize: 15, color: 'rgba(0,0,0,0.55)', margin: 0 }}>Think Salesforce, Slack, or niche industry tools like software specifically for dental clinics (lower volume, high price). <strong>This is where the real money is made.</strong></p>
+                        <p style={{ fontSize: 16, color: '#111827', margin: '0 0 8px', fontWeight: 600 }}>B2B SaaS (Business-to-Business):</p>
+                        <p style={{ fontSize: 15, color: 'rgb(0,0,0)', margin: 0 }}>Think Salesforce, Slack, or niche industry tools like software specifically for dental clinics (lower volume, high price). <strong>This is where the real money is made.</strong></p>
                     </div>
                 </div>
 
@@ -207,7 +203,7 @@ export default function SaaSGuide2026Client() {
                     }}>
                         How SaaS Companies Actually Earn Money
                     </h2>
-                    <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 24 }}>
+                    <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 24 }}>
                         It sounds simple: charge a monthly fee. But pricing strategy is the difference between a side hustle and a scalable enterprise.
                     </p>
 
@@ -242,14 +238,14 @@ export default function SaaSGuide2026Client() {
                     }}>
                         The Biggest Mistake: Building Before Validating
                     </h2>
-                    <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 16 }}>
+                    <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 16 }}>
                         We see it constantly at Codazz: a founder spends $50,000 and six months building a massive application, only to launch it and realize nobody wants to pay for it.
                     </p>
                     <div style={{
-                      background: 'rgba(79,70,229,0.05)', border: '1px solid rgba(79,70,229,0.2)',
+                      background: 'rgba(17,24,39,0.05)', border: '1px solid rgba(17,24,39,0.2)',
                       borderRadius: 20, padding: 28, position: 'relative', overflow: 'hidden'
                     }}>
-                         <div style={{ position: 'absolute', top: -20, right: -20, width: 100, height: 100, background: 'radial-gradient(circle, rgba(79,70,229,0.1) 0%, transparent 70%)', filter: 'blur(20px)' }} />
+                         <div style={{ position: 'absolute', top: -20, right: -20, width: 100, height: 100, background: 'radial-gradient(circle, rgba(17,24,39,0.1) 0%, transparent 70%)', filter: 'blur(20px)' }} />
                         <p style={{ fontSize: 16, color: '#111827', lineHeight: 1.8, margin: 0, position: 'relative', zIndex: 1, fontWeight: 500 }}>
                             Before writing a single line of code, you need an <strong>MVP (Minimum Viable Product)</strong>. An MVP isn't a broken version of your app. It is the absolute <em>minimum</em> amount of features required to solve your customer's core problem and prove they are willing to pay.
                         </p>
@@ -263,16 +259,16 @@ export default function SaaSGuide2026Client() {
                     }}>
                         Custom Software vs. No-Code in 2026
                     </h2>
-                    <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 16 }}>
+                    <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 16 }}>
                         In 2026, "no-code" tools are powerful, but they have major limitations when building a serious, scalable SaaS.
                     </p>
-                    <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 24 }}>
+                    <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 24 }}>
                         If you are just testing an idea, a no-code wrapper might work for a few weeks. But if you are building an application that handles complex data, integrates proprietary AI, or needs to scale securely, you need custom architecture.
                     </p>
 
                     <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 24px', display: 'flex', flexDirection: 'column', gap: 16 }}>
                         <li style={{ display: 'flex', gap: 16 }}>
-                            <div style={{ width: 24, height: 24, borderRadius: '50%', background: 'rgba(79,70,229,0.1)', color: '#4F46E5', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 4 }}>
+                            <div style={{ width: 24, height: 24, borderRadius: '50%', background: 'rgba(17,24,39,0.1)', color: '#111827', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 4 }}>
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
                             </div>
                             <div>
@@ -281,7 +277,7 @@ export default function SaaSGuide2026Client() {
                             </div>
                         </li>
                         <li style={{ display: 'flex', gap: 16 }}>
-                            <div style={{ width: 24, height: 24, borderRadius: '50%', background: 'rgba(79,70,229,0.1)', color: '#4F46E5', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 4 }}>
+                            <div style={{ width: 24, height: 24, borderRadius: '50%', background: 'rgba(17,24,39,0.1)', color: '#111827', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 4 }}>
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
                             </div>
                             <div>
@@ -290,7 +286,7 @@ export default function SaaSGuide2026Client() {
                             </div>
                         </li>
                         <li style={{ display: 'flex', gap: 16 }}>
-                            <div style={{ width: 24, height: 24, borderRadius: '50%', background: 'rgba(79,70,229,0.1)', color: '#4F46E5', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 4 }}>
+                            <div style={{ width: 24, height: 24, borderRadius: '50%', background: 'rgba(17,24,39,0.1)', color: '#111827', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 4 }}>
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
                             </div>
                             <div>
@@ -311,13 +307,13 @@ export default function SaaSGuide2026Client() {
                     }}>
                         How Much Does it Cost?
                     </h2>
-                    <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 16 }}>
+                    <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 16 }}>
                         Transparency is key. Building a robust MVP with a professional agency in the USA is an investment in your business infrastructure.
                     </p>
-                    <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 16 }}>
+                    <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 16 }}>
                         While a simple informational website costs a few thousand dollars, a custom SaaS application (with user authentication, database architecture, payment gateways, and core features) typically ranges from <strong>$25,000 to $75,000+</strong> for an MVP.
                     </p>
-                    <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8 }}>
+                    <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8 }}>
                         Why? Because you aren't buying a template. You are hiring a team of engineers, designers, and project managers to architect a digital product that generates revenue passively.
                     </p>
                 </div>
@@ -347,8 +343,8 @@ export default function SaaSGuide2026Client() {
                           transition: 'all 0.15s',
                         }}
                           onMouseEnter={e => {
-                            (e.currentTarget as HTMLAnchorElement).style.color = '#4F46E5';
-                            (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(79,70,229,0.06)';
+                            (e.currentTarget as HTMLAnchorElement).style.color = '#111827';
+                            (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(17,24,39,0.06)';
                           }}
                           onMouseLeave={e => {
                             (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(0,0,0,0.4)';
@@ -373,9 +369,9 @@ export default function SaaSGuide2026Client() {
                     <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
                       <div style={{
                         width: 44, height: 44, borderRadius: '50%',
-                        background: 'rgba(79,70,229,0.12)', border: '1px solid rgba(79,70,229,0.25)',
+                        background: 'rgba(17,24,39,0.12)', border: '1px solid rgba(17,24,39,0.25)',
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        fontSize: 14, fontWeight: 700, color: '#4F46E5', flexShrink: 0,
+                        fontSize: 14, fontWeight: 700, color: '#111827', flexShrink: 0,
                       }}>RM</div>
                       <div>
                         <p style={{ fontSize: 14, fontWeight: 600, color: '#111827', margin: 0 }}>Raman Makkar</p>
@@ -404,16 +400,16 @@ export default function SaaSGuide2026Client() {
                           background: 'transparent', transition: 'all 0.2s',
                         }}
                           onMouseEnter={e => {
-                            (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(79,70,229,0.15)';
-                            (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(79,70,229,0.03)';
+                            (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(17,24,39,0.15)';
+                            (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(17,24,39,0.03)';
                           }}
                           onMouseLeave={e => {
                             (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(0,0,0,0.03)';
                             (e.currentTarget as HTMLAnchorElement).style.background = 'transparent';
                           }}
                         >
-                          <p style={{ fontSize: 11, color: '#4F46E5', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', margin: '0 0 6px' }}>{post.category}</p>
-                          <p style={{ fontSize: 13, color: 'rgba(0,0,0,0.55)', lineHeight: 1.4, margin: '0 0 8px', fontWeight: 600 }}>{post.title}</p>
+                          <p style={{ fontSize: 11, color: '#111827', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', margin: '0 0 6px' }}>{post.category}</p>
+                          <p style={{ fontSize: 13, color: 'rgb(0,0,0)', lineHeight: 1.4, margin: '0 0 8px', fontWeight: 600 }}>{post.title}</p>
                           <p style={{ fontSize: 12, color: 'rgba(0,0,0,0.25)', margin: 0 }}>{post.readTime} read</p>
                         </Link>
                       ))}
@@ -432,7 +428,7 @@ export default function SaaSGuide2026Client() {
             <div
               className="reveal"
               style={{
-                background: 'rgba(79,70,229,0.04)', border: '1px solid rgba(79,70,229,0.15)',
+                background: 'rgba(17,24,39,0.04)', border: '1px solid rgba(17,24,39,0.15)',
                 borderRadius: 28, padding: '64px 56px',
                 display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                 flexWrap: 'wrap', gap: 32,
@@ -441,7 +437,7 @@ export default function SaaSGuide2026Client() {
               <div>
                 <p style={{
                   fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                  color: '#4F46E5', marginBottom: 12,
+                  color: '#111827', marginBottom: 12,
                 }}>Start Building</p>
                 <h2 style={{
                   fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', fontWeight: 700, color: '#111827',
@@ -455,7 +451,7 @@ export default function SaaSGuide2026Client() {
               </div>
               <Link href="/contact" style={{ textDecoration: 'none' }}>
                 <button style={{
-                  padding: '18px 40px', borderRadius: 100, background: '#4F46E5', color: '#fff',
+                  padding: '18px 40px', borderRadius: 100, background: '#111827', color: '#fff',
                   fontSize: 15, fontWeight: 700, border: 'none', cursor: 'pointer',
                   transition: 'all 0.2s', whiteSpace: 'nowrap',
                 }}>
@@ -482,7 +478,7 @@ export default function SaaSGuide2026Client() {
                   textDecoration: 'none', transition: 'all 0.3s ease',
                   fontSize: 15, fontWeight: 600, color: '#111827', lineHeight: 1.5,
                 }}
-                onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(79,70,229,0.2)'; e.currentTarget.style.transform = 'translateY(-4px)'; }}
+                onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(17,24,39,0.2)'; e.currentTarget.style.transform = 'translateY(-4px)'; }}
                 onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(0,0,0,0.06)'; e.currentTarget.style.transform = 'translateY(0)'; }}
                 >
                   {post.title} →

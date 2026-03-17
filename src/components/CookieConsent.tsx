@@ -48,7 +48,7 @@ export default function CookieConsent() {
     >
       <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.8)', lineHeight: 1.7, margin: '0 0 16px' }}>
         We use cookies to enhance your experience and analyze site traffic. By clicking &quot;Accept&quot;, you consent to our use of cookies.{' '}
-        <Link href="/cookies" style={{ color: '#4F46E5', textDecoration: 'underline', textUnderlineOffset: 3 }}>
+        <Link href="/cookies" style={{ color: '#111827', textDecoration: 'underline', textUnderlineOffset: 3 }}>
           Learn more
         </Link>
       </p>
@@ -58,7 +58,7 @@ export default function CookieConsent() {
           style={{
             padding: '12px 24px',
             borderRadius: 100,
-            background: '#4F46E5',
+            background: '#111827',
             color: '#fff',
             fontSize: 14,
             fontWeight: 700,

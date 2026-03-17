@@ -3,6 +3,7 @@ import { useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import HeroBackground from '@/components/HeroBackground';
 import type { CityData } from '@/data/cities';
 
 // ─── REVEAL HOOK ─────────────────────────────────────────────────────────────
@@ -26,12 +27,12 @@ const sectionPad: React.CSSProperties = { padding: 'clamp(60px, 10vw, 120px) 0' 
 const sectionBorder: React.CSSProperties = { borderTop: '1px solid rgba(0,0,0,0.05)' };
 const heading2: React.CSSProperties = { fontSize: 'clamp(2.2rem, 4vw, 4rem)', fontWeight: 500, color: '#111827', letterSpacing: '-0.04em', lineHeight: 1.05, margin: 0 };
 const subLabel: React.CSSProperties = { fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: 'rgba(0,0,0,0.25)', marginBottom: 20 };
-const bodyText: React.CSSProperties = { fontSize: 15, color: 'rgba(0,0,0,0.55)', lineHeight: 1.75 };
+const bodyText: React.CSSProperties = { fontSize: 15, color: 'rgb(0,0,0)', lineHeight: 1.75 };
 
 function hoverCard(e: React.MouseEvent, on: boolean) {
   const t = e.currentTarget as HTMLElement;
-  t.style.borderColor = on ? 'rgba(79,70,229,0.2)' : 'rgba(0,0,0,0.06)';
-  t.style.background = on ? 'rgba(79,70,229,0.03)' : 'rgba(0,0,0,0.015)';
+  t.style.borderColor = on ? 'rgba(17,24,39,0.2)' : 'rgba(0,0,0,0.06)';
+  t.style.background = on ? 'rgba(17,24,39,0.03)' : 'rgba(0,0,0,0.015)';
   t.style.transform = on ? 'translateY(-4px)' : '';
   t.style.boxShadow = on ? '0 24px 60px rgba(0,0,0,0.06)' : '';
 }
@@ -86,10 +87,7 @@ export default function PageClient({ city }: { city: CityData }) {
             1. HERO
         ════════════════════════════════════════════ */}
         <section ref={heroRef} style={{ position: 'relative', overflow: 'hidden', minHeight: '80vh', display: 'flex', alignItems: 'center', borderBottom: '1px solid rgba(0,0,0,0.05)' }}>
-          {/* Grid overlay */}
-          <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(0,0,0,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.015) 1px, transparent 1px)', backgroundSize: '64px 64px', pointerEvents: 'none', zIndex: 0 }} />
-          {/* Radial glow */}
-          <div style={{ position: 'absolute', top: '20%', left: '50%', transform: 'translateX(-50%)', width: 700, height: 700, background: 'radial-gradient(circle, rgba(79,70,229,0.08) 0%, transparent 70%)', filter: 'blur(40px)', pointerEvents: 'none', zIndex: 0 }} />
+          <HeroBackground variant="center" />
 
           <div className="cb-container" style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: 900, margin: '0 auto', padding: 'clamp(60px, 10vw, 120px) 0' }}>
             {/* Breadcrumb */}
@@ -100,38 +98,38 @@ export default function PageClient({ city }: { city: CityData }) {
               ].map((crumb) => (
                 <span key={crumb.label} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                   <Link href={crumb.href} style={{ fontSize: 13, color: 'rgba(0,0,0,0.4)', textDecoration: 'none', transition: 'color 0.2s' }}
-                    onMouseEnter={e => e.currentTarget.style.color = '#4F46E5'}
+                    onMouseEnter={e => e.currentTarget.style.color = '#111827'}
                     onMouseLeave={e => e.currentTarget.style.color = 'rgba(0,0,0,0.4)'}>
                     {crumb.label}
                   </Link>
                   <span style={{ fontSize: 11, color: 'rgba(0,0,0,0.2)' }}>/</span>
                 </span>
               ))}
-              <span style={{ fontSize: 13, color: 'rgba(0,0,0,0.55)' }}>{city.name}</span>
+              <span style={{ fontSize: 13, color: 'rgb(0,0,0)' }}>{city.name}</span>
             </nav>
 
             {/* Badge */}
-            <div className="reveal" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, background: 'rgba(79,70,229,0.08)', border: '1px solid rgba(79,70,229,0.2)', borderRadius: 100, padding: '8px 20px', marginBottom: 32 }}>
-              <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#4F46E5', boxShadow: '0 0 8px #4F46E5' }} />
-              <span style={{ fontSize: 11, fontWeight: 700, color: '#4F46E5', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+            <div className="reveal" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, background: 'rgba(17,24,39,0.08)', border: '1px solid rgba(17,24,39,0.2)', borderRadius: 100, padding: '8px 20px', marginBottom: 32 }}>
+              <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#111827', boxShadow: '0 0 8px #111827' }} />
+              <span style={{ fontSize: 11, fontWeight: 700, color: '#111827', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
                 {city.isHQ ? 'Dual HQ' : `${locationLabel}`}
               </span>
             </div>
 
             {/* H1 */}
             <h1 className="reveal reveal-d1" style={{ fontSize: 'clamp(2.6rem, 5.5vw, 5rem)', fontWeight: 500, color: '#111827', letterSpacing: '-0.04em', lineHeight: 1.05, margin: '0 0 24px' }}>
-              Software Development Company in{' '}<span style={{ color: '#4F46E5' }}>{city.name}</span>
+              Software Development Company in{' '}<span style={{ color: '#111827' }}>{city.name}</span>
             </h1>
 
             {/* Hero context */}
-            <p className="reveal reveal-d2" style={{ fontSize: 17, color: 'rgba(0,0,0,0.55)', lineHeight: 1.75, maxWidth: 680, margin: '0 auto 48px' }}>
+            <p className="reveal reveal-d2" style={{ fontSize: 17, color: 'rgb(0,0,0)', lineHeight: 1.75, maxWidth: 680, margin: '0 auto 48px' }}>
               {city.heroContext}
             </p>
 
             {/* CTAs */}
             <div className="reveal reveal-d3" style={{ display: 'flex', justifyContent: 'center', gap: 14, flexWrap: 'wrap', marginBottom: 56 }}>
-              <Link href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, height: 56, padding: '0 36px', borderRadius: 100, background: '#4F46E5', color: '#fff', fontSize: 14, fontWeight: 700, textDecoration: 'none', transition: '0.3s' }}
-                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 16px 40px rgba(79,70,229,0.35)'; }}
+              <Link href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, height: 56, padding: '0 36px', borderRadius: 100, background: '#111827', color: '#fff', fontSize: 14, fontWeight: 700, textDecoration: 'none', transition: '0.3s' }}
+                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 16px 40px rgba(17,24,39,0.35)'; }}
                 onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}>
                 Get a Free Quote
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
@@ -147,7 +145,7 @@ export default function PageClient({ city }: { city: CityData }) {
             <div className="reveal reveal-d4 loc-hero-stats" style={{ display: 'grid', gridTemplateColumns: `repeat(${city.stats.length}, 1fr)`, gap: 16, maxWidth: 700, margin: '0 auto' }}>
               {city.stats.map((s, i) => (
                 <div key={s.label} style={{ textAlign: 'center', borderRight: i < city.stats.length - 1 ? '1px solid rgba(0,0,0,0.06)' : 'none', paddingRight: i < city.stats.length - 1 ? 16 : 0 }}>
-                  <div style={{ fontSize: 'clamp(1.4rem, 2.5vw, 2rem)', fontWeight: 700, color: '#4F46E5', letterSpacing: '-0.03em' }}>{s.value}</div>
+                  <div style={{ fontSize: 'clamp(1.4rem, 2.5vw, 2rem)', fontWeight: 700, color: '#111827', letterSpacing: '-0.03em' }}>{s.value}</div>
                   <div style={{ fontSize: 11, fontWeight: 600, color: 'rgba(0,0,0,0.25)', textTransform: 'uppercase', letterSpacing: '0.08em', marginTop: 4 }}>{s.label}</div>
                 </div>
               ))}
@@ -162,9 +160,9 @@ export default function PageClient({ city }: { city: CityData }) {
           <div className="cb-container" style={{ maxWidth: 900, margin: '0 auto', textAlign: 'center' }}>
             <div className="reveal" style={subLabel}>Industries We Serve</div>
             <h2 className="reveal" style={{ ...heading2, marginBottom: 16 }}>
-              Key Industries in <span style={{ color: '#4F46E5' }}>{city.name}</span>
+              Key Industries in <span style={{ color: '#111827' }}>{city.name}</span>
             </h2>
-            <p className="reveal" style={{ ...bodyText, maxWidth: 600, margin: '0 auto 48px', color: 'rgba(0,0,0,0.55)' }}>
+            <p className="reveal" style={{ ...bodyText, maxWidth: 600, margin: '0 auto 48px', color: 'rgb(0,0,0)' }}>
               We bring deep domain expertise to the industries that power {city.name}&apos;s economy.
             </p>
             <div className="reveal" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 12 }}>
@@ -173,8 +171,8 @@ export default function PageClient({ city }: { city: CityData }) {
                   display: 'inline-block',
                   padding: '10px 24px',
                   borderRadius: 100,
-                  border: '1px solid rgba(79,70,229,0.2)',
-                  background: 'rgba(79,70,229,0.06)',
+                  border: '1px solid rgba(17,24,39,0.2)',
+                  background: 'rgba(17,24,39,0.06)',
                   color: 'rgba(0,0,0,0.6)',
                   fontSize: 14,
                   fontWeight: 500,
@@ -195,7 +193,7 @@ export default function PageClient({ city }: { city: CityData }) {
             <div style={{ textAlign: 'center', marginBottom: 56 }}>
               <div className="reveal" style={subLabel}>Why {city.name}</div>
               <h2 className="reveal" style={heading2}>
-                Why Businesses in <span style={{ color: '#4F46E5' }}>{city.name}</span> Choose Codazz
+                Why Businesses in <span style={{ color: '#111827' }}>{city.name}</span> Choose Codazz
               </h2>
             </div>
             <div className="loc-why-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 280px), 1fr))', gap: 20 }}>
@@ -224,9 +222,9 @@ export default function PageClient({ city }: { city: CityData }) {
             <div style={{ textAlign: 'center', marginBottom: 56 }}>
               <div className="reveal" style={subLabel}>Our Services</div>
               <h2 className="reveal" style={heading2}>
-                What We Build in <span style={{ color: '#4F46E5' }}>{city.name}</span>
+                What We Build in <span style={{ color: '#111827' }}>{city.name}</span>
               </h2>
-              <p className="reveal" style={{ ...bodyText, maxWidth: 600, margin: '16px auto 0', color: 'rgba(0,0,0,0.55)' }}>
+              <p className="reveal" style={{ ...bodyText, maxWidth: 600, margin: '16px auto 0', color: 'rgb(0,0,0)' }}>
                 Full-spectrum software development tailored to {city.name}&apos;s business landscape.
               </p>
             </div>
@@ -267,7 +265,7 @@ export default function PageClient({ city }: { city: CityData }) {
             <div style={{ textAlign: 'center', marginBottom: 56 }}>
               <div className="reveal" style={subLabel}>Client Stories</div>
               <h2 className="reveal" style={heading2}>
-                Trusted by Teams in <span style={{ color: '#4F46E5' }}>{city.name}</span>
+                Trusted by Teams in <span style={{ color: '#111827' }}>{city.name}</span>
               </h2>
             </div>
             <div className="loc-testimonials-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 340px), 1fr))', gap: 20 }}>
@@ -282,8 +280,8 @@ export default function PageClient({ city }: { city: CityData }) {
                   {/* Quote icon */}
                   <div style={{ marginBottom: 20 }}>
                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" style={{ opacity: 0.15 }}>
-                      <path d="M10 11H6a1 1 0 01-1-1V7a1 1 0 011-1h3a1 1 0 011 1v7c0 2.21-1.79 4-4 4" stroke="#4F46E5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      <path d="M20 11h-4a1 1 0 01-1-1V7a1 1 0 011-1h3a1 1 0 011 1v7c0 2.21-1.79 4-4 4" stroke="#4F46E5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M10 11H6a1 1 0 01-1-1V7a1 1 0 011-1h3a1 1 0 011 1v7c0 2.21-1.79 4-4 4" stroke="#111827" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M20 11h-4a1 1 0 01-1-1V7a1 1 0 011-1h3a1 1 0 011 1v7c0 2.21-1.79 4-4 4" stroke="#111827" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </div>
                   <p style={{ ...bodyText, fontSize: 15, flex: 1, marginBottom: 28, fontStyle: 'italic' }}>
@@ -304,25 +302,25 @@ export default function PageClient({ city }: { city: CityData }) {
         ════════════════════════════════════════════ */}
         <section ref={ctaRef} style={{ ...sectionPad, ...sectionBorder, position: 'relative', overflow: 'hidden' }}>
           {/* Background glow */}
-          <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: 800, height: 400, background: 'radial-gradient(ellipse, rgba(79,70,229,0.06) 0%, transparent 70%)', pointerEvents: 'none' }} />
+          <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: 800, height: 400, background: 'radial-gradient(ellipse, rgba(17,24,39,0.06) 0%, transparent 70%)', pointerEvents: 'none' }} />
 
           <div className="cb-container" style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: 760, margin: '0 auto' }}>
             <div className="reveal" style={subLabel}>Let&apos;s Talk</div>
             <h2 className="reveal" style={{ ...heading2, marginBottom: 20 }}>
-              Ready to Build Something Great in <span style={{ color: '#4F46E5' }}>{city.name}</span>?
+              Ready to Build Something Great in <span style={{ color: '#111827' }}>{city.name}</span>?
             </h2>
-            <p className="reveal" style={{ ...bodyText, maxWidth: 560, margin: '0 auto 40px', color: 'rgba(0,0,0,0.55)' }}>
+            <p className="reveal" style={{ ...bodyText, maxWidth: 560, margin: '0 auto 40px', color: 'rgb(0,0,0)' }}>
               Whether you need a mobile app, a web platform, or an AI-powered solution, our {city.name} team is ready to bring your vision to life.
             </p>
             <div className="reveal" style={{ display: 'flex', justifyContent: 'center', gap: 14, flexWrap: 'wrap' }}>
               <Link href="/contact" style={{
                 display: 'inline-flex', alignItems: 'center', gap: 10,
                 height: 56, padding: '0 40px', borderRadius: 100,
-                background: '#4F46E5', color: '#fff',
+                background: '#111827', color: '#fff',
                 fontSize: 14, fontWeight: 700, textDecoration: 'none',
                 transition: '0.3s',
               }}
-                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 16px 40px rgba(79,70,229,0.35)'; }}
+                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 16px 40px rgba(17,24,39,0.35)'; }}
                 onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}>
                 Start Your Project
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>

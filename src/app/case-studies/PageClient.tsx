@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Breadcrumb from '@/components/Breadcrumb';
 import Link from 'next/link';
+import HeroBackground from '@/components/HeroBackground';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -28,7 +29,7 @@ const caseStudies = [
     description: 'Built a real-time AI trading engine processing 50K+ daily transactions with 99.99% uptime.',
     metric: { value: '50K+', label: 'Daily Transactions' },
     tech: ['React', 'Python', 'AWS', 'PostgreSQL'],
-    gradient: 'linear-gradient(135deg, rgba(124,58,237,0.1), rgba(79,70,229,0.05))',
+    gradient: 'linear-gradient(135deg, rgba(124,58,237,0.1), rgba(17,24,39,0.05))',
   },
   {
     slug: 'healthcare-telehealth',
@@ -38,7 +39,7 @@ const caseStudies = [
     description: 'Developed a telehealth platform serving 200K+ patient sessions with HIPAA/CCPA compliance.',
     metric: { value: '200K+', label: 'Patient Sessions' },
     tech: ['React Native', 'WebRTC', 'Node.js', 'AWS'],
-    gradient: 'linear-gradient(135deg, rgba(6,182,212,0.1), rgba(79,70,229,0.05))',
+    gradient: 'linear-gradient(135deg, rgba(6,182,212,0.1), rgba(17,24,39,0.05))',
   },
   {
     slug: 'ecommerce-platform',
@@ -48,7 +49,7 @@ const caseStudies = [
     description: 'Migrated legacy platform to headless commerce serving 2M+ monthly visitors with 3x revenue growth.',
     metric: { value: '3x', label: 'Revenue Growth' },
     tech: ['Next.js', 'Stripe', 'PostgreSQL', 'Redis'],
-    gradient: 'linear-gradient(135deg, rgba(16,185,129,0.1), rgba(79,70,229,0.05))',
+    gradient: 'linear-gradient(135deg, rgba(16,185,129,0.1), rgba(17,24,39,0.05))',
   },
   {
     slug: 'logistics-platform',
@@ -58,7 +59,7 @@ const caseStudies = [
     description: 'Built IoT-integrated fleet management tracking 15K+ daily deliveries with 25% fuel savings.',
     metric: { value: '25%', label: 'Fuel Savings' },
     tech: ['React', 'Python', 'TensorFlow', 'AWS IoT'],
-    gradient: 'linear-gradient(135deg, rgba(245,158,11,0.1), rgba(79,70,229,0.05))',
+    gradient: 'linear-gradient(135deg, rgba(245,158,11,0.1), rgba(17,24,39,0.05))',
   },
 ];
 
@@ -86,13 +87,7 @@ export default function CaseStudiesPageClient() {
 
         {/* ── HERO ── */}
         <section style={{ padding: 'clamp(120px, 12vw, 160px) 0 clamp(48px, 6vw, 80px)', position: 'relative', overflow: 'hidden' }}>
-          {/* Background glow */}
-          <div style={{
-            position: 'absolute', top: -200, left: '50%', transform: 'translateX(-50%)',
-            width: 800, height: 800,
-            background: 'radial-gradient(circle, rgba(79,70,229,0.06) 0%, transparent 70%)',
-            pointerEvents: 'none',
-          }} />
+          <HeroBackground variant="wide" />
           <div className="cb-container">
             <Breadcrumb items={[
               { label: 'Home', href: '/' },
@@ -102,7 +97,7 @@ export default function CaseStudiesPageClient() {
             <div className="reveal" style={{ marginBottom: 24, marginTop: 32 }}>
               <span style={{
                 fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                color: '#4F46E5',
+                color: '#111827',
               }}>
                 Client Success Stories
               </span>
@@ -130,7 +125,7 @@ export default function CaseStudiesPageClient() {
                   style={{
                     padding: '8px 20px', borderRadius: 100, fontSize: 13, fontWeight: 500,
                     cursor: 'pointer', border: 'none', transition: 'all 0.2s',
-                    background: activeCategory === cat ? '#4F46E5' : 'rgba(0,0,0,0.03)',
+                    background: activeCategory === cat ? '#111827' : 'rgba(0,0,0,0.03)',
                     color: activeCategory === cat ? '#ffffff' : 'rgba(0,0,0,0.45)',
                   }}
                 >
@@ -156,7 +151,7 @@ export default function CaseStudiesPageClient() {
               gap: 24,
             }}>
               {filtered.map((cs, i) => {
-                const accentColor = categoryColors[cs.category] || '#4F46E5';
+                const accentColor = categoryColors[cs.category] || '#111827';
                 return (
                   <Link key={cs.slug} href={`/case-studies/${cs.slug}`} style={{ textDecoration: 'none' }}>
                     <article
@@ -173,8 +168,8 @@ export default function CaseStudiesPageClient() {
                         cursor: 'pointer',
                       }}
                       onMouseEnter={e => {
-                        (e.currentTarget as HTMLElement).style.borderColor = 'rgba(79,70,229,0.25)';
-                        (e.currentTarget as HTMLElement).style.background = 'rgba(79,70,229,0.03)';
+                        (e.currentTarget as HTMLElement).style.borderColor = 'rgba(17,24,39,0.25)';
+                        (e.currentTarget as HTMLElement).style.background = 'rgba(17,24,39,0.03)';
                         (e.currentTarget as HTMLElement).style.transform = 'translateY(-6px)';
                       }}
                       onMouseLeave={e => {
@@ -273,7 +268,7 @@ export default function CaseStudiesPageClient() {
                           marginTop: 'auto',
                         }}>
                           <span style={{
-                            fontSize: 13, fontWeight: 600, color: '#4F46E5',
+                            fontSize: 13, fontWeight: 600, color: '#111827',
                             display: 'inline-flex', alignItems: 'center', gap: 6,
                           }}>
                             Read Case Study
@@ -337,7 +332,7 @@ export default function CaseStudiesPageClient() {
             >
               <span style={{
                 fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                color: '#4F46E5', display: 'block', marginBottom: 20,
+                color: '#111827', display: 'block', marginBottom: 20,
               }}>
                 Let&apos;s Build Together
               </span>
@@ -359,7 +354,7 @@ export default function CaseStudiesPageClient() {
                 style={{
                   display: 'inline-flex', alignItems: 'center', gap: 10,
                   height: 52, padding: '0 36px', borderRadius: 100,
-                  background: '#4F46E5', color: '#fff',
+                  background: '#111827', color: '#fff',
                   fontSize: 15, fontWeight: 700, textDecoration: 'none',
                   transition: 'all 0.2s',
                 }}
@@ -368,7 +363,7 @@ export default function CaseStudiesPageClient() {
                   (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)';
                 }}
                 onMouseLeave={e => {
-                  (e.currentTarget as HTMLElement).style.background = '#4F46E5';
+                  (e.currentTarget as HTMLElement).style.background = '#111827';
                   (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
                 }}
               >

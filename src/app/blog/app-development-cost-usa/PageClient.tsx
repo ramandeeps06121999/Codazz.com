@@ -4,6 +4,7 @@ import { useRef, useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
+import HeroBackground from '@/components/HeroBackground';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -54,12 +55,7 @@ export default function AppDevelopmentCostUSAClient() {
 
         {/* ── ARTICLE HERO ── */}
         <section style={{ padding: 'clamp(100px, 15vw, 140px) 0 clamp(32px, 5vw, 64px)', position: 'relative', overflow: 'hidden' }}>
-          <div style={{
-            position: 'absolute', top: -300, left: '50%', transform: 'translateX(-50%)',
-            width: 900, height: 900,
-            background: 'radial-gradient(circle, rgba(79,70,229,0.05) 0%, transparent 65%)',
-            pointerEvents: 'none',
-          }} />
+          <HeroBackground variant="left" />
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 24 }}>
               <Link href="/blog" style={{
@@ -77,7 +73,7 @@ export default function AppDevelopmentCostUSAClient() {
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
               <span className="reveal reveal-d1" style={{
                 fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                background: 'rgba(79,70,229,0.12)', color: '#4F46E5',
+                background: 'rgba(17,24,39,0.12)', color: '#111827',
                 padding: '5px 14px', borderRadius: 100,
               }}>Business</span>
               <span className="reveal reveal-d1" style={{ fontSize: 13, color: 'rgba(0,0,0,0.25)' }}>March 14, 2026</span>
@@ -118,9 +114,9 @@ export default function AppDevelopmentCostUSAClient() {
               <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
                 <div style={{
                   width: 48, height: 48, borderRadius: '50%',
-                  background: 'rgba(79,70,229,0.12)', border: '1px solid rgba(79,70,229,0.25)',
+                  background: 'rgba(17,24,39,0.12)', border: '1px solid rgba(17,24,39,0.25)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: 15, fontWeight: 700, color: '#4F46E5',
+                  fontSize: 15, fontWeight: 700, color: '#111827',
                 }}>RM</div>
                 <div>
                   <p style={{ fontSize: 15, fontWeight: 600, color: '#111827', margin: 0 }}>Raman Makkar</p>
@@ -142,8 +138,8 @@ export default function AppDevelopmentCostUSAClient() {
                 ))}
                 <button onClick={handleCopy} style={{
                   padding: '8px 16px', borderRadius: 100, border: '1px solid rgba(0,0,0,0.08)',
-                  background: copied ? 'rgba(79,70,229,0.1)' : 'rgba(0,0,0,0.02)',
-                  color: copied ? '#4F46E5' : 'rgba(0,0,0,0.45)',
+                  background: copied ? 'rgba(17,24,39,0.1)' : 'rgba(0,0,0,0.02)',
+                  color: copied ? '#111827' : 'rgba(0,0,0,0.45)',
                   fontSize: 12, fontWeight: 600, cursor: 'pointer',
                   transition: 'all 0.2s',
                 }}>
@@ -169,7 +165,7 @@ export default function AppDevelopmentCostUSAClient() {
                     letterSpacing: '-0.03em', marginBottom: 20,
                   }}>Why App Development Costs Vary So Wildly in the USA</h2>
                   <p style={{
-                    fontSize: 18, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8,
+                    fontSize: 18, color: 'rgb(0,0,0)', lineHeight: 1.8,
                     marginBottom: 20,
                   }}>
                     Ask five American app development agencies how much it costs to build a mobile app and you will get five wildly different answers. That is not because they are trying to mislead you. It is because &ldquo;building an app&rdquo; is about as specific as saying &ldquo;building a house.&rdquo; A cabin in Muskoka and a downtown San Francisco penthouse are both &ldquo;houses,&rdquo; but the price difference is astronomical.
@@ -208,7 +204,7 @@ export default function AppDevelopmentCostUSAClient() {
                       fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', fontWeight: 800, color: '#34d399',
                       letterSpacing: '-0.03em', marginBottom: 16,
                     }}>$25,000 &ndash; $50,000</h3>
-                    <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 16 }}>
+                    <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 16 }}>
                       This tier covers straightforward applications with core functionality. Think a single-platform MVP with user authentication, basic CRUD operations, a simple UI, and integration with one or two third-party APIs. Examples include a basic booking app, a simple e-commerce storefront, or a content-driven utility app.
                     </p>
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
@@ -238,7 +234,7 @@ export default function AppDevelopmentCostUSAClient() {
                       fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', fontWeight: 800, color: '#60a5fa',
                       letterSpacing: '-0.03em', marginBottom: 16,
                     }}>$50,000 &ndash; $150,000</h3>
-                    <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 16 }}>
+                    <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 16 }}>
                       This is where most serious business applications land. Multi-platform apps (iOS + Android) with custom UI/UX design, real-time features like chat or notifications, payment processing, admin dashboards, and moderate backend complexity. Think a marketplace app, a fitness platform with tracking, or a B2B SaaS mobile companion.
                     </p>
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
@@ -268,7 +264,7 @@ export default function AppDevelopmentCostUSAClient() {
                       fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', fontWeight: 800, color: '#a78bfa',
                       letterSpacing: '-0.03em', marginBottom: 16,
                     }}>$150,000 &ndash; $500,000+</h3>
-                    <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 16 }}>
+                    <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 16 }}>
                       Enterprise-grade applications with advanced architecture. AI/ML integration, complex data pipelines, microservices backend, advanced security requirements (CCPA/SOC 2 compliance), offline-first capabilities, and custom hardware integrations (IoT, Bluetooth). Think a fintech platform, a healthcare records system, or an enterprise logistics solution.
                     </p>
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
@@ -308,7 +304,7 @@ export default function AppDevelopmentCostUSAClient() {
                       background: 'rgba(0,0,0,0.015)', border: '1px solid rgba(0,0,0,0.03)',
                     }}>
                       <span style={{
-                        fontSize: 14, fontWeight: 800, color: 'rgba(79,70,229,0.4)',
+                        fontSize: 14, fontWeight: 800, color: 'rgba(17,24,39,0.4)',
                         flexShrink: 0, width: 28,
                       }}>{factor.num}</span>
                       <div>
@@ -341,7 +337,7 @@ export default function AppDevelopmentCostUSAClient() {
                       }}>
                         <h3 style={{ fontSize: 15, fontWeight: 700, color: '#111827', marginBottom: 4 }}>{p.platform}</h3>
                         <p style={{ fontSize: 12, color: 'rgba(0,0,0,0.35)', marginBottom: 16 }}>{p.lang}</p>
-                        <p style={{ fontSize: 20, fontWeight: 800, color: '#4F46E5', marginBottom: 16 }}>{p.cost}</p>
+                        <p style={{ fontSize: 20, fontWeight: 800, color: '#111827', marginBottom: 16 }}>{p.cost}</p>
                         <p style={{ fontSize: 13, color: 'rgba(52,211,153,0.8)', marginBottom: 6 }}>+ {p.pros}</p>
                         <p style={{ fontSize: 13, color: 'rgba(248,113,113,0.8)', margin: 0 }}>- {p.cons}</p>
                       </div>
@@ -367,10 +363,10 @@ export default function AppDevelopmentCostUSAClient() {
                     display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))', gap: 20, marginBottom: 28,
                   }}>
                     <div style={{
-                      background: 'rgba(79,70,229,0.04)', border: '1px solid rgba(79,70,229,0.15)',
+                      background: 'rgba(17,24,39,0.04)', border: '1px solid rgba(17,24,39,0.15)',
                       borderRadius: 20, padding: 28,
                     }}>
-                      <h3 style={{ fontSize: 15, fontWeight: 700, color: '#4F46E5', marginBottom: 12 }}>American Agencies</h3>
+                      <h3 style={{ fontSize: 15, fontWeight: 700, color: '#111827', marginBottom: 12 }}>American Agencies</h3>
                       <p style={{ fontSize: 24, fontWeight: 800, color: '#111827', marginBottom: 16 }}>$100 &ndash; $200/hr</p>
                       <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                         {['Same timezone & language', 'CCPA compliance built-in', 'Accountable legal framework', 'IP protection under American law', 'Face-to-face meetings possible', 'Long-term partnership model'].map(item => (
@@ -429,8 +425,8 @@ export default function AppDevelopmentCostUSAClient() {
                         <p style={{ fontSize: 14, color: 'rgba(0,0,0,0.4)', lineHeight: 1.7, margin: 0 }}>{item.desc}</p>
                       </div>
                       <span style={{
-                        fontSize: 14, fontWeight: 700, color: '#4F46E5', whiteSpace: 'nowrap', flexShrink: 0,
-                        background: 'rgba(79,70,229,0.08)', padding: '6px 14px', borderRadius: 100,
+                        fontSize: 14, fontWeight: 700, color: '#111827', whiteSpace: 'nowrap', flexShrink: 0,
+                        background: 'rgba(17,24,39,0.08)', padding: '6px 14px', borderRadius: 100,
                       }}>{item.cost}</span>
                     </div>
                   ))}
@@ -439,21 +435,21 @@ export default function AppDevelopmentCostUSAClient() {
                 {/* Codazz Pricing */}
                 <div className="reveal" style={{ marginBottom: 56 }} id="codazz-pricing">
                   <div style={{
-                    background: 'linear-gradient(135deg, rgba(79,70,229,0.1) 0%, rgba(0,0,0,0.015) 100%)', border: '1px solid rgba(79,70,229,0.3)',
+                    background: 'linear-gradient(135deg, rgba(17,24,39,0.1) 0%, rgba(0,0,0,0.015) 100%)', border: '1px solid rgba(17,24,39,0.3)',
                     borderRadius: 24, padding: 36, position: 'relative', overflow: 'hidden'
                   }}>
-                    <div style={{ position: 'absolute', top: -40, right: -40, width: 200, height: 200, background: 'radial-gradient(circle, rgba(79,70,229,0.15) 0%, transparent 70%)', filter: 'blur(30px)' }} />
+                    <div style={{ position: 'absolute', top: -40, right: -40, width: 200, height: 200, background: 'radial-gradient(circle, rgba(17,24,39,0.15) 0%, transparent 70%)', filter: 'blur(30px)' }} />
                     <div style={{ display: 'flex', alignItems: 'flex-start', gap: 20, marginBottom: 20, position: 'relative', zIndex: 1 }}>
                       <div style={{
                         width: 56, height: 56, borderRadius: 16, flexShrink: 0,
-                        background: 'rgba(79,70,229,0.1)', border: '1px solid rgba(79,70,229,0.3)',
+                        background: 'rgba(17,24,39,0.1)', border: '1px solid rgba(17,24,39,0.3)',
                         display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 28,
                       }}>🍁</div>
                       <div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
                           <span style={{
                             fontSize: 11, padding: '3px 10px', borderRadius: 100,
-                            background: 'rgba(79,70,229,0.15)', color: '#4F46E5',
+                            background: 'rgba(17,24,39,0.15)', color: '#111827',
                             fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase',
                           }}>Our Approach</span>
                         </div>
@@ -464,24 +460,24 @@ export default function AppDevelopmentCostUSAClient() {
                       </div>
                     </div>
 
-                    <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 16, position: 'relative', zIndex: 1 }}>
+                    <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 16, position: 'relative', zIndex: 1 }}>
                       We operate on a <strong style={{ color: '#111827' }}>fixed-price model</strong> for 90% of our projects. After a thorough discovery phase (which we offer free of charge), we provide a detailed scope document with a locked-in price. No hourly billing surprises. No scope creep charges without written approval.
                     </p>
-                    <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 16, position: 'relative', zIndex: 1 }}>
+                    <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 16, position: 'relative', zIndex: 1 }}>
                       Every Codazz engagement includes a transparent breakdown of every feature, every screen, and every integration with its associated cost. Our clients know exactly what they are paying for before a single line of code is written. We believe this level of transparency is what separates professional agencies from freelancer operations.
                     </p>
-                    <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, marginBottom: 20, position: 'relative', zIndex: 1 }}>
+                    <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 20, position: 'relative', zIndex: 1 }}>
                       Our typical engagement model: a 50% deposit at project kickoff, 25% at beta delivery, and 25% at final launch. This protects both parties and ensures alignment throughout the build.
                     </p>
                     <div style={{
                       padding: '14px 20px', borderRadius: 12,
-                      background: 'rgba(79,70,229,0.08)', border: '1px solid rgba(79,70,229,0.2)',
+                      background: 'rgba(17,24,39,0.08)', border: '1px solid rgba(17,24,39,0.2)',
                       display: 'flex', alignItems: 'center', gap: 10, position: 'relative', zIndex: 1
                     }}>
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" strokeWidth="2">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#111827" strokeWidth="2">
                         <polyline points="22,7 13.5,15.5 8.5,10.5 2,17"/><polyline points="16,7 22,7 22,13"/>
                       </svg>
-                      <span style={{ fontSize: 13, color: '#4F46E5', fontWeight: 600 }}>
+                      <span style={{ fontSize: 13, color: '#111827', fontWeight: 600 }}>
                         Fixed-Price Model &bull; Transparent Scoping &bull; No Hidden Fees
                       </span>
                     </div>
@@ -538,8 +534,8 @@ export default function AppDevelopmentCostUSAClient() {
                           transition: 'all 0.15s',
                         }}
                           onMouseEnter={e => {
-                            (e.currentTarget as HTMLAnchorElement).style.color = '#4F46E5';
-                            (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(79,70,229,0.06)';
+                            (e.currentTarget as HTMLAnchorElement).style.color = '#111827';
+                            (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(17,24,39,0.06)';
                           }}
                           onMouseLeave={e => {
                             (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(0,0,0,0.4)';
@@ -565,9 +561,9 @@ export default function AppDevelopmentCostUSAClient() {
                     <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
                       <div style={{
                         width: 44, height: 44, borderRadius: '50%',
-                        background: 'rgba(79,70,229,0.12)', border: '1px solid rgba(79,70,229,0.25)',
+                        background: 'rgba(17,24,39,0.12)', border: '1px solid rgba(17,24,39,0.25)',
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        fontSize: 14, fontWeight: 700, color: '#4F46E5', flexShrink: 0,
+                        fontSize: 14, fontWeight: 700, color: '#111827', flexShrink: 0,
                       }}>RM</div>
                       <div>
                         <p style={{ fontSize: 14, fontWeight: 600, color: '#111827', margin: 0 }}>Raman Makkar</p>
@@ -596,16 +592,16 @@ export default function AppDevelopmentCostUSAClient() {
                           background: 'transparent', transition: 'all 0.2s',
                         }}
                           onMouseEnter={e => {
-                            (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(79,70,229,0.15)';
-                            (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(79,70,229,0.03)';
+                            (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(17,24,39,0.15)';
+                            (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(17,24,39,0.03)';
                           }}
                           onMouseLeave={e => {
                             (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(0,0,0,0.03)';
                             (e.currentTarget as HTMLAnchorElement).style.background = 'transparent';
                           }}
                         >
-                          <p style={{ fontSize: 11, color: '#4F46E5', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', margin: '0 0 6px' }}>{post.category}</p>
-                          <p style={{ fontSize: 13, color: 'rgba(0,0,0,0.55)', lineHeight: 1.4, margin: '0 0 8px', fontWeight: 600 }}>{post.title}</p>
+                          <p style={{ fontSize: 11, color: '#111827', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', margin: '0 0 6px' }}>{post.category}</p>
+                          <p style={{ fontSize: 13, color: 'rgb(0,0,0)', lineHeight: 1.4, margin: '0 0 8px', fontWeight: 600 }}>{post.title}</p>
                           <p style={{ fontSize: 12, color: 'rgba(0,0,0,0.25)', margin: 0 }}>{post.readTime} read</p>
                         </Link>
                       ))}
@@ -624,7 +620,7 @@ export default function AppDevelopmentCostUSAClient() {
             <div
               className="reveal"
               style={{
-                background: 'rgba(79,70,229,0.04)', border: '1px solid rgba(79,70,229,0.15)',
+                background: 'rgba(17,24,39,0.04)', border: '1px solid rgba(17,24,39,0.15)',
                 borderRadius: 28, padding: '64px 56px',
                 display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                 flexWrap: 'wrap', gap: 32,
@@ -633,7 +629,7 @@ export default function AppDevelopmentCostUSAClient() {
               <div>
                 <p style={{
                   fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                  color: '#4F46E5', marginBottom: 12,
+                  color: '#111827', marginBottom: 12,
                 }}>Get Started</p>
                 <h2 style={{
                   fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', fontWeight: 700, color: '#111827',
@@ -647,7 +643,7 @@ export default function AppDevelopmentCostUSAClient() {
               </div>
               <Link href="/contact" style={{ textDecoration: 'none' }}>
                 <button style={{
-                  padding: '18px 40px', borderRadius: 100, background: '#4F46E5', color: '#fff',
+                  padding: '18px 40px', borderRadius: 100, background: '#111827', color: '#fff',
                   fontSize: 15, fontWeight: 700, border: 'none', cursor: 'pointer',
                   transition: 'all 0.2s', whiteSpace: 'nowrap',
                 }}>

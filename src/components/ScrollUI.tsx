@@ -31,10 +31,10 @@ export default function ScrollUI() {
         background: 'rgba(255,255,255,0.06)', zIndex: 9999, pointerEvents: 'none',
       }}>
         <div style={{
-          height: '100%', background: '#4F46E5',
+          height: '100%', background: '#111827',
           width: `${progress}%`,
           transition: 'width 0.1s linear',
-          boxShadow: '0 0 8px rgba(79,70,229,0.6)',
+          boxShadow: '0 0 8px rgba(17,24,39,0.6)',
         }} />
       </div>
 
@@ -49,13 +49,13 @@ export default function ScrollUI() {
         <Link href="#contact" style={{
           display: 'inline-flex', alignItems: 'center', gap: 10,
           height: 52, padding: '0 28px', borderRadius: 100,
-          background: '#4F46E5', color: '#fff', fontSize: 14, fontWeight: 700,
+          background: '#111827', color: '#fff', fontSize: 14, fontWeight: 700,
           textDecoration: 'none',
-          boxShadow: '0 8px 32px rgba(79,70,229,0.4), 0 2px 8px rgba(0,0,0,0.4)',
+          boxShadow: '0 8px 32px rgba(17,24,39,0.4), 0 2px 8px rgba(0,0,0,0.4)',
           transition: 'transform 0.2s ease, box-shadow 0.2s ease',
         }}
-          onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 16px 40px rgba(79,70,229,0.5), 0 4px 12px rgba(0,0,0,0.4)'; }}
-          onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 8px 32px rgba(79,70,229,0.4), 0 2px 8px rgba(0,0,0,0.4)'; }}
+          onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 16px 40px rgba(17,24,39,0.5), 0 4px 12px rgba(0,0,0,0.4)'; }}
+          onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 8px 32px rgba(17,24,39,0.4), 0 2px 8px rgba(0,0,0,0.4)'; }}
         >
           <div style={{ width: 7, height: 7, borderRadius: '50%', background: '#0a0a14', opacity: 0.5 }} />
           Book a Free Call
@@ -74,7 +74,7 @@ export default function ScrollUI() {
           opacity: showBackTop ? 1 : 0, pointerEvents: showBackTop ? 'auto' : 'none',
           transition: 'opacity 0.3s, transform 0.3s, bottom 0.3s',
         }}
-        onMouseEnter={e => { e.currentTarget.style.background = 'rgba(79,70,229,0.2)'; e.currentTarget.style.borderColor = 'rgba(79,70,229,0.4)'; }}
+        onMouseEnter={e => { e.currentTarget.style.background = 'rgba(17,24,39,0.2)'; e.currentTarget.style.borderColor = 'rgba(17,24,39,0.4)'; }}
         onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.08)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)'; }}
         aria-label="Back to top"
         className="hide-mobile"

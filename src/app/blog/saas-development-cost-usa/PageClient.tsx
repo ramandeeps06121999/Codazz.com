@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Breadcrumb from '@/components/Breadcrumb';
 import Link from 'next/link';
+import HeroBackground from '@/components/HeroBackground';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -62,12 +63,7 @@ export default function SaasDevelopmentCostUSAClient() {
 
         {/* ── ARTICLE HERO ── */}
         <section style={{ padding: 'clamp(100px, 15vw, 140px) 0 clamp(32px, 5vw, 64px)', position: 'relative', overflow: 'hidden' }}>
-          <div style={{
-            position: 'absolute', top: -300, left: '50%', transform: 'translateX(-50%)',
-            width: 900, height: 900,
-            background: 'radial-gradient(circle, rgba(79,70,229,0.05) 0%, transparent 65%)',
-            pointerEvents: 'none',
-          }} />
+          <HeroBackground variant="left" />
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 24 }}>
               <Link href="/blog" style={{
@@ -85,7 +81,7 @@ export default function SaasDevelopmentCostUSAClient() {
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
               <span className="reveal reveal-d1" style={{
                 fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                background: 'rgba(79,70,229,0.12)', color: '#4F46E5',
+                background: 'rgba(17,24,39,0.12)', color: '#111827',
                 padding: '5px 14px', borderRadius: 100,
               }}>Business</span>
               <span className="reveal reveal-d1" style={{ fontSize: 13, color: 'rgba(0,0,0,0.25)' }}>March 14, 2026</span>
@@ -126,9 +122,9 @@ export default function SaasDevelopmentCostUSAClient() {
               <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
                 <div style={{
                   width: 48, height: 48, borderRadius: '50%',
-                  background: 'rgba(79,70,229,0.12)', border: '1px solid rgba(79,70,229,0.25)',
+                  background: 'rgba(17,24,39,0.12)', border: '1px solid rgba(17,24,39,0.25)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: 15, fontWeight: 700, color: '#4F46E5',
+                  fontSize: 15, fontWeight: 700, color: '#111827',
                 }}>RM</div>
                 <div>
                   <p style={{ fontSize: 15, fontWeight: 600, color: '#111827', margin: 0 }}><a href="/about/raman-makkar" style={{ color: 'inherit', textDecoration: 'none', borderBottom: '1px solid rgba(0,0,0,0.1)' }}>Raman Makkar</a></p>
@@ -150,8 +146,8 @@ export default function SaasDevelopmentCostUSAClient() {
                 ))}
                 <button onClick={handleCopy} style={{
                   padding: '8px 16px', borderRadius: 100, border: '1px solid rgba(0,0,0,0.08)',
-                  background: copied ? 'rgba(79,70,229,0.1)' : 'rgba(0,0,0,0.02)',
-                  color: copied ? '#4F46E5' : 'rgba(0,0,0,0.45)',
+                  background: copied ? 'rgba(17,24,39,0.1)' : 'rgba(0,0,0,0.02)',
+                  color: copied ? '#111827' : 'rgba(0,0,0,0.45)',
                   fontSize: 12, fontWeight: 600, cursor: 'pointer',
                   transition: 'all 0.2s',
                 }}>
@@ -173,7 +169,7 @@ export default function SaasDevelopmentCostUSAClient() {
                 {/* Intro */}
                 <div className="reveal" style={{ marginBottom: 56 }} id="intro">
                   <p style={{
-                    fontSize: 18, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8,
+                    fontSize: 18, color: 'rgb(0,0,0)', lineHeight: 1.8,
                     marginBottom: 20,
                   }}>
                     USA has quietly become one of the world's most prolific SaaS ecosystems. Shopify, Lightspeed, Clio, Wealthsimple, and Coveo are just the tip of the iceberg. Behind these household names, thousands of American startups are building subscription-based software products — and asking the same first question: <strong style={{ color: '#111827' }}>how much will this actually cost?</strong>
@@ -198,20 +194,20 @@ export default function SaasDevelopmentCostUSAClient() {
 
                   {/* Tier 1: MVP */}
                   <div style={{
-                    background: 'linear-gradient(135deg, rgba(79,70,229,0.1) 0%, rgba(0,0,0,0.015) 100%)',
-                    border: '1px solid rgba(79,70,229,0.3)',
+                    background: 'linear-gradient(135deg, rgba(17,24,39,0.1) 0%, rgba(0,0,0,0.015) 100%)',
+                    border: '1px solid rgba(17,24,39,0.3)',
                     borderRadius: 24, padding: 36, marginBottom: 24,
                   }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
                       <span style={{
                         fontSize: 11, padding: '3px 10px', borderRadius: 100,
-                        background: 'rgba(79,70,229,0.15)', color: '#4F46E5',
+                        background: 'rgba(17,24,39,0.15)', color: '#111827',
                         fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase',
                       }}>Tier 1</span>
                       <span style={{ fontSize: 13, color: 'rgba(0,0,0,0.35)', fontWeight: 600 }}>3 - 4 months</span>
                     </div>
                     <h3 style={{ fontSize: 22, fontWeight: 700, color: '#111827', marginBottom: 8 }}>MVP / Proof of Concept</h3>
-                    <p style={{ fontSize: 28, fontWeight: 800, color: '#4F46E5', marginBottom: 16, letterSpacing: '-0.02em' }}>$30,000 - $75,000</p>
+                    <p style={{ fontSize: 28, fontWeight: 800, color: '#111827', marginBottom: 16, letterSpacing: '-0.02em' }}>$30,000 - $75,000</p>
                     <p style={{ fontSize: 15, color: 'rgba(0,0,0,0.5)', lineHeight: 1.8 }}>
                       A functional prototype with core features: user authentication, one primary workflow, basic dashboard, Stripe billing integration, and a clean responsive UI. Perfect for validating your idea with early adopters, securing initial funding, or testing product-market fit. This tier typically includes 3-5 core screens and a single user role.
                     </p>
@@ -281,11 +277,11 @@ export default function SaasDevelopmentCostUSAClient() {
                       padding: '20px 24px', borderRadius: 16,
                       background: 'rgba(0,0,0,0.015)', border: '1px solid rgba(0,0,0,0.03)',
                     }}>
-                      <div style={{ flexShrink: 0, width: 4, borderRadius: 4, background: '#4F46E5', opacity: 0.5 }} />
+                      <div style={{ flexShrink: 0, width: 4, borderRadius: 4, background: '#111827', opacity: 0.5 }} />
                       <div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8 }}>
                           <h3 style={{ fontSize: 16, fontWeight: 700, color: '#111827', margin: 0 }}>{item.title}</h3>
-                          <span style={{ fontSize: 13, color: '#4F46E5', fontWeight: 600 }}>{item.cost}</span>
+                          <span style={{ fontSize: 13, color: '#111827', fontWeight: 600 }}>{item.cost}</span>
                         </div>
                         <p style={{ fontSize: 15, color: 'rgba(0,0,0,0.45)', lineHeight: 1.75, margin: 0 }}>{item.desc}</p>
                       </div>
@@ -315,7 +311,7 @@ export default function SaasDevelopmentCostUSAClient() {
                     }}>
                       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8, flexWrap: 'wrap', gap: 8 }}>
                         <h3 style={{ fontSize: 16, fontWeight: 700, color: '#111827', margin: 0 }}>{item.name}</h3>
-                        <span style={{ fontSize: 14, color: '#4F46E5', fontWeight: 700 }}>{item.range}</span>
+                        <span style={{ fontSize: 14, color: '#111827', fontWeight: 700 }}>{item.range}</span>
                       </div>
                       <p style={{ fontSize: 15, color: 'rgba(0,0,0,0.45)', lineHeight: 1.75, margin: 0 }}>{item.detail}</p>
                     </div>
@@ -339,10 +335,10 @@ export default function SaasDevelopmentCostUSAClient() {
                   </p>
                   <div style={{
                     padding: '20px 24px', borderRadius: 16,
-                    background: 'rgba(79,70,229,0.06)', border: '1px solid rgba(79,70,229,0.15)',
+                    background: 'rgba(17,24,39,0.06)', border: '1px solid rgba(17,24,39,0.15)',
                   }}>
-                    <p style={{ fontSize: 15, color: 'rgba(0,0,0,0.55)', lineHeight: 1.75, margin: 0 }}>
-                      <strong style={{ color: '#4F46E5' }}>Pro tip:</strong> At Codazz, we estimate that using best-in-class third-party services for commodity features saves our clients 30-40% on initial development costs and reduces time-to-market by 6-8 weeks on average.
+                    <p style={{ fontSize: 15, color: 'rgb(0,0,0)', lineHeight: 1.75, margin: 0 }}>
+                      <strong style={{ color: '#111827' }}>Pro tip:</strong> At Codazz, we estimate that using best-in-class third-party services for commodity features saves our clients 30-40% on initial development costs and reduces time-to-market by 6-8 weeks on average.
                     </p>
                   </div>
                 </div>
@@ -358,8 +354,8 @@ export default function SaasDevelopmentCostUSAClient() {
                   </p>
 
                   <div style={{
-                    background: 'linear-gradient(135deg, rgba(79,70,229,0.1) 0%, rgba(0,0,0,0.015) 100%)',
-                    border: '1px solid rgba(79,70,229,0.3)',
+                    background: 'linear-gradient(135deg, rgba(17,24,39,0.1) 0%, rgba(0,0,0,0.015) 100%)',
+                    border: '1px solid rgba(17,24,39,0.3)',
                     borderRadius: 24, padding: 36, marginBottom: 24,
                   }}>
                     <h3 style={{ fontSize: 18, fontWeight: 700, color: '#111827', marginBottom: 20 }}>Our Recommended SaaS Stack</h3>
@@ -376,7 +372,7 @@ export default function SaasDevelopmentCostUSAClient() {
                         borderBottom: i < 4 ? '1px solid rgba(0,0,0,0.03)' : 'none',
                       }}>
                         <div style={{ flexShrink: 0, width: 80 }}>
-                          <span style={{ fontSize: 11, fontWeight: 700, color: '#4F46E5', textTransform: 'uppercase', letterSpacing: '0.08em' }}>{item.layer}</span>
+                          <span style={{ fontSize: 11, fontWeight: 700, color: '#111827', textTransform: 'uppercase', letterSpacing: '0.08em' }}>{item.layer}</span>
                         </div>
                         <div>
                           <p style={{ fontSize: 15, fontWeight: 600, color: '#111827', margin: '0 0 4px' }}>{item.tech}</p>
@@ -422,7 +418,7 @@ export default function SaasDevelopmentCostUSAClient() {
                   </p>
 
                   {[
-                    { phase: '01', name: 'Discovery', duration: '1-2 weeks', cost: '$3,000 - $8,000', color: '#4F46E5', desc: 'We map your business model, define user personas, audit competitors, and create a detailed product requirements document (PRD). You walk away with a complete technical specification and accurate cost estimate — even if you decide to build with another team.' },
+                    { phase: '01', name: 'Discovery', duration: '1-2 weeks', cost: '$3,000 - $8,000', color: '#111827', desc: 'We map your business model, define user personas, audit competitors, and create a detailed product requirements document (PRD). You walk away with a complete technical specification and accurate cost estimate — even if you decide to build with another team.' },
                     { phase: '02', name: 'Architecture', duration: '1-2 weeks', cost: '$5,000 - $12,000', color: '#a78bfa', desc: 'Database schema design, API architecture, infrastructure planning, and technology stack finalization. We create wireframes for every screen and define the data flow between components. This phase eliminates costly rewrites later.' },
                     { phase: '03', name: 'MVP Build', duration: '6-12 weeks', cost: '$20,000 - $60,000', color: '#34d399', desc: 'Iterative two-week sprints with demos after each cycle. We build the core product, integrate billing, deploy to staging, and conduct thorough QA. You have a working product in the hands of real users within three months.' },
                     { phase: '04', name: 'Scale', duration: '4-8 weeks', cost: '$15,000 - $40,000', color: '#60a5fa', desc: 'Performance optimization, load testing, security hardening, and infrastructure scaling. We add monitoring, alerting, and automated backups. Your product is now ready for aggressive customer acquisition.' },
@@ -478,8 +474,8 @@ export default function SaasDevelopmentCostUSAClient() {
                           transition: 'all 0.15s',
                         }}
                           onMouseEnter={e => {
-                            (e.currentTarget as HTMLAnchorElement).style.color = '#4F46E5';
-                            (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(79,70,229,0.06)';
+                            (e.currentTarget as HTMLAnchorElement).style.color = '#111827';
+                            (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(17,24,39,0.06)';
                           }}
                           onMouseLeave={e => {
                             (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(0,0,0,0.4)';
@@ -505,9 +501,9 @@ export default function SaasDevelopmentCostUSAClient() {
                     <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
                       <div style={{
                         width: 44, height: 44, borderRadius: '50%',
-                        background: 'rgba(79,70,229,0.12)', border: '1px solid rgba(79,70,229,0.25)',
+                        background: 'rgba(17,24,39,0.12)', border: '1px solid rgba(17,24,39,0.25)',
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        fontSize: 14, fontWeight: 700, color: '#4F46E5', flexShrink: 0,
+                        fontSize: 14, fontWeight: 700, color: '#111827', flexShrink: 0,
                       }}>RM</div>
                       <div>
                         <p style={{ fontSize: 14, fontWeight: 600, color: '#111827', margin: 0 }}><a href="/about/raman-makkar" style={{ color: 'inherit', textDecoration: 'none', borderBottom: '1px solid rgba(0,0,0,0.1)' }}>Raman Makkar</a></p>
@@ -536,16 +532,16 @@ export default function SaasDevelopmentCostUSAClient() {
                           background: 'transparent', transition: 'all 0.2s',
                         }}
                           onMouseEnter={e => {
-                            (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(79,70,229,0.15)';
-                            (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(79,70,229,0.03)';
+                            (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(17,24,39,0.15)';
+                            (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(17,24,39,0.03)';
                           }}
                           onMouseLeave={e => {
                             (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(0,0,0,0.03)';
                             (e.currentTarget as HTMLAnchorElement).style.background = 'transparent';
                           }}
                         >
-                          <p style={{ fontSize: 11, color: '#4F46E5', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', margin: '0 0 6px' }}>{post.category}</p>
-                          <p style={{ fontSize: 13, color: 'rgba(0,0,0,0.55)', lineHeight: 1.4, margin: '0 0 8px', fontWeight: 600 }}>{post.title}</p>
+                          <p style={{ fontSize: 11, color: '#111827', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', margin: '0 0 6px' }}>{post.category}</p>
+                          <p style={{ fontSize: 13, color: 'rgb(0,0,0)', lineHeight: 1.4, margin: '0 0 8px', fontWeight: 600 }}>{post.title}</p>
                           <p style={{ fontSize: 12, color: 'rgba(0,0,0,0.25)', margin: 0 }}>{post.readTime} read</p>
                         </Link>
                       ))}
@@ -564,7 +560,7 @@ export default function SaasDevelopmentCostUSAClient() {
             <div
               className="reveal"
               style={{
-                background: 'rgba(79,70,229,0.04)', border: '1px solid rgba(79,70,229,0.15)',
+                background: 'rgba(17,24,39,0.04)', border: '1px solid rgba(17,24,39,0.15)',
                 borderRadius: 28, padding: '64px 56px',
                 display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                 flexWrap: 'wrap', gap: 32,
@@ -573,7 +569,7 @@ export default function SaasDevelopmentCostUSAClient() {
               <div>
                 <p style={{
                   fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                  color: '#4F46E5', marginBottom: 12,
+                  color: '#111827', marginBottom: 12,
                 }}>Get Your Estimate</p>
                 <h2 style={{
                   fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', fontWeight: 700, color: '#111827',
@@ -587,7 +583,7 @@ export default function SaasDevelopmentCostUSAClient() {
               </div>
               <Link href="/contact" style={{ textDecoration: 'none' }}>
                 <button style={{
-                  padding: '18px 40px', borderRadius: 100, background: '#4F46E5', color: '#fff',
+                  padding: '18px 40px', borderRadius: 100, background: '#111827', color: '#fff',
                   fontSize: 15, fontWeight: 700, border: 'none', cursor: 'pointer',
                   transition: 'all 0.2s', whiteSpace: 'nowrap',
                 }}>

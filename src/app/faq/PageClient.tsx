@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
+import HeroBackground from '@/components/HeroBackground';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
@@ -58,12 +59,7 @@ export default function FAQPageClient() {
 
         {/* Hero */}
         <section style={{ padding: 'clamp(120px, 12vw, 160px) 0 clamp(48px, 6vw, 80px)', position: 'relative', overflow: 'hidden' }}>
-          <div style={{
-            position: 'absolute', top: -200, left: '50%', transform: 'translateX(-50%)',
-            width: 800, height: 800,
-            background: 'radial-gradient(circle, rgba(79,70,229,0.06) 0%, transparent 65%)',
-            pointerEvents: 'none',
-          }} />
+          <HeroBackground variant="center" />
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', maxWidth: 700, margin: '0 auto' }}>
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.25)', marginBottom: 20 }}>FAQ</div>
@@ -87,7 +83,7 @@ export default function FAQPageClient() {
               <div key={cat.name} className={`reveal reveal-d${ci + 1}`} style={{ marginBottom: 56 }}>
                 <div style={{
                   fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                  color: '#4F46E5', marginBottom: 20, paddingBottom: 16,
+                  color: '#111827', marginBottom: 20, paddingBottom: 16,
                   borderBottom: '1px solid rgba(0,0,0,0.05)',
                 }}>{cat.name}</div>
                 {cat.faqs.map((faq, fi) => {
@@ -107,7 +103,7 @@ export default function FAQPageClient() {
                         <span style={{ fontSize: 16, fontWeight: 500, color: '#111827', lineHeight: 1.5 }}>{faq.q}</span>
                         <div style={{
                           width: 32, height: 32, borderRadius: '50%', flexShrink: 0,
-                          background: isOpen ? '#4F46E5' : 'rgba(0,0,0,0.03)',
+                          background: isOpen ? '#111827' : 'rgba(0,0,0,0.03)',
                           display: 'flex', alignItems: 'center', justifyContent: 'center', transition: '0.3s',
                         }}>
                           <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
@@ -122,7 +118,7 @@ export default function FAQPageClient() {
                         maxHeight: isOpen ? 500 : 0, overflow: 'hidden',
                         transition: 'max-height 0.45s cubic-bezier(0.16,1,0.3,1)',
                       }}>
-                        <p style={{ fontSize: 15, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, paddingBottom: 24, margin: 0 }}>
+                        <p style={{ fontSize: 15, color: 'rgb(0,0,0)', lineHeight: 1.8, paddingBottom: 24, margin: 0 }}>
                           {faq.a}
                         </p>
                       </div>
@@ -138,7 +134,7 @@ export default function FAQPageClient() {
         <section style={{ paddingBottom: 'clamp(60px, 10vw, 120px)', borderTop: '1px solid rgba(0,0,0,0.05)' }}>
           <div className="cb-container" style={{ paddingTop: 'clamp(48px, 6vw, 80px)' }}>
             <div className="reveal" style={{
-              background: 'rgba(79,70,229,0.04)', border: '1px solid rgba(79,70,229,0.15)',
+              background: 'rgba(17,24,39,0.04)', border: '1px solid rgba(17,24,39,0.15)',
               borderRadius: 28, padding: 'clamp(32px, 6vw, 64px) clamp(20px, 4vw, 56px)', textAlign: 'center',
             }}>
               <h2 style={{
@@ -153,7 +149,7 @@ export default function FAQPageClient() {
               <Link href="/contact" style={{
                 display: 'inline-flex', alignItems: 'center', gap: 10,
                 height: 52, padding: '0 32px', borderRadius: 100,
-                background: '#4F46E5', color: '#fff', fontSize: 14, fontWeight: 700,
+                background: '#111827', color: '#fff', fontSize: 14, fontWeight: 700,
                 textDecoration: 'none',
               }}>
                 Get in Touch

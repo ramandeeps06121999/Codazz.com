@@ -14,8 +14,8 @@ const rows = [
 ];
 
 const Check = () => (
-  <div style={{ width: 32, height: 32, borderRadius: '50%', background: 'rgba(79,70,229,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg>
+  <div style={{ width: 32, height: 32, borderRadius: '50%', background: 'rgba(17,24,39,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#111827" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg>
   </div>
 );
 
@@ -61,9 +61,9 @@ export default function ComparisonTable() {
               { label: 'Traditional Agency', highlight: false },
               { label: 'Freelancer', highlight: false },
             ].map(col => (
-              <div key={col.label} style={{ padding: 'clamp(14px, 2vw, 28px) clamp(16px, 3vw, 32px)', textAlign: 'center', borderLeft: '1px solid rgba(0,0,0,0.04)', background: col.highlight ? 'rgba(79,70,229,0.05)' : 'transparent' }}>
-                <div style={{ fontSize: 14, fontWeight: 700, color: col.highlight ? '#4F46E5' : 'rgba(0,0,0,0.55)', letterSpacing: '-0.01em' }}>{col.label}</div>
-                {col.highlight && <div style={{ width: 32, height: 2, background: '#4F46E5', borderRadius: 1, margin: '8px auto 0' }} />}
+              <div key={col.label} style={{ padding: 'clamp(14px, 2vw, 28px) clamp(16px, 3vw, 32px)', textAlign: 'center', borderLeft: '1px solid rgba(0,0,0,0.04)', background: col.highlight ? 'rgba(17,24,39,0.05)' : 'transparent' }}>
+                <div style={{ fontSize: 14, fontWeight: 700, color: col.highlight ? '#111827' : 'rgb(0,0,0)', letterSpacing: '-0.01em' }}>{col.label}</div>
+                {col.highlight && <div style={{ width: 32, height: 2, background: '#111827', borderRadius: 1, margin: '8px auto 0' }} />}
               </div>
             ))}
           </div>
@@ -81,8 +81,8 @@ export default function ComparisonTable() {
               onMouseEnter={e => { e.currentTarget.style.background = 'rgba(0,0,0,0.015)'; }}
               onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; }}
             >
-              <div style={{ padding: 'clamp(12px, 2vw, 22px) clamp(16px, 3vw, 40px)', fontSize: 15, color: 'rgba(0,0,0,0.55)', fontWeight: 500, display: 'flex', alignItems: 'center' }}>{row.feature}</div>
-              <div style={{ padding: 'clamp(12px, 2vw, 22px) clamp(16px, 3vw, 32px)', display: 'flex', alignItems: 'center', justifyContent: 'center', borderLeft: '1px solid rgba(0,0,0,0.04)', background: 'rgba(79,70,229,0.02)' }}>
+              <div style={{ padding: 'clamp(12px, 2vw, 22px) clamp(16px, 3vw, 40px)', fontSize: 15, color: 'rgb(0,0,0)', fontWeight: 500, display: 'flex', alignItems: 'center' }}>{row.feature}</div>
+              <div style={{ padding: 'clamp(12px, 2vw, 22px) clamp(16px, 3vw, 32px)', display: 'flex', alignItems: 'center', justifyContent: 'center', borderLeft: '1px solid rgba(0,0,0,0.04)', background: 'rgba(17,24,39,0.02)' }}>
                 <Check />
               </div>
               <div style={{ padding: 'clamp(12px, 2vw, 22px) clamp(16px, 3vw, 32px)', display: 'flex', alignItems: 'center', justifyContent: 'center', borderLeft: '1px solid rgba(0,0,0,0.04)' }}>
@@ -98,9 +98,9 @@ export default function ComparisonTable() {
 
         {/* CTA below table */}
         <div className="reveal reveal-d2" style={{ textAlign: 'center', marginTop: 60 }}>
-          <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', marginBottom: 28 }}>Ready to work with a team that checks every box?</p>
-          <a href="#contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, height: 56, padding: '0 36px', borderRadius: 100, background: '#4F46E5', color: '#fff', fontSize: 15, fontWeight: 700, textDecoration: 'none', transition: '0.3s' }}
-            onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 16px 40px rgba(79,70,229,0.4)'; }}
+          <p style={{ fontSize: 16, color: 'rgb(0,0,0)', marginBottom: 28 }}>Ready to work with a team that checks every box?</p>
+          <a href="#contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, height: 56, padding: '0 36px', borderRadius: 100, background: '#111827', color: '#fff', fontSize: 15, fontWeight: 700, textDecoration: 'none', transition: '0.3s' }}
+            onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 16px 40px rgba(17,24,39,0.4)'; }}
             onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}
           >
             Start Your Project

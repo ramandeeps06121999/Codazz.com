@@ -156,7 +156,7 @@ const categoryColors: Record<string, string> = {
   'AI/ML': '#a78bfa',
   Mobile: '#34d399',
   Design: '#f472b6',
-  Business: '#4F46E5',
+  Business: '#111827',
   'Digital Marketing': '#fb923c',
 };
 
@@ -176,14 +176,14 @@ export default function BlogPage() {
           <div style={{
             position: 'absolute', top: -200, left: '50%', transform: 'translateX(-50%)',
             width: 800, height: 800,
-            background: 'radial-gradient(circle, rgba(79,70,229,0.06) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(17,24,39,0.06) 0%, transparent 70%)',
             pointerEvents: 'none',
           }} />
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 24 }}>
               <span style={{
                 fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                color: '#4F46E5',
+                color: '#111827',
               }}>
                 Codazz Journal
               </span>
@@ -224,7 +224,7 @@ export default function BlogPage() {
                   style={{
                     padding: '8px 20px', borderRadius: 100, fontSize: 13, fontWeight: 500,
                     cursor: 'pointer', border: 'none', transition: 'all 0.2s',
-                    background: activeCategory === cat ? '#4F46E5' : 'rgba(0,0,0,0.03)',
+                    background: activeCategory === cat ? '#111827' : 'rgba(0,0,0,0.03)',
                     color: activeCategory === cat ? '#ffffff' : 'rgba(0,0,0,0.45)',
                   }}
                 >
@@ -251,18 +251,18 @@ export default function BlogPage() {
                   background: 'rgba(0,0,0,0.015)', border: '1px solid rgba(0,0,0,0.06)',
                   borderRadius: 28, padding: 48, display: 'grid',
                   gridTemplateColumns: 'repeat(auto-fit, minmax(min(300px, 100%), 1fr))', gap: 48, alignItems: 'center',
-                  borderLeft: '3px solid #4F46E5',
+                  borderLeft: '3px solid #111827',
                   transition: 'all 0.3s cubic-bezier(0.16,1,0.3,1)',
                   cursor: 'pointer',
                 }}
                 onMouseEnter={e => {
-                  (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(79,70,229,0.35)';
-                  (e.currentTarget as HTMLDivElement).style.background = 'rgba(79,70,229,0.03)';
+                  (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(17,24,39,0.35)';
+                  (e.currentTarget as HTMLDivElement).style.background = 'rgba(17,24,39,0.03)';
                   (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-4px)';
                 }}
                 onMouseLeave={e => {
                   (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(0,0,0,0.06)';
-                  (e.currentTarget as HTMLDivElement).style.borderLeftColor = '#4F46E5';
+                  (e.currentTarget as HTMLDivElement).style.borderLeftColor = '#111827';
                   (e.currentTarget as HTMLDivElement).style.background = 'rgba(0,0,0,0.015)';
                   (e.currentTarget as HTMLDivElement).style.transform = 'translateY(0)';
                 }}
@@ -271,7 +271,7 @@ export default function BlogPage() {
                   <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
                     <span style={{
                       fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase',
-                      background: 'rgba(79,70,229,0.12)', color: '#4F46E5',
+                      background: 'rgba(17,24,39,0.12)', color: '#111827',
                       padding: '4px 12px', borderRadius: 100,
                     }}>Business</span>
                     <span style={{ fontSize: 13, color: 'rgba(0,0,0,0.25)' }}>March 2026</span>
@@ -292,7 +292,7 @@ export default function BlogPage() {
                   </p>
                   <span style={{
                     display: 'inline-flex', alignItems: 'center', gap: 8,
-                    fontSize: 14, fontWeight: 600, color: '#4F46E5',
+                    fontSize: 14, fontWeight: 600, color: '#111827',
                   }}>
                     Read Article
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -302,8 +302,8 @@ export default function BlogPage() {
                 </div>
                 <div style={{
                   width: 200, height: 200, borderRadius: 20, flexShrink: 0, maxWidth: '100%',
-                  background: 'linear-gradient(135deg, rgba(79,70,229,0.12) 0%, rgba(79,70,229,0.04) 100%)',
-                  border: '1px solid rgba(79,70,229,0.15)',
+                  background: 'linear-gradient(135deg, rgba(17,24,39,0.12) 0%, rgba(17,24,39,0.04) 100%)',
+                  border: '1px solid rgba(17,24,39,0.15)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                 }}>
                   <span style={{ fontSize: 64 }}>🦄</span>
@@ -326,7 +326,7 @@ export default function BlogPage() {
               display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(320px, 100%), 1fr))', gap: 20,
             }}>
               {posts.filter(p => activeCategory === 'All' || p.category === activeCategory).map((post, i) => {
-                const accentColor = categoryColors[post.category] || '#4F46E5';
+                const accentColor = categoryColors[post.category] || '#111827';
                 return (
                   <Link key={post.slug} href={`/blog/${post.slug}`} style={{ textDecoration: 'none' }}>
                     <article
@@ -339,8 +339,8 @@ export default function BlogPage() {
                         cursor: 'pointer',
                       }}
                       onMouseEnter={e => {
-                        (e.currentTarget as HTMLElement).style.borderColor = 'rgba(79,70,229,0.2)';
-                        (e.currentTarget as HTMLElement).style.background = 'rgba(79,70,229,0.03)';
+                        (e.currentTarget as HTMLElement).style.borderColor = 'rgba(17,24,39,0.2)';
+                        (e.currentTarget as HTMLElement).style.background = 'rgba(17,24,39,0.03)';
                         (e.currentTarget as HTMLElement).style.transform = 'translateY(-4px)';
                       }}
                       onMouseLeave={e => {
@@ -386,9 +386,9 @@ export default function BlogPage() {
                           {/* Author avatar */}
                           <div style={{
                             width: 30, height: 30, borderRadius: '50%',
-                            background: 'rgba(79,70,229,0.12)', border: '1px solid rgba(79,70,229,0.2)',
+                            background: 'rgba(17,24,39,0.12)', border: '1px solid rgba(17,24,39,0.2)',
                             display: 'flex', alignItems: 'center', justifyContent: 'center',
-                            fontSize: 11, fontWeight: 700, color: '#4F46E5',
+                            fontSize: 11, fontWeight: 700, color: '#111827',
                           }}>
                             {post.author}
                           </div>
@@ -406,7 +406,7 @@ export default function BlogPage() {
 
                       <div style={{ marginTop: 16 }}>
                         <span style={{
-                          fontSize: 13, fontWeight: 600, color: '#4F46E5',
+                          fontSize: 13, fontWeight: 600, color: '#111827',
                           display: 'inline-flex', alignItems: 'center', gap: 6,
                         }}>
                           Read More
@@ -435,7 +435,7 @@ export default function BlogPage() {
             >
               <span style={{
                 fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                color: '#4F46E5', display: 'block', marginBottom: 20,
+                color: '#111827', display: 'block', marginBottom: 20,
               }}>Newsletter</span>
               <h2 style={{
                 fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', fontWeight: 700, color: '#111827',
@@ -461,7 +461,7 @@ export default function BlogPage() {
                   }}
                 />
                 <button style={{
-                  padding: '14px 32px', borderRadius: 100, background: '#4F46E5', color: '#fff',
+                  padding: '14px 32px', borderRadius: 100, background: '#111827', color: '#fff',
                   fontSize: 14, fontWeight: 700, border: 'none', cursor: 'pointer',
                   transition: 'all 0.2s',
                 }}>

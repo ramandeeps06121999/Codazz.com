@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import HeroBackground from '@/components/HeroBackground';
 import ServiceHeroForm from '@/components/ServiceHeroForm';
 
 // ─── REVEAL HOOK ─────────────────────────────────────────────────────────────
@@ -56,13 +57,13 @@ const sectionPad: React.CSSProperties = { padding: 'clamp(60px, 10vw, 120px) 0' 
 const sectionBorder: React.CSSProperties = { borderTop: '1px solid rgba(0,0,0,0.05)' };
 const heading2: React.CSSProperties = { fontSize: 'clamp(2.2rem, 4vw, 4rem)', fontWeight: 500, color: '#111827', letterSpacing: '-0.04em', lineHeight: 1.05, margin: 0 };
 const subLabel: React.CSSProperties = { fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: 'rgba(0,0,0,0.25)', marginBottom: 20 };
-const bodyText: React.CSSProperties = { fontSize: 15, color: 'rgba(0,0,0,0.55)', lineHeight: 1.75 };
+const bodyText: React.CSSProperties = { fontSize: 15, color: 'rgb(0,0,0)', lineHeight: 1.75 };
 const autoGrid: React.CSSProperties = { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 480px), 1fr))', gap: 'clamp(16px, 2vw, 20px)' };
 
 function hoverCard(e: React.MouseEvent, on: boolean) {
   const t = e.currentTarget as HTMLElement;
-  t.style.borderColor = on ? 'rgba(79,70,229,0.2)' : 'rgba(0,0,0,0.06)';
-  t.style.background = on ? 'rgba(79,70,229,0.03)' : 'rgba(0,0,0,0.015)';
+  t.style.borderColor = on ? 'rgba(17,24,39,0.2)' : 'rgba(0,0,0,0.06)';
+  t.style.background = on ? 'rgba(17,24,39,0.03)' : 'rgba(0,0,0,0.015)';
   t.style.transform = on ? 'translateY(-4px)' : '';
   t.style.boxShadow = on ? '0 24px 60px rgba(0,0,0,0.06)' : '';
 }
@@ -107,7 +108,7 @@ export default function CityServicePageClient(props: CityServicePageProps) {
 
   // City-aware portfolio items based on local industries
   const PORTFOLIO_POOL: Record<string, { title: string; desc: string; metrics: string; gradient: string }> = {
-    'FinTech': { title: 'Real-Time Payment Processing Engine for Series B Startup', desc: 'Built a PCI-DSS Level 1 compliant payment gateway handling ACH, wire, and card-present transactions with sub-200ms latency. Integrated KYC/AML screening via Plaid and Sardine APIs with automated SAR filing.', metrics: '$840M processed in first year', gradient: 'linear-gradient(135deg, rgba(79,70,229,0.15), rgba(79,70,229,0.03))' },
+    'FinTech': { title: 'Real-Time Payment Processing Engine for Series B Startup', desc: 'Built a PCI-DSS Level 1 compliant payment gateway handling ACH, wire, and card-present transactions with sub-200ms latency. Integrated KYC/AML screening via Plaid and Sardine APIs with automated SAR filing.', metrics: '$840M processed in first year', gradient: 'linear-gradient(135deg, rgba(17,24,39,0.15), rgba(17,24,39,0.03))' },
     'Healthcare': { title: 'Patient Intake & Clinical Workflow Digitization for Regional Hospital Network', desc: 'Replaced paper-based intake across 14 facilities with a HIPAA-compliant portal supporting HL7 FHIR interoperability, e-prescribing via Surescripts, and real-time bed-management dashboards for nursing staff.', metrics: '42% reduction in patient wait times', gradient: 'linear-gradient(135deg, rgba(16,185,129,0.15), rgba(16,185,129,0.03))' },
     'HealthTech': { title: 'Remote Patient Monitoring Platform for Chronic Care Management', desc: 'Developed a BLE-connected wearable data pipeline ingesting vitals from 12 device types, with clinician alerting rules engine and CPT-code-based billing automation for RPM reimbursement.', metrics: '31% fewer ER readmissions', gradient: 'linear-gradient(135deg, rgba(16,185,129,0.15), rgba(16,185,129,0.03))' },
     'Real Estate': { title: 'Automated Commercial Lease Management Platform for REIT Portfolio', desc: 'Built a multi-tenant lease abstraction system parsing 8,000+ PDF lease documents using OCR and NLP, with automated rent escalation tracking, CAM reconciliation, and FASB ASC 842 compliance reporting.', metrics: '67% faster lease renewals', gradient: 'linear-gradient(135deg, rgba(245,158,11,0.15), rgba(245,158,11,0.03))' },
@@ -116,10 +117,10 @@ export default function CityServicePageClient(props: CityServicePageProps) {
     'Enterprise SaaS': { title: 'Multi-Tenant RBAC & Audit System for Compliance-Heavy SaaS', desc: 'Architected a hierarchical permission model supporting 200+ granular scopes with SOC 2 Type II audit trails, SSO via SAML/OIDC, and SCIM provisioning across 3,400 enterprise accounts.', metrics: '99.97% uptime over 18 months', gradient: 'linear-gradient(135deg, rgba(139,92,246,0.15), rgba(139,92,246,0.03))' },
     'Media & Entertainment': { title: 'Ad-Supported Streaming Backend for Regional Broadcaster', desc: 'Engineered an ABR transcoding pipeline on AWS MediaConvert with SSAI ad-insertion, DRM packaging (Widevine + FairPlay), and a recommendation engine serving 2.1M MAU across 6 device platforms.', metrics: '3.8x increase in watch time', gradient: 'linear-gradient(135deg, rgba(236,72,153,0.15), rgba(236,72,153,0.03))' },
     'Entertainment & Media': { title: 'Content Rights Management System for Streaming Distributor', desc: 'Built a territorial licensing database tracking 40,000+ titles across 190 territories with automated window management, royalty calculations, and integration with Nielsen measurement APIs.', metrics: '85% reduction in licensing disputes', gradient: 'linear-gradient(135deg, rgba(236,72,153,0.15), rgba(236,72,153,0.03))' },
-    'AI & Machine Learning': { title: 'Document Intelligence Pipeline for Insurance Claims Processing', desc: 'Deployed a multi-model ensemble (LayoutLM + custom NER) extracting structured data from handwritten forms, medical records, and invoices with human-in-the-loop review for edge cases.', metrics: '78% of claims auto-adjudicated', gradient: 'linear-gradient(135deg, rgba(79,70,229,0.15), rgba(79,70,229,0.03))' },
-    'AI & ML': { title: 'Demand Forecasting Engine for Quick-Commerce Grocery Startup', desc: 'Built an LSTM-based forecasting system predicting SKU-level demand at 15-minute intervals across 120 dark stores, feeding into automated reorder and markdown-pricing modules.', metrics: '19% reduction in food waste', gradient: 'linear-gradient(135deg, rgba(79,70,229,0.15), rgba(79,70,229,0.03))' },
-    'AI & Deep Learning': { title: 'Visual Defect Detection System for Electronics Manufacturer', desc: 'Trained and deployed a YOLOv8 model on 180K annotated PCB images running on-prem via NVIDIA Triton, detecting solder bridges and component misalignment at 45 fps on the production line.', metrics: '96.8% defect catch rate', gradient: 'linear-gradient(135deg, rgba(79,70,229,0.15), rgba(79,70,229,0.03))' },
-    'AI & DeepTech': { title: 'Conversational AI Agent for Tier-1 Bank Customer Service', desc: 'Developed a retrieval-augmented generation system over 12,000 policy documents with guardrails, intent routing to 340 flows, and seamless handoff to live agents with full conversation context.', metrics: '52% call deflection rate', gradient: 'linear-gradient(135deg, rgba(79,70,229,0.15), rgba(79,70,229,0.03))' },
+    'AI & Machine Learning': { title: 'Document Intelligence Pipeline for Insurance Claims Processing', desc: 'Deployed a multi-model ensemble (LayoutLM + custom NER) extracting structured data from handwritten forms, medical records, and invoices with human-in-the-loop review for edge cases.', metrics: '78% of claims auto-adjudicated', gradient: 'linear-gradient(135deg, rgba(17,24,39,0.15), rgba(17,24,39,0.03))' },
+    'AI & ML': { title: 'Demand Forecasting Engine for Quick-Commerce Grocery Startup', desc: 'Built an LSTM-based forecasting system predicting SKU-level demand at 15-minute intervals across 120 dark stores, feeding into automated reorder and markdown-pricing modules.', metrics: '19% reduction in food waste', gradient: 'linear-gradient(135deg, rgba(17,24,39,0.15), rgba(17,24,39,0.03))' },
+    'AI & Deep Learning': { title: 'Visual Defect Detection System for Electronics Manufacturer', desc: 'Trained and deployed a YOLOv8 model on 180K annotated PCB images running on-prem via NVIDIA Triton, detecting solder bridges and component misalignment at 45 fps on the production line.', metrics: '96.8% defect catch rate', gradient: 'linear-gradient(135deg, rgba(17,24,39,0.15), rgba(17,24,39,0.03))' },
+    'AI & DeepTech': { title: 'Conversational AI Agent for Tier-1 Bank Customer Service', desc: 'Developed a retrieval-augmented generation system over 12,000 policy documents with guardrails, intent routing to 340 flows, and seamless handoff to live agents with full conversation context.', metrics: '52% call deflection rate', gradient: 'linear-gradient(135deg, rgba(17,24,39,0.15), rgba(17,24,39,0.03))' },
     'Logistics': { title: 'Last-Mile Route Optimization Engine for 3PL Provider', desc: 'Implemented a constraint-based solver (OR-Tools + custom heuristics) optimizing 8,000+ daily deliveries across dynamic time windows, vehicle capacities, and real-time traffic feeds from HERE API.', metrics: '28% reduction in fuel costs', gradient: 'linear-gradient(135deg, rgba(14,165,233,0.15), rgba(14,165,233,0.03))' },
     'Logistics & Shipping': { title: 'Container Tracking & ETA Platform for Freight Forwarder', desc: 'Aggregated AIS vessel data, port congestion feeds, and customs clearance status into a unified shipment visibility dashboard with proactive delay alerts and automated document generation.', metrics: '4.1-day average ETA accuracy', gradient: 'linear-gradient(135deg, rgba(14,165,233,0.15), rgba(14,165,233,0.03))' },
     'Logistics & Trade': { title: 'Cross-Border Trade Compliance Engine for Import/Export Firm', desc: 'Built an HS-code classification system with automated duty calculation across 30 trade agreements, denied-party screening, and electronic filing to customs authorities in 12 countries.', metrics: '91% reduction in shipment holds', gradient: 'linear-gradient(135deg, rgba(14,165,233,0.15), rgba(14,165,233,0.03))' },
@@ -161,7 +162,7 @@ export default function CityServicePageClient(props: CityServicePageProps) {
     'Web3': { title: 'NFT Marketplace with On-Chain Royalty Enforcement', desc: 'Developed ERC-721/1155 smart contracts with EIP-2981 royalty enforcement, a custom indexer (Ponder + PostgreSQL), and a Next.js storefront with wallet-connect and gasless minting via relayers.', metrics: '18,000 NFTs minted in first 30 days', gradient: 'linear-gradient(135deg, rgba(168,85,247,0.15), rgba(168,85,247,0.03))' },
     'Web3 & Crypto': { title: 'Institutional-Grade Crypto Custody & Reporting Dashboard', desc: 'Built a multi-sig wallet management interface with MPC key sharding, real-time portfolio valuation across 14 chains, tax-lot accounting, and SOC 2-compliant audit exports.', metrics: '$2.3B AUM onboarded in 6 months', gradient: 'linear-gradient(135deg, rgba(168,85,247,0.15), rgba(168,85,247,0.03))' },
     'Blockchain': { title: 'Supply Chain Provenance Ledger for Luxury Goods Brand', desc: 'Implemented a Polygon-based traceability system assigning NFC-linked digital certificates to 80,000 handbags, tracking material origin, manufacturing steps, and ownership transfers.', metrics: '73% reduction in counterfeit claims', gradient: 'linear-gradient(135deg, rgba(168,85,247,0.15), rgba(168,85,247,0.03))' },
-    'Robotics': { title: 'Warehouse Pick-and-Pack Orchestration for AMR Fleet', desc: 'Built the fleet-management layer coordinating 60 autonomous mobile robots with WMS integration, dynamic path planning, charging scheduling, and human-safety interlock protocols.', metrics: '2.8x picks per hour vs. manual process', gradient: 'linear-gradient(135deg, rgba(79,70,229,0.15), rgba(79,70,229,0.03))' },
+    'Robotics': { title: 'Warehouse Pick-and-Pack Orchestration for AMR Fleet', desc: 'Built the fleet-management layer coordinating 60 autonomous mobile robots with WMS integration, dynamic path planning, charging scheduling, and human-safety interlock protocols.', metrics: '2.8x picks per hour vs. manual process', gradient: 'linear-gradient(135deg, rgba(17,24,39,0.15), rgba(17,24,39,0.03))' },
     'Semiconductors': { title: 'Yield Analytics Platform for Wafer Fabrication Facility', desc: 'Correlated inline metrology, WAT, and final test data across 12 process layers to identify systematic yield-loss signatures using spatial pattern recognition on wafer maps.', metrics: '4.2% yield improvement on 7nm node', gradient: 'linear-gradient(135deg, rgba(100,116,139,0.15), rgba(100,116,139,0.03))' },
     'Semiconductor': { title: 'Design-for-Test Automation Suite for Fabless Chip Company', desc: 'Built a scan-chain insertion and ATPG tool integration layer automating DFT from RTL through GDSII signoff, with coverage-gap analysis and test-time estimation for production planning.', metrics: '98.7% stuck-at fault coverage achieved', gradient: 'linear-gradient(135deg, rgba(100,116,139,0.15), rgba(100,116,139,0.03))' },
     'Telecom': { title: 'Network Inventory & Service Assurance Platform for Tier-2 Telco', desc: 'Unified fiber, microwave, and GPON asset records into a geospatial inventory with automated topology discovery, service-impact analysis, and trouble-ticket correlation for NOC operators.', metrics: '41% reduction in mean time to repair', gradient: 'linear-gradient(135deg, rgba(14,165,233,0.15), rgba(14,165,233,0.03))' },
@@ -191,20 +192,20 @@ export default function CityServicePageClient(props: CityServicePageProps) {
     'Mobility': { title: 'MaaS Platform Integrating Transit, Micromobility & Ride-Hail', desc: 'Built a mobility-as-a-service app unifying real-time GTFS feeds, e-scooter availability, and ride-hail APIs into a single trip planner with unified payment and monthly subscription passes.', metrics: '47K monthly active commuters', gradient: 'linear-gradient(135deg, rgba(14,165,233,0.15), rgba(14,165,233,0.03))' },
     'Outsourcing': { title: 'BPO Workforce Management & Quality Assurance Platform', desc: 'Built a real-time agent-performance dashboard ingesting ACD, CRM, and screen-recording data with automated QA scoring using speech analytics and compliance-keyword detection across 8,000 seats.', metrics: 'CSAT improved from 3.6 to 4.3', gradient: 'linear-gradient(135deg, rgba(139,92,246,0.15), rgba(139,92,246,0.03))' },
     'Nearshore IT': { title: 'Distributed Engineering Team Platform for Nearshore Staffing Firm', desc: 'Developed an internal platform matching 600+ engineers to client projects based on tech stack, timezone overlap, and security-clearance level with automated onboarding and time-tracking integration.', metrics: 'Bench time reduced from 18 to 6 days avg', gradient: 'linear-gradient(135deg, rgba(139,92,246,0.15), rgba(139,92,246,0.03))' },
-    'FinTech & M-Pesa': { title: 'Mobile Money Agent Network Management Platform', desc: 'Built a float-management and reconciliation system for 40,000+ M-Pesa agents with real-time liquidity alerts, automated commission calculations, and fraud-detection rules on transaction velocity.', metrics: '99.4% transaction reconciliation rate', gradient: 'linear-gradient(135deg, rgba(79,70,229,0.15), rgba(79,70,229,0.03))' },
+    'FinTech & M-Pesa': { title: 'Mobile Money Agent Network Management Platform', desc: 'Built a float-management and reconciliation system for 40,000+ M-Pesa agents with real-time liquidity alerts, automated commission calculations, and fraud-detection rules on transaction velocity.', metrics: '99.4% transaction reconciliation rate', gradient: 'linear-gradient(135deg, rgba(17,24,39,0.15), rgba(17,24,39,0.03))' },
     'K-Content': { title: 'Global Content Licensing & Subtitle Platform for K-Drama Distributor', desc: 'Built a B2B portal managing territorial rights for 2,800 drama episodes with automated subtitle file conversion (SRT/VTT/DFXP), QC workflows, and revenue-share reporting across 45 OTT partners.', metrics: 'Licensing deal velocity up 55%', gradient: 'linear-gradient(135deg, rgba(236,72,153,0.15), rgba(236,72,153,0.03))' },
     'Big Tech EMEA HQs': { title: 'EMEA Data Residency & Compliance Middleware for Global SaaS', desc: 'Architected a geo-routing layer ensuring EU customer data stays within GDPR-compliant regions with automated DPIA generation, DPO workflow tools, and cross-border transfer impact assessments.', metrics: 'Zero GDPR violations across 14M EU users', gradient: 'linear-gradient(135deg, rgba(59,130,246,0.15), rgba(59,130,246,0.03))' },
     'Life Sciences': { title: 'Biobank Sample Tracking & Chain-of-Custody System', desc: 'Built a LIMS extension tracking 2.1M biospecimens across 6 freezer farms with temperature-excursion alerting, consent-status verification, and automated IRB-compliant de-identification for researchers.', metrics: 'Sample retrieval time cut from 2hr to 8min', gradient: 'linear-gradient(135deg, rgba(16,185,129,0.15), rgba(16,185,129,0.03))' },
     'Entertainment': { title: 'Ticketing & Venue Operations Platform for Live Events Company', desc: 'Developed a white-label ticketing system with dynamic pricing, anti-scalping queue logic, mobile-entry QR validation, and real-time capacity dashboards for venues up to 60,000 seats.', metrics: '12% revenue uplift from dynamic pricing', gradient: 'linear-gradient(135deg, rgba(236,72,153,0.15), rgba(236,72,153,0.03))' },
-    'Banking & Finance': { title: 'Core Banking Middleware Migration for Regional Credit Union', desc: 'Replaced a COBOL-based core with an API-driven middleware layer enabling mobile banking, Zelle P2P integration, and real-time fraud scoring while maintaining backward compatibility with legacy GL systems.', metrics: 'Mobile banking adoption jumped from 22% to 68%', gradient: 'linear-gradient(135deg, rgba(79,70,229,0.15), rgba(79,70,229,0.03))' },
-    'Banking & Wealth Tech': { title: 'Robo-Advisory & Portfolio Rebalancing Engine for Private Bank', desc: 'Built a goal-based investing platform with tax-loss harvesting, ESG screening, and automated rebalancing across 8 asset classes, integrated with Bloomberg market data and Pershing custody.', metrics: 'CHF 1.2B AUM migrated in 9 months', gradient: 'linear-gradient(135deg, rgba(79,70,229,0.15), rgba(79,70,229,0.03))' },
-    'Sovereign Wealth': { title: 'Investment Portfolio Analytics for Sovereign Wealth Fund', desc: 'Developed a multi-asset-class performance attribution system covering public equities, fixed income, PE, and real assets with benchmarking against CPI+ targets and GIPS-compliant reporting.', metrics: 'Reporting cycle reduced from 6 weeks to 5 days', gradient: 'linear-gradient(135deg, rgba(79,70,229,0.15), rgba(79,70,229,0.03))' },
+    'Banking & Finance': { title: 'Core Banking Middleware Migration for Regional Credit Union', desc: 'Replaced a COBOL-based core with an API-driven middleware layer enabling mobile banking, Zelle P2P integration, and real-time fraud scoring while maintaining backward compatibility with legacy GL systems.', metrics: 'Mobile banking adoption jumped from 22% to 68%', gradient: 'linear-gradient(135deg, rgba(17,24,39,0.15), rgba(17,24,39,0.03))' },
+    'Banking & Wealth Tech': { title: 'Robo-Advisory & Portfolio Rebalancing Engine for Private Bank', desc: 'Built a goal-based investing platform with tax-loss harvesting, ESG screening, and automated rebalancing across 8 asset classes, integrated with Bloomberg market data and Pershing custody.', metrics: 'CHF 1.2B AUM migrated in 9 months', gradient: 'linear-gradient(135deg, rgba(17,24,39,0.15), rgba(17,24,39,0.03))' },
+    'Sovereign Wealth': { title: 'Investment Portfolio Analytics for Sovereign Wealth Fund', desc: 'Developed a multi-asset-class performance attribution system covering public equities, fixed income, PE, and real assets with benchmarking against CPI+ targets and GIPS-compliant reporting.', metrics: 'Reporting cycle reduced from 6 weeks to 5 days', gradient: 'linear-gradient(135deg, rgba(17,24,39,0.15), rgba(17,24,39,0.03))' },
     'Space Tech': { title: 'Ground Station Network Scheduling Platform for LEO Constellation', desc: 'Built a multi-objective optimizer allocating contact windows across 22 ground stations for a 48-satellite constellation, balancing data-downlink priority, latency requirements, and station maintenance.', metrics: '94% data-downlink success rate', gradient: 'linear-gradient(135deg, rgba(100,116,139,0.15), rgba(100,116,139,0.03))' },
     'Precision Engineering': { title: 'Metrology Data Pipeline for Swiss Watchmaking Manufacturer', desc: 'Connected CMM machines and optical comparators to a cloud quality system with SPC charting, Cpk trend analysis, and automated non-conformance routing for components measured to 1-micron tolerance.', metrics: 'Scrap rate reduced from 3.2% to 0.8%', gradient: 'linear-gradient(135deg, rgba(100,116,139,0.15), rgba(100,116,139,0.03))' },
   };
 
   const DEFAULT_PORTFOLIO = [
-    { title: 'Multi-Tenant RBAC & Audit System for Compliance-Heavy SaaS', industry: 'Technology', desc: 'Architected a hierarchical permission model supporting 200+ granular scopes with SOC 2 Type II audit trails and SCIM provisioning across 3,400 enterprise accounts.', metrics: '99.97% uptime over 18 months', gradient: 'linear-gradient(135deg, rgba(79,70,229,0.15), rgba(79,70,229,0.03))' },
+    { title: 'Multi-Tenant RBAC & Audit System for Compliance-Heavy SaaS', industry: 'Technology', desc: 'Architected a hierarchical permission model supporting 200+ granular scopes with SOC 2 Type II audit trails and SCIM provisioning across 3,400 enterprise accounts.', metrics: '99.97% uptime over 18 months', gradient: 'linear-gradient(135deg, rgba(17,24,39,0.15), rgba(17,24,39,0.03))' },
     { title: 'Headless Commerce Migration for D2C Brand Doing $50M ARR', industry: 'Retail', desc: 'Migrated from monolithic Magento to a composable stack with edge-rendered storefronts, cutting page load from 4.2s to 0.9s and enabling 15-minute deploys.', metrics: '23% increase in conversion rate', gradient: 'linear-gradient(135deg, rgba(59,130,246,0.15), rgba(59,130,246,0.03))' },
     { title: 'Patient Intake & Clinical Workflow Digitization for Hospital Network', industry: 'Healthcare', desc: 'Replaced paper-based intake across 14 facilities with a HIPAA-compliant portal supporting HL7 FHIR interoperability and real-time bed-management dashboards.', metrics: '42% reduction in patient wait times', gradient: 'linear-gradient(135deg, rgba(16,185,129,0.15), rgba(16,185,129,0.03))' },
   ];
@@ -213,7 +214,7 @@ export default function CityServicePageClient(props: CityServicePageProps) {
     ? localIndustries.slice(0, 3).map(ind => {
         const match = PORTFOLIO_POOL[ind];
         if (match) return { ...match, industry: ind };
-        return { title: `${ind} Platform`, industry: ind, desc: `Custom-built solution for ${cityName}'s ${ind.toLowerCase()} sector with industry-specific compliance and integrations.`, metrics: 'Custom scope', gradient: 'linear-gradient(135deg, rgba(79,70,229,0.15), rgba(79,70,229,0.03))' };
+        return { title: `${ind} Platform`, industry: ind, desc: `Custom-built solution for ${cityName}'s ${ind.toLowerCase()} sector with industry-specific compliance and integrations.`, metrics: 'Custom scope', gradient: 'linear-gradient(135deg, rgba(17,24,39,0.15), rgba(17,24,39,0.03))' };
       })
     : DEFAULT_PORTFOLIO;
 
@@ -226,8 +227,7 @@ export default function CityServicePageClient(props: CityServicePageProps) {
             1. HERO
         ════════════════════════════════════════════ */}
         <section ref={heroRef} style={{ position: 'relative', overflow: 'hidden', padding: 'clamp(48px, 8vw, 100px) 0 clamp(48px, 8vw, 120px)', borderBottom: '1px solid rgba(0,0,0,0.05)' }}>
-          <div style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(0,0,0,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,0.015) 1px,transparent 1px)', backgroundSize: '64px 64px', pointerEvents: 'none' }} />
-          <div style={{ position: 'absolute', top: '30%', left: '5%', width: 600, height: 600, background: 'radial-gradient(ellipse,rgba(79,70,229,0.08) 0%,transparent 65%)', filter: 'blur(60px)', pointerEvents: 'none' }} />
+          <HeroBackground variant="default" />
 
           <div className="cb-container" style={{ position: 'relative', zIndex: 1 }}>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 480px), 1fr))', gap: 'clamp(24px, 5vw, 80px)', alignItems: 'center' }}>
@@ -243,36 +243,36 @@ export default function CityServicePageClient(props: CityServicePageProps) {
                   ].map((crumb, i) => (
                     <span key={crumb.label} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                       <Link href={crumb.href} style={{ fontSize: 13, color: 'rgba(0,0,0,0.4)', textDecoration: 'none', transition: 'color 0.2s' }}
-                        onMouseEnter={e => e.currentTarget.style.color = '#4F46E5'}
+                        onMouseEnter={e => e.currentTarget.style.color = '#111827'}
                         onMouseLeave={e => e.currentTarget.style.color = 'rgba(0,0,0,0.4)'}>
                         {crumb.label}
                       </Link>
                       <span style={{ fontSize: 11, color: 'rgba(0,0,0,0.2)' }}>/</span>
                     </span>
                   ))}
-                  <span style={{ fontSize: 13, color: 'rgba(0,0,0,0.55)' }}>{serviceName}</span>
+                  <span style={{ fontSize: 13, color: 'rgb(0,0,0)' }}>{serviceName}</span>
                 </nav>
 
                 {/* Badge */}
-                <div className="reveal" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, background: 'rgba(79,70,229,0.08)', border: '1px solid rgba(79,70,229,0.2)', borderRadius: 100, padding: '8px 20px', marginBottom: 32 }}>
-                  <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#4F46E5', boxShadow: '0 0 8px #4F46E5' }} />
-                  <span style={{ fontSize: 11, fontWeight: 700, color: '#4F46E5', letterSpacing: '0.12em', textTransform: 'uppercase' }}>{badge}</span>
+                <div className="reveal" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, background: 'rgba(17,24,39,0.08)', border: '1px solid rgba(17,24,39,0.2)', borderRadius: 100, padding: '8px 20px', marginBottom: 32 }}>
+                  <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#111827', boxShadow: '0 0 8px #111827' }} />
+                  <span style={{ fontSize: 11, fontWeight: 700, color: '#111827', letterSpacing: '0.12em', textTransform: 'uppercase' }}>{badge}</span>
                 </div>
 
                 {/* H1 */}
                 <h1 className="reveal reveal-d1" style={{ fontSize: 'clamp(2.6rem, 5vw, 4.8rem)', fontWeight: 500, color: '#111827', letterSpacing: '-0.04em', lineHeight: 1.05, margin: '0 0 24px' }}>
-                  {serviceName} Company in{' '}<span style={{ color: '#4F46E5' }}>{cityName}</span>
+                  {serviceName} Company in{' '}<span style={{ color: '#111827' }}>{cityName}</span>
                 </h1>
 
                 {/* Hero context paragraph */}
-                <p className="reveal reveal-d2" style={{ fontSize: 17, color: 'rgba(0,0,0,0.55)', lineHeight: 1.75, maxWidth: 520, margin: '0 0 40px' }}>
+                <p className="reveal reveal-d2" style={{ fontSize: 17, color: 'rgb(0,0,0)', lineHeight: 1.75, maxWidth: 520, margin: '0 0 40px' }}>
                   {heroContext}
                 </p>
 
                 {/* CTAs */}
                 <div className="reveal reveal-d3" style={{ display: 'flex', gap: 14, flexWrap: 'wrap', marginBottom: 48 }}>
-                  <Link href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, height: 56, padding: '0 36px', borderRadius: 100, background: '#4F46E5', color: '#fff', fontSize: 14, fontWeight: 700, textDecoration: 'none', transition: '0.3s' }}
-                    onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 16px 40px rgba(79,70,229,0.35)'; }}
+                  <Link href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, height: 56, padding: '0 36px', borderRadius: 100, background: '#111827', color: '#fff', fontSize: 14, fontWeight: 700, textDecoration: 'none', transition: '0.3s' }}
+                    onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 16px 40px rgba(17,24,39,0.35)'; }}
                     onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}>
                     Get a Free Quote
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
@@ -288,7 +288,7 @@ export default function CityServicePageClient(props: CityServicePageProps) {
                 <div className="reveal reveal-d4 loc-hero-stats" style={{ display: 'grid', gridTemplateColumns: `repeat(${stats.length}, 1fr)`, gap: 16 }}>
                   {stats.map((s, i) => (
                     <div key={s.label} style={{ textAlign: 'center', borderRight: i < stats.length - 1 ? '1px solid rgba(0,0,0,0.06)' : 'none', paddingRight: i < stats.length - 1 ? 16 : 0 }}>
-                      <div style={{ fontSize: 'clamp(1.4rem, 2.5vw, 2rem)', fontWeight: 700, color: '#4F46E5', letterSpacing: '-0.03em' }}>{s.value}</div>
+                      <div style={{ fontSize: 'clamp(1.4rem, 2.5vw, 2rem)', fontWeight: 700, color: '#111827', letterSpacing: '-0.03em' }}>{s.value}</div>
                       <div style={{ fontSize: 11, fontWeight: 600, color: 'rgba(0,0,0,0.25)', textTransform: 'uppercase', letterSpacing: '0.08em', marginTop: 4 }}>{s.label}</div>
                     </div>
                   ))}
@@ -339,7 +339,7 @@ export default function CityServicePageClient(props: CityServicePageProps) {
               {largeServices.slice(0, 2).map(s => (
                 <div key={s.title} className="loc-large-card" style={{ ...cardStyle, padding: '48px 44px', borderRadius: 32, position: 'relative', overflow: 'hidden' }}
                   onMouseEnter={e => hoverCard(e, true)} onMouseLeave={e => hoverCard(e, false)}>
-                  <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: 'linear-gradient(90deg, #4F46E5, transparent)' }} />
+                  <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: 'linear-gradient(90deg, #111827, transparent)' }} />
                   <div style={{ fontSize: 32, marginBottom: 20 }}>{s.icon}</div>
                   <h3 style={{ fontSize: 'clamp(1.4rem, 2.5vw, 1.8rem)', fontWeight: 600, color: '#111827', letterSpacing: '-0.03em', marginBottom: 14 }}>{s.title}</h3>
                   <p style={{ ...bodyText, marginBottom: s.tags && s.tags.length > 0 ? 28 : 0 }}>{s.desc}</p>
@@ -359,10 +359,10 @@ export default function CityServicePageClient(props: CityServicePageProps) {
               {smallServices.map(s => (
                 <div key={s.title} style={{ ...cardStyle, padding: '32px 28px', borderRadius: 24, position: 'relative', overflow: 'hidden' }}
                   onMouseEnter={e => hoverCard(e, true)} onMouseLeave={e => hoverCard(e, false)}>
-                  <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: 'linear-gradient(90deg, #4F46E5, transparent)' }} />
+                  <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: 'linear-gradient(90deg, #111827, transparent)' }} />
                   <div style={{ fontSize: 24, marginBottom: 14 }}>{s.icon}</div>
                   <h3 style={{ fontSize: 17, fontWeight: 600, color: '#111827', letterSpacing: '-0.02em', marginBottom: 10 }}>{s.title}</h3>
-                  <p style={{ fontSize: 14, color: 'rgba(0,0,0,0.55)', lineHeight: 1.7, margin: 0 }}>{s.desc}</p>
+                  <p style={{ fontSize: 14, color: 'rgb(0,0,0)', lineHeight: 1.7, margin: 0 }}>{s.desc}</p>
                 </div>
               ))}
             </div>
@@ -406,25 +406,25 @@ export default function CityServicePageClient(props: CityServicePageProps) {
             </p>
 
             <div style={{ position: 'relative' }}>
-              <div className="loc-process-timeline" style={{ position: 'absolute', left: 23, top: 24, bottom: 24, width: 2, background: 'linear-gradient(to bottom, rgba(79,70,229,0.5), rgba(79,70,229,0.05))', zIndex: 0 }} />
+              <div className="loc-process-timeline" style={{ position: 'absolute', left: 23, top: 24, bottom: 24, width: 2, background: 'linear-gradient(to bottom, rgba(17,24,39,0.5), rgba(17,24,39,0.05))', zIndex: 0 }} />
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
                 {steps.map((step, i) => (
                   <div key={step.num} className={`reveal reveal-d${Math.min(i + 1, 5)} loc-process-row`} style={{ display: 'grid', gridTemplateColumns: '48px 1fr', gap: 32, alignItems: 'start', padding: '32px 0' }}>
-                    <div className="loc-process-num" style={{ width: 48, height: 48, borderRadius: '50%', border: '2px solid rgba(79,70,229,0.4)', background: 'rgba(79,70,229,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, fontWeight: 800, color: '#4F46E5', flexShrink: 0, position: 'relative', zIndex: 1 }}>{step.num}</div>
+                    <div className="loc-process-num" style={{ width: 48, height: 48, borderRadius: '50%', border: '2px solid rgba(17,24,39,0.4)', background: 'rgba(17,24,39,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 12, fontWeight: 800, color: '#111827', flexShrink: 0, position: 'relative', zIndex: 1 }}>{step.num}</div>
 
                     <div className="loc-process-card" style={{ ...cardStyle, padding: '32px 40px' }}
-                      onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(79,70,229,0.2)'; (e.currentTarget as HTMLElement).style.background = 'rgba(79,70,229,0.03)'; (e.currentTarget as HTMLElement).style.boxShadow = '0 20px 50px rgba(0,0,0,0.04)'; }}
+                      onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(17,24,39,0.2)'; (e.currentTarget as HTMLElement).style.background = 'rgba(17,24,39,0.03)'; (e.currentTarget as HTMLElement).style.boxShadow = '0 20px 50px rgba(0,0,0,0.04)'; }}
                       onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(0,0,0,0.06)'; (e.currentTarget as HTMLElement).style.background = 'rgba(0,0,0,0.015)'; (e.currentTarget as HTMLElement).style.boxShadow = ''; }}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 16, flexWrap: 'wrap', gap: 12 }}>
                         <h3 style={{ fontSize: 22, fontWeight: 600, color: '#111827', letterSpacing: '-0.02em', margin: 0 }}>{step.title}</h3>
-                        <span style={{ fontSize: 11, fontWeight: 700, color: '#4F46E5', background: 'rgba(79,70,229,0.1)', padding: '5px 14px', borderRadius: 100, whiteSpace: 'nowrap' as const }}>{step.duration}</span>
+                        <span style={{ fontSize: 11, fontWeight: 700, color: '#111827', background: 'rgba(17,24,39,0.1)', padding: '5px 14px', borderRadius: 100, whiteSpace: 'nowrap' as const }}>{step.duration}</span>
                       </div>
                       <p style={{ ...bodyText, marginBottom: 24 }}>{step.desc}</p>
                       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                         {step.deliverables.map(d => (
-                          <span key={d} style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 600, color: 'rgba(0,0,0,0.55)', padding: '6px 14px', border: '1px solid rgba(0,0,0,0.06)', borderRadius: 100 }}>
-                            <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg>
+                          <span key={d} style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 600, color: 'rgb(0,0,0)', padding: '6px 14px', border: '1px solid rgba(0,0,0,0.06)', borderRadius: 100 }}>
+                            <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#111827" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg>
                             {d}
                           </span>
                         ))}
@@ -454,13 +454,13 @@ export default function CityServicePageClient(props: CityServicePageProps) {
             <div className="reveal reveal-d1" style={autoGrid}>
               {techCategories.map(cat => (
                 <div key={cat.title} style={{ ...cardStyle }}
-                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(79,70,229,0.2)'; (e.currentTarget as HTMLElement).style.background = 'rgba(79,70,229,0.02)'; }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(17,24,39,0.2)'; (e.currentTarget as HTMLElement).style.background = 'rgba(17,24,39,0.02)'; }}
                   onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(0,0,0,0.06)'; (e.currentTarget as HTMLElement).style.background = 'rgba(0,0,0,0.015)'; }}>
-                  <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#4F46E5', marginBottom: 20 }}>{cat.title}</div>
+                  <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#111827', marginBottom: 20 }}>{cat.title}</div>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                     {cat.items.map(item => (
                       <span key={item} style={{ padding: '7px 16px', border: '1px solid rgba(0,0,0,0.06)', borderRadius: 100, fontSize: 13, fontWeight: 500, color: 'rgba(0,0,0,0.45)', transition: '0.25s', cursor: 'default' }}
-                        onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(79,70,229,0.35)'; e.currentTarget.style.color = '#4F46E5'; e.currentTarget.style.background = 'rgba(79,70,229,0.06)'; }}
+                        onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(17,24,39,0.35)'; e.currentTarget.style.color = '#111827'; e.currentTarget.style.background = 'rgba(17,24,39,0.06)'; }}
                         onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(0,0,0,0.06)'; e.currentTarget.style.color = 'rgba(0,0,0,0.45)'; e.currentTarget.style.background = 'transparent'; }}>
                         {item}
                       </span>
@@ -482,7 +482,7 @@ export default function CityServicePageClient(props: CityServicePageProps) {
                 <div style={subLabel}>Portfolio</div>
                 <h2 style={heading2}>Projects We&apos;ve Built for {state} Clients</h2>
               </div>
-              <Link href="/case-studies" style={{ fontSize: 14, fontWeight: 600, color: '#4F46E5', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 8, transition: '0.2s' }}
+              <Link href="/case-studies" style={{ fontSize: 14, fontWeight: 600, color: '#111827', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 8, transition: '0.2s' }}
                 onMouseEnter={e => e.currentTarget.style.gap = '12px'}
                 onMouseLeave={e => e.currentTarget.style.gap = '8px'}>
                 View All Case Studies
@@ -499,10 +499,10 @@ export default function CityServicePageClient(props: CityServicePageProps) {
                     </div>
                   </div>
                   <div className="loc-portfolio-inner" style={{ padding: '28px 32px' }}>
-                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#4F46E5', marginBottom: 10, display: 'block' }}>{p.industry}</span>
+                    <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#111827', marginBottom: 10, display: 'block' }}>{p.industry}</span>
                     <h3 style={{ fontSize: 18, fontWeight: 600, color: '#111827', letterSpacing: '-0.02em', marginBottom: 10 }}>{p.title}</h3>
                     <p style={{ fontSize: 14, color: 'rgba(0,0,0,0.5)', lineHeight: 1.7, marginBottom: 16 }}>{p.desc}</p>
-                    <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 700, color: '#4F46E5', background: 'rgba(79,70,229,0.08)', padding: '6px 14px', borderRadius: 100 }}>
+                    <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 700, color: '#111827', background: 'rgba(17,24,39,0.08)', padding: '6px 14px', borderRadius: 100 }}>
                       <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M22 12l-4-4v3H2v2h16v3l4-4z" /></svg>
                       {p.metrics}
                     </div>
@@ -528,13 +528,13 @@ export default function CityServicePageClient(props: CityServicePageProps) {
                   onMouseEnter={e => hoverCard(e, true)} onMouseLeave={e => hoverCard(e, false)}>
                   {/* Quote icon */}
                   <div>
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="rgba(79,70,229,0.3)" style={{ marginBottom: 20 }}><path d="M6 17h3l2-4V7H5v6h3l-2 4zm8 0h3l2-4V7h-6v6h3l-2 4z" /></svg>
-                    <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.55)', lineHeight: 1.8, fontStyle: 'italic', marginBottom: 28 }}>
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="rgba(17,24,39,0.3)" style={{ marginBottom: 20 }}><path d="M6 17h3l2-4V7H5v6h3l-2 4zm8 0h3l2-4V7h-6v6h3l-2 4z" /></svg>
+                    <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, fontStyle: 'italic', marginBottom: 28 }}>
                       &ldquo;{t.quote}&rdquo;
                     </p>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-                    <div style={{ width: 44, height: 44, borderRadius: '50%', background: 'rgba(79,70,229,0.12)', border: '1px solid rgba(79,70,229,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 14, fontWeight: 700, color: '#4F46E5', flexShrink: 0 }}>
+                    <div style={{ width: 44, height: 44, borderRadius: '50%', background: 'rgba(17,24,39,0.12)', border: '1px solid rgba(17,24,39,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 14, fontWeight: 700, color: '#111827', flexShrink: 0 }}>
                       {t.name.split(' ').map(n => n[0]).join('')}
                     </div>
                     <div>
@@ -559,7 +559,7 @@ export default function CityServicePageClient(props: CityServicePageProps) {
             </div>
 
             <div className="reveal reveal-d1" style={{ marginBottom: 64 }}>
-              <p style={{ fontSize: 17, color: 'rgba(0,0,0,0.55)', lineHeight: 1.85, maxWidth: 800 }}>
+              <p style={{ fontSize: 17, color: 'rgb(0,0,0)', lineHeight: 1.85, maxWidth: 800 }}>
                 {industryExpertise}
               </p>
             </div>
@@ -567,17 +567,17 @@ export default function CityServicePageClient(props: CityServicePageProps) {
             {/* Industry tags */}
             <div className="reveal reveal-d2" style={{ display: 'flex', flexWrap: 'wrap', gap: 12, marginBottom: 64 }}>
               {localIndustries.map(ind => (
-                <span key={ind} style={{ padding: '10px 22px', border: '1px solid rgba(79,70,229,0.2)', borderRadius: 100, fontSize: 14, fontWeight: 600, color: '#4F46E5', background: 'rgba(79,70,229,0.06)', transition: '0.25s' }}
-                  onMouseEnter={e => { e.currentTarget.style.background = 'rgba(79,70,229,0.12)'; e.currentTarget.style.borderColor = 'rgba(79,70,229,0.4)'; }}
-                  onMouseLeave={e => { e.currentTarget.style.background = 'rgba(79,70,229,0.06)'; e.currentTarget.style.borderColor = 'rgba(79,70,229,0.2)'; }}>
+                <span key={ind} style={{ padding: '10px 22px', border: '1px solid rgba(17,24,39,0.2)', borderRadius: 100, fontSize: 14, fontWeight: 600, color: '#111827', background: 'rgba(17,24,39,0.06)', transition: '0.25s' }}
+                  onMouseEnter={e => { e.currentTarget.style.background = 'rgba(17,24,39,0.12)'; e.currentTarget.style.borderColor = 'rgba(17,24,39,0.4)'; }}
+                  onMouseLeave={e => { e.currentTarget.style.background = 'rgba(17,24,39,0.06)'; e.currentTarget.style.borderColor = 'rgba(17,24,39,0.2)'; }}>
                   {ind}
                 </span>
               ))}
             </div>
 
             {/* Get a Quote CTA card */}
-            <div className="reveal reveal-d3" style={{ position: 'relative', overflow: 'hidden', borderRadius: 32, border: '1px solid rgba(79,70,229,0.15)', background: 'linear-gradient(135deg, rgba(79,70,229,0.06) 0%, rgba(6,182,212,0.04) 100%)', padding: 'clamp(40px, 6vw, 64px)' }}>
-              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: 'linear-gradient(90deg, #4F46E5, #06B6D4)' }} />
+            <div className="reveal reveal-d3" style={{ position: 'relative', overflow: 'hidden', borderRadius: 32, border: '1px solid rgba(17,24,39,0.15)', background: 'linear-gradient(135deg, rgba(17,24,39,0.06) 0%, rgba(6,182,212,0.04) 100%)', padding: 'clamp(40px, 6vw, 64px)' }}>
+              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: 'linear-gradient(90deg, #111827, #374151)' }} />
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: 40, alignItems: 'center' }}>
                 <div>
                   <h3 style={{ fontSize: 'clamp(1.6rem, 3vw, 2.4rem)', fontWeight: 600, color: '#111827', letterSpacing: '-0.03em', lineHeight: 1.15, marginBottom: 16 }}>
@@ -589,13 +589,13 @@ export default function CityServicePageClient(props: CityServicePageProps) {
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: 20, marginBottom: 32 }}>
                     {['Fixed-Price Guarantee', 'No Hidden Fees', 'Scope Before Code'].map(t => (
                       <div key={t} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" strokeWidth="2.5"><path d="M20 6L9 17l-5-5" /></svg>
-                        <span style={{ fontSize: 13, color: 'rgba(0,0,0,0.55)', fontWeight: 500 }}>{t}</span>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#111827" strokeWidth="2.5"><path d="M20 6L9 17l-5-5" /></svg>
+                        <span style={{ fontSize: 13, color: 'rgb(0,0,0)', fontWeight: 500 }}>{t}</span>
                       </div>
                     ))}
                   </div>
-                  <Link href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 12, height: 56, padding: '0 36px', borderRadius: 100, background: '#4F46E5', color: '#fff', fontSize: 15, fontWeight: 700, textDecoration: 'none', transition: '0.3s' }}
-                    onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 16px 40px rgba(79,70,229,0.35)'; }}
+                  <Link href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 12, height: 56, padding: '0 36px', borderRadius: 100, background: '#111827', color: '#fff', fontSize: 15, fontWeight: 700, textDecoration: 'none', transition: '0.3s' }}
+                    onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 16px 40px rgba(17,24,39,0.35)'; }}
                     onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}>
                     Get Your Free Quote
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
@@ -633,12 +633,12 @@ export default function CityServicePageClient(props: CityServicePageProps) {
             <div className="reveal reveal-d1" style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               {faqs.map((faq, i) => (
                 <div key={i}
-                  style={{ background: openFaq === i ? 'rgba(79,70,229,0.04)' : 'rgba(0,0,0,0.015)', border: `1px solid ${openFaq === i ? 'rgba(79,70,229,0.2)' : 'rgba(0,0,0,0.05)'}`, borderRadius: 20, overflow: 'hidden', transition: 'border-color 0.3s, background 0.3s' }}>
+                  style={{ background: openFaq === i ? 'rgba(17,24,39,0.04)' : 'rgba(0,0,0,0.015)', border: `1px solid ${openFaq === i ? 'rgba(17,24,39,0.2)' : 'rgba(0,0,0,0.05)'}`, borderRadius: 20, overflow: 'hidden', transition: 'border-color 0.3s, background 0.3s' }}>
                   <button className="loc-faq-btn" onClick={() => setOpenFaq(openFaq === i ? null : i)}
                     style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '24px 28px', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'inherit' }}>
                     <span style={{ fontSize: 16, fontWeight: 500, color: '#111827', textAlign: 'left', letterSpacing: '-0.01em' }}>{faq.q}</span>
                     <div style={{ width: 30, height: 30, borderRadius: '50%', background: 'rgba(0,0,0,0.03)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, transition: 'transform 0.3s', transform: openFaq === i ? 'rotate(45deg)' : 'none' }}>
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={openFaq === i ? '#4F46E5' : 'rgba(0,0,0,0.55)'} strokeWidth="2"><path d="M12 5v14M5 12h14" /></svg>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={openFaq === i ? '#111827' : 'rgb(0,0,0)'} strokeWidth="2"><path d="M12 5v14M5 12h14" /></svg>
                     </div>
                   </button>
                   <div
@@ -667,7 +667,7 @@ export default function CityServicePageClient(props: CityServicePageProps) {
                       <div style={{ ...cardStyle, padding: '24px 28px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}
                         onMouseEnter={e => hoverCard(e, true)} onMouseLeave={e => hoverCard(e, false)}>
                         <span style={{ fontSize: 15, fontWeight: 500, color: '#111827' }}>{rs.name}</span>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#111827" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
                       </div>
                     </Link>
                   ))}
@@ -682,7 +682,7 @@ export default function CityServicePageClient(props: CityServicePageProps) {
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
                   {relatedSubServices.map(sub => (
                     <Link key={sub.slug} href={`/services/${serviceSlug}/${sub.slug}`} style={{ padding: '10px 22px', border: '1px solid rgba(0,0,0,0.08)', borderRadius: 100, fontSize: 13, fontWeight: 500, color: 'rgba(0,0,0,0.5)', textDecoration: 'none', transition: '0.25s' }}
-                      onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(79,70,229,0.35)'; e.currentTarget.style.color = '#4F46E5'; e.currentTarget.style.background = 'rgba(79,70,229,0.06)'; }}
+                      onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(17,24,39,0.35)'; e.currentTarget.style.color = '#111827'; e.currentTarget.style.background = 'rgba(17,24,39,0.06)'; }}
                       onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(0,0,0,0.08)'; e.currentTarget.style.color = 'rgba(0,0,0,0.5)'; e.currentTarget.style.background = 'transparent'; }}>
                       {sub.name}
                     </Link>
@@ -697,18 +697,18 @@ export default function CityServicePageClient(props: CityServicePageProps) {
             12. BOTTOM CTA
         ════════════════════════════════════════════ */}
         <section style={{ padding: 'clamp(80px, 12vw, 140px) 0', position: 'relative', overflow: 'hidden', textAlign: 'center', ...sectionBorder }}>
-          <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: 800, height: 500, background: 'radial-gradient(ellipse,rgba(79,70,229,0.09) 0%,transparent 65%)', filter: 'blur(70px)', pointerEvents: 'none' }} />
+          <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: 800, height: 500, background: 'radial-gradient(ellipse,rgba(17,24,39,0.09) 0%,transparent 65%)', filter: 'blur(70px)', pointerEvents: 'none' }} />
           <div className="cb-container" style={{ position: 'relative', zIndex: 1 }}>
             <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.25)', marginBottom: 24 }}>Ready to Build?</div>
             <h2 style={{ fontSize: 'clamp(2.4rem, 5vw, 5rem)', fontWeight: 500, color: '#111827', letterSpacing: '-0.04em', lineHeight: 1.05, margin: '0 0 24px' }}>
-              Start Your {serviceName} Project in{' '}<span style={{ color: '#4F46E5' }}>{cityName}</span>
+              Start Your {serviceName} Project in{' '}<span style={{ color: '#111827' }}>{cityName}</span>
             </h2>
             <p style={{ fontSize: 18, color: 'rgba(0,0,0,0.35)', maxWidth: 520, margin: '0 auto 48px', lineHeight: 1.7 }}>
               {heroDescription}
             </p>
             <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 48 }}>
-              <Link href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 12, height: 60, padding: '0 40px', borderRadius: 100, background: '#4F46E5', color: '#fff', fontSize: 15, fontWeight: 700, textDecoration: 'none', transition: '0.3s' }}
-                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 16px 40px rgba(79,70,229,0.4)'; }}
+              <Link href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 12, height: 60, padding: '0 40px', borderRadius: 100, background: '#111827', color: '#fff', fontSize: 15, fontWeight: 700, textDecoration: 'none', transition: '0.3s' }}
+                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 16px 40px rgba(17,24,39,0.4)'; }}
                 onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}>
                 Get a Free Proposal
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
@@ -722,8 +722,8 @@ export default function CityServicePageClient(props: CityServicePageProps) {
             <div style={{ display: 'flex', gap: 32, justifyContent: 'center', flexWrap: 'wrap' }}>
               {['NDA on Day 1', 'Fixed-Price Guarantee', '48hr Proposal', 'Secure Data Residency'].map(t => (
                 <div key={t} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4F46E5" strokeWidth="2.5"><path d="M20 6L9 17l-5-5" /></svg>
-                  <span style={{ fontSize: 13, color: 'rgba(0,0,0,0.55)', fontWeight: 500 }}>{t}</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#111827" strokeWidth="2.5"><path d="M20 6L9 17l-5-5" /></svg>
+                  <span style={{ fontSize: 13, color: 'rgb(0,0,0)', fontWeight: 500 }}>{t}</span>
                 </div>
               ))}
             </div>
