@@ -149,7 +149,7 @@ export default function Footer() {
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                 hello@codazz.com
               </a>
-              <a href="https://calendly.com/codazz/discovery" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: 8, color: 'rgba(0,0,0,0.55)', textDecoration: 'none', fontSize: 13, transition: 'color 0.2s' }}
+              <a href="https://calendly.com/townmedialabs/30min" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: 8, color: 'rgba(0,0,0,0.55)', textDecoration: 'none', fontSize: 13, transition: 'color 0.2s' }}
                 onMouseEnter={e => e.currentTarget.style.color = '#111827'}
                 onMouseLeave={e => e.currentTarget.style.color = 'rgba(0,0,0,0.55)'}
               >
