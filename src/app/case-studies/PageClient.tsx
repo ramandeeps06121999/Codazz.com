@@ -29,7 +29,7 @@ const caseStudies = [
     description: 'Built a real-time AI trading engine processing 50K+ daily transactions with 99.99% uptime.',
     metric: { value: '50K+', label: 'Daily Transactions' },
     tech: ['React', 'Python', 'AWS', 'PostgreSQL'],
-    gradient: 'linear-gradient(135deg, rgba(124,58,237,0.1), rgba(17,24,39,0.05))',
+    gradient: 'linear-gradient(135deg, rgba(124,58,237,0.1), rgba(34,197,94,0.05))',
   },
   {
     slug: 'healthcare-telehealth',
@@ -39,7 +39,7 @@ const caseStudies = [
     description: 'Developed a telehealth platform serving 200K+ patient sessions with HIPAA/CCPA compliance.',
     metric: { value: '200K+', label: 'Patient Sessions' },
     tech: ['React Native', 'WebRTC', 'Node.js', 'AWS'],
-    gradient: 'linear-gradient(135deg, rgba(6,182,212,0.1), rgba(17,24,39,0.05))',
+    gradient: 'linear-gradient(135deg, rgba(6,182,212,0.1), rgba(34,197,94,0.05))',
   },
   {
     slug: 'ecommerce-platform',
@@ -49,7 +49,7 @@ const caseStudies = [
     description: 'Migrated legacy platform to headless commerce serving 2M+ monthly visitors with 3x revenue growth.',
     metric: { value: '3x', label: 'Revenue Growth' },
     tech: ['Next.js', 'Stripe', 'PostgreSQL', 'Redis'],
-    gradient: 'linear-gradient(135deg, rgba(16,185,129,0.1), rgba(17,24,39,0.05))',
+    gradient: 'linear-gradient(135deg, rgba(16,185,129,0.1), rgba(34,197,94,0.05))',
   },
   {
     slug: 'logistics-platform',
@@ -59,7 +59,7 @@ const caseStudies = [
     description: 'Built IoT-integrated fleet management tracking 15K+ daily deliveries with 25% fuel savings.',
     metric: { value: '25%', label: 'Fuel Savings' },
     tech: ['React', 'Python', 'TensorFlow', 'AWS IoT'],
-    gradient: 'linear-gradient(135deg, rgba(245,158,11,0.1), rgba(17,24,39,0.05))',
+    gradient: 'linear-gradient(135deg, rgba(245,158,11,0.1), rgba(34,197,94,0.05))',
   },
 ];
 
@@ -83,7 +83,7 @@ export default function CaseStudiesPageClient() {
   return (
     <>
       <Navbar />
-      <main ref={pageRef as React.RefObject<HTMLElement>} style={{ background: '#ffffff', minHeight: '100vh' }}>
+      <main ref={pageRef as React.RefObject<HTMLElement>} style={{ background: '#000000', minHeight: '100vh' }}>
 
         {/* ── HERO ── */}
         <section style={{ padding: 'clamp(120px, 12vw, 160px) 0 clamp(48px, 6vw, 80px)', position: 'relative', overflow: 'hidden' }}>
@@ -97,19 +97,19 @@ export default function CaseStudiesPageClient() {
             <div className="reveal" style={{ marginBottom: 24, marginTop: 32 }}>
               <span style={{
                 fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                color: '#111827',
+                color: '#ffffff',
               }}>
                 Client Success Stories
               </span>
             </div>
             <h1 className="reveal reveal-d1" style={{
-              fontSize: 'clamp(3rem, 6vw, 5.5rem)', fontWeight: 700, color: '#111827',
+              fontSize: 'clamp(3rem, 6vw, 5.5rem)', fontWeight: 700, color: '#ffffff',
               lineHeight: 1.05, letterSpacing: '-0.04em', marginBottom: 24, maxWidth: 800,
             }}>
               Our Work Speaks<br />for Itself
             </h1>
             <p className="reveal reveal-d2" style={{
-              fontSize: 18, color: 'rgba(0,0,0,0.45)', lineHeight: 1.7,
+              fontSize: 18, color: 'rgba(255,255,255,0.45)', lineHeight: 1.7,
               maxWidth: 600, marginBottom: 48,
             }}>
               Real results from real projects. Explore how we&apos;ve helped American businesses
@@ -125,8 +125,8 @@ export default function CaseStudiesPageClient() {
                   style={{
                     padding: '8px 20px', borderRadius: 100, fontSize: 13, fontWeight: 500,
                     cursor: 'pointer', border: 'none', transition: 'all 0.2s',
-                    background: activeCategory === cat ? '#111827' : 'rgba(0,0,0,0.03)',
-                    color: activeCategory === cat ? '#ffffff' : 'rgba(0,0,0,0.45)',
+                    background: activeCategory === cat ? '#22c55e' : 'rgba(255,255,255,0.03)',
+                    color: activeCategory === cat ? '#ffffff' : 'rgba(255,255,255,0.45)',
                   }}
                 >
                   {cat}
@@ -137,11 +137,11 @@ export default function CaseStudiesPageClient() {
         </section>
 
         {/* ── CASE STUDIES GRID ── */}
-        <section style={{ paddingBottom: 'clamp(48px, 8vw, 100px)', borderTop: '1px solid rgba(0,0,0,0.05)' }}>
+        <section style={{ paddingBottom: 'clamp(48px, 8vw, 100px)', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container" style={{ paddingTop: 'clamp(48px, 6vw, 80px)' }}>
             <p className="reveal" style={{
               fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-              color: 'rgba(0,0,0,0.25)', marginBottom: 40,
+              color: 'rgba(255,255,255,0.25)', marginBottom: 40,
             }}>
               {activeCategory === 'All' ? 'All Projects' : activeCategory + ' Projects'}
             </p>
@@ -151,14 +151,14 @@ export default function CaseStudiesPageClient() {
               gap: 24,
             }}>
               {filtered.map((cs, i) => {
-                const accentColor = categoryColors[cs.category] || '#111827';
+                const accentColor = categoryColors[cs.category] || '#22c55e';
                 return (
                   <Link key={cs.slug} href={`/case-studies/${cs.slug}`} style={{ textDecoration: 'none' }}>
                     <article
                       className={`reveal reveal-d${Math.min(i + 1, 4)}`}
                       style={{
-                        background: 'rgba(0,0,0,0.015)',
-                        border: '1px solid rgba(0,0,0,0.06)',
+                        background: 'rgba(255,255,255,0.015)',
+                        border: '1px solid rgba(255,255,255,0.06)',
                         borderRadius: 24,
                         overflow: 'hidden',
                         height: '100%',
@@ -169,12 +169,12 @@ export default function CaseStudiesPageClient() {
                       }}
                       onMouseEnter={e => {
                         (e.currentTarget as HTMLElement).style.borderColor = 'rgba(17,24,39,0.25)';
-                        (e.currentTarget as HTMLElement).style.background = 'rgba(17,24,39,0.03)';
+                        (e.currentTarget as HTMLElement).style.background = 'rgba(34,197,94,0.03)';
                         (e.currentTarget as HTMLElement).style.transform = 'translateY(-6px)';
                       }}
                       onMouseLeave={e => {
-                        (e.currentTarget as HTMLElement).style.borderColor = 'rgba(0,0,0,0.06)';
-                        (e.currentTarget as HTMLElement).style.background = 'rgba(0,0,0,0.015)';
+                        (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.06)';
+                        (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.015)';
                         (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
                       }}
                     >
@@ -183,7 +183,7 @@ export default function CaseStudiesPageClient() {
                         width: '100%',
                         aspectRatio: '16/9',
                         background: cs.gradient,
-                        borderBottom: '1px solid rgba(0,0,0,0.03)',
+                        borderBottom: '1px solid rgba(255,255,255,0.03)',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
@@ -193,13 +193,13 @@ export default function CaseStudiesPageClient() {
                         {/* Decorative grid pattern */}
                         <div style={{
                           position: 'absolute', inset: 0, opacity: 0.15,
-                          backgroundImage: 'radial-gradient(rgba(0,0,0,0.25) 1px, transparent 1px)',
+                          backgroundImage: 'radial-gradient(rgba(255,255,255,0.25) 1px, transparent 1px)',
                           backgroundSize: '24px 24px',
                         }} />
                         {/* Metric callout in image */}
                         <div style={{ textAlign: 'center', position: 'relative', zIndex: 1 }}>
                           <div style={{
-                            fontSize: 'clamp(32px, 6vw, 48px)', fontWeight: 800, color: '#111827', letterSpacing: '-0.03em',
+                            fontSize: 'clamp(32px, 6vw, 48px)', fontWeight: 800, color: '#ffffff', letterSpacing: '-0.03em',
                             lineHeight: 1,
                           }}>
                             {cs.metric.value}
@@ -228,7 +228,7 @@ export default function CaseStudiesPageClient() {
 
                         {/* Title */}
                         <h3 style={{
-                          fontSize: 20, fontWeight: 700, color: '#111827',
+                          fontSize: 20, fontWeight: 700, color: '#ffffff',
                           letterSpacing: '-0.02em', lineHeight: 1.25, marginBottom: 8,
                         }}>
                           {cs.title}
@@ -236,14 +236,14 @@ export default function CaseStudiesPageClient() {
 
                         {/* Client */}
                         <p style={{
-                          fontSize: 13, color: 'rgba(0,0,0,0.35)', marginBottom: 12,
+                          fontSize: 13, color: 'rgba(255,255,255,0.35)', marginBottom: 12,
                         }}>
                           {cs.client}
                         </p>
 
                         {/* Description */}
                         <p style={{
-                          fontSize: 14, color: 'rgba(0,0,0,0.45)', lineHeight: 1.7,
+                          fontSize: 14, color: 'rgba(255,255,255,0.45)', lineHeight: 1.7,
                           marginBottom: 24, flexGrow: 1,
                         }}>
                           {cs.description}
@@ -254,8 +254,8 @@ export default function CaseStudiesPageClient() {
                           {cs.tech.map(t => (
                             <span key={t} style={{
                               fontSize: 11, fontWeight: 600, color: 'rgba(255,255,255,0.45)',
-                              padding: '5px 12px', border: '1px solid rgba(0,0,0,0.06)',
-                              borderRadius: 100, background: 'rgba(0,0,0,0.03)',
+                              padding: '5px 12px', border: '1px solid rgba(255,255,255,0.06)',
+                              borderRadius: 100, background: 'rgba(255,255,255,0.03)',
                             }}>
                               {t}
                             </span>
@@ -264,11 +264,11 @@ export default function CaseStudiesPageClient() {
 
                         {/* CTA link */}
                         <div style={{
-                          paddingTop: 20, borderTop: '1px solid rgba(0,0,0,0.03)',
+                          paddingTop: 20, borderTop: '1px solid rgba(255,255,255,0.03)',
                           marginTop: 'auto',
                         }}>
                           <span style={{
-                            fontSize: 13, fontWeight: 600, color: '#111827',
+                            fontSize: 13, fontWeight: 600, color: '#ffffff',
                             display: 'inline-flex', alignItems: 'center', gap: 6,
                           }}>
                             Read Case Study
@@ -287,7 +287,7 @@ export default function CaseStudiesPageClient() {
         </section>
 
         {/* ── STATS BAR ── */}
-        <section style={{ borderTop: '1px solid rgba(0,0,0,0.05)' }}>
+        <section style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container" style={{ padding: 'clamp(32px, 6vw, 64px) 0' }}>
             <div className="reveal" style={{
               display: 'grid',
@@ -303,14 +303,14 @@ export default function CaseStudiesPageClient() {
               ].map(stat => (
                 <div key={stat.label}>
                   <div style={{
-                    fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, color: '#111827',
+                    fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, color: '#ffffff',
                     letterSpacing: '-0.03em', lineHeight: 1,
                   }}>
                     {stat.value}
                   </div>
                   <div style={{
                     fontSize: 12, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase',
-                    color: 'rgba(0,0,0,0.35)', marginTop: 10,
+                    color: 'rgba(255,255,255,0.35)', marginTop: 10,
                   }}>
                     {stat.label}
                   </div>
@@ -321,29 +321,29 @@ export default function CaseStudiesPageClient() {
         </section>
 
         {/* ── BOTTOM CTA ── */}
-        <section style={{ paddingBottom: 'clamp(60px, 10vw, 120px)', borderTop: '1px solid rgba(0,0,0,0.05)' }}>
+        <section className="section-padding" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container" style={{ paddingTop: 'clamp(48px, 6vw, 80px)' }}>
             <div
               className="reveal"
               style={{
-                background: 'rgba(0,0,0,0.015)', border: '1px solid rgba(0,0,0,0.06)',
+                background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)',
                 borderRadius: 28, padding: 'clamp(32px, 6vw, 64px) clamp(20px, 4vw, 48px)', textAlign: 'center',
               }}
             >
               <span style={{
                 fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                color: '#111827', display: 'block', marginBottom: 20,
+                color: '#ffffff', display: 'block', marginBottom: 20,
               }}>
                 Let&apos;s Build Together
               </span>
               <h2 style={{
-                fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', fontWeight: 700, color: '#111827',
+                fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', fontWeight: 700, color: '#ffffff',
                 letterSpacing: '-0.03em', marginBottom: 16,
               }}>
                 Have a Similar Project?
               </h2>
               <p style={{
-                fontSize: 16, color: 'rgba(0,0,0,0.4)', marginBottom: 40,
+                fontSize: 16, color: 'rgba(255,255,255,0.4)', marginBottom: 40,
                 maxWidth: 500, margin: '0 auto 40px',
                 lineHeight: 1.7,
               }}>
@@ -354,7 +354,7 @@ export default function CaseStudiesPageClient() {
                 style={{
                   display: 'inline-flex', alignItems: 'center', gap: 10,
                   height: 52, padding: '0 36px', borderRadius: 100,
-                  background: '#111827', color: '#fff',
+                  background: '#22c55e', color: '#000',
                   fontSize: 15, fontWeight: 700, textDecoration: 'none',
                   transition: 'all 0.2s',
                 }}
@@ -363,7 +363,7 @@ export default function CaseStudiesPageClient() {
                   (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)';
                 }}
                 onMouseLeave={e => {
-                  (e.currentTarget as HTMLElement).style.background = '#111827';
+                  (e.currentTarget as HTMLElement).style.background = '#22c55e';
                   (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
                 }}
               >

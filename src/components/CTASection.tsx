@@ -43,7 +43,7 @@ export default function CTASection() {
       position:'relative', overflow:'hidden',
     }}>
       {/* BG orbs */}
-      <div style={{ position:'absolute', top:'-20%', right:'-10%', width:500, height:500, borderRadius:'50%', background:'radial-gradient(circle, rgba(17,24,39,0.1) 0%, transparent 70%)', pointerEvents:'none' }}/>
+      <div style={{ position:'absolute', top:'-20%', right:'-10%', width:500, height:500, borderRadius:'50%', background:'radial-gradient(circle, rgba(34,197,94,0.1) 0%, transparent 70%)', pointerEvents:'none' }}/>
       <div style={{ position:'absolute', bottom:'-20%', left:'-10%', width:400, height:400, borderRadius:'50%', background:'radial-gradient(circle, rgba(8,50,61,0.8) 0%, transparent 70%)', pointerEvents:'none' }}/>
 
       <div className="cb-container" style={{ position:'relative', zIndex:10 }}>
@@ -52,15 +52,15 @@ export default function CTASection() {
           {/* Left */}
           <div>
             <p className="section-tag">Ready to Start?</p>
-            <h2 style={{ fontSize:'clamp(1.8rem,3.5vw,3rem)', fontWeight:800, color:'#111827', lineHeight:1.15, marginBottom:20 }}>
-              Let's Build Something <span style={{ color:'#7c3aed' }}>Amazing Together</span>
+            <h2 style={{ fontSize:'clamp(1.8rem,3.5vw,3rem)', fontWeight:800, color:'#ffffff', lineHeight:1.15, marginBottom:20 }}>
+              Let's Build Something <span style={{ color:'#22c55e' }}>Amazing Together</span>
             </h2>
-            <p style={{ color:'rgb(0,0,0)', fontSize:15, lineHeight:1.8, marginBottom:36 }}>
+            <p style={{ color:'rgba(255,255,255,0.7)', fontSize:15, lineHeight:1.8, marginBottom:36 }}>
               Have a project in mind? Tell us about it and we'll get back to you within 24 hours with a clear path forward.
             </p>
             <div style={{ display:'flex', flexWrap:'wrap', gap:12 }}>
               {['✓ Free Discovery Call','✓ 24h Response','✓ No Commitment Required'].map(item => (
-                <span key={item} style={{ color:'rgba(0,0,0,0.45)', fontSize:13, fontWeight:500 }}>{item}</span>
+                <span key={item} style={{ color:'rgba(255,255,255,0.45)', fontSize:13, fontWeight:500 }}>{item}</span>
               ))}
             </div>
           </div>
@@ -72,8 +72,8 @@ export default function CTASection() {
           }}>
             {submitted ? (
               <div style={{ textAlign: 'center', padding: '40px 0' }}>
-                <div style={{ width: 56, height: 56, borderRadius: '50%', background: 'rgba(17,24,39,0.1)', border: '2px solid #111827', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#111827" strokeWidth="2.5"><path d="M20 6L9 17l-5-5" /></svg>
+                <div style={{ width: 56, height: 56, borderRadius: '50%', background: 'rgba(34,197,94,0.1)', border: '2px solid #22c55e', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px' }}>
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2.5"><path d="M20 6L9 17l-5-5" /></svg>
                 </div>
                 <div style={{ fontSize: 18, fontWeight: 700, color: '#fff', marginBottom: 8 }}>Thank You!</div>
                 <div style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)' }}>We'll get back to you within 24 hours.</div>

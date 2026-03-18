@@ -82,7 +82,7 @@ const Icon = ({
       className={cn('absolute', iconData.className)}
     >
       <motion.div
-        className="flex items-center justify-center w-16 h-16 md:w-20 md:h-20 p-3 rounded-3xl shadow-xl bg-white/80 backdrop-blur-md border border-gray-100"
+        className="flex items-center justify-center w-16 h-16 md:w-20 md:h-20 p-3 rounded-3xl shadow-xl bg-black/80 backdrop-blur-md border border-white/5"
         animate={{
           y: [0, -8, 0, 8, 0],
           x: [0, 6, 0, -6, 0],
@@ -95,7 +95,7 @@ const Icon = ({
           ease: 'easeInOut',
         }}
       >
-        <iconData.icon className="w-8 h-8 md:w-10 md:h-10 text-gray-700" />
+        <iconData.icon className="w-8 h-8 md:w-10 md:h-10 text-gray-300" />
       </motion.div>
     </motion.div>
   );
@@ -118,7 +118,7 @@ const FloatingIconsHero = React.forwardRef<
       ref={ref}
       onMouseMove={handleMouseMove}
       className={cn(
-        'relative w-full h-screen min-h-[700px] flex items-center justify-center overflow-hidden bg-white',
+        'relative w-full h-screen min-h-[700px] flex items-center justify-center overflow-hidden bg-black',
         className
       )}
       {...props}
@@ -138,16 +138,16 @@ const FloatingIconsHero = React.forwardRef<
 
       {/* Container for the foreground content */}
       <div className="relative z-10 text-center px-4">
-        <h1 className="text-5xl md:text-7xl font-bold tracking-tight bg-gradient-to-b from-gray-900 to-gray-600 text-transparent bg-clip-text">
+        <h1 className="text-5xl md:text-7xl font-bold tracking-tight bg-gradient-to-b from-white to-gray-400 text-transparent bg-clip-text">
           {title}
         </h1>
-        <p className="mt-6 max-w-xl mx-auto text-lg text-gray-600">
+        <p className="mt-6 max-w-xl mx-auto text-lg text-gray-400">
           {subtitle}
         </p>
         <div className="mt-10">
           <a
             href={ctaHref}
-            className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white bg-gray-900 rounded-full hover:bg-gray-800 transition-colors"
+            className="inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-black bg-green-500 rounded-full hover:bg-green-400 transition-colors"
           >
             {ctaText}
           </a>

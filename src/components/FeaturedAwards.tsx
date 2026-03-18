@@ -68,23 +68,23 @@ function AwardCard({ award }: { award: typeof awards[number] }) {
         alignItems: 'center',
         gap: 14,
         padding: '16px 24px',
-        border: '1px solid rgba(0,0,0,0.06)',
+        border: '1px solid rgba(255,255,255,0.06)',
         borderRadius: 14,
-        background: 'rgba(0,0,0,0.015)',
+        background: 'rgba(255,255,255,0.03)',
         whiteSpace: 'nowrap',
         flexShrink: 0,
         transition: 'all 0.35s ease',
         cursor: 'default',
       }}
       onMouseEnter={e => {
-        e.currentTarget.style.borderColor = 'rgba(17,24,39,0.25)';
-        e.currentTarget.style.background = 'rgba(17,24,39,0.04)';
+        e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)';
+        e.currentTarget.style.background = 'rgba(255,255,255,0.05)';
         e.currentTarget.style.transform = 'translateY(-2px)';
-        e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.08)';
+        e.currentTarget.style.boxShadow = '0 8px 24px rgba(0,0,0,0.3)';
       }}
       onMouseLeave={e => {
-        e.currentTarget.style.borderColor = 'rgba(0,0,0,0.06)';
-        e.currentTarget.style.background = 'rgba(0,0,0,0.015)';
+        e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)';
+        e.currentTarget.style.background = 'rgba(255,255,255,0.03)';
         e.currentTarget.style.transform = '';
         e.currentTarget.style.boxShadow = '';
       }}
@@ -94,12 +94,12 @@ function AwardCard({ award }: { award: typeof awards[number] }) {
           src={award.src}
           alt={award.name}
           fill
-          style={{ objectFit: 'contain', filter: award.type === 'svg' ? 'brightness(0) invert(0.7)' : 'none' }}
+          style={{ objectFit: 'contain', filter: award.type === 'svg' ? 'brightness(0) invert(0.5)' : 'invert(1) brightness(1.2)' }}
         />
       </div>
       <div>
-        <div style={{ fontSize: 13, fontWeight: 600, color: '#111827', letterSpacing: '-0.01em', lineHeight: 1.3 }}>{award.name}</div>
-        <div style={{ fontSize: 10, fontWeight: 700, color: 'rgba(0,0,0,0.25)', textTransform: 'uppercase', letterSpacing: '0.1em', marginTop: 2 }}>{award.year}</div>
+        <div style={{ fontSize: 13, fontWeight: 600, color: '#ffffff', letterSpacing: '-0.01em', lineHeight: 1.3 }}>{award.name}</div>
+        <div style={{ fontSize: 10, fontWeight: 700, color: 'rgba(255,255,255,0.25)', textTransform: 'uppercase', letterSpacing: '0.1em', marginTop: 2 }}>{award.year}</div>
       </div>
     </div>
   );
@@ -133,18 +133,18 @@ export default function FeaturedAwards() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="awards" style={{ background: '#ffffff', padding: '80px 0 100px', borderTop: '1px solid rgba(0,0,0,0.06)', position: 'relative', overflow: 'hidden' }}>
+    <section ref={sectionRef} id="awards" className="section-padding-sm" style={{ background: '#000000', borderTop: '1px solid rgba(255,255,255,0.06)', position: 'relative', overflow: 'hidden' }}>
       {/* Subtle radial glow */}
-      <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: 800, height: 400, background: 'radial-gradient(ellipse, rgba(17,24,39,0.04) 0%, transparent 65%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: 800, height: 400, background: 'radial-gradient(ellipse, rgba(255,255,255,0.04) 0%, transparent 65%)', pointerEvents: 'none' }} />
 
       <div className="cb-container" style={{ position: 'relative', zIndex: 1 }}>
         {/* Header */}
         <div className="reveal" style={{ textAlign: 'center', marginBottom: 48 }}>
-          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.25)', marginBottom: 16 }}>
+          <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.25)', marginBottom: 16 }}>
             Recognition & Certifications
           </div>
-          <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.8rem)', fontWeight: 500, color: '#111827', letterSpacing: '-0.04em', lineHeight: 1.1, margin: '0 auto', maxWidth: 600 }}>
-            Trusted, Verified &<br /><span style={{ color: 'rgba(0,0,0,0.2)' }}>Globally Recognised.</span>
+          <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.8rem)', fontWeight: 500, color: '#ffffff', letterSpacing: '-0.04em', lineHeight: 1.1, margin: '0 auto', maxWidth: 600 }}>
+            Trusted, Verified &<br /><span style={{ color: 'rgba(255,255,255,0.2)' }}>Globally Recognised.</span>
           </h2>
         </div>
       </div>
@@ -152,8 +152,8 @@ export default function FeaturedAwards() {
       {/* Single-line carousel */}
       <div style={{ position: 'relative', width: '100%', overflow: 'hidden' }}>
         {/* Fade edges */}
-        <div style={{ position: 'absolute', top: 0, left: 0, width: 80, height: '100%', background: 'linear-gradient(to right, #ffffff, transparent)', zIndex: 2, pointerEvents: 'none' }} />
-        <div style={{ position: 'absolute', top: 0, right: 0, width: 80, height: '100%', background: 'linear-gradient(to left, #ffffff, transparent)', zIndex: 2, pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', top: 0, left: 0, width: 80, height: '100%', background: 'linear-gradient(to right, #000000, transparent)', zIndex: 2, pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', top: 0, right: 0, width: 80, height: '100%', background: 'linear-gradient(to left, #000000, transparent)', zIndex: 2, pointerEvents: 'none' }} />
 
         <div
           ref={trackRef}

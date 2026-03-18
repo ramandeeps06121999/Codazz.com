@@ -12,13 +12,13 @@ const GLOBE_CONFIG: COBEOptions = {
   devicePixelRatio: 2,
   phi: 0,
   theta: 0.3,
-  dark: 0,
+  dark: 1,
   diffuse: 0.4,
   mapSamples: 16000,
   mapBrightness: 1.2,
-  baseColor: [1, 1, 1],
-  markerColor: [17 / 255, 24 / 255, 39 / 255],
-  glowColor: [0.95, 0.95, 0.95],
+  baseColor: [0.1, 0.1, 0.1],
+  markerColor: [0.133, 0.773, 0.369],
+  glowColor: [0.2, 0.9, 0.4],
   markers: [
     { location: [40.7128, -74.006], size: 0.12 },
     { location: [34.0522, -118.2437], size: 0.06 },
@@ -113,9 +113,9 @@ export default function GlobalPresence() {
   return (
     <section
       ref={sectionRef}
+      className="section-padding"
       style={{
-        padding: 'clamp(80px, 10vw, 140px) 0',
-        background: '#ffffff',
+        background: '#000000',
         position: 'relative',
         overflow: 'hidden',
       }}
@@ -123,7 +123,7 @@ export default function GlobalPresence() {
       {/* Subtle grid background */}
       <div aria-hidden="true" style={{
         position: 'absolute', inset: 0,
-        backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(0,0,0,0.03) 1px, transparent 0)',
+        backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.03) 1px, transparent 0)',
         backgroundSize: '40px 40px',
         pointerEvents: 'none',
       }} />
@@ -133,40 +133,40 @@ export default function GlobalPresence() {
         position: 'absolute', top: '50%', left: '50%',
         transform: 'translate(-50%, -50%)',
         width: 'min(900px, 120vw)', height: 'min(900px, 120vw)',
-        background: 'radial-gradient(circle, rgba(17,24,39,0.04) 0%, transparent 60%)',
+        background: 'radial-gradient(circle, rgba(255,255,255,0.04) 0%, transparent 60%)',
         pointerEvents: 'none',
       }} />
 
       <div className="cb-container" style={{ position: 'relative', zIndex: 1 }}>
         {/* Header */}
-        <div style={{ textAlign: 'center', marginBottom: 'clamp(40px, 6vw, 72px)' }}>
+        <div style={{ textAlign: 'center', marginBottom: 'clamp(40px, 6vw, 80px)' }}>
           <div className="gp-reveal" style={{
             display: 'inline-flex', alignItems: 'center', gap: 10,
-            background: 'rgba(17,24,39,0.04)', border: '1px solid rgba(17,24,39,0.08)',
+            background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)',
             borderRadius: 100, padding: '8px 20px', marginBottom: 28,
           }}>
             <div style={{
-              width: 6, height: 6, borderRadius: '50%', background: '#111827',
-              boxShadow: '0 0 8px rgba(17,24,39,0.4)',
+              width: 6, height: 6, borderRadius: '50%', background: '#22c55e',
+              boxShadow: '0 0 8px rgba(34,197,94,0.6)',
               animation: 'gpPulse 2s ease-in-out infinite',
             }} />
             <span style={{
               fontSize: 11, fontWeight: 700, letterSpacing: '0.12em',
-              textTransform: 'uppercase', color: '#111827',
+              textTransform: 'uppercase', color: '#ffffff',
             }}>Global Engineering Network</span>
           </div>
 
           <h2 className="gp-reveal" style={{
             fontSize: 'clamp(2.2rem, 5vw, 4rem)', fontWeight: 800,
-            color: '#111827', letterSpacing: '-0.05em', lineHeight: 1.05,
+            color: '#ffffff', letterSpacing: '-0.05em', lineHeight: 1.05,
             margin: '0 auto 20px', maxWidth: 700,
           }}>
             One Team.<br />
-            <span style={{ color: 'rgba(0,0,0,0.2)' }}>46 Locations. 24 Countries.</span>
+            <span style={{ color: 'rgba(255,255,255,0.2)' }}>46 Locations. 24 Countries.</span>
           </h2>
 
           <p className="gp-reveal" style={{
-            fontSize: 'clamp(15px, 2vw, 18px)', color: 'rgba(0,0,0,0.45)',
+            fontSize: 'clamp(15px, 2vw, 18px)', color: 'rgba(255,255,255,0.45)',
             lineHeight: 1.7, maxWidth: 540, margin: '0 auto',
           }}>
             The best engineers from around the world, working virtually to build world-class software for every kind of builder.
@@ -193,13 +193,13 @@ export default function GlobalPresence() {
               animation: 'gpFadeSlide 0.8s ease-out 0.6s both',
             }}>
               <div style={{
-                width: 8, height: 8, borderRadius: '50%', background: '#111827',
-                boxShadow: '0 0 12px rgba(17,24,39,0.5)',
+                width: 8, height: 8, borderRadius: '50%', background: '#22c55e',
+                boxShadow: '0 0 12px rgba(34,197,94,0.6)',
               }} />
               <span style={{
-                fontSize: 10, fontWeight: 800, color: '#111827',
+                fontSize: 10, fontWeight: 800, color: '#ffffff',
                 letterSpacing: '0.1em', textTransform: 'uppercase',
-                background: 'rgba(255,255,255,0.9)', padding: '3px 8px',
+                background: 'rgba(0,0,0,0.7)', padding: '3px 8px',
                 borderRadius: 4, backdropFilter: 'blur(4px)',
               }}>New York HQ</span>
             </div>
@@ -210,13 +210,13 @@ export default function GlobalPresence() {
               animation: 'gpFadeSlide 0.8s ease-out 0.9s both',
             }}>
               <div style={{
-                width: 8, height: 8, borderRadius: '50%', background: '#111827',
-                boxShadow: '0 0 12px rgba(17,24,39,0.5)',
+                width: 8, height: 8, borderRadius: '50%', background: '#22c55e',
+                boxShadow: '0 0 12px rgba(34,197,94,0.6)',
               }} />
               <span style={{
-                fontSize: 10, fontWeight: 800, color: '#111827',
+                fontSize: 10, fontWeight: 800, color: '#ffffff',
                 letterSpacing: '0.1em', textTransform: 'uppercase',
-                background: 'rgba(255,255,255,0.9)', padding: '3px 8px',
+                background: 'rgba(0,0,0,0.7)', padding: '3px 8px',
                 borderRadius: 4, backdropFilter: 'blur(4px)',
               }}>Dubai HQ</span>
             </div>
@@ -227,7 +227,7 @@ export default function GlobalPresence() {
               transform: 'translateX(-50%)', textAlign: 'center', pointerEvents: 'none',
             }}>
               <span style={{
-                fontSize: 11, fontWeight: 700, color: 'rgba(0,0,0,0.2)',
+                fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.2)',
                 letterSpacing: '0.1em', textTransform: 'uppercase',
               }}>Drag to explore</span>
             </div>
@@ -246,30 +246,34 @@ export default function GlobalPresence() {
                 { value: 150, suffix: '+', label: 'Engineers' },
               ].map(stat => (
                 <div key={stat.label} style={{
-                  background: 'rgba(0,0,0,0.015)', border: '1px solid rgba(0,0,0,0.06)',
+                  background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)',
                   borderRadius: 20, padding: 'clamp(20px, 3vw, 28px)',
                   textAlign: 'center',
                   transition: 'all 0.3s cubic-bezier(0.16,1,0.3,1)',
                 }}
                   onMouseEnter={e => {
-                    e.currentTarget.style.borderColor = 'rgba(17,24,39,0.15)';
+                    e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)';
                     e.currentTarget.style.transform = 'translateY(-4px)';
-                    e.currentTarget.style.boxShadow = '0 12px 32px rgba(0,0,0,0.06)';
+                    e.currentTarget.style.boxShadow = '0 12px 32px rgba(0,0,0,0.3)';
                   }}
                   onMouseLeave={e => {
-                    e.currentTarget.style.borderColor = 'rgba(0,0,0,0.06)';
+                    e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)';
                     e.currentTarget.style.transform = 'translateY(0)';
                     e.currentTarget.style.boxShadow = 'none';
                   }}
                 >
                   <div style={{
                     fontSize: 'clamp(1.8rem, 3vw, 2.8rem)', fontWeight: 800,
-                    color: '#111827', letterSpacing: '-0.04em', lineHeight: 1,
+                    letterSpacing: '-0.04em', lineHeight: 1,
+                    background: 'linear-gradient(135deg, #22c55e, #4ade80)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
                   }}>
                     <AnimatedNumber target={stat.value} suffix={stat.suffix} />
                   </div>
                   <div style={{
-                    fontSize: 11, fontWeight: 700, color: 'rgba(0,0,0,0.3)',
+                    fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.3)',
                     textTransform: 'uppercase', letterSpacing: '0.1em', marginTop: 8,
                   }}>{stat.label}</div>
                 </div>
@@ -285,21 +289,22 @@ export default function GlobalPresence() {
                 <div key={loc.city} style={{
                   display: 'flex', alignItems: 'center', gap: 10,
                   padding: '14px 16px', borderRadius: 14,
-                  background: loc.highlight ? 'rgba(17,24,39,0.04)' : 'rgba(0,0,0,0.01)',
-                  border: `1px solid ${loc.highlight ? 'rgba(17,24,39,0.12)' : 'rgba(0,0,0,0.04)'}`,
+                  background: loc.highlight ? 'rgba(34,197,94,0.06)' : 'rgba(255,255,255,0.03)',
+                  border: `1px solid ${loc.highlight ? 'rgba(34,197,94,0.15)' : 'rgba(255,255,255,0.04)'}`,
                 }}>
                   <div style={{
                     width: 6, height: 6, borderRadius: '50%',
-                    background: loc.highlight ? '#111827' : 'rgba(0,0,0,0.2)',
+                    background: loc.highlight ? '#22c55e' : 'rgba(255,255,255,0.2)',
+                    boxShadow: loc.highlight ? '0 0 8px rgba(34,197,94,0.5)' : 'none',
                     flexShrink: 0,
                   }} />
                   <div>
                     <div style={{
-                      fontSize: 13, fontWeight: 700, color: '#111827',
+                      fontSize: 13, fontWeight: 700, color: '#ffffff',
                       letterSpacing: '-0.01em',
                     }}>{loc.city}</div>
                     <div style={{
-                      fontSize: 9, fontWeight: 700, color: 'rgba(0,0,0,0.25)',
+                      fontSize: 9, fontWeight: 700, color: 'rgba(255,255,255,0.25)',
                       letterSpacing: '0.08em', textTransform: 'uppercase',
                     }}>{loc.flag}</div>
                   </div>
@@ -312,13 +317,13 @@ export default function GlobalPresence() {
               <Link href="/about" style={{
                 display: 'inline-flex', alignItems: 'center', gap: 10,
                 padding: '14px 28px', borderRadius: 100,
-                background: '#111827', color: '#fff',
+                background: '#ffffff', color: '#000000',
                 fontSize: 14, fontWeight: 700, textDecoration: 'none',
                 transition: 'all 0.3s',
               }}
                 onMouseEnter={e => {
                   e.currentTarget.style.transform = 'translateY(-2px)';
-                  e.currentTarget.style.boxShadow = '0 12px 32px rgba(17,24,39,0.3)';
+                  e.currentTarget.style.boxShadow = '0 12px 32px rgba(255,255,255,0.15)';
                 }}
                 onMouseLeave={e => {
                   e.currentTarget.style.transform = '';
@@ -331,17 +336,17 @@ export default function GlobalPresence() {
               <Link href="/contact" style={{
                 display: 'inline-flex', alignItems: 'center', gap: 10,
                 padding: '14px 28px', borderRadius: 100,
-                border: '1px solid rgba(0,0,0,0.08)', color: 'rgb(0,0,0)',
+                border: '1px solid rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.8)',
                 fontSize: 14, fontWeight: 500, textDecoration: 'none',
-                transition: 'all 0.3s', background: 'rgba(0,0,0,0.02)',
+                transition: 'all 0.3s', background: 'rgba(255,255,255,0.02)',
               }}
                 onMouseEnter={e => {
-                  e.currentTarget.style.borderColor = 'rgba(0,0,0,0.15)';
-                  e.currentTarget.style.background = 'rgba(0,0,0,0.04)';
+                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)';
+                  e.currentTarget.style.background = 'rgba(255,255,255,0.04)';
                 }}
                 onMouseLeave={e => {
-                  e.currentTarget.style.borderColor = 'rgba(0,0,0,0.08)';
-                  e.currentTarget.style.background = 'rgba(0,0,0,0.02)';
+                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)';
+                  e.currentTarget.style.background = 'rgba(255,255,255,0.02)';
                 }}
               >
                 Start a Project
@@ -388,8 +393,8 @@ export default function GlobalPresence() {
         .gp-reveal:nth-child(3) { transition-delay: 0.2s; }
         .gp-reveal:nth-child(4) { transition-delay: 0.3s; }
         @keyframes gpPulse {
-          0%, 100% { opacity: 1; box-shadow: 0 0 8px rgba(17,24,39,0.4); }
-          50% { opacity: 0.6; box-shadow: 0 0 16px rgba(17,24,39,0.6); }
+          0%, 100% { opacity: 1; box-shadow: 0 0 8px rgba(34,197,94,0.6); }
+          50% { opacity: 0.6; box-shadow: 0 0 16px rgba(34,197,94,0.8); }
         }
         @keyframes gpFadeSlide {
           from { opacity: 0; transform: translateX(-8px); }

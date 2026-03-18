@@ -156,7 +156,7 @@ const categoryColors: Record<string, string> = {
   'AI/ML': '#a78bfa',
   Mobile: '#34d399',
   Design: '#f472b6',
-  Business: '#111827',
+  Business: '#22c55e',
   'Digital Marketing': '#fb923c',
 };
 
@@ -168,7 +168,7 @@ export default function BlogPage() {
   return (
     <>
       <Navbar />
-      <main ref={pageRef as React.RefObject<HTMLElement>} style={{ background: '#ffffff', minHeight: '100vh' }}>
+      <main ref={pageRef as React.RefObject<HTMLElement>} style={{ background: '#000000', minHeight: '100vh' }}>
 
         {/* ── HERO ── */}
         <section style={{ padding: '160px 0 80px', position: 'relative', overflow: 'hidden' }}>
@@ -176,26 +176,26 @@ export default function BlogPage() {
           <div style={{
             position: 'absolute', top: -200, left: '50%', transform: 'translateX(-50%)',
             width: 800, height: 800,
-            background: 'radial-gradient(circle, rgba(17,24,39,0.06) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(34,197,94,0.06) 0%, transparent 70%)',
             pointerEvents: 'none',
           }} />
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 24 }}>
               <span style={{
                 fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                color: '#111827',
+                color: '#ffffff',
               }}>
                 Codazz Journal
               </span>
             </div>
             <h1 className="reveal reveal-d1" style={{
-              fontSize: 'clamp(3rem, 6vw, 5.5rem)', fontWeight: 700, color: '#111827',
+              fontSize: 'clamp(3rem, 6vw, 5.5rem)', fontWeight: 700, color: '#ffffff',
               lineHeight: 1.05, letterSpacing: '-0.04em', marginBottom: 24, maxWidth: 800,
             }}>
               Insights &<br />Perspectives
             </h1>
             <p className="reveal reveal-d2" style={{
-              fontSize: 18, color: 'rgba(0,0,0,0.45)', lineHeight: 1.7,
+              fontSize: 18, color: 'rgba(255,255,255,0.45)', lineHeight: 1.7,
               maxWidth: 560, marginBottom: 48,
             }}>
               Deep dives into engineering, product, and the technology shaping tomorrow.
@@ -205,13 +205,13 @@ export default function BlogPage() {
             <div className="reveal reveal-d3" style={{ marginBottom: 40, maxWidth: 520 }}>
               <div style={{
                 display: 'flex', alignItems: 'center', gap: 12,
-                background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.06)',
+                background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)',
                 borderRadius: 100, padding: '12px 20px',
               }}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,0.25)" strokeWidth="2">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" strokeWidth="2">
                   <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
                 </svg>
-                <span style={{ fontSize: 14, color: 'rgba(0,0,0,0.2)' }}>Search articles…</span>
+                <span style={{ fontSize: 14, color: 'rgba(255,255,255,0.2)' }}>Search articles…</span>
               </div>
             </div>
 
@@ -224,8 +224,8 @@ export default function BlogPage() {
                   style={{
                     padding: '8px 20px', borderRadius: 100, fontSize: 13, fontWeight: 500,
                     cursor: 'pointer', border: 'none', transition: 'all 0.2s',
-                    background: activeCategory === cat ? '#111827' : 'rgba(0,0,0,0.03)',
-                    color: activeCategory === cat ? '#ffffff' : 'rgba(0,0,0,0.45)',
+                    background: activeCategory === cat ? '#22c55e' : 'rgba(255,255,255,0.03)',
+                    color: activeCategory === cat ? '#ffffff' : 'rgba(255,255,255,0.45)',
                   }}
                 >
                   {cat}
@@ -236,11 +236,11 @@ export default function BlogPage() {
         </section>
 
         {/* ── FEATURED POST ── */}
-        <section style={{ paddingBottom: 80, borderTop: '1px solid rgba(0,0,0,0.05)' }}>
+        <section style={{ paddingBottom: 80, borderTop: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container" style={{ paddingTop: 80 }}>
             <p className="reveal" style={{
               fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-              color: 'rgba(0,0,0,0.25)', marginBottom: 32,
+              color: 'rgba(255,255,255,0.25)', marginBottom: 32,
             }}>
               Featured Article
             </p>
@@ -248,22 +248,22 @@ export default function BlogPage() {
               <div
                 className="reveal"
                 style={{
-                  background: 'rgba(0,0,0,0.015)', border: '1px solid rgba(0,0,0,0.06)',
+                  background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)',
                   borderRadius: 28, padding: 48, display: 'grid',
                   gridTemplateColumns: 'repeat(auto-fit, minmax(min(300px, 100%), 1fr))', gap: 48, alignItems: 'center',
-                  borderLeft: '3px solid #111827',
+                  borderLeft: '3px solid #22c55e',
                   transition: 'all 0.3s cubic-bezier(0.16,1,0.3,1)',
                   cursor: 'pointer',
                 }}
                 onMouseEnter={e => {
-                  (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(17,24,39,0.35)';
-                  (e.currentTarget as HTMLDivElement).style.background = 'rgba(17,24,39,0.03)';
+                  (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(34,197,94,0.35)';
+                  (e.currentTarget as HTMLDivElement).style.background = 'rgba(34,197,94,0.03)';
                   (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-4px)';
                 }}
                 onMouseLeave={e => {
-                  (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(0,0,0,0.06)';
-                  (e.currentTarget as HTMLDivElement).style.borderLeftColor = '#111827';
-                  (e.currentTarget as HTMLDivElement).style.background = 'rgba(0,0,0,0.015)';
+                  (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(255,255,255,0.06)';
+                  (e.currentTarget as HTMLDivElement).style.borderLeftColor = '#22c55e';
+                  (e.currentTarget as HTMLDivElement).style.background = 'rgba(255,255,255,0.015)';
                   (e.currentTarget as HTMLDivElement).style.transform = 'translateY(0)';
                 }}
               >
@@ -271,28 +271,28 @@ export default function BlogPage() {
                   <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
                     <span style={{
                       fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase',
-                      background: 'rgba(17,24,39,0.12)', color: '#111827',
+                      background: 'rgba(17,24,39,0.12)', color: '#ffffff',
                       padding: '4px 12px', borderRadius: 100,
                     }}>Business</span>
-                    <span style={{ fontSize: 13, color: 'rgba(0,0,0,0.25)' }}>March 2026</span>
-                    <span style={{ fontSize: 13, color: 'rgba(0,0,0,0.25)' }}>·</span>
-                    <span style={{ fontSize: 13, color: 'rgba(0,0,0,0.25)' }}>8 min read</span>
+                    <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.25)' }}>March 2026</span>
+                    <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.25)' }}>·</span>
+                    <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.25)' }}>8 min read</span>
                   </div>
                   <h2 style={{
-                    fontSize: 'clamp(1.6rem, 3vw, 2.4rem)', fontWeight: 700, color: '#111827',
+                    fontSize: 'clamp(1.6rem, 3vw, 2.4rem)', fontWeight: 700, color: '#ffffff',
                     letterSpacing: '-0.03em', lineHeight: 1.15, marginBottom: 16,
                   }}>
                     Top 10 Unicorn Apps of 2026
                   </h2>
                   <p style={{
-                    fontSize: 16, color: 'rgba(0,0,0,0.45)', lineHeight: 1.7,
+                    fontSize: 16, color: 'rgba(255,255,255,0.45)', lineHeight: 1.7,
                     maxWidth: 620, marginBottom: 28,
                   }}>
                     The mobile apps that achieved billion-dollar valuations in 2026 share one thing in common: they were built different from the start. We analysed each one to extract the engineering and product decisions that made the difference.
                   </p>
                   <span style={{
                     display: 'inline-flex', alignItems: 'center', gap: 8,
-                    fontSize: 14, fontWeight: 600, color: '#111827',
+                    fontSize: 14, fontWeight: 600, color: '#ffffff',
                   }}>
                     Read Article
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -302,8 +302,8 @@ export default function BlogPage() {
                 </div>
                 <div style={{
                   width: 200, height: 200, borderRadius: 20, flexShrink: 0, maxWidth: '100%',
-                  background: 'linear-gradient(135deg, rgba(17,24,39,0.12) 0%, rgba(17,24,39,0.04) 100%)',
-                  border: '1px solid rgba(17,24,39,0.15)',
+                  background: 'linear-gradient(135deg, rgba(17,24,39,0.12) 0%, rgba(34,197,94,0.04) 100%)',
+                  border: '1px solid rgba(34,197,94,0.15)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                 }}>
                   <span style={{ fontSize: 64 }}>🦄</span>
@@ -314,11 +314,11 @@ export default function BlogPage() {
         </section>
 
         {/* ── POSTS GRID ── */}
-        <section style={{ paddingBottom: 120, borderTop: '1px solid rgba(0,0,0,0.05)' }}>
+        <section className="section-padding" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container" style={{ paddingTop: 80 }}>
             <p className="reveal" style={{
               fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-              color: 'rgba(0,0,0,0.25)', marginBottom: 40,
+              color: 'rgba(255,255,255,0.25)', marginBottom: 40,
             }}>
               Latest Articles
             </p>
@@ -326,26 +326,26 @@ export default function BlogPage() {
               display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(320px, 100%), 1fr))', gap: 20,
             }}>
               {posts.filter(p => activeCategory === 'All' || p.category === activeCategory).map((post, i) => {
-                const accentColor = categoryColors[post.category] || '#111827';
+                const accentColor = categoryColors[post.category] || '#22c55e';
                 return (
                   <Link key={post.slug} href={`/blog/${post.slug}`} style={{ textDecoration: 'none' }}>
                     <article
                       className={`reveal reveal-d${Math.min(i + 1, 6)}`}
                       style={{
-                        background: 'rgba(0,0,0,0.015)', border: '1px solid rgba(0,0,0,0.06)',
+                        background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)',
                         borderRadius: 24, padding: 'clamp(20px, 4vw, 32px)', height: '100%',
                         transition: 'all 0.3s cubic-bezier(0.16,1,0.3,1)',
                         display: 'flex', flexDirection: 'column', gap: 0,
                         cursor: 'pointer',
                       }}
                       onMouseEnter={e => {
-                        (e.currentTarget as HTMLElement).style.borderColor = 'rgba(17,24,39,0.2)';
-                        (e.currentTarget as HTMLElement).style.background = 'rgba(17,24,39,0.03)';
+                        (e.currentTarget as HTMLElement).style.borderColor = 'rgba(34,197,94,0.2)';
+                        (e.currentTarget as HTMLElement).style.background = 'rgba(34,197,94,0.03)';
                         (e.currentTarget as HTMLElement).style.transform = 'translateY(-4px)';
                       }}
                       onMouseLeave={e => {
-                        (e.currentTarget as HTMLElement).style.borderColor = 'rgba(0,0,0,0.06)';
-                        (e.currentTarget as HTMLElement).style.background = 'rgba(0,0,0,0.015)';
+                        (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.06)';
+                        (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.015)';
                         (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
                       }}
                     >
@@ -362,7 +362,7 @@ export default function BlogPage() {
 
                       {/* Title */}
                       <h3 style={{
-                        fontSize: 18, fontWeight: 700, color: '#111827',
+                        fontSize: 18, fontWeight: 700, color: '#ffffff',
                         letterSpacing: '-0.02em', lineHeight: 1.25, marginBottom: 12,
                       }}>
                         {post.title}
@@ -370,7 +370,7 @@ export default function BlogPage() {
 
                       {/* Excerpt */}
                       <p style={{
-                        fontSize: 14, color: 'rgba(0,0,0,0.45)', lineHeight: 1.7,
+                        fontSize: 14, color: 'rgba(255,255,255,0.45)', lineHeight: 1.7,
                         marginBottom: 28, flexGrow: 1,
                       }}>
                         {post.excerpt}
@@ -380,33 +380,33 @@ export default function BlogPage() {
                       <div style={{
                         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                         marginTop: 'auto', paddingTop: 20,
-                        borderTop: '1px solid rgba(0,0,0,0.03)',
+                        borderTop: '1px solid rgba(255,255,255,0.03)',
                       }}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                           {/* Author avatar */}
                           <div style={{
                             width: 30, height: 30, borderRadius: '50%',
-                            background: 'rgba(17,24,39,0.12)', border: '1px solid rgba(17,24,39,0.2)',
+                            background: 'rgba(17,24,39,0.12)', border: '1px solid rgba(34,197,94,0.2)',
                             display: 'flex', alignItems: 'center', justifyContent: 'center',
-                            fontSize: 11, fontWeight: 700, color: '#111827',
+                            fontSize: 11, fontWeight: 700, color: '#ffffff',
                           }}>
                             {post.author}
                           </div>
                           <div>
-                            <p style={{ fontSize: 12, color: 'rgba(0,0,0,0.4)', margin: 0 }}>{post.date}</p>
+                            <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', margin: 0 }}>{post.date}</p>
                           </div>
                         </div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(0,0,0,0.25)" strokeWidth="2">
+                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" strokeWidth="2">
                             <circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/>
                           </svg>
-                          <span style={{ fontSize: 12, color: 'rgba(0,0,0,0.35)' }}>{post.readTime}</span>
+                          <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)' }}>{post.readTime}</span>
                         </div>
                       </div>
 
                       <div style={{ marginTop: 16 }}>
                         <span style={{
-                          fontSize: 13, fontWeight: 600, color: '#111827',
+                          fontSize: 13, fontWeight: 600, color: '#ffffff',
                           display: 'inline-flex', alignItems: 'center', gap: 6,
                         }}>
                           Read More
@@ -424,27 +424,27 @@ export default function BlogPage() {
         </section>
 
         {/* ── NEWSLETTER CTA ── */}
-        <section style={{ paddingBottom: 120, borderTop: '1px solid rgba(0,0,0,0.05)' }}>
+        <section className="section-padding" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container" style={{ paddingTop: 80 }}>
             <div
               className="reveal"
               style={{
-                background: 'rgba(0,0,0,0.015)', border: '1px solid rgba(0,0,0,0.06)',
+                background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)',
                 borderRadius: 28, padding: 'clamp(32px, 5vw, 64px) clamp(20px, 4vw, 48px)', textAlign: 'center',
               }}
             >
               <span style={{
                 fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                color: '#111827', display: 'block', marginBottom: 20,
+                color: '#ffffff', display: 'block', marginBottom: 20,
               }}>Newsletter</span>
               <h2 style={{
-                fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', fontWeight: 700, color: '#111827',
+                fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', fontWeight: 700, color: '#ffffff',
                 letterSpacing: '-0.03em', marginBottom: 16,
               }}>
                 Get the latest insights delivered.
               </h2>
               <p style={{
-                fontSize: 16, color: 'rgba(0,0,0,0.4)', marginBottom: 40, maxWidth: 460, margin: '0 auto 40px',
+                fontSize: 16, color: 'rgba(255,255,255,0.4)', marginBottom: 40, maxWidth: 460, margin: '0 auto 40px',
               }}>
                 Engineering deep dives, product strategy, and startup insights — twice a month, no noise.
               </p>
@@ -455,20 +455,20 @@ export default function BlogPage() {
                   type="email"
                   placeholder="you@company.com"
                   style={{
-                    padding: '14px 24px', borderRadius: 100, background: 'rgba(0,0,0,0.03)',
-                    border: '1px solid rgba(0,0,0,0.08)', color: '#111827', fontSize: 15,
+                    padding: '14px 24px', borderRadius: 100, background: 'rgba(255,255,255,0.03)',
+                    border: '1px solid rgba(255,255,255,0.08)', color: '#ffffff', fontSize: 15,
                     outline: 'none', width: 'min(300px, 100%)',
                   }}
                 />
                 <button style={{
-                  padding: '14px 32px', borderRadius: 100, background: '#111827', color: '#fff',
+                  padding: '14px 32px', borderRadius: 100, background: '#22c55e', color: '#000',
                   fontSize: 14, fontWeight: 700, border: 'none', cursor: 'pointer',
                   transition: 'all 0.2s',
                 }}>
                   Subscribe
                 </button>
               </div>
-              <p style={{ fontSize: 12, color: 'rgba(0,0,0,0.2)', marginTop: 20 }}>
+              <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.2)', marginTop: 20 }}>
                 No spam. Unsubscribe anytime.
               </p>
             </div>

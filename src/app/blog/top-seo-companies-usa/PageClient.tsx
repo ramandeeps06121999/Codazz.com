@@ -20,7 +20,7 @@ function useReveal() {
 }
 
 const companies = [
-  { num: 1, name: 'Codazz', category: 'Technical SEO', emoji: '🍁', metric: 'Next.js & Technical Search Leaders', accentColor: '#111827', bgColor: 'rgba(17,24,39,' },
+  { num: 1, name: 'Codazz', category: 'Technical SEO', emoji: '🍁', metric: 'Next.js & Technical Search Leaders', accentColor: '#22c55e', bgColor: 'rgba(17,24,39,' },
   { num: 2, name: 'Major Tom', category: 'Digital Strategy', emoji: '🏢', metric: 'Full-service enterprise campaigns', accentColor: '#a78bfa', bgColor: 'rgba(167,139,250,' },
   { num: 3, name: 'Ignite Digital', category: 'Link Building', emoji: '🔗', metric: 'Aggressive off-page & content networks', accentColor: '#f472b6', bgColor: 'rgba(244,114,182,' },
   { num: 4, name: 'BlueHat Marketing', category: 'E-Commerce', emoji: '🛍️', metric: 'Shopify & WooCommerce Optimization', accentColor: '#34d399', bgColor: 'rgba(52,211,153,' },
@@ -53,7 +53,7 @@ export default function TopSeoCompaniesUSAClient() {
   return (
     <>
       <Navbar />
-      <main ref={pageRef as React.RefObject<HTMLElement>} style={{ background: '#ffffff', minHeight: '100vh' }}>
+      <main ref={pageRef as React.RefObject<HTMLElement>} style={{ background: '#000000', minHeight: '100vh' }}>
 
         {/* ── FEATURED IMAGE ── */}
         <div className="cb-container" style={{ paddingTop: 100 }}>
@@ -78,7 +78,7 @@ export default function TopSeoCompaniesUSAClient() {
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 24 }}>
               <Link href="/blog" style={{
-                fontSize: 13, color: 'rgba(0,0,0,0.4)', textDecoration: 'none',
+                fontSize: 13, color: 'rgba(255,255,255,0.4)', textDecoration: 'none',
                 display: 'inline-flex', alignItems: 'center', gap: 8,
                 transition: 'color 0.2s',
               }}>
@@ -92,15 +92,15 @@ export default function TopSeoCompaniesUSAClient() {
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
               <span className="reveal reveal-d1" style={{
                 fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                background: 'rgba(17,24,39,0.12)', color: '#111827',
+                background: 'rgba(17,24,39,0.12)', color: '#ffffff',
                 padding: '5px 14px', borderRadius: 100,
               }}>Digital Marketing</span>
-              <span className="reveal reveal-d1" style={{ fontSize: 13, color: 'rgba(0,0,0,0.25)' }}>March 14, 2026</span>
-              <span style={{ color: 'rgba(0,0,0,0.4)', margin: '0 8px' }}>·</span>
-              <span style={{ color: 'rgba(0,0,0,0.4)' }}>Updated Mar 2026</span>
-              <span className="reveal reveal-d1" style={{ fontSize: 13, color: 'rgba(0,0,0,0.25)' }}>·</span>
+              <span className="reveal reveal-d1" style={{ fontSize: 13, color: 'rgba(255,255,255,0.25)' }}>March 14, 2026</span>
+              <span style={{ color: 'rgba(255,255,255,0.4)', margin: '0 8px' }}>·</span>
+              <span style={{ color: 'rgba(255,255,255,0.4)' }}>Updated Mar 2026</span>
+              <span className="reveal reveal-d1" style={{ fontSize: 13, color: 'rgba(255,255,255,0.25)' }}>·</span>
               <span className="reveal reveal-d1" style={{
-                fontSize: 13, color: 'rgba(0,0,0,0.25)',
+                fontSize: 13, color: 'rgba(255,255,255,0.25)',
                 display: 'inline-flex', alignItems: 'center', gap: 6,
               }}>
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -111,14 +111,14 @@ export default function TopSeoCompaniesUSAClient() {
             </div>
 
             <h1 className="reveal reveal-d2" style={{
-              fontSize: 'clamp(2.4rem, 5vw, 4.5rem)', fontWeight: 800, color: '#111827',
+              fontSize: 'clamp(2.4rem, 5vw, 4.5rem)', fontWeight: 800, color: '#ffffff',
               letterSpacing: '-0.04em', lineHeight: 1.05, marginBottom: 24, maxWidth: 840,
             }}>
               Top 10 SEO Companies in the USA (2026)
             </h1>
 
             <p className="reveal reveal-d3" style={{
-              fontSize: 20, color: 'rgba(0,0,0,0.5)', lineHeight: 1.65,
+              fontSize: 20, color: 'rgba(255,255,255,0.5)', lineHeight: 1.65,
               maxWidth: 720, marginBottom: 48, fontWeight: 400,
             }}>
               A comprehensive, data-driven ranking of the top 10 SEO agencies in the USA for 2026, featuring Codazz and other industry leaders driving serious organic growth.
@@ -128,37 +128,37 @@ export default function TopSeoCompaniesUSAClient() {
             <div className="reveal reveal-d4" style={{
               display: 'flex', alignItems: 'center', justifyContent: 'space-between',
               flexWrap: 'wrap', gap: 24, paddingTop: 32,
-              borderTop: '1px solid rgba(0,0,0,0.05)',
+              borderTop: '1px solid rgba(255,255,255,0.05)',
             }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
                 <div style={{
                   width: 48, height: 48, borderRadius: '50%',
                   background: 'rgba(17,24,39,0.12)', border: '1px solid rgba(17,24,39,0.25)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: 15, fontWeight: 700, color: '#111827',
+                  fontSize: 15, fontWeight: 700, color: '#ffffff',
                 }}>RM</div>
                 <div>
-                  <p style={{ fontSize: 15, fontWeight: 600, color: '#111827', margin: 0 }}>Raman Makkar</p>
-                  <p style={{ fontSize: 13, color: 'rgba(0,0,0,0.4)', margin: 0 }}>CEO, Codazz</p>
+                  <p style={{ fontSize: 15, fontWeight: 600, color: '#ffffff', margin: 0 }}>Raman Makkar</p>
+                  <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)', margin: 0 }}>CEO, Codazz</p>
                 </div>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                <span style={{ fontSize: 12, color: 'rgba(0,0,0,0.25)', marginRight: 4 }}>Share:</span>
+                <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.25)', marginRight: 4 }}>Share:</span>
                 {[
                   { label: 'Twitter', icon: '𝕏' },
                   { label: 'LinkedIn', icon: 'in' },
                 ].map(s => (
                   <button key={s.label} style={{
-                    width: 36, height: 36, borderRadius: '50%', border: '1px solid rgba(0,0,0,0.08)',
-                    background: 'rgba(0,0,0,0.02)', color: 'rgba(0,0,0,0.45)',
+                    width: 36, height: 36, borderRadius: '50%', border: '1px solid rgba(255,255,255,0.08)',
+                    background: 'rgba(255,255,255,0.02)', color: 'rgba(255,255,255,0.45)',
                     fontSize: 13, fontWeight: 700, cursor: 'pointer', display: 'flex',
                     alignItems: 'center', justifyContent: 'center',
                   }}>{s.icon}</button>
                 ))}
                 <button onClick={handleCopy} style={{
-                  padding: '8px 16px', borderRadius: 100, border: '1px solid rgba(0,0,0,0.08)',
-                  background: copied ? 'rgba(17,24,39,0.1)' : 'rgba(0,0,0,0.02)',
-                  color: copied ? '#111827' : 'rgba(0,0,0,0.45)',
+                  padding: '8px 16px', borderRadius: 100, border: '1px solid rgba(255,255,255,0.08)',
+                  background: copied ? 'rgba(34,197,94,0.1)' : 'rgba(255,255,255,0.02)',
+                  color: copied ? '#22c55e' : 'rgba(255,255,255,0.45)',
                   fontSize: 12, fontWeight: 600, cursor: 'pointer',
                   transition: 'all 0.2s',
                 }}>
@@ -170,7 +170,7 @@ export default function TopSeoCompaniesUSAClient() {
         </section>
 
         {/* ── ARTICLE BODY + SIDEBAR ── */}
-        <section style={{ paddingBottom: 120, borderTop: '1px solid rgba(0,0,0,0.05)' }}>
+        <section className="section-padding" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container" style={{ paddingTop: 80 }}>
             <div className="blog-layout" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 80, alignItems: 'start' }}>
 
@@ -180,15 +180,15 @@ export default function TopSeoCompaniesUSAClient() {
                 {/* Intro */}
                 <div className="reveal" style={{ marginBottom: 56 }}>
                   <p style={{
-                    fontSize: 18, color: 'rgb(0,0,0)', lineHeight: 1.8,
+                    fontSize: 18, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8,
                     marginBottom: 20,
                   }}>
                     The search landscape has shifted permanently. With the rise of AI-generated content (SGE) and increasingly complex ranking algorithms, traditional SEO—stuffing keywords and buying cheap backlinks—is dead. In 2026, ranking on Google requires technical infrastructure, authoritative content, and deep strategic alignment.
                   </p>
-                  <p style={{ fontSize: 17, color: 'rgba(0,0,0,0.5)', lineHeight: 1.8, marginBottom: 20 }}>
+                  <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8, marginBottom: 20 }}>
                     If your American business isn't dominating search, you are leaving hundreds of thousands of dollars on the table for your competitors.
                   </p>
-                  <p style={{ fontSize: 17, color: 'rgba(0,0,0,0.5)', lineHeight: 1.8 }}>
+                  <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8 }}>
                     We reviewed over 100 digital marketing agencies across San Francisco, Los Angeles, Austin, and Boston to curate this definitive list of the <strong>Top 10 SEO Companies in the USA</strong> for 2026. These agencies aren't just selling "rankings"—they are engineering revenue pipelines.
                   </p>
                 </div>
@@ -196,47 +196,47 @@ export default function TopSeoCompaniesUSAClient() {
                 {/* Company 1: Codazz */}
                 <div className="reveal" style={{ marginBottom: 56 }} id="codazz">
                   <div style={{
-                    background: 'linear-gradient(135deg, rgba(17,24,39,0.1) 0%, rgba(0,0,0,0.015) 100%)', border: '1px solid rgba(17,24,39,0.3)',
+                    background: 'linear-gradient(135deg, rgba(34,197,94,0.1) 0%, rgba(255,255,255,0.015) 100%)', border: '1px solid rgba(34,197,94,0.3)',
                     borderRadius: 24, padding: 36, marginBottom: 0, position: 'relative', overflow: 'hidden'
                   }}>
-                    <div style={{ position: 'absolute', top: -40, right: -40, width: 200, height: 200, background: 'radial-gradient(circle, rgba(17,24,39,0.15) 0%, transparent 70%)', filter: 'blur(30px)' }} />
+                    <div style={{ position: 'absolute', top: -40, right: -40, width: 200, height: 200, background: 'radial-gradient(circle, rgba(34,197,94,0.15) 0%, transparent 70%)', filter: 'blur(30px)' }} />
                     <div style={{ display: 'flex', alignItems: 'flex-start', gap: 20, marginBottom: 20, position: 'relative', zIndex: 1 }}>
                       <div style={{
                         width: 56, height: 56, borderRadius: 16, flexShrink: 0,
-                        background: 'rgba(17,24,39,0.1)', border: '1px solid rgba(17,24,39,0.3)',
+                        background: 'rgba(34,197,94,0.1)', border: '1px solid rgba(34,197,94,0.3)',
                         display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 28,
                       }}>🍁</div>
                       <div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
-                          <span style={{ fontSize: 12, color: 'rgba(0,0,0,0.35)', fontWeight: 700 }}>01</span>
+                          <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)', fontWeight: 700 }}>01</span>
                           <span style={{
                             fontSize: 11, padding: '3px 10px', borderRadius: 100,
-                            background: 'rgba(17,24,39,0.15)', color: '#111827',
+                            background: 'rgba(34,197,94,0.15)', color: '#ffffff',
                             fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase',
                           }}>Technical SEO</span>
                         </div>
                         <h2 style={{
-                          fontSize: 'clamp(1.4rem, 2.5vw, 1.9rem)', fontWeight: 700, color: '#111827',
+                          fontSize: 'clamp(1.4rem, 2.5vw, 1.9rem)', fontWeight: 700, color: '#ffffff',
                           letterSpacing: '-0.03em', margin: 0,
                         }}>Codazz</h2>
                       </div>
                     </div>
 
-                    <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 16, position: 'relative', zIndex: 1 }}>
+                    <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 16, position: 'relative', zIndex: 1 }}>
                       We might be biased, but the data is undeniable. Most SEO agencies fail because they don't understand the underlying code of a website. Codazz bridges the gap between elite custom software development and aggressive search strategies.
                     </p>
-                    <p style={{ fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8, marginBottom: 20, position: 'relative', zIndex: 1 }}>
+                    <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 20, position: 'relative', zIndex: 1 }}>
                       We don't just write content; we architect Next.js applications that score 100 on Google Lighthouse, implement complex Schema markup perfectly, and build digital experiences that convert traffic into high-ticket clients.
                     </p>
                     <div style={{
                       padding: '14px 20px', borderRadius: 12,
-                      background: 'rgba(17,24,39,0.08)', border: '1px solid rgba(17,24,39,0.2)',
+                      background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.2)',
                       display: 'flex', alignItems: 'center', gap: 10, position: 'relative', zIndex: 1
                     }}>
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#111827" strokeWidth="2">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2">
                         <polyline points="22,7 13.5,15.5 8.5,10.5 2,17"/><polyline points="16,7 22,7 22,13"/>
                       </svg>
-                      <span style={{ fontSize: 13, color: '#111827', fontWeight: 600 }}>
+                      <span style={{ fontSize: 13, color: '#ffffff', fontWeight: 600 }}>
                         Key Metric: Elite Next.js Optimization & Technical Infrastructure
                       </span>
                     </div>
@@ -320,7 +320,7 @@ export default function TopSeoCompaniesUSAClient() {
                 ].map((app) => (
                   <div key={app.id} className="reveal" style={{ marginBottom: 56 }} id={app.id}>
                     <div style={{
-                      background: 'rgba(0,0,0,0.015)', border: '1px solid rgba(0,0,0,0.06)',
+                      background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)',
                       borderRadius: 24, padding: 36,
                     }}>
                       <div style={{ display: 'flex', alignItems: 'flex-start', gap: 20, marginBottom: 20 }}>
@@ -331,7 +331,7 @@ export default function TopSeoCompaniesUSAClient() {
                         }}>{app.emoji}</div>
                         <div>
                           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
-                            <span style={{ fontSize: 12, color: 'rgba(0,0,0,0.35)', fontWeight: 700 }}>{app.num}</span>
+                            <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)', fontWeight: 700 }}>{app.num}</span>
                             <span style={{
                               fontSize: 11, padding: '3px 10px', borderRadius: 100,
                               background: `${app.bgColor}0.12)`, color: app.accentColor,
@@ -339,14 +339,14 @@ export default function TopSeoCompaniesUSAClient() {
                             }}>{app.category}</span>
                           </div>
                           <h2 style={{
-                            fontSize: 'clamp(1.4rem, 2.5vw, 1.9rem)', fontWeight: 700, color: '#111827',
+                            fontSize: 'clamp(1.4rem, 2.5vw, 1.9rem)', fontWeight: 700, color: '#ffffff',
                             letterSpacing: '-0.03em', margin: 0,
                           }}>{app.name}</h2>
                         </div>
                       </div>
                       {app.paragraphs.map((para, pi) => (
                         <p key={pi} style={{
-                          fontSize: 16, color: 'rgb(0,0,0)', lineHeight: 1.8,
+                          fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8,
                           marginBottom: pi < app.paragraphs.length - 1 ? 16 : 20,
                         }}>{para}</p>
                       ))}
@@ -376,32 +376,32 @@ export default function TopSeoCompaniesUSAClient() {
                 }}>
                   {/* Table of Contents */}
                   <div style={{
-                    background: 'rgba(0,0,0,0.015)', border: '1px solid rgba(0,0,0,0.06)',
+                    background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)',
                     borderRadius: 20, padding: 24,
                   }}>
                     <p style={{
                       fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                      color: 'rgba(0,0,0,0.25)', marginBottom: 16,
+                      color: 'rgba(255,255,255,0.25)', marginBottom: 16,
                     }}>In This Article</p>
                     <nav style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
                       {companies.map(app => (
                         <a key={app.name} href={`#${app.name.toLowerCase().replace(/[\s\(\)]+/g, '-').replace(/-$/, '')}`} style={{
-                          fontSize: 13, color: 'rgba(0,0,0,0.4)', textDecoration: 'none',
+                          fontSize: 13, color: 'rgba(255,255,255,0.4)', textDecoration: 'none',
                           padding: '6px 10px', borderRadius: 8, display: 'flex', alignItems: 'center', gap: 10,
                           transition: 'all 0.15s',
                         }}
                           onMouseEnter={e => {
-                            (e.currentTarget as HTMLAnchorElement).style.color = '#111827';
-                            (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(17,24,39,0.06)';
+                            (e.currentTarget as HTMLAnchorElement).style.color = '#22c55e';
+                            (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(34,197,94,0.06)';
                           }}
                           onMouseLeave={e => {
-                            (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(0,0,0,0.4)';
+                            (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.4)';
                             (e.currentTarget as HTMLAnchorElement).style.background = 'transparent';
                           }}
                         >
                           <span style={{ fontSize: 14 }}>{app.emoji}</span>
                           <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{app.name}</span>
-                          <span style={{ fontSize: 11, color: 'rgba(0,0,0,0.2)', marginLeft: 'auto', flexShrink: 0 }}>{app.category}</span>
+                          <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.2)', marginLeft: 'auto', flexShrink: 0 }}>{app.category}</span>
                         </a>
                       ))}
                     </nav>
@@ -409,58 +409,58 @@ export default function TopSeoCompaniesUSAClient() {
 
                   {/* Author card */}
                   <div style={{
-                    background: 'rgba(0,0,0,0.015)', border: '1px solid rgba(0,0,0,0.06)',
+                    background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)',
                     borderRadius: 20, padding: 24,
                   }}>
                     <p style={{
                       fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                      color: 'rgba(0,0,0,0.25)', marginBottom: 16,
+                      color: 'rgba(255,255,255,0.25)', marginBottom: 16,
                     }}>About the Author</p>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
                       <div style={{
                         width: 44, height: 44, borderRadius: '50%',
                         background: 'rgba(17,24,39,0.12)', border: '1px solid rgba(17,24,39,0.25)',
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        fontSize: 14, fontWeight: 700, color: '#111827', flexShrink: 0,
+                        fontSize: 14, fontWeight: 700, color: '#ffffff', flexShrink: 0,
                       }}>RM</div>
                       <div>
-                        <p style={{ fontSize: 14, fontWeight: 600, color: '#111827', margin: 0 }}>Raman Makkar</p>
-                        <p style={{ fontSize: 12, color: 'rgba(0,0,0,0.4)', margin: 0 }}>CEO, Codazz</p>
+                        <p style={{ fontSize: 14, fontWeight: 600, color: '#ffffff', margin: 0 }}>Raman Makkar</p>
+                        <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', margin: 0 }}>CEO, Codazz</p>
                       </div>
                     </div>
-                    <p style={{ fontSize: 13, color: 'rgba(0,0,0,0.4)', lineHeight: 1.7, margin: 0 }}>
+                    <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)', lineHeight: 1.7, margin: 0 }}>
                       Leading engineering strategy and product vision at Codazz. Has guided over 300+ bespoke product launches globally.
                     </p>
                   </div>
 
                   {/* Related posts */}
                   <div style={{
-                    background: 'rgba(0,0,0,0.015)', border: '1px solid rgba(0,0,0,0.06)',
+                    background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)',
                     borderRadius: 20, padding: 24,
                   }}>
                     <p style={{
                       fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                      color: 'rgba(0,0,0,0.25)', marginBottom: 16,
+                      color: 'rgba(255,255,255,0.25)', marginBottom: 16,
                     }}>Related Articles</p>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
                       {relatedPosts.map(post => (
                         <Link key={post.slug} href={`/blog/${post.slug}`} style={{
                           textDecoration: 'none', display: 'block', padding: '14px',
-                          borderRadius: 12, border: '1px solid rgba(0,0,0,0.03)',
+                          borderRadius: 12, border: '1px solid rgba(255,255,255,0.03)',
                           background: 'transparent', transition: 'all 0.2s',
                         }}
                           onMouseEnter={e => {
-                            (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(17,24,39,0.15)';
-                            (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(17,24,39,0.03)';
+                            (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(34,197,94,0.15)';
+                            (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(34,197,94,0.03)';
                           }}
                           onMouseLeave={e => {
-                            (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(0,0,0,0.03)';
+                            (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(255,255,255,0.03)';
                             (e.currentTarget as HTMLAnchorElement).style.background = 'transparent';
                           }}
                         >
-                          <p style={{ fontSize: 11, color: '#111827', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', margin: '0 0 6px' }}>{post.category}</p>
-                          <p style={{ fontSize: 13, color: 'rgb(0,0,0)', lineHeight: 1.4, margin: '0 0 8px', fontWeight: 600 }}>{post.title}</p>
-                          <p style={{ fontSize: 12, color: 'rgba(0,0,0,0.25)', margin: 0 }}>{post.readTime} read</p>
+                          <p style={{ fontSize: 11, color: '#ffffff', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', margin: '0 0 6px' }}>{post.category}</p>
+                          <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.7)', lineHeight: 1.4, margin: '0 0 8px', fontWeight: 600 }}>{post.title}</p>
+                          <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.25)', margin: 0 }}>{post.readTime} read</p>
                         </Link>
                       ))}
                     </div>
@@ -473,12 +473,12 @@ export default function TopSeoCompaniesUSAClient() {
         </section>
 
         {/* ── BOTTOM CTA ── */}
-        <section style={{ paddingBottom: 120, borderTop: '1px solid rgba(0,0,0,0.05)' }}>
+        <section className="section-padding" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container" style={{ paddingTop: 80 }}>
             <div
               className="reveal"
               style={{
-                background: 'rgba(17,24,39,0.04)', border: '1px solid rgba(17,24,39,0.15)',
+                background: 'rgba(34,197,94,0.04)', border: '1px solid rgba(34,197,94,0.15)',
                 borderRadius: 28, padding: '64px 56px',
                 display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                 flexWrap: 'wrap', gap: 32,
@@ -487,21 +487,21 @@ export default function TopSeoCompaniesUSAClient() {
               <div>
                 <p style={{
                   fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                  color: '#111827', marginBottom: 12,
+                  color: '#ffffff', marginBottom: 12,
                 }}>Start Ranking</p>
                 <h2 style={{
-                  fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', fontWeight: 700, color: '#111827',
+                  fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', fontWeight: 700, color: '#ffffff',
                   letterSpacing: '-0.03em', marginBottom: 12,
                 }}>
                   You Can't Outrank Bad Code.
                 </h2>
-                <p style={{ fontSize: 16, color: 'rgba(0,0,0,0.45)', maxWidth: 480, lineHeight: 1.7 }}>
+                <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.45)', maxWidth: 480, lineHeight: 1.7 }}>
                   Stop losing traffic to competitors with inferior products but faster websites. Let Codazz engineer an SEO strategy built into your source code.
                 </p>
               </div>
               <Link href="/contact" style={{ textDecoration: 'none' }}>
                 <button style={{
-                  padding: '18px 40px', borderRadius: 100, background: '#111827', color: '#fff',
+                  padding: '18px 40px', borderRadius: 100, background: '#22c55e', color: '#000',
                   fontSize: 15, fontWeight: 700, border: 'none', cursor: 'pointer',
                   transition: 'all 0.2s', whiteSpace: 'nowrap',
                 }}>

@@ -6,6 +6,12 @@ import Footer from '@/components/Footer';
 import Breadcrumb from '@/components/Breadcrumb';
 import TrustBadges from '@/components/TrustBadges';
 import HeroBackground from '@/components/HeroBackground';
+import { FloatingIconsBackground } from '@/components/FloatingIconsBackground';
+import {
+  IconReact, IconNextJS, IconNodeJS, IconPython, IconAWS,
+  IconDocker, IconKubernetes, IconTypeScript, IconGraphQL,
+  IconPostgreSQL, IconMongoDB, IconTensorFlow, IconGitHub, IconFigma, IconVSCode
+} from '@/components/tech-icons';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -21,18 +27,18 @@ function useReveal() {
 }
 
 const cardBase: React.CSSProperties = {
-  border: '1px solid rgba(0,0,0,0.06)',
+  border: '1px solid rgba(255,255,255,0.06)',
   borderRadius: 24,
-  background: 'rgba(0,0,0,0.015)',
+  background: 'rgba(255,255,255,0.015)',
   padding: '2rem',
   transition: 'border-color 0.3s, background 0.3s, transform 0.3s, box-shadow 0.3s',
 };
 
 const cardHover: React.CSSProperties = {
-  borderColor: 'rgba(17,24,39,0.2)',
-  background: 'rgba(17,24,39,0.03)',
+  borderColor: 'rgba(34,197,94,0.2)',
+  background: 'rgba(34,197,94,0.03)',
   transform: 'translateY(-4px)',
-  boxShadow: '0 24px 60px rgba(0,0,0,0.06)',
+  boxShadow: '0 24px 60px rgba(255,255,255,0.06)',
 };
 
 function Card({ children, style }: { children: React.ReactNode; style?: React.CSSProperties }) {
@@ -47,6 +53,24 @@ function Card({ children, style }: { children: React.ReactNode; style?: React.CS
     </div>
   );
 }
+
+const floatingIcons = [
+  { id: 1, icon: IconReact, className: 'top-[10%] left-[5%]' },
+  { id: 2, icon: IconNextJS, className: 'top-[15%] right-[8%]' },
+  { id: 3, icon: IconNodeJS, className: 'top-[60%] left-[3%]' },
+  { id: 4, icon: IconPython, className: 'bottom-[20%] right-[5%]' },
+  { id: 5, icon: IconAWS, className: 'top-[5%] left-[25%]' },
+  { id: 6, icon: IconDocker, className: 'top-[70%] right-[15%]' },
+  { id: 7, icon: IconKubernetes, className: 'bottom-[15%] left-[20%]' },
+  { id: 8, icon: IconTypeScript, className: 'top-[40%] left-[8%]' },
+  { id: 9, icon: IconGraphQL, className: 'top-[80%] right-[25%]' },
+  { id: 10, icon: IconPostgreSQL, className: 'top-[25%] right-[5%]' },
+  { id: 11, icon: IconMongoDB, className: 'top-[50%] left-[2%]' },
+  { id: 12, icon: IconTensorFlow, className: 'bottom-[25%] right-[10%]' },
+  { id: 13, icon: IconGitHub, className: 'top-[35%] right-[12%]' },
+  { id: 14, icon: IconFigma, className: 'bottom-[10%] left-[10%]' },
+  { id: 15, icon: IconVSCode, className: 'top-[5%] left-[50%]' },
+];
 
 export default function LogisticsPage() {
   const heroRef = useRef<HTMLElement>(null);
@@ -64,7 +88,7 @@ export default function LogisticsPage() {
   return (
     <>
       <Navbar />
-      <main style={{ background: '#ffffff', color: '#111827', paddingTop: 80 }}>
+      <main style={{ background: '#000000', color: '#ffffff', paddingTop: 80 }}>
         <div className="cb-container">
           <Breadcrumb items={[
             { label: 'Home', href: '/' },
@@ -76,29 +100,30 @@ export default function LogisticsPage() {
         {/* HERO */}
         <section ref={heroRef} className="section-padding" style={{ position: 'relative', overflow: 'hidden', minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
           <HeroBackground variant="center" />
+          <FloatingIconsBackground icons={floatingIcons} />
           <div className="cb-container" style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: 860, margin: '0 auto' }}>
-            <div className="reveal" style={{ display: 'inline-block', border: '1px solid rgba(17,24,39,0.4)', borderRadius: 999, padding: '6px 20px', fontSize: 13, color: '#111827', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>
+            <div className="reveal" style={{ display: 'inline-block', border: '1px solid rgba(34,197,94,0.4)', borderRadius: 999, padding: '6px 20px', fontSize: 13, color: '#ffffff', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>
               Logistics & Supply Chain
             </div>
             <h1 className="reveal" style={{ fontSize: 'clamp(2.6rem, 6vw, 5rem)', fontWeight: 800, lineHeight: 1.1, marginBottom: '1.5rem', letterSpacing: '-0.02em' }}>
-              We Engineer Logistics That <span style={{ color: '#111827' }}>Never Stops.</span>
+              We Engineer Logistics That <span style={{ color: '#ffffff' }}>Never Stops.</span>
             </h1>
-            <p className="reveal" style={{ fontSize: '1.2rem', color: 'rgb(0,0,0)', marginBottom: '2.5rem', lineHeight: 1.7 }}>
+            <p className="reveal" style={{ fontSize: '1.2rem', color: 'rgba(255,255,255,0.7)', marginBottom: '2.5rem', lineHeight: 1.7 }}>
               Fleet management, real-time tracking, route optimisation and warehouse automation for the modern supply chain.
             </p>
             <div className="reveal" style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '3.5rem' }}>
-              <Link href="/contact" style={{ background: '#111827', color: '#fff', padding: '14px 32px', borderRadius: 999, fontWeight: 700, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
+              <Link href="/contact" style={{ background: '#22c55e', color: '#000', padding: '14px 32px', borderRadius: 999, fontWeight: 700, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
                 Start Your Project
               </Link>
-              <Link href="/case-studies" style={{ border: '1px solid rgba(0,0,0,0.1)', color: '#111827', padding: '14px 32px', borderRadius: 999, fontWeight: 600, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
+              <Link href="/case-studies" style={{ border: '1px solid rgba(255,255,255,0.1)', color: '#ffffff', padding: '14px 32px', borderRadius: 999, fontWeight: 600, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
                 View Case Studies
               </Link>
             </div>
             <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(140px, 100%), 1fr))', gap: '1.5rem', maxWidth: 600, margin: '0 auto' }}>
               {[['50M+', 'Shipments Tracked'], ['30%', 'Route Efficiency Gain'], ['99.8%', 'Delivery Accuracy']].map(([val, label]) => (
                 <div key={label} style={{ textAlign: 'center' }}>
-                  <div style={{ fontSize: '1.6rem', fontWeight: 800, color: '#111827' }}>{val}</div>
-                  <div style={{ fontSize: '0.8rem', color: 'rgba(0,0,0,0.25)', marginTop: 4, letterSpacing: '0.05em' }}>{label}</div>
+                  <div style={{ fontSize: '1.6rem', fontWeight: 800, color: '#ffffff' }}>{val}</div>
+                  <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.25)', marginTop: 4, letterSpacing: '0.05em' }}>{label}</div>
                 </div>
               ))}
             </div>
@@ -110,7 +135,7 @@ export default function LogisticsPage() {
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
               <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '1rem' }}>Key Challenges We Solve</h2>
-              <p style={{ color: 'rgb(0,0,0)', fontSize: '1.1rem' }}>Modern supply chains demand real-time intelligence at every node.</p>
+              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.1rem' }}>Modern supply chains demand real-time intelligence at every node.</p>
             </div>
             <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
               {[
@@ -121,7 +146,7 @@ export default function LogisticsPage() {
                 <Card key={c.title}>
                   <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>{c.icon}</div>
                   <h3 style={{ fontWeight: 700, fontSize: '1.2rem', marginBottom: '0.75rem' }}>{c.title}</h3>
-                  <p style={{ color: 'rgb(0,0,0)', lineHeight: 1.7, fontSize: '0.95rem' }}>{c.desc}</p>
+                  <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, fontSize: '0.95rem' }}>{c.desc}</p>
                 </Card>
               ))}
             </div>
@@ -133,7 +158,7 @@ export default function LogisticsPage() {
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
               <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '1rem' }}>Our Solutions</h2>
-              <p style={{ color: 'rgb(0,0,0)', fontSize: '1.1rem' }}>From depot to doorstep, we engineer every link in the chain.</p>
+              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.1rem' }}>From depot to doorstep, we engineer every link in the chain.</p>
             </div>
             <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 320px), 1fr))', gap: '1.5rem' }}>
               {[
@@ -147,7 +172,7 @@ export default function LogisticsPage() {
                 <Card key={s.title}>
                   <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>{s.icon}</div>
                   <h3 style={{ fontWeight: 700, fontSize: '1.15rem', marginBottom: '0.75rem' }}>{s.title}</h3>
-                  <p style={{ color: 'rgb(0,0,0)', lineHeight: 1.7, fontSize: '0.95rem' }}>{s.desc}</p>
+                  <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, fontSize: '0.95rem' }}>{s.desc}</p>
                 </Card>
               ))}
             </div>
@@ -157,19 +182,19 @@ export default function LogisticsPage() {
         {/* CASE STUDY */}
         <section ref={s3} className="section-padding">
           <div className="cb-container">
-            <div className="reveal" style={{ border: '1px solid rgba(17,24,39,0.15)', borderRadius: 32, background: 'rgba(17,24,39,0.03)', padding: 'clamp(1.5rem, 4vw, 3rem)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(400px, 100%), 1fr))', gap: 'clamp(1.5rem, 4vw, 3rem)', alignItems: 'center' }}>
+            <div className="reveal" style={{ border: '1px solid rgba(34,197,94,0.15)', borderRadius: 32, background: 'rgba(34,197,94,0.03)', padding: 'clamp(1.5rem, 4vw, 3rem)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(400px, 100%), 1fr))', gap: 'clamp(1.5rem, 4vw, 3rem)', alignItems: 'center' }}>
               <div>
-                <div style={{ fontSize: 12, color: 'rgba(0,0,0,0.25)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>Case Study</div>
-                <div style={{ fontSize: '1.1rem', fontWeight: 700, color: '#111827', marginBottom: '0.5rem' }}>LogiCore</div>
+                <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.25)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>Case Study</div>
+                <div style={{ fontSize: '1.1rem', fontWeight: 700, color: '#ffffff', marginBottom: '0.5rem' }}>LogiCore</div>
                 <h3 style={{ fontSize: 'clamp(1.4rem, 3vw, 2rem)', fontWeight: 800, marginBottom: '1rem', lineHeight: 1.2 }}>50M shipments/year, 30% fuel savings, 12min avg delivery improvement</h3>
-                <p style={{ color: 'rgb(0,0,0)', lineHeight: 1.7 }}>We replaced their legacy dispatch system with a real-time ML platform — live GPS feeds, dynamic re-routing, and a new driver app adopted across 2,000+ vehicles.</p>
+                <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.7 }}>We replaced their legacy dispatch system with a real-time ML platform — live GPS feeds, dynamic re-routing, and a new driver app adopted across 2,000+ vehicles.</p>
               </div>
               <div>
-                <blockquote style={{ borderLeft: '3px solid #111827', paddingLeft: '1.5rem', margin: 0 }}>
-                  <p style={{ fontSize: '1.15rem', lineHeight: 1.7, color: 'rgba(0,0,0,0.65)', fontStyle: 'italic', marginBottom: '1rem' }}>
+                <blockquote style={{ borderLeft: '3px solid #22c55e', paddingLeft: '1.5rem', margin: 0 }}>
+                  <p style={{ fontSize: '1.15rem', lineHeight: 1.7, color: 'rgba(255,255,255,0.65)', fontStyle: 'italic', marginBottom: '1rem' }}>
                     "We cut average delivery time by 12 minutes per route. Across 50 million shipments, that's transformative."
                   </p>
-                  <cite style={{ fontSize: '0.9rem', color: 'rgba(0,0,0,0.25)', fontStyle: 'normal' }}>— COO, LogiCore</cite>
+                  <cite style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.25)', fontStyle: 'normal' }}>— COO, LogiCore</cite>
                 </blockquote>
               </div>
             </div>
@@ -181,7 +206,7 @@ export default function LogisticsPage() {
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
               <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '1rem' }}>Tech Stack</h2>
-              <p style={{ color: 'rgb(0,0,0)', fontSize: '1.1rem' }}>Proven technologies for high-throughput logistics operations.</p>
+              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.1rem' }}>Proven technologies for high-throughput logistics operations.</p>
             </div>
             <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem' }}>
               {[
@@ -191,10 +216,10 @@ export default function LogisticsPage() {
                 { cat: 'Mobile', items: ['React Native', 'Kotlin', 'Swift'] },
               ].map(t => (
                 <Card key={t.cat}>
-                  <div style={{ fontSize: '0.75rem', color: 'rgba(0,0,0,0.25)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>{t.cat}</div>
+                  <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.25)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>{t.cat}</div>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
                     {t.items.map(item => (
-                      <span key={item} style={{ background: 'rgba(0,0,0,0.03)', borderRadius: 8, padding: '4px 12px', fontSize: '0.85rem', color: 'rgba(0,0,0,0.65)' }}>{item}</span>
+                      <span key={item} style={{ background: 'rgba(255,255,255,0.03)', borderRadius: 8, padding: '4px 12px', fontSize: '0.85rem', color: 'rgba(255,255,255,0.65)' }}>{item}</span>
                     ))}
                   </div>
                 </Card>
@@ -208,7 +233,7 @@ export default function LogisticsPage() {
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
               <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '1rem' }}>Why Codazz</h2>
-              <p style={{ color: 'rgb(0,0,0)', fontSize: '1.1rem' }}>We understand that in logistics, every minute counts.</p>
+              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.1rem' }}>We understand that in logistics, every minute counts.</p>
             </div>
             <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
               {[
@@ -219,7 +244,7 @@ export default function LogisticsPage() {
                 <Card key={w.title}>
                   <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>{w.icon}</div>
                   <h3 style={{ fontWeight: 700, fontSize: '1.15rem', marginBottom: '0.75rem' }}>{w.title}</h3>
-                  <p style={{ color: 'rgb(0,0,0)', lineHeight: 1.7, fontSize: '0.95rem' }}>{w.desc}</p>
+                  <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, fontSize: '0.95rem' }}>{w.desc}</p>
                 </Card>
               ))}
             </div>
@@ -227,9 +252,9 @@ export default function LogisticsPage() {
         </section>
 
         {/* Related Services */}
-        <section style={{ padding: 'clamp(60px, 8vw, 100px) 0', borderTop: '1px solid rgba(0,0,0,0.05)' }}>
+        <section className="section-padding" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
-            <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 700, color: '#111827', letterSpacing: '-0.03em', marginBottom: 40, textAlign: 'center' }}>
+            <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '-0.03em', marginBottom: 40, textAlign: 'center' }}>
               Services for Logistics
             </h2>
             <div className="industry-services-grid" style={{ display: 'grid', gap: 16 }}>
@@ -242,14 +267,14 @@ export default function LogisticsPage() {
               ].map((s) => (
                 <a key={s.href} href={s.href} style={{
                   display: 'block', padding: '24px', borderRadius: 16,
-                  background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.06)',
+                  background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)',
                   textDecoration: 'none', transition: 'all 0.3s ease',
                 }}
-                onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(17,24,39,0.2)'; e.currentTarget.style.transform = 'translateY(-3px)'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(0,0,0,0.06)'; e.currentTarget.style.transform = 'translateY(0)'; }}
+                onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(34,197,94,0.2)'; e.currentTarget.style.transform = 'translateY(-3px)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)'; e.currentTarget.style.transform = 'translateY(0)'; }}
                 >
-                  <div style={{ fontSize: 15, fontWeight: 600, color: '#111827', marginBottom: 6 }}>{s.name}</div>
-                  <div style={{ fontSize: 13, color: 'rgba(0,0,0,0.4)', lineHeight: 1.5 }}>{s.desc}</div>
+                  <div style={{ fontSize: 15, fontWeight: 600, color: '#ffffff', marginBottom: 6 }}>{s.name}</div>
+                  <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)', lineHeight: 1.5 }}>{s.desc}</div>
                 </a>
               ))}
             </div>
@@ -261,22 +286,22 @@ export default function LogisticsPage() {
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', maxWidth: 700, margin: '0 auto' }}>
               <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 800, lineHeight: 1.15, marginBottom: '1.5rem' }}>
-                Build Your <span style={{ color: '#111827' }}>Logistics Platform.</span>
+                Build Your <span style={{ color: '#ffffff' }}>Logistics Platform.</span>
               </h2>
-              <p style={{ color: 'rgb(0,0,0)', fontSize: '1.15rem', marginBottom: '2.5rem', lineHeight: 1.7 }}>
+              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.15rem', marginBottom: '2.5rem', lineHeight: 1.7 }}>
                 Real-time visibility, smarter routing, and supply chain intelligence — engineered to last.
               </p>
               <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '2.5rem' }}>
-                <Link href="/contact" style={{ background: '#111827', color: '#fff', padding: '16px 36px', borderRadius: 999, fontWeight: 700, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
+                <Link href="/contact" style={{ background: '#22c55e', color: '#000', padding: '16px 36px', borderRadius: 999, fontWeight: 700, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
                   Start Your Project
                 </Link>
-                <Link href="/case-studies" style={{ border: '1px solid rgba(0,0,0,0.1)', color: '#111827', padding: '16px 36px', borderRadius: 999, fontWeight: 600, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
+                <Link href="/case-studies" style={{ border: '1px solid rgba(255,255,255,0.1)', color: '#ffffff', padding: '16px 36px', borderRadius: 999, fontWeight: 600, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
                   See Our Work
                 </Link>
               </div>
               <div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', flexWrap: 'wrap' }}>
                 {['IoT Ready', '99.8% Accuracy', 'Scale Tested', 'NDA on Request'].map(t => (
-                  <span key={t} style={{ fontSize: '0.85rem', color: 'rgba(0,0,0,0.25)' }}>✓ {t}</span>
+                  <span key={t} style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.25)' }}>✓ {t}</span>
                 ))}
               </div>
               <TrustBadges compact />

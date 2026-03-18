@@ -58,7 +58,7 @@ const services = [
       </svg>
     ),
     accent: '#4f46e5',
-    accentBg: 'rgba(17,24,39,0.08)',
+    accentBg: 'rgba(34,197,94,0.08)',
     size: 'col-span-1',
   },
   {
@@ -159,23 +159,23 @@ export default function Services() {
   };
 
   return (
-    <section id="services" className="section-light py-24 lg:py-32 relative overflow-hidden" ref={containerRef}>
+    <section id="services" className="py-24 lg:py-32 relative overflow-hidden bg-black" ref={containerRef}>
       {/* Subtle bg */}
-      <div aria-hidden="true" className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-violet-50 blur-[120px] opacity-60 pointer-events-none" />
+      <div aria-hidden="true" className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-green-950 blur-[120px] opacity-60 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Heading */}
         <div className="services-heading mb-16 lg:mb-20 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.25em] text-violet-600 mb-4">What We Do</p>
-            <h2 className="text-4xl lg:text-6xl font-black text-gray-900 tracking-tight leading-tight max-w-2xl">
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-green-400 mb-4">What We Do</p>
+            <h2 className="text-4xl lg:text-6xl font-black text-white tracking-tight leading-tight max-w-2xl">
               Full-spectrum<br />
               <span className="gradient-text">technology services.</span>
             </h2>
           </div>
           <Link
             href="#contact"
-            className="self-start lg:self-end inline-flex items-center gap-2 text-sm font-bold text-gray-500 hover:text-violet-600 transition-colors group"
+            className="self-start lg:self-end inline-flex items-center gap-2 text-sm font-bold text-white/40 hover:text-green-400 transition-colors group"
           >
             All services
             <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -189,7 +189,7 @@ export default function Services() {
           {services.map((service) => (
             <div
               key={service.id}
-              className={`svc-card card-3d group relative rounded-2xl border border-gray-100 bg-white p-7 cursor-default overflow-hidden transition-shadow duration-300 hover:shadow-2xl hover:shadow-gray-200/60 ${service.size}`}
+              className={`svc-card card-3d group relative rounded-2xl border border-white/10 bg-neutral-950 p-7 cursor-default overflow-hidden transition-shadow duration-300 hover:shadow-2xl hover:shadow-black/60 ${service.size}`}
               onMouseMove={onMouseMove}
               onMouseLeave={onMouseLeave}
             >
@@ -209,10 +209,10 @@ export default function Services() {
                   {service.icon}
                 </div>
 
-                <h3 className="font-bold text-gray-900 text-lg mb-3 group-hover:text-gray-900 leading-tight">
+                <h3 className="font-bold text-white text-lg mb-3 group-hover:text-white leading-tight">
                   {service.title}
                 </h3>
-                <p className="text-gray-500 text-sm leading-relaxed mb-6">
+                <p className="text-white/40 text-sm leading-relaxed mb-6">
                   {service.desc}
                 </p>
 

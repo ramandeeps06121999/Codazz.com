@@ -46,9 +46,9 @@ export default function ServiceHeroForm({ service, city }: ServiceHeroFormProps 
     width: '100%',
     padding: '14px 18px',
     borderRadius: 12,
-    border: '1px solid rgba(0,0,0,0.08)',
-    background: 'rgba(0,0,0,0.02)',
-    color: '#111827',
+    border: '1px solid rgba(255,255,255,0.08)',
+    background: 'rgba(255,255,255,0.03)',
+    color: '#ffffff',
     fontSize: 16,
     fontFamily: 'inherit',
     transition: '0.3s',
@@ -60,21 +60,21 @@ export default function ServiceHeroForm({ service, city }: ServiceHeroFormProps 
     <div style={{
       position: 'relative',
       borderRadius: 24,
-      border: '1px solid rgba(0,0,0,0.06)',
-      background: 'rgba(0,0,0,0.02)',
+      border: '1px solid rgba(255,255,255,0.06)',
+      background: 'rgba(255,255,255,0.03)',
       backdropFilter: 'blur(20px)',
       WebkitBackdropFilter: 'blur(20px)',
       padding: 'clamp(24px, 4vw, 36px) clamp(20px, 3vw, 32px)',
       boxShadow: '0 24px 64px rgba(0,0,0,0.4)',
     }}>
       {/* Glow accent */}
-      <div style={{ position: 'absolute', top: -1, left: '20%', right: '20%', height: 2, background: 'linear-gradient(90deg, transparent, #111827, transparent)', borderRadius: 2 }} />
+      <div style={{ position: 'absolute', top: -1, left: '20%', right: '20%', height: 2, background: 'linear-gradient(90deg, transparent, #22c55e, transparent)', borderRadius: 2 }} />
 
       <div style={{ marginBottom: 28 }}>
-        <h3 style={{ fontSize: 22, fontWeight: 700, color: '#111827', letterSpacing: '-0.02em', marginBottom: 6 }}>
+        <h3 style={{ fontSize: 22, fontWeight: 700, color: '#ffffff', letterSpacing: '-0.02em', marginBottom: 6 }}>
           Get Your Custom Project Plan
         </h3>
-        <p style={{ fontSize: 13, color: 'rgba(0,0,0,0.4)', lineHeight: 1.5, margin: 0 }}>
+        <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)', lineHeight: 1.5, margin: 0 }}>
           Share your project details — a senior engineer responds within 4 hours.
         </p>
       </div>
@@ -82,10 +82,10 @@ export default function ServiceHeroForm({ service, city }: ServiceHeroFormProps 
       {submitted ? (
         <div role="status" aria-live="polite" style={{ textAlign: 'center', padding: '40px 20px' }}>
           <div style={{ fontSize: 48, marginBottom: 16 }}>&#10003;</div>
-          <h3 style={{ fontSize: 20, fontWeight: 700, color: '#111827', marginBottom: 12 }}>
+          <h3 style={{ fontSize: 20, fontWeight: 700, color: '#ffffff', marginBottom: 12 }}>
             Request Received!
           </h3>
-          <p style={{ fontSize: 15, color: 'rgb(0,0,0)', lineHeight: 1.7, maxWidth: 360, margin: '0 auto' }}>
+          <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, maxWidth: 360, margin: '0 auto' }}>
             A senior engineer will review your project details and respond within 4 business hours with a custom assessment.
           </p>
         </div>
@@ -102,8 +102,8 @@ export default function ServiceHeroForm({ service, city }: ServiceHeroFormProps 
               value={form.name}
               onChange={e => setForm({ ...form, name: e.target.value })}
               style={inputStyle}
-              onFocus={e => { e.currentTarget.style.borderColor = 'rgba(17,24,39,0.4)'; e.currentTarget.style.background = 'rgba(0,0,0,0.04)'; }}
-              onBlur={e => { e.currentTarget.style.borderColor = 'rgba(0,0,0,0.08)'; e.currentTarget.style.background = 'rgba(0,0,0,0.02)'; }}
+              onFocus={e => { e.currentTarget.style.borderColor = 'rgba(34,197,94,0.4)'; e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; }}
+              onBlur={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'; e.currentTarget.style.background = 'rgba(255,255,255,0.03)'; }}
             />
           </div>
           <div>
@@ -117,8 +117,8 @@ export default function ServiceHeroForm({ service, city }: ServiceHeroFormProps 
               value={form.email}
               onChange={e => setForm({ ...form, email: e.target.value })}
               style={inputStyle}
-              onFocus={e => { e.currentTarget.style.borderColor = 'rgba(17,24,39,0.4)'; e.currentTarget.style.background = 'rgba(0,0,0,0.04)'; }}
-              onBlur={e => { e.currentTarget.style.borderColor = 'rgba(0,0,0,0.08)'; e.currentTarget.style.background = 'rgba(0,0,0,0.02)'; }}
+              onFocus={e => { e.currentTarget.style.borderColor = 'rgba(34,197,94,0.4)'; e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; }}
+              onBlur={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'; e.currentTarget.style.background = 'rgba(255,255,255,0.03)'; }}
             />
           </div>
           <div>
@@ -130,8 +130,8 @@ export default function ServiceHeroForm({ service, city }: ServiceHeroFormProps 
               value={form.phone}
               onChange={e => setForm({ ...form, phone: e.target.value })}
               style={inputStyle}
-              onFocus={e => { e.currentTarget.style.borderColor = 'rgba(17,24,39,0.4)'; e.currentTarget.style.background = 'rgba(0,0,0,0.04)'; }}
-              onBlur={e => { e.currentTarget.style.borderColor = 'rgba(0,0,0,0.08)'; e.currentTarget.style.background = 'rgba(0,0,0,0.02)'; }}
+              onFocus={e => { e.currentTarget.style.borderColor = 'rgba(34,197,94,0.4)'; e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; }}
+              onBlur={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'; e.currentTarget.style.background = 'rgba(255,255,255,0.03)'; }}
             />
           </div>
           <div>
@@ -143,8 +143,8 @@ export default function ServiceHeroForm({ service, city }: ServiceHeroFormProps 
               value={form.message}
               onChange={e => setForm({ ...form, message: e.target.value })}
               style={{ ...inputStyle, resize: 'none' }}
-              onFocus={e => { e.currentTarget.style.borderColor = 'rgba(17,24,39,0.4)'; e.currentTarget.style.background = 'rgba(0,0,0,0.04)'; }}
-              onBlur={e => { e.currentTarget.style.borderColor = 'rgba(0,0,0,0.08)'; e.currentTarget.style.background = 'rgba(0,0,0,0.02)'; }}
+              onFocus={e => { e.currentTarget.style.borderColor = 'rgba(34,197,94,0.4)'; e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; }}
+              onBlur={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'; e.currentTarget.style.background = 'rgba(255,255,255,0.03)'; }}
             />
           </div>
           <button
@@ -155,8 +155,8 @@ export default function ServiceHeroForm({ service, city }: ServiceHeroFormProps 
               height: 52,
               borderRadius: 12,
               border: 'none',
-              background: 'linear-gradient(135deg, #111827, #374151)',
-              color: '#fff',
+              background: '#22c55e',
+              color: '#000',
               fontSize: 15,
               fontWeight: 700,
               cursor: 'pointer',
@@ -167,7 +167,7 @@ export default function ServiceHeroForm({ service, city }: ServiceHeroFormProps 
               justifyContent: 'center',
               gap: 8,
             }}
-            onMouseEnter={e => { if(!isLoading){ e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 12px 32px rgba(17,24,39,0.4)'; } }}
+            onMouseEnter={e => { if(!isLoading){ e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 12px 32px rgba(34,197,94,0.4)'; } }}
             onMouseLeave={e => { if(!isLoading){ e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; } }}
           >
             {isLoading ? 'Sending...' : 'Get Free Quote'}
@@ -177,13 +177,13 @@ export default function ServiceHeroForm({ service, city }: ServiceHeroFormProps 
       )}
 
       {/* Trust badges */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 'clamp(10px, 2vw, 20px)', marginTop: 20, flexWrap: 'wrap' as const, paddingTop: 20, borderTop: '1px solid rgba(0,0,0,0.04)' }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 'clamp(10px, 2vw, 20px)', marginTop: 20, flexWrap: 'wrap' as const, paddingTop: 20, borderTop: '1px solid rgba(255,255,255,0.06)' }}>
         {[
           { icon: '🔒', text: 'NDA Protected' },
           { icon: '⚡', text: '24hr Response' },
           { icon: '💬', text: 'Free Consultation' },
         ].map(b => (
-          <div key={b.text} style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 11, color: 'rgba(0,0,0,0.3)', fontWeight: 500 }}>
+          <div key={b.text} style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 11, color: 'rgba(255,255,255,0.3)', fontWeight: 500 }}>
             <span style={{ fontSize: 12 }}>{b.icon}</span>
             {b.text}
           </div>

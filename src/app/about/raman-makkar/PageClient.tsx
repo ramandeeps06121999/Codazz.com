@@ -8,7 +8,7 @@ export default function RamanMakkarPageClient() {
   return (
     <>
       <Navbar />
-      <main style={{ background: '#ffffff', color: '#111827', minHeight: '100vh' }}>
+      <main style={{ background: '#000000', color: '#ffffff', minHeight: '100vh' }}>
         <div className="cb-container" style={{ paddingTop: 100 }}>
           <Breadcrumb items={[
             { label: 'Home', href: '/' },
@@ -23,19 +23,19 @@ export default function RamanMakkarPageClient() {
             <div style={{ display: 'flex', alignItems: 'center', gap: 24, marginBottom: 40 }}>
               <div style={{
                 width: 80, height: 80, borderRadius: '50%',
-                background: 'linear-gradient(135deg, #111827, #374151)',
+                background: 'linear-gradient(135deg, #22c55e, #4ade80)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                fontSize: 28, fontWeight: 700, color: '#111827',
+                fontSize: 28, fontWeight: 700, color: '#ffffff',
               }}>RM</div>
               <div>
                 <h1 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 700, letterSpacing: '-0.03em', margin: 0 }}>
                   Raman Makkar
                 </h1>
-                <p style={{ fontSize: 16, color: '#111827', fontWeight: 600, margin: '4px 0 0' }}>CEO & Founder, Codazz</p>
+                <p style={{ fontSize: 16, color: '#ffffff', fontWeight: 600, margin: '4px 0 0' }}>CEO & Founder, Codazz</p>
               </div>
             </div>
 
-            <div style={{ fontSize: 16, lineHeight: 1.8, color: 'rgb(0,0,0)' }}>
+            <div style={{ fontSize: 16, lineHeight: 1.8, color: 'rgba(255,255,255,0.7)' }}>
               <p style={{ marginBottom: 24 }}>
                 Raman Makkar is the founder and CEO of Codazz, a full-service software development company headquartered in New York, NY with a second headquarters in Dubai, UAE. With over a decade of experience in software engineering, product development, and digital transformation, Raman has led the delivery of 500+ projects for clients across 24 countries worldwide.
               </p>
@@ -57,8 +57,8 @@ export default function RamanMakkarPageClient() {
                 {['Full-Stack Development', 'AI & Machine Learning', 'Cloud Architecture (AWS/GCP)', 'Mobile App Development', 'SaaS Product Strategy', 'Team Leadership', 'Digital Transformation', 'DevOps & CI/CD', 'Agile Methodology', 'Product Design'].map((skill) => (
                   <span key={skill} style={{
                     padding: '8px 16px', borderRadius: 100, fontSize: 13, fontWeight: 500,
-                    background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.08)',
-                    color: 'rgb(0,0,0)',
+                    background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)',
+                    color: 'rgba(255,255,255,0.7)',
                   }}>{skill}</span>
                 ))}
               </div>
@@ -77,8 +77,8 @@ export default function RamanMakkarPageClient() {
                 ].map((post) => (
                   <a key={post.href} href={post.href} style={{
                     display: 'block', padding: '16px 20px', borderRadius: 12,
-                    background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.06)',
-                    textDecoration: 'none', color: '#111827', fontSize: 15, fontWeight: 500,
+                    background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)',
+                    textDecoration: 'none', color: '#ffffff', fontSize: 15, fontWeight: 500,
                     transition: 'all 0.2s ease',
                   }}>
                     {post.title} →
@@ -88,15 +88,15 @@ export default function RamanMakkarPageClient() {
             </div>
 
             {/* CTA */}
-            <div style={{ marginTop: 60, padding: '40px', borderRadius: 24, background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.06)', textAlign: 'center' }}>
+            <div style={{ marginTop: 60, padding: '40px', borderRadius: 24, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', textAlign: 'center' }}>
               <h2 style={{ fontSize: 20, fontWeight: 700, marginBottom: 12 }}>Work With Raman</h2>
-              <p style={{ fontSize: 15, color: 'rgba(0,0,0,0.5)', marginBottom: 24 }}>
+              <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.5)', marginBottom: 24 }}>
                 Have a project in mind? Get a free consultation directly with the founder.
               </p>
               <a href="/contact" style={{
                 display: 'inline-flex', alignItems: 'center', gap: 8,
                 height: 48, padding: '0 28px', borderRadius: 100,
-                background: '#111827', color: '#fff', fontSize: 14, fontWeight: 700,
+                background: '#22c55e', color: '#000', fontSize: 14, fontWeight: 700,
                 textDecoration: 'none',
               }}>
                 Schedule a Call

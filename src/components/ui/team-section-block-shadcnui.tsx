@@ -27,7 +27,7 @@ const teamMembers = [
     initials: "RM",
     location: "New York & Dubai",
     skills: ["Strategy", "Product", "Engineering"],
-    gradient: "from-gray-800/10 via-gray-800/5 to-transparent",
+    gradient: "from-green-500/10 via-green-500/5 to-transparent",
     social: {
       linkedin: "#",
       email: "raman@codazz.com",
@@ -40,7 +40,7 @@ const teamMembers = [
     initials: "HM",
     location: "San Francisco",
     skills: ["Cloud", "Architecture", "DevOps"],
-    gradient: "from-gray-600/10 via-gray-600/5 to-transparent",
+    gradient: "from-green-500/10 via-green-500/5 to-transparent",
     social: {
       linkedin: "#",
       email: "harry@codazz.com",
@@ -53,7 +53,7 @@ const teamMembers = [
     initials: "MC",
     location: "London",
     skills: ["UI/UX", "Branding", "Design Systems"],
-    gradient: "from-gray-700/10 via-gray-700/5 to-transparent",
+    gradient: "from-green-500/10 via-green-500/5 to-transparent",
     social: {
       linkedin: "#",
       email: "michel@codazz.com",
@@ -66,7 +66,7 @@ const teamMembers = [
     initials: "KS",
     location: "Dubai",
     skills: ["Operations", "Delivery", "Global Teams"],
-    gradient: "from-gray-600/10 via-gray-600/5 to-transparent",
+    gradient: "from-green-500/10 via-green-500/5 to-transparent",
     social: {
       linkedin: "#",
       email: "karan@codazz.com",
@@ -142,7 +142,7 @@ function TeamMemberCard({ member }: { member: (typeof teamMembers)[0] }) {
         onMouseLeave={handleMouseLeave}
         className="group relative"
       >
-        <Card className="relative overflow-hidden rounded-3xl border border-gray-100 bg-white backdrop-blur-xl transition-shadow duration-500 hover:shadow-xl hover:shadow-gray-800/5">
+        <Card className="relative overflow-hidden rounded-3xl border border-white/5 bg-[#0a0a0a] backdrop-blur-xl transition-shadow duration-500 hover:shadow-xl hover:shadow-green-500/5">
           {/* Animated gradient overlay */}
           <motion.div
             className={`absolute inset-0 bg-gradient-to-br ${member.gradient} opacity-0 transition-opacity duration-500 group-hover:opacity-100`}
@@ -163,7 +163,7 @@ function TeamMemberCard({ member }: { member: (typeof teamMembers)[0] }) {
             }
             className="absolute right-4 top-4 z-10"
           >
-            <Sparkles className="h-5 w-5 text-gray-800" aria-hidden />
+            <Sparkles className="h-5 w-5 text-green-400" aria-hidden />
           </motion.div>
 
           <div className="relative z-10 p-8">
@@ -177,7 +177,7 @@ function TeamMemberCard({ member }: { member: (typeof teamMembers)[0] }) {
                 <motion.div
                   className="absolute -inset-2 rounded-full opacity-0 blur-2xl transition-opacity duration-500 group-hover:opacity-100"
                   style={{
-                    background: `linear-gradient(135deg, rgba(17,24,39,0.2), rgba(17,24,39,0))`,
+                    background: `linear-gradient(135deg, rgba(34,197,94,0.2), rgba(34,197,94,0))`,
                   }}
                   animate={
                     isHovered
@@ -193,8 +193,8 @@ function TeamMemberCard({ member }: { member: (typeof teamMembers)[0] }) {
                     ease: "linear",
                   }}
                 />
-                <div className="relative flex h-28 w-28 items-center justify-center overflow-hidden rounded-full border-2 border-gray-200 bg-gradient-to-br from-gray-100 to-white">
-                  <span className="text-3xl font-bold text-gray-900">{member.initials}</span>
+                <div className="relative flex h-28 w-28 items-center justify-center overflow-hidden rounded-full border-2 border-white/10 bg-gradient-to-br from-neutral-900 to-black">
+                  <span className="text-3xl font-bold text-white">{member.initials}</span>
                 </div>
               </motion.div>
             </div>
@@ -202,7 +202,7 @@ function TeamMemberCard({ member }: { member: (typeof teamMembers)[0] }) {
             {/* Info Section */}
             <div className="text-center">
               <motion.h3
-                className="mb-1 text-xl font-semibold tracking-tight text-gray-900"
+                className="mb-1 text-xl font-semibold tracking-tight text-white"
                 animate={isHovered ? { scale: 1.05 } : { scale: 1 }}
                 transition={{ duration: 0.2 }}
               >
@@ -210,7 +210,7 @@ function TeamMemberCard({ member }: { member: (typeof teamMembers)[0] }) {
               </motion.h3>
               <Badge
                 variant="secondary"
-                className="mb-3 border-gray-200 bg-gray-100 text-xs uppercase tracking-widest text-gray-900"
+                className="mb-3 border-green-500/20 bg-green-950 text-xs uppercase tracking-widest text-green-400"
               >
                 {member.role}
               </Badge>
@@ -225,7 +225,7 @@ function TeamMemberCard({ member }: { member: (typeof teamMembers)[0] }) {
                 <span>{member.location}</span>
               </motion.div>
 
-              <p className="mb-5 text-sm leading-relaxed text-gray-500">
+              <p className="mb-5 text-sm leading-relaxed text-gray-400">
                 {member.bio}
               </p>
 
@@ -247,7 +247,7 @@ function TeamMemberCard({ member }: { member: (typeof teamMembers)[0] }) {
                   >
                     <Badge
                       variant="outline"
-                      className="border-gray-200 bg-gray-50 text-xs text-gray-500 transition-colors hover:border-gray-300 hover:bg-gray-100"
+                      className="border-white/10 bg-white/[0.03] text-xs text-gray-400 transition-colors hover:border-white/20 hover:bg-white/5"
                     >
                       {skill}
                     </Badge>
@@ -284,7 +284,7 @@ function TeamMemberCard({ member }: { member: (typeof teamMembers)[0] }) {
                     <Button
                       size="icon"
                       variant="ghost"
-                      className="h-8 w-8 rounded-full border border-gray-200 bg-white text-gray-400 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:text-gray-900"
+                      className="h-8 w-8 rounded-full border border-white/10 bg-white/[0.03] text-gray-400 transition-colors hover:border-green-500/20 hover:bg-white/5 hover:text-white"
                     >
                       <social.icon className="h-4 w-4" aria-hidden />
                     </Button>
@@ -320,7 +320,7 @@ export function TeamSectionBlock() {
             repeat: shouldReduceMotion ? 0 : Infinity,
             ease: "linear",
           }}
-          className="absolute -right-24 -top-24 h-96 w-96 rounded-full bg-gray-600/15 blur-[180px]"
+          className="absolute -right-24 -top-24 h-96 w-96 rounded-full bg-green-500/15 blur-[180px]"
         />
         <motion.div
           animate={{
@@ -333,7 +333,7 @@ export function TeamSectionBlock() {
             repeat: shouldReduceMotion ? 0 : Infinity,
             ease: "linear",
           }}
-          className="absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-gray-500/10 blur-[180px]"
+          className="absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-green-500/10 blur-[180px]"
         />
       </div>
 

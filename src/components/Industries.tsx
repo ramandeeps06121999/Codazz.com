@@ -92,14 +92,14 @@ export default function Industries() {
   const current = industries[active];
 
   return (
-    <section id="industries" className="section-light-alt py-24 lg:py-32 border-t border-gray-100 relative overflow-hidden" ref={containerRef}>
-      <div className="absolute bottom-0 right-0 w-[600px] h-[400px] bg-violet-50 rounded-full blur-[120px] opacity-60 translate-x-1/3 translate-y-1/3 pointer-events-none" />
+    <section id="industries" className="py-24 lg:py-32 border-t border-white/10 relative overflow-hidden bg-black" ref={containerRef}>
+      <div className="absolute bottom-0 right-0 w-[600px] h-[400px] bg-green-950 rounded-full blur-[120px] opacity-60 translate-x-1/3 translate-y-1/3 pointer-events-none" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Heading */}
         <div className="ind-heading mb-16 lg:mb-20 text-center lg:text-left">
-          <p className="text-xs font-bold uppercase tracking-[0.25em] text-violet-600 mb-4">Industries</p>
-          <h2 className="text-4xl lg:text-6xl font-black text-gray-900 tracking-tight leading-tight">
+          <p className="text-xs font-bold uppercase tracking-[0.25em] text-green-400 mb-4">Industries</p>
+          <h2 className="text-4xl lg:text-6xl font-black text-white tracking-tight leading-tight">
             Domain expertise<br />
             <span className="gradient-text">across every sector.</span>
           </h2>
@@ -114,14 +114,14 @@ export default function Industries() {
                 onClick={() => switchTab(idx)}
                 className={`flex items-center gap-4 w-full text-left py-4 px-5 rounded-2xl text-sm font-semibold transition-all duration-300 ${
                   active === idx
-                    ? 'bg-white text-violet-600 shadow-xl shadow-gray-200/60 translate-x-2 border border-gray-100'
-                    : 'text-gray-500 hover:text-gray-900 hover:bg-white/60'
+                    ? 'bg-neutral-900 text-green-400 shadow-xl shadow-black/60 translate-x-2 border border-white/10'
+                    : 'text-white/40 hover:text-white hover:bg-white/5'
                 }`}
               >
                 <span className="text-xl">{ind.icon}</span>
                 <span className="flex-1">{ind.name}</span>
                 {active === idx && (
-                  <svg className="w-4 h-4 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
                 )}
@@ -135,23 +135,23 @@ export default function Industries() {
               ref={contentRef}
               className={`rounded-3xl overflow-hidden bg-gradient-to-br ${current.gradient} p-[1px]`}
             >
-              <div className="rounded-3xl bg-white h-full p-8 lg:p-12">
+              <div className="rounded-3xl bg-neutral-950 h-full p-8 lg:p-12">
                 <div className="flex items-start justify-between mb-6 flex-wrap gap-4">
                   <div>
                     <p className="text-3xl mb-2">{current.icon}</p>
-                    <h3 className="text-2xl lg:text-3xl font-black text-gray-900">{current.name}</h3>
+                    <h3 className="text-2xl lg:text-3xl font-black text-white">{current.name}</h3>
                   </div>
                   <div className="text-right">
-                    <div className="text-2xl lg:text-3xl font-black text-gray-900">{current.metric}</div>
-                    <div className="text-gray-400 text-xs font-medium mt-0.5">{current.metricLabel}</div>
+                    <div className="text-2xl lg:text-3xl font-black text-white">{current.metric}</div>
+                    <div className="text-white/40 text-xs font-medium mt-0.5">{current.metricLabel}</div>
                   </div>
                 </div>
 
-                <p className="text-gray-600 text-lg leading-relaxed mb-8">{current.desc}</p>
+                <p className="text-white/60 text-lg leading-relaxed mb-8">{current.desc}</p>
 
                 <div className="flex flex-wrap gap-2.5 mb-8">
                   {current.highlights.map(h => (
-                    <span key={h} className="px-4 py-2 rounded-full text-sm font-semibold text-violet-700 bg-violet-50 border border-violet-100">
+                    <span key={h} className="px-4 py-2 rounded-full text-sm font-semibold text-green-400 bg-green-950/50 border border-green-900/50">
                       {h}
                     </span>
                   ))}
@@ -159,7 +159,7 @@ export default function Industries() {
 
                 <Link
                   href="#contact"
-                  className="inline-flex items-center gap-2.5 text-sm font-bold text-violet-600 hover:gap-4 transition-all duration-300 group"
+                  className="inline-flex items-center gap-2.5 text-sm font-bold text-green-400 hover:gap-4 transition-all duration-300 group"
                 >
                   Start a {current.name} project
                   <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">

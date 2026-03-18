@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
 import CookieConsent from "@/components/CookieConsent";
 import ClarityAnalytics from "@/components/ClarityAnalytics";
+import NavigationHelper from "@/components/NavigationHelper";
 
 import { poppins } from "@/lib/fonts";
 import "./globals.css";
@@ -191,6 +192,7 @@ gtag('config', 'G-LLHNY6HD88');`,
           }}
         />
         {children}
+        <NavigationHelper />
         <CookieConsent />
         <ClarityAnalytics />
         <Analytics />

@@ -79,7 +79,7 @@ const Icon = ({
       className={cn('absolute', iconData.className)}
     >
       <motion.div
-        className="flex items-center justify-center w-12 h-12 md:w-16 md:h-16 p-2 rounded-2xl shadow-lg bg-white/80 backdrop-blur-md border border-gray-100"
+        className="flex items-center justify-center w-12 h-12 md:w-16 md:h-16 p-2 rounded-2xl shadow-lg bg-black/80 backdrop-blur-md border border-white/5"
         animate={{
           y: [0, -8, 0, 8, 0],
           x: [0, 6, 0, -6, 0],
@@ -92,7 +92,7 @@ const Icon = ({
           ease: 'easeInOut',
         }}
       >
-        <iconData.icon className="w-6 h-6 md:w-8 md:h-8 text-gray-700" />
+        <iconData.icon className="w-6 h-6 md:w-8 md:h-8 text-gray-300" />
       </motion.div>
     </motion.div>
   );

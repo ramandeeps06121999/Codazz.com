@@ -19,9 +19,9 @@ function useReveal() {
 }
 
 const cardBase: React.CSSProperties = {
-  border: '1px solid rgba(0,0,0,0.06)',
+  border: '1px solid rgba(255,255,255,0.06)',
   borderRadius: 24,
-  background: 'rgba(0,0,0,0.015)',
+  background: 'rgba(255,255,255,0.015)',
   padding: 'clamp(1.25rem, 3vw, 2rem)',
   transition: 'border-color 0.3s, background 0.3s, transform 0.3s, box-shadow 0.3s',
   display: 'flex',
@@ -30,10 +30,10 @@ const cardBase: React.CSSProperties = {
 };
 
 const cardHover: React.CSSProperties = {
-  borderColor: 'rgba(17,24,39,0.2)',
-  background: 'rgba(17,24,39,0.03)',
+  borderColor: 'rgba(34,197,94,0.2)',
+  background: 'rgba(34,197,94,0.03)',
   transform: 'translateY(-4px)',
-  boxShadow: '0 24px 60px rgba(0,0,0,0.06)',
+  boxShadow: '0 24px 60px rgba(255,255,255,0.06)',
 };
 
 function Card({ children, style }: { children: React.ReactNode; style?: React.CSSProperties }) {
@@ -63,7 +63,7 @@ const services: ServiceCategory[] = [
     title: 'Mobile App Development',
     href: '/services/mobile-app-development',
     initial: 'M',
-    color: '#111827',
+    color: '#ffffff',
     description: 'Native and cross-platform mobile apps built for performance, scale, and exceptional user experience.',
     subServices: [
       { name: 'iOS App Development', href: '/services/mobile-app-development/ios-app-development' },
@@ -241,26 +241,26 @@ export default function ServicesIndexPage() {
   return (
     <>
       <Navbar />
-      <main style={{ background: '#ffffff', color: '#111827', paddingTop: 80 }}>
+      <main style={{ background: '#000000', color: '#ffffff', paddingTop: 80 }}>
 
         {/* HERO */}
         <section ref={heroRef} className="section-padding" style={{ position: 'relative', overflow: 'hidden', minHeight: '70vh', display: 'flex', alignItems: 'center' }}>
           <HeroBackground variant="center" />
           <div className="cb-container" style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: 860, margin: '0 auto' }}>
-            <div className="reveal" style={{ display: 'inline-block', border: '1px solid rgba(17,24,39,0.4)', borderRadius: 999, padding: '6px 20px', fontSize: 13, color: '#111827', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>
+            <div className="reveal" style={{ display: 'inline-block', border: '1px solid rgba(34,197,94,0.4)', borderRadius: 999, padding: '6px 20px', fontSize: 13, color: '#ffffff', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>
               What We Do
             </div>
             <h1 className="reveal" style={{ fontSize: 'clamp(2.6rem, 6vw, 5rem)', fontWeight: 800, lineHeight: 1.1, marginBottom: '1.5rem', letterSpacing: '-0.02em' }}>
-              Our <span style={{ color: '#111827' }}>Services</span>
+              Our <span style={{ color: '#ffffff' }}>Services</span>
             </h1>
-            <p className="reveal" style={{ fontSize: 'clamp(1rem, 2vw, 1.2rem)', color: 'rgb(0,0,0)', marginBottom: '2.5rem', lineHeight: 1.7, maxWidth: 640, margin: '0 auto 2.5rem' }}>
+            <p className="reveal" style={{ fontSize: 'clamp(1rem, 2vw, 1.2rem)', color: 'rgba(255,255,255,0.7)', marginBottom: '2.5rem', lineHeight: 1.7, maxWidth: 640, margin: '0 auto 2.5rem' }}>
               From mobile apps and AI to blockchain and branding, we deliver end-to-end digital solutions that help startups and enterprises build, launch, and scale.
             </p>
             <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 'clamp(1rem, 2vw, 1.5rem)', maxWidth: 600, margin: '0 auto' }}>
               {[['12', 'Service Categories'], ['60+', 'Specialisations'], ['300+', 'Projects Delivered']].map(([val, label]) => (
                 <div key={label} style={{ textAlign: 'center' }}>
-                  <div style={{ fontSize: 'clamp(1.2rem, 3vw, 1.6rem)', fontWeight: 800, color: '#111827' }}>{val}</div>
-                  <div style={{ fontSize: 'clamp(0.65rem, 1.5vw, 0.8rem)', color: 'rgba(0,0,0,0.25)', marginTop: 4, letterSpacing: '0.05em' }}>{label}</div>
+                  <div style={{ fontSize: 'clamp(1.2rem, 3vw, 1.6rem)', fontWeight: 800, color: '#ffffff' }}>{val}</div>
+                  <div style={{ fontSize: 'clamp(0.65rem, 1.5vw, 0.8rem)', color: 'rgba(255,255,255,0.25)', marginTop: 4, letterSpacing: '0.05em' }}>{label}</div>
                 </div>
               ))}
             </div>
@@ -272,7 +272,7 @@ export default function ServicesIndexPage() {
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 'clamp(2rem, 4vw, 3rem)' }}>
               <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '1rem' }}>Everything You Need to Build & Grow</h2>
-              <p style={{ color: 'rgb(0,0,0)', fontSize: 'clamp(0.95rem, 2vw, 1.1rem)' }}>Explore our full range of services — each backed by deep domain expertise.</p>
+              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: 'clamp(0.95rem, 2vw, 1.1rem)' }}>Explore our full range of services — each backed by deep domain expertise.</p>
             </div>
             <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 350px), 1fr))', gap: 'clamp(1rem, 2vw, 1.5rem)' }}>
               {services.map(service => (
@@ -288,7 +288,7 @@ export default function ServicesIndexPage() {
                   </Link>
 
                   {/* Description */}
-                  <p style={{ color: 'rgba(0,0,0,0.45)', fontSize: 'clamp(0.85rem, 1.5vw, 0.95rem)', lineHeight: 1.65, marginBottom: '1rem' }}>{service.description}</p>
+                  <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: 'clamp(0.85rem, 1.5vw, 0.95rem)', lineHeight: 1.65, marginBottom: '1rem' }}>{service.description}</p>
 
                   {/* Sub-services */}
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px 10px', marginBottom: '1.25rem', flexGrow: 1 }}>
@@ -296,9 +296,9 @@ export default function ServicesIndexPage() {
                       <Link
                         key={sub.href}
                         href={sub.href}
-                        style={{ fontSize: 12.5, color: 'rgba(0,0,0,0.35)', textDecoration: 'none', transition: 'color 0.2s', lineHeight: 1.6 }}
-                        onMouseEnter={e => (e.currentTarget.style.color = '#111827')}
-                        onMouseLeave={e => (e.currentTarget.style.color = 'rgba(0,0,0,0.35)')}
+                        style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.35)', textDecoration: 'none', transition: 'color 0.2s', lineHeight: 1.6 }}
+                        onMouseEnter={e => (e.currentTarget.style.color = '#22c55e')}
+                        onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.35)')}
                       >
                         {sub.name}
                       </Link>
@@ -306,7 +306,7 @@ export default function ServicesIndexPage() {
                   </div>
 
                   {/* Learn More */}
-                  <Link href={service.href} style={{ color: '#111827', fontSize: '0.9rem', fontWeight: 600, textDecoration: 'none', marginTop: 'auto' }}>
+                  <Link href={service.href} style={{ color: '#ffffff', fontSize: '0.9rem', fontWeight: 600, textDecoration: 'none', marginTop: 'auto' }}>
                     Learn More &rarr;
                   </Link>
                 </Card>
@@ -320,16 +320,16 @@ export default function ServicesIndexPage() {
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', maxWidth: 700, margin: '0 auto' }}>
               <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 800, lineHeight: 1.15, marginBottom: '1.5rem' }}>
-                Ready to <span style={{ color: '#111827' }}>Start?</span>
+                Ready to <span style={{ color: '#ffffff' }}>Start?</span>
               </h2>
-              <p style={{ color: 'rgb(0,0,0)', fontSize: 'clamp(0.95rem, 2vw, 1.15rem)', marginBottom: '2.5rem', lineHeight: 1.7 }}>
+              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: 'clamp(0.95rem, 2vw, 1.15rem)', marginBottom: '2.5rem', lineHeight: 1.7 }}>
                 Tell us about your project and we will match you with the right team, technology, and timeline.
               </p>
               <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                <Link href="/contact" style={{ background: '#111827', color: '#fff', padding: 'clamp(12px, 2vw, 16px) clamp(24px, 4vw, 36px)', borderRadius: 999, fontWeight: 700, fontSize: 'clamp(0.9rem, 2vw, 1rem)', textDecoration: 'none', display: 'inline-block' }}>
+                <Link href="/contact" style={{ background: '#22c55e', color: '#000', padding: 'clamp(12px, 2vw, 16px) clamp(24px, 4vw, 36px)', borderRadius: 999, fontWeight: 700, fontSize: 'clamp(0.9rem, 2vw, 1rem)', textDecoration: 'none', display: 'inline-block' }}>
                   Get a Free Quote
                 </Link>
-                <Link href="/case-studies" style={{ border: '1px solid rgba(0,0,0,0.1)', color: '#111827', padding: 'clamp(12px, 2vw, 16px) clamp(24px, 4vw, 36px)', borderRadius: 999, fontWeight: 600, fontSize: 'clamp(0.9rem, 2vw, 1rem)', textDecoration: 'none', display: 'inline-block' }}>
+                <Link href="/case-studies" style={{ border: '1px solid rgba(255,255,255,0.1)', color: '#ffffff', padding: 'clamp(12px, 2vw, 16px) clamp(24px, 4vw, 36px)', borderRadius: 999, fontWeight: 600, fontSize: 'clamp(0.9rem, 2vw, 1rem)', textDecoration: 'none', display: 'inline-block' }}>
                   View Case Studies
                 </Link>
               </div>

@@ -54,13 +54,13 @@ export default function FAQ() {
   };
 
   return (
-    <section id="faq" className="section-light py-24 lg:py-32 relative overflow-hidden" ref={containerRef}>
-      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-violet-50 rounded-full blur-[100px] opacity-60 translate-x-1/3 -translate-y-1/2 pointer-events-none" />
+    <section id="faq" className="py-24 lg:py-32 relative overflow-hidden bg-black" ref={containerRef}>
+      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-green-950 rounded-full blur-[100px] opacity-60 translate-x-1/3 -translate-y-1/2 pointer-events-none" />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="faq-heading text-center mb-16">
-          <p className="text-xs font-bold uppercase tracking-[0.25em] text-violet-600 mb-4">FAQ</p>
-          <h2 className="text-4xl lg:text-6xl font-black text-gray-900 tracking-tight leading-tight">
+          <p className="text-xs font-bold uppercase tracking-[0.25em] text-green-400 mb-4">FAQ</p>
+          <h2 className="text-4xl lg:text-6xl font-black text-white tracking-tight leading-tight">
             Questions?<br />
             <span className="gradient-text">We have answers.</span>
           </h2>
@@ -71,20 +71,20 @@ export default function FAQ() {
             <div
               key={i}
               className={`faq-item rounded-2xl border transition-all duration-300 overflow-hidden ${
-                open === i ? 'border-violet-200 bg-violet-50/50 shadow-lg shadow-violet-100/50' : 'border-gray-100 bg-white hover:border-gray-200'
+                open === i ? 'border-green-800 bg-green-950/30 shadow-lg shadow-green-950/50' : 'border-white/10 bg-neutral-950 hover:border-white/20'
               }`}
             >
               <button
                 onClick={() => toggle(i)}
                 className="w-full flex items-center justify-between px-6 py-5 text-left"
               >
-                <span className={`text-base font-bold transition-colors ${open === i ? 'text-violet-700' : 'text-gray-900'}`}>
+                <span className={`text-base font-bold transition-colors ${open === i ? 'text-green-400' : 'text-white'}`}>
                   {faq.q}
                 </span>
                 <div className={`w-8 h-8 rounded-full flex-shrink-0 ml-4 flex items-center justify-center transition-all duration-300 ${
-                  open === i ? 'bg-violet-600 rotate-45' : 'bg-gray-100'
+                  open === i ? 'bg-green-500 rotate-45' : 'bg-white/5'
                 }`}>
-                  <svg className={`w-4 h-4 transition-colors ${open === i ? 'text-white' : 'text-gray-500'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className={`w-4 h-4 transition-colors ${open === i ? 'text-black' : 'text-white/40'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
                   </svg>
                 </div>
@@ -94,15 +94,15 @@ export default function FAQ() {
                 className="overflow-hidden transition-all duration-400"
                 style={{ maxHeight: open === i ? '200px' : '0', opacity: open === i ? 1 : 0 }}
               >
-                <p className="px-6 pb-6 text-gray-600 text-sm leading-relaxed">{faq.a}</p>
+                <p className="px-6 pb-6 text-white/50 text-sm leading-relaxed">{faq.a}</p>
               </div>
             </div>
           ))}
         </div>
 
-        <p className="text-center mt-10 text-gray-400 text-sm">
+        <p className="text-center mt-10 text-white/30 text-sm">
           Still have questions?{' '}
-          <a href="#contact" className="text-violet-600 font-semibold hover:underline underline-offset-2">
+          <a href="#contact" className="text-green-400 font-semibold hover:underline underline-offset-2">
             Talk to our team →
           </a>
         </p>
