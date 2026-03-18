@@ -79,11 +79,12 @@ export default function Hero() {
   }, []);
 
   return (
-    <section ref={ref} style={{ background: '#000000', minHeight: '100vh', display: 'flex', alignItems: 'center', position: 'relative', overflow: 'hidden', paddingTop: 'clamp(80px, 12vw, 140px)' }}>
+    <section ref={ref} className="hero-section">
       {/* Grid background */}
-      <div aria-hidden="true" style={{ position: 'absolute', inset: 0, backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '64px 64px', mask: 'radial-gradient(ellipse 70% 60% at 50% 40%, black 10%, transparent 70%)', WebkitMask: 'radial-gradient(ellipse 70% 60% at 50% 40%, black 10%, transparent 70%)', pointerEvents: 'none' }} />
+      <div aria-hidden="true" className="hero-grid-overlay" />
       {/* Center green glow */}
-      <div aria-hidden="true" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: 'min(1400px, 160vw)', height: 'min(1000px, 120vw)', background: 'radial-gradient(ellipse, rgba(34,197,94,0.15) 0%, rgba(34,197,94,0.06) 25%, rgba(34,197,94,0.02) 45%, transparent 65%)', filter: 'blur(80px)', pointerEvents: 'none' }} />
+      <div aria-hidden="true" className="hero-glow-center" />
+      
       {/* Glow left */}
       <div aria-hidden="true" style={{ position: 'absolute', top: '5%', left: '-10%', width: 'min(700px, 100vw)', height: 'min(700px, 100vw)', background: 'radial-gradient(circle, rgba(34,197,94,0.06) 0%, transparent 65%)', filter: 'blur(100px)', pointerEvents: 'none' }} />
       {/* Glow right */}
@@ -114,17 +115,17 @@ export default function Hero() {
         {/* LEFT — copy */}
         <div>
           {/* Badge */}
-          <div className="h-badge" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, background: 'rgba(34,197,94,0.07)', border: '1px solid rgba(34,197,94,0.2)', borderRadius: 100, padding: '8px 20px', marginBottom: 'clamp(24px, 5vw, 48px)' }}>
+          <div className="h-badge hero-badge-pill">
             <div className="pulse-glow-dot" style={{ width: 7, height: 7, borderRadius: '50%', background: '#22c55e', boxShadow: '0 0 10px rgba(34,197,94,0.6)', animation: 'pulseGlow 2s ease-in-out infinite' }} />
             <span style={{ fontSize: 'clamp(10px, 2.5vw, 11px)', fontWeight: 700, color: '#ffffff', letterSpacing: '0.12em', textTransform: 'uppercase' }}>Available for New Projects</span>
           </div>
 
           {/* Headline */}
-          <h1 className="h-h1" style={{ fontSize: 'clamp(3rem, 6vw, 6.5rem)', fontWeight: 500, letterSpacing: '-0.05em', lineHeight: 0.95, margin: '0 0 36px' }}>
-            <span style={{ color: '#ffffff' }}>We Build</span><br />
+          <h1 className="h-h1 hero-title">
+            <span>We Build</span><br />
             <span style={{
               display: 'inline-block',
-              background: 'linear-gradient(135deg, #22c55e 0%, #4ade80 100%)',
+              background: 'var(--gradient-text)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
@@ -145,26 +146,20 @@ export default function Hero() {
 
           {/* Buttons */}
           <div className="h-btns" style={{ display: 'flex', gap: 14, flexWrap: 'wrap', marginBottom: 'clamp(36px, 6vw, 72px)' }}>
-            <Link href="#contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, height: 'clamp(48px, 7vw, 58px)', padding: '0 clamp(24px, 4vw, 36px)', borderRadius: 100, background: 'linear-gradient(135deg, #22c55e, #4ade80)', color: '#fff', fontSize: 'clamp(14px, 2vw, 15px)', fontWeight: 700, textDecoration: 'none', transition: '0.3s', boxShadow: '0 0 0 0 rgba(34,197,94,0)' }}
-              onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 16px 40px rgba(34,197,94,0.4)'; }}
-              onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 0 0 0 rgba(34,197,94,0)'; }}
-            >
+            <Link href="#contact" className="btn-primary" style={{ height: 'clamp(48px, 7vw, 58px)', padding: '0 clamp(24px, 4vw, 36px)', fontSize: 'clamp(14px, 2vw, 15px)' }}>
               Start a Project
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
             </Link>
-            <Link href="/services" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, height: 'clamp(48px, 7vw, 58px)', padding: '0 clamp(24px, 4vw, 36px)', borderRadius: 100, border: '1px solid rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.7)', fontSize: 'clamp(14px, 2vw, 15px)', fontWeight: 500, textDecoration: 'none', transition: '0.3s', background: 'rgba(255,255,255,0.03)' }}
-              onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)'; e.currentTarget.style.color = '#ffffff'; e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; }}
-              onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; e.currentTarget.style.color = 'rgba(255,255,255,0.7)'; e.currentTarget.style.background = 'rgba(255,255,255,0.03)'; }}
-            >
+            <Link href="/services" className="btn-secondary" style={{ height: 'clamp(48px, 7vw, 58px)', padding: '0 clamp(24px, 4vw, 36px)', fontSize: 'clamp(14px, 2vw, 15px)' }}>
               View Services
             </Link>
           </div>
 
           {/* Stats */}
-          <div className="h-stats" style={{ display: 'flex', gap: 'clamp(16px, 3vw, 40px)', flexWrap: 'wrap', paddingTop: 'clamp(20px, 4vw, 40px)', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+          <div className="h-stats hero-stats-grid">
             {[['500+', 'Projects'], ['150+', 'Clients'], ['99%', 'Satisfaction'], ['8wk', 'MVP']].map(([val, label]) => (
               <div key={label}>
-                <div style={{ fontSize: 'clamp(1.6rem, 2.5vw, 2.2rem)', fontWeight: 700, letterSpacing: '-0.04em', lineHeight: 1, background: 'linear-gradient(135deg, #22c55e, #4ade80)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>{val}</div>
+                <div style={{ fontSize: 'clamp(1.6rem, 2.5vw, 2.2rem)', fontWeight: 700, letterSpacing: '-0.04em', lineHeight: 1, background: 'var(--gradient-text)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>{val}</div>
                 <div style={{ fontSize: 'clamp(10px, 2vw, 11px)', fontWeight: 700, color: 'rgba(255,255,255,0.25)', textTransform: 'uppercase', letterSpacing: '0.12em', marginTop: 6 }}>{label}</div>
               </div>
             ))}
@@ -173,13 +168,9 @@ export default function Hero() {
 
         {/* RIGHT — code panel */}
         <div className="h-code-panel" style={{ position: 'relative' }}>
-          {/* Outer glow ring */}
-          <div style={{ position: 'absolute', inset: -1, borderRadius: 28, background: 'linear-gradient(135deg, rgba(34,197,94,0.2), rgba(34,197,94,0.04), rgba(34,197,94,0.15))', padding: 1 }}>
-            <div style={{ width: '100%', height: '100%', borderRadius: 27, background: '#0a0a0a' }} />
-          </div>
-
-          {/* Code window */}
-          <div style={{ position: 'relative', background: '#0a0a0a', borderRadius: 28, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.06)' }}>
+          <div className="code-panel-glow" />
+          
+          <div className="code-panel-container">
             {/* Title bar */}
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '18px 24px', borderBottom: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.02)' }}>
               <div style={{ display: 'flex', gap: 7 }}>

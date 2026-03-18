@@ -263,29 +263,13 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={scrolled ? 'navbar-scrolled' : ''} style={{
-        position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000,
-        transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
-        background: scrolled || activeMenu ? 'rgba(0,0,0,0.95)' : 'transparent',
-        backdropFilter: scrolled || activeMenu ? 'blur(24px) saturate(180%)' : 'none',
-        WebkitBackdropFilter: scrolled || activeMenu ? 'blur(24px) saturate(180%)' : 'none',
-        borderBottom: scrolled || activeMenu ? '1px solid rgba(255,255,255,0.08)' : '1px solid transparent',
-        padding: scrolled ? '14px 0' : '20px 0',
-      }}>
+      <nav className={`nav-standard ${scrolled ? 'scrolled' : ''} ${activeMenu ? 'menu-active' : ''}`}>
         <div className="cb-container">
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
 
             {/* Logo */}
             <Link href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', flexShrink: 0, position: 'relative', zIndex: 2 }}>
-              <span className={spaceGrotesk.className} style={{
-                fontSize: 'clamp(26px, 4vw, 36px)',
-                fontWeight: 700,
-                letterSpacing: '-0.02em',
-                background: 'linear-gradient(135deg, #22c55e, #4ade80)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}>
+              <span className={`${spaceGrotesk.className} nav-logo-text`}>
                 codazz
               </span>
             </Link>
@@ -295,22 +279,18 @@ export default function Navbar() {
 
               {/* Services */}
               <div onMouseEnter={() => openMenu('services')} onMouseLeave={closeMenu} style={{ position: 'relative' }}>
-                <button style={{
-                  display: 'flex', alignItems: 'center', gap: 6, padding: '10px 16px', borderRadius: 100,
-                  background: activeMenu === 'services' ? 'rgba(255,255,255,0.06)' : 'transparent',
-                  border: 'none', cursor: 'pointer', fontFamily: 'inherit',
-                  fontSize: 15, fontWeight: 500, color: activeMenu === 'services' ? '#22c55e' : '#ffffff',
-                  transition: '0.2s',
-                }} aria-expanded={activeMenu === 'services'} aria-label="Services menu"
+                <button
+                  className={`nav-link-btn ${activeMenu === 'services' ? 'active' : ''}`}
+                  aria-expanded={activeMenu === 'services'}
+                  aria-label="Services menu"
                   onKeyDown={(e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
                       e.preventDefault();
                       setActiveMenu(activeMenu === 'services' ? null : 'services');
                     }
-                    if (e.key === 'Escape') {
-                      setActiveMenu(null);
-                    }
-                  }}>
+                    if (e.key === 'Escape') setActiveMenu(null);
+                  }}
+                >
                   Services
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ transition: '0.3s', transform: activeMenu === 'services' ? 'rotate(180deg)' : 'none' }}><path d="M6 9l6 6 6-6" /></svg>
                 </button>
@@ -318,22 +298,18 @@ export default function Navbar() {
 
               {/* Industries */}
               <div onMouseEnter={() => openMenu('industries')} onMouseLeave={closeMenu} style={{ position: 'relative' }}>
-                <button style={{
-                  display: 'flex', alignItems: 'center', gap: 6, padding: '10px 16px', borderRadius: 100,
-                  background: activeMenu === 'industries' ? 'rgba(255,255,255,0.06)' : 'transparent',
-                  border: 'none', cursor: 'pointer', fontFamily: 'inherit',
-                  fontSize: 15, fontWeight: 500, color: activeMenu === 'industries' ? '#22c55e' : '#ffffff',
-                  transition: '0.2s',
-                }} aria-expanded={activeMenu === 'industries'} aria-label="Industries menu"
+                <button
+                  className={`nav-link-btn ${activeMenu === 'industries' ? 'active' : ''}`}
+                  aria-expanded={activeMenu === 'industries'}
+                  aria-label="Industries menu"
                   onKeyDown={(e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
                       e.preventDefault();
                       setActiveMenu(activeMenu === 'industries' ? null : 'industries');
                     }
-                    if (e.key === 'Escape') {
-                      setActiveMenu(null);
-                    }
-                  }}>
+                    if (e.key === 'Escape') setActiveMenu(null);
+                  }}
+                >
                   Industries
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ transition: '0.3s', transform: activeMenu === 'industries' ? 'rotate(180deg)' : 'none' }}><path d="M6 9l6 6 6-6" /></svg>
                 </button>
@@ -341,56 +317,35 @@ export default function Navbar() {
 
               {/* Company */}
               <div onMouseEnter={() => openMenu('company')} onMouseLeave={closeMenu} style={{ position: 'relative' }}>
-                <button style={{
-                  display: 'flex', alignItems: 'center', gap: 6, padding: '10px 16px', borderRadius: 100,
-                  background: activeMenu === 'company' ? 'rgba(255,255,255,0.06)' : 'transparent',
-                  border: 'none', cursor: 'pointer', fontFamily: 'inherit',
-                  fontSize: 15, fontWeight: 500, color: activeMenu === 'company' ? '#22c55e' : '#ffffff',
-                  transition: '0.2s',
-                }} aria-expanded={activeMenu === 'company'} aria-label="Company menu"
+                <button
+                  className={`nav-link-btn ${activeMenu === 'company' ? 'active' : ''}`}
+                  aria-expanded={activeMenu === 'company'}
+                  aria-label="Company menu"
                   onKeyDown={(e) => {
                     if (e.key === 'Enter' || e.key === ' ') {
                       e.preventDefault();
                       setActiveMenu(activeMenu === 'company' ? null : 'company');
                     }
-                    if (e.key === 'Escape') {
-                      setActiveMenu(null);
-                    }
-                  }}>
+                    if (e.key === 'Escape') setActiveMenu(null);
+                  }}
+                >
                   Company
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ transition: '0.3s', transform: activeMenu === 'company' ? 'rotate(180deg)' : 'none' }}><path d="M6 9l6 6 6-6" /></svg>
                 </button>
               </div>
 
               {[{ label: 'Portfolio', href: '/portfolio' }, { label: 'Blog', href: '/blog' }].map(item => (
-                <Link key={item.label} href={item.href} style={{
-                  display: 'flex', alignItems: 'center', padding: '10px 16px', borderRadius: 100,
-                  fontSize: 15, fontWeight: 500, color: '#ffffff',
-                  textDecoration: 'none', transition: '0.2s',
-                }}
-                  onMouseEnter={e => { e.currentTarget.style.color = '#ffffff'; e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; }}
-                  onMouseLeave={e => { e.currentTarget.style.color = '#ffffff'; e.currentTarget.style.background = 'transparent'; }}
-                >{item.label}</Link>
+                <Link key={item.label} href={item.href} className="nav-link-btn" style={{ textDecoration: 'none' }}>{item.label}</Link>
               ))}
             </div>
 
             {/* CTA */}
             <div className="nav-desktop" style={{ gap: 12, alignItems: 'center', position: 'relative', zIndex: 2 }}>
-              <Link href="mailto:hello@codazz.com" style={{ fontSize: 15, fontWeight: 500, color: 'rgba(255,255,255,0.7)', textDecoration: 'none', transition: '0.2s', display: 'flex', alignItems: 'center', gap: 6 }}
-                onMouseEnter={e => { e.currentTarget.style.color = '#ffffff'; }}
-                onMouseLeave={e => { e.currentTarget.style.color = 'rgba(255,255,255,0.7)'; }}
-              >
+              <Link href="mailto:hello@codazz.com" style={{ fontSize: 15, fontWeight: 500, color: 'rgba(255,255,255,0.7)', textDecoration: 'none', transition: '0.2s', display: 'flex', alignItems: 'center', gap: 6 }}>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
                 hello@codazz.com
               </Link>
-              <Link href="/contact" style={{
-                display: 'inline-flex', alignItems: 'center', gap: 8, height: 42, padding: '0 24px', borderRadius: 100,
-                background: 'linear-gradient(135deg, #22c55e, #4ade80)', color: '#fff', fontSize: 15, fontWeight: 700,
-                textDecoration: 'none', letterSpacing: '-0.01em', transition: '0.3s',
-              }}
-                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(34,197,94,0.3)'; }}
-                onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}
-              >
+              <Link href="/contact" className="btn-primary" style={{ height: 42, padding: '0 24px', fontSize: 15 }}>
                 Get a Quote
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
               </Link>
@@ -412,14 +367,11 @@ export default function Navbar() {
         <div
           onMouseEnter={cancelClose}
           onMouseLeave={closeMenu}
+          className="mega-menu-standard"
           style={{
-            position: 'absolute', top: '100%', left: 0, right: 0,
-            background: 'rgba(10,10,10,0.97)', backdropFilter: 'blur(24px)',
-            borderBottom: '1px solid rgba(255,255,255,0.08)',
             opacity: activeMenu === 'services' ? 1 : 0,
             visibility: activeMenu === 'services' ? 'visible' : 'hidden',
             transform: activeMenu === 'services' ? 'translateY(0)' : 'translateY(-8px)',
-            transition: 'opacity 0.25s ease, transform 0.25s ease, visibility 0.25s',
             pointerEvents: activeMenu === 'services' ? 'auto' : 'none',
           }}
         >
@@ -430,31 +382,22 @@ export default function Navbar() {
                 <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#ffffff', marginBottom: 6 }}>What We Build</div>
                 <div style={{ fontSize: 22, fontWeight: 500, color: '#e5e7eb', letterSpacing: '-0.03em' }}>End-to-End Engineering Services</div>
               </div>
-              <Link href="/services" onClick={() => setActiveMenu(null)} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, height: 40, padding: '0 20px', borderRadius: 100, border: '1px solid rgba(255,255,255,0.1)', color: 'rgba(255,255,255,0.7)', fontSize: 13, fontWeight: 600, textDecoration: 'none', transition: '0.2s' }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.3)'; e.currentTarget.style.color = '#ffffff'; }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; e.currentTarget.style.color = 'rgba(255,255,255,0.7)'; }}
-              >
+              <Link href="/services" onClick={() => setActiveMenu(null)} className="btn-secondary" style={{ height: 40, padding: '0 20px', fontSize: 13 }}>
                 View All Services
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
               </Link>
             </div>
 
-            {/* 6-column service grid — icon + title + compact sub-links */}
+            {/* 6-column service grid */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: 6, marginBottom: 20 }}>
               {serviceCategories.map((cat) => (
-                <div key={cat.title} style={{ padding: '14px 14px', borderRadius: 14, border: '1px solid rgba(255,255,255,0.04)', background: 'rgba(255,255,255,0.02)', transition: '0.3s' }}
-                  onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)'; e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; }}
-                  onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.04)'; e.currentTarget.style.background = 'rgba(255,255,255,0.02)'; }}
-                >
-                  {/* Category header — whole thing is a link */}
+                <div key={cat.title} className="mega-menu-service-card">
                   <Link href={cat.href} onClick={() => setActiveMenu(null)} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10, textDecoration: 'none' }}>
                     <div style={{ width: 28, height: 28, borderRadius: 8, background: 'rgba(34,197,94,0.1)', border: '1px solid rgba(34,197,94,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#22c55e', flexShrink: 0 }}>
                       {cat.icon}
                     </div>
                     <span style={{ fontSize: 11, fontWeight: 700, color: '#ffffff', letterSpacing: '-0.01em', lineHeight: 1.25 }}>{cat.title}</span>
                   </Link>
-
-                  {/* Sub-links */}
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
                     {cat.links.map(link => (
                       <Link key={link.label} href={link.href} onClick={() => setActiveMenu(null)}
@@ -487,14 +430,11 @@ export default function Navbar() {
         <div
           onMouseEnter={cancelClose}
           onMouseLeave={closeMenu}
+          className="mega-menu-standard"
           style={{
-            position: 'absolute', top: '100%', left: 0, right: 0,
-            background: 'rgba(10,10,10,0.97)', backdropFilter: 'blur(24px)',
-            borderBottom: '1px solid rgba(255,255,255,0.08)',
             opacity: activeMenu === 'industries' ? 1 : 0,
             visibility: activeMenu === 'industries' ? 'visible' : 'hidden',
             transform: activeMenu === 'industries' ? 'translateY(0)' : 'translateY(-8px)',
-            transition: 'opacity 0.25s ease, transform 0.25s ease, visibility 0.25s',
             pointerEvents: activeMenu === 'industries' ? 'auto' : 'none',
           }}
         >
@@ -523,10 +463,7 @@ export default function Navbar() {
                 <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#ffffff', marginBottom: 10 }}>Featured Work</div>
                 <div style={{ fontSize: 18, fontWeight: 600, color: '#ffffff', letterSpacing: '-0.03em', marginBottom: 8 }}>AI Trading Engine</div>
                 <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)', lineHeight: 1.6, marginBottom: 20 }}>Processing 2M+ transactions daily with real-time ML sentiment analysis for a leading fintech client.</div>
-                <Link href="/portfolio" onClick={() => setActiveMenu(null)} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 12, fontWeight: 700, color: '#ffffff', textDecoration: 'none' }}
-                  onMouseEnter={e => { e.currentTarget.style.gap = '12px'; }}
-                  onMouseLeave={e => { e.currentTarget.style.gap = '8px'; }}
-                >
+                <Link href="/portfolio" onClick={() => setActiveMenu(null)} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 12, fontWeight: 700, color: '#ffffff', textDecoration: 'none' }}>
                   View Portfolio
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
                 </Link>
@@ -539,14 +476,11 @@ export default function Navbar() {
         <div
           onMouseEnter={cancelClose}
           onMouseLeave={closeMenu}
+          className="mega-menu-standard"
           style={{
-            position: 'absolute', top: '100%', left: 0, right: 0,
-            background: 'rgba(10,10,10,0.97)', backdropFilter: 'blur(24px)',
-            borderBottom: '1px solid rgba(255,255,255,0.08)',
             opacity: activeMenu === 'company' ? 1 : 0,
             visibility: activeMenu === 'company' ? 'visible' : 'hidden',
             transform: activeMenu === 'company' ? 'translateY(0)' : 'translateY(-8px)',
-            transition: 'opacity 0.25s ease, transform 0.25s ease, visibility 0.25s',
             pointerEvents: activeMenu === 'company' ? 'auto' : 'none',
           }}
         >
@@ -575,7 +509,7 @@ export default function Navbar() {
                 </div>
                 <div style={{ fontSize: 16, fontWeight: 600, color: '#ffffff', letterSpacing: '-0.02em' }}>Ready to start your project?</div>
                 <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)', lineHeight: 1.6 }}>Get a free consultation and fixed-price proposal within 24 hours.</div>
-                <Link href="#contact" onClick={() => setActiveMenu(null)} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, height: 40, padding: '0 20px', borderRadius: 100, background: 'linear-gradient(135deg, #22c55e, #4ade80)', color: '#fff', fontSize: 13, fontWeight: 700, textDecoration: 'none', width: 'fit-content' }}>
+                <Link href="#contact" onClick={() => setActiveMenu(null)} className="btn-primary" style={{ height: 40, padding: '0 20px', fontSize: 13, width: 'fit-content' }}>
                   Book Free Call
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
                 </Link>
@@ -586,13 +520,13 @@ export default function Navbar() {
       </nav>
 
       {/* Mobile overlay menu */}
-      <div style={{
-        position: 'fixed', inset: 0, background: '#000000', zIndex: 999, overflowY: 'auto',
-        WebkitOverflowScrolling: 'touch',
-        opacity: menuOpen ? 1 : 0, visibility: menuOpen ? 'visible' : 'hidden',
-        transition: 'opacity 0.4s ease, visibility 0.4s ease',
-        display: 'flex', flexDirection: 'column', padding: 'clamp(80px, 15vw, 100px) clamp(16px, 4vw, 24px) 60px',
-      }}>
+      <div
+        className="nav-mobile-overlay shadow-2xl"
+        style={{
+          opacity: menuOpen ? 1 : 0,
+          visibility: menuOpen ? 'visible' : 'hidden',
+        }}
+      >
         <div style={{ display: 'flex', flexDirection: 'column', gap: 0, marginBottom: 32 }}>
 
           {/* Services — expandable */}

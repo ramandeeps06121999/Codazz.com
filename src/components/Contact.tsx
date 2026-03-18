@@ -70,7 +70,7 @@ export default function Contact() {
               Tell us about your project and we&apos;ll scope it, plan it, and build it — on time, on budget, every time.
             </p>
 
-            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+            <div className="contact-cta-buttons" style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
               <a href="mailto:hello@codazz.com" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, height: 52, padding: '0 28px', borderRadius: 100, background: 'linear-gradient(135deg, #22c55e, #4ade80)', color: '#fff', fontSize: 14, fontWeight: 600, textDecoration: 'none', transition: '0.3s' }}
                 onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 16px 40px rgba(34,197,94,0.4)'; }}
                 onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}
@@ -87,10 +87,10 @@ export default function Contact() {
             </div>
 
             <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)', marginTop: 16 }}>
-              See our <a href="/case-studies" style={{ color: '#ffffff', textDecoration: 'none' }}>case studies</a> for real client results.
+              See our <a href="/portfolio" style={{ color: '#ffffff', textDecoration: 'none' }}>portfolio</a> for real client results.
             </p>
 
-            <div className="contact-badges" style={{ display: 'flex', gap: 'clamp(16px, 3vw, 32px)', marginTop: 40, paddingTop: 32, borderTop: '1px solid rgba(255,255,255,0.06)', flexWrap: 'nowrap', whiteSpace: 'nowrap' }}>
+            <div className="contact-badges" style={{ display: 'flex', gap: 'clamp(16px, 3vw, 32px)', marginTop: 40, paddingTop: 32, borderTop: '1px solid rgba(255,255,255,0.06)', flexWrap: 'wrap' }}>
               {['NDA Signed on Day 1', 'Fixed-Price Guarantee', '8-Week MVP Programme'].map(item => (
                 <div key={item} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                   <div style={{ width: 18, height: 18, borderRadius: '50%', background: 'rgba(34,197,94,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
