@@ -54,7 +54,7 @@ src/
     page.tsx             ← Assembles all sections
   components/
     Navbar.tsx           ← Fixed nav, mega-menu (Services + Industries dropdowns)
-    Hero.tsx             ← Dark grid bg, animated bouncing avatars, stats
+    Hero.tsx             ← Dark grid bg, animated globe, word cycle
     ServicesSection.tsx  ← 7 service cards (dark bg)
     SuccessMetrics.tsx   ← Animated stat counters (teal bg)
     PortfolioSection.tsx ← 4 case studies with tab switcher
@@ -62,13 +62,12 @@ src/
     TestimonialsSection.tsx ← 6 testimonial cards (teal bg)
     PartnersMarquee.tsx  ← Infinite scrolling client logos
     FAQSection.tsx       ← Accordion with sticky CTA (light bg)
-    CTASection.tsx       ← Contact form (dark gradient bg)
+    Contact.tsx          ← Primary Contact form with EmailJS integration
     Footer.tsx           ← Multi-column links + social (black bg)
 ```
 
 **Old files still in `/components/` (unused — can delete):**
-- `About.tsx`, `Contact.tsx`, `FAQ.tsx`, `Industries.tsx`, `Services.tsx`,
-  `MarqueeSection.tsx`, `CaseStudies.tsx`, `Process.tsx`, `Testimonials.tsx`,
+- `About.tsx`, `MarqueeSection.tsx`, `CaseStudies.tsx`,
   `Preloader.tsx`, `Cursor.tsx`, `SmoothScroll.tsx`
 
 ---
