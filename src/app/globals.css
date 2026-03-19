@@ -262,6 +262,8 @@ h1,h2,h3,h4,h5,h6 {
   .portfolio-visual { border-left: none !important; border-top: 1px solid rgba(0,0,0,0.06) !important; }
   .industries-grid { grid-template-columns: repeat(2, 1fr); }
   .about-hero-grid { grid-template-columns: 1fr; }
+  .loc-industry-split { grid-template-columns: 1fr; }
+  .loc-quote-split { grid-template-columns: 1fr; }
   .industry-services-grid { grid-template-columns: 1fr; }
   .advanced-labs-grid { grid-template-columns: 1fr; gap: 48px; }
   .testimonials-grid { grid-template-columns: 1fr; }
@@ -282,6 +284,8 @@ h1,h2,h3,h4,h5,h6 {
   .contact-grid h2 br { display: none; }
 }
 @media (max-width: 768px) {
+  .loc-industry-split { grid-template-columns: 1fr !important; }
+  .loc-quote-split { grid-template-columns: 1fr !important; }
   .cp-contact-form-grid { grid-template-columns: 1fr !important; }
   .awards-grid { grid-template-columns: repeat(3, 1fr); }
   .awards-row { justify-content: center; }
@@ -296,6 +300,7 @@ h1,h2,h3,h4,h5,h6 {
   .section-padding-sm { padding: 60px 0; }
 }
 @media (max-width: 640px) {
+  .loc-center-node { display: none !important; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); gap: clamp(16px, 3vw, 32px); }
   .whyus-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; }

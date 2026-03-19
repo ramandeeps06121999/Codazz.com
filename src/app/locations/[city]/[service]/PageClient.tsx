@@ -453,7 +453,7 @@ export default function CityServicePageClient(props: CityServicePageProps) {
                   </div>
 
                   {/* Central connection node */}
-                  <div style={{
+                  <div className="loc-center-node" style={{
                     position: 'absolute',
                     top: '50%',
                     left: '50%',
