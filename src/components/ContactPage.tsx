@@ -18,8 +18,10 @@ const TRUST = [
 ];
 
 const OFFICES = [
-  { city: 'New York', flag: '🇺🇸', address: '1 World Trade Center, Fl. 85', tz: 'EST · UTC−5', hq: true },
-  { city: 'Dubai', flag: '🇦🇪', address: 'DIFC Gate Village, Bldg 5', tz: 'GST · UTC+4', hq: true },
+  { city: 'Edmonton', flag: '🇨🇦', address: 'Edmonton, Alberta, Canada', tz: 'MST · UTC−7', hq: true },
+  { city: 'Chandigarh', flag: '🇮🇳', address: 'Chandigarh, India', tz: 'IST · UTC+5:30', hq: true },
+  { city: 'New York', flag: '🇺🇸', address: '1 World Trade Center, Fl. 85', tz: 'EST · UTC−5', hq: false },
+  { city: 'Dubai', flag: '🇦🇪', address: 'DIFC Gate Village, Bldg 5', tz: 'GST · UTC+4', hq: false },
 ];
 
 const VIRTUAL_PERKS = [
@@ -85,6 +87,7 @@ export default function ContactPage() {
 
   const handleSubmit = async (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (isLoading) return;
     setIsLoading(true);
     setError('');
 
@@ -346,7 +349,7 @@ export default function ContactPage() {
               Headquarters in Two Cities.<br /><span style={{ color: 'rgba(255,255,255,0.4)' }}>Talent From Everywhere.</span>
             </h2>
             <p style={{ fontSize: 'clamp(1rem,1.6vw,1.15rem)', color: 'rgba(255,255,255,0.5)', maxWidth: 640, margin: '0 auto', lineHeight: 1.75 }}>
-              We have offices in New York and Dubai — but the magic happens online. Our engineers are handpicked from around the globe, so when you submit your enquiry, we match you with the absolute best expert for your stack, not just whoever&apos;s nearby. That&apos;s why 99% of our meetings are virtual: faster kick-offs, zero travel overhead, and a greener way to build world-class software.
+              Headquartered in Edmonton &amp; Chandigarh with offices in New York &amp; Dubai — but the magic happens online. Our engineers are handpicked from around the globe, so when you submit your enquiry, we match you with the absolute best expert for your stack, not just whoever&apos;s nearby. That&apos;s why 99% of our meetings are virtual: faster kick-offs, zero travel overhead, and a greener way to build world-class software.
             </p>
           </div>
 
@@ -365,9 +368,9 @@ export default function ContactPage() {
 
           {/* HQ cards */}
           <div className="reveal reveal-d2" style={{ textAlign: 'center', marginBottom: 32 }}>
-            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: 'rgba(255,255,255,0.25)', marginBottom: 24 }}>Our Headquarters</div>
+            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase' as const, color: 'rgba(255,255,255,0.25)', marginBottom: 24 }}>Our Offices</div>
           </div>
-          <div className="reveal reveal-d2 cp-offices-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))', gap: 16, maxWidth: 640, margin: '0 auto' }}>
+          <div className="reveal reveal-d2 cp-offices-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(220px, 100%), 1fr))', gap: 16, maxWidth: 960, margin: '0 auto' }}>
             {OFFICES.map(o => (
               <div key={o.city}
                 style={{ padding: 'clamp(28px, 4vw, 44px) clamp(24px, 3vw, 36px)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 24, background: 'rgba(255,255,255,0.03)', transition: '0.4s', textAlign: 'center' }}
@@ -376,7 +379,7 @@ export default function ContactPage() {
                 <div style={{ fontSize: 32, marginBottom: 12 }}>{o.flag}</div>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, marginBottom: 8 }}>
                   <span style={{ fontSize: 18, fontWeight: 600, color: '#ffffff', letterSpacing: '-0.02em' }}>{o.city}</span>
-                  <span style={{ fontSize: 9, fontWeight: 700, color: '#22c55e', background: 'rgba(34,197,94,0.1)', padding: '3px 8px', borderRadius: 100, letterSpacing: '0.08em' }}>HQ</span>
+                  {o.hq && <span style={{ fontSize: 9, fontWeight: 700, color: '#22c55e', background: 'rgba(34,197,94,0.1)', padding: '3px 8px', borderRadius: 100, letterSpacing: '0.08em' }}>HQ</span>}
                 </div>
                 <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', lineHeight: 1.6, margin: '0 0 8px' }}>{o.address}</p>
                 <div style={{ fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.2)', letterSpacing: '0.1em', textTransform: 'uppercase' as const }}>{o.tz}</div>

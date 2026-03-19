@@ -28,8 +28,8 @@ export default function PartnersMarquee() {
   return (
     <section className="section-padding-sm" style={{ background: '#000000', borderTop: '1px solid rgba(255,255,255,0.06)', overflow: 'hidden', position: 'relative' }}>
       {/* Fade edges */}
-      <div style={{ position: 'absolute', top: 0, left: 0, width: 200, height: '100%', background: 'linear-gradient(to right, #000000, transparent)', zIndex: 2, pointerEvents: 'none' }} />
-      <div style={{ position: 'absolute', top: 0, right: 0, width: 200, height: '100%', background: 'linear-gradient(to left, #000000, transparent)', zIndex: 2, pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', top: 0, left: 0, width: 'clamp(60px, 15vw, 200px)', height: '100%', background: 'linear-gradient(to right, #000000, transparent)', zIndex: 2, pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', top: 0, right: 0, width: 'clamp(60px, 15vw, 200px)', height: '100%', background: 'linear-gradient(to left, #000000, transparent)', zIndex: 2, pointerEvents: 'none' }} />
 
       {/* Label */}
       <div style={{ textAlign: 'center', marginBottom: 32, position: 'relative', zIndex: 3 }}>

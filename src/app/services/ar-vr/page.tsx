@@ -48,7 +48,7 @@ const faqSchema = {
       name: 'Can you create the 3D assets and environments, or do we provide them?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'We have an in-house 3D team that can create assets from scratch, work from reference images, or optimise assets you already have. We handle full 3D production including modelling, texturing, rigging and animation.',
+        text: 'We have an in-house 3D team that can create assets from scratch, work from reference images, or optimize assets you already have. We handle full 3D production including modeling, texturing, rigging and animation.',
       },
     },
     {

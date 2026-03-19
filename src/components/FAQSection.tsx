@@ -55,6 +55,7 @@ export default function FAQSection() {
               <div key={i} style={{ borderBottom: '1px solid rgba(255,255,255,0.06)', overflow: 'hidden' }}>
                 <button onClick={() => setActive(active === i ? null : i)}
                   aria-expanded={active === i}
+                  aria-controls={`faq-answer-${i}`}
                   className="faq-question-btn"
                   style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: 'clamp(16px, 3vw, 28px) 0', background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', gap: 'clamp(12px, 3vw, 24px)', fontFamily: 'inherit', minHeight: 44 }}
                 >
@@ -65,7 +66,7 @@ export default function FAQSection() {
                     </svg>
                   </div>
                 </button>
-                <div style={{ maxHeight: active === i ? 500 : 0, overflow: 'hidden', transition: 'max-height 0.45s cubic-bezier(0.16,1,0.3,1)' }}>
+                <div id={`faq-answer-${i}`} style={{ maxHeight: active === i ? 500 : 0, overflow: 'hidden', transition: 'max-height 0.45s cubic-bezier(0.16,1,0.3,1)' }}>
                   <p style={{ fontSize: 'clamp(14px, 2.5vw, 15px)', color: '#9ca3af', lineHeight: 1.8, paddingBottom: 'clamp(16px, 3vw, 28px)', margin: 0 }}>{faq.a}</p>
                 </div>
               </div>

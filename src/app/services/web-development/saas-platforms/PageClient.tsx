@@ -5,8 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ServiceHeroForm from '@/components/ServiceHeroForm';
 import HeroBackground from '@/components/HeroBackground';
-import { FloatingIconsBackground } from '@/components/FloatingIconsBackground';
-import { IconReact, IconNextJS, IconNodeJS, IconPython, IconAWS, IconDocker, IconKubernetes, IconTypeScript, IconGraphQL, IconPostgreSQL, IconMongoDB, IconTensorFlow, IconGitHub, IconFigma, IconVSCode } from '@/components/tech-icons';
+import PortfolioShowcase from '@/components/PortfolioShowcase';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -41,7 +40,7 @@ const steps = [
   { num: '01', title: 'Product Discovery', desc: 'We run structured discovery workshops to define your ICP, core workflow, pricing model, and technical requirements — producing a product spec, architecture proposal, and phased roadmap with clear MVP scope.' },
   { num: '02', title: 'Architecture Design', desc: 'We design the multi-tenant data model, authentication flows, billing integration, API contracts, and infrastructure topology before any code is written — preventing expensive architectural debt later.' },
   { num: '03', title: 'MVP Build', desc: 'We build iteratively in two-week sprints, prioritising the core workflow that delivers value to your first customers. You get a shippable, tested MVP in 8 weeks — not a bloated feature set in 18 months.' },
-  { num: '04', title: 'Scale & Iterate', desc: 'Post-launch, we help you analyse usage data, run A/B experiments on conversion and activation, scale infrastructure to handle growth, and ship the next tier of features based on real customer feedback.' },
+  { num: '04', title: 'Scale & Iterate', desc: 'Post-launch, we help you analyze usage data, run A/B experiments on conversion and activation, scale infrastructure to handle growth, and ship the next tier of features based on real customer feedback.' },
 ];
 
 const faqs = [
@@ -49,27 +48,10 @@ const faqs = [
   { q: 'Should we build multi-tenancy from day one?', a: 'Yes, always. Adding multi-tenancy to an existing single-tenant codebase is one of the most expensive and risky refactors a SaaS company can undertake. We design the data isolation model, access control layer, and routing logic correctly from the start — even if you only have one tenant on launch day.' },
   { q: 'Which billing provider do you recommend?', a: 'We recommend Stripe for the vast majority of SaaS products — it has the most comprehensive subscription and billing API, excellent documentation, and supports complex scenarios like usage-based billing, multi-currency, and marketplace splits. We implement billing with Stripe Billing + webhooks for reliable subscription lifecycle management.' },
   { q: 'How do you handle data isolation between tenants?', a: 'We evaluate three isolation models: shared schema with tenant_id columns (most cost-efficient, lowest isolation), separate schemas per tenant (good balance for mid-market SaaS), and separate databases per tenant (highest isolation, required for some compliance standards). We recommend the right model based on your regulatory requirements and expected tenant count.' },
-  { q: 'Do you provide post-launch support?', a: 'Yes. Most of our SaaS clients engage us on a monthly retainer covering infrastructure monitoring, incident response, performance optimisation, security updates, and ongoing feature development. We treat post-launch as the beginning of the product journey, not the end of the engagement.' },
+  { q: 'Do you provide post-launch support?', a: 'Yes. Most of our SaaS clients engage us on a monthly retainer covering infrastructure monitoring, incident response, performance optimization, security updates, and ongoing feature development. We treat post-launch as the beginning of the product journey, not the end of the engagement.' },
 ];
 
 
-const floatingIcons = [
-  { id: 1, icon: IconReact, className: 'top-[10%] left-[5%]' },
-  { id: 2, icon: IconNextJS, className: 'top-[15%] right-[8%]' },
-  { id: 3, icon: IconNodeJS, className: 'top-[60%] left-[3%]' },
-  { id: 4, icon: IconPython, className: 'bottom-[20%] right-[5%]' },
-  { id: 5, icon: IconAWS, className: 'top-[5%] left-[25%]' },
-  { id: 6, icon: IconDocker, className: 'top-[70%] right-[15%]' },
-  { id: 7, icon: IconKubernetes, className: 'bottom-[15%] left-[20%]' },
-  { id: 8, icon: IconTypeScript, className: 'top-[40%] left-[8%]' },
-  { id: 9, icon: IconGraphQL, className: 'top-[80%] right-[25%]' },
-  { id: 10, icon: IconPostgreSQL, className: 'top-[25%] right-[5%]' },
-  { id: 11, icon: IconMongoDB, className: 'top-[50%] left-[2%]' },
-  { id: 12, icon: IconTensorFlow, className: 'bottom-[25%] right-[10%]' },
-  { id: 13, icon: IconGitHub, className: 'top-[35%] right-[12%]' },
-  { id: 14, icon: IconFigma, className: 'bottom-[10%] left-[10%]' },
-  { id: 15, icon: IconVSCode, className: 'top-[5%] left-[50%]' },
-];
 
 export default function SaasPlatforms() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -100,7 +82,6 @@ export default function SaasPlatforms() {
         {/* HERO */}
         <section ref={heroRef} style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', paddingTop: 140, paddingBottom: 80, position: 'relative', overflow: 'hidden' }}>
           <HeroBackground variant="right" />
-          <FloatingIconsBackground icons={floatingIcons} />
           <div className="cb-container">
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 480px), 1fr))', gap: 'clamp(24px, 5vw, 60px)', alignItems: 'center' }}>
               <div>
@@ -167,6 +148,10 @@ export default function SaasPlatforms() {
         </section>
 
         {/* PROCESS */}
+
+        {/* PORTFOLIO */}
+        <PortfolioShowcase category="web-development" />
+
         <section ref={s2} className="section-padding">
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>

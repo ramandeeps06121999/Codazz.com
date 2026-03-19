@@ -5,8 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ServiceHeroForm from '@/components/ServiceHeroForm';
 import HeroBackground from '@/components/HeroBackground';
-import { FloatingIconsBackground } from '@/components/FloatingIconsBackground';
-import { IconReact, IconNextJS, IconNodeJS, IconPython, IconAWS, IconDocker, IconKubernetes, IconTypeScript, IconGraphQL, IconPostgreSQL, IconMongoDB, IconTensorFlow, IconGitHub, IconFigma, IconVSCode } from '@/components/tech-icons';
+import PortfolioShowcase from '@/components/PortfolioShowcase';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -30,7 +29,7 @@ const stats = [
 
 const services = [
   { icon: '🏗️', title: 'Tenant Isolation Design', desc: 'Schema-per-tenant for maximum isolation and compliance, or row-level security for simpler ops — we select and implement the right model for your product and regulatory context.' },
-  { icon: '👥', title: 'Organisation & Team Management', desc: 'Multi-level organisational hierarchies — organisations, teams, departments — with member invitations, role assignment and org-level settings management.' },
+  { icon: '👥', title: 'Organization & Team Management', desc: 'Multi-level organizational hierarchies — organizations, teams, departments — with member invitations, role assignment and org-level settings management.' },
   { icon: '🔒', title: 'Tenant-Scoped Permissions (RBAC)', desc: 'Role-based access control scoped to each tenant — owners, admins, members with granular resource permissions enforced at the API and database layer.' },
   { icon: '🌐', title: 'Custom Domains per Tenant', desc: 'White-label custom domain support so each tenant can serve your app from their own domain — with automated SSL provisioning via Let\'s Encrypt.' },
   { icon: '🤖', title: 'Tenant Onboarding Automation', desc: 'Automated provisioning of tenant database schemas, default data seeding, invitation emails, and billing account creation — onboard new customers in seconds.' },
@@ -49,27 +48,10 @@ const faqs = [
   { q: 'How do you prevent data leakage between tenants?', a: 'We implement defence in depth: tenant context is set at the start of every request, Postgres Row Level Security policies enforce isolation at the database level even if application code has a bug, all API responses are validated for tenant scope before returning, and we write automated tests specifically designed to probe for cross-tenant data access.' },
   { q: 'Can we add multi-tenancy to an existing product?', a: 'Yes, but it requires careful planning. We conduct a codebase audit to identify all places where data is fetched without tenant scoping, design a migration path that adds tenant context without breaking existing data, and implement the changes incrementally. It\'s more complex than greenfield multi-tenancy but very achievable with the right approach.' },
   { q: 'How to handle tenant-specific customisation?', a: 'We implement a tenant configuration system — a JSON settings table per tenant that drives feature flags, UI customisation, integration credentials and workflow rules. This avoids custom code per tenant while giving tenants meaningful flexibility. For deeper customisation needs (custom fields, workflows), we build a proper extensibility layer.' },
-  { q: 'How does multi-tenancy affect performance?', a: 'With proper indexing on tenant_id columns and RLS policies, the performance overhead of multi-tenancy is minimal — typically under 5% compared to a single-tenant equivalent. The bigger risk is N+1 queries and missing indexes as data grows. We profile and optimise these during load testing, and set up query monitoring in production to catch regressions early.' },
+  { q: 'How does multi-tenancy affect performance?', a: 'With proper indexing on tenant_id columns and RLS policies, the performance overhead of multi-tenancy is minimal — typically under 5% compared to a single-tenant equivalent. The bigger risk is N+1 queries and missing indexes as data grows. We profile and optimize these during load testing, and set up query monitoring in production to catch regressions early.' },
 ];
 
 
-const floatingIcons = [
-  { id: 1, icon: IconReact, className: 'top-[10%] left-[5%]' },
-  { id: 2, icon: IconNextJS, className: 'top-[15%] right-[8%]' },
-  { id: 3, icon: IconNodeJS, className: 'top-[60%] left-[3%]' },
-  { id: 4, icon: IconPython, className: 'bottom-[20%] right-[5%]' },
-  { id: 5, icon: IconAWS, className: 'top-[5%] left-[25%]' },
-  { id: 6, icon: IconDocker, className: 'top-[70%] right-[15%]' },
-  { id: 7, icon: IconKubernetes, className: 'bottom-[15%] left-[20%]' },
-  { id: 8, icon: IconTypeScript, className: 'top-[40%] left-[8%]' },
-  { id: 9, icon: IconGraphQL, className: 'top-[80%] right-[25%]' },
-  { id: 10, icon: IconPostgreSQL, className: 'top-[25%] right-[5%]' },
-  { id: 11, icon: IconMongoDB, className: 'top-[50%] left-[2%]' },
-  { id: 12, icon: IconTensorFlow, className: 'bottom-[25%] right-[10%]' },
-  { id: 13, icon: IconGitHub, className: 'top-[35%] right-[12%]' },
-  { id: 14, icon: IconFigma, className: 'bottom-[10%] left-[10%]' },
-  { id: 15, icon: IconVSCode, className: 'top-[5%] left-[50%]' },
-];
 
 export default function PageClient() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -99,7 +81,6 @@ export default function PageClient() {
         {/* HERO */}
         <section ref={heroRef} style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', paddingTop: 140, paddingBottom: 80, position: 'relative', overflow: 'hidden' }}>
           <HeroBackground variant="right" />
-          <FloatingIconsBackground icons={floatingIcons} />
           <div className="cb-container">
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 480px), 1fr))', gap: 'clamp(24px, 5vw, 60px)', alignItems: 'center' }}>
               <div>
@@ -117,7 +98,7 @@ export default function PageClient() {
             <h1 className="reveal reveal-d2" style={{ fontSize: 'clamp(36px, 6vw, 72px)', fontWeight: 800, letterSpacing: '-0.04em', lineHeight: 1.05, marginBottom: 24, maxWidth: 800 }}>
               Multi-Tenant SaaS <span style={{ color: '#ffffff' }}>Architecture</span>
             </h1>
-            <p className="reveal reveal-d3" style={{ fontSize: 18, color: 'rgba(255,255,255,0.45)', lineHeight: 1.7, maxWidth: 600, marginBottom: 40 }}>Rock-solid tenant isolation, organisation management and RBAC — built for the compliance and scale demands of enterprise SaaS.</p>
+            <p className="reveal reveal-d3" style={{ fontSize: 18, color: 'rgba(255,255,255,0.45)', lineHeight: 1.7, maxWidth: 600, marginBottom: 40 }}>Rock-solid tenant isolation, organization management and RBAC — built for the compliance and scale demands of enterprise SaaS.</p>
             <div className="reveal reveal-d4" style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
               <Link href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, height: 52, padding: '0 32px', borderRadius: 100, background: 'linear-gradient(135deg, #22c55e, #4ade80)', color: '#000', fontSize: 15, fontWeight: 700, textDecoration: 'none' }}>
                 Start Your Project
@@ -161,6 +142,10 @@ export default function PageClient() {
         </section>
 
         {/* PROCESS */}
+
+        {/* PORTFOLIO */}
+        <PortfolioShowcase category="saas-development" />
+
         <section ref={s2} className="section-padding">
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>

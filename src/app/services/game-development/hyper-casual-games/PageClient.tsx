@@ -5,8 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ServiceHeroForm from '@/components/ServiceHeroForm';
 import HeroBackground from '@/components/HeroBackground';
-import { FloatingIconsBackground } from '@/components/FloatingIconsBackground';
-import { IconReact, IconNextJS, IconNodeJS, IconPython, IconAWS, IconDocker, IconKubernetes, IconTypeScript, IconGraphQL, IconPostgreSQL, IconMongoDB, IconTensorFlow, IconGitHub, IconFigma, IconVSCode } from '@/components/tech-icons';
+import PortfolioShowcase from '@/components/PortfolioShowcase';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -31,7 +30,7 @@ const stats = [
 const services = [
   { icon: '⚡', title: 'Rapid Prototype Development', desc: 'Playable hyper-casual prototypes in 3–5 days. We move fast, validate fast, and iterate fast — because speed to market is the single biggest advantage in hyper-casual.' },
   { icon: '🔄', title: 'Core Loop Design & Testing', desc: 'We design and obsessively tune the core loop — the 10-second gameplay cycle that must be immediately fun, instantly learnable, and endlessly repeatable.' },
-  { icon: '💸', title: 'Ad Monetisation (AdMob/IronSource)', desc: 'Full ad mediation setup with AdMob, IronSource (Unity LevelPlay), and MAX — interstitials, rewarded videos, and banners placed to maximise ARPDAU without killing retention.' },
+  { icon: '💸', title: 'Ad Monetization (AdMob/IronSource)', desc: 'Full ad mediation setup with AdMob, IronSource (Unity LevelPlay), and MAX — interstitials, rewarded videos, and banners placed to maximize ARPDAU without killing retention.' },
   { icon: '📈', title: 'CPI Testing & Creative Production', desc: 'Facebook and TikTok CPI test campaigns with multiple ad creatives per concept. We validate acquisition cost before committing to full development — saving you from expensive mistakes.' },
   { icon: '🦠', title: 'Virality Mechanic Design', desc: 'Share mechanics, challenge systems, and social proof loops engineered to generate organic installs and word-of-mouth growth — reducing paid UA dependency over time.' },
   { icon: '🤝', title: 'Publisher Submission Support', desc: 'We prepare your game for major hyper-casual publishers — Voodoo, Crazy Labs, Rollic, Homa — including test metrics packaging, gameplay recording, and submission materials.' },
@@ -41,7 +40,7 @@ const steps = [
   { num: '01', title: 'Concept Validation', desc: 'We evaluate your concept against hyper-casual success criteria — simple mechanic, instant understanding, satisfying feedback loops, and trend alignment — before any development begins.' },
   { num: '02', title: '3-Day Prototype', desc: 'A rough but playable prototype built in three days. Real players test it. If the core loop is fun and unique, we proceed. If not, we iterate the concept — not waste months on the wrong idea.' },
   { num: '03', title: 'CPI Test', desc: 'Video creatives are shot from the prototype and run as CPI test campaigns on Facebook and TikTok. We target sub-$0.40 CPI as a green light for full development.' },
-  { num: '04', title: 'Full Build & Publish', desc: 'With CPI validated, we build the full game — polish, content, monetisation, analytics, and store assets — and launch via publisher deal or self-publishing on App Store and Play Store.' },
+  { num: '04', title: 'Full Build & Publish', desc: 'With CPI validated, we build the full game — polish, content, monetization, analytics, and store assets — and launch via publisher deal or self-publishing on App Store and Play Store.' },
 ];
 
 const faqs = [
@@ -50,12 +49,12 @@ const faqs = [
     a: 'Three things: an immediately understandable and fun core mechanic (learnable in under 3 seconds), a satisfying and addictive loop that rewards and challenges at the right pace, and a low CPI that makes paid user acquisition economical. The best hyper-casual games feel like you invented the idea yourself the moment you play them — obvious in retrospect, but genuinely novel. Timing and trend alignment also matter — the right mechanic in the right cultural moment can see explosive organic growth.',
   },
   {
-    q: 'How do you monetise a hyper-casual game?',
+    q: 'How do you monetize a hyper-casual game?',
     a: 'Almost exclusively through advertising — primarily interstitial ads shown between levels and rewarded video ads for extra lives or bonuses. ARPDAU (Average Revenue Per Daily Active User) of $0.02–$0.06 is typical. Banner ads add marginal revenue. IAP is minimal in pure hyper-casual but hybrid-casual games (with light meta-game layers) can unlock meaningful IAP alongside ads. We set up full ad mediation from day one so you\'re maximising fill rates and eCPMs across multiple ad networks simultaneously.',
   },
   {
     q: 'How fast can you build a hyper-casual prototype?',
-    a: 'Three to five days for a playable prototype with the core mechanic implemented and basic visual polish. This is fast enough to test multiple concepts in a single month. Full game development — after a concept passes CPI testing — typically takes 6–8 weeks to a launch-ready build with monetisation, analytics, tutorial, content depth, and store presence. We run prototype and testing phases in parallel where possible to compress the overall timeline.',
+    a: 'Three to five days for a playable prototype with the core mechanic implemented and basic visual polish. This is fast enough to test multiple concepts in a single month. Full game development — after a concept passes CPI testing — typically takes 6–8 weeks to a launch-ready build with monetization, analytics, tutorial, content depth, and store presence. We run prototype and testing phases in parallel where possible to compress the overall timeline.',
   },
   {
     q: 'How do you test CPI before committing to full development?',
@@ -68,23 +67,6 @@ const faqs = [
 ];
 
 
-const floatingIcons = [
-  { id: 1, icon: IconReact, className: 'top-[10%] left-[5%]' },
-  { id: 2, icon: IconNextJS, className: 'top-[15%] right-[8%]' },
-  { id: 3, icon: IconNodeJS, className: 'top-[60%] left-[3%]' },
-  { id: 4, icon: IconPython, className: 'bottom-[20%] right-[5%]' },
-  { id: 5, icon: IconAWS, className: 'top-[5%] left-[25%]' },
-  { id: 6, icon: IconDocker, className: 'top-[70%] right-[15%]' },
-  { id: 7, icon: IconKubernetes, className: 'bottom-[15%] left-[20%]' },
-  { id: 8, icon: IconTypeScript, className: 'top-[40%] left-[8%]' },
-  { id: 9, icon: IconGraphQL, className: 'top-[80%] right-[25%]' },
-  { id: 10, icon: IconPostgreSQL, className: 'top-[25%] right-[5%]' },
-  { id: 11, icon: IconMongoDB, className: 'top-[50%] left-[2%]' },
-  { id: 12, icon: IconTensorFlow, className: 'bottom-[25%] right-[10%]' },
-  { id: 13, icon: IconGitHub, className: 'top-[35%] right-[12%]' },
-  { id: 14, icon: IconFigma, className: 'bottom-[10%] left-[10%]' },
-  { id: 15, icon: IconVSCode, className: 'top-[5%] left-[50%]' },
-];
 
 export default function PageClient() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -114,7 +96,6 @@ export default function PageClient() {
         {/* HERO */}
         <section ref={heroRef} style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', paddingTop: 140, paddingBottom: 80, position: 'relative', overflow: 'hidden' }}>
           <HeroBackground variant="right" />
-          <FloatingIconsBackground icons={floatingIcons} />
           <div className="cb-container">
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 480px), 1fr))', gap: 'clamp(24px, 5vw, 60px)', alignItems: 'center' }}>
               <div>
@@ -176,6 +157,10 @@ export default function PageClient() {
         </section>
 
         {/* PROCESS */}
+
+        {/* PORTFOLIO */}
+        <PortfolioShowcase category="game-development" />
+
         <section ref={s2} className="section-padding">
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>

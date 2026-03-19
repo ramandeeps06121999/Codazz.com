@@ -84,8 +84,8 @@ function TestimonialCard({ t }: { t: typeof testimonials[number] }) {
   return (
     <div
       style={{
-        width: 380,
-        minWidth: 380,
+        width: 'clamp(280px, 80vw, 380px)',
+        minWidth: 'clamp(280px, 80vw, 380px)',
         padding: '32px 28px',
         border: '1px solid rgba(255,255,255,0.06)',
         borderRadius: 24,

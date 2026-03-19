@@ -38,32 +38,40 @@ const Icon = ({
   const springX = useSpring(x, { stiffness: 300, damping: 20 });
   const springY = useSpring(y, { stiffness: 300, damping: 20 });
 
+  const rafId = React.useRef<number>(0);
+
   React.useEffect(() => {
     const handleMouseMove = () => {
-      if (ref.current) {
-        const rect = ref.current.getBoundingClientRect();
-        const distance = Math.sqrt(
-          Math.pow(mouseX.current - (rect.left + rect.width / 2), 2) +
-            Math.pow(mouseY.current - (rect.top + rect.height / 2), 2)
-        );
-
-        if (distance < 150) {
-          const angle = Math.atan2(
-            mouseY.current - (rect.top + rect.height / 2),
-            mouseX.current - (rect.left + rect.width / 2)
+      cancelAnimationFrame(rafId.current);
+      rafId.current = requestAnimationFrame(() => {
+        if (ref.current) {
+          const rect = ref.current.getBoundingClientRect();
+          const distance = Math.sqrt(
+            Math.pow(mouseX.current - (rect.left + rect.width / 2), 2) +
+              Math.pow(mouseY.current - (rect.top + rect.height / 2), 2)
           );
-          const force = (1 - distance / 150) * 50;
-          x.set(-Math.cos(angle) * force);
-          y.set(-Math.sin(angle) * force);
-        } else {
-          x.set(0);
-          y.set(0);
+
+          if (distance < 150) {
+            const angle = Math.atan2(
+              mouseY.current - (rect.top + rect.height / 2),
+              mouseX.current - (rect.left + rect.width / 2)
+            );
+            const force = (1 - distance / 150) * 50;
+            x.set(-Math.cos(angle) * force);
+            y.set(-Math.sin(angle) * force);
+          } else {
+            x.set(0);
+            y.set(0);
+          }
         }
-      }
+      });
     };
 
     window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      cancelAnimationFrame(rafId.current);
+    };
   }, [x, y, mouseX, mouseY]);
 
   return (

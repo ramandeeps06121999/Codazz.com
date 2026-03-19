@@ -6,12 +6,6 @@ import Footer from '@/components/Footer';
 import Breadcrumb from '@/components/Breadcrumb';
 import TrustBadges from '@/components/TrustBadges';
 import HeroBackground from '@/components/HeroBackground';
-import { FloatingIconsBackground } from '@/components/FloatingIconsBackground';
-import {
-  IconReact, IconNextJS, IconNodeJS, IconPython, IconAWS,
-  IconDocker, IconKubernetes, IconTypeScript, IconGraphQL,
-  IconPostgreSQL, IconMongoDB, IconTensorFlow, IconGitHub, IconFigma, IconVSCode
-} from '@/components/tech-icons';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -54,23 +48,6 @@ function Card({ children, style }: { children: React.ReactNode; style?: React.CS
   );
 }
 
-const floatingIcons = [
-  { id: 1, icon: IconReact, className: 'top-[10%] left-[5%]' },
-  { id: 2, icon: IconNextJS, className: 'top-[15%] right-[8%]' },
-  { id: 3, icon: IconNodeJS, className: 'top-[60%] left-[3%]' },
-  { id: 4, icon: IconPython, className: 'bottom-[20%] right-[5%]' },
-  { id: 5, icon: IconAWS, className: 'top-[5%] left-[25%]' },
-  { id: 6, icon: IconDocker, className: 'top-[70%] right-[15%]' },
-  { id: 7, icon: IconKubernetes, className: 'bottom-[15%] left-[20%]' },
-  { id: 8, icon: IconTypeScript, className: 'top-[40%] left-[8%]' },
-  { id: 9, icon: IconGraphQL, className: 'top-[80%] right-[25%]' },
-  { id: 10, icon: IconPostgreSQL, className: 'top-[25%] right-[5%]' },
-  { id: 11, icon: IconMongoDB, className: 'top-[50%] left-[2%]' },
-  { id: 12, icon: IconTensorFlow, className: 'bottom-[25%] right-[10%]' },
-  { id: 13, icon: IconGitHub, className: 'top-[35%] right-[12%]' },
-  { id: 14, icon: IconFigma, className: 'bottom-[10%] left-[10%]' },
-  { id: 15, icon: IconVSCode, className: 'top-[5%] left-[50%]' },
-];
 
 export default function EnterprisePage() {
   const heroRef = useRef<HTMLElement>(null);
@@ -100,7 +77,6 @@ export default function EnterprisePage() {
         {/* HERO */}
         <section ref={heroRef} className="section-padding" style={{ position: 'relative', overflow: 'hidden', minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
           <HeroBackground variant="center" />
-          <FloatingIconsBackground icons={floatingIcons} />
           <div className="cb-container" style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: 860, margin: '0 auto' }}>
             <div className="reveal" style={{ display: 'inline-block', border: '1px solid rgba(34,197,94,0.4)', borderRadius: 999, padding: '6px 20px', fontSize: 13, color: '#ffffff', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>
               Enterprise Software
@@ -141,7 +117,7 @@ export default function EnterprisePage() {
               {[
                 { icon: '🔗', title: 'Legacy System Integration', desc: 'Connecting decades-old ERP, CRM, and mainframe systems to modern interfaces and APIs — without the big-bang migration risk that derails projects.' },
                 { icon: '🔐', title: 'Enterprise Security', desc: 'SSO, RBAC, audit trails, and zero-trust networking that satisfies your CISO, passes penetration tests, and keeps sensitive business data protected at rest and in transit.' },
-                { icon: '👥', title: 'Change Management', desc: 'Software that employees actually adopt. We conduct user research, run change champions programmes, and design onboarding flows that drive real utilisation.' },
+                { icon: '👥', title: 'Change Management', desc: 'Software that employees actually adopt. We conduct user research, run change champions programs, and design onboarding flows that drive real utilisation.' },
               ].map(c => (
                 <Card key={c.title}>
                   <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>{c.icon}</div>
@@ -167,7 +143,7 @@ export default function EnterprisePage() {
                 { icon: '🛠️', title: 'Internal Tooling', desc: 'Custom admin panels, operations dashboards, and employee-facing apps that replace spreadsheets and manual processes with streamlined workflows.' },
                 { icon: '📊', title: 'Business Intelligence', desc: 'Real-time reporting dashboards, data warehousing, and self-service analytics that empower every department to make data-driven decisions.' },
                 { icon: '⚙️', title: 'Workflow Automation', desc: 'End-to-end process automation with approval chains, notifications, and integrations that eliminate repetitive tasks and reduce human error.' },
-                { icon: '🔐', title: 'MDM & Compliance', desc: 'Master data management, audit trails, and regulatory compliance tooling that keeps your organisation aligned with industry standards.' },
+                { icon: '🔐', title: 'MDM & Compliance', desc: 'Master data management, audit trails, and regulatory compliance tooling that keeps your organization aligned with industry standards.' },
               ].map(s => (
                 <Card key={s.title}>
                   <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>{s.icon}</div>
@@ -237,7 +213,7 @@ export default function EnterprisePage() {
             </div>
             <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
               {[
-                { icon: '🏛️', title: 'Enterprise Architecture Experts', desc: 'We design for maintainability, extensibility, and the organisational realities of large companies — multiple teams, multiple stakeholders, multi-year roadmaps.' },
+                { icon: '🏛️', title: 'Enterprise Architecture Experts', desc: 'We design for maintainability, extensibility, and the organizational realities of large companies — multiple teams, multiple stakeholders, multi-year roadmaps.' },
                 { icon: '🔒', title: 'Security & Compliance', desc: 'SOC II Type II, ISO 27001 alignment, penetration testing, and security architecture reviews that keep your enterprise software out of the headlines.' },
                 { icon: '🤝', title: 'Long-term Partnership', desc: 'We don\'t disappear after launch. Our retainer teams provide ongoing development, support, and strategic guidance as your business evolves.' },
               ].map(w => (
@@ -289,7 +265,7 @@ export default function EnterprisePage() {
                 Build Your <span style={{ color: '#ffffff' }}>Enterprise System.</span>
               </h2>
               <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.15rem', marginBottom: '2.5rem', lineHeight: 1.7 }}>
-                Mission-critical software that scales with your organisation and stands the test of time.
+                Mission-critical software that scales with your organization and stands the test of time.
               </p>
               <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '2.5rem' }}>
                 <Link href="/contact" style={{ background: '#22c55e', color: '#000', padding: '16px 36px', borderRadius: 999, fontWeight: 700, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>

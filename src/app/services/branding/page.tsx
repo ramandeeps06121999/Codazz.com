@@ -32,7 +32,7 @@ const faqSchema = {
       name: 'What do I receive at the end of the project?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'You receive full source files (AI, EPS, SVG, PNG, PDF), a complete brand guidelines document, colour codes for print and digital, font licences guidance, and social media asset templates.',
+        text: 'You receive full source files (AI, EPS, SVG, PNG, PDF), a complete brand guidelines document, color codes for print and digital, font licenses guidance, and social media asset templates.',
       },
     },
     {

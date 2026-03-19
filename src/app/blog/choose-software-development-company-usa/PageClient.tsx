@@ -411,7 +411,7 @@ export default function ChooseSoftwareDevelopmentCompanyUSAClient() {
                     {[
                       { title: 'Fixed-Price Transparency', desc: 'Every project comes with a detailed SOW, milestone payments, and a hard budget ceiling. No hourly surprises. No scope creep without formal approval.' },
                       { title: 'New York-Based, USA-Wide', desc: 'Headquartered in New York with 12 offices across the USA — San Francisco, Los Angeles, Austin, Boston, Washington DC, and more. Your project is built on American soil by American developers.' },
-                      { title: '300+ Successful Launches', desc: 'We have shipped over 300 bespoke products across fintech, healthcare, e-commerce, logistics, and SaaS. We bring deep domain expertise to every engagement.' },
+                      { title: '500+ Successful Launches', desc: 'We have shipped over 500 bespoke products across fintech, healthcare, e-commerce, logistics, and SaaS. We bring deep domain expertise to every engagement.' },
                       { title: 'Full-Stack, In-House Team', desc: 'Every developer, designer, QA engineer, and project manager is a full-time Codazz employee. We never outsource. Your team is our team.' },
                       { title: 'Post-Launch Partnership', desc: 'We do not disappear after deployment. Our maintenance packages include SLA-backed support, performance monitoring, security updates, and ongoing feature development.' },
                     ].map((item, i) => (
@@ -530,7 +530,7 @@ export default function ChooseSoftwareDevelopmentCompanyUSAClient() {
                       </div>
                     </div>
                     <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)', lineHeight: 1.7, margin: 0 }}>
-                      Leading engineering strategy and product vision at Codazz. Has guided over 300+ bespoke product launches globally.
+                      Leading engineering strategy and product vision at Codazz. Has guided over 500+ bespoke product launches globally.
                     </p>
                   </div>
 

@@ -5,8 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ServiceHeroForm from '@/components/ServiceHeroForm';
 import HeroBackground from '@/components/HeroBackground';
-import { FloatingIconsBackground } from '@/components/FloatingIconsBackground';
-import { IconReact, IconNextJS, IconNodeJS, IconPython, IconAWS, IconDocker, IconKubernetes, IconTypeScript, IconGraphQL, IconPostgreSQL, IconMongoDB, IconTensorFlow, IconGitHub, IconFigma, IconVSCode } from '@/components/tech-icons';
+import PortfolioShowcase from '@/components/PortfolioShowcase';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -32,8 +31,8 @@ const services = [
   { icon: '🎯', title: 'Brand Positioning & Differentiation', desc: 'Define the unique space your brand occupies in the market — crafting a positioning statement that clearly articulates why customers should choose you over every alternative.' },
   { icon: '👥', title: 'Audience Persona Development', desc: 'Deep-dive research into your target customers — their motivations, pain points, buying triggers, and media habits — building detailed personas that guide every brand decision.' },
   { icon: '🔭', title: 'Competitive Landscape Analysis', desc: 'A structured audit of your competitive environment — positioning maps, messaging analysis, visual identity review — identifying white space for your brand to own.' },
-  { icon: '🏗️', title: 'Brand Architecture', desc: 'Strategic organisation of your brand portfolio — whether you operate a single brand, endorsed brand, or house of brands — with clear hierarchy and relationship rules.' },
-  { icon: '🗣️', title: 'Messaging Framework & Tone of Voice', desc: 'A messaging hierarchy from core value proposition to audience-specific proof points, plus tone of voice guidelines that make your brand instantly recognisable in any context.' },
+  { icon: '🏗️', title: 'Brand Architecture', desc: 'Strategic organization of your brand portfolio — whether you operate a single brand, endorsed brand, or house of brands — with clear hierarchy and relationship rules.' },
+  { icon: '🗣️', title: 'Messaging Framework & Tone of Voice', desc: 'A messaging hierarchy from core value proposition to audience-specific proof points, plus tone of voice guidelines that make your brand instantly recognizable in any context.' },
   { icon: '💡', title: 'Brand Values & Purpose Definition', desc: 'Articulation of your brand\'s why — purpose, mission, vision, and values — creating the internal north star that aligns your team and resonates with values-driven customers.' },
 ];
 
@@ -45,31 +44,14 @@ const steps = [
 ];
 
 const faqs = [
-  { q: 'What is brand strategy vs brand identity?', a: 'Brand strategy is the thinking — your positioning, purpose, messaging, and audience definition. Brand identity is the visual and verbal expression of that strategy — your logo, colours, typography, and tone of voice. Strategy always comes first; identity should express it.' },
-  { q: 'How long does brand strategy take?', a: 'Our brand strategy sprint takes 6 weeks from kickoff to final deliverable. This includes discovery, research, a positioning workshop, two rounds of review, and final documentation. Larger organisations with complex architectures may require 8–10 weeks.' },
+  { q: 'What is brand strategy vs brand identity?', a: 'Brand strategy is the thinking — your positioning, purpose, messaging, and audience definition. Brand identity is the visual and verbal expression of that strategy — your logo, colors, typography, and tone of voice. Strategy always comes first; identity should express it.' },
+  { q: 'How long does brand strategy take?', a: 'Our brand strategy sprint takes 6 weeks from kickoff to final deliverable. This includes discovery, research, a positioning workshop, two rounds of review, and final documentation. Larger organizations with complex architectures may require 8–10 weeks.' },
   { q: 'Who needs to be involved from our team?', a: 'We typically work with your CEO or founder, marketing lead, and one or two senior team members who understand your customers deeply. We facilitate the process — you provide the expertise about your business, customers, and ambitions.' },
   { q: 'How do you measure brand strategy success?', a: 'Brand strategy success is measured over time through brand tracking studies (awareness, consideration, preference), NPS scores, share of voice in earned media, employee engagement surveys, and commercial metrics like win rates and average deal value.' },
-  { q: 'Do you work with B2B or B2C brands?', a: 'Both. Our team has developed brand strategies for B2C consumer brands, SaaS companies, professional services firms, D2C e-commerce businesses, and enterprise B2B organisations. The strategic process adapts to your category and customer type.' },
+  { q: 'Do you work with B2B or B2C brands?', a: 'Both. Our team has developed brand strategies for B2C consumer brands, SaaS companies, professional services firms, D2C e-commerce businesses, and enterprise B2B organizations. The strategic process adapts to your category and customer type.' },
 ];
 
 
-const floatingIcons = [
-  { id: 1, icon: IconReact, className: 'top-[10%] left-[5%]' },
-  { id: 2, icon: IconNextJS, className: 'top-[15%] right-[8%]' },
-  { id: 3, icon: IconNodeJS, className: 'top-[60%] left-[3%]' },
-  { id: 4, icon: IconPython, className: 'bottom-[20%] right-[5%]' },
-  { id: 5, icon: IconAWS, className: 'top-[5%] left-[25%]' },
-  { id: 6, icon: IconDocker, className: 'top-[70%] right-[15%]' },
-  { id: 7, icon: IconKubernetes, className: 'bottom-[15%] left-[20%]' },
-  { id: 8, icon: IconTypeScript, className: 'top-[40%] left-[8%]' },
-  { id: 9, icon: IconGraphQL, className: 'top-[80%] right-[25%]' },
-  { id: 10, icon: IconPostgreSQL, className: 'top-[25%] right-[5%]' },
-  { id: 11, icon: IconMongoDB, className: 'top-[50%] left-[2%]' },
-  { id: 12, icon: IconTensorFlow, className: 'bottom-[25%] right-[10%]' },
-  { id: 13, icon: IconGitHub, className: 'top-[35%] right-[12%]' },
-  { id: 14, icon: IconFigma, className: 'bottom-[10%] left-[10%]' },
-  { id: 15, icon: IconVSCode, className: 'top-[5%] left-[50%]' },
-];
 
 export default function BrandStrategyPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -99,7 +81,6 @@ export default function BrandStrategyPage() {
         {/* HERO */}
         <section ref={heroRef} style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', paddingTop: 140, paddingBottom: 80, position: 'relative', overflow: 'hidden' }}>
           <HeroBackground variant="right" />
-          <FloatingIconsBackground icons={floatingIcons} />
           <div className="cb-container">
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 480px), 1fr))', gap: 'clamp(24px, 5vw, 60px)', alignItems: 'center' }}>
               <div>
@@ -161,6 +142,10 @@ export default function BrandStrategyPage() {
         </section>
 
         {/* PROCESS */}
+
+        {/* PORTFOLIO */}
+        <PortfolioShowcase category="branding" />
+
         <section ref={s2} className="section-padding">
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>

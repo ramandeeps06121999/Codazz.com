@@ -544,6 +544,7 @@ export default function LatestWork() {
             className="desktop-nav"
           >
             <motion.button
+              aria-label="Previous project"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => scrollToIndex(Math.max(0, activeIndex - 1))}
@@ -567,6 +568,7 @@ export default function LatestWork() {
               </svg>
             </motion.button>
             <motion.button
+              aria-label="Next project"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => scrollToIndex(Math.min(projects.length - 1, activeIndex + 1))}

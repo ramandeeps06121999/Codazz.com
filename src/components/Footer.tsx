@@ -37,17 +37,17 @@ const company = [
 ];
 
 const locations = [
-  { label: 'United States', href: '/locations/new-york' },
-  { label: 'UAE', href: '/locations/dubai' },
-  { label: 'United Kingdom', href: '/locations/london' },
-  { label: 'Australia', href: '/locations/sydney' },
-  { label: 'Canada', href: '/locations/toronto' },
-  { label: 'Saudi Arabia', href: '/locations/riyadh' },
+  { label: 'United States', href: '/locations/usa' },
+  { label: 'UAE', href: '/locations/uae' },
+  { label: 'United Kingdom', href: '/locations/uk' },
+  { label: 'Australia', href: '/locations/australia' },
+  { label: 'Canada', href: '/locations/canada' },
+  { label: 'Saudi Arabia', href: '/locations/saudi-arabia' },
   { label: 'Singapore', href: '/locations/singapore' },
-  { label: 'Germany', href: '/locations/berlin' },
-  { label: 'India', href: '/locations/bangalore' },
-  { label: 'Japan', href: '/locations/tokyo' },
-  { label: 'Brazil', href: '/locations/sao-paulo' },
+  { label: 'Germany', href: '/locations/germany' },
+  { label: 'India', href: '/locations/india' },
+  { label: 'Japan', href: '/locations/japan' },
+  { label: 'Brazil', href: '/locations/brazil' },
   { label: 'All 24 Countries →', href: '/locations' },
 ];
 
@@ -137,7 +137,7 @@ export default function Footer() {
               codazz
             </span>
             <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, maxWidth: 280, marginBottom: 20 }}>
-              Headquartered in Toronto with offices in New York &amp; Dubai — with the best engineers from around the world working virtually. 99% of our meetings happen online: faster starts, zero travel waste, and a greener way to build software.
+              Headquartered in Edmonton &amp; Chandigarh with offices in New York &amp; Dubai — with the best engineers from around the world working virtually. 99% of our meetings happen online: faster starts, zero travel waste, and a greener way to build software.
             </p>
 
             {/* Contact */}

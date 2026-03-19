@@ -5,8 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ServiceHeroForm from '@/components/ServiceHeroForm';
 import HeroBackground from '@/components/HeroBackground';
-import { FloatingIconsBackground } from '@/components/FloatingIconsBackground';
-import { IconReact, IconNextJS, IconNodeJS, IconPython, IconAWS, IconDocker, IconKubernetes, IconTypeScript, IconGraphQL, IconPostgreSQL, IconMongoDB, IconTensorFlow, IconGitHub, IconFigma, IconVSCode } from '@/components/tech-icons';
+import PortfolioShowcase from '@/components/PortfolioShowcase';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -32,9 +31,9 @@ const services = [
   { icon: '🔬', title: 'Brand Audit & Gap Analysis', desc: 'A thorough assessment of your current brand — what is working, what has become outdated, where equity exists, and where the identity is failing to reflect your current business reality.' },
   { icon: '🤝', title: 'Stakeholder Research & Alignment', desc: 'Structured interviews and workshops with leadership, staff, customers, and partners — building a shared understanding of brand strengths, weaknesses, and strategic direction.' },
   { icon: '🗺️', title: 'Rebrand Strategy', desc: 'A strategic rebrand rationale defining what changes, what is retained, positioning evolution, and the strategic narrative that will guide and justify the new identity.' },
-  { icon: '✨', title: 'New Identity Design', desc: 'Full visual identity design for the rebranded organisation — logo, colour system, typography, and brand elements — built on the rebrand strategy with your heritage in mind.' },
+  { icon: '✨', title: 'New Identity Design', desc: 'Full visual identity design for the rebranded organization — logo, color system, typography, and brand elements — built on the rebrand strategy with your heritage in mind.' },
   { icon: '📋', title: 'Rebrand Rollout Plan', desc: 'A phased implementation roadmap covering every touchpoint — digital, print, signage, merchandise, and communications — with timelines, asset requirements, and ownership assigned.' },
-  { icon: '📢', title: 'Internal Brand Launch Support', desc: 'Internal communications and team launch materials to bring your organisation on the rebrand journey — ensuring employees become brand champions from day one of the new identity.' },
+  { icon: '📢', title: 'Internal Brand Launch Support', desc: 'Internal communications and team launch materials to bring your organization on the rebrand journey — ensuring employees become brand champions from day one of the new identity.' },
 ];
 
 const steps = [
@@ -49,27 +48,10 @@ const faqs = [
   { q: 'How do you protect existing brand equity?', a: 'Our rebrand process always begins with a brand equity audit — identifying what associations, visual elements, and brand assets have genuine positive value in your audience\'s minds. We design the new identity to honour and carry forward that equity rather than discarding it.' },
   { q: 'How long does a rebrand take?', a: 'A full rebrand from audit to completed identity design typically takes 10–16 weeks. Rollout and asset production continues beyond that depending on the number of touchpoints. We provide a detailed project timeline at the outset scoped to your specific business complexity.' },
   { q: 'How do we announce the rebrand to customers?', a: 'We develop a rebrand communications plan covering the narrative (the why behind the change), timing strategy, channel-specific messaging, and PR considerations. Internal announcement always precedes external — your team needs to be aligned advocates before the world sees the new brand.' },
-  { q: 'What is included in a rebrand project?', a: 'Our rebrand projects include brand audit, stakeholder research, rebrand strategy, full visual identity design (logo, colours, typography, brand elements), brand guidelines, a phased rollout plan, and internal launch support. Asset production for specific applications (website, collateral, etc.) is scoped separately.' },
+  { q: 'What is included in a rebrand project?', a: 'Our rebrand projects include brand audit, stakeholder research, rebrand strategy, full visual identity design (logo, colors, typography, brand elements), brand guidelines, a phased rollout plan, and internal launch support. Asset production for specific applications (website, collateral, etc.) is scoped separately.' },
 ];
 
 
-const floatingIcons = [
-  { id: 1, icon: IconReact, className: 'top-[10%] left-[5%]' },
-  { id: 2, icon: IconNextJS, className: 'top-[15%] right-[8%]' },
-  { id: 3, icon: IconNodeJS, className: 'top-[60%] left-[3%]' },
-  { id: 4, icon: IconPython, className: 'bottom-[20%] right-[5%]' },
-  { id: 5, icon: IconAWS, className: 'top-[5%] left-[25%]' },
-  { id: 6, icon: IconDocker, className: 'top-[70%] right-[15%]' },
-  { id: 7, icon: IconKubernetes, className: 'bottom-[15%] left-[20%]' },
-  { id: 8, icon: IconTypeScript, className: 'top-[40%] left-[8%]' },
-  { id: 9, icon: IconGraphQL, className: 'top-[80%] right-[25%]' },
-  { id: 10, icon: IconPostgreSQL, className: 'top-[25%] right-[5%]' },
-  { id: 11, icon: IconMongoDB, className: 'top-[50%] left-[2%]' },
-  { id: 12, icon: IconTensorFlow, className: 'bottom-[25%] right-[10%]' },
-  { id: 13, icon: IconGitHub, className: 'top-[35%] right-[12%]' },
-  { id: 14, icon: IconFigma, className: 'bottom-[10%] left-[10%]' },
-  { id: 15, icon: IconVSCode, className: 'top-[5%] left-[50%]' },
-];
 
 export default function RebrandingPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -99,7 +81,6 @@ export default function RebrandingPage() {
         {/* HERO */}
         <section ref={heroRef} style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', paddingTop: 140, paddingBottom: 80, position: 'relative', overflow: 'hidden' }}>
           <HeroBackground variant="right" />
-          <FloatingIconsBackground icons={floatingIcons} />
           <div className="cb-container">
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 480px), 1fr))', gap: 'clamp(24px, 5vw, 60px)', alignItems: 'center' }}>
               <div>
@@ -117,7 +98,7 @@ export default function RebrandingPage() {
             <h1 className="reveal reveal-d2" style={{ fontSize: 'clamp(36px, 6vw, 72px)', fontWeight: 800, letterSpacing: '-0.04em', lineHeight: 1.05, marginBottom: 24, maxWidth: 800 }}>
               Rebranding Done <span style={{ color: '#ffffff' }}>With Confidence</span>
             </h1>
-            <p className="reveal reveal-d3" style={{ fontSize: 18, color: 'rgba(255,255,255,0.45)', lineHeight: 1.7, maxWidth: 600, marginBottom: 40 }}>A rigorous, stakeholder-led rebrand process that evolves your identity strategically — protecting what works, replacing what doesn't, and launching with full organisational alignment.</p>
+            <p className="reveal reveal-d3" style={{ fontSize: 18, color: 'rgba(255,255,255,0.45)', lineHeight: 1.7, maxWidth: 600, marginBottom: 40 }}>A rigorous, stakeholder-led rebrand process that evolves your identity strategically — protecting what works, replacing what doesn't, and launching with full organizational alignment.</p>
             <div className="reveal reveal-d4" style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
               <Link href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, height: 52, padding: '0 32px', borderRadius: 100, background: 'linear-gradient(135deg, #22c55e, #4ade80)', color: '#000', fontSize: 15, fontWeight: 700, textDecoration: 'none' }}>
                 Start Your Project
@@ -161,6 +142,10 @@ export default function RebrandingPage() {
         </section>
 
         {/* PROCESS */}
+
+        {/* PORTFOLIO */}
+        <PortfolioShowcase category="branding" />
+
         <section ref={s2} className="section-padding">
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>

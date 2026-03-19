@@ -6,12 +6,6 @@ import Footer from '@/components/Footer';
 import Breadcrumb from '@/components/Breadcrumb';
 import TrustBadges from '@/components/TrustBadges';
 import HeroBackground from '@/components/HeroBackground';
-import { FloatingIconsBackground } from '@/components/FloatingIconsBackground';
-import {
-  IconReact, IconNextJS, IconNodeJS, IconPython, IconAWS,
-  IconDocker, IconKubernetes, IconTypeScript, IconGraphQL,
-  IconPostgreSQL, IconMongoDB, IconTensorFlow, IconGitHub, IconFigma, IconVSCode
-} from '@/components/tech-icons';
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
 
@@ -32,11 +26,11 @@ const services: { title: string; tag: string; desc: string; chips?: string[] }[]
   {
     title: 'DeFi Protocol Engineering',
     tag: 'DeFi',
-    desc: 'AMMs, lending protocols, yield optimisers and cross-chain bridges engineered from first principles with formal verification.',
+    desc: 'AMMs, lending protocols, yield optimizers and cross-chain bridges engineered from first principles with formal verification.',
     chips: ['Uniswap', 'Aave', 'Chainlink', 'TheGraph', 'IPFS'],
   },
   { title: 'NFT Marketplaces', tag: 'Emerging Web3', desc: 'Custom NFT platforms with lazy minting, royalties, and secondary market mechanics.' },
-  { title: 'DAO Governance', tag: 'Governance', desc: 'On-chain voting, treasury management and proposal frameworks for decentralised organisations.' },
+  { title: 'DAO Governance', tag: 'Governance', desc: 'On-chain voting, treasury management and proposal frameworks for decentralized organisations.' },
   { title: 'Wallet Integration', tag: 'Auth', desc: 'Seamless multi-wallet connect flows with WalletConnect, MetaMask and social login fallbacks.' },
   { title: 'Layer 2 Solutions', tag: 'Scaling', desc: 'Optimism, Arbitrum and zkSync deployments to slash gas costs without sacrificing security.' },
 ];
@@ -87,7 +81,7 @@ const techCategories = [
 ];
 
 const industries = [
-  { icon: '📈', title: 'DeFi', desc: 'Lending, AMMs, yield strategies and on-chain derivatives with rigorous economic modelling.' },
+  { icon: '📈', title: 'DeFi', desc: 'Lending, AMMs, yield strategies and on-chain derivatives with rigorous economic modeling.' },
   { icon: '🎮', title: 'NFT / Gaming', desc: 'Play-to-earn economies, dynamic NFTs and in-game asset marketplaces at scale.' },
   { icon: '🗳️', title: 'DAOs', desc: 'Governance frameworks, treasury systems and quadratic voting mechanisms.' },
   { icon: '🏠', title: 'RWA', desc: 'Tokenised real-world assets — real estate, commodities and private credit on-chain.' },
@@ -112,23 +106,6 @@ function useReveal() {
 
 // ─── PAGE ─────────────────────────────────────────────────────────────────────
 
-const floatingIcons = [
-  { id: 1, icon: IconReact, className: 'top-[10%] left-[5%]' },
-  { id: 2, icon: IconNextJS, className: 'top-[15%] right-[8%]' },
-  { id: 3, icon: IconNodeJS, className: 'top-[60%] left-[3%]' },
-  { id: 4, icon: IconPython, className: 'bottom-[20%] right-[5%]' },
-  { id: 5, icon: IconAWS, className: 'top-[5%] left-[25%]' },
-  { id: 6, icon: IconDocker, className: 'top-[70%] right-[15%]' },
-  { id: 7, icon: IconKubernetes, className: 'bottom-[15%] left-[20%]' },
-  { id: 8, icon: IconTypeScript, className: 'top-[40%] left-[8%]' },
-  { id: 9, icon: IconGraphQL, className: 'top-[80%] right-[25%]' },
-  { id: 10, icon: IconPostgreSQL, className: 'top-[25%] right-[5%]' },
-  { id: 11, icon: IconMongoDB, className: 'top-[50%] left-[2%]' },
-  { id: 12, icon: IconTensorFlow, className: 'bottom-[25%] right-[10%]' },
-  { id: 13, icon: IconGitHub, className: 'top-[35%] right-[12%]' },
-  { id: 14, icon: IconFigma, className: 'bottom-[10%] left-[10%]' },
-  { id: 15, icon: IconVSCode, className: 'top-[5%] left-[50%]' },
-];
 
 export default function BlockchainWeb3Page() {
   const statsRef = useReveal() as React.RefObject<HTMLElement>;
@@ -156,7 +133,6 @@ export default function BlockchainWeb3Page() {
         ═══════════════════════════════════════ */}
         <section ref={heroRef} className="section-padding" style={{ position: 'relative', overflow: 'hidden', minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
           <HeroBackground variant="center" />
-          <FloatingIconsBackground icons={floatingIcons} />
           <div className="cb-container" style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: 860, margin: '0 auto' }}>
             <div className="reveal" style={{ display: 'inline-block', border: '1px solid rgba(34,197,94,0.4)', borderRadius: 999, padding: '6px 20px', fontSize: 13, color: '#ffffff', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>
               Blockchain & Web3
@@ -165,7 +141,7 @@ export default function BlockchainWeb3Page() {
               Build on Web3. Build for Tomorrow.
             </h1>
             <p className="reveal" style={{ fontSize: '1.2rem', color: 'rgba(255,255,255,0.7)', marginBottom: '2.5rem', lineHeight: 1.7 }}>
-              Smart contracts, DeFi protocols, NFT marketplaces and decentralised apps — engineered for security, scale and real-world adoption.
+              Smart contracts, DeFi protocols, NFT marketplaces and decentralized apps — engineered for security, scale and real-world adoption.
             </p>
             <div className="reveal" style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '3.5rem' }}>
               <Link href="/contact" style={{ background: '#22c55e', color: '#000', padding: '14px 32px', borderRadius: 999, fontWeight: 700, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
@@ -390,7 +366,7 @@ export default function BlockchainWeb3Page() {
             </h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: 20 }}>
               {[
-                { name: 'AI & Machine Learning', href: '/services/ai-ml', desc: 'Integrate AI-powered analytics and automation into your decentralised applications.' },
+                { name: 'AI & Machine Learning', href: '/services/ai-ml', desc: 'Integrate AI-powered analytics and automation into your decentralized applications.' },
                 { name: 'SaaS Development', href: '/services/saas-development', desc: 'Web3-native SaaS platforms with wallet auth, token gating and on-chain analytics.' },
                 { name: 'Cloud & DevOps', href: '/services/cloud-devops', desc: 'Reliable infrastructure for node operations, indexers and blockchain data pipelines.' },
               ].map((s) => (

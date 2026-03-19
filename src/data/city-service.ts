@@ -117,7 +117,7 @@ function generateProcessIntro(city: CityData, service: ServiceData): string {
   const isLocal = city.isHQ;
   const locationNote = isLocal
     ? `As one of our dual headquarters, our ${city.name} team is available for in-person workshops, whiteboard sessions, and sprint reviews throughout the engagement`
-    : `Our ${city.name} engagements follow the same rigorous process we use at our New York and Dubai headquarters, with a dedicated project manager in your timezone`;
+    : `Our ${city.name} engagements follow the same rigorous process we use at our Edmonton and Chandigarh headquarters, with a dedicated project manager in your timezone`;
 
   return `${locationNote}. For ${service.shortName.toLowerCase()} projects serving ${city.name}'s ${city.localIndustries[0].toLowerCase()} market, we typically front-load discovery with stakeholder interviews and competitive analysis specific to ${city.state}'s regulatory environment. This ensures zero wasted sprints and a product that fits your market from day one.`;
 }
@@ -189,7 +189,7 @@ export function getCityServiceData(
   // SEO metadata
   const title = `${service.heroHeadlinePrefix} Company in ${city.name}`;
   const locationLabel = getLocationLabel(city);
-  const description = `${service.heroHeadlinePrefix} company in ${locationLabel}. Codazz delivers custom ${service.shortName.toLowerCase()} solutions. ${city.isHQ ? 'Dual HQ in New York & Dubai.' : '46 locations across 24 countries.'} Get a free quote today.`;
+  const description = `${service.heroHeadlinePrefix} company in ${locationLabel}. Codazz delivers custom ${service.shortName.toLowerCase()} solutions. ${city.isHQ ? 'Headquartered in Edmonton & Chandigarh.' : '50 locations across 24 countries.'} Get a free quote today.`;
   const canonicalUrl = `https://codazz.com/locations/${city.slug}/${service.slug}`;
 
   return {

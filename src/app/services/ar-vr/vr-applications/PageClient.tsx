@@ -5,8 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ServiceHeroForm from '@/components/ServiceHeroForm';
 import HeroBackground from '@/components/HeroBackground';
-import { FloatingIconsBackground } from '@/components/FloatingIconsBackground';
-import { IconReact, IconNextJS, IconNodeJS, IconPython, IconAWS, IconDocker, IconKubernetes, IconTypeScript, IconGraphQL, IconPostgreSQL, IconMongoDB, IconTensorFlow, IconGitHub, IconFigma, IconVSCode } from '@/components/tech-icons';
+import PortfolioShowcase from '@/components/PortfolioShowcase';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -29,17 +28,17 @@ const stats = [
 ];
 
 const services = [
-  { icon: '🥽', title: 'Meta Quest Development (Unity/Unreal)', desc: 'Standalone VR apps for Meta Quest 2, 3, and Pro — optimised for the mobile GPU constraints of the platform while delivering immersive, hand-tracked experiences.' },
+  { icon: '🥽', title: 'Meta Quest Development (Unity/Unreal)', desc: 'Standalone VR apps for Meta Quest 2, 3, and Pro — optimized for the mobile GPU constraints of the platform while delivering immersive, hand-tracked experiences.' },
   { icon: '💻', title: 'PC VR (SteamVR)', desc: 'High-fidelity PC VR experiences for Valve Index, HTC Vive, and Windows Mixed Reality headsets via SteamVR. Maximum visual quality with no hardware compromise.' },
   { icon: '🏭', title: 'VR Training Simulations', desc: 'Safe, scalable, and cost-effective VR training for high-risk industries — manufacturing, healthcare, aviation, and defence — with scenario branching and performance tracking.' },
   { icon: '🎬', title: '360° Video & Virtual Tours', desc: 'Immersive 360° video production and interactive virtual tours for real estate, hospitality, events, and cultural institutions. Browser and headset compatible.' },
   { icon: '👥', title: 'VR Social Spaces', desc: 'Multi-user VR environments for events, collaboration, and community. Custom avatar systems, spatial audio, and real-time interaction for up to hundreds of concurrent users.' },
-  { icon: '⚡', title: 'Performance Optimisation for VR', desc: 'Profiling and optimisation of existing VR projects to hit stable 72–120fps targets. Draw call reduction, LOD systems, occlusion culling, and shader optimisation.' },
+  { icon: '⚡', title: 'Performance Optimization for VR', desc: 'Profiling and optimization of existing VR projects to hit stable 72–120fps targets. Draw call reduction, LOD systems, occlusion culling, and shader optimization.' },
 ];
 
 const steps = [
   { num: '01', title: 'Concept & Storyboard', desc: 'We define the VR experience narrative, interaction model, and comfort guidelines. Storyboards and reference material align the team before any development begins.' },
-  { num: '02', title: 'Environment Design', desc: '3D artists build optimised virtual environments — geometry, textures, lighting, and audio — designed for the target headset\'s rendering budget from the ground up.' },
+  { num: '02', title: 'Environment Design', desc: '3D artists build optimized virtual environments — geometry, textures, lighting, and audio — designed for the target headset\'s rendering budget from the ground up.' },
   { num: '03', title: 'Interaction Build', desc: 'Hand tracking, controller input, locomotion systems, physics interactions, and UI in 3D space — all built to VR best practices for comfort and intuitiveness.' },
   { num: '04', title: 'Comfort Testing', desc: 'Systematic comfort testing with real users to eliminate motion sickness triggers. Frame rate is validated, locomotion is tuned, and the experience ships feeling polished and safe.' },
 ];
@@ -63,28 +62,11 @@ const faqs = [
   },
   {
     q: 'How do you distribute a VR app?',
-    a: 'For Meta Quest, apps are distributed through the Meta Horizon Store (public) or App Lab (unlisted/enterprise). PC VR apps go on Steam, which has the largest PC VR audience. For enterprise, we configure MDM-based sideloading or private distribution so your organisation can push apps to a fleet of headsets without a public storefront. We guide you through the certification and submission process.',
+    a: 'For Meta Quest, apps are distributed through the Meta Horizon Store (public) or App Lab (unlisted/enterprise). PC VR apps go on Steam, which has the largest PC VR audience. For enterprise, we configure MDM-based sideloading or private distribution so your organization can push apps to a fleet of headsets without a public storefront. We guide you through the certification and submission process.',
   },
 ];
 
 
-const floatingIcons = [
-  { id: 1, icon: IconReact, className: 'top-[10%] left-[5%]' },
-  { id: 2, icon: IconNextJS, className: 'top-[15%] right-[8%]' },
-  { id: 3, icon: IconNodeJS, className: 'top-[60%] left-[3%]' },
-  { id: 4, icon: IconPython, className: 'bottom-[20%] right-[5%]' },
-  { id: 5, icon: IconAWS, className: 'top-[5%] left-[25%]' },
-  { id: 6, icon: IconDocker, className: 'top-[70%] right-[15%]' },
-  { id: 7, icon: IconKubernetes, className: 'bottom-[15%] left-[20%]' },
-  { id: 8, icon: IconTypeScript, className: 'top-[40%] left-[8%]' },
-  { id: 9, icon: IconGraphQL, className: 'top-[80%] right-[25%]' },
-  { id: 10, icon: IconPostgreSQL, className: 'top-[25%] right-[5%]' },
-  { id: 11, icon: IconMongoDB, className: 'top-[50%] left-[2%]' },
-  { id: 12, icon: IconTensorFlow, className: 'bottom-[25%] right-[10%]' },
-  { id: 13, icon: IconGitHub, className: 'top-[35%] right-[12%]' },
-  { id: 14, icon: IconFigma, className: 'bottom-[10%] left-[10%]' },
-  { id: 15, icon: IconVSCode, className: 'top-[5%] left-[50%]' },
-];
 
 export default function VRApplicationsPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -114,7 +96,6 @@ export default function VRApplicationsPage() {
         {/* HERO */}
         <section ref={heroRef} style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', paddingTop: 140, paddingBottom: 80, position: 'relative', overflow: 'hidden' }}>
           <HeroBackground variant="right" />
-          <FloatingIconsBackground icons={floatingIcons} />
           <div className="cb-container">
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 480px), 1fr))', gap: 'clamp(24px, 5vw, 60px)', alignItems: 'center' }}>
               <div>
@@ -176,6 +157,10 @@ export default function VRApplicationsPage() {
         </section>
 
         {/* PROCESS */}
+
+        {/* PORTFOLIO */}
+        <PortfolioShowcase category="ar-vr" />
+
         <section ref={s2} className="section-padding">
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>

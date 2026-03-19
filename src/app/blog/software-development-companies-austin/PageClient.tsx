@@ -290,7 +290,7 @@ export default function SoftwareDevelopmentCompaniesAustinClient() {
                     emoji: '📊', accentColor: '#60a5fa', bgColor: 'rgba(96,165,250,',
                     metric: 'Equity management & compensation platforms',
                     paragraphs: [
-                      'Originally founded in Austin as Solium Capital, now operating as Shareworks by Morgan Stanley, this company built the definitive platform for equity plan management and stock compensation. Their software manages billions of dollars in employee equity across thousands of companies worldwide, all engineered from their Austin development centre.',
+                      'Originally founded in Austin as Solium Capital, now operating as Shareworks by Morgan Stanley, this company built the definitive platform for equity plan management and stock compensation. Their software manages billions of dollars in employee equity across thousands of companies worldwide, all engineered from their Austin development center.',
                     ],
                   },
                   {
@@ -429,7 +429,7 @@ export default function SoftwareDevelopmentCompaniesAustinClient() {
                       </div>
                     </div>
                     <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)', lineHeight: 1.7, margin: 0 }}>
-                      Leading engineering strategy and product vision at Codazz. Has guided over 300+ bespoke product launches globally.
+                      Leading engineering strategy and product vision at Codazz. Has guided over 500+ bespoke product launches globally.
                     </p>
                   </div>
 

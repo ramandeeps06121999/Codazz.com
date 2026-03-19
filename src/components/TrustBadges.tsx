@@ -26,7 +26,7 @@ export default function TrustBadges({ compact = false }: { compact?: boolean }) 
           alt={b.alt}
           width={compact ? Math.round(b.w * 0.8) : b.w}
           height={compact ? Math.round(b.h * 0.8) : b.h}
-          style={{ filter: 'brightness(0) invert(1)', opacity: 0.5 }}
+          style={{ filter: 'brightness(0) invert(1)', opacity: 0.8 }}
         />
       ))}
     </div>

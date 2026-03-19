@@ -5,8 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ServiceHeroForm from '@/components/ServiceHeroForm';
 import HeroBackground from '@/components/HeroBackground';
-import { FloatingIconsBackground } from '@/components/FloatingIconsBackground';
-import { IconReact, IconNextJS, IconNodeJS, IconPython, IconAWS, IconDocker, IconKubernetes, IconTypeScript, IconGraphQL, IconPostgreSQL, IconMongoDB, IconTensorFlow, IconGitHub, IconFigma, IconVSCode } from '@/components/tech-icons';
+import PortfolioShowcase from '@/components/PortfolioShowcase';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -31,7 +30,7 @@ const stats = [
 const services = [
   { icon: '🐦', title: 'Dart & Flutter SDK', desc: 'We write clean, idiomatic Dart using Flutter\'s latest SDK. Our engineers stay current with every Flutter release, ensuring your app benefits from the latest performance improvements and APIs.' },
   { icon: '🧩', title: 'Custom Widget Library', desc: 'We design and build reusable custom widget libraries tailored to your brand, ensuring visual consistency across screens while keeping the codebase DRY and maintainable.' },
-  { icon: '⚡', title: 'Native Performance', desc: 'Flutter compiles to native ARM code, delivering 60/120fps animations without a JavaScript bridge. We profile and optimise rendering pipelines to ensure buttery-smooth performance on all devices.' },
+  { icon: '⚡', title: 'Native Performance', desc: 'Flutter compiles to native ARM code, delivering 60/120fps animations without a JavaScript bridge. We profile and optimize rendering pipelines to ensure buttery-smooth performance on all devices.' },
   { icon: '🔌', title: 'Platform Channels', desc: 'When you need to access device-specific APIs not covered by existing plugins, we write custom Platform Channels in Swift/Kotlin to bridge Flutter with native functionality seamlessly.' },
   { icon: '🖥️', title: 'Flutter Web & Desktop', desc: 'Extend your Flutter app beyond mobile to web browsers, macOS, Windows, and Linux — all from the same codebase. We architect shared business logic with platform-adaptive UIs for each target.' },
   { icon: '🔄', title: 'State Management (Riverpod/Bloc)', desc: 'We implement scalable state management using Riverpod or Bloc depending on your app\'s complexity, ensuring a predictable, testable, and maintainable application architecture.' },
@@ -53,23 +52,6 @@ const faqs = [
 ];
 
 
-const floatingIcons = [
-  { id: 1, icon: IconReact, className: 'top-[10%] left-[5%]' },
-  { id: 2, icon: IconNextJS, className: 'top-[15%] right-[8%]' },
-  { id: 3, icon: IconNodeJS, className: 'top-[60%] left-[3%]' },
-  { id: 4, icon: IconPython, className: 'bottom-[20%] right-[5%]' },
-  { id: 5, icon: IconAWS, className: 'top-[5%] left-[25%]' },
-  { id: 6, icon: IconDocker, className: 'top-[70%] right-[15%]' },
-  { id: 7, icon: IconKubernetes, className: 'bottom-[15%] left-[20%]' },
-  { id: 8, icon: IconTypeScript, className: 'top-[40%] left-[8%]' },
-  { id: 9, icon: IconGraphQL, className: 'top-[80%] right-[25%]' },
-  { id: 10, icon: IconPostgreSQL, className: 'top-[25%] right-[5%]' },
-  { id: 11, icon: IconMongoDB, className: 'top-[50%] left-[2%]' },
-  { id: 12, icon: IconTensorFlow, className: 'bottom-[25%] right-[10%]' },
-  { id: 13, icon: IconGitHub, className: 'top-[35%] right-[12%]' },
-  { id: 14, icon: IconFigma, className: 'bottom-[10%] left-[10%]' },
-  { id: 15, icon: IconVSCode, className: 'top-[5%] left-[50%]' },
-];
 
 export default function FlutterDevelopment() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -101,7 +83,6 @@ export default function FlutterDevelopment() {
         {/* HERO */}
         <section ref={heroRef} style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', paddingTop: 140, paddingBottom: 80, position: 'relative', overflow: 'hidden' }}>
           <HeroBackground variant="right" />
-          <FloatingIconsBackground icons={floatingIcons} />
           <div className="cb-container">
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 480px), 1fr))', gap: 'clamp(24px, 5vw, 60px)', alignItems: 'center' }}>
               <div>
@@ -168,6 +149,10 @@ export default function FlutterDevelopment() {
         </section>
 
         {/* PROCESS */}
+
+        {/* PORTFOLIO */}
+        <PortfolioShowcase category="mobile-app-development" />
+
         <section ref={s2} className="section-padding">
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>

@@ -20,6 +20,47 @@ function useReveal() {
 
 const posts = [
   {
+    slug: 'how-much-does-app-development-cost-2026',
+    category: 'Business',
+    title: 'How Much Does App Development Cost in 2026? The Complete Pricing Guide',
+    excerpt: 'Complete guide to mobile app development costs in 2026. Real pricing from $15K to $500K+, factors affecting cost, and how to budget for your app project.',
+    author: 'RM',
+    authorName: 'Raman Makkar',
+    date: 'Mar 2026',
+    readTime: '12 min read',
+    featured: true,
+  },
+  {
+    slug: 'flutter-vs-react-native-2026',
+    category: 'Engineering',
+    title: 'Flutter vs React Native: The Definitive 2026 Comparison',
+    excerpt: 'In-depth comparison of Flutter vs React Native for 2026. Performance benchmarks, architecture differences, costs, and which framework to choose for your project.',
+    author: 'RM',
+    authorName: 'Raman Makkar',
+    date: 'Mar 2026',
+    readTime: '15 min read',
+  },
+  {
+    slug: 'ai-app-development-guide-2026',
+    category: 'AI/ML',
+    title: 'AI App Development in 2026: The Complete Guide to Building Intelligent Applications',
+    excerpt: 'How to build AI-powered apps in 2026. From LLM integration to computer vision, learn the tech stack, costs, and best practices for AI development.',
+    author: 'RM',
+    authorName: 'Raman Makkar',
+    date: 'Mar 2026',
+    readTime: '18 min read',
+  },
+  {
+    slug: 'mvp-development-guide',
+    category: 'Business',
+    title: 'The Complete MVP Development Guide: From Idea to Launch in 90 Days',
+    excerpt: 'Learn how to build a successful MVP in 90 days. The 2026 framework for startups, from validation to launch, with real case studies and cost breakdowns.',
+    author: 'RM',
+    authorName: 'Raman Makkar',
+    date: 'Mar 2026',
+    readTime: '14 min read',
+  },
+  {
     slug: 'app-development-cost-canada',
     category: 'Business',
     title: 'How Much Does App Development Cost in Canada? (2026 Guide)',
@@ -190,7 +231,7 @@ export default function BlogPage() {
       <Navbar />
       <main ref={pageRef as React.RefObject<HTMLElement>} style={{ background: '#000000', minHeight: '100vh' }}>
 
-        {/* ── HERO ── */}
+        {/* -- HERO -- */}
         <section style={{ padding: '160px 0 80px', position: 'relative', overflow: 'hidden' }}>
           {/* Background glow */}
           <div style={{
@@ -216,9 +257,9 @@ export default function BlogPage() {
             </h1>
             <p className="reveal reveal-d2" style={{
               fontSize: 18, color: 'rgba(255,255,255,0.45)', lineHeight: 1.7,
-              maxWidth: 560, marginBottom: 48,
+              maxWidth: 620, marginBottom: 48,
             }}>
-              Deep dives into engineering, product, and the technology shaping tomorrow.
+              Your software development blog for AI development guides, app development cost breakdowns, cloud architecture deep dives, and practical engineering insights from a team that ships production code every day.
             </p>
 
             {/* Search bar */}
@@ -231,7 +272,7 @@ export default function BlogPage() {
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" strokeWidth="2">
                   <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
                 </svg>
-                <span style={{ fontSize: 14, color: 'rgba(255,255,255,0.2)' }}>Search articles…</span>
+                <span style={{ fontSize: 14, color: 'rgba(255,255,255,0.2)' }}>Search articles...</span>
               </div>
             </div>
 
@@ -255,7 +296,24 @@ export default function BlogPage() {
           </div>
         </section>
 
-        {/* ── FEATURED POST ── */}
+        {/* -- INTRO / VALUE PROPOSITION -- */}
+        <section style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+          <div className="cb-container" style={{ paddingTop: 64, paddingBottom: 64 }}>
+            <div className="reveal" style={{
+              background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)',
+              borderRadius: 24, padding: 'clamp(24px, 4vw, 40px)',
+              borderLeft: '3px solid #22c55e',
+            }}>
+              <p style={{
+                fontSize: 16, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8, margin: 0,
+              }}>
+                Expert insights on software development, AI, cloud architecture, and building digital products — written by engineers who ship production code every day. Practical guides, real cost breakdowns, and lessons learned from 500+ projects. Whether you are a startup founder estimating your MVP budget, a CTO evaluating development partners, or an engineer exploring AI integration patterns, our app development cost guides and AI development tutorials are built to help you make better decisions, faster.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* -- FEATURED POST -- */}
         <section style={{ paddingBottom: 80, borderTop: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container" style={{ paddingTop: 80 }}>
             <p className="reveal" style={{
@@ -308,7 +366,7 @@ export default function BlogPage() {
                     fontSize: 16, color: 'rgba(255,255,255,0.45)', lineHeight: 1.7,
                     maxWidth: 620, marginBottom: 28,
                   }}>
-                    The mobile apps that achieved billion-dollar valuations in 2026 share one thing in common: they were built different from the start. We analysed each one to extract the engineering and product decisions that made the difference.
+                    The mobile apps that achieved billion-dollar valuations in 2026 share one thing in common: they were built different from the start. We analyzed each one to extract the engineering and product decisions that made the difference.
                   </p>
                   <span style={{
                     display: 'inline-flex', alignItems: 'center', gap: 8,
@@ -333,7 +391,7 @@ export default function BlogPage() {
           </div>
         </section>
 
-        {/* ── POSTS GRID ── */}
+        {/* -- POSTS GRID -- */}
         <section className="section-padding" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container" style={{ paddingTop: 80 }}>
             <p className="reveal" style={{
@@ -350,7 +408,7 @@ export default function BlogPage() {
                 return (
                   <Link key={post.slug} href={`/blog/${post.slug}`} style={{ textDecoration: 'none' }}>
                     <article
-                      className={`reveal reveal-d${Math.min(i + 1, 6)}`}
+                      className="reveal reveal-d1"
                       style={{
                         background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)',
                         borderRadius: 24, padding: 'clamp(20px, 4vw, 32px)', height: '100%',
@@ -443,7 +501,69 @@ export default function BlogPage() {
           </div>
         </section>
 
-        {/* ── NEWSLETTER CTA ── */}
+        {/* -- ABOUT THE AUTHOR -- */}
+        <section style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+          <div className="cb-container" style={{ paddingTop: 80, paddingBottom: 80 }}>
+            <p className="reveal" style={{
+              fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
+              color: 'rgba(255,255,255,0.25)', marginBottom: 32,
+            }}>
+              About the Author
+            </p>
+            <div className="reveal" style={{
+              background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)',
+              borderRadius: 24, padding: 'clamp(28px, 4vw, 48px)',
+              display: 'flex', gap: 32, alignItems: 'flex-start', flexWrap: 'wrap',
+            }}>
+              {/* Author avatar */}
+              <div style={{
+                width: 80, height: 80, borderRadius: '50%', flexShrink: 0,
+                background: 'linear-gradient(135deg, rgba(34,197,94,0.15) 0%, rgba(17,24,39,0.2) 100%)',
+                border: '2px solid rgba(34,197,94,0.3)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                fontSize: 24, fontWeight: 700, color: '#22c55e',
+              }}>
+                RM
+              </div>
+              {/* Author info */}
+              <div style={{ flex: 1, minWidth: 240 }}>
+                <h3 style={{
+                  fontSize: 20, fontWeight: 700, color: '#ffffff',
+                  letterSpacing: '-0.02em', marginBottom: 4,
+                }}>
+                  Raman Makkar
+                </h3>
+                <p style={{
+                  fontSize: 14, fontWeight: 600, color: '#22c55e',
+                  marginBottom: 16,
+                }}>
+                  CEO & Founder, Codazz
+                </p>
+                <p style={{
+                  fontSize: 15, color: 'rgba(255,255,255,0.45)', lineHeight: 1.75,
+                  marginBottom: 24, maxWidth: 600,
+                }}>
+                  Software engineer turned CEO with 10+ years of hands-on development experience. Writes about the real costs, timelines, and decisions behind building software products. His guides on app development costs and AI integration have been referenced by startups and enterprises across North America.
+                </p>
+                <Link href="/about/raman-makkar" style={{
+                  display: 'inline-flex', alignItems: 'center', gap: 8,
+                  fontSize: 14, fontWeight: 600, color: '#ffffff',
+                  textDecoration: 'none',
+                  padding: '10px 24px', borderRadius: 100,
+                  background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)',
+                  transition: 'all 0.2s',
+                }}>
+                  View Full Profile
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* -- NEWSLETTER CTA -- */}
         <section className="section-padding" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container" style={{ paddingTop: 80 }}>
             <div
@@ -456,22 +576,24 @@ export default function BlogPage() {
               <span style={{
                 fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
                 color: '#ffffff', display: 'block', marginBottom: 20,
-              }}>Newsletter</span>
+              }}>Stay Updated</span>
               <h2 style={{
                 fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', fontWeight: 700, color: '#ffffff',
                 letterSpacing: '-0.03em', marginBottom: 16,
               }}>
-                Get the latest insights delivered.
+                Get notified when we publish new guides.
               </h2>
               <p style={{
-                fontSize: 16, color: 'rgba(255,255,255,0.4)', marginBottom: 40, maxWidth: 460, margin: '0 auto 40px',
+                fontSize: 16, color: 'rgba(255,255,255,0.4)', marginBottom: 40, maxWidth: 520, margin: '0 auto 40px',
+                lineHeight: 1.7,
               }}>
-                Engineering deep dives, product strategy, and startup insights — twice a month, no noise.
+                No spam, just practical software development insights — app development cost guides, AI development tutorials, and engineering deep dives delivered straight to your inbox.
               </p>
               <div style={{
                 display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap',
               }}>
                 <input
+                  id="newsletter-email"
                   type="email"
                   placeholder="you@company.com"
                   style={{
@@ -480,17 +602,34 @@ export default function BlogPage() {
                     outline: 'none', width: 'min(300px, 100%)',
                   }}
                 />
-                <button style={{
-                  padding: '14px 32px', borderRadius: 100, background: '#22c55e', color: '#000',
-                  fontSize: 14, fontWeight: 700, border: 'none', cursor: 'pointer',
-                  transition: 'all 0.2s',
-                }}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const input = document.getElementById('newsletter-email') as HTMLInputElement;
+                    if (input?.value && input.value.includes('@')) {
+                      alert('Thank you for subscribing!');
+                      input.value = '';
+                    }
+                  }}
+                  style={{
+                    padding: '14px 32px', borderRadius: 100, background: '#22c55e', color: '#000',
+                    fontSize: 14, fontWeight: 700, border: 'none', cursor: 'pointer',
+                    transition: 'all 0.2s',
+                  }}>
                   Subscribe
                 </button>
               </div>
               <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.2)', marginTop: 20 }}>
                 No spam. Unsubscribe anytime.
               </p>
+              <div style={{ marginTop: 24 }}>
+                <Link href="/contact" style={{
+                  fontSize: 14, color: 'rgba(255,255,255,0.35)', textDecoration: 'none',
+                  transition: 'color 0.2s',
+                }}>
+                  Or reach out to us directly &rarr;
+                </Link>
+              </div>
             </div>
           </div>
         </section>

@@ -5,8 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ServiceHeroForm from '@/components/ServiceHeroForm';
 import HeroBackground from '@/components/HeroBackground';
-import { FloatingIconsBackground } from '@/components/FloatingIconsBackground';
-import { IconReact, IconNextJS, IconNodeJS, IconPython, IconAWS, IconDocker, IconKubernetes, IconTypeScript, IconGraphQL, IconPostgreSQL, IconMongoDB, IconTensorFlow, IconGitHub, IconFigma, IconVSCode } from '@/components/tech-icons';
+import PortfolioShowcase from '@/components/PortfolioShowcase';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -39,7 +38,7 @@ const services = [
 
 const steps = [
   { num: '01', title: 'Brief & Storyboard', desc: 'We develop a detailed creative brief and storyboard — mapping every scene, transition, and timing beat before any animation begins, ensuring full alignment on the visual direction.' },
-  { num: '02', title: 'Style Development', desc: 'A motion styleframe is designed and approved — establishing the visual look, colour palette, typography treatment, and animation mood before full production commences.' },
+  { num: '02', title: 'Style Development', desc: 'A motion styleframe is designed and approved — establishing the visual look, color palette, typography treatment, and animation mood before full production commences.' },
   { num: '03', title: 'Animation Production', desc: 'Our After Effects team animates the approved storyboard, with two rounds of revision included — refining timing, easing, and details until every frame is perfect.' },
   { num: '04', title: 'File Delivery', desc: 'Final files delivered in all required formats — MP4, MOV, GIF, WebM, Lottie JSON, and editable After Effects project files — with a clear file naming and usage guide.' },
 ];
@@ -49,27 +48,10 @@ const faqs = [
   { q: 'Lottie vs GIF vs MP4 for web animations?', a: 'Lottie (JSON) is the superior choice for web and app animations — it is vector-based (scales perfectly), incredibly lightweight (often 10x smaller than GIF), and fully interactive/controllable via code. GIF has no alpha channel and poor quality. MP4 works well for video but requires autoplay considerations. We always recommend Lottie for UI animations.' },
   { q: 'How long does a brand video take to produce?', a: 'A 60–90 second explainer video typically takes 4–6 weeks from brief to delivery: 1 week for script and storyboard, 1 week for styleframes, 2–3 weeks for animation, and 1 week for revisions and final delivery. Logo stings and short motion assets are faster — typically 1–2 weeks.' },
   { q: 'Do you provide editable After Effects files?', a: 'Yes — all After Effects project files are included in our standard deliverable package. We structure projects cleanly with labelled compositions, organised layers, and clear notes so your in-house team or future agency can make updates without starting from scratch.' },
-  { q: 'Can motion assets match our existing static brand?', a: 'Absolutely — and this is typically where we start. We review your existing brand guidelines, colour system, typography, and static identity, then develop a motion language that feels like a natural extension of your visual identity rather than a departure from it.' },
+  { q: 'Can motion assets match our existing static brand?', a: 'Absolutely — and this is typically where we start. We review your existing brand guidelines, color system, typography, and static identity, then develop a motion language that feels like a natural extension of your visual identity rather than a departure from it.' },
 ];
 
 
-const floatingIcons = [
-  { id: 1, icon: IconReact, className: 'top-[10%] left-[5%]' },
-  { id: 2, icon: IconNextJS, className: 'top-[15%] right-[8%]' },
-  { id: 3, icon: IconNodeJS, className: 'top-[60%] left-[3%]' },
-  { id: 4, icon: IconPython, className: 'bottom-[20%] right-[5%]' },
-  { id: 5, icon: IconAWS, className: 'top-[5%] left-[25%]' },
-  { id: 6, icon: IconDocker, className: 'top-[70%] right-[15%]' },
-  { id: 7, icon: IconKubernetes, className: 'bottom-[15%] left-[20%]' },
-  { id: 8, icon: IconTypeScript, className: 'top-[40%] left-[8%]' },
-  { id: 9, icon: IconGraphQL, className: 'top-[80%] right-[25%]' },
-  { id: 10, icon: IconPostgreSQL, className: 'top-[25%] right-[5%]' },
-  { id: 11, icon: IconMongoDB, className: 'top-[50%] left-[2%]' },
-  { id: 12, icon: IconTensorFlow, className: 'bottom-[25%] right-[10%]' },
-  { id: 13, icon: IconGitHub, className: 'top-[35%] right-[12%]' },
-  { id: 14, icon: IconFigma, className: 'bottom-[10%] left-[10%]' },
-  { id: 15, icon: IconVSCode, className: 'top-[5%] left-[50%]' },
-];
 
 export default function MotionVideoBrandingPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -99,7 +81,6 @@ export default function MotionVideoBrandingPage() {
         {/* HERO */}
         <section ref={heroRef} style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', paddingTop: 140, paddingBottom: 80, position: 'relative', overflow: 'hidden' }}>
           <HeroBackground variant="right" />
-          <FloatingIconsBackground icons={floatingIcons} />
           <div className="cb-container">
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 480px), 1fr))', gap: 'clamp(24px, 5vw, 60px)', alignItems: 'center' }}>
               <div>
@@ -161,6 +142,10 @@ export default function MotionVideoBrandingPage() {
         </section>
 
         {/* PROCESS */}
+
+        {/* PORTFOLIO */}
+        <PortfolioShowcase category="branding" />
+
         <section ref={s2} className="section-padding">
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>

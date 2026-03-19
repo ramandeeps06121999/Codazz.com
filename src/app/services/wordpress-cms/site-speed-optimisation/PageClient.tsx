@@ -5,8 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ServiceHeroForm from '@/components/ServiceHeroForm';
 import HeroBackground from '@/components/HeroBackground';
-import { FloatingIconsBackground } from '@/components/FloatingIconsBackground';
-import { IconReact, IconNextJS, IconNodeJS, IconPython, IconAWS, IconDocker, IconKubernetes, IconTypeScript, IconGraphQL, IconPostgreSQL, IconMongoDB, IconTensorFlow, IconGitHub, IconFigma, IconVSCode } from '@/components/tech-icons';
+import PortfolioShowcase from '@/components/PortfolioShowcase';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -30,9 +29,9 @@ const stats = [
 
 const services = [
   { icon: '🔍', title: 'Core Web Vitals Audit & Fix', desc: 'Comprehensive LCP, FID/INP and CLS audit with prioritised remediation — we identify exactly what is killing your scores and fix it.' },
-  { icon: '🖼️', title: 'Image Optimisation & WebP', desc: 'Batch conversion to WebP/AVIF, responsive image srcsets, lazy loading implementation and proper width/height attributes to eliminate layout shift.' },
+  { icon: '🖼️', title: 'Image Optimization & WebP', desc: 'Batch conversion to WebP/AVIF, responsive image srcsets, lazy loading implementation and proper width/height attributes to eliminate layout shift.' },
   { icon: '⚡', title: 'Caching Strategy', desc: 'Redis object caching, full-page caching via WP Rocket or W3 Total Cache, browser caching headers, and Varnish configuration for enterprise sites.' },
-  { icon: '🗄️', title: 'Database Optimisation', desc: 'WordPress database cleanup — remove post revisions, transients, spam comments — plus slow query analysis and indexing for large tables.' },
+  { icon: '🗄️', title: 'Database Optimization', desc: 'WordPress database cleanup — remove post revisions, transients, spam comments — plus slow query analysis and indexing for large tables.' },
   { icon: '🌐', title: 'CDN Setup & Configuration', desc: 'Cloudflare or BunnyCDN integration with proper cache rules, asset minification, HTTP/2 push, and edge caching for global audiences.' },
   { icon: '🔌', title: 'Plugin Audit & Cleanup', desc: 'We audit every installed plugin for performance impact, identify conflicts and bloat, replace heavy plugins with lightweight alternatives.' },
 ];
@@ -40,36 +39,19 @@ const services = [
 const steps = [
   { num: '01', title: 'Speed Audit & Baseline', desc: 'We run comprehensive speed tests (Lighthouse, WebPageTest, GTmetrix) across multiple pages and devices to establish a performance baseline and identify the biggest impact fixes.' },
   { num: '02', title: 'Fix Prioritisation', desc: 'All findings are ranked by potential performance gain vs implementation effort. We focus on the 20% of fixes that deliver 80% of the performance improvement first.' },
-  { num: '03', title: 'Implementation', desc: 'Systematic implementation of fixes on a staging environment — image optimisation, caching, code minification, render-blocking resource elimination, font optimisation and more.' },
+  { num: '03', title: 'Implementation', desc: 'Systematic implementation of fixes on a staging environment — image optimization, caching, code minification, render-blocking resource elimination, font optimization and more.' },
   { num: '04', title: 'Verify & Monitor', desc: 'Post-implementation testing across devices and real user scenarios, Core Web Vitals verification, and ongoing monitoring setup with alerts for performance regressions.' },
 ];
 
 const faqs = [
-  { q: 'Why is my WordPress site slow?', a: 'Common culprits include unoptimised images (often the single biggest factor), too many plugins (especially page builders), no caching configured, cheap shared hosting, unminified CSS/JS, render-blocking scripts, and a bloated database full of post revisions and transients. Most WordPress sites have multiple issues stacking on top of each other.' },
+  { q: 'Why is my WordPress site slow?', a: 'Common culprits include unoptimized images (often the single biggest factor), too many plugins (especially page builders), no caching configured, cheap shared hosting, unminified CSS/JS, render-blocking scripts, and a bloated database full of post revisions and transients. Most WordPress sites have multiple issues stacking on top of each other.' },
   { q: 'What is a good PageSpeed score?', a: 'Google considers 90+ a "Good" score. For most business sites, we target 90+ on desktop and 75+ on mobile (mobile is harder due to smaller CPU budgets). More importantly, we focus on Core Web Vitals: LCP under 2.5s, INP under 200ms, and CLS under 0.1 — these are the metrics that directly influence Google rankings and user experience.' },
-  { q: 'Do I need a CDN?', a: 'If your audience is spread across multiple regions — yes, absolutely. A CDN caches your assets at edge locations globally, meaning a user in London gets served content from a London server rather than your origin in Sydney. For single-region audiences, a CDN still helps with DDoS protection, asset optimisation and reduced origin load.' },
-  { q: 'Will speed optimisation break my site?', a: 'We perform all optimisation work on a staging copy of your site first, never on production. Each change is tested before the next is applied. We have a rollback plan at every step. In 5+ years of speed optimisation work, we have never had an optimisation cause an unrecoverable issue on a production site.' },
-  { q: 'How do you handle image optimisation?', a: 'We convert all images to WebP (with AVIF for supporting browsers), compress them with quality settings tuned to be imperceptible to the human eye, implement responsive srcsets so mobile devices download smaller files, add proper lazy loading, and set explicit width/height attributes to prevent layout shift. For large sites, we automate this via Cloudflare Images or a custom pipeline.' },
+  { q: 'Do I need a CDN?', a: 'If your audience is spread across multiple regions — yes, absolutely. A CDN caches your assets at edge locations globally, meaning a user in London gets served content from a London server rather than your origin in Sydney. For single-region audiences, a CDN still helps with DDoS protection, asset optimization and reduced origin load.' },
+  { q: 'Will speed optimization break my site?', a: 'We perform all optimization work on a staging copy of your site first, never on production. Each change is tested before the next is applied. We have a rollback plan at every step. In 5+ years of speed optimization work, we have never had an optimization cause an unrecoverable issue on a production site.' },
+  { q: 'How do you handle image optimization?', a: 'We convert all images to WebP (with AVIF for supporting browsers), compress them with quality settings tuned to be imperceptible to the human eye, implement responsive srcsets so mobile devices download smaller files, add proper lazy loading, and set explicit width/height attributes to prevent layout shift. For large sites, we automate this via Cloudflare Images or a custom pipeline.' },
 ];
 
 
-const floatingIcons = [
-  { id: 1, icon: IconReact, className: 'top-[10%] left-[5%]' },
-  { id: 2, icon: IconNextJS, className: 'top-[15%] right-[8%]' },
-  { id: 3, icon: IconNodeJS, className: 'top-[60%] left-[3%]' },
-  { id: 4, icon: IconPython, className: 'bottom-[20%] right-[5%]' },
-  { id: 5, icon: IconAWS, className: 'top-[5%] left-[25%]' },
-  { id: 6, icon: IconDocker, className: 'top-[70%] right-[15%]' },
-  { id: 7, icon: IconKubernetes, className: 'bottom-[15%] left-[20%]' },
-  { id: 8, icon: IconTypeScript, className: 'top-[40%] left-[8%]' },
-  { id: 9, icon: IconGraphQL, className: 'top-[80%] right-[25%]' },
-  { id: 10, icon: IconPostgreSQL, className: 'top-[25%] right-[5%]' },
-  { id: 11, icon: IconMongoDB, className: 'top-[50%] left-[2%]' },
-  { id: 12, icon: IconTensorFlow, className: 'bottom-[25%] right-[10%]' },
-  { id: 13, icon: IconGitHub, className: 'top-[35%] right-[12%]' },
-  { id: 14, icon: IconFigma, className: 'bottom-[10%] left-[10%]' },
-  { id: 15, icon: IconVSCode, className: 'top-[5%] left-[50%]' },
-];
 
 export default function PageClient() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -99,7 +81,6 @@ export default function PageClient() {
         {/* HERO */}
         <section ref={heroRef} style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', paddingTop: 140, paddingBottom: 80, position: 'relative', overflow: 'hidden' }}>
           <HeroBackground variant="right" />
-          <FloatingIconsBackground icons={floatingIcons} />
           <div className="cb-container">
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 480px), 1fr))', gap: 'clamp(24px, 5vw, 60px)', alignItems: 'center' }}>
               <div>
@@ -108,14 +89,14 @@ export default function PageClient() {
                   <span>/</span>
                   <Link href="/services/wordpress-cms" style={{ color: 'rgba(255,255,255,0.4)', textDecoration: 'none' }}>WordPress & CMS</Link>
                   <span>/</span>
-                  <span style={{ color: '#ffffff' }}>Site Speed Optimisation</span>
+                  <span style={{ color: '#ffffff' }}>Site Speed Optimization</span>
                 </div>
                 <div className="reveal reveal-d1" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 16px', borderRadius: 100, background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.2)', marginBottom: 24 }}>
                   <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#22c55e', display: 'inline-block' }} />
                   <span style={{ fontSize: 12, fontWeight: 600, color: '#ffffff', letterSpacing: '0.05em' }}>WORDPRESS & CMS</span>
                 </div>
                 <h1 className="reveal reveal-d2" style={{ fontSize: 'clamp(36px, 6vw, 72px)', fontWeight: 800, letterSpacing: '-0.04em', lineHeight: 1.05, marginBottom: 24, maxWidth: 800 }}>
-                  WordPress Site Speed <span style={{ color: '#ffffff' }}>Optimisation</span>
+                  WordPress Site Speed <span style={{ color: '#ffffff' }}>Optimization</span>
                 </h1>
                 <p className="reveal reveal-d3" style={{ fontSize: 18, color: 'rgba(255,255,255,0.45)', lineHeight: 1.7, maxWidth: 600, marginBottom: 40 }}>Transform a slow, frustrating WordPress site into a 90+ Lighthouse score performer — passing Core Web Vitals, ranking higher, and converting more.</p>
                 <div className="reveal reveal-d4" style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
@@ -161,6 +142,10 @@ export default function PageClient() {
         </section>
 
         {/* PROCESS */}
+
+        {/* PORTFOLIO */}
+        <PortfolioShowcase category="wordpress-cms" />
+
         <section ref={s2} className="section-padding">
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>

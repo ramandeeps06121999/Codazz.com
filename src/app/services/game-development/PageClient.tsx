@@ -7,12 +7,6 @@ import Breadcrumb from '@/components/Breadcrumb';
 import ServiceHeroForm from '@/components/ServiceHeroForm';
 import TrustBadges from '@/components/TrustBadges';
 import HeroBackground from '@/components/HeroBackground';
-import { FloatingIconsBackground } from '@/components/FloatingIconsBackground';
-import {
-  IconReact, IconNextJS, IconNodeJS, IconPython, IconAWS,
-  IconDocker, IconKubernetes, IconTypeScript, IconGraphQL,
-  IconPostgreSQL, IconMongoDB, IconTensorFlow, IconGitHub, IconFigma, IconVSCode
-} from '@/components/tech-icons';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -39,13 +33,13 @@ const services = [
   { icon: '🖥️', title: 'PC & Console', desc: 'Unity and Unreal Engine titles for Steam, PlayStation, Xbox and Nintendo Switch — AAA-quality at independent studio scale.' },
   { icon: '🌐', title: 'Web & HTML5 Games', desc: 'Instant-play browser games for portals, ads and casual audiences — no download required, broad platform reach.' },
   { icon: '⛓️', title: 'Blockchain Games', desc: 'Play-to-earn mechanics, NFT item ownership and on-chain progression built on EVM-compatible chains with seamless wallet integration.' },
-  { icon: '🎨', title: 'Game UI/UX Design', desc: 'Menus, HUD design, onboarding flows and in-game economy UI that reduce friction and maximise engagement at every session touchpoint.' },
-  { icon: '🔄', title: 'Live Operations', desc: 'Post-launch content updates, seasonal events, battle passes and A/B-tested monetisation systems that keep your DAU and ARPU climbing.' },
+  { icon: '🎨', title: 'Game UI/UX Design', desc: 'Menus, HUD design, onboarding flows and in-game economy UI that reduce friction and maximize engagement at every session touchpoint.' },
+  { icon: '🔄', title: 'Live Operations', desc: 'Post-launch content updates, seasonal events, battle passes and A/B-tested monetization systems that keep your DAU and ARPU climbing.' },
 ];
 
 const steps = [
-  { num: '01', title: 'Concept', desc: 'Genre selection, target audience, core loop design, competitive benchmarking and monetisation model — all validated before any production resources are committed.' },
-  { num: '02', title: 'Prototype', desc: 'A playable vertical slice that proves the core loop is fun. We test retention mechanics, pacing and monetisation hooks before scaling production.' },
+  { num: '01', title: 'Concept', desc: 'Genre selection, target audience, core loop design, competitive benchmarking and monetization model — all validated before any production resources are committed.' },
+  { num: '02', title: 'Prototype', desc: 'A playable vertical slice that proves the core loop is fun. We test retention mechanics, pacing and monetization hooks before scaling production.' },
   { num: '03', title: 'Production', desc: 'Full game build with art, audio, narrative and feature implementation. Weekly playtests, soft launch in select markets and KPI tracking throughout.' },
   { num: '04', title: 'Launch & LiveOps', desc: 'App store submission, UA campaign setup, performance monitoring and ongoing live operations — events, updates and balance patches driven by player data.' },
 ];
@@ -59,28 +53,11 @@ const results = [
 const faqs = [
   { q: 'What game engines do you work with?', a: 'Unity is our primary engine for mobile and cross-platform titles. Unreal Engine 5 for PC and console projects requiring photorealistic visuals. Phaser and PlayCanvas for HTML5. Godot for projects requiring open-source flexibility.' },
   { q: 'Can you build a game from concept, or only take over existing projects?', a: 'Both. We handle full game development from concept through launch, and we also take on rescue projects, port existing games to new platforms, or add features and live operations to shipped titles.' },
-  { q: 'How do you approach mobile game monetisation?', a: 'Monetisation strategy is defined during concept — before a line of code is written. We design IAP economies, ad placement strategies and battle pass systems that maximise LTV without harming retention. We also run A/B tests post-launch to optimise.' },
-  { q: 'Do you handle App Store and Google Play submission?', a: 'Yes. We manage all submission requirements including store listings, screenshots, trailers, metadata optimisation, rating questionnaires and compliance with both Apple and Google policies.' },
+  { q: 'How do you approach mobile game monetization?', a: 'Monetization strategy is defined during concept — before a line of code is written. We design IAP economies, ad placement strategies and battle pass systems that maximize LTV without harming retention. We also run A/B tests post-launch to optimize.' },
+  { q: 'Do you handle App Store and Google Play submission?', a: 'Yes. We manage all submission requirements including store listings, screenshots, trailers, metadata optimization, rating questionnaires and compliance with both Apple and Google policies.' },
   { q: 'What does a typical mobile game project cost?', a: 'Hyper-casual titles start around $40K–$80K. Mid-core mobile games typically range from $150K–$500K depending on feature depth and art style. We provide detailed estimates after a scoping session based on your game design document or brief.' },
 ];
 
-const floatingIcons = [
-  { id: 1, icon: IconReact, className: 'top-[10%] left-[5%]' },
-  { id: 2, icon: IconNextJS, className: 'top-[15%] right-[8%]' },
-  { id: 3, icon: IconNodeJS, className: 'top-[60%] left-[3%]' },
-  { id: 4, icon: IconPython, className: 'bottom-[20%] right-[5%]' },
-  { id: 5, icon: IconAWS, className: 'top-[5%] left-[25%]' },
-  { id: 6, icon: IconDocker, className: 'top-[70%] right-[15%]' },
-  { id: 7, icon: IconKubernetes, className: 'bottom-[15%] left-[20%]' },
-  { id: 8, icon: IconTypeScript, className: 'top-[40%] left-[8%]' },
-  { id: 9, icon: IconGraphQL, className: 'top-[80%] right-[25%]' },
-  { id: 10, icon: IconPostgreSQL, className: 'top-[25%] right-[5%]' },
-  { id: 11, icon: IconMongoDB, className: 'top-[50%] left-[2%]' },
-  { id: 12, icon: IconTensorFlow, className: 'bottom-[25%] right-[10%]' },
-  { id: 13, icon: IconGitHub, className: 'top-[35%] right-[12%]' },
-  { id: 14, icon: IconFigma, className: 'bottom-[10%] left-[10%]' },
-  { id: 15, icon: IconVSCode, className: 'top-[5%] left-[50%]' },
-];
 
 export default function GameDevelopmentPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -118,7 +95,6 @@ export default function GameDevelopmentPage() {
         {/* HERO */}
         <section ref={heroRef} className="section-padding" style={{ position: 'relative', overflow: 'hidden', minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
           <HeroBackground variant="center" />
-          <FloatingIconsBackground icons={floatingIcons} />
           <div className="cb-container" style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: 860, margin: '0 auto' }}>
             <div className="reveal" style={{ display: 'inline-block', border: '1px solid rgba(34,197,94,0.4)', borderRadius: 999, padding: '6px 20px', fontSize: 13, color: '#ffffff', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>
               Game Development
@@ -127,7 +103,7 @@ export default function GameDevelopmentPage() {
               We Build Games That Players Love.
             </h1>
             <p className="reveal" style={{ fontSize: '1.2rem', color: 'rgba(255,255,255,0.7)', marginBottom: '2.5rem', lineHeight: 1.7 }}>
-              Mobile games, PC/console titles, and web-based experiences — engineered for engagement, retention and monetisation.
+              Mobile games, PC/console titles, and web-based experiences — engineered for engagement, retention and monetization.
             </p>
             <div className="reveal" style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '3.5rem' }}>
               <Link href="/contact" style={{ background: '#22c55e', color: '#000', padding: '14px 32px', borderRadius: 999, fontWeight: 700, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
@@ -173,7 +149,7 @@ export default function GameDevelopmentPage() {
               <span style={{ fontSize: 11, fontWeight: 700, color: '#ffffff', letterSpacing: '0.12em', textTransform: 'uppercase' }}>What We Build</span>
             </div>
             <h2 className="reveal reveal-d1" style={{ fontSize: 'clamp(2rem,3.5vw,3rem)', fontWeight: 500, letterSpacing: '-0.03em', margin: '0 0 16px' }}>Game Development Services</h2>
-            <p className="reveal reveal-d2" style={{ fontSize: 16, color: 'rgba(255,255,255,0.45)', maxWidth: 520, margin: '0 0 56px', lineHeight: 1.7 }}>Every genre, every platform — built for retention, engagement and long-term monetisation.</p>
+            <p className="reveal reveal-d2" style={{ fontSize: 16, color: 'rgba(255,255,255,0.45)', maxWidth: 520, margin: '0 0 56px', lineHeight: 1.7 }}>Every genre, every platform — built for retention, engagement and long-term monetization.</p>
             {/* Service Cards */}
             <div className="reveal reveal-d1" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 320px), 1fr))', gap: 20 }}>
               {services.map(s => (

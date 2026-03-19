@@ -45,12 +45,12 @@ const GLOBE_CONFIG: COBEOptions = {
 };
 
 const locations = [
-  { city: 'New York', flag: 'HQ', highlight: true },
-  { city: 'Dubai', flag: 'HQ', highlight: true },
+  { city: 'Edmonton', flag: 'HQ', highlight: true },
+  { city: 'Chandigarh', flag: 'HQ', highlight: true },
+  { city: 'New York', flag: 'US' },
+  { city: 'Dubai', flag: 'UAE' },
   { city: 'London', flag: 'EU' },
   { city: 'Singapore', flag: 'APAC' },
-  { city: 'Tokyo', flag: 'APAC' },
-  { city: 'Sydney', flag: 'APAC' },
 ];
 
 function AnimatedNumber({ target, suffix = '' }: { target: number; suffix?: string }) {
@@ -61,6 +61,7 @@ function AnimatedNumber({ target, suffix = '' }: { target: number; suffix?: stri
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    let rafId: number;
     const io = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !hasAnimated.current) {
@@ -71,15 +72,20 @@ function AnimatedNumber({ target, suffix = '' }: { target: number; suffix?: stri
             const progress = Math.min((now - start) / duration, 1);
             const eased = 1 - Math.pow(1 - progress, 3);
             setValue(Math.round(eased * target));
-            if (progress < 1) requestAnimationFrame(animate);
+            if (progress < 1) {
+              rafId = requestAnimationFrame(animate);
+            }
           };
-          requestAnimationFrame(animate);
+          rafId = requestAnimationFrame(animate);
         }
       },
       { threshold: 0.5 }
     );
     io.observe(el);
-    return () => io.disconnect();
+    return () => {
+      io.disconnect();
+      cancelAnimationFrame(rafId);
+    };
   }, [target]);
 
   return <span ref={ref}>{value}{suffix}</span>;
@@ -162,7 +168,7 @@ export default function GlobalPresence() {
             margin: '0 auto 20px', maxWidth: 700,
           }}>
             One Team.<br />
-            <span style={{ color: 'rgba(255,255,255,0.2)' }}>46 Locations. 24 Countries.</span>
+            <span style={{ color: 'rgba(255,255,255,0.2)' }}>50 Locations. 24 Countries.</span>
           </h2>
 
           <p className="gp-reveal" style={{
@@ -201,7 +207,7 @@ export default function GlobalPresence() {
                 letterSpacing: '0.1em', textTransform: 'uppercase',
                 background: 'rgba(0,0,0,0.7)', padding: '3px 8px',
                 borderRadius: 4, backdropFilter: 'blur(4px)',
-              }}>New York HQ</span>
+              }}>Edmonton HQ</span>
             </div>
             <div style={{
               position: 'absolute', top: '34%', right: '4%',
@@ -218,7 +224,7 @@ export default function GlobalPresence() {
                 letterSpacing: '0.1em', textTransform: 'uppercase',
                 background: 'rgba(0,0,0,0.7)', padding: '3px 8px',
                 borderRadius: 4, backdropFilter: 'blur(4px)',
-              }}>Dubai HQ</span>
+              }}>Chandigarh HQ</span>
             </div>
 
             {/* Bottom label */}
@@ -241,7 +247,7 @@ export default function GlobalPresence() {
               marginBottom: 40,
             }}>
               {[
-                { value: 46, suffix: '', label: 'Locations' },
+                { value: 50, suffix: '', label: 'Locations' },
                 { value: 24, suffix: '', label: 'Countries' },
                 { value: 150, suffix: '+', label: 'Engineers' },
               ].map(stat => (

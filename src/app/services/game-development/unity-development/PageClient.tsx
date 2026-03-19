@@ -5,8 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ServiceHeroForm from '@/components/ServiceHeroForm';
 import HeroBackground from '@/components/HeroBackground';
-import { FloatingIconsBackground } from '@/components/FloatingIconsBackground';
-import { IconReact, IconNextJS, IconNodeJS, IconPython, IconAWS, IconDocker, IconKubernetes, IconTypeScript, IconGraphQL, IconPostgreSQL, IconMongoDB, IconTensorFlow, IconGitHub, IconFigma, IconVSCode } from '@/components/tech-icons';
+import PortfolioShowcase from '@/components/PortfolioShowcase';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -33,7 +32,7 @@ const services = [
   { icon: '✨', title: 'HDRP & URP Rendering Pipelines', desc: 'Expert implementation of Unity\'s High Definition and Universal Render Pipelines — custom shaders, VFX Graph, Shader Graph, and post-processing for visuals that stand out.' },
   { icon: '🌐', title: 'Unity Multiplayer (Netcode/NGO)', desc: 'Multiplayer architecture using Unity Netcode for GameObjects, Relay, and Lobby services — server-authoritative designs for cheat-resistant, low-latency online experiences.' },
   { icon: '☁️', title: 'Unity Services Integration', desc: 'Full Unity Gaming Services stack — Analytics, Cloud Save, Authentication, Remote Config, Economy, and A/B Testing — for data-driven live game operations.' },
-  { icon: '⚡', title: 'Asset Optimisation & Profiling', desc: 'Deep profiling with Unity Profiler, Memory Profiler, and Frame Debugger — identifying and eliminating CPU/GPU bottlenecks for silky performance on all target devices.' },
+  { icon: '⚡', title: 'Asset Optimization & Profiling', desc: 'Deep profiling with Unity Profiler, Memory Profiler, and Frame Debugger — identifying and eliminating CPU/GPU bottlenecks for silky performance on all target devices.' },
   { icon: '📦', title: 'Unity Addressables & Asset Management', desc: 'Addressable Asset System implementation for on-demand content loading, DLC management, and reduced initial build sizes — critical for mobile and live service games.' },
 ];
 
@@ -41,7 +40,7 @@ const steps = [
   { num: '01', title: 'Architecture Design', desc: 'We design the project architecture before writing code — scene structure, domain separation, data flow, and system dependencies — to avoid technical debt that kills teams mid-project.' },
   { num: '02', title: 'Core Systems', desc: 'Foundation systems first: input, state management, UI framework, audio, save/load, and platform abstraction layers. Solid foundations prevent costly rewrites later in production.' },
   { num: '03', title: 'Level / Feature Build', desc: 'Gameplay features, levels, and content are built in sprint cycles with playable builds every two weeks. Continuous integration ensures the game is always in a shippable state.' },
-  { num: '04', title: 'QA & Optimisation', desc: 'Structured QA across target platforms and devices. Performance profiling and optimisation until frame rate targets are met — then final platform certification and submission.' },
+  { num: '04', title: 'QA & Optimization', desc: 'Structured QA across target platforms and devices. Performance profiling and optimization until frame rate targets are met — then final platform certification and submission.' },
 ];
 
 const faqs = [
@@ -54,12 +53,12 @@ const faqs = [
     a: 'Yes. Unity supports PlayStation, Xbox, Nintendo Switch, and other consoles through platform-specific Unity modules. Console development requires developer accounts with the respective platform holders (Sony, Microsoft, Nintendo), which have approval processes. We have experience with console certification processes and can guide your submission. Note that Unity\'s console platforms are licensed separately from the standard Unity subscription.',
   },
   {
-    q: 'How do you optimise Unity for mobile?',
-    a: 'Mobile optimisation is multi-layered: we use URP (not HDRP) for mobile, set aggressive draw call budgets, compress textures with ASTC, strip unused Unity modules from the build, implement aggressive LOD systems, avoid dynamic lighting in favour of baked lighting, pool GameObjects instead of instantiating, and profile on real low-end devices — not just the simulator. We target the bottom 20th percentile of your expected device spread.',
+    q: 'How do you optimize Unity for mobile?',
+    a: 'Mobile optimization is multi-layered: we use URP (not HDRP) for mobile, set aggressive draw call budgets, compress textures with ASTC, strip unused Unity modules from the build, implement aggressive LOD systems, avoid dynamic lighting in favor of baked lighting, pool GameObjects instead of instantiating, and profile on real low-end devices — not just the simulator. We target the bottom 20th percentile of your expected device spread.',
   },
   {
     q: 'Unity HDRP vs URP vs Built-in Render Pipeline — which is right for my game?',
-    a: 'Built-in is legacy — don\'t start new projects on it. URP (Universal Render Pipeline) is the right choice for mobile, casual, and mid-core games — highly optimised, widely supported, good visual quality. HDRP (High Definition Render Pipeline) is for PC/console projects targeting maximum visual fidelity — ray tracing, volumetric lighting, advanced materials. HDRP does not support mobile. We select and configure the pipeline for your project\'s platform and visual targets during architecture design.',
+    a: 'Built-in is legacy — don\'t start new projects on it. URP (Universal Render Pipeline) is the right choice for mobile, casual, and mid-core games — highly optimized, widely supported, good visual quality. HDRP (High Definition Render Pipeline) is for PC/console projects targeting maximum visual fidelity — ray tracing, volumetric lighting, advanced materials. HDRP does not support mobile. We select and configure the pipeline for your project\'s platform and visual targets during architecture design.',
   },
   {
     q: 'Which version of Unity do you use?',
@@ -68,23 +67,6 @@ const faqs = [
 ];
 
 
-const floatingIcons = [
-  { id: 1, icon: IconReact, className: 'top-[10%] left-[5%]' },
-  { id: 2, icon: IconNextJS, className: 'top-[15%] right-[8%]' },
-  { id: 3, icon: IconNodeJS, className: 'top-[60%] left-[3%]' },
-  { id: 4, icon: IconPython, className: 'bottom-[20%] right-[5%]' },
-  { id: 5, icon: IconAWS, className: 'top-[5%] left-[25%]' },
-  { id: 6, icon: IconDocker, className: 'top-[70%] right-[15%]' },
-  { id: 7, icon: IconKubernetes, className: 'bottom-[15%] left-[20%]' },
-  { id: 8, icon: IconTypeScript, className: 'top-[40%] left-[8%]' },
-  { id: 9, icon: IconGraphQL, className: 'top-[80%] right-[25%]' },
-  { id: 10, icon: IconPostgreSQL, className: 'top-[25%] right-[5%]' },
-  { id: 11, icon: IconMongoDB, className: 'top-[50%] left-[2%]' },
-  { id: 12, icon: IconTensorFlow, className: 'bottom-[25%] right-[10%]' },
-  { id: 13, icon: IconGitHub, className: 'top-[35%] right-[12%]' },
-  { id: 14, icon: IconFigma, className: 'bottom-[10%] left-[10%]' },
-  { id: 15, icon: IconVSCode, className: 'top-[5%] left-[50%]' },
-];
 
 export default function PageClient() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -114,7 +96,6 @@ export default function PageClient() {
         {/* HERO */}
         <section ref={heroRef} style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', paddingTop: 140, paddingBottom: 80, position: 'relative', overflow: 'hidden' }}>
           <HeroBackground variant="right" />
-          <FloatingIconsBackground icons={floatingIcons} />
           <div className="cb-container">
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 480px), 1fr))', gap: 'clamp(24px, 5vw, 60px)', alignItems: 'center' }}>
               <div>
@@ -176,6 +157,10 @@ export default function PageClient() {
         </section>
 
         {/* PROCESS */}
+
+        {/* PORTFOLIO */}
+        <PortfolioShowcase category="game-development" />
+
         <section ref={s2} className="section-padding">
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>

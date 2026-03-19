@@ -8,6 +8,7 @@ import FeaturedAwards from '@/components/FeaturedAwards';
 // import TechStack from '@/components/TechStack';
 
 import GlobalPresence from '@/components/GlobalPresence';
+import PortfolioShowcase from '@/components/PortfolioShowcase';
 import PortfolioSection from '@/components/PortfolioSection';
 import IndustriesSection from '@/components/IndustriesSection';
 import ShowcaseMarquee from '@/components/ShowcaseMarquee';
@@ -41,6 +42,7 @@ export default function Home() {
         <div style={{ height: 1, background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.06) 50%, transparent)', margin: '0 auto', maxWidth: '80%' }} />
         <IndustriesSection />
         <AdvancedLabs />
+        <PortfolioShowcase category="" />
         <InsightsSection />
         <FAQSection />
         <Contact />

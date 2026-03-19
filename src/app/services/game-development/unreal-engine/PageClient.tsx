@@ -5,8 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ServiceHeroForm from '@/components/ServiceHeroForm';
 import HeroBackground from '@/components/HeroBackground';
-import { FloatingIconsBackground } from '@/components/FloatingIconsBackground';
-import { IconReact, IconNextJS, IconNodeJS, IconPython, IconAWS, IconDocker, IconKubernetes, IconTypeScript, IconGraphQL, IconPostgreSQL, IconMongoDB, IconTensorFlow, IconGitHub, IconFigma, IconVSCode } from '@/components/tech-icons';
+import PortfolioShowcase from '@/components/PortfolioShowcase';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -29,7 +28,7 @@ const stats = [
 ];
 
 const services = [
-  { icon: '🎯', title: 'Unreal Engine 5 Development', desc: 'Full-cycle UE5 game development — project setup, gameplay programming in Blueprint and C++, level design, content integration, and platform optimisation for PC, console, and VR.' },
+  { icon: '🎯', title: 'Unreal Engine 5 Development', desc: 'Full-cycle UE5 game development — project setup, gameplay programming in Blueprint and C++, level design, content integration, and platform optimization for PC, console, and VR.' },
   { icon: '💡', title: 'Lumen Global Illumination', desc: 'Dynamic, fully indirect lighting using Lumen — no baking, no lightmaps, fully reactive to time-of-day and dynamic objects. Cinematic lighting quality in real-time gameplay.' },
   { icon: '🏔️', title: 'Nanite Virtualised Geometry', desc: 'Film-quality geometry rendered in real-time with Nanite — billions of polygons, no manual LOD authoring. Perfect for open-world environments and photorealistic architectural visualisation.' },
   { icon: '⚙️', title: 'Blueprint & C++ Development', desc: 'We work fluently in both Blueprint visual scripting and C++ — using each where it makes sense. C++ for performance-critical systems; Blueprint for rapid designer-controlled gameplay logic.' },
@@ -41,7 +40,7 @@ const steps = [
   { num: '01', title: 'Project Scoping', desc: 'We define the technical scope — target platforms, visual quality tier, performance budgets, and required Unreal systems. Platform targets and hardware constraints are set before design begins.' },
   { num: '02', title: 'Level Design', desc: 'World building with World Partition, PCG (Procedural Content Generation), and Nanite-ready asset pipeline. Environments are designed for both visual quality and performance from the start.' },
   { num: '03', title: 'Gameplay Programming', desc: 'Gameplay Ability System, physics, AI behaviour trees, animation blueprints, and multiplayer replication — built by engineers who understand Unreal\'s architecture at a deep level.' },
-  { num: '04', title: 'Optimisation & Shipping', desc: 'Unreal Insights profiling, PSO caching, shader compilation optimisation, and platform-specific packaging. We handle console certification submissions and Steam Deck verification.' },
+  { num: '04', title: 'Optimization & Shipping', desc: 'Unreal Insights profiling, PSO caching, shader compilation optimization, and platform-specific packaging. We handle console certification submissions and Steam Deck verification.' },
 ];
 
 const faqs = [
@@ -51,7 +50,7 @@ const faqs = [
   },
   {
     q: 'Is Unreal Engine 5 suitable for mobile games?',
-    a: 'Technically yes, but practically it requires significant trade-offs. Lumen and Nanite do not work on mobile — you\'re using the older rendering path. UE5\'s base overhead is higher than Unity\'s URP, which means more aggressive optimisation work and a higher minimum device spec. For most mobile games, Unity remains the better choice. UE5 on mobile makes sense for high-end action games where a restricted device range is acceptable and premium visual quality is the goal.',
+    a: 'Technically yes, but practically it requires significant trade-offs. Lumen and Nanite do not work on mobile — you\'re using the older rendering path. UE5\'s base overhead is higher than Unity\'s URP, which means more aggressive optimization work and a higher minimum device spec. For most mobile games, Unity remains the better choice. UE5 on mobile makes sense for high-end action games where a restricted device range is acceptable and premium visual quality is the goal.',
   },
   {
     q: 'What is Lumen and how does it work?',
@@ -68,23 +67,6 @@ const faqs = [
 ];
 
 
-const floatingIcons = [
-  { id: 1, icon: IconReact, className: 'top-[10%] left-[5%]' },
-  { id: 2, icon: IconNextJS, className: 'top-[15%] right-[8%]' },
-  { id: 3, icon: IconNodeJS, className: 'top-[60%] left-[3%]' },
-  { id: 4, icon: IconPython, className: 'bottom-[20%] right-[5%]' },
-  { id: 5, icon: IconAWS, className: 'top-[5%] left-[25%]' },
-  { id: 6, icon: IconDocker, className: 'top-[70%] right-[15%]' },
-  { id: 7, icon: IconKubernetes, className: 'bottom-[15%] left-[20%]' },
-  { id: 8, icon: IconTypeScript, className: 'top-[40%] left-[8%]' },
-  { id: 9, icon: IconGraphQL, className: 'top-[80%] right-[25%]' },
-  { id: 10, icon: IconPostgreSQL, className: 'top-[25%] right-[5%]' },
-  { id: 11, icon: IconMongoDB, className: 'top-[50%] left-[2%]' },
-  { id: 12, icon: IconTensorFlow, className: 'bottom-[25%] right-[10%]' },
-  { id: 13, icon: IconGitHub, className: 'top-[35%] right-[12%]' },
-  { id: 14, icon: IconFigma, className: 'bottom-[10%] left-[10%]' },
-  { id: 15, icon: IconVSCode, className: 'top-[5%] left-[50%]' },
-];
 
 export default function PageClient() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -114,7 +96,6 @@ export default function PageClient() {
         {/* HERO */}
         <section ref={heroRef} style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', paddingTop: 140, paddingBottom: 80, position: 'relative', overflow: 'hidden' }}>
           <HeroBackground variant="right" />
-          <FloatingIconsBackground icons={floatingIcons} />
           <div className="cb-container">
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 480px), 1fr))', gap: 'clamp(24px, 5vw, 60px)', alignItems: 'center' }}>
               <div>
@@ -176,6 +157,10 @@ export default function PageClient() {
         </section>
 
         {/* PROCESS */}
+
+        {/* PORTFOLIO */}
+        <PortfolioShowcase category="game-development" />
+
         <section ref={s2} className="section-padding">
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>

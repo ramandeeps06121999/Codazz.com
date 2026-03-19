@@ -20,14 +20,14 @@ const SHOWCASE_IMAGES = [
   '/portfolio/2-1.png',
 ];
 
+const duplicated = [...SHOWCASE_IMAGES, ...SHOWCASE_IMAGES];
+
 const FADE_IN: Variants = {
   hidden: { opacity: 0, y: 20 },
   show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 80, damping: 20 } },
 };
 
 export default function ShowcaseMarquee() {
-  const duplicated = [...SHOWCASE_IMAGES, ...SHOWCASE_IMAGES];
-
   return (
     <section
       className={cn(

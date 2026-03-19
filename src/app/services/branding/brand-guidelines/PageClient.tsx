@@ -5,8 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ServiceHeroForm from '@/components/ServiceHeroForm';
 import HeroBackground from '@/components/HeroBackground';
-import { FloatingIconsBackground } from '@/components/FloatingIconsBackground';
-import { IconReact, IconNextJS, IconNodeJS, IconPython, IconAWS, IconDocker, IconKubernetes, IconTypeScript, IconGraphQL, IconPostgreSQL, IconMongoDB, IconTensorFlow, IconGitHub, IconFigma, IconVSCode } from '@/components/tech-icons';
+import PortfolioShowcase from '@/components/PortfolioShowcase';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -29,47 +28,30 @@ const stats = [
 ];
 
 const services = [
-  { icon: '✅', title: 'Logo Usage Rules', desc: 'Clear documentation of correct and incorrect logo usage — spacing rules, minimum sizes, approved colour variations, and prohibited treatments to protect brand consistency.' },
-  { icon: '🎨', title: 'Colour System Documentation', desc: 'Complete colour specifications for every brand colour in HEX, RGB, CMYK, and Pantone — with usage rules, hierarchy, and accessible combinations documented for every application.' },
+  { icon: '✅', title: 'Logo Usage Rules', desc: 'Clear documentation of correct and incorrect logo usage — spacing rules, minimum sizes, approved color variations, and prohibited treatments to protect brand consistency.' },
+  { icon: '🎨', title: 'Color System Documentation', desc: 'Complete color specifications for every brand color in HEX, RGB, CMYK, and Pantone — with usage rules, hierarchy, and accessible combinations documented for every application.' },
   { icon: '🔤', title: 'Typography Guidelines', desc: 'Typography system documentation covering font families, weights, sizes, line heights, and hierarchy rules for headings, body, captions, and UI across digital and print contexts.' },
-  { icon: '📸', title: 'Photography & Imagery Style', desc: 'Art direction guidelines defining your brand\'s photographic aesthetic — subject matter, composition, colour grading, mood, and what to avoid — ensuring visual consistency across all imagery.' },
+  { icon: '📸', title: 'Photography & Imagery Style', desc: 'Art direction guidelines defining your brand\'s photographic aesthetic — subject matter, composition, color grading, mood, and what to avoid — ensuring visual consistency across all imagery.' },
   { icon: '💬', title: 'Voice & Tone Guide', desc: 'Written guidelines defining how your brand communicates — personality traits, vocabulary, sentence structure, and tone adjustments for different contexts such as social, formal comms, and advertising.' },
   { icon: '📐', title: 'Digital & Print Application Examples', desc: 'Real-world application examples showing how the brand system applies to business cards, email signatures, social templates, presentations, and advertising — giving teams immediate practical reference.' },
 ];
 
 const steps = [
-  { num: '01', title: 'Brand Asset Audit', desc: 'We audit all existing brand assets — logos, colours, fonts, photography — documenting what exists, what is inconsistent, and what needs to be created or standardised.' },
+  { num: '01', title: 'Brand Asset Audit', desc: 'We audit all existing brand assets — logos, colors, fonts, photography — documenting what exists, what is inconsistent, and what needs to be created or standardized.' },
   { num: '02', title: 'Guidelines Structure', desc: 'We define the scope and structure of your guidelines document, mapping all sections required and aligning with your team on depth, format, and primary use cases.' },
   { num: '03', title: 'Documentation', desc: 'Our designers write and design the full guidelines document — clear, beautifully laid out, and written so that non-designers can apply the rules without ambiguity.' },
   { num: '04', title: 'Figma Library Setup', desc: 'A comprehensive Figma component library is built alongside the guidelines, giving your design and development teams a live, editable single source of truth for all brand components.' },
 ];
 
 const faqs = [
-  { q: 'What is included in brand guidelines?', a: 'Our standard brand guidelines cover logo usage, colour system, typography, photography and imagery style, iconography, voice and tone, and application examples across key digital and print touchpoints. The scope is tailored to your needs and the complexity of your identity system.' },
+  { q: 'What is included in brand guidelines?', a: 'Our standard brand guidelines cover logo usage, color system, typography, photography and imagery style, iconography, voice and tone, and application examples across key digital and print touchpoints. The scope is tailored to your needs and the complexity of your identity system.' },
   { q: 'What format are guidelines delivered in?', a: 'We deliver brand guidelines in both an interactive Figma file (for design teams) and a polished PDF (for wider team distribution). Both formats are updated simultaneously and branded to match your identity.' },
   { q: 'How do we keep guidelines up to date?', a: 'The Figma file serves as your living brand document — easily updatable as your brand evolves. We build it with versioning in mind, and we offer ongoing brand management retainers for clients who update their identity regularly. The PDF can be regenerated from Figma at any time.' },
-  { q: 'Do you create a Figma component library?', a: 'Yes — Figma library setup is included in our brand guidelines packages. We build a fully structured component library including colours, text styles, logos, icons, and core UI components, all connected to your brand variables for easy global updates.' },
-  { q: 'Can you create guidelines for an existing brand?', a: 'Absolutely. Many of our guidelines projects are for established brands that have grown organically without a formal system. We audit what exists, standardise and codify the current identity, fill gaps, and create a definitive guidelines document from your existing assets.' },
+  { q: 'Do you create a Figma component library?', a: 'Yes — Figma library setup is included in our brand guidelines packages. We build a fully structured component library including colors, text styles, logos, icons, and core UI components, all connected to your brand variables for easy global updates.' },
+  { q: 'Can you create guidelines for an existing brand?', a: 'Absolutely. Many of our guidelines projects are for established brands that have grown organically without a formal system. We audit what exists, standardize and codify the current identity, fill gaps, and create a definitive guidelines document from your existing assets.' },
 ];
 
 
-const floatingIcons = [
-  { id: 1, icon: IconReact, className: 'top-[10%] left-[5%]' },
-  { id: 2, icon: IconNextJS, className: 'top-[15%] right-[8%]' },
-  { id: 3, icon: IconNodeJS, className: 'top-[60%] left-[3%]' },
-  { id: 4, icon: IconPython, className: 'bottom-[20%] right-[5%]' },
-  { id: 5, icon: IconAWS, className: 'top-[5%] left-[25%]' },
-  { id: 6, icon: IconDocker, className: 'top-[70%] right-[15%]' },
-  { id: 7, icon: IconKubernetes, className: 'bottom-[15%] left-[20%]' },
-  { id: 8, icon: IconTypeScript, className: 'top-[40%] left-[8%]' },
-  { id: 9, icon: IconGraphQL, className: 'top-[80%] right-[25%]' },
-  { id: 10, icon: IconPostgreSQL, className: 'top-[25%] right-[5%]' },
-  { id: 11, icon: IconMongoDB, className: 'top-[50%] left-[2%]' },
-  { id: 12, icon: IconTensorFlow, className: 'bottom-[25%] right-[10%]' },
-  { id: 13, icon: IconGitHub, className: 'top-[35%] right-[12%]' },
-  { id: 14, icon: IconFigma, className: 'bottom-[10%] left-[10%]' },
-  { id: 15, icon: IconVSCode, className: 'top-[5%] left-[50%]' },
-];
 
 export default function BrandGuidelinesPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -99,7 +81,6 @@ export default function BrandGuidelinesPage() {
         {/* HERO */}
         <section ref={heroRef} style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', paddingTop: 140, paddingBottom: 80, position: 'relative', overflow: 'hidden' }}>
           <HeroBackground variant="right" />
-          <FloatingIconsBackground icons={floatingIcons} />
           <div className="cb-container">
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 480px), 1fr))', gap: 'clamp(24px, 5vw, 60px)', alignItems: 'center' }}>
               <div>
@@ -161,6 +142,10 @@ export default function BrandGuidelinesPage() {
         </section>
 
         {/* PROCESS */}
+
+        {/* PORTFOLIO */}
+        <PortfolioShowcase category="branding" />
+
         <section ref={s2} className="section-padding">
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>

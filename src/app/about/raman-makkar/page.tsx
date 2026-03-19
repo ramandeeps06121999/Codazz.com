@@ -3,7 +3,7 @@ import PageClient from './PageClient';
 
 export const metadata: Metadata = {
   title: 'Raman Makkar - CEO & Founder | Codazz',
-  description: 'Raman Makkar is the CEO and Founder of Codazz, a leading software development company with offices in New York and Dubai. Learn about his experience, expertise, and vision.',
+  description: 'Raman Makkar is the CEO and Founder of Codazz, a custom software development company headquartered in Edmonton (Canada) and Chandigarh (India) with offices in New York and Dubai. Over a decade of experience leading 500+ projects across 24 countries.',
   openGraph: {
     title: 'Raman Makkar - CEO & Founder | Codazz',
     description: 'Raman Makkar is the CEO and Founder of Codazz.',

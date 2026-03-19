@@ -3,12 +3,20 @@ import PageClient from './PageClient';
 
 export const metadata: Metadata = {
   title: 'Mobile App Development in the US | Codazz',
-  description: 'iOS, Android, Flutter & React Native app development by Codazz. 300+ apps shipped across 24 countries worldwide. Get a free consultation for your project today.',
+  description: 'iOS, Android, Flutter & React Native app development by Codazz. 500+ apps shipped across 24 countries worldwide. Get a free consultation for your project today.',
   openGraph: {
     title: 'Mobile App Development in the US | Codazz',
-    description: 'iOS, Android, Flutter & React Native app development by Codazz. 300+ apps shipped across 24 countries worldwide.',
+    description: 'iOS, Android, Flutter & React Native app development by Codazz. 500+ apps shipped across 24 countries worldwide.',
     url: 'https://codazz.com/services/mobile-app-development',
     type: 'website',
+    images: [
+      {
+        url: '/logo.png',
+        width: 1200,
+        height: 630,
+        alt: 'Mobile App Development Services - Codazz',
+      },
+    ],
   },
   alternates: {
     canonical: 'https://codazz.com/services/mobile-app-development',
@@ -82,7 +90,7 @@ const serviceSchema = {
   '@context': 'https://schema.org',
   '@type': 'Service',
   name: 'Mobile App Development',
-  description: 'iOS, Android, Flutter & React Native app development by Codazz. 300+ apps shipped across 24 countries worldwide. Get a free consultation for your project today.',
+  description: 'iOS, Android, Flutter & React Native app development by Codazz. 500+ apps shipped across 24 countries worldwide. Get a free consultation for your project today.',
   provider: {
     '@type': 'Organization',
     name: 'Codazz',

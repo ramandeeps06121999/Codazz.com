@@ -7,12 +7,6 @@ import Breadcrumb from '@/components/Breadcrumb';
 import ServiceHeroForm from '@/components/ServiceHeroForm';
 import TrustBadges from '@/components/TrustBadges';
 import HeroBackground from '@/components/HeroBackground';
-import { FloatingIconsBackground } from '@/components/FloatingIconsBackground';
-import {
-  IconReact, IconNextJS, IconNodeJS, IconPython, IconAWS,
-  IconDocker, IconKubernetes, IconTypeScript, IconGraphQL,
-  IconPostgreSQL, IconMongoDB, IconTensorFlow, IconGitHub, IconFigma, IconVSCode
-} from '@/components/tech-icons';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -31,7 +25,7 @@ const stats = [
   { value: '500+', label: 'Websites Built' },
   { value: '99/100', label: 'Lighthouse Score' },
   { value: '4 Wks', label: 'Avg Delivery' },
-  { value: '100%', label: 'SEO Optimised' },
+  { value: '100%', label: 'SEO Optimized' },
 ];
 
 const services = [
@@ -40,11 +34,11 @@ const services = [
   { icon: '🛒', title: 'E-Commerce', desc: 'Shopify, WooCommerce, and custom headless commerce solutions that convert browsers into buyers.' },
   { icon: '📊', title: 'Dashboards & Admin', desc: 'Data-rich interfaces, analytics dashboards, and internal tools that make complex data actionable.' },
   { icon: '📝', title: 'CMS Integration', desc: 'Headless CMS architectures with Contentful, Sanity, or Strapi — content teams love the flexibility.' },
-  { icon: '⚡', title: 'Performance Optimisation', desc: 'Core Web Vitals optimisation, lazy loading, and edge caching for sub-second page loads.' },
+  { icon: '⚡', title: 'Performance Optimization', desc: 'Core Web Vitals optimization, lazy loading, and edge caching for sub-second page loads.' },
 ];
 
 const steps = [
-  { num: '01', title: 'Discovery', desc: 'We audit your current site, analyse competitors, and define technical requirements and success metrics.' },
+  { num: '01', title: 'Discovery', desc: 'We audit your current site, analyze competitors, and define technical requirements and success metrics.' },
   { num: '02', title: 'Design', desc: 'Wireframes, high-fidelity mockups, and interactive prototypes that bring your vision to life.' },
   { num: '03', title: 'Development', desc: 'Clean, modular code with component-based architecture, automated testing, and CI/CD pipelines.' },
   { num: '04', title: 'Launch', desc: 'Staging, performance testing, SEO validation, and deployment with monitoring and analytics setup.' },
@@ -57,30 +51,13 @@ const results = [
 ];
 
 const faqs = [
-  { q: 'What technologies do you use?', a: 'We specialise in Next.js, React, TypeScript, and Tailwind CSS for frontend. Backend varies by project — Node.js, Python, or serverless on AWS/Vercel. We choose the stack that best fits your scale and requirements.' },
+  { q: 'What technologies do you use?', a: 'We specialize in Next.js, React, TypeScript, and Tailwind CSS for frontend. Backend varies by project — Node.js, Python, or serverless on AWS/Vercel. We choose the stack that best fits your scale and requirements.' },
   { q: 'How long does a typical website take?', a: 'Marketing sites typically launch in 2–4 weeks. Complex web applications with custom backends run 6–12 weeks. We provide detailed timelines after our discovery call.' },
-  { q: 'Do you handle SEO?', a: 'Absolutely. Technical SEO is built into every site we ship — semantic HTML, structured data, sitemaps, Core Web Vitals optimisation, and accessibility compliance.' },
+  { q: 'Do you handle SEO?', a: 'Absolutely. Technical SEO is built into every site we ship — semantic HTML, structured data, sitemaps, Core Web Vitals optimization, and accessibility compliance.' },
   { q: 'Can you integrate with our existing systems?', a: 'Yes. We integrate with CRMs, ERPs, payment gateways, marketing automation tools, and custom APIs. Our architecture is designed for extensibility.' },
   { q: 'What about ongoing support?', a: 'We offer monthly retainers for maintenance, updates, and new feature development. Most clients stay with us long-term as their digital needs evolve.' },
 ];
 
-const floatingIcons = [
-  { id: 1, icon: IconReact, className: 'top-[10%] left-[5%]' },
-  { id: 2, icon: IconNextJS, className: 'top-[15%] right-[8%]' },
-  { id: 3, icon: IconNodeJS, className: 'top-[60%] left-[3%]' },
-  { id: 4, icon: IconPython, className: 'bottom-[20%] right-[5%]' },
-  { id: 5, icon: IconAWS, className: 'top-[5%] left-[25%]' },
-  { id: 6, icon: IconDocker, className: 'top-[70%] right-[15%]' },
-  { id: 7, icon: IconKubernetes, className: 'bottom-[15%] left-[20%]' },
-  { id: 8, icon: IconTypeScript, className: 'top-[40%] left-[8%]' },
-  { id: 9, icon: IconGraphQL, className: 'top-[80%] right-[25%]' },
-  { id: 10, icon: IconPostgreSQL, className: 'top-[25%] right-[5%]' },
-  { id: 11, icon: IconMongoDB, className: 'top-[50%] left-[2%]' },
-  { id: 12, icon: IconTensorFlow, className: 'bottom-[25%] right-[10%]' },
-  { id: 13, icon: IconGitHub, className: 'top-[35%] right-[12%]' },
-  { id: 14, icon: IconFigma, className: 'bottom-[10%] left-[10%]' },
-  { id: 15, icon: IconVSCode, className: 'top-[5%] left-[50%]' },
-];
 
 export default function WebDevelopmentPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -114,7 +91,6 @@ export default function WebDevelopmentPage() {
         {/* HERO */}
         <section ref={heroRef} className="section-padding" style={{ position: 'relative', overflow: 'hidden', minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
           <HeroBackground variant="center" />
-          <FloatingIconsBackground icons={floatingIcons} />
           <div className="cb-container" style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: 860, margin: '0 auto' }}>
             <div className="reveal" style={{ display: 'inline-block', border: '1px solid rgba(34,197,94,0.4)', borderRadius: 999, padding: '6px 20px', fontSize: 13, color: '#ffffff', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>
               Web Development

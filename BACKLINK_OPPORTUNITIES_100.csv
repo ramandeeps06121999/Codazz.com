@@ -1,0 +1,101 @@
+ID,Website,URL,Type,DA,Cost,Action Required,Instructions,Status
+1,Clutch,https://clutch.co/profile/create,Directory,90,Free,Create company profile,"1. Go to URL\n2. Sign up with business email\n3. Add company details\n4. Upload portfolio\n5. Request client reviews",Pending
+2,GoodFirms,https://www.goodfirms.co/company/get-listed,Directory,85,Free,Complete profile,"1. Click 'Get Listed'\n2. Fill company info\n3. Add services\n4. Verify email\n5. Add portfolio items",Pending
+3,G2,https://www.g2.com/products/new,Directory,90,Free,List services,"1. Search if already listed\n2. If not, click 'Add Product'\n3. Fill detailed description\n4. Add features and pricing\n5. Upload logo",Pending
+4,Google Business Profile,https://business.google.com/create,Directory,100,Free,Create 3 listings,"1. Sign in with Google account\n2. Add business name\n3. Select category: Software Company\n4. Add address (Toronto)\n5. Verify via postcard/phone\n6. Repeat for NYC and Dubai",Pending
+5,Bing Places,https://www.bingplaces.com/,Directory,95,Free,Create listing,"1. Sign in with Microsoft account\n2. Import from Google Business OR create new\n3. Add business details\n4. Verify",Pending
+6,Crunchbase,https://www.crunchbase.com/organization/add,Directory,90,Free,Add company profile,"1. Create account\n2. Click 'Add Organization'\n3. Fill all fields\n4. Add founders\n5. Add funding info if applicable",Pending
+7,Yelp Business,https://biz.yelp.com/,Directory,95,Free,Claim listing,"1. Search for business\n2. Claim if exists OR add new\n3. Complete profile\n4. Add photos\n5. Respond to reviews",Pending
+8,Trustpilot Business,https://business.trustpilot.com/,Directory,95,Free,Create profile,"1. Sign up\n2. Verify domain\n3. Customize profile\n4. Invite customers to review\n5. Add company info",Pending
+9,Capterra,https://www.capterra.com/vendors/sign-up,Directory,85,Free,List software,"1. Create vendor account\n2. Add product details\n3. Select categories\n4. Add features\n5. Upload screenshots",Pending
+10,BBB (Better Business Bureau),https://www.bbb.org/get-accredited,Directory,95,Paid,Apply for accreditation,"1. Search if business exists\n2. Apply for accreditation\n3. Pay fee (~$500-1000/year)\n4. Complete application\n5. Pass review process",Pending
+11,The Manifest,https://themanifest.com/company/add,Directory,70,Free,Add company,"1. Click 'Add Your Company'\n2. Fill profile\n3. Add services\n4. Upload portfolio\n5. Verify email",Pending
+12,DesignRush,https://www.designrush.com/agency/add,Directory,70,Free,Submit agency,"1. Click 'Add Agency'\n2. Select categories\n3. Fill company details\n4. Add portfolio\n5. Submit for review",Pending
+13,TopDevelopers,https://www.topdevelopers.co/directory,Directory,65,Free/Paid,Submit profile,"1. Go to directory\n2. Click 'Get Listed'\n3. Choose plan\n4. Complete profile\n5. Submit",Pending
+14,ITFirms,https://www.itfirms.co/submit-company,Directory,60,Free,Submit company,"1. Click 'Submit Company'\n2. Fill form\n3. Add services\n4. Submit for review",Pending
+15,TechReviewer,https://techreviewer.co/submit-company,Directory,60,Free,Submit profile,"1. Click 'Submit Company'\n2. Fill detailed form\n3. Add portfolio\n4. Submit",Pending
+16,SelectedFirms,https://selectedfirms.com/submit-company,Directory,55,Free,Add listing,"1. Click 'Submit Company'\n2. Fill profile\n3. Add services\n4. Submit",Pending
+17,AppFutura,https://www.appfutura.com/developers/register,Directory,60,Free,Register as developer,"1. Click 'Register'\n2. Select 'I'm a Developer'\n3. Fill profile\n4. Add portfolio\n5. Verify",Pending
+18,Wadline,https://wadline.com/submit-company,Directory,55,Free,Submit company,"1. Click 'Submit Company'\n2. Fill form\n3. Add portfolio\n4. Submit",Pending
+19,Sortlist,https://www.sortlist.com/agency/join,Directory,65,Free,Join as agency,"1. Click 'Join as Agency'\n2. Create account\n3. Complete profile\n4. Add portfolio\n5. Verify",Pending
+20,Upwork Agency,https://www.upwork.com/agencies/,Directory,90,Free,Create agency profile,"1. Sign up as agency\n2. Complete profile\n3. Add team members\n4. Add portfolio\n5. Start applying",Pending
+21,LinkedIn Company,https://www.linkedin.com/company/add,Directory,98,Free,Create page,"1. Sign in to LinkedIn\n2. Click 'Create Company Page'\n3. Select 'Company'\n4. Fill all details\n5. Add logo and banner\n6. Post regular updates",Pending
+22,Facebook Business,https://business.facebook.com/,Directory,100,Free,Create page,"1. Sign in to Facebook\n2. Create Business Page\n3. Select 'Business/Brand'\n4. Fill details\n5. Add contact info\n6. Verify",Pending
+23,Twitter/X Business,https://business.twitter.com/,Directory,100,Free,Optimize profile,"1. Create/optimize profile\n2. Add website link\n3. Write bio with keywords\n4. Pin important tweet\n5. Post regularly",Pending
+24,Instagram Business,https://business.instagram.com/,Directory,95,Free,Business profile,"1. Convert to Business Account\n2. Add website link\n3. Add contact buttons\n4. Post portfolio work\n5. Use relevant hashtags",Pending
+25,YouTube Channel,https://www.youtube.com/create_channel,Directory,100,Free,Create channel,"1. Create YouTube account\n2. Create channel\n3. Add channel description\n4. Add website link\n5. Upload intro video",Pending
+26,GitHub Organization,https://github.com/organizations/new,Directory,95,Free,Create org,"1. Sign in to GitHub\n2. Create Organization\n3. Fill profile\n4. Add website\n5. Make some repos public",Pending
+27,Stack Overflow Company,https://stackoverflow.com/jobs/companies,Directory,90,Free,Company page,"1. Go to Company Pages\n2. Search or add company\n3. Claim profile\n4. Fill details\n5. Add tech stack",Pending
+28,AngelList,https://angel.co/company/add,Directory,85,Free,Startup profile,"1. Create account\n2. Add company\n3. Fill profile\n4. Add team\n5. Post jobs if hiring",Pending
+29,Product Hunt,https://www.producthunt.com/posts/new,Directory,85,Free,Create product page,"1. Create account\n2. Click 'Submit Product'\n3. Fill details\n4. Add screenshots\n5. Launch when ready",Pending
+30,BetaList,https://betalist.com/submit,Directory,70,Free,Submit startup,"1. Click 'Submit Startup'\n2. Fill form\n3. Add screenshots\n4. Submit for review",Pending
+31,Launching Next,https://www.launchingnext.com/submit,Directory,60,Free,Submit startup,"1. Click 'Submit'\n2. Fill form\n3. Add details\n4. Submit",Pending
+32,Startup Buffer,https://startupbuffer.com/submit,Directory,55,Free,Submit startup,"1. Click 'Submit Startup'\n2. Fill form\n3. Submit",Pending
+33,Webflow Experts,https://experts.webflow.com/apply,Directory,80,Free,Apply as expert,"1. Click 'Become an Expert'\n2. Fill application\n3. Add portfolio\n4. Submit for review",Pending
+34,Shopify Partners,https://www.shopify.com/partners,Directory,95,Free,Join partner program,"1. Sign up for Partners\n2. Complete profile\n3. Pass certification\n4. List services",Pending
+35,WordPress.org,https://wordpress.org/support/register.php,Directory,100,Free,Forum profile,"1. Create account\n2. Complete profile\n3. Add website\n4. Participate in forums",Pending
+36,Drupal.org,https://www.drupal.org/user/register,Directory,85,Free,Community profile,"1. Create account\n2. Complete profile\n3. Add website\n4. Contribute to community",Pending
+37,StackShare,https://stackshare.io/feed,Directory,75,Free,Company stack,"1. Create account\n2. Add company\n3. List tech stack\n4. Add website",Pending
+38,BuiltWith,https://builtwith.com/,Directory,80,Free,Verify profile,"1. Search for your site\n2. Claim profile\n3. Verify ownership\n4. Update info",Pending
+39,Wappalyzer,https://www.wappalyzer.com/,Directory,70,Free,Company profile,"1. Create account\n2. Add applications\n3. Link to company",Pending
+40,AlternativeTo,https://alternativeto.net/software/add,Directory,85,Free,List software,"1. Click 'Add Application'\n2. Fill details\n3. Add alternatives\n4. Submit",Pending
+41,G2 Crowd (same as G2),https://www.g2.com/products/new,Directory,90,Free,List product,"See #3",Pending
+42,Software Advice,https://www.softwareadvice.com/vendors/sign-up,Directory,80,Free,Vendor signup,"1. Click 'Vendor Sign Up'\n2. Fill form\n3. Add products\n4. Complete profile",Pending
+43,GetApp,https://www.getapp.com/vendors/sign-up,Directory,80,Free,Vendor profile,"1. Sign up as vendor\n2. Add products\n3. Fill details\n4. Verify",Pending
+44,TrustRadius,https://www.trustradius.com/vendors/sign-up,Directory,75,Free,Vendor profile,"1. Sign up\n2. Claim profile\n3. Add products\n4. Complete info",Pending
+45, Crozdesk,https://crozdesk.com/vendors/sign-up,Directory,70,Free,Vendor signup,"1. Sign up\n2. Add software\n3. Fill profile\n4. Submit",Pending
+46,SaaSworthy,https://saasworthy.com/submit-product,Directory,65,Free,Submit product,"1. Click 'Submit Product'\n2. Fill form\n3. Submit",Pending
+47, SaaSHub,https://saashub.com/submit,Directory,70,Free,Submit tool,"1. Click 'Submit'\n2. Fill form\n3. Add details\n4. Submit",Pending
+48,Futurepedia,https://www.futurepedia.io/submit-tool,Directory,65,Free,Submit AI tool,"1. Click 'Submit Tool'\n2. Fill form (AI-focused)\n3. Submit for review",Pending
+49,TheresAnAIForThat,https://theresanaiforthat.com/submit,Directory,70,Free,Submit AI tool,"1. Click 'Submit'\n2. Fill form\n3. Categorize\n4. Submit",Pending
+50,AI Tools Directory,https://aitoolsdirectory.com/submit,Directory,60,Free,Submit AI tool,"1. Click 'Submit'\n2. Fill form\n3. Submit",Pending
+51,F6S,https://www.f6s.com/company/add,Directory,75,Free,Add company,"1. Create account\n2. Add company profile\n3. Fill details\n4. Add team\n5. Submit",Pending
+52,Startuplist,https://startuplist.in/submit-startup,Directory,60,Free,Submit startup,"1. Click 'Submit'\n2. Fill form\n3. Add details\n4. Submit",Pending
+53,IndieHackers,https://www.indiehackers.com/,Directory,80,Free,Create product page,"1. Create account\n2. Add product\n3. Share journey\n4. Link to website",Pending
+54,Failory,https://www.failory.com/interview,Directory,70,Free,Submit interview,"1. Read guidelines\n2. Fill interview form\n3. Share story\n4. Submit",Pending
+55,Starter Story,https://www.starterstory.com/,Directory,75,Free,Submit story,"1. Click 'Share Your Story'\n2. Fill interview\n3. Add details\n4. Submit",Pending
+56,SideProjectors,https://www.sideprojectors.com/,Directory,65,Free,List project,"1. Create account\n2. Add project\n3. Fill details\n4. Submit",Pending
+57,Devpost,https://devpost.com/,Directory,80,Free,Hackathon profile,"1. Create account\n2. Add projects\n3. Participate in hackathons\n4. Link to website",Pending
+58,Hacker News,https://news.ycombinator.com/,Directory,95,Free,Show HN,"1. Create account\n2. Submit 'Show HN' post\n3. Engage with community\n4. Add to profile",Pending
+59,Reddit (relevant subreddits),https://reddit.com/r/webdev,Directory,95,Free,Profile + posts,"1. Create account\n2. Add website to profile\n3. Participate genuinely\n4. Share valuable content",Pending
+60,Quora Space,https://www.quora.com/,Directory,95,Free,Space + answers,"1. Create Space about software dev\n2. Answer questions\n3. Add website to profile\n4. Build following",Pending
+61,Medium Publication,https://medium.com/,Directory,95,Free,Publication,"1. Create account\n2. Start publication\n3. Write articles\n4. Link to website in bio",Pending
+62,Dev.to,https://dev.to/,Directory,80,Free,Organization page,"1. Create account\n2. Add organization\n3. Post articles\n4. Link to website",Pending
+63,Hashnode,https://hashnode.com/,Directory,75,Free,Blog + profile,"1. Create account\n2. Start blog\n3. Write articles\n4. Add website to profile",Pending
+64,HackerNoon,https://hackernoon.com/,Directory,75,Free,Author profile,"1. Create account\n2. Submit stories\n3. Build author profile\n4. Link to website",Pending
+65,CodePen,https://codepen.io/,Directory,85,Free,Profile + pens,"1. Create account\n2. Add profile with website\n3. Create code demos\n4. Build following",Pending
+66,JSFiddle,https://jsfiddle.net/,Directory,80,Free,Profile,"1. Create account\n2. Add website to profile\n3. Share code examples",Pending
+67,Glitch,https://glitch.com/,Directory,75,Free,Profile + projects,"1. Create account\n2. Build projects\n3. Add website to profile\n4. Share creations",Pending
+68,Replit,https://replit.com/,Directory,80,Free,Profile + repls,"1. Create account\n2. Build projects\n3. Add website\n4. Share publicly",Pending
+69,GitLab,https://gitlab.com/,Directory,90,Free,Organization,"1. Create account\n2. Create organization\n3. Add website\n4. Make repos public",Pending
+70,Bitbucket,https://bitbucket.org/,Directory,85,Free,Profile,"1. Create account\n2. Add website\n3. Create public repos",Pending
+71,SourceForge,https://sourceforge.net/,Directory,90,Free,Project page,"1. Create account\n2. Add project\n3. Fill details\n4. Link to website",Pending
+72,Open Hub,https://www.openhub.net/,Directory,75,Free,Project profile,"1. Create account\n2. Add project\n3. Fill details\n4. Submit",Pending
+73,Slant,https://www.slant.co/,Directory,70,Free,Recommendations,"1. Create account\n2. Answer questions\n3. Mention Codazz when relevant\n4. Build reputation",Pending
+74,Capterra Shortlist,https://www.capterra.com/shortlist/,Directory,85,Free,Get listed,"1. Already on Capterra (see #9)\n2. Aim for category shortlists\n3. Get reviews\n4. Improve ranking",Pending
+75,Gartner Digital Markets,https://www.gartner.com/en/digital-markets,Directory,90,Free,Vendor program,"1. Apply to vendor program\n2. Complete profile\n3. Get listed on Capterra/GetApp/Software Advice",Pending
+76,SoftwareSuggest,https://www.softwaresuggest.com/,Directory,70,Free,List software,"1. Click 'Get Listed'\n2. Fill form\n3. Add details\n4. Submit",Pending
+77,TechnologyAdvice,https://www.technologyadvice.com/,Directory,75,Free,Vendor signup,"1. Go to vendor section\n2. Fill application\n3. Submit for review",Pending
+78,PCMag Business Software,https://www.pcmag.com/business,Directory,95,Free,Contact editors,"1. Find relevant editor\n2. Pitch software\n3. Request review\n4. Get listed",Pending
+79,TechRadar Pro,https://www.techradar.com/pro,Directory,95,Free,Contact editors,"1. Find software section editor\n2. Pitch for review\n3. Provide access/info\n4. Get featured",Pending
+80,ZDNet,https://www.zdnet.com/,Directory,95,Free,Contact editors,"1. Find relevant writer\n2. Pitch story angle\n3. Provide expert quotes\n4. Get mentioned",Pending
+81,Business Insider Tech,https://www.businessinsider.com/tech,Directory,95,Free,Contact journalists,"1. Find tech journalists\n2. Follow on Twitter\n3. Pitch story ideas\n4. Provide expert commentary",Pending
+82,Forbes Technology Council,https://councils.forbes.com/,Directory,95,Paid,Apply for council,"1. Check eligibility\n2. Apply for membership\n3. Pay fee if accepted\n4. Publish articles",Pending
+83,Entrepreneur Leadership Network,https://www.entrepreneur.com/network,Directory,90,Paid,Apply to contribute,"1. Apply as contributor\n2. Submit writing samples\n3. Get approved\n4. Publish articles",Pending
+84,Inc Contributors,https://www.inc.com/,Directory,90,Free,Pitch editors,"1. Find contributing editor\n2. Pitch article ideas\n3. Submit draft\n4. Get published",Pending
+85,Fast Company Executive Board,https://www.fastcompany.com/executive-board,Directory,90,Paid,Apply for membership,"1. Check requirements\n2. Apply\n3. Pay membership\n4. Publish thought leadership",Pending
+86,TechCrunch Contributors,https://techcrunch.com/,Directory,95,Free,Pitch guest posts,"1. Read submission guidelines\n2. Find relevant editor\n3. Pitch unique story\n4. Submit draft",Pending
+87,The Next Web Contributors,https://thenextweb.com/,Directory,85,Free,Pitch articles,"1. Find editor contacts\n2. Pitch tech stories\n3. Submit guest post\n4. Get published",Pending
+88,VentureBeat Contributors,https://venturebeat.com/,Directory,85,Free,Pitch stories,"1. Find relevant writer\n2. Pitch startup/tech angle\n3. Submit article\n4. Get featured",Pending
+89,Ars Technica,https://arstechnica.com/,Directory,90,Free,Contact editors,"1. Find relevant section editor\n2. Pitch in-depth tech story\n3. Provide expert insight\n4. Get mentioned",Pending
+90,Wired Contributors,https://www.wired.com/,Directory,95,Free,Pitch stories,"1. Find section editor\n2. Pitch unique tech angle\n3. Provide expert commentary\n4. Get featured",Pending
+91,Mashable,https://mashable.com/,Directory,95,Free,Contact editors,"1. Find tech editor\n2. Pitch story idea\n3. Provide expert quotes\n4. Get mentioned",Pending
+92,The Verge,https://www.theverge.com/,Directory,95,Free,Contact editors,"1. Find relevant writer\n2. Pitch tech story\n3. Provide expert insight\n4. Get quoted",Pending
+93,Engadget,https://www.engadget.com/,Directory,90,Free,Contact editors,"1. Find tech editor\n2. Pitch product/story\n3. Provide review unit/access\n4. Get reviewed",Pending
+94,Gizmodo,https://gizmodo.com/,Directory,90,Free,Contact editors,"1. Find tech writer\n2. Pitch interesting angle\n3. Provide expert commentary\n4. Get featured",Pending
+95,Lifehacker (tech section),https://lifehacker.com/,Directory,90,Free,Pitch articles,"1. Find tech editor\n2. Pitch productivity/tech tips\n3. Submit guest post\n4. Get published",Pending
+96,AddThis,https://www.addthis.com/,Directory,80,Free,Website tools,"1. Create account\n2. Add sharing tools\n3. Get profile link\n4. Use on website",Pending
+97,Disqus,https://disqus.com/,Directory,95,Free,Comment profile,"1. Create account\n2. Add website to profile\n3. Use on blog\n4. Engage on other sites",Pending
+98,Gravatar,https://en.gravatar.com/,Directory,95,Free,Profile,"1. Create account with business email\n2. Add website URL\n3. Use across WordPress sites\n4. Get backlinks from comments",Pending
+99,About.me,https://about.me/,Directory,85,Free,Profile page,"1. Create profile\n2. Add bio and photo\n3. Link to Codazz\n4. Share profile",Pending
+100,Linktree,https://linktr.ee/,Directory,85,Free,Link page,"1. Create account\n2. Add Codazz as main link\n3. Add social links\n4. Use in social bios",Pending

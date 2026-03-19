@@ -3,10 +3,10 @@ import PageClient from './PageClient';
 
 export const metadata: Metadata = {
   title: 'Performance Analytics & GA4 Setup Services',
-  description: 'GA4 setup, conversion tracking, attribution modelling, and custom dashboards. Certified analytics specialists serving San Francisco and United States. 30% avg CPA reduction.',
+  description: 'GA4 setup, conversion tracking, attribution modeling, and custom dashboards. Certified analytics specialists serving San Francisco and United States. 30% avg CPA reduction.',
   openGraph: {
     title: 'Performance Analytics & GA4 Setup | Codazz',
-    description: 'GA4 setup, conversion tracking, attribution modelling, and custom dashboards. Certified analytics specialists serving San Francisco and United States.',
+    description: 'GA4 setup, conversion tracking, attribution modeling, and custom dashboards. Certified analytics specialists serving San Francisco and United States.',
     url: 'https://codazz.com/services/digital-marketing/performance-analytics',
     type: 'website',
   },
@@ -21,7 +21,7 @@ const jsonLd0 = {
   "@type": "Service",
   "name": "Performance Analytics",
   "url": "https://codazz.com/services/digital-marketing/performance-analytics",
-  "description": "GA4 setup, conversion tracking, attribution modelling, and custom dashboards. Certified analytics specialists serving San Francisco and United States. 30% avg CPA reduction.",
+  "description": "GA4 setup, conversion tracking, attribution modeling, and custom dashboards. Certified analytics specialists serving San Francisco and United States. 30% avg CPA reduction.",
   "provider": {
     "@type": "Organization",
     "name": "Codazz",

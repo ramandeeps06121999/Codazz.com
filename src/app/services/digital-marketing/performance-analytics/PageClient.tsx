@@ -5,8 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ServiceHeroForm from '@/components/ServiceHeroForm';
 import HeroBackground from '@/components/HeroBackground';
-import { FloatingIconsBackground } from '@/components/FloatingIconsBackground';
-import { IconReact, IconNextJS, IconNodeJS, IconPython, IconAWS, IconDocker, IconKubernetes, IconTypeScript, IconGraphQL, IconPostgreSQL, IconMongoDB, IconTensorFlow, IconGitHub, IconFigma, IconVSCode } from '@/components/tech-icons';
+import PortfolioShowcase from '@/components/PortfolioShowcase';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -33,7 +32,7 @@ const services = [
   { icon: '🏷️', title: 'Google Tag Manager Configuration', desc: 'GTM container setup and management, deploying all marketing and analytics tags without developer dependency and with version-controlled change history.' },
   { icon: '✅', title: 'Conversion Tracking Audit', desc: 'A complete audit of your existing conversion tracking — identifying misfiring tags, missing goals, duplicate transactions, and attribution gaps across all channels.' },
   { icon: '📊', title: 'Custom Dashboard Development', desc: 'Looker Studio dashboards pulling data from GA4, Google Ads, Search Console, and your CRM — giving stakeholders real-time visibility into the metrics that matter.' },
-  { icon: '🔀', title: 'Attribution Modelling', desc: 'Multi-touch attribution analysis to understand which channels and touchpoints are genuinely driving conversions — moving beyond last-click and informing smarter budget allocation.' },
+  { icon: '🔀', title: 'Attribution Modeling', desc: 'Multi-touch attribution analysis to understand which channels and touchpoints are genuinely driving conversions — moving beyond last-click and informing smarter budget allocation.' },
   { icon: '🗄️', title: 'Data Layer Implementation', desc: 'Specification and deployment of a structured data layer enabling rich, reliable event tracking for e-commerce, lead forms, video engagement, and custom interactions.' },
 ];
 
@@ -48,28 +47,11 @@ const faqs = [
   { q: 'GA4 vs Universal Analytics — do I need to migrate?', a: 'Universal Analytics stopped processing data in July 2023. If you are still relying on UA data or have not fully configured GA4 properly, you are flying blind. We conduct a full GA4 audit to ensure your property is correctly set up with all events, conversions, and audiences properly defined.' },
   { q: 'How do you track conversions across multiple touchpoints?', a: 'We implement GA4\'s built-in multi-touch reporting alongside custom attribution analysis, enabling you to see the full customer journey — from first organic visit through to paid retargeting and final conversion — rather than attributing everything to the last click.' },
   { q: 'What is a data layer and do I need one?', a: 'A data layer is a JavaScript object that passes structured information from your website to analytics and marketing tools via GTM. If you run e-commerce, track form submissions, or need reliable event data, a well-implemented data layer is essential for accurate measurement.' },
-  { q: 'How do you handle cookie consent and privacy?', a: 'We implement consent mode v2 for Google tags, ensuring your analytics and advertising tracking respects user consent choices while using modelling to fill data gaps. We work with your legal team and CMP provider to ensure full compliance with GDPR and applicable privacy regulations.' },
+  { q: 'How do you handle cookie consent and privacy?', a: 'We implement consent mode v2 for Google tags, ensuring your analytics and advertising tracking respects user consent choices while using modeling to fill data gaps. We work with your legal team and CMP provider to ensure full compliance with GDPR and applicable privacy regulations.' },
   { q: 'What dashboards do you build?', a: 'Our standard dashboard suite includes an executive overview (traffic, conversions, revenue), a channel performance breakdown, a paid media dashboard (Google Ads, Meta), an SEO dashboard (Search Console + GA4), and an e-commerce funnel analysis. All dashboards are customised to your specific KPIs.' },
 ];
 
 
-const floatingIcons = [
-  { id: 1, icon: IconReact, className: 'top-[10%] left-[5%]' },
-  { id: 2, icon: IconNextJS, className: 'top-[15%] right-[8%]' },
-  { id: 3, icon: IconNodeJS, className: 'top-[60%] left-[3%]' },
-  { id: 4, icon: IconPython, className: 'bottom-[20%] right-[5%]' },
-  { id: 5, icon: IconAWS, className: 'top-[5%] left-[25%]' },
-  { id: 6, icon: IconDocker, className: 'top-[70%] right-[15%]' },
-  { id: 7, icon: IconKubernetes, className: 'bottom-[15%] left-[20%]' },
-  { id: 8, icon: IconTypeScript, className: 'top-[40%] left-[8%]' },
-  { id: 9, icon: IconGraphQL, className: 'top-[80%] right-[25%]' },
-  { id: 10, icon: IconPostgreSQL, className: 'top-[25%] right-[5%]' },
-  { id: 11, icon: IconMongoDB, className: 'top-[50%] left-[2%]' },
-  { id: 12, icon: IconTensorFlow, className: 'bottom-[25%] right-[10%]' },
-  { id: 13, icon: IconGitHub, className: 'top-[35%] right-[12%]' },
-  { id: 14, icon: IconFigma, className: 'bottom-[10%] left-[10%]' },
-  { id: 15, icon: IconVSCode, className: 'top-[5%] left-[50%]' },
-];
 
 export default function PageClient() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -99,7 +81,6 @@ export default function PageClient() {
         {/* HERO */}
         <section ref={heroRef} style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', paddingTop: 140, paddingBottom: 80, position: 'relative', overflow: 'hidden' }}>
           <HeroBackground variant="right" />
-          <FloatingIconsBackground icons={floatingIcons} />
           <div className="cb-container">
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 480px), 1fr))', gap: 'clamp(24px, 5vw, 60px)', alignItems: 'center' }}>
               <div>
@@ -117,7 +98,7 @@ export default function PageClient() {
                 <h1 className="reveal reveal-d2" style={{ fontSize: 'clamp(36px, 6vw, 72px)', fontWeight: 800, letterSpacing: '-0.04em', lineHeight: 1.05, marginBottom: 24, maxWidth: 800 }}>
                   Analytics That <span style={{ color: '#ffffff' }}>Drive Decisions</span>
                 </h1>
-                <p className="reveal reveal-d3" style={{ fontSize: 18, color: 'rgba(255,255,255,0.45)', lineHeight: 1.7, maxWidth: 600, marginBottom: 40 }}>GA4 setup, conversion tracking, attribution modelling, and real-time dashboards — giving you the data clarity to make confident marketing decisions and reduce wasted spend.</p>
+                <p className="reveal reveal-d3" style={{ fontSize: 18, color: 'rgba(255,255,255,0.45)', lineHeight: 1.7, maxWidth: 600, marginBottom: 40 }}>GA4 setup, conversion tracking, attribution modeling, and real-time dashboards — giving you the data clarity to make confident marketing decisions and reduce wasted spend.</p>
                 <div className="reveal reveal-d4" style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
                   <Link href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, height: 52, padding: '0 32px', borderRadius: 100, background: 'linear-gradient(135deg, #22c55e, #4ade80)', color: '#000', fontSize: 15, fontWeight: 700, textDecoration: 'none' }}>
                     Start Your Project
@@ -161,6 +142,10 @@ export default function PageClient() {
         </section>
 
         {/* PROCESS */}
+
+        {/* PORTFOLIO */}
+        <PortfolioShowcase category="digital-marketing" />
+
         <section ref={s2} className="section-padding">
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>

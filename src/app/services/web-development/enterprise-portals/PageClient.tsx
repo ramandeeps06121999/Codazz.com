@@ -5,8 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ServiceHeroForm from '@/components/ServiceHeroForm';
 import HeroBackground from '@/components/HeroBackground';
-import { FloatingIconsBackground } from '@/components/FloatingIconsBackground';
-import { IconReact, IconNextJS, IconNodeJS, IconPython, IconAWS, IconDocker, IconKubernetes, IconTypeScript, IconGraphQL, IconPostgreSQL, IconMongoDB, IconTensorFlow, IconGitHub, IconFigma, IconVSCode } from '@/components/tech-icons';
+import PortfolioShowcase from '@/components/PortfolioShowcase';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -48,28 +47,11 @@ const faqs = [
   { q: 'How do you handle legacy system integration?', a: 'We begin with a legacy system audit to understand available integration points — REST APIs, SOAP web services, direct database access, flat-file exports, or screen scraping as a last resort. We build adapter layers and transformation services that normalise data from legacy systems without requiring changes to the legacy system itself, protecting existing business continuity.' },
   { q: 'Can you integrate SSO with our existing identity provider?', a: 'Yes. We integrate with any SAML 2.0 or OIDC-compatible identity provider — including Active Directory Federation Services, Azure AD/Entra ID, Okta, Ping Identity, and Google Workspace. For environments without a modern IdP, we can configure LDAP-based authentication with the portal acting as the SSO-enabled front door.' },
   { q: 'How do you ensure compliance with regulations like SOC2 or HIPAA?', a: 'We design compliance in from the start rather than bolting it on. This includes encrypted data at rest and in transit, immutable audit logging, role-based access with least-privilege principles, session management controls, automated data retention and purge policies, and penetration testing before go-live. We produce compliance documentation artefacts to support your audit processes.' },
-  { q: 'On-premise or cloud deployment — which do you support?', a: 'Both. We build cloud-native deployments on AWS, Azure, or GCP using containerised workloads with Kubernetes for scalability and resilience. For organisations with data sovereignty requirements or existing on-premise infrastructure, we support deployment to private cloud or on-premise Kubernetes clusters with the same architecture.' },
+  { q: 'On-premise or cloud deployment — which do you support?', a: 'Both. We build cloud-native deployments on AWS, Azure, or GCP using containerized workloads with Kubernetes for scalability and resilience. For organizations with data sovereignty requirements or existing on-premise infrastructure, we support deployment to private cloud or on-premise Kubernetes clusters with the same architecture.' },
   { q: 'How do you handle change management for a new enterprise portal?', a: 'Change management is built into our delivery process. We involve business stakeholders throughout via regular demos and feedback sessions, run a controlled pilot with power users before broad rollout, provide role-specific training materials and video walkthroughs, and establish a feedback channel for the first 60 days. Adoption metrics are tracked and reported to leadership throughout.' },
 ];
 
 
-const floatingIcons = [
-  { id: 1, icon: IconReact, className: 'top-[10%] left-[5%]' },
-  { id: 2, icon: IconNextJS, className: 'top-[15%] right-[8%]' },
-  { id: 3, icon: IconNodeJS, className: 'top-[60%] left-[3%]' },
-  { id: 4, icon: IconPython, className: 'bottom-[20%] right-[5%]' },
-  { id: 5, icon: IconAWS, className: 'top-[5%] left-[25%]' },
-  { id: 6, icon: IconDocker, className: 'top-[70%] right-[15%]' },
-  { id: 7, icon: IconKubernetes, className: 'bottom-[15%] left-[20%]' },
-  { id: 8, icon: IconTypeScript, className: 'top-[40%] left-[8%]' },
-  { id: 9, icon: IconGraphQL, className: 'top-[80%] right-[25%]' },
-  { id: 10, icon: IconPostgreSQL, className: 'top-[25%] right-[5%]' },
-  { id: 11, icon: IconMongoDB, className: 'top-[50%] left-[2%]' },
-  { id: 12, icon: IconTensorFlow, className: 'bottom-[25%] right-[10%]' },
-  { id: 13, icon: IconGitHub, className: 'top-[35%] right-[12%]' },
-  { id: 14, icon: IconFigma, className: 'bottom-[10%] left-[10%]' },
-  { id: 15, icon: IconVSCode, className: 'top-[5%] left-[50%]' },
-];
 
 export default function PageClient() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -100,7 +82,6 @@ export default function PageClient() {
         {/* HERO */}
         <section ref={heroRef} style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', paddingTop: 140, paddingBottom: 80, position: 'relative', overflow: 'hidden' }}>
           <HeroBackground variant="right" />
-          <FloatingIconsBackground icons={floatingIcons} />
           <div className="cb-container">
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 480px), 1fr))', gap: 'clamp(24px, 5vw, 60px)', alignItems: 'center' }}>
               <div>
@@ -120,7 +101,7 @@ export default function PageClient() {
               <span style={{ color: '#ffffff' }}>Security & Scale</span>
             </h1>
             <p className="reveal reveal-d3" style={{ fontSize: 18, color: 'rgba(255,255,255,0.45)', lineHeight: 1.7, maxWidth: 600, marginBottom: 40 }}>
-              We build secure, compliant enterprise portals that integrate with your existing identity infrastructure, automate complex workflows, and give thousands of users a modern, intuitive experience — with the audit trails and access controls your organisation demands.
+              We build secure, compliant enterprise portals that integrate with your existing identity infrastructure, automate complex workflows, and give thousands of users a modern, intuitive experience — with the audit trails and access controls your organization demands.
             </p>
             <div className="reveal reveal-d4" style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
               <Link href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, height: 52, padding: '0 32px', borderRadius: 100, background: 'linear-gradient(135deg, #22c55e, #4ade80)', color: '#000', fontSize: 15, fontWeight: 700, textDecoration: 'none' }}>
@@ -167,6 +148,10 @@ export default function PageClient() {
         </section>
 
         {/* PROCESS */}
+
+        {/* PORTFOLIO */}
+        <PortfolioShowcase category="web-development" />
+
         <section ref={s2} className="section-padding">
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>
@@ -212,7 +197,7 @@ export default function PageClient() {
         <section ref={s4} className="section-padding" style={{ textAlign: 'center', background: 'radial-gradient(ellipse 60% 60% at 50% 50%, rgba(34,197,94,0.08) 0%, transparent 70%)' }}>
           <div className="cb-container">
             <h2 className="reveal" style={{ fontSize: 'clamp(32px, 5vw, 60px)', fontWeight: 800, letterSpacing: '-0.04em', marginBottom: 20 }}>Ready to Modernise Your Enterprise Portal?</h2>
-            <p className="reveal reveal-d1" style={{ fontSize: 18, color: 'rgba(255,255,255,0.4)', marginBottom: 40, maxWidth: 500, margin: '0 auto 40px' }}>Let's discuss your requirements and design a secure, scalable portal that your organisation will actually use.</p>
+            <p className="reveal reveal-d1" style={{ fontSize: 18, color: 'rgba(255,255,255,0.4)', marginBottom: 40, maxWidth: 500, margin: '0 auto 40px' }}>Let's discuss your requirements and design a secure, scalable portal that your organization will actually use.</p>
             <div className="reveal reveal-d2" style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
               <Link href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, height: 56, padding: '0 40px', borderRadius: 100, background: 'linear-gradient(135deg, #22c55e, #4ade80)', color: '#000', fontSize: 16, fontWeight: 700, textDecoration: 'none' }}>
                 Get a Free Quote

@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import HeroBackground from '@/components/HeroBackground';
 import type { CityData } from '@/data/cities';
+import TestimonialMarquee from '@/components/TestimonialMarquee';
 
 // ─── REVEAL HOOK ─────────────────────────────────────────────────────────────
 
@@ -260,42 +261,7 @@ export default function PageClient({ city }: { city: CityData }) {
         {/* ════════════════════════════════════════════
             5. TESTIMONIALS
         ════════════════════════════════════════════ */}
-        <section ref={testimonialsRef} style={{ ...sectionPad, ...sectionBorder }}>
-          <div className="cb-container">
-            <div style={{ textAlign: 'center', marginBottom: 56 }}>
-              <div className="reveal" style={subLabel}>Client Stories</div>
-              <h2 className="reveal" style={heading2}>
-                Trusted by Teams in <span style={{ color: '#ffffff' }}>{city.name}</span>
-              </h2>
-            </div>
-            <div className="loc-testimonials-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 340px), 1fr))', gap: 20 }}>
-              {city.testimonials.map((t, i) => (
-                <div
-                  key={t.name}
-                  className={`reveal reveal-d${i + 1}`}
-                  style={{ ...cardStyle, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}
-                  onMouseEnter={e => hoverCard(e, true)}
-                  onMouseLeave={e => hoverCard(e, false)}
-                >
-                  {/* Quote icon */}
-                  <div style={{ marginBottom: 20 }}>
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" style={{ opacity: 0.15 }}>
-                      <path d="M10 11H6a1 1 0 01-1-1V7a1 1 0 011-1h3a1 1 0 011 1v7c0 2.21-1.79 4-4 4" stroke="#22c55e" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      <path d="M20 11h-4a1 1 0 01-1-1V7a1 1 0 011-1h3a1 1 0 011 1v7c0 2.21-1.79 4-4 4" stroke="#22c55e" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </div>
-                  <p style={{ ...bodyText, fontSize: 15, flex: 1, marginBottom: 28, fontStyle: 'italic' }}>
-                    &ldquo;{t.quote}&rdquo;
-                  </p>
-                  <div style={{ borderTop: '1px solid rgba(255,255,255,0.03)', paddingTop: 20 }}>
-                    <div style={{ fontSize: 14, fontWeight: 600, color: '#ffffff' }}>{t.name}</div>
-                    <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)', marginTop: 2 }}>{t.role}, {t.company}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <TestimonialMarquee testimonials={city.testimonials} heading={`Trusted by Teams in ${city.name}`} />
 
         {/* ════════════════════════════════════════════
             6. CTA

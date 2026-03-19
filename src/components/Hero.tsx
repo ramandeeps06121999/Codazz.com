@@ -51,6 +51,7 @@ export default function Hero() {
   const [wordIndex, setWordIndex] = useState(0);
   const [visible, setVisible] = useState(true);
   const [showGlobe, setShowGlobe] = useState(false);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout>>(null);
 
   useGSAP(() => {
     gsap.from(['.h-badge', '.h-h1', '.h-p', '.h-btns', '.h-stats'], {
@@ -64,10 +65,13 @@ export default function Hero() {
   useEffect(() => {
     const cycle = () => {
       setVisible(false);
-      setTimeout(() => { setWordIndex(i => (i + 1) % words.length); setVisible(true); }, 380);
+      timeoutRef.current = setTimeout(() => { setWordIndex(i => (i + 1) % words.length); setVisible(true); }, 380);
     };
     const id = setInterval(cycle, 2800);
-    return () => clearInterval(id);
+    return () => {
+      clearInterval(id);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
   }, []);
 
   useEffect(() => {
@@ -84,7 +88,7 @@ export default function Hero() {
       <div aria-hidden="true" className="hero-grid-overlay" />
       {/* Center green glow */}
       <div aria-hidden="true" className="hero-glow-center" />
-      
+
       {/* Glow left */}
       <div aria-hidden="true" style={{ position: 'absolute', top: '5%', left: '-10%', width: 'min(700px, 100vw)', height: 'min(700px, 100vw)', background: 'radial-gradient(circle, rgba(34,197,94,0.06) 0%, transparent 65%)', filter: 'blur(100px)', pointerEvents: 'none' }} />
       {/* Glow right */}
@@ -141,7 +145,7 @@ export default function Hero() {
 
           {/* Sub */}
           <p className="h-p" style={{ fontSize: 'clamp(0.95rem, 1.6vw, 1.15rem)', color: 'rgba(255,255,255,0.7)', maxWidth: 480, lineHeight: 1.8, margin: '0 0 clamp(28px, 5vw, 52px)' }}>
-            Toronto-headquartered engineers building world-class digital products for companies ready to lead their industry — on time, on budget, every time.
+            Edmonton-headquartered engineers building world-class digital products for companies ready to lead their industry — on time, on budget, every time.
           </p>
 
           {/* Buttons */}
@@ -169,7 +173,7 @@ export default function Hero() {
         {/* RIGHT — code panel */}
         <div className="h-code-panel" style={{ position: 'relative' }}>
           <div className="code-panel-glow" />
-          
+
           <div className="code-panel-container">
             {/* Title bar */}
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '18px 24px', borderBottom: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.02)' }}>

@@ -560,7 +560,7 @@ export default function WebsiteCostUSAClient() {
                       </div>
                     </div>
                     <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)', lineHeight: 1.7, margin: 0 }}>
-                      Leading engineering strategy and product vision at Codazz. Has guided over 300+ bespoke product launches globally.
+                      Leading engineering strategy and product vision at Codazz. Has guided over 500+ bespoke product launches globally.
                     </p>
                   </div>
 
@@ -627,7 +627,7 @@ export default function WebsiteCostUSAClient() {
                   Stop Guessing. Get Real Numbers.
                 </h2>
                 <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.45)', maxWidth: 480, lineHeight: 1.7 }}>
-                  Tell us about your project and get a transparent, detailed quote within 48 hours. No hidden fees, no surprise invoices. Just honest pricing from a team that has built 300+ web projects across the USA.
+                  Tell us about your project and get a transparent, detailed quote within 48 hours. No hidden fees, no surprise invoices. Just honest pricing from a team that has built 500+ web projects across the USA.
                 </p>
               </div>
               <Link href="/contact" style={{ textDecoration: 'none' }}>

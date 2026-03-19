@@ -224,7 +224,7 @@ export default function AppDevelopmentCompaniesNewYorkClient() {
                     </div>
 
                     <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 16, position: 'relative', zIndex: 1 }}>
-                      New York&apos;s premier app development agency. We build native iOS, Android, and cross-platform apps using React Native and Flutter. From MVPs to enterprise-grade solutions, our New York headquarters serves as the command center for 300+ successful product launches.
+                      New York&apos;s premier app development agency. We build native iOS, Android, and cross-platform apps using React Native and Flutter. From MVPs to enterprise-grade solutions, our New York headquarters serves as the command center for 500+ successful product launches.
                     </p>
                     <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 20, position: 'relative', zIndex: 1 }}>
                       What sets Codazz apart is our full-stack approach. We don&apos;t just build the front-end mobile experience; we architect the entire product ecosystem including scalable backend APIs, cloud infrastructure on AWS and GCP, CI/CD pipelines, and analytics dashboards. Our team leverages New York&apos;s AI talent pool to integrate machine learning features directly into mobile applications, giving our clients a competitive edge that template-based agencies simply cannot match.
@@ -238,7 +238,7 @@ export default function AppDevelopmentCompaniesNewYorkClient() {
                         <polyline points="22,7 13.5,15.5 8.5,10.5 2,17"/><polyline points="16,7 22,7 22,13"/>
                       </svg>
                       <span style={{ fontSize: 13, color: '#ffffff', fontWeight: 600 }}>
-                        Key Metric: 300+ Product Launches | Native, Cross-Platform & Enterprise
+                        Key Metric: 500+ Product Launches | Native, Cross-Platform & Enterprise
                       </span>
                     </div>
                   </div>
@@ -449,7 +449,7 @@ export default function AppDevelopmentCompaniesNewYorkClient() {
                       </div>
                     </div>
                     <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)', lineHeight: 1.7, margin: 0 }}>
-                      Leading engineering strategy and product vision at Codazz. Has guided over 300+ bespoke product launches globally.
+                      Leading engineering strategy and product vision at Codazz. Has guided over 500+ bespoke product launches globally.
                     </p>
                   </div>
 

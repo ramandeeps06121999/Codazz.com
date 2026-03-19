@@ -5,8 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ServiceHeroForm from '@/components/ServiceHeroForm';
 import HeroBackground from '@/components/HeroBackground';
-import { FloatingIconsBackground } from '@/components/FloatingIconsBackground';
-import { IconReact, IconNextJS, IconNodeJS, IconPython, IconAWS, IconDocker, IconKubernetes, IconTypeScript, IconGraphQL, IconPostgreSQL, IconMongoDB, IconTensorFlow, IconGitHub, IconFigma, IconVSCode } from '@/components/tech-icons';
+import PortfolioShowcase from '@/components/PortfolioShowcase';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -31,16 +30,16 @@ const stats = [
 const services = [
   { icon: '🔍', title: 'Technical SEO Audit & Fixes', desc: 'Deep crawl analysis identifying crawl errors, Core Web Vitals issues, duplicate content, and indexation problems — with a prioritised fix roadmap.' },
   { icon: '🎯', title: 'Keyword Research & Strategy', desc: 'Data-driven keyword mapping across your full funnel — from high-volume head terms to long-tail buying intent queries that convert.' },
-  { icon: '📝', title: 'On-Page Optimisation', desc: 'Title tags, meta descriptions, heading hierarchy, schema markup, and internal linking structured to signal topical authority to search engines.' },
+  { icon: '📝', title: 'On-Page Optimization', desc: 'Title tags, meta descriptions, heading hierarchy, schema markup, and internal linking structured to signal topical authority to search engines.' },
   { icon: '🔗', title: 'Link Building & Digital PR', desc: 'White-hat backlink acquisition through editorial outreach, digital PR campaigns, and resource link building that builds lasting domain authority.' },
-  { icon: '📍', title: 'Local SEO & Google Business', desc: 'Google Business Profile optimisation, local citation building, and geo-targeted content strategies to dominate your local search results.' },
-  { icon: '✍️', title: 'SEO Content Writing', desc: 'Expert-written, search-optimised blog posts, landing pages, and pillar content that ranks, earns links, and converts organic visitors.' },
+  { icon: '📍', title: 'Local SEO & Google Business', desc: 'Google Business Profile optimization, local citation building, and geo-targeted content strategies to dominate your local search results.' },
+  { icon: '✍️', title: 'SEO Content Writing', desc: 'Expert-written, search-optimized blog posts, landing pages, and pillar content that ranks, earns links, and converts organic visitors.' },
 ];
 
 const steps = [
   { num: '01', title: 'Site Audit', desc: 'We crawl your entire website and benchmark your current organic performance, identifying every technical, on-page, and off-page opportunity.' },
   { num: '02', title: 'Strategy Development', desc: 'We build a bespoke SEO roadmap prioritised by revenue impact — keyword targets, content gaps, technical fixes, and a link acquisition plan.' },
-  { num: '03', title: 'On-Page Optimisation', desc: 'Our team executes all on-page and technical recommendations, from meta data to schema, ensuring every page is fully optimised for its target keywords.' },
+  { num: '03', title: 'On-Page Optimization', desc: 'Our team executes all on-page and technical recommendations, from meta data to schema, ensuring every page is fully optimized for its target keywords.' },
   { num: '04', title: 'Link Building & Reporting', desc: 'Ongoing monthly link acquisition, content publishing, and transparent ranking reports with clear attribution to traffic and revenue outcomes.' },
 ];
 
@@ -48,28 +47,11 @@ const faqs = [
   { q: 'How long before SEO shows results?', a: 'Most clients begin seeing meaningful ranking improvements within 3–6 months, with significant organic traffic growth by month 9–12. SEO is a compound investment — the longer you invest, the greater and more defensible the returns.' },
   { q: 'Technical vs content SEO — which comes first?', a: 'Technical SEO always comes first. There is no point creating brilliant content if search engines cannot properly crawl and index your site. We audit and fix all technical foundations before scaling content and link building.' },
   { q: 'How do you build backlinks ethically?', a: 'We use only white-hat methods: editorial outreach to relevant publications, digital PR campaigns that earn genuine coverage, broken link building, and resource page placements. We never buy links or use private blog networks.' },
-  { q: 'Local SEO vs national SEO — what is the difference?', a: 'Local SEO targets geo-specific search queries and optimises your visibility in Google Maps and the local pack. National SEO targets broader keyword sets across all regions. Many businesses need both, and we tailor strategy accordingly.' },
+  { q: 'Local SEO vs national SEO — what is the difference?', a: 'Local SEO targets geo-specific search queries and optimizes your visibility in Google Maps and the local pack. National SEO targets broader keyword sets across all regions. Many businesses need both, and we tailor strategy accordingly.' },
   { q: 'How do you track SEO ROI?', a: 'We connect Google Analytics 4, Search Console, and rank tracking tools to a custom Looker Studio dashboard that maps organic sessions, goal completions, and revenue directly to your SEO investment month over month.' },
 ];
 
 
-const floatingIcons = [
-  { id: 1, icon: IconReact, className: 'top-[10%] left-[5%]' },
-  { id: 2, icon: IconNextJS, className: 'top-[15%] right-[8%]' },
-  { id: 3, icon: IconNodeJS, className: 'top-[60%] left-[3%]' },
-  { id: 4, icon: IconPython, className: 'bottom-[20%] right-[5%]' },
-  { id: 5, icon: IconAWS, className: 'top-[5%] left-[25%]' },
-  { id: 6, icon: IconDocker, className: 'top-[70%] right-[15%]' },
-  { id: 7, icon: IconKubernetes, className: 'bottom-[15%] left-[20%]' },
-  { id: 8, icon: IconTypeScript, className: 'top-[40%] left-[8%]' },
-  { id: 9, icon: IconGraphQL, className: 'top-[80%] right-[25%]' },
-  { id: 10, icon: IconPostgreSQL, className: 'top-[25%] right-[5%]' },
-  { id: 11, icon: IconMongoDB, className: 'top-[50%] left-[2%]' },
-  { id: 12, icon: IconTensorFlow, className: 'bottom-[25%] right-[10%]' },
-  { id: 13, icon: IconGitHub, className: 'top-[35%] right-[12%]' },
-  { id: 14, icon: IconFigma, className: 'bottom-[10%] left-[10%]' },
-  { id: 15, icon: IconVSCode, className: 'top-[5%] left-[50%]' },
-];
 
 export default function PageClient() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -99,7 +81,6 @@ export default function PageClient() {
         {/* HERO */}
         <section ref={heroRef} style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', paddingTop: 140, paddingBottom: 80, position: 'relative', overflow: 'hidden' }}>
           <HeroBackground variant="right" />
-          <FloatingIconsBackground icons={floatingIcons} />
           <div className="cb-container">
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 480px), 1fr))', gap: 'clamp(24px, 5vw, 60px)', alignItems: 'center' }}>
               <div>
@@ -117,7 +98,7 @@ export default function PageClient() {
                 <h1 className="reveal reveal-d2" style={{ fontSize: 'clamp(36px, 6vw, 72px)', fontWeight: 800, letterSpacing: '-0.04em', lineHeight: 1.05, marginBottom: 24, maxWidth: 800 }}>
                   SEO That Drives <span style={{ color: '#ffffff' }}>Real Growth</span>
                 </h1>
-                <p className="reveal reveal-d3" style={{ fontSize: 18, color: 'rgba(255,255,255,0.45)', lineHeight: 1.7, maxWidth: 600, marginBottom: 40 }}>Data-driven search engine optimisation that moves you up the rankings, grows organic traffic, and converts visitors into customers — month after month.</p>
+                <p className="reveal reveal-d3" style={{ fontSize: 18, color: 'rgba(255,255,255,0.45)', lineHeight: 1.7, maxWidth: 600, marginBottom: 40 }}>Data-driven search engine optimization that moves you up the rankings, grows organic traffic, and converts visitors into customers — month after month.</p>
                 <div className="reveal reveal-d4" style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
                   <Link href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, height: 52, padding: '0 32px', borderRadius: 100, background: 'linear-gradient(135deg, #22c55e, #4ade80)', color: '#000', fontSize: 15, fontWeight: 700, textDecoration: 'none' }}>
                     Start Your Project
@@ -161,6 +142,10 @@ export default function PageClient() {
         </section>
 
         {/* PROCESS */}
+
+        {/* PORTFOLIO */}
+        <PortfolioShowcase category="digital-marketing" />
+
         <section ref={s2} className="section-padding">
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>

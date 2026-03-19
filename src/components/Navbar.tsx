@@ -389,7 +389,7 @@ export default function Navbar() {
             </div>
 
             {/* 6-column service grid */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: 6, marginBottom: 20 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 6, marginBottom: 20 }}>
               {serviceCategories.map((cat) => (
                 <div key={cat.title} className="mega-menu-service-card">
                   <Link href={cat.href} onClick={() => setActiveMenu(null)} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10, textDecoration: 'none' }}>

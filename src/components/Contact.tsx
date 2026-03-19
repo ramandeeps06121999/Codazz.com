@@ -21,6 +21,7 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isLoading) return;
     setIsLoading(true);
 
     try {
@@ -43,11 +44,10 @@ export default function Contact() {
         setFormData({ name: '', email: '', company: '', message: '' });
         setTimeout(() => setSubmitted(false), 4000);
       } else {
-        alert('Error: ' + data.message);
+        setSubmitted(false);
       }
     } catch (err) {
       console.error(err);
-      alert('Something went wrong. Please try again.');
     } finally {
       setIsLoading(false);
     }

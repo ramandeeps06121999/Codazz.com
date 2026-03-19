@@ -32,7 +32,7 @@ const jsonLd = {
     '@type': 'Person',
     name: 'Raman Makkar',
     jobTitle: 'CEO',
-    url: 'https://codazz.com/about',
+    url: 'https://codazz.com/about/raman-makkar',
   },
   publisher: {
     '@type': 'Organization',
@@ -43,6 +43,7 @@ const jsonLd = {
       url: 'https://codazz.com/logo.png',
     },
   },
+  image: `https://codazz.com/blog_images/${SLUG}.jpg`,
   url: `https://codazz.com/blog/${SLUG}`,
   mainEntityOfPage: `https://codazz.com/blog/${SLUG}`,
 };

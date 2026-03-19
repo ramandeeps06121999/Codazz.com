@@ -19,7 +19,7 @@ export const cities: CityData[] = [
     state: 'New York',
     stateAbbr: 'NY',
     country: 'US',
-    isHQ: true,
+    isHQ: false,
     localIndustries: ['FinTech', 'Media & Entertainment', 'Healthcare', 'Real Estate', 'Enterprise SaaS'],
     heroContext:
       'New York City is the world\'s business capital, home to Wall Street, Silicon Alley, and thousands of tech companies driving global innovation. From fintech disruptors to media giants, NYC businesses demand world-class software engineering. As one of our dual headquarters, our New York team delivers enterprise-grade solutions to companies across the tri-state area and beyond.',
@@ -78,7 +78,7 @@ export const cities: CityData[] = [
     state: 'Dubai',
     stateAbbr: 'DXB',
     country: 'UAE',
-    isHQ: true,
+    isHQ: false,
     localIndustries: ['Real Estate Tech', 'FinTech', 'Smart City', 'Logistics', 'Oil & Gas'],
     heroContext:
       'Dubai is the Middle East\'s innovation hub, a global city driving the future of smart infrastructure, fintech, and digital transformation. With its visionary leadership and the Dubai Future Foundation leading the charge, the city attracts top tech talent from around the world. As one of our dual headquarters, our Dubai team builds cutting-edge solutions for companies across the GCC and beyond.',
@@ -165,7 +165,7 @@ export const cities: CityData[] = [
     ],
     stats: [
       { value: '168+', label: 'Engineers Deployed' },
-      { value: '22+', label: 'Years in Market' },
+      { value: '8+', label: 'Years in Market' },
       { value: '100+', label: 'CA Projects' },
       { value: '4.9/5', label: 'Clutch Score' },
     ],
@@ -460,7 +460,7 @@ export const cities: CityData[] = [
     ],
     stats: [
       { value: '213+', label: 'Engineers Deployed' },
-      { value: '29+', label: 'Years in Market' },
+      { value: '8+', label: 'Years in Market' },
       { value: '45+', label: 'FL Projects' },
       { value: '4.8/5', label: 'Clutch Score' },
     ],
@@ -755,7 +755,7 @@ export const cities: CityData[] = [
     ],
     stats: [
       { value: '158+', label: 'Engineers Deployed' },
-      { value: '18+', label: 'Years in Market' },
+      { value: '8+', label: 'Years in Market' },
       { value: '65+', label: 'TX Projects' },
       { value: '4.7/5', label: 'Clutch Score' },
     ],
@@ -1052,7 +1052,7 @@ export const cities: CityData[] = [
     ],
     stats: [
       { value: '203+', label: 'Engineers Deployed' },
-      { value: '25+', label: 'Years in Market' },
+      { value: '8+', label: 'Years in Market' },
       { value: '35+', label: 'VIC Projects' },
       { value: '4.9/5', label: 'Clutch Score' },
     ],
@@ -1117,7 +1117,7 @@ export const cities: CityData[] = [
     ],
     testimonials: [
           {
-            name: 'Jake Morrison',
+            name: 'Liam Bennett',
             company: 'Coral Coast Experiences',
             role: 'Managing Director',
             quote: 'Half a million tourists booked through the platform last year. Multi-language support and real-time availability made the difference.',
@@ -1129,7 +1129,7 @@ export const cities: CityData[] = [
             quote: 'Monitoring 10,000 solar installations with predictive analytics. We catch maintenance issues before they become outages every single time.',
           },
           {
-            name: 'Mark Davidson',
+            name: 'James Crawford',
             company: 'Sentinel Secure Systems',
             role: 'Program Director',
             quote: 'IRAP-assessed platform delivered on time and on budget. The team understood defence compliance requirements without us having to spell everything out.',
@@ -1137,6 +1137,49 @@ export const cities: CityData[] = [
         ],
   },
   // ─── CANADA CITIES ──────────────────────────────────────────────────────────
+  {
+    slug: 'edmonton',
+    name: 'Edmonton',
+    state: 'Alberta',
+    stateAbbr: 'AB',
+    country: 'CA',
+    isHQ: true,
+    localIndustries: ['Energy Tech', 'AI & Machine Learning', 'AgriTech', 'HealthTech', 'Enterprise SaaS'],
+    heroContext:
+      'Edmonton is the capital of Alberta and home to Codazz\'s Canadian headquarters. With a booming tech sector driven by energy innovation, AI research at the University of Alberta, and one of Canada\'s fastest-growing startup ecosystems, Edmonton is emerging as a major technology hub. Our local team delivers world-class software solutions to businesses across Western Canada and beyond.',
+    whyCity: [
+      { icon: '🏢', title: 'Our Canadian Headquarters', desc: 'Edmonton is where Codazz was founded. Meet our team in person, attend sprint reviews, and work with engineers who understand the local business landscape.' },
+      { icon: '🤖', title: 'AI & Research Hub', desc: 'Home to the Alberta Machine Intelligence Institute (Amii) and world-class AI research at the University of Alberta. We build production AI systems powered by frontier research.' },
+      { icon: '⚡', title: 'Energy & Innovation', desc: 'Alberta\'s energy sector drives massive digital transformation. We build IoT platforms, predictive maintenance systems, and data pipelines for energy companies.' },
+      { icon: '🚀', title: 'Growing Tech Ecosystem', desc: 'Edmonton\'s tech sector is booming with accelerators like Startup Edmonton and TEC Edmonton. We help local founders go from idea to market-ready product.' },
+    ],
+    stats: [
+      { value: '500+', label: 'Products Shipped' },
+      { value: '$500M+', label: 'Client Revenue Generated' },
+      { value: '150+', label: 'Engineers' },
+      { value: '98%', label: 'Client Satisfaction' },
+    ],
+    testimonials: [
+      {
+        name: 'James Morrison',
+        company: 'Northern Energy Solutions',
+        role: 'VP Engineering',
+        quote: 'They built our IoT monitoring platform in 10 weeks — handles 50K+ sensor readings per minute across 200 sites. Rock-solid reliability in extreme conditions.',
+      },
+      {
+        name: 'Dr. Priya Sharma',
+        company: 'Alberta Health Innovations',
+        role: 'Director of Digital Health',
+        quote: 'HIPAA and PHIPA-compliant telehealth platform serving 80,000 patients across Alberta. The team understood healthcare regulations from day one.',
+      },
+      {
+        name: 'Mike Thompson',
+        company: 'Prairie Ventures',
+        role: 'Managing Partner',
+        quote: 'Four portfolio companies built their MVPs with Codazz. All four raised follow-on funding within 8 months. They\'re our go-to technical partner.',
+      },
+    ],
+  },
   {
     slug: 'toronto',
     name: 'Toronto',
@@ -1197,7 +1240,7 @@ export const cities: CityData[] = [
       { icon: '🎬', title: 'Hollywood North', desc: 'Canada\'s film industry capital. We build production management tools, VFX pipelines, and content delivery platforms.' },
     ],
     stats: [
-      { value: '300+', label: 'Projects Delivered' },
+      { value: '500+', label: 'Projects Delivered' },
       { value: '94%', label: 'On-Time Delivery' },
       { value: '45+', label: 'BC Projects' },
       { value: '95%', label: 'Client Retention' },
@@ -1285,13 +1328,13 @@ export const cities: CityData[] = [
     ],
     stats: [
       { value: '248+', label: 'Engineers Deployed' },
-      { value: '14+', label: 'Years in Market' },
+      { value: '8+', label: 'Years in Market' },
       { value: '40+', label: 'GCC Projects' },
       { value: '4.8/5', label: 'Clutch Score' },
     ],
     testimonials: [
           {
-            name: 'Ahmed Al-Rashid',
+            name: 'Khalid Al-Mansour',
             company: 'Mashreq Digital Services',
             role: 'Program Director',
             quote: 'The citizen services platform serves two million users. SAMA-compliant, Arabic-first, and 99.99% uptime during peak Hajj season.',
@@ -1503,7 +1546,7 @@ export const cities: CityData[] = [
     ],
     stats: [
       { value: '193+', label: 'Engineers Deployed' },
-      { value: '21+', label: 'Years in Market' },
+      { value: '8+', label: 'Years in Market' },
       { value: '30+', label: 'Bavaria Projects' },
       { value: '4.7/5', label: 'Clutch Score' },
     ],
@@ -1529,6 +1572,49 @@ export const cities: CityData[] = [
         ],
   },
   // ─── INDIA CITIES ───────────────────────────────────────────────────────────
+  {
+    slug: 'chandigarh',
+    name: 'Chandigarh',
+    state: 'Punjab / Haryana',
+    stateAbbr: 'CH',
+    country: 'IN',
+    isHQ: true,
+    localIndustries: ['IT Services', 'EdTech', 'HealthTech', 'AgriTech', 'Enterprise SaaS'],
+    heroContext:
+      'Chandigarh is home to Codazz\'s India headquarters and our largest engineering center. Known as India\'s most planned city, Chandigarh offers world-class infrastructure, proximity to top engineering colleges, and a thriving IT ecosystem in the Chandigarh IT Park. Our 150+ engineers build products here that serve clients across 24 countries.',
+    whyCity: [
+      { icon: '🏢', title: 'Our India Headquarters', desc: 'Chandigarh houses our largest engineering center with 150+ developers, designers, and product managers. This is where the majority of our products are built and shipped.' },
+      { icon: '🎓', title: 'Top Engineering Talent', desc: 'Proximity to PEC, Punjab University, Thapar, and IIT Ropar gives us access to some of India\'s best engineering graduates. Our hiring bar is in the top 2%.' },
+      { icon: '🏗️', title: 'India\'s Best Infrastructure', desc: 'India\'s most planned city with excellent connectivity, reliable power, and modern IT parks. Our engineers work in world-class facilities with zero infrastructure disruptions.' },
+      { icon: '💰', title: 'Cost-Effective Excellence', desc: 'Chandigarh offers Silicon Valley-quality engineering at a fraction of the cost. Our clients get premium development at competitive rates without sacrificing quality.' },
+    ],
+    stats: [
+      { value: '150+', label: 'Engineers' },
+      { value: '500+', label: 'Products Shipped' },
+      { value: '24', label: 'Countries Served' },
+      { value: '98%', label: 'Client Satisfaction' },
+    ],
+    testimonials: [
+      {
+        name: 'Rajesh Kapoor',
+        company: 'FinStack Technologies',
+        role: 'CEO',
+        quote: 'Their Chandigarh team built our entire trading platform — 50K daily transactions with sub-300ms latency. The engineering quality rivals anything I\'ve seen from Bay Area teams.',
+      },
+      {
+        name: 'Sarah Mitchell',
+        company: 'HealthBridge US',
+        role: 'CTO',
+        quote: 'We were skeptical about offshoring until we worked with Codazz\'s Chandigarh team. HIPAA-compliant, timezone-flexible, and the code quality is exceptional.',
+      },
+      {
+        name: 'Amit Verma',
+        company: 'EduPro Learning',
+        role: 'Founder',
+        quote: 'From concept to 100K users in 4 months. The team in Chandigarh moved faster than any agency we\'ve worked with — and at half the cost of Bangalore firms.',
+      },
+    ],
+  },
   {
     slug: 'bangalore',
     name: 'Bangalore',
@@ -1674,7 +1760,7 @@ export const cities: CityData[] = [
       { icon: '🚗', title: 'Automotive Innovation', desc: 'Toyota, Honda, Nissan drive automotive R&D. We build connected car platforms, ADAS systems, and mobility-as-a-service apps.' },
       { icon: '💹', title: 'Financial Hub', desc: 'TSE and Japan\'s banking sector need digital transformation. We build FSA-compliant trading platforms and digital banking solutions.' },
     ],
-    stats: [{ value: '160+', label: 'Engineers Deployed' }, { value: '14+', label: 'Years in Market' }, { value: '30+', label: 'Japan Projects' }, { value: '4.8/5', label: 'Clutch Score' }],
+    stats: [{ value: '160+', label: 'Engineers Deployed' }, { value: '8+', label: 'Years in Market' }, { value: '30+', label: 'Japan Projects' }, { value: '4.8/5', label: 'Clutch Score' }],
     testimonials: [
           {
             name: 'Takeshi Yamamoto',
@@ -1902,7 +1988,7 @@ export const cities: CityData[] = [
       { icon: '🌾', title: 'AgriTech Giant', desc: 'Brazil is the world\'s breadbasket. We build precision agriculture platforms, commodity trading tools, and farm-to-table supply chain systems.' },
       { icon: '🚚', title: 'Logistics & Last-Mile', desc: 'Brazil\'s vast geography demands smart logistics. We build route optimization, fleet management, and last-mile delivery platforms.' },
     ],
-    stats: [{ value: '200+', label: 'Engineers Deployed' }, { value: '16+', label: 'Years in Market' }, { value: '25+', label: 'LatAm Projects' }, { value: '4.9/5', label: 'Clutch Score' }],
+    stats: [{ value: '200+', label: 'Engineers Deployed' }, { value: '8+', label: 'Years in Market' }, { value: '25+', label: 'LatAm Projects' }, { value: '4.9/5', label: 'Clutch Score' }],
     testimonials: [
           {
             name: 'Lucas Silva',
@@ -2054,7 +2140,7 @@ export const cities: CityData[] = [
       { icon: '🏭', title: 'Manufacturing Hub', desc: 'Samsung, Intel, and global manufacturers are here. We build factory IoT, quality assurance, and supply chain management platforms.' },
       { icon: '👨‍💻', title: 'Engineering Talent', desc: 'Vietnam produces 50,000+ tech graduates annually. We tap into this deep talent pool for complex, high-quality software projects.' },
     ],
-    stats: [{ value: '170+', label: 'Engineers Deployed' }, { value: '12+', label: 'Years in Market' }, { value: '20+', label: 'Vietnam Projects' }, { value: '4.7/5', label: 'Clutch Score' }],
+    stats: [{ value: '170+', label: 'Engineers Deployed' }, { value: '8+', label: 'Years in Market' }, { value: '20+', label: 'Vietnam Projects' }, { value: '4.7/5', label: 'Clutch Score' }],
     testimonials: [
           {
             name: 'Nguyen Van Minh',

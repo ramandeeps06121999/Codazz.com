@@ -1,0 +1,16 @@
+{
+  "name": "Codazz | Custom Software Development Company",
+  "short_name": "Codazz",
+  "description": "Toronto's leading custom software development agency specializing in AI, Mobile, and Web solutions.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#22c55e",
+  "icons": [
+    {
+      "src": "/Favicon.png",
+      "sizes": "192x192 512x512",
+      "type": "image/png"
+    }
+  ]
+}

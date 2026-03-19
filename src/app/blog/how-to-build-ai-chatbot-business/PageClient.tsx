@@ -634,8 +634,8 @@ export default function AIChatbotGuideClient() {
                             desc: 'We handle everything from UX design and conversation architecture to backend infrastructure, API development, security implementation, and cloud deployment. You get a single team that owns the entire project, not a fragmented process across five different vendors.',
                           },
                           {
-                            title: 'Toronto HQ, Global Reach',
-                            desc: 'Headquartered in Toronto with offices in New York and Dubai, we work with clients across North America, the Middle East, and beyond. Our distributed team structure means we can support projects across time zones and regulatory environments.',
+                            title: 'Edmonton & Chandigarh HQ, Global Reach',
+                            desc: 'Headquartered in Edmonton (Canada) and Chandigarh (India) with offices in New York and Dubai, we work with clients across North America, the Middle East, and beyond. Our distributed team structure means we can support projects across time zones and regulatory environments.',
                           },
                           {
                             title: 'Proven Track Record',
@@ -727,7 +727,7 @@ export default function AIChatbotGuideClient() {
                       </div>
                     </div>
                     <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)', lineHeight: 1.7, margin: 0 }}>
-                      Leading engineering strategy and product vision at Codazz. Has guided over 300+ bespoke product launches globally.
+                      Leading engineering strategy and product vision at Codazz. Has guided over 500+ bespoke product launches globally.
                     </p>
                   </div>
 

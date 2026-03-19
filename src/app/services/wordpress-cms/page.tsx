@@ -56,7 +56,7 @@ const faqSchema = {
       name: 'Can you improve the speed of my existing WordPress site?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes. Performance audits and optimisation are a standalone service. We address hosting, caching, image optimisation, plugin bloat, database queries and Core Web Vitals. Most sites see significant score improvements within 2 weeks.',
+        text: 'Yes. Performance audits and optimization are a standalone service. We address hosting, caching, image optimization, plugin bloat, database queries and Core Web Vitals. Most sites see significant score improvements within 2 weeks.',
       },
     },
   ],

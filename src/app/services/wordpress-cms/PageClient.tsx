@@ -7,12 +7,6 @@ import Breadcrumb from '@/components/Breadcrumb';
 import ServiceHeroForm from '@/components/ServiceHeroForm';
 import TrustBadges from '@/components/TrustBadges';
 import HeroBackground from '@/components/HeroBackground';
-import { FloatingIconsBackground } from '@/components/FloatingIconsBackground';
-import {
-  IconReact, IconNextJS, IconNodeJS, IconPython, IconAWS,
-  IconDocker, IconKubernetes, IconTypeScript, IconGraphQL,
-  IconPostgreSQL, IconMongoDB, IconTensorFlow, IconGitHub, IconFigma, IconVSCode
-} from '@/components/tech-icons';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -37,7 +31,7 @@ const stats = [
 const services = [
   { icon: '🎨', title: 'Custom Theme Development', desc: 'Bespoke WordPress themes built from scratch — no bloated page builders, no off-the-shelf templates. Clean, fast, and uniquely yours.' },
   { icon: '🛒', title: 'WooCommerce Stores', desc: 'High-converting e-commerce experiences with custom checkout flows, payment integrations, and inventory management.' },
-  { icon: '⚡', title: 'Performance Optimisation', desc: 'Sub-second load times through caching, image optimisation, code splitting, and CDN configuration. Core Web Vitals green across the board.' },
+  { icon: '⚡', title: 'Performance Optimization', desc: 'Sub-second load times through caching, image optimization, code splitting, and CDN configuration. Core Web Vitals green across the board.' },
   { icon: '🔒', title: 'Security Hardening', desc: 'Enterprise-grade security with automated backups, malware scanning, SSL management, and proactive threat monitoring.' },
   { icon: '🔌', title: 'Plugin Development', desc: 'Custom plugins for unique business logic, CRM integrations, and third-party API connections — built to WordPress coding standards.' },
   { icon: '📱', title: 'Headless WordPress', desc: 'Decoupled architectures with React/Next.js frontends and WordPress as a CMS backend — best of both worlds.' },
@@ -45,7 +39,7 @@ const services = [
 
 const steps = [
   { num: '01', title: 'Discovery', desc: 'We audit your current site (if any), understand your content workflow, and define technical requirements and performance targets.' },
-  { num: '02', title: 'Design', desc: 'Custom UI designs in Figma, optimised for WordPress content management and your editorial team\'s workflow.' },
+  { num: '02', title: 'Design', desc: 'Custom UI designs in Figma, optimized for WordPress content management and your editorial team\'s workflow.' },
   { num: '03', title: 'Development', desc: 'Clean, maintainable PHP code with ACF Pro for flexible content management. Mobile-first, accessibility-compliant, and SEO-ready.' },
   { num: '04', title: 'Launch & Training', desc: 'Staging, performance testing, security hardening, and hands-on training for your content team. Plus ongoing support options.' },
 ];
@@ -59,28 +53,11 @@ const results = [
 const faqs = [
   { q: 'Do you use page builders like Elementor or Divi?', a: 'No. We build custom themes with clean PHP, ACF Pro, and modern CSS. This results in faster load times, better security, and easier long-term maintenance compared to bloated page builder sites.' },
   { q: 'Can you migrate my existing WordPress site?', a: 'Absolutely. We handle full site migrations including content, SEO redirects, media files, and database transfers — with zero downtime and full backup protocols.' },
-  { q: 'How do you handle ongoing maintenance?', a: 'We offer monthly maintenance retainers covering core/plugin updates, security monitoring, backups, performance optimisation, and priority support. Most clients choose this for peace of mind.' },
+  { q: 'How do you handle ongoing maintenance?', a: 'We offer monthly maintenance retainers covering core/plugin updates, security monitoring, backups, performance optimization, and priority support. Most clients choose this for peace of mind.' },
   { q: 'Is WordPress secure enough for enterprise?', a: 'When properly configured, yes. We implement security hardening, regular updates, WAF protection, and monitoring. Many enterprise clients trust our WordPress implementations for their security and reliability.' },
-  { q: 'Can WordPress scale for high traffic?', a: 'Yes. With proper caching (Redis, Varnish), CDN configuration, database optimisation, and scalable hosting, WordPress handles millions of monthly visitors. We architect for your growth targets.' },
+  { q: 'Can WordPress scale for high traffic?', a: 'Yes. With proper caching (Redis, Varnish), CDN configuration, database optimization, and scalable hosting, WordPress handles millions of monthly visitors. We architect for your growth targets.' },
 ];
 
-const floatingIcons = [
-  { id: 1, icon: IconReact, className: 'top-[10%] left-[5%]' },
-  { id: 2, icon: IconNextJS, className: 'top-[15%] right-[8%]' },
-  { id: 3, icon: IconNodeJS, className: 'top-[60%] left-[3%]' },
-  { id: 4, icon: IconPython, className: 'bottom-[20%] right-[5%]' },
-  { id: 5, icon: IconAWS, className: 'top-[5%] left-[25%]' },
-  { id: 6, icon: IconDocker, className: 'top-[70%] right-[15%]' },
-  { id: 7, icon: IconKubernetes, className: 'bottom-[15%] left-[20%]' },
-  { id: 8, icon: IconTypeScript, className: 'top-[40%] left-[8%]' },
-  { id: 9, icon: IconGraphQL, className: 'top-[80%] right-[25%]' },
-  { id: 10, icon: IconPostgreSQL, className: 'top-[25%] right-[5%]' },
-  { id: 11, icon: IconMongoDB, className: 'top-[50%] left-[2%]' },
-  { id: 12, icon: IconTensorFlow, className: 'bottom-[25%] right-[10%]' },
-  { id: 13, icon: IconGitHub, className: 'top-[35%] right-[12%]' },
-  { id: 14, icon: IconFigma, className: 'bottom-[10%] left-[10%]' },
-  { id: 15, icon: IconVSCode, className: 'top-[5%] left-[50%]' },
-];
 
 export default function WordPressCMSPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -114,7 +91,6 @@ export default function WordPressCMSPage() {
         {/* HERO */}
         <section ref={heroRef} className="section-padding" style={{ position: 'relative', overflow: 'hidden', minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
           <HeroBackground variant="center" />
-          <FloatingIconsBackground icons={floatingIcons} />
           <div className="cb-container" style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: 860, margin: '0 auto' }}>
             <div className="reveal" style={{ display: 'inline-block', border: '1px solid rgba(34,197,94,0.4)', borderRadius: 999, padding: '6px 20px', fontSize: 13, color: '#ffffff', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>
               WordPress & CMS

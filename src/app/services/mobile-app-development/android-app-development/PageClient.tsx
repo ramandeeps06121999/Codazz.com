@@ -5,8 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ServiceHeroForm from '@/components/ServiceHeroForm';
 import HeroBackground from '@/components/HeroBackground';
-import { FloatingIconsBackground } from '@/components/FloatingIconsBackground';
-import { IconReact, IconNextJS, IconNodeJS, IconPython, IconAWS, IconDocker, IconKubernetes, IconTypeScript, IconGraphQL, IconPostgreSQL, IconMongoDB, IconTensorFlow, IconGitHub, IconFigma, IconVSCode } from '@/components/tech-icons';
+import PortfolioShowcase from '@/components/PortfolioShowcase';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -30,15 +29,15 @@ const stats = [
 
 const services = [
   { icon: '🤖', title: 'Kotlin & Jetpack Compose', desc: 'We build modern Android apps with Kotlin and Jetpack Compose, Google\'s declarative UI toolkit. Clean architecture patterns like MVVM and Clean Architecture ensure maintainable, testable codebases.' },
-  { icon: '🎨', title: 'Material Design 3', desc: 'Your app will look and feel at home on Android with full Material You implementation — dynamic colour theming, adaptive layouts, and motion design that meets Google\'s standards.' },
-  { icon: '📦', title: 'Google Play Publishing', desc: 'We manage the full Play Store submission process including store listing optimisation, content rating setup, staged rollouts, and Play Console monitoring post-launch.' },
+  { icon: '🎨', title: 'Material Design 3', desc: 'Your app will look and feel at home on Android with full Material You implementation — dynamic color theming, adaptive layouts, and motion design that meets Google\'s standards.' },
+  { icon: '📦', title: 'Google Play Publishing', desc: 'We manage the full Play Store submission process including store listing optimization, content rating setup, staged rollouts, and Play Console monitoring post-launch.' },
   { icon: '🔥', title: 'Firebase Integration', desc: 'From Firestore and Realtime Database to Remote Config, Crashlytics, and FCM push notifications, we leverage the full Firebase ecosystem to accelerate development and operations.' },
   { icon: '📺', title: 'Android Wear & TV', desc: 'Extend your reach beyond phones. We develop companion apps for Wear OS smartwatches and Android TV / Google TV, giving users a seamless experience across all their screens.' },
   { icon: '⚙️', title: 'Background Services & Notifications', desc: 'We implement WorkManager, foreground services, and Android\'s modern notification system to keep your app reliable, battery-efficient, and engaging even when not in the foreground.' },
 ];
 
 const steps = [
-  { num: '01', title: 'Research & Architecture', desc: 'We analyse your target audience, device landscape, and business requirements to define the optimal Android architecture, third-party integrations, and development approach.' },
+  { num: '01', title: 'Research & Architecture', desc: 'We analyze your target audience, device landscape, and business requirements to define the optimal Android architecture, third-party integrations, and development approach.' },
   { num: '02', title: 'UI/UX Design', desc: 'Our designers create adaptive layouts that look great on every screen size — from compact phones to large foldables — following Material Design 3 principles throughout.' },
   { num: '03', title: 'Kotlin Development', desc: 'We write clean, idiomatic Kotlin using Jetpack Compose for UI, coroutines for async work, Hilt for dependency injection, and Retrofit for networking with full unit and UI test coverage.' },
   { num: '04', title: 'Play Store Launch', desc: 'We configure signing, create all required store assets, submit for review, and monitor the rollout via Play Console — then iterate rapidly based on early user feedback.' },
@@ -53,23 +52,6 @@ const faqs = [
 ];
 
 
-const floatingIcons = [
-  { id: 1, icon: IconReact, className: 'top-[10%] left-[5%]' },
-  { id: 2, icon: IconNextJS, className: 'top-[15%] right-[8%]' },
-  { id: 3, icon: IconNodeJS, className: 'top-[60%] left-[3%]' },
-  { id: 4, icon: IconPython, className: 'bottom-[20%] right-[5%]' },
-  { id: 5, icon: IconAWS, className: 'top-[5%] left-[25%]' },
-  { id: 6, icon: IconDocker, className: 'top-[70%] right-[15%]' },
-  { id: 7, icon: IconKubernetes, className: 'bottom-[15%] left-[20%]' },
-  { id: 8, icon: IconTypeScript, className: 'top-[40%] left-[8%]' },
-  { id: 9, icon: IconGraphQL, className: 'top-[80%] right-[25%]' },
-  { id: 10, icon: IconPostgreSQL, className: 'top-[25%] right-[5%]' },
-  { id: 11, icon: IconMongoDB, className: 'top-[50%] left-[2%]' },
-  { id: 12, icon: IconTensorFlow, className: 'bottom-[25%] right-[10%]' },
-  { id: 13, icon: IconGitHub, className: 'top-[35%] right-[12%]' },
-  { id: 14, icon: IconFigma, className: 'bottom-[10%] left-[10%]' },
-  { id: 15, icon: IconVSCode, className: 'top-[5%] left-[50%]' },
-];
 
 export default function AndroidAppDevelopment() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -101,7 +83,6 @@ export default function AndroidAppDevelopment() {
         {/* HERO */}
         <section ref={heroRef} style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', paddingTop: 140, paddingBottom: 80, position: 'relative', overflow: 'hidden' }}>
           <HeroBackground variant="right" />
-          <FloatingIconsBackground icons={floatingIcons} />
           <div className="cb-container">
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 480px), 1fr))', gap: 'clamp(24px, 5vw, 60px)', alignItems: 'center' }}>
               <div>
@@ -168,6 +149,10 @@ export default function AndroidAppDevelopment() {
         </section>
 
         {/* PROCESS */}
+
+        {/* PORTFOLIO */}
+        <PortfolioShowcase category="mobile-app-development" />
+
         <section ref={s2} className="section-padding">
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>

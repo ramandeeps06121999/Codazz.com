@@ -5,8 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ServiceHeroForm from '@/components/ServiceHeroForm';
 import HeroBackground from '@/components/HeroBackground';
-import { FloatingIconsBackground } from '@/components/FloatingIconsBackground';
-import { IconReact, IconNextJS, IconNodeJS, IconPython, IconAWS, IconDocker, IconKubernetes, IconTypeScript, IconGraphQL, IconPostgreSQL, IconMongoDB, IconTensorFlow, IconGitHub, IconFigma, IconVSCode } from '@/components/tech-icons';
+import PortfolioShowcase from '@/components/PortfolioShowcase';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -32,7 +31,7 @@ const services = [
   { icon: '🎨', title: 'Custom WooCommerce Theme', desc: 'Bespoke WooCommerce themes coded to your brand — product pages, cart, checkout and account pages all designed for conversion.' },
   { icon: '💳', title: 'Payment Gateway Integration', desc: 'Stripe, PayPal, Square, Klarna, Afterpay and more — we integrate the payment methods your customers prefer for frictionless checkout.' },
   { icon: '📦', title: 'Product Catalogue & Variations', desc: 'Complex product structures, variable products, bundles, digital downloads and custom attribute taxonomies — all handled cleanly.' },
-  { icon: '🛒', title: 'Checkout Optimisation', desc: 'One-page checkout, guest checkout, address auto-complete, and trust signals strategically placed to reduce abandonment and lift conversions.' },
+  { icon: '🛒', title: 'Checkout Optimization', desc: 'One-page checkout, guest checkout, address auto-complete, and trust signals strategically placed to reduce abandonment and lift conversions.' },
   { icon: '📊', title: 'Inventory & Order Management', desc: 'Custom order statuses, automated low-stock alerts, bulk order processing, and integrations with fulfilment platforms and ERPs.' },
   { icon: '🔄', title: 'Subscription & Membership Products', desc: 'WooCommerce Subscriptions and Memberships configured for recurring billing, content gating, member discounts and churn recovery.' },
 ];
@@ -41,35 +40,18 @@ const steps = [
   { num: '01', title: 'Store Strategy', desc: 'We map your product catalogue, customer journey and payment flows — identifying quick wins and defining the architecture before any design or development begins.' },
   { num: '02', title: 'Design & Theme Build', desc: 'Custom theme development with WooCommerce template overrides, mobile-first layouts, and conversion-focused UX patterns throughout the shopping journey.' },
   { num: '03', title: 'WooCommerce Configuration', desc: 'Payment gateways, shipping zones, tax settings, inventory management, and all third-party plugin integrations configured, tested and verified.' },
-  { num: '04', title: 'Launch & Optimise', desc: 'Pre-launch QA checklist, performance testing, SSL and security hardening, followed by post-launch monitoring and conversion optimisation.' },
+  { num: '04', title: 'Launch & Optimize', desc: 'Pre-launch QA checklist, performance testing, SSL and security hardening, followed by post-launch monitoring and conversion optimization.' },
 ];
 
 const faqs = [
   { q: 'WooCommerce vs Shopify — which should I choose?', a: 'Shopify is great for getting started quickly with minimal technical overhead. WooCommerce is better when you need full control — custom checkout flows, complex product structures, deep WordPress integrations, or when you want to avoid monthly platform fees as you scale. We help you make the right call based on your specific business needs.' },
   { q: 'Which payment gateways do you integrate?', a: 'We integrate with all major gateways: Stripe, PayPal, Square, Braintree, Klarna, Afterpay, Zip, and region-specific options. We also handle 3D Secure, SCA compliance, and PCI DSS best practices so your store is secure and compliant from day one.' },
-  { q: 'Can WooCommerce handle 10,000+ products?', a: 'Yes, with the right infrastructure. We configure WooCommerce with proper database indexing, object caching (Redis), a CDN for media, and optimised queries. Many of our clients run catalogues of 50,000+ SKUs without performance issues. The key is server and database configuration, not WooCommerce itself.' },
+  { q: 'Can WooCommerce handle 10,000+ products?', a: 'Yes, with the right infrastructure. We configure WooCommerce with proper database indexing, object caching (Redis), a CDN for media, and optimized queries. Many of our clients run catalogues of 50,000+ SKUs without performance issues. The key is server and database configuration, not WooCommerce itself.' },
   { q: 'How to reduce cart abandonment?', a: 'We implement a range of proven tactics: one-page checkout, guest checkout, exit-intent popups, abandoned cart email recovery (via Klaviyo or Mailchimp), trust badges at checkout, and streamlined address forms with auto-complete. Small UX improvements at checkout have an outsized impact on revenue.' },
   { q: 'Do you provide training after launch?', a: 'Yes. Every project includes a handover session covering order management, adding/editing products, running promotions, and managing customers. We also provide written documentation and video walkthroughs tailored to your team\'s technical level.' },
 ];
 
 
-const floatingIcons = [
-  { id: 1, icon: IconReact, className: 'top-[10%] left-[5%]' },
-  { id: 2, icon: IconNextJS, className: 'top-[15%] right-[8%]' },
-  { id: 3, icon: IconNodeJS, className: 'top-[60%] left-[3%]' },
-  { id: 4, icon: IconPython, className: 'bottom-[20%] right-[5%]' },
-  { id: 5, icon: IconAWS, className: 'top-[5%] left-[25%]' },
-  { id: 6, icon: IconDocker, className: 'top-[70%] right-[15%]' },
-  { id: 7, icon: IconKubernetes, className: 'bottom-[15%] left-[20%]' },
-  { id: 8, icon: IconTypeScript, className: 'top-[40%] left-[8%]' },
-  { id: 9, icon: IconGraphQL, className: 'top-[80%] right-[25%]' },
-  { id: 10, icon: IconPostgreSQL, className: 'top-[25%] right-[5%]' },
-  { id: 11, icon: IconMongoDB, className: 'top-[50%] left-[2%]' },
-  { id: 12, icon: IconTensorFlow, className: 'bottom-[25%] right-[10%]' },
-  { id: 13, icon: IconGitHub, className: 'top-[35%] right-[12%]' },
-  { id: 14, icon: IconFigma, className: 'bottom-[10%] left-[10%]' },
-  { id: 15, icon: IconVSCode, className: 'top-[5%] left-[50%]' },
-];
 
 export default function WooCommerceStoresPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -99,7 +81,6 @@ export default function WooCommerceStoresPage() {
         {/* HERO */}
         <section ref={heroRef} style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', paddingTop: 140, paddingBottom: 80, position: 'relative', overflow: 'hidden' }}>
           <HeroBackground variant="right" />
-          <FloatingIconsBackground icons={floatingIcons} />
           <div className="cb-container">
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 480px), 1fr))', gap: 'clamp(24px, 5vw, 60px)', alignItems: 'center' }}>
               <div>
@@ -117,7 +98,7 @@ export default function WooCommerceStoresPage() {
                 <h1 className="reveal reveal-d2" style={{ fontSize: 'clamp(36px, 6vw, 72px)', fontWeight: 800, letterSpacing: '-0.04em', lineHeight: 1.05, marginBottom: 24, maxWidth: 800 }}>
                   WooCommerce Store <span style={{ color: '#ffffff' }}>Development</span>
                 </h1>
-                <p className="reveal reveal-d3" style={{ fontSize: 18, color: 'rgba(255,255,255,0.45)', lineHeight: 1.7, maxWidth: 600, marginBottom: 40 }}>High-converting WooCommerce stores built for scale — custom themes, seamless payment gateways, and revenue-focused checkout optimisation.</p>
+                <p className="reveal reveal-d3" style={{ fontSize: 18, color: 'rgba(255,255,255,0.45)', lineHeight: 1.7, maxWidth: 600, marginBottom: 40 }}>High-converting WooCommerce stores built for scale — custom themes, seamless payment gateways, and revenue-focused checkout optimization.</p>
                 <div className="reveal reveal-d4" style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
                   <Link href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, height: 52, padding: '0 32px', borderRadius: 100, background: 'linear-gradient(135deg, #22c55e, #4ade80)', color: '#000', fontSize: 15, fontWeight: 700, textDecoration: 'none' }}>
                     Start Your Project
@@ -161,6 +142,10 @@ export default function WooCommerceStoresPage() {
         </section>
 
         {/* PROCESS */}
+
+        {/* PORTFOLIO */}
+        <PortfolioShowcase category="wordpress-cms" />
+
         <section ref={s2} className="section-padding">
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>

@@ -3,10 +3,10 @@ import PageClient from './PageClient';
 
 export const metadata: Metadata = {
   title: 'Prototyping & User Testing Services | San Francisco',
-  description: 'Interactive prototyping and usability testing by Codazz. Figma prototypes, design sprints, and real-user testing. 300+ prototypes built across 24 countries worldwide.',
+  description: 'Interactive prototyping and usability testing by Codazz. Figma prototypes, design sprints, and real-user testing. 500+ prototypes built across 24 countries worldwide.',
   openGraph: {
     title: 'Prototyping & User Testing Services | Codazz',
-    description: 'Interactive prototyping and usability testing by Codazz. Figma prototypes, design sprints, and real-user testing. 300+ prototypes built across 24 countries worldwide.',
+    description: 'Interactive prototyping and usability testing by Codazz. Figma prototypes, design sprints, and real-user testing. 500+ prototypes built across 24 countries worldwide.',
     url: 'https://codazz.com/services/product-design/prototyping',
     type: 'website',
   },
@@ -21,7 +21,7 @@ const jsonLd0 = {
   "@type": "Service",
   "name": "Prototyping",
   "url": "https://codazz.com/services/product-design/prototyping",
-  "description": "Interactive prototyping and usability testing by Codazz. Figma prototypes, design sprints, and real-user testing. 300+ prototypes built across 24 countries worldwide.",
+  "description": "Interactive prototyping and usability testing by Codazz. Figma prototypes, design sprints, and real-user testing. 500+ prototypes built across 24 countries worldwide.",
   "provider": {
     "@type": "Organization",
     "name": "Codazz",

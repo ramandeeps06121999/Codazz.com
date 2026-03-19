@@ -5,8 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ServiceHeroForm from '@/components/ServiceHeroForm';
 import HeroBackground from '@/components/HeroBackground';
-import { FloatingIconsBackground } from '@/components/FloatingIconsBackground';
-import { IconReact, IconNextJS, IconNodeJS, IconPython, IconAWS, IconDocker, IconKubernetes, IconTypeScript, IconGraphQL, IconPostgreSQL, IconMongoDB, IconTensorFlow, IconGitHub, IconFigma, IconVSCode } from '@/components/tech-icons';
+import PortfolioShowcase from '@/components/PortfolioShowcase';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -32,7 +31,7 @@ const services = [
   { icon: '📈', title: 'Demand Forecasting', desc: 'Predict future demand at SKU, location, and channel level using historical sales, seasonality, promotions, and external signals. Reduce inventory costs while maintaining service levels.' },
   { icon: '🚪', title: 'Churn Prediction', desc: 'Identify customers at risk of leaving before they do. We build behavioral churn models that score your entire customer base daily, enabling targeted retention campaigns with measurable ROI.' },
   { icon: '🛡️', title: 'Fraud Detection', desc: 'Real-time fraud scoring for transactions, account creation, and insurance claims. Our models learn from your fraud patterns and adapt to new attack vectors continuously.' },
-  { icon: '💲', title: 'Price Optimisation', desc: 'Dynamic pricing models that maximize revenue and margin by predicting price elasticity, competitor moves, and demand sensitivity. Used in e-commerce, SaaS, travel, and retail.' },
+  { icon: '💲', title: 'Price Optimization', desc: 'Dynamic pricing models that maximize revenue and margin by predicting price elasticity, competitor moves, and demand sensitivity. Used in e-commerce, SaaS, travel, and retail.' },
   { icon: '🎁', title: 'Recommendation Engines', desc: 'Collaborative and content-based filtering systems that drive product discovery, upsell, and cross-sell. Personalize experiences across email, web, and app touchpoints at scale.' },
   { icon: '⏱️', title: 'Time-Series Forecasting', desc: 'Advanced forecasting for any time-indexed metric — energy consumption, website traffic, sales pipelines, financial markets. We handle seasonality, trend, and external regressors.' },
 ];
@@ -53,23 +52,6 @@ const faqs = [
 ];
 
 
-const floatingIcons = [
-  { id: 1, icon: IconReact, className: 'top-[10%] left-[5%]' },
-  { id: 2, icon: IconNextJS, className: 'top-[15%] right-[8%]' },
-  { id: 3, icon: IconNodeJS, className: 'top-[60%] left-[3%]' },
-  { id: 4, icon: IconPython, className: 'bottom-[20%] right-[5%]' },
-  { id: 5, icon: IconAWS, className: 'top-[5%] left-[25%]' },
-  { id: 6, icon: IconDocker, className: 'top-[70%] right-[15%]' },
-  { id: 7, icon: IconKubernetes, className: 'bottom-[15%] left-[20%]' },
-  { id: 8, icon: IconTypeScript, className: 'top-[40%] left-[8%]' },
-  { id: 9, icon: IconGraphQL, className: 'top-[80%] right-[25%]' },
-  { id: 10, icon: IconPostgreSQL, className: 'top-[25%] right-[5%]' },
-  { id: 11, icon: IconMongoDB, className: 'top-[50%] left-[2%]' },
-  { id: 12, icon: IconTensorFlow, className: 'bottom-[25%] right-[10%]' },
-  { id: 13, icon: IconGitHub, className: 'top-[35%] right-[12%]' },
-  { id: 14, icon: IconFigma, className: 'bottom-[10%] left-[10%]' },
-  { id: 15, icon: IconVSCode, className: 'top-[5%] left-[50%]' },
-];
 
 export default function PredictiveAnalyticsPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -99,7 +81,6 @@ export default function PredictiveAnalyticsPage() {
         {/* HERO */}
         <section ref={heroRef} style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', paddingTop: 140, paddingBottom: 80, position: 'relative', overflow: 'hidden' }}>
           <HeroBackground variant="right" />
-          <FloatingIconsBackground icons={floatingIcons} />
           <div className="cb-container">
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 480px), 1fr))', gap: 'clamp(24px, 5vw, 60px)', alignItems: 'center' }}>
               <div>
@@ -161,6 +142,10 @@ export default function PredictiveAnalyticsPage() {
         </section>
 
         {/* PROCESS */}
+
+        {/* PORTFOLIO */}
+        <PortfolioShowcase category="ai-ml" />
+
         <section ref={s2} className="section-padding">
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>

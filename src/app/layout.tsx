@@ -14,9 +14,9 @@ export const metadata: Metadata = {
     template: "%s | Codazz",
   },
   description:
-    "Codazz builds custom software, web apps, mobile apps, AI solutions, and blockchain platforms. Headquartered in Toronto with offices in New York & Dubai — delivering worldwide.",
+    "Codazz builds custom software, web apps, mobile apps, AI solutions, and blockchain platforms. Headquartered in Edmonton & Chandigarh with offices in New York & Dubai — delivering worldwide.",
   keywords:
-    "custom software development, web development, mobile app development, AI solutions, blockchain, Toronto, Canada, New York, Dubai, USA",
+    "custom software development, web development, mobile app development, AI solutions, blockchain, Edmonton, Canada, Chandigarh, India, New York, Dubai, USA",
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     siteName: "Codazz",
     title: "Codazz | Custom Software Development Company",
     description:
-      "Codazz builds custom software, web apps, mobile apps, AI solutions, and blockchain platforms. Headquartered in Toronto with offices in New York & Dubai — delivering worldwide.",
+      "Codazz builds custom software, web apps, mobile apps, AI solutions, and blockchain platforms. Headquartered in Edmonton & Chandigarh with offices in New York & Dubai — delivering worldwide.",
     images: [
       {
         url: "/logo.png",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     creator: "@codazz",
     title: "Codazz | Custom Software Development Company",
     description:
-      "Codazz builds custom software, web apps, mobile apps, AI solutions, and blockchain platforms. Headquartered in Toronto with offices in New York & Dubai — delivering worldwide.",
+      "Codazz builds custom software, web apps, mobile apps, AI solutions, and blockchain platforms. Headquartered in Edmonton & Chandigarh with offices in New York & Dubai — delivering worldwide.",
   },
   robots: {
     index: true,
@@ -59,14 +59,14 @@ export const metadata: Metadata = {
   verification: {
     google: "bk5xt83LIShhQ9QrejYXCOg9lXhZubSY9ksIEtYrIVs",
   },
+  manifest: "/manifest.json",
   icons: {
-    icon: "/Favicon.png",
-    apple: "/Favicon.png",
+    icon: "/favicon.png",
+    apple: "/favicon.png",
   },
   other: {
-    "geo.region": "CA-ON",
-    "geo.placename": "Toronto",
-    "theme-color": "#ffffff",
+    "geo.region": "CA-AB",
+    "geo.placename": "Edmonton",
   },
 };
 
@@ -77,24 +77,18 @@ const organizationSchema = {
   url: "https://codazz.com",
   logo: "https://codazz.com/logo.png",
   description:
-    "Custom software development company founded by Raman Makkar. Headquartered in Toronto with offices in New York & Dubai. 46 locations across 24 countries. Best engineers from around the world working virtually.",
+    "Custom software development company founded by Raman Makkar. Headquartered in Edmonton (Canada) & Chandigarh (India) with offices in New York & Dubai. 50 locations across 24 countries. Best engineers from around the world working virtually.",
   address: [
     {
       "@type": "PostalAddress",
-      addressLocality: "New York",
-      addressRegion: "NY",
-      addressCountry: "US",
-    },
-    {
-      "@type": "PostalAddress",
-      addressLocality: "Dubai",
-      addressCountry: "AE",
-    },
-    {
-      "@type": "PostalAddress",
-      addressLocality: "Toronto",
-      addressRegion: "ON",
+      addressLocality: "Edmonton",
+      addressRegion: "AB",
       addressCountry: "CA",
+    },
+    {
+      "@type": "PostalAddress",
+      addressLocality: "Chandigarh",
+      addressCountry: "IN",
     },
   ],
   sameAs: [
@@ -112,15 +106,15 @@ const organizationSchema = {
     "@type": "Place",
     address: {
       "@type": "PostalAddress",
-      addressLocality: "New York",
-      addressRegion: "New York",
-      addressCountry: "US",
+      addressLocality: "Edmonton",
+      addressRegion: "Alberta",
+      addressCountry: "CA",
     },
   },
   numberOfEmployees: {
     "@type": "QuantitativeValue",
-    minValue: 25,
-    maxValue: 50,
+    minValue: 100,
+    maxValue: 200,
   },
   founder: {
     "@type": "Person",
@@ -148,6 +142,11 @@ const organizationSchema = {
         url: "https://codazz.com/services/ai-ml",
       },
     ],
+  },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.9",
+    reviewCount: "527",
   },
 };
 

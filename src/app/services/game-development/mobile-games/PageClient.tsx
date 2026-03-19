@@ -5,8 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ServiceHeroForm from '@/components/ServiceHeroForm';
 import HeroBackground from '@/components/HeroBackground';
-import { FloatingIconsBackground } from '@/components/FloatingIconsBackground';
-import { IconReact, IconNextJS, IconNodeJS, IconPython, IconAWS, IconDocker, IconKubernetes, IconTypeScript, IconGraphQL, IconPostgreSQL, IconMongoDB, IconTensorFlow, IconGitHub, IconFigma, IconVSCode } from '@/components/tech-icons';
+import PortfolioShowcase from '@/components/PortfolioShowcase';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -30,28 +29,28 @@ const stats = [
 
 const services = [
   { icon: '📱', title: 'iOS & Android Native Games', desc: 'Platform-native mobile games built for maximum performance on iOS (Swift/Objective-C) and Android (Kotlin/Java) — leveraging Metal and Vulkan rendering capabilities.' },
-  { icon: '🎮', title: 'Unity Mobile Development', desc: 'Cross-platform mobile games in Unity — single codebase targeting iOS and Android. Optimised rendering pipelines, memory management, and battery-conscious architecture.' },
-  { icon: '💰', title: 'Monetisation Strategy (IAP/Ads)', desc: 'Revenue architecture for mobile games — in-app purchases, rewarded video, interstitials, battle passes, and seasonal content strategies designed to maximise LTV without harming retention.' },
+  { icon: '🎮', title: 'Unity Mobile Development', desc: 'Cross-platform mobile games in Unity — single codebase targeting iOS and Android. Optimized rendering pipelines, memory management, and battery-conscious architecture.' },
+  { icon: '💰', title: 'Monetization Strategy (IAP/Ads)', desc: 'Revenue architecture for mobile games — in-app purchases, rewarded video, interstitials, battle passes, and seasonal content strategies designed to maximize LTV without harming retention.' },
   { icon: '📊', title: 'Game Analytics Integration', desc: 'Full analytics stack integration — Unity Analytics, Firebase, Amplitude, or Adjust — for funnel analysis, cohort retention, A/B testing, and data-driven live operations.' },
   { icon: '🔔', title: 'Push Notifications & Retention', desc: 'Intelligent re-engagement systems — push notifications, daily rewards, streak mechanics, and personalised offers — engineered to bring players back every day.' },
-  { icon: '🏆', title: 'App Store Optimisation for Games', desc: 'ASO strategy for maximum organic discovery — keyword optimisation, icon and screenshot A/B testing, localisation, and featuring pitch preparation for App Store and Play Store.' },
+  { icon: '🏆', title: 'App Store Optimization for Games', desc: 'ASO strategy for maximum organic discovery — keyword optimization, icon and screenshot A/B testing, localization, and featuring pitch preparation for App Store and Play Store.' },
 ];
 
 const steps = [
-  { num: '01', title: 'Concept & GDD', desc: 'We develop a Game Design Document defining core loop, monetisation model, target audience, platform requirements, and art direction — a single source of truth for the whole team.' },
+  { num: '01', title: 'Concept & GDD', desc: 'We develop a Game Design Document defining core loop, monetization model, target audience, platform requirements, and art direction — a single source of truth for the whole team.' },
   { num: '02', title: 'Prototype', desc: 'A playable prototype validates the core loop is fun before full production begins. Real players test the prototype and data drives the decision to proceed or pivot.' },
-  { num: '03', title: 'Alpha / Beta', desc: 'Full production through alpha — all features built and content integrated. Beta opens to wider test audience for soft-launch data: retention, monetisation, and technical stability.' },
-  { num: '04', title: 'Store Launch', desc: 'Launch preparation — store optimisation, compliance review, phased rollout strategy, and post-launch monitoring. We stay live through launch week to respond to issues immediately.' },
+  { num: '03', title: 'Alpha / Beta', desc: 'Full production through alpha — all features built and content integrated. Beta opens to wider test audience for soft-launch data: retention, monetization, and technical stability.' },
+  { num: '04', title: 'Store Launch', desc: 'Launch preparation — store optimization, compliance review, phased rollout strategy, and post-launch monitoring. We stay live through launch week to respond to issues immediately.' },
 ];
 
 const faqs = [
   {
     q: 'Unity vs Unreal Engine for mobile games?',
-    a: 'Unity is the industry standard for mobile game development — superior mobile optimisation, a larger mobile-focused asset ecosystem, and a much larger community for mobile-specific support. Unreal 5 can target mobile but the performance overhead is significant and the workflow is harder to optimise for mobile constraints. For the vast majority of mobile games we recommend Unity. Unreal on mobile makes sense only for high-end console-quality mobile games with significant production budgets.',
+    a: 'Unity is the industry standard for mobile game development — superior mobile optimization, a larger mobile-focused asset ecosystem, and a much larger community for mobile-specific support. Unreal 5 can target mobile but the performance overhead is significant and the workflow is harder to optimize for mobile constraints. For the vast majority of mobile games we recommend Unity. Unreal on mobile makes sense only for high-end console-quality mobile games with significant production budgets.',
   },
   {
-    q: 'How do you monetise a free mobile game?',
-    a: 'The three pillars of mobile monetisation are in-app purchases (IAP), advertising, and subscription. For casual games, advertising (rewarded video, interstitials) typically drives the majority of revenue. For mid-core and strategy games, IAP dominates — cosmetics, currency packs, and time-savers. We design monetisation to be intrinsic to the game loop — never a paywall that blocks progress — and test different price points and offer structures during soft launch.',
+    q: 'How do you monetize a free mobile game?',
+    a: 'The three pillars of mobile monetization are in-app purchases (IAP), advertising, and subscription. For casual games, advertising (rewarded video, interstitials) typically drives the majority of revenue. For mid-core and strategy games, IAP dominates — cosmetics, currency packs, and time-savers. We design monetization to be intrinsic to the game loop — never a paywall that blocks progress — and test different price points and offer structures during soft launch.',
   },
   {
     q: 'How long does it take to build a mobile game?',
@@ -68,23 +67,6 @@ const faqs = [
 ];
 
 
-const floatingIcons = [
-  { id: 1, icon: IconReact, className: 'top-[10%] left-[5%]' },
-  { id: 2, icon: IconNextJS, className: 'top-[15%] right-[8%]' },
-  { id: 3, icon: IconNodeJS, className: 'top-[60%] left-[3%]' },
-  { id: 4, icon: IconPython, className: 'bottom-[20%] right-[5%]' },
-  { id: 5, icon: IconAWS, className: 'top-[5%] left-[25%]' },
-  { id: 6, icon: IconDocker, className: 'top-[70%] right-[15%]' },
-  { id: 7, icon: IconKubernetes, className: 'bottom-[15%] left-[20%]' },
-  { id: 8, icon: IconTypeScript, className: 'top-[40%] left-[8%]' },
-  { id: 9, icon: IconGraphQL, className: 'top-[80%] right-[25%]' },
-  { id: 10, icon: IconPostgreSQL, className: 'top-[25%] right-[5%]' },
-  { id: 11, icon: IconMongoDB, className: 'top-[50%] left-[2%]' },
-  { id: 12, icon: IconTensorFlow, className: 'bottom-[25%] right-[10%]' },
-  { id: 13, icon: IconGitHub, className: 'top-[35%] right-[12%]' },
-  { id: 14, icon: IconFigma, className: 'bottom-[10%] left-[10%]' },
-  { id: 15, icon: IconVSCode, className: 'top-[5%] left-[50%]' },
-];
 
 export default function PageClient() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -114,7 +96,6 @@ export default function PageClient() {
         {/* HERO */}
         <section ref={heroRef} style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', paddingTop: 140, paddingBottom: 80, position: 'relative', overflow: 'hidden' }}>
           <HeroBackground variant="right" />
-          <FloatingIconsBackground icons={floatingIcons} />
           <div className="cb-container">
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 480px), 1fr))', gap: 'clamp(24px, 5vw, 60px)', alignItems: 'center' }}>
               <div>
@@ -132,7 +113,7 @@ export default function PageClient() {
             <h1 className="reveal reveal-d2" style={{ fontSize: 'clamp(36px, 6vw, 72px)', fontWeight: 800, letterSpacing: '-0.04em', lineHeight: 1.05, marginBottom: 24, maxWidth: 800 }}>
               Mobile Games for <span style={{ color: '#ffffff' }}>iOS &amp; Android</span>
             </h1>
-            <p className="reveal reveal-d3" style={{ fontSize: 18, color: 'rgba(255,255,255,0.45)', lineHeight: 1.7, maxWidth: 600, marginBottom: 40 }}>We design, build, and launch mobile games — from hyper-casual to mid-core — with proven monetisation strategies and the retention mechanics that keep players coming back.</p>
+            <p className="reveal reveal-d3" style={{ fontSize: 18, color: 'rgba(255,255,255,0.45)', lineHeight: 1.7, maxWidth: 600, marginBottom: 40 }}>We design, build, and launch mobile games — from hyper-casual to mid-core — with proven monetization strategies and the retention mechanics that keep players coming back.</p>
             <div className="reveal reveal-d4" style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
               <Link href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, height: 52, padding: '0 32px', borderRadius: 100, background: 'linear-gradient(135deg, #22c55e, #4ade80)', color: '#000', fontSize: 15, fontWeight: 700, textDecoration: 'none' }}>
                 Start Your Project
@@ -176,6 +157,10 @@ export default function PageClient() {
         </section>
 
         {/* PROCESS */}
+
+        {/* PORTFOLIO */}
+        <PortfolioShowcase category="game-development" />
+
         <section ref={s2} className="section-padding">
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>

@@ -5,8 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ServiceHeroForm from '@/components/ServiceHeroForm';
 import HeroBackground from '@/components/HeroBackground';
-import { FloatingIconsBackground } from '@/components/FloatingIconsBackground';
-import { IconReact, IconNextJS, IconNodeJS, IconPython, IconAWS, IconDocker, IconKubernetes, IconTypeScript, IconGraphQL, IconPostgreSQL, IconMongoDB, IconTensorFlow, IconGitHub, IconFigma, IconVSCode } from '@/components/tech-icons';
+import PortfolioShowcase from '@/components/PortfolioShowcase';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -22,7 +21,7 @@ function useReveal() {
 }
 
 const stats = [
-  { value: '300+', label: 'Content strategies executed' },
+  { value: '500+', label: 'Content strategies executed' },
   { value: '400%', label: 'Avg blog traffic growth' },
   { value: '60+', label: 'Content types produced' },
   { value: 'SEO-first', label: 'Approach on every asset' },
@@ -38,7 +37,7 @@ const services = [
 ];
 
 const steps = [
-  { num: '01', title: 'Content Audit', desc: 'We analyse your existing content library for performance, gaps, and cannibalisation, then benchmark against top-ranking competitors in your niche.' },
+  { num: '01', title: 'Content Audit', desc: 'We analyze your existing content library for performance, gaps, and cannibalisation, then benchmark against top-ranking competitors in your niche.' },
   { num: '02', title: 'Strategy & Calendar', desc: 'We develop a content strategy covering topics, formats, word counts, target keywords, and a publishing calendar aligned to your business goals.' },
   { num: '03', title: 'Production', desc: 'Our writers, designers, and video team produce content to a detailed brief — with your subject matter experts interviewed where needed for authentic expertise.' },
   { num: '04', title: 'Distribution & Measurement', desc: 'Published content is actively promoted and tracked — organic rankings, traffic, engagement, and lead generation attributed to each piece over time.' },
@@ -49,27 +48,10 @@ const faqs = [
   { q: 'How long does content marketing take to work?', a: 'SEO-driven content typically takes 3–6 months to gain significant organic traction as Google indexes, evaluates, and ranks new content. Social and email content can drive traffic immediately. We set realistic timelines for each channel in your content strategy.' },
   { q: 'Who writes the content — do we need to provide information?', a: 'Our writers research your industry thoroughly and handle most content independently. For technical or specialist topics, we may conduct a 20–30 minute interview with your team to capture genuine expertise and proprietary insights that set your content apart.' },
   { q: 'How do you measure content ROI?', a: 'We track organic sessions, keyword rankings, time on page, social shares, backlinks earned, email open rates, and most importantly — leads and revenue attributed to content touchpoints via GA4 and your CRM.' },
-  { q: 'How much content do we need per month?', a: 'It depends on your goals, competition, and budget. A minimum viable programme typically includes 4 long-form blog posts per month. High-competition sectors often require 8–12 pieces per month across multiple formats to see meaningful results at pace.' },
+  { q: 'How much content do we need per month?', a: 'It depends on your goals, competition, and budget. A minimum viable program typically includes 4 long-form blog posts per month. High-competition sectors often require 8–12 pieces per month across multiple formats to see meaningful results at pace.' },
 ];
 
 
-const floatingIcons = [
-  { id: 1, icon: IconReact, className: 'top-[10%] left-[5%]' },
-  { id: 2, icon: IconNextJS, className: 'top-[15%] right-[8%]' },
-  { id: 3, icon: IconNodeJS, className: 'top-[60%] left-[3%]' },
-  { id: 4, icon: IconPython, className: 'bottom-[20%] right-[5%]' },
-  { id: 5, icon: IconAWS, className: 'top-[5%] left-[25%]' },
-  { id: 6, icon: IconDocker, className: 'top-[70%] right-[15%]' },
-  { id: 7, icon: IconKubernetes, className: 'bottom-[15%] left-[20%]' },
-  { id: 8, icon: IconTypeScript, className: 'top-[40%] left-[8%]' },
-  { id: 9, icon: IconGraphQL, className: 'top-[80%] right-[25%]' },
-  { id: 10, icon: IconPostgreSQL, className: 'top-[25%] right-[5%]' },
-  { id: 11, icon: IconMongoDB, className: 'top-[50%] left-[2%]' },
-  { id: 12, icon: IconTensorFlow, className: 'bottom-[25%] right-[10%]' },
-  { id: 13, icon: IconGitHub, className: 'top-[35%] right-[12%]' },
-  { id: 14, icon: IconFigma, className: 'bottom-[10%] left-[10%]' },
-  { id: 15, icon: IconVSCode, className: 'top-[5%] left-[50%]' },
-];
 
 export default function PageClient() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -99,7 +81,6 @@ export default function PageClient() {
         {/* HERO */}
         <section ref={heroRef} style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', paddingTop: 140, paddingBottom: 80, position: 'relative', overflow: 'hidden' }}>
           <HeroBackground variant="right" />
-          <FloatingIconsBackground icons={floatingIcons} />
           <div className="cb-container">
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 480px), 1fr))', gap: 'clamp(24px, 5vw, 60px)', alignItems: 'center' }}>
               <div>
@@ -161,6 +142,10 @@ export default function PageClient() {
         </section>
 
         {/* PROCESS */}
+
+        {/* PORTFOLIO */}
+        <PortfolioShowcase category="digital-marketing" />
+
         <section ref={s2} className="section-padding">
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>

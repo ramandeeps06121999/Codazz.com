@@ -6,12 +6,6 @@ import Footer from '@/components/Footer';
 import Breadcrumb from '@/components/Breadcrumb';
 import TrustBadges from '@/components/TrustBadges';
 import HeroBackground from '@/components/HeroBackground';
-import { FloatingIconsBackground } from '@/components/FloatingIconsBackground';
-import {
-  IconReact, IconNextJS, IconNodeJS, IconPython, IconAWS,
-  IconDocker, IconKubernetes, IconTypeScript, IconGraphQL,
-  IconPostgreSQL, IconMongoDB, IconTensorFlow, IconGitHub, IconFigma, IconVSCode
-} from '@/components/tech-icons';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -54,23 +48,6 @@ function Card({ children, style }: { children: React.ReactNode; style?: React.CS
   );
 }
 
-const floatingIcons = [
-  { id: 1, icon: IconReact, className: 'top-[10%] left-[5%]' },
-  { id: 2, icon: IconNextJS, className: 'top-[15%] right-[8%]' },
-  { id: 3, icon: IconNodeJS, className: 'top-[60%] left-[3%]' },
-  { id: 4, icon: IconPython, className: 'bottom-[20%] right-[5%]' },
-  { id: 5, icon: IconAWS, className: 'top-[5%] left-[25%]' },
-  { id: 6, icon: IconDocker, className: 'top-[70%] right-[15%]' },
-  { id: 7, icon: IconKubernetes, className: 'bottom-[15%] left-[20%]' },
-  { id: 8, icon: IconTypeScript, className: 'top-[40%] left-[8%]' },
-  { id: 9, icon: IconGraphQL, className: 'top-[80%] right-[25%]' },
-  { id: 10, icon: IconPostgreSQL, className: 'top-[25%] right-[5%]' },
-  { id: 11, icon: IconMongoDB, className: 'top-[50%] left-[2%]' },
-  { id: 12, icon: IconTensorFlow, className: 'bottom-[25%] right-[10%]' },
-  { id: 13, icon: IconGitHub, className: 'top-[35%] right-[12%]' },
-  { id: 14, icon: IconFigma, className: 'bottom-[10%] left-[10%]' },
-  { id: 15, icon: IconVSCode, className: 'top-[5%] left-[50%]' },
-];
 
 export default function LogisticsPage() {
   const heroRef = useRef<HTMLElement>(null);
@@ -100,7 +77,6 @@ export default function LogisticsPage() {
         {/* HERO */}
         <section ref={heroRef} className="section-padding" style={{ position: 'relative', overflow: 'hidden', minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
           <HeroBackground variant="center" />
-          <FloatingIconsBackground icons={floatingIcons} />
           <div className="cb-container" style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: 860, margin: '0 auto' }}>
             <div className="reveal" style={{ display: 'inline-block', border: '1px solid rgba(34,197,94,0.4)', borderRadius: 999, padding: '6px 20px', fontSize: 13, color: '#ffffff', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>
               Logistics & Supply Chain
@@ -109,7 +85,7 @@ export default function LogisticsPage() {
               We Engineer Logistics That <span style={{ color: '#ffffff' }}>Never Stops.</span>
             </h1>
             <p className="reveal" style={{ fontSize: '1.2rem', color: 'rgba(255,255,255,0.7)', marginBottom: '2.5rem', lineHeight: 1.7 }}>
-              Fleet management, real-time tracking, route optimisation and warehouse automation for the modern supply chain.
+              Fleet management, real-time tracking, route optimization and warehouse automation for the modern supply chain.
             </p>
             <div className="reveal" style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '3.5rem' }}>
               <Link href="/contact" style={{ background: '#22c55e', color: '#000', padding: '14px 32px', borderRadius: 999, fontWeight: 700, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
@@ -162,10 +138,10 @@ export default function LogisticsPage() {
             </div>
             <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 320px), 1fr))', gap: '1.5rem' }}>
               {[
-                { icon: '🚛', title: 'Fleet & Route Management', desc: 'GPS-integrated fleet tracking, ML route optimisation, driver mobile apps, maintenance scheduling, and real-time dispatch consoles that cut operational costs.' },
-                { icon: '🏭', title: 'Warehouse Management Systems', desc: 'Full-featured WMS with barcode and RFID scanning, robotics integrations, slotting optimisation, pick-and-pack workflows, and ERP connectivity.' },
+                { icon: '🚛', title: 'Fleet & Route Management', desc: 'GPS-integrated fleet tracking, ML route optimization, driver mobile apps, maintenance scheduling, and real-time dispatch consoles that cut operational costs.' },
+                { icon: '🏭', title: 'Warehouse Management Systems', desc: 'Full-featured WMS with barcode and RFID scanning, robotics integrations, slotting optimization, pick-and-pack workflows, and ERP connectivity.' },
                 { icon: '📦', title: 'Last-Mile Apps', desc: 'Driver-facing delivery apps with proof-of-delivery capture, dynamic ETAs, and customer notifications that reduce failed deliveries and improve satisfaction.' },
-                { icon: '📊', title: 'Supply Chain Analytics', desc: 'Demand forecasting, inventory optimisation, and end-to-end visibility dashboards that help you make smarter decisions across your supply chain.' },
+                { icon: '📊', title: 'Supply Chain Analytics', desc: 'Demand forecasting, inventory optimization, and end-to-end visibility dashboards that help you make smarter decisions across your supply chain.' },
                 { icon: '📡', title: 'IoT & Sensors', desc: 'Temperature monitoring, asset tracking, and condition-based alerts using GPS, RFID, and LoRaWAN sensors integrated into your logistics platform.' },
                 { icon: '🔍', title: 'Customer Tracking Portals', desc: 'Branded, real-time shipment tracking portals with live maps, delivery notifications, and self-service tools that reduce support tickets.' },
               ].map(s => (
@@ -260,7 +236,7 @@ export default function LogisticsPage() {
             <div className="industry-services-grid" style={{ display: 'grid', gap: 16 }}>
               {[
                 { name: 'Mobile App Development', href: '/services/mobile-app-development', desc: 'Driver-facing delivery apps with GPS tracking, proof-of-delivery and offline support.' },
-                { name: 'AI & Machine Learning', href: '/services/ai-ml', desc: 'ML-powered route optimisation, demand forecasting and anomaly detection for supply chains.' },
+                { name: 'AI & Machine Learning', href: '/services/ai-ml', desc: 'ML-powered route optimization, demand forecasting and anomaly detection for supply chains.' },
                 { name: 'Cloud & DevOps', href: '/services/cloud-devops', desc: 'Scalable cloud infrastructure for real-time tracking with IoT data pipelines and auto-scaling.' },
                 { name: 'SaaS Development', href: '/services/saas-development', desc: 'Multi-tenant fleet management and warehouse platforms with role-based dashboards.' },
                 { name: 'AR & VR', href: '/services/ar-vr', desc: 'AR-powered warehouse picking, maintenance overlays and immersive training simulations.' },

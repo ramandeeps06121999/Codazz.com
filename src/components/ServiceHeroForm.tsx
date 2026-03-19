@@ -6,6 +6,20 @@ interface ServiceHeroFormProps {
   city?: string;
 }
 
+const inputStyle: React.CSSProperties = {
+  width: '100%',
+  padding: '14px 18px',
+  borderRadius: 12,
+  border: '1px solid rgba(255,255,255,0.08)',
+  background: 'rgba(255,255,255,0.03)',
+  color: '#ffffff',
+  fontSize: 16,
+  fontFamily: 'inherit',
+  transition: '0.3s',
+  outline: 'none',
+  boxSizing: 'border-box',
+};
+
 export default function ServiceHeroForm({ service, city }: ServiceHeroFormProps = {}) {
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
@@ -13,6 +27,7 @@ export default function ServiceHeroForm({ service, city }: ServiceHeroFormProps 
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isLoading) return;
     setIsLoading(true);
 
     try {
@@ -38,28 +53,13 @@ export default function ServiceHeroForm({ service, city }: ServiceHeroFormProps 
         setForm({ name: '', email: '', phone: '', message: '' });
         setTimeout(() => setSubmitted(false), 4000);
       } else {
-        alert('Error: ' + data.message);
+        setSubmitted(false);
       }
     } catch (err) {
       console.error(err);
-      alert('Something went wrong. Please try again.');
     } finally {
       setIsLoading(false);
     }
-  };
-
-  const inputStyle: React.CSSProperties = {
-    width: '100%',
-    padding: '14px 18px',
-    borderRadius: 12,
-    border: '1px solid rgba(255,255,255,0.08)',
-    background: 'rgba(255,255,255,0.03)',
-    color: '#ffffff',
-    fontSize: 16,
-    fontFamily: 'inherit',
-    transition: '0.3s',
-    outline: 'none',
-    boxSizing: 'border-box',
   };
 
   return (

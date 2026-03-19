@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 import HeroBackground from '@/components/HeroBackground';
+import Image from 'next/image';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -56,9 +57,12 @@ export default function AppDevelopmentCostCanadaClient() {
         {/* ── FEATURED IMAGE ── */}
         <div className="cb-container" style={{ paddingTop: 100 }}>
           <div className="reveal" style={{ marginBottom: 40 }}>
-            <img
+            <Image
               src="/blog_images/app-development-cost-canada.jpg"
               alt="App development cost in Canada"
+              width={1200}
+              height={675}
+              priority
               style={{
                 width: '100%',
                 height: 'auto',
@@ -194,7 +198,7 @@ export default function AppDevelopmentCostCanadaClient() {
                     The result? Canadian businesses have access to exceptional development talent at rates that are <strong style={{ color: '#ffffff' }}>20-35% lower than comparable American agencies</strong>, largely due to the CAD/USD exchange rate and lower overhead costs. A senior full-stack developer in Toronto earns an average of $135,000 CAD, compared to $180,000 USD ($245,000 CAD) for the same role in San Francisco.
                   </p>
                   <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8 }}>
-                    But &ldquo;cheaper&rdquo; does not mean &ldquo;cheap.&rdquo; Building a quality mobile application in Canada is still a significant investment. The federal SR&ED tax credit programme can offset 15-35% of eligible R&D expenditures, and provincial incentives like the Ontario Interactive Digital Media Tax Credit (OIDMTC) further reduce the effective cost. These are advantages that American businesses simply do not have access to.
+                    But &ldquo;cheaper&rdquo; does not mean &ldquo;cheap.&rdquo; Building a quality mobile application in Canada is still a significant investment. The federal SR&ED tax credit program can offset 15-35% of eligible R&D expenditures, and provincial incentives like the Ontario Interactive Digital Media Tax Credit (OIDMTC) further reduce the effective cost. These are advantages that American businesses simply do not have access to.
                   </p>
                 </div>
 
@@ -488,13 +492,13 @@ export default function AppDevelopmentCostCanadaClient() {
                     </div>
 
                     <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 16, position: 'relative', zIndex: 1 }}>
-                      Codazz is headquartered in <strong style={{ color: '#ffffff' }}>Toronto</strong>, with additional offices in New York and Dubai. This is not a coincidence. Our Toronto HQ gives us access to Canada&apos;s deepest engineering talent pool, while our global presence allows us to assemble the right team for every project regardless of geography. Every project is led by senior Toronto-based architects who ensure quality, compliance, and clear communication.
+                      Codazz is headquartered in <strong style={{ color: '#ffffff' }}>Edmonton (Canada) and Chandigarh (India)</strong>, with additional offices in New York and Dubai. Our Edmonton HQ gives us access to top-tier Canadian engineering talent, while our global presence allows us to assemble the right team for every project regardless of geography. Every project is led by senior Edmonton-based architects who ensure quality, compliance, and clear communication.
                     </p>
                     <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 16, position: 'relative', zIndex: 1 }}>
                       We operate on a <strong style={{ color: '#ffffff' }}>fixed-price model</strong> for 90% of our projects. After a thorough discovery phase (which we offer free of charge), we provide a detailed scope document with a locked-in price. No hourly billing surprises. No scope creep charges without written approval. Every feature, every screen, and every integration is documented with its associated cost before a single line of code is written.
                     </p>
                     <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 16, position: 'relative', zIndex: 1 }}>
-                      Our <strong style={{ color: '#ffffff' }}>8-week MVP programme</strong> is designed specifically for Canadian startups and SMBs who want to validate their app idea without committing to a six-figure budget. For a fixed price starting at $35,000 CAD, we deliver a production-ready MVP with core features, clean design, and deployment to both app stores. Over 60% of our MVP clients go on to commission a full build within six months.
+                      Our <strong style={{ color: '#ffffff' }}>8-week MVP program</strong> is designed specifically for Canadian startups and SMBs who want to validate their app idea without committing to a six-figure budget. For a fixed price starting at $35,000 CAD, we deliver a production-ready MVP with core features, clean design, and deployment to both app stores. Over 60% of our MVP clients go on to commission a full build within six months.
                     </p>
                     <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 20, position: 'relative', zIndex: 1 }}>
                       <strong style={{ color: '#ffffff' }}>Real example:</strong> A Toronto-based proptech startup approached us after receiving quotes of $180,000-$240,000 CAD from two Bay Street agencies. We delivered the same scope, a multi-platform real estate marketplace with AI-powered property matching and Interac payment integration, for $128,000 CAD. Delivered on time. On budget. The app hit 10,000 downloads in its first quarter.
@@ -508,7 +512,7 @@ export default function AppDevelopmentCostCanadaClient() {
                         <polyline points="22,7 13.5,15.5 8.5,10.5 2,17"/><polyline points="16,7 22,7 22,13"/>
                       </svg>
                       <span style={{ fontSize: 13, color: '#ffffff', fontWeight: 600 }}>
-                        Toronto HQ &bull; Fixed-Price Model &bull; 8-Week MVP Programme &bull; No Hidden Fees
+                        Edmonton &amp; Chandigarh HQ &bull; Fixed-Price Model &bull; 8-Week MVP Program &bull; No Hidden Fees
                       </span>
                     </div>
                   </div>
@@ -526,7 +530,7 @@ export default function AppDevelopmentCostCanadaClient() {
 
                   {[
                     { step: '01', title: 'Share Your Idea', desc: 'Fill out our contact form or book a call. Tell us what you want to build, who your users are, and what problem you are solving. You do not need a detailed spec. A napkin sketch and a clear vision are enough to get started.' },
-                    { step: '02', title: 'Free Discovery Session', desc: 'We schedule a 60-minute discovery call with a senior architect from our Toronto team. We will map out your core features, identify technical risks, and discuss your timeline and budget expectations. This call is completely free with no obligation.' },
+                    { step: '02', title: 'Free Discovery Session', desc: 'We schedule a 60-minute discovery call with a senior architect from our Edmonton team. We will map out your core features, identify technical risks, and discuss your timeline and budget expectations. This call is completely free with no obligation.' },
                     { step: '03', title: 'Detailed Proposal (48 Hours)', desc: 'Within 48 hours of our discovery call, you receive a comprehensive proposal. This includes a feature-by-feature cost breakdown, a recommended tech stack, a project timeline with milestones, and a fixed-price quote. No vague estimates. Real numbers you can take to your board or investors.' },
                     { step: '04', title: 'Kickoff & Build', desc: 'Once approved, we start building. You get access to a shared project dashboard, weekly progress demos, and a direct Slack channel with your development team. We follow two-week sprints with deliverable milestones so you can see progress every step of the way.' },
                   ].map(item => (
@@ -619,7 +623,7 @@ export default function AppDevelopmentCostCanadaClient() {
                       </div>
                     </div>
                     <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)', lineHeight: 1.7, margin: 0 }}>
-                      Leading engineering strategy and product vision at Codazz. Has guided over 300+ bespoke product launches globally.
+                      Leading engineering strategy and product vision at Codazz. Has guided over 500+ bespoke product launches globally.
                     </p>
                   </div>
 
@@ -686,7 +690,7 @@ export default function AppDevelopmentCostCanadaClient() {
                   Get a Free App Cost Estimate
                 </h2>
                 <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.45)', maxWidth: 480, lineHeight: 1.7 }}>
-                  Stop guessing what your app will cost. Share your idea with our Toronto team and receive a detailed, fixed-price proposal within 48 hours. No commitment. No sales pitch. Just real numbers from a Canadian agency that understands your market.
+                  Stop guessing what your app will cost. Share your idea with our Edmonton team and receive a detailed, fixed-price proposal within 48 hours. No commitment. No sales pitch. Just real numbers from a Canadian agency that understands your market.
                 </p>
               </div>
               <Link href="/contact" style={{ textDecoration: 'none' }}>

@@ -6,12 +6,6 @@ import Footer from '@/components/Footer';
 import Breadcrumb from '@/components/Breadcrumb';
 import TrustBadges from '@/components/TrustBadges';
 import HeroBackground from '@/components/HeroBackground';
-import { FloatingIconsBackground } from '@/components/FloatingIconsBackground';
-import {
-  IconReact, IconNextJS, IconNodeJS, IconPython, IconAWS,
-  IconDocker, IconKubernetes, IconTypeScript, IconGraphQL,
-  IconPostgreSQL, IconMongoDB, IconTensorFlow, IconGitHub, IconFigma, IconVSCode
-} from '@/components/tech-icons';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -54,23 +48,6 @@ function Card({ children, style }: { children: React.ReactNode; style?: React.CS
   );
 }
 
-const floatingIcons = [
-  { id: 1, icon: IconReact, className: 'top-[10%] left-[5%]' },
-  { id: 2, icon: IconNextJS, className: 'top-[15%] right-[8%]' },
-  { id: 3, icon: IconNodeJS, className: 'top-[60%] left-[3%]' },
-  { id: 4, icon: IconPython, className: 'bottom-[20%] right-[5%]' },
-  { id: 5, icon: IconAWS, className: 'top-[5%] left-[25%]' },
-  { id: 6, icon: IconDocker, className: 'top-[70%] right-[15%]' },
-  { id: 7, icon: IconKubernetes, className: 'bottom-[15%] left-[20%]' },
-  { id: 8, icon: IconTypeScript, className: 'top-[40%] left-[8%]' },
-  { id: 9, icon: IconGraphQL, className: 'top-[80%] right-[25%]' },
-  { id: 10, icon: IconPostgreSQL, className: 'top-[25%] right-[5%]' },
-  { id: 11, icon: IconMongoDB, className: 'top-[50%] left-[2%]' },
-  { id: 12, icon: IconTensorFlow, className: 'bottom-[25%] right-[10%]' },
-  { id: 13, icon: IconGitHub, className: 'top-[35%] right-[12%]' },
-  { id: 14, icon: IconFigma, className: 'bottom-[10%] left-[10%]' },
-  { id: 15, icon: IconVSCode, className: 'top-[5%] left-[50%]' },
-];
 
 export default function EcommercePage() {
   const heroRef = useRef<HTMLElement>(null);
@@ -100,7 +77,6 @@ export default function EcommercePage() {
         {/* HERO */}
         <section ref={heroRef} className="section-padding" style={{ position: 'relative', overflow: 'hidden', minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
           <HeroBackground variant="center" />
-          <FloatingIconsBackground icons={floatingIcons} />
           <div className="cb-container" style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: 860, margin: '0 auto' }}>
             <div className="reveal" style={{ display: 'inline-block', border: '1px solid rgba(34,197,94,0.4)', borderRadius: 999, padding: '6px 20px', fontSize: 13, color: '#ffffff', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>
               E-Commerce
@@ -109,7 +85,7 @@ export default function EcommercePage() {
               We Build Storefronts That <span style={{ color: '#ffffff' }}>Convert.</span>
             </h1>
             <p className="reveal" style={{ fontSize: '1.2rem', color: 'rgba(255,255,255,0.7)', marginBottom: '2.5rem', lineHeight: 1.7 }}>
-              High-performance headless commerce, mobile-first checkout flows, and AI-powered merchandising that maximises revenue.
+              High-performance headless commerce, mobile-first checkout flows, and AI-powered merchandising that maximizes revenue.
             </p>
             <div className="reveal" style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '3.5rem' }}>
               <Link href="/contact" style={{ background: '#22c55e', color: '#000', padding: '14px 32px', borderRadius: 999, fontWeight: 700, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
@@ -165,9 +141,9 @@ export default function EcommercePage() {
                 { icon: '🛍️', title: 'Headless Commerce Platforms', desc: 'Next.js-powered, composable storefronts with sub-2s load times, Lighthouse 95+ scores, and CMS-driven content that marketers can manage without developers.' },
                 { icon: '🤖', title: 'AI-Powered Merchandising', desc: 'Recommendation engines trained on your customer data, dynamic pricing algorithms, intelligent search with semantic understanding, and automated upsell flows.' },
                 { icon: '📱', title: 'Mobile Commerce', desc: 'Native and PWA shopping experiences with one-tap checkout, push notifications, and offline browsing that drive mobile conversion rates.' },
-                { icon: '🔄', title: 'Subscription Billing', desc: 'Recurring payment management with flexible plans, dunning automation, proration, and analytics that reduce churn and maximise lifetime value.' },
+                { icon: '🔄', title: 'Subscription Billing', desc: 'Recurring payment management with flexible plans, dunning automation, proration, and analytics that reduce churn and maximize lifetime value.' },
                 { icon: '🏪', title: 'Marketplace Platforms', desc: 'Multi-vendor marketplace infrastructure with seller onboarding, commission management, split payments, and dispute resolution workflows.' },
-                { icon: '📊', title: 'Analytics & Attribution', desc: 'End-to-end conversion tracking, multi-touch attribution modelling, and real-time revenue dashboards that reveal what drives your sales.' },
+                { icon: '📊', title: 'Analytics & Attribution', desc: 'End-to-end conversion tracking, multi-touch attribution modeling, and real-time revenue dashboards that reveal what drives your sales.' },
               ].map(s => (
                 <Card key={s.title}>
                   <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>{s.icon}</div>
@@ -261,7 +237,7 @@ export default function EcommercePage() {
               {[
                 { name: 'Web Development', href: '/services/web-development', desc: 'Headless storefronts with sub-2s load times, Lighthouse 95+ and CMS-driven content.' },
                 { name: 'Mobile App Development', href: '/services/mobile-app-development', desc: 'Native shopping apps with one-tap checkout, push notifications and offline browsing.' },
-                { name: 'Digital Marketing', href: '/services/digital-marketing', desc: 'SEO, paid ads and email campaigns that drive traffic and maximise conversion rates.' },
+                { name: 'Digital Marketing', href: '/services/digital-marketing', desc: 'SEO, paid ads and email campaigns that drive traffic and maximize conversion rates.' },
                 { name: 'WordPress & CMS', href: '/services/wordpress-cms', desc: 'WooCommerce stores and headless CMS setups for content-rich commerce experiences.' },
                 { name: 'SaaS Development', href: '/services/saas-development', desc: 'Subscription billing platforms and marketplace infrastructure with multi-vendor support.' },
               ].map((s) => (

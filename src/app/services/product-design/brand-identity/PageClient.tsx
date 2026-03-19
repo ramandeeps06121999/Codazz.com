@@ -5,8 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ServiceHeroForm from '@/components/ServiceHeroForm';
 import HeroBackground from '@/components/HeroBackground';
-import { FloatingIconsBackground } from '@/components/FloatingIconsBackground';
-import { IconReact, IconNextJS, IconNodeJS, IconPython, IconAWS, IconDocker, IconKubernetes, IconTypeScript, IconGraphQL, IconPostgreSQL, IconMongoDB, IconTensorFlow, IconGitHub, IconFigma, IconVSCode } from '@/components/tech-icons';
+import PortfolioShowcase from '@/components/PortfolioShowcase';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -31,7 +30,7 @@ const stats = [
 const services = [
   { icon: '✏️', title: 'Logo Design & Wordmarks', desc: 'Original, versatile logo marks and wordmarks designed to work across every medium — from app icons to billboard signage.' },
   { icon: '🎨', title: 'Visual Identity System', desc: 'A cohesive visual language including iconography, illustration style, photography direction, and layout principles.' },
-  { icon: '🖋️', title: 'Typography & Colour Palette', desc: 'Carefully selected type pairings and colour systems that convey your brand personality and pass accessibility checks.' },
+  { icon: '🖋️', title: 'Typography & Color Palette', desc: 'Carefully selected type pairings and color systems that convey your brand personality and pass accessibility checks.' },
   { icon: '📋', title: 'Brand Guidelines Document', desc: 'A comprehensive brand guidelines PDF and interactive Figma document that ensures consistency across every touchpoint.' },
   { icon: '📱', title: 'Social Media Templates', desc: 'Ready-to-use Canva and Figma templates for posts, stories, covers, and ads so your team produces on-brand content instantly.' },
   { icon: '📦', title: 'Packaging & Print Design', desc: 'Brand application for physical products, packaging, business cards, signage, and marketing collateral.' },
@@ -40,12 +39,12 @@ const services = [
 const steps = [
   { num: '01', title: 'Brand Discovery', desc: 'We run workshops and surveys to understand your mission, values, audience, competitors, and the personality you want to project.' },
   { num: '02', title: 'Concept Development', desc: 'Multiple distinct creative directions are explored and presented — each with rationale, moodboard, and logo concepts.' },
-  { num: '03', title: 'Design Refinement', desc: 'Your chosen direction is refined with full colour, typography, and application mockups across real-world contexts.' },
+  { num: '03', title: 'Design Refinement', desc: 'Your chosen direction is refined with full color, typography, and application mockups across real-world contexts.' },
   { num: '04', title: 'Brand Guidelines', desc: 'The finalised identity is packaged into a complete brand guidelines document and delivered with all source files.' },
 ];
 
 const faqs = [
-  { q: 'What\'s included in a brand identity package?', a: 'Our full brand identity package includes logo suite (primary, secondary, icon, wordmark), colour palette, typography system, brand guidelines document, social media templates, and all source files in Figma, AI, EPS, SVG, PNG, and PDF formats. Optional add-ons include packaging design, presentation templates, and motion guidelines.' },
+  { q: 'What\'s included in a brand identity package?', a: 'Our full brand identity package includes logo suite (primary, secondary, icon, wordmark), color palette, typography system, brand guidelines document, social media templates, and all source files in Figma, AI, EPS, SVG, PNG, and PDF formats. Optional add-ons include packaging design, presentation templates, and motion guidelines.' },
   { q: 'How many logo concepts do we see?', a: 'We present three distinct creative directions in the initial concept presentation, each with a rationale, moodboard, and logo explorations. After you select a direction, we refine within that concept through two rounds of revisions before finalising.' },
   { q: 'Do you provide editable source files?', a: 'Yes — you receive full ownership of all source files. This includes editable Figma files, Adobe Illustrator vector files (AI/EPS), and web-ready exports (SVG/PNG/PDF). You are free to take these files to any designer or printer in the future.' },
   { q: 'How long does brand identity take?', a: 'A complete brand identity engagement typically runs four to six weeks: one week for discovery, one week for concept development, one week for presentation and feedback, and one to two weeks for refinement and final delivery. Rush timelines can be accommodated with advance notice.' },
@@ -53,23 +52,6 @@ const faqs = [
 ];
 
 
-const floatingIcons = [
-  { id: 1, icon: IconReact, className: 'top-[10%] left-[5%]' },
-  { id: 2, icon: IconNextJS, className: 'top-[15%] right-[8%]' },
-  { id: 3, icon: IconNodeJS, className: 'top-[60%] left-[3%]' },
-  { id: 4, icon: IconPython, className: 'bottom-[20%] right-[5%]' },
-  { id: 5, icon: IconAWS, className: 'top-[5%] left-[25%]' },
-  { id: 6, icon: IconDocker, className: 'top-[70%] right-[15%]' },
-  { id: 7, icon: IconKubernetes, className: 'bottom-[15%] left-[20%]' },
-  { id: 8, icon: IconTypeScript, className: 'top-[40%] left-[8%]' },
-  { id: 9, icon: IconGraphQL, className: 'top-[80%] right-[25%]' },
-  { id: 10, icon: IconPostgreSQL, className: 'top-[25%] right-[5%]' },
-  { id: 11, icon: IconMongoDB, className: 'top-[50%] left-[2%]' },
-  { id: 12, icon: IconTensorFlow, className: 'bottom-[25%] right-[10%]' },
-  { id: 13, icon: IconGitHub, className: 'top-[35%] right-[12%]' },
-  { id: 14, icon: IconFigma, className: 'bottom-[10%] left-[10%]' },
-  { id: 15, icon: IconVSCode, className: 'top-[5%] left-[50%]' },
-];
 
 export default function PageClient() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -99,7 +81,6 @@ export default function PageClient() {
         {/* HERO */}
         <section ref={heroRef} style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', paddingTop: 140, paddingBottom: 80, position: 'relative', overflow: 'hidden' }}>
           <HeroBackground variant="right" />
-          <FloatingIconsBackground icons={floatingIcons} />
           <div className="cb-container">
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 480px), 1fr))', gap: 'clamp(24px, 5vw, 60px)', alignItems: 'center' }}>
               <div>
@@ -161,6 +142,10 @@ export default function PageClient() {
         </section>
 
         {/* PROCESS */}
+
+        {/* PORTFOLIO */}
+        <PortfolioShowcase category="product-design" />
+
         <section ref={s2} className="section-padding">
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>

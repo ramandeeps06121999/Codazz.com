@@ -170,6 +170,8 @@ h1,h2,h3,h4,h5,h6 {
   .section { padding: 80px 0; }
   .cb-container { padding: 0 32px; }
   .section-tag { font-size: 10px; }
+  .services-small-grid { grid-template-columns: repeat(2, 1fr); }
+  .industries-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* ── REVEAL ANIMATIONS ──────────────────────────── */
@@ -237,7 +239,7 @@ h1,h2,h3,h4,h5,h6 {
   .blog-post-link:hover { border-color: rgba(255,255,255,0.15); background: rgba(255,255,255,0.04); }
   .awards-row { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
   .portfolio-content-row { display: flex; gap: 40px; flex-wrap: wrap; }
-  .portfolio-tabs { display: flex; gap: 10px; flex-wrap: wrap; }
+  .portfolio-tabs { display: flex; gap: 10px; flex-wrap: wrap; -webkit-overflow-scrolling: touch; }
   .section-padding { padding: 160px 0; }
   .section-padding-sm { padding: 56px 0; }
 }
@@ -314,7 +316,8 @@ h1,h2,h3,h4,h5,h6 {
   .section { padding: 48px 0; }
   .section-padding { padding: 48px 0; }
   .section-padding-sm { padding: 32px 0; }
-  .section-heading { font-size: clamp(1.75rem, 7vw, 2.5rem); }
+  .hero-title { font-size: clamp(2.2rem, 8vw, 3rem); }
+  .section-heading { font-size: clamp(1.8rem, 6vw, 2.5rem); }
   .section-subtext { font-size: 15px; }
 
   .btn-group {
@@ -352,6 +355,10 @@ h1,h2,h3,h4,h5,h6 {
 
   .h-btns { flex-direction: column; align-items: stretch; }
   .h-btns > a { justify-content: center; text-align: center; }
+}
+
+@media (max-width: 375px) {
+  .stats-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 360px) {
@@ -814,7 +821,7 @@ textarea:focus-visible {
 .hero-grid-overlay {
   position: absolute;
   inset: 0;
-  background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), 
+  background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
                     linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
   background-size: 64px 64px;
   mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 10%, transparent 70%);

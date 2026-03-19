@@ -32,7 +32,7 @@ const faqSchema = {
       name: 'Do you manage ad spend or just strategy?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'We handle everything \u2014 strategy, creative, copy, campaign setup, bid management and weekly optimisation. You keep full ownership of your ad accounts and get transparent reporting.',
+        text: 'We handle everything \u2014 strategy, creative, copy, campaign setup, bid management and weekly optimization. You keep full ownership of your ad accounts and get transparent reporting.',
       },
     },
     {
@@ -40,7 +40,7 @@ const faqSchema = {
       name: 'What budget do I need to start with paid ads?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'We recommend a minimum of $3,000/month in ad spend for Google Ads and $2,000/month for paid social. Below these thresholds the data volume is too low for meaningful optimisation.',
+        text: 'We recommend a minimum of $3,000/month in ad spend for Google Ads and $2,000/month for paid social. Below these thresholds the data volume is too low for meaningful optimization.',
       },
     },
     {

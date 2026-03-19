@@ -47,9 +47,10 @@ function Card({ children, style }: { children: React.ReactNode; style?: React.CS
 
 const cities = [
   // HQ
-  { name: 'New York', state: 'New York', slug: 'new-york', tagline: 'Dual HQ — World\'s business capital', active: true, isHQ: true, country: 'US' as const },
-  { name: 'Dubai', state: 'Dubai', slug: 'dubai', tagline: 'Dual HQ — Middle East innovation hub', active: true, isHQ: true, country: 'UAE' as const },
+  { name: 'Edmonton', state: 'Alberta', slug: 'edmonton', tagline: 'HQ — Canadian engineering hub', active: true, isHQ: true, country: 'CA' as const },
+  { name: 'Chandigarh', state: 'Punjab/Haryana', slug: 'chandigarh', tagline: 'HQ — India innovation center', active: true, isHQ: true, country: 'IN' as const },
   // US
+  { name: 'New York', state: 'New York', slug: 'new-york', tagline: 'World\'s business capital', active: true, isHQ: false, country: 'US' as const },
   { name: 'San Francisco', state: 'California', slug: 'san-francisco', tagline: 'Global epicenter of technology', active: true, isHQ: false, country: 'US' as const },
   { name: 'Los Angeles', state: 'California', slug: 'los-angeles', tagline: 'Entertainment meets innovation', active: true, isHQ: false, country: 'US' as const },
   { name: 'Chicago', state: 'Illinois', slug: 'chicago', tagline: 'Midwest business powerhouse', active: true, isHQ: false, country: 'US' as const },
@@ -115,7 +116,8 @@ const cities = [
   { name: 'Auckland', state: 'Auckland', slug: 'auckland', tagline: 'Innovation hub of the Pacific', active: true, isHQ: false, country: 'NZ' as const },
   // Switzerland
   { name: 'Zurich', state: 'Zürich', slug: 'zurich', tagline: 'Fintech & precision engineering capital', active: true, isHQ: false, country: 'CH' as const },
-  // UAE (Abu Dhabi)
+  // UAE
+  { name: 'Dubai', state: 'Dubai', slug: 'dubai', tagline: 'Middle East innovation hub', active: true, isHQ: false, country: 'UAE' as const },
   { name: 'Abu Dhabi', state: 'Abu Dhabi', slug: 'abu-dhabi', tagline: 'AI & sovereign tech investment leader', active: true, isHQ: false, country: 'UAE' as const },
 ];
 
@@ -142,13 +144,13 @@ export default function LocationsIndexPage() {
               Our Locations
             </div>
             <h1 className="reveal" style={{ fontSize: 'clamp(2.6rem, 6vw, 5rem)', fontWeight: 800, lineHeight: 1.1, marginBottom: '1.5rem', letterSpacing: '-0.02em' }}>
-              <span style={{ color: '#ffffff' }}>46 Locations</span> Across 24 Countries
+              <span style={{ color: '#ffffff' }}>48 Locations</span> Across 24 Countries
             </h1>
             <p className="reveal" style={{ fontSize: '1.2rem', color: 'rgba(255,255,255,0.7)', marginBottom: '2.5rem', lineHeight: 1.7, maxWidth: 640, margin: '0 auto 2.5rem' }}>
               From New York to Tokyo, Dubai to São Paulo, London to Lagos — Codazz brings world-class software development to businesses across 24 countries. Local expertise, truly global reach.
             </p>
             <div className="reveal loc-city-hero-stats" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem', maxWidth: 600, margin: '0 auto' }}>
-              {[['46', 'Locations'], ['24', 'Countries'], ['Global', 'Coverage']].map(([val, label]) => (
+              {[['48', 'Locations'], ['24', 'Countries'], ['Global', 'Coverage']].map(([val, label]) => (
                 <div key={label} style={{ textAlign: 'center' }}>
                   <div style={{ fontSize: '1.6rem', fontWeight: 800, color: '#ffffff' }}>{val}</div>
                   <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.25)', marginTop: 4, letterSpacing: '0.05em' }}>{label}</div>

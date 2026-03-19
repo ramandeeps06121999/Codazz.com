@@ -1,18 +1,38 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { cities, getCityBySlug } from '@/data/cities';
+import { countries, getCountryBySlug, getCitiesForCountry } from '@/data/countries';
 import PageClient from './PageClient';
+import CountryPageClient from './CountryPageClient';
 
 interface PageProps {
   params: Promise<{ city: string }>;
 }
 
 export async function generateStaticParams() {
-  return cities.map(c => ({ city: c.slug }));
+  const cityParams = cities.map(c => ({ city: c.slug }));
+  const countryParams = countries.map(c => ({ city: c.slug }));
+  return [...cityParams, ...countryParams];
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { city } = await params;
+
+  const countryData = getCountryBySlug(city);
+  if (countryData) {
+    return {
+      title: `Software Development Company in ${countryData.name} | Codazz`,
+      description: `Codazz delivers custom software development, mobile apps, AI solutions, and web development across ${countryData.name}. Get a free quote today.`,
+      openGraph: {
+        title: `Software Development Company in ${countryData.name} | Codazz`,
+        description: `Codazz delivers custom software across ${countryData.name}.`,
+        url: `https://codazz.com/locations/${countryData.slug}`,
+        type: 'website',
+      },
+      alternates: { canonical: `https://codazz.com/locations/${countryData.slug}` },
+    };
+  }
+
   const data = getCityBySlug(city);
   if (!data) return {};
 
@@ -21,7 +41,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return {
     title: `Software Development Company in ${data.name} | Codazz`,
-    description: `Codazz delivers custom software development, mobile apps, AI solutions, and web development in ${locationLabel}. ${data.isHQ ? 'Dual headquarters in New York & Dubai.' : ''} Get a free quote today.`,
+    description: `Codazz delivers custom software development, mobile apps, AI solutions, and web development in ${locationLabel}. ${data.isHQ ? 'Headquartered in Edmonton & Chandigarh with offices in New York & Dubai.' : ''} Get a free quote today.`,
     openGraph: {
       title: `Software Development Company in ${data.name} | Codazz`,
       description: `Codazz delivers custom software development, mobile apps, AI solutions, and web development in ${locationLabel}.`,
@@ -36,6 +56,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function CityPage({ params }: PageProps) {
   const { city } = await params;
+
+  const countryData = getCountryBySlug(city);
+  if (countryData) {
+    const countryCities = getCitiesForCountry(countryData.code);
+    return <CountryPageClient country={countryData} countryCities={countryCities} />;
+  }
+
   const data = getCityBySlug(city);
   if (!data) notFound();
 

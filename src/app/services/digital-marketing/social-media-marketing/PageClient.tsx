@@ -5,8 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ServiceHeroForm from '@/components/ServiceHeroForm';
 import HeroBackground from '@/components/HeroBackground';
-import { FloatingIconsBackground } from '@/components/FloatingIconsBackground';
-import { IconReact, IconNextJS, IconNodeJS, IconPython, IconAWS, IconDocker, IconKubernetes, IconTypeScript, IconGraphQL, IconPostgreSQL, IconMongoDB, IconTensorFlow, IconGitHub, IconFigma, IconVSCode } from '@/components/tech-icons';
+import PortfolioShowcase from '@/components/PortfolioShowcase';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -33,15 +32,15 @@ const services = [
   { icon: '🎨', title: 'Content Creation & Scheduling', desc: 'Scroll-stopping graphics, video reels, carousels, and captions crafted by our creative team and scheduled for optimal engagement times.' },
   { icon: '💬', title: 'Community Management', desc: 'Daily monitoring and engagement across all your social channels — responding to comments, DMs, and mentions to build a loyal, active community.' },
   { icon: '🤝', title: 'Influencer Marketing', desc: 'Influencer identification, outreach, briefing, and campaign management to amplify your brand through trusted voices in your niche.' },
-  { icon: '📣', title: 'Paid Social (Meta/TikTok/LinkedIn)', desc: 'Targeted paid campaigns across Meta, TikTok, LinkedIn, and Pinterest — audience build, creative testing, and ROAS-focused optimisation.' },
+  { icon: '📣', title: 'Paid Social (Meta/TikTok/LinkedIn)', desc: 'Targeted paid campaigns across Meta, TikTok, LinkedIn, and Pinterest — audience build, creative testing, and ROAS-focused optimization.' },
   { icon: '📊', title: 'Social Analytics & Reporting', desc: 'Monthly performance reports covering reach, engagement, follower growth, and paid social results with clear recommendations for the next period.' },
 ];
 
 const steps = [
-  { num: '01', title: 'Audit & Strategy', desc: 'We audit your existing social presence, analyse your competitors, define your target audiences, and build a channel-specific content and paid strategy.' },
+  { num: '01', title: 'Audit & Strategy', desc: 'We audit your existing social presence, analyze your competitors, define your target audiences, and build a channel-specific content and paid strategy.' },
   { num: '02', title: 'Content Calendar', desc: 'A monthly content calendar is planned and approved before publishing — covering content pillars, formats, captions, and paid creative requirements.' },
   { num: '03', title: 'Publish & Engage', desc: 'Content goes live on schedule while our team actively manages your community — engaging followers, handling messages, and responding to trends.' },
-  { num: '04', title: 'Analyse & Optimise', desc: 'Monthly performance analysis informs the next month\'s strategy, testing new formats, refining audiences, and doubling down on what drives results.' },
+  { num: '04', title: 'Analyze & Optimize', desc: 'Monthly performance analysis informs the next month\'s strategy, testing new formats, refining audiences, and doubling down on what drives results.' },
 ];
 
 const faqs = [
@@ -53,23 +52,6 @@ const faqs = [
 ];
 
 
-const floatingIcons = [
-  { id: 1, icon: IconReact, className: 'top-[10%] left-[5%]' },
-  { id: 2, icon: IconNextJS, className: 'top-[15%] right-[8%]' },
-  { id: 3, icon: IconNodeJS, className: 'top-[60%] left-[3%]' },
-  { id: 4, icon: IconPython, className: 'bottom-[20%] right-[5%]' },
-  { id: 5, icon: IconAWS, className: 'top-[5%] left-[25%]' },
-  { id: 6, icon: IconDocker, className: 'top-[70%] right-[15%]' },
-  { id: 7, icon: IconKubernetes, className: 'bottom-[15%] left-[20%]' },
-  { id: 8, icon: IconTypeScript, className: 'top-[40%] left-[8%]' },
-  { id: 9, icon: IconGraphQL, className: 'top-[80%] right-[25%]' },
-  { id: 10, icon: IconPostgreSQL, className: 'top-[25%] right-[5%]' },
-  { id: 11, icon: IconMongoDB, className: 'top-[50%] left-[2%]' },
-  { id: 12, icon: IconTensorFlow, className: 'bottom-[25%] right-[10%]' },
-  { id: 13, icon: IconGitHub, className: 'top-[35%] right-[12%]' },
-  { id: 14, icon: IconFigma, className: 'bottom-[10%] left-[10%]' },
-  { id: 15, icon: IconVSCode, className: 'top-[5%] left-[50%]' },
-];
 
 export default function PageClient() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -99,7 +81,6 @@ export default function PageClient() {
         {/* HERO */}
         <section ref={heroRef} style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', paddingTop: 140, paddingBottom: 80, position: 'relative', overflow: 'hidden' }}>
           <HeroBackground variant="right" />
-          <FloatingIconsBackground icons={floatingIcons} />
           <div className="cb-container">
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 480px), 1fr))', gap: 'clamp(24px, 5vw, 60px)', alignItems: 'center' }}>
               <div>
@@ -161,6 +142,10 @@ export default function PageClient() {
         </section>
 
         {/* PROCESS */}
+
+        {/* PORTFOLIO */}
+        <PortfolioShowcase category="digital-marketing" />
+
         <section ref={s2} className="section-padding">
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>

@@ -37,10 +37,10 @@ const faqSchema = {
     },
     {
       '@type': 'Question',
-      name: 'How do you approach mobile game monetisation?',
+      name: 'How do you approach mobile game monetization?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Monetisation strategy is defined during concept — before a line of code is written. We design IAP economies, ad placement strategies and battle pass systems that maximise LTV without harming retention. We also run A/B tests post-launch to optimise.',
+        text: 'Monetization strategy is defined during concept — before a line of code is written. We design IAP economies, ad placement strategies and battle pass systems that maximize LTV without harming retention. We also run A/B tests post-launch to optimize.',
       },
     },
     {
@@ -48,7 +48,7 @@ const faqSchema = {
       name: 'Do you handle App Store and Google Play submission?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes. We manage all submission requirements including store listings, screenshots, trailers, metadata optimisation, rating questionnaires and compliance with both Apple and Google policies.',
+        text: 'Yes. We manage all submission requirements including store listings, screenshots, trailers, metadata optimization, rating questionnaires and compliance with both Apple and Google policies.',
       },
     },
     {

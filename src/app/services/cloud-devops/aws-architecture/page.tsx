@@ -3,10 +3,10 @@ import PageClient from './PageClient';
 
 export const metadata: Metadata = {
   title: 'AWS Architecture & Cloud Solutions | United States',
-  description: 'Certified AWS architects at Codazz San Francisco. Cloud migration, cost optimisation, and multi-region HA design. $2M+ saved for American businesses. Free audit.',
+  description: 'Certified AWS architects at Codazz San Francisco. Cloud migration, cost optimization, and multi-region HA design. $2M+ saved for American businesses. Free audit.',
   openGraph: {
     title: 'AWS Architecture & Cloud Solutions | Codazz',
-    description: 'Certified AWS architects at Codazz San Francisco. Cloud migration, cost optimisation, and multi-region HA design. $2M+ saved for American businesses. Free audit.',
+    description: 'Certified AWS architects at Codazz San Francisco. Cloud migration, cost optimization, and multi-region HA design. $2M+ saved for American businesses. Free audit.',
     url: 'https://codazz.com/services/cloud-devops/aws-architecture',
     type: 'website',
   },
@@ -21,7 +21,7 @@ const jsonLd0 = {
   "@type": "Service",
   "name": "AWS Architecture",
   "url": "https://codazz.com/services/cloud-devops/aws-architecture",
-  "description": "Certified AWS architects at Codazz San Francisco. Cloud migration, cost optimisation, and multi-region HA design. $2M+ saved for American businesses. Free audit.",
+  "description": "Certified AWS architects at Codazz San Francisco. Cloud migration, cost optimization, and multi-region HA design. $2M+ saved for American businesses. Free audit.",
   "provider": {
     "@type": "Organization",
     "name": "Codazz",

@@ -2,11 +2,11 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'WordPress Site Speed Optimisation Services',
-  description: 'Transform slow WordPress sites into 90+ Lighthouse performers. Core Web Vitals fixes, caching, CDN setup, and image optimisation by Codazz, United States.',
+  title: 'WordPress Site Speed Optimization Services',
+  description: 'Transform slow WordPress sites into 90+ Lighthouse performers. Core Web Vitals fixes, caching, CDN setup, and image optimization by Codazz, United States.',
   openGraph: {
-    title: 'WordPress Speed Optimisation | Codazz',
-    description: 'Achieve 90+ PageSpeed scores with our WordPress speed optimisation — Core Web Vitals, caching, CDN, and image fixes.',
+    title: 'WordPress Speed Optimization | Codazz',
+    description: 'Achieve 90+ PageSpeed scores with our WordPress speed optimization — Core Web Vitals, caching, CDN, and image fixes.',
     url: 'https://codazz.com/services/wordpress-cms/site-speed-optimisation',
     type: 'website',
   },
@@ -19,9 +19,9 @@ export const metadata: Metadata = {
 const jsonLd0 = {
   "@context": "https://schema.org",
   "@type": "Service",
-  "name": "Site Speed Optimisation",
+  "name": "Site Speed Optimization",
   "url": "https://codazz.com/services/wordpress-cms/site-speed-optimisation",
-  "description": "Transform slow WordPress sites into 90+ Lighthouse performers. Core Web Vitals fixes, caching, CDN setup, and image optimisation by Codazz, United States.",
+  "description": "Transform slow WordPress sites into 90+ Lighthouse performers. Core Web Vitals fixes, caching, CDN setup, and image optimization by Codazz, United States.",
   "provider": {
     "@type": "Organization",
     "name": "Codazz",
@@ -37,7 +37,7 @@ const jsonLd0 = {
       "name": "United Arab Emirates"
     }
   ],
-  "serviceType": "Site Speed Optimisation",
+  "serviceType": "Site Speed Optimization",
   "isPartOf": {
     "@type": "Service",
     "name": "WordPress & CMS",
@@ -70,7 +70,7 @@ const jsonLd1 = {
     {
       "@type": "ListItem",
       "position": 4,
-      "name": "Site Speed Optimisation",
+      "name": "Site Speed Optimization",
       "item": "https://codazz.com/services/wordpress-cms/site-speed-optimisation"
     }
   ]

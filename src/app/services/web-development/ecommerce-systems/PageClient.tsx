@@ -5,8 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ServiceHeroForm from '@/components/ServiceHeroForm';
 import HeroBackground from '@/components/HeroBackground';
-import { FloatingIconsBackground } from '@/components/FloatingIconsBackground';
-import { IconReact, IconNextJS, IconNodeJS, IconPython, IconAWS, IconDocker, IconKubernetes, IconTypeScript, IconGraphQL, IconPostgreSQL, IconMongoDB, IconTensorFlow, IconGitHub, IconFigma, IconVSCode } from '@/components/tech-icons';
+import PortfolioShowcase from '@/components/PortfolioShowcase';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -29,19 +28,19 @@ const stats = [
 ];
 
 const services = [
-  { icon: '🛍️', title: 'Custom Storefront (Next.js Commerce)', desc: 'We build blazing-fast custom storefronts using Next.js Commerce or bespoke architecture — fully tailored to your brand with perfect Core Web Vitals, mobile-first design, and conversion-optimised product pages.' },
+  { icon: '🛍️', title: 'Custom Storefront (Next.js Commerce)', desc: 'We build blazing-fast custom storefronts using Next.js Commerce or bespoke architecture — fully tailored to your brand with perfect Core Web Vitals, mobile-first design, and conversion-optimized product pages.' },
   { icon: '💳', title: 'Payment Gateway Integration', desc: 'We integrate Stripe, PayPal, Klarna, Afterpay, and regional payment providers with secure tokenisation, 3D Secure, multi-currency support, and automatic tax calculation for global commerce.' },
   { icon: '📦', title: 'Inventory & Order Management', desc: 'End-to-end order management: real-time inventory tracking, multi-warehouse support, automated fulfilment workflows, return/refund processing, and integrations with 3PL providers and ERP systems.' },
   { icon: '🔍', title: 'Product Search & Filtering', desc: 'We implement lightning-fast product search using Algolia or Elasticsearch with faceted filtering, typo-tolerance, personalised ranking, and predictive search — dramatically improving product discoverability.' },
-  { icon: '🛒', title: 'Checkout Optimisation', desc: 'Every friction point in your checkout is analysed and eliminated — guest checkout, address autocomplete, saved payment methods, one-click upsells, and abandoned cart recovery flows that recover lost revenue.' },
+  { icon: '🛒', title: 'Checkout Optimization', desc: 'Every friction point in your checkout is analyzed and eliminated — guest checkout, address autocomplete, saved payment methods, one-click upsells, and abandoned cart recovery flows that recover lost revenue.' },
   { icon: '🏗️', title: 'Headless Commerce Architecture', desc: 'We decouple your storefront from your commerce backend using headless architecture with Shopify, Commercetools, or custom APIs — giving you complete frontend freedom while retaining powerful commerce tooling.' },
 ];
 
 const steps = [
   { num: '01', title: 'Store Strategy', desc: 'We define your product catalogue structure, checkout flow, payment and fulfilment strategy, and technology stack — ensuring the architecture supports your current catalogue size and future growth trajectory.' },
-  { num: '02', title: 'Design & UX', desc: 'Our designers create conversion-focused storefronts with data-driven layouts — optimised product listing pages, persuasive product detail pages, and a frictionless checkout funnel tested against best-practice patterns.' },
+  { num: '02', title: 'Design & UX', desc: 'Our designers create conversion-focused storefronts with data-driven layouts — optimized product listing pages, persuasive product detail pages, and a frictionless checkout funnel tested against best-practice patterns.' },
   { num: '03', title: 'Build & Integrate', desc: 'We build the storefront and wire up every integration — payment gateways, inventory system, shipping providers, email marketing, analytics, and any ERP or PIM system — with full end-to-end testing.' },
-  { num: '04', title: 'Launch & Optimise', desc: 'We manage the go-live process, monitor performance and error rates closely in the first 48 hours, and then continuously optimise conversion rates through A/B testing, heatmap analysis, and funnel analytics.' },
+  { num: '04', title: 'Launch & Optimize', desc: 'We manage the go-live process, monitor performance and error rates closely in the first 48 hours, and then continuously optimize conversion rates through A/B testing, heatmap analysis, and funnel analytics.' },
 ];
 
 const faqs = [
@@ -49,27 +48,10 @@ const faqs = [
   { q: 'How do you handle high-traffic events like Black Friday?', a: 'We architect e-commerce platforms with horizontal scaling, edge caching via CDN for product pages, database read replicas, async order processing queues, and load testing up to 5x expected peak traffic before major events. We also set up real-time monitoring with alerts so we can respond instantly if anything degrades.' },
   { q: 'Which payment gateway do you recommend?', a: 'Stripe is our default recommendation — it has the best developer experience, the broadest payment method support (cards, wallets, buy now pay later, bank transfers), and excellent fraud tooling with Stripe Radar. For international markets we sometimes supplement with local gateways or Adyen for enterprise-scale merchants.' },
   { q: 'Can you migrate our existing WooCommerce store?', a: 'Yes. We have a structured migration process covering product catalogue and media, customer accounts, order history, SEO URL preservation with redirects, and payment method migration. We run parallel systems during the transition to ensure zero downtime and validate every product, price, and image before cutover.' },
-  { q: 'How do you improve conversion rates?', a: 'We analyse your funnel using session recordings, heatmaps, and Google Analytics to identify drop-off points, then run structured A/B tests on high-impact elements — hero images, CTA copy, checkout steps, trust badges, and upsell placement. Our clients typically see 15–40% conversion rate improvements within 90 days of launch.' },
+  { q: 'How do you improve conversion rates?', a: 'We analyze your funnel using session recordings, heatmaps, and Google Analytics to identify drop-off points, then run structured A/B tests on high-impact elements — hero images, CTA copy, checkout steps, trust badges, and upsell placement. Our clients typically see 15–40% conversion rate improvements within 90 days of launch.' },
 ];
 
 
-const floatingIcons = [
-  { id: 1, icon: IconReact, className: 'top-[10%] left-[5%]' },
-  { id: 2, icon: IconNextJS, className: 'top-[15%] right-[8%]' },
-  { id: 3, icon: IconNodeJS, className: 'top-[60%] left-[3%]' },
-  { id: 4, icon: IconPython, className: 'bottom-[20%] right-[5%]' },
-  { id: 5, icon: IconAWS, className: 'top-[5%] left-[25%]' },
-  { id: 6, icon: IconDocker, className: 'top-[70%] right-[15%]' },
-  { id: 7, icon: IconKubernetes, className: 'bottom-[15%] left-[20%]' },
-  { id: 8, icon: IconTypeScript, className: 'top-[40%] left-[8%]' },
-  { id: 9, icon: IconGraphQL, className: 'top-[80%] right-[25%]' },
-  { id: 10, icon: IconPostgreSQL, className: 'top-[25%] right-[5%]' },
-  { id: 11, icon: IconMongoDB, className: 'top-[50%] left-[2%]' },
-  { id: 12, icon: IconTensorFlow, className: 'bottom-[25%] right-[10%]' },
-  { id: 13, icon: IconGitHub, className: 'top-[35%] right-[12%]' },
-  { id: 14, icon: IconFigma, className: 'bottom-[10%] left-[10%]' },
-  { id: 15, icon: IconVSCode, className: 'top-[5%] left-[50%]' },
-];
 
 export default function PageClient() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -100,7 +82,6 @@ export default function PageClient() {
         {/* HERO */}
         <section ref={heroRef} style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', paddingTop: 140, paddingBottom: 80, position: 'relative', overflow: 'hidden' }}>
           <HeroBackground variant="right" />
-          <FloatingIconsBackground icons={floatingIcons} />
           <div className="cb-container">
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 480px), 1fr))', gap: 'clamp(24px, 5vw, 60px)', alignItems: 'center' }}>
               <div>
@@ -120,7 +101,7 @@ export default function PageClient() {
               <span style={{ color: '#ffffff' }}>Convert & Scale</span>
             </h1>
             <p className="reveal reveal-d3" style={{ fontSize: 18, color: 'rgba(255,255,255,0.45)', lineHeight: 1.7, maxWidth: 600, marginBottom: 40 }}>
-              We build high-converting online stores with lightning-fast storefronts, seamless payment integration, and conversion-optimised checkout flows. From boutique brands to enterprise retail, we engineer commerce experiences that drive revenue.
+              We build high-converting online stores with lightning-fast storefronts, seamless payment integration, and conversion-optimized checkout flows. From boutique brands to enterprise retail, we engineer commerce experiences that drive revenue.
             </p>
             <div className="reveal reveal-d4" style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
               <Link href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, height: 52, padding: '0 32px', borderRadius: 100, background: 'linear-gradient(135deg, #22c55e, #4ade80)', color: '#000', fontSize: 15, fontWeight: 700, textDecoration: 'none' }}>
@@ -167,6 +148,10 @@ export default function PageClient() {
         </section>
 
         {/* PROCESS */}
+
+        {/* PORTFOLIO */}
+        <PortfolioShowcase category="web-development" />
+
         <section ref={s2} className="section-padding">
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>

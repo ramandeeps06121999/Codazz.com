@@ -27,7 +27,7 @@ const tocItems = [
   { id: 'monthly-costs', label: 'Monthly Recurring Costs', emoji: '📊' },
   { id: 'build-vs-buy', label: 'Build vs Buy', emoji: '⚖️' },
   { id: 'tech-stack', label: 'The Tech Stack That Matters', emoji: '🛠️' },
-  { id: 'funding', label: 'American SaaS Funding', emoji: '🇨🇦' },
+  { id: 'funding', label: 'American SaaS Funding', emoji: '🇺🇸' },
   { id: 'our-process', label: 'How Codazz Builds SaaS', emoji: '🚀' },
 ];
 
@@ -521,7 +521,7 @@ export default function SaasDevelopmentCostUSAClient() {
                       </div>
                     </div>
                     <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)', lineHeight: 1.7, margin: 0 }}>
-                      Leading engineering strategy and product vision at Codazz. Has guided over 300+ bespoke product launches globally.
+                      Leading engineering strategy and product vision at Codazz. Has guided over 500+ bespoke product launches globally.
                     </p>
                   </div>
 

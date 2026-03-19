@@ -103,15 +103,15 @@ function TechCard({ tech, categoryColor, index }: { tech: typeof techCategories[
         }}
       >
         {/* Glow effect */}
-        <div 
+        <div
           className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
           style={{
             background: `radial-gradient(circle at 50% 0%, ${categoryColor}15, transparent 70%)`,
           }}
         />
-        
+
         {/* Top accent line */}
-        <div 
+        <div
           className="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-[2px] transition-all duration-300 group-hover:w-20"
           style={{ background: categoryColor }}
         />
@@ -125,7 +125,7 @@ function TechCard({ tech, categoryColor, index }: { tech: typeof techCategories[
           >
             {tech.icon}
           </motion.div>
-          
+
           {/* Floating particles on hover */}
           {isHovered && (
             <>
@@ -156,7 +156,7 @@ function TechCard({ tech, categoryColor, index }: { tech: typeof techCategories[
         {/* Description - reveals on hover */}
         <motion.p
           initial={{ opacity: 0, height: 0 }}
-          animate={{ 
+          animate={{
             opacity: isHovered ? 1 : 0,
             height: isHovered ? 'auto' : 0,
           }}
@@ -167,7 +167,7 @@ function TechCard({ tech, categoryColor, index }: { tech: typeof techCategories[
         </motion.p>
 
         {/* Bottom corner accent */}
-        <div 
+        <div
           className="absolute bottom-0 right-0 w-16 h-16 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
           style={{
             background: `linear-gradient(135deg, transparent 50%, ${categoryColor}10 50%)`,
@@ -210,9 +210,9 @@ function CategorySection({ category, index }: { category: typeof techCategories[
     >
       {/* Category header */}
       <div className="flex items-center gap-4 mb-6">
-        <div 
+        <div
           className="w-3 h-3 rounded-full"
-          style={{ 
+          style={{
             background: category.color,
             boxShadow: `0 0 20px ${category.color}`,
           }}
@@ -220,7 +220,7 @@ function CategorySection({ category, index }: { category: typeof techCategories[
         <h3 className="text-2xl font-medium text-white tracking-tight">
           {category.name}
         </h3>
-        <div 
+        <div
           className="flex-1 h-px opacity-20"
           style={{ background: `linear-gradient(90deg, ${category.color}, transparent)` }}
         />
@@ -229,9 +229,9 @@ function CategorySection({ category, index }: { category: typeof techCategories[
       {/* Tech cards grid */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {category.techs.map((tech, techIndex) => (
-          <TechCard 
-            key={tech.name} 
-            tech={tech} 
+          <TechCard
+            key={tech.name}
+            tech={tech}
             categoryColor={category.color}
             index={techIndex}
           />
@@ -244,16 +244,20 @@ function CategorySection({ category, index }: { category: typeof techCategories[
 export default function TechStack() {
   const sectionRef = useRef<HTMLElement>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const rafId = useRef<number>(0);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      if (sectionRef.current) {
-        const rect = sectionRef.current.getBoundingClientRect();
-        setMousePosition({
-          x: ((e.clientX - rect.left) / rect.width) * 100,
-          y: ((e.clientY - rect.top) / rect.height) * 100,
-        });
-      }
+      cancelAnimationFrame(rafId.current);
+      rafId.current = requestAnimationFrame(() => {
+        if (sectionRef.current) {
+          const rect = sectionRef.current.getBoundingClientRect();
+          setMousePosition({
+            x: ((e.clientX - rect.left) / rect.width) * 100,
+            y: ((e.clientY - rect.top) / rect.height) * 100,
+          });
+        }
+      });
     };
 
     const section = sectionRef.current;
@@ -265,18 +269,19 @@ export default function TechStack() {
       if (section) {
         section.removeEventListener('mousemove', handleMouseMove);
       }
+      cancelAnimationFrame(rafId.current);
     };
   }, []);
 
   return (
-    <section 
-      ref={sectionRef} 
-      id="tech-stack" 
+    <section
+      ref={sectionRef}
+      id="tech-stack"
       className="relative py-24 lg:py-32 overflow-hidden"
       style={{ background: '#000000' }}
     >
       {/* Animated background glow following cursor */}
-      <div 
+      <div
         className="absolute inset-0 opacity-30 pointer-events-none transition-all duration-700 ease-out"
         style={{
           background: `radial-gradient(600px circle at ${mousePosition.x}% ${mousePosition.y}%, rgba(34, 197, 94, 0.15), transparent 40%)`,
@@ -284,7 +289,7 @@ export default function TechStack() {
       />
 
       {/* Grid pattern overlay */}
-      <div 
+      <div
         className="absolute inset-0 opacity-[0.02]"
         style={{
           backgroundImage: `
@@ -297,7 +302,7 @@ export default function TechStack() {
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -325,13 +330,13 @@ export default function TechStack() {
           </h2>
 
           <p className="text-lg text-white/50 max-w-2xl mx-auto">
-            A curated stack of best-in-class technologies — chosen for reliability, 
+            A curated stack of best-in-class technologies — chosen for reliability,
             performance, and scalability.
           </p>
         </motion.div>
 
         {/* Stats */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -353,9 +358,9 @@ export default function TechStack() {
         {/* Tech Categories */}
         <div className="space-y-16">
           {techCategories.map((category, index) => (
-            <CategorySection 
-              key={category.name} 
-              category={category} 
+            <CategorySection
+              key={category.name}
+              category={category}
               index={index}
             />
           ))}
@@ -371,8 +376,8 @@ export default function TechStack() {
         >
           <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full border border-white/10 bg-white/[0.02]">
             <span className="text-white/60">Need a custom tech stack?</span>
-            <a 
-              href="/contact" 
+            <a
+              href="/contact"
               className="text-green-400 hover:text-green-300 transition-colors font-medium"
             >
               Let&apos;s talk →

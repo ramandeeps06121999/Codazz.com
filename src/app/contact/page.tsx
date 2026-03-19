@@ -5,10 +5,10 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: 'Contact Codazz | Get a Free Consultation',
-  description: 'Contact Codazz for a free project consultation. Custom software development company in New York & Dubai. Response within 4 hours.',
+  description: 'Contact Codazz for a free project consultation. Custom software development company headquartered in Edmonton & Chandigarh with offices in New York & Dubai. Response within 4 hours.',
   openGraph: {
     title: 'Contact Codazz | Get a Free Consultation',
-    description: 'Contact Codazz for a free project consultation. Custom software development company in New York & Dubai.',
+    description: 'Contact Codazz for a free project consultation. Custom software development company headquartered in Edmonton & Chandigarh with offices in New York & Dubai.',
     url: 'https://codazz.com/contact',
     type: 'website',
   },

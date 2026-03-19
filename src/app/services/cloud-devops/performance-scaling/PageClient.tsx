@@ -5,8 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ServiceHeroForm from '@/components/ServiceHeroForm';
 import HeroBackground from '@/components/HeroBackground';
-import { FloatingIconsBackground } from '@/components/FloatingIconsBackground';
-import { IconReact, IconNextJS, IconNodeJS, IconPython, IconAWS, IconDocker, IconKubernetes, IconTypeScript, IconGraphQL, IconPostgreSQL, IconMongoDB, IconTensorFlow, IconGitHub, IconFigma, IconVSCode } from '@/components/tech-icons';
+import PortfolioShowcase from '@/components/PortfolioShowcase';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -30,7 +29,7 @@ const stats = [
 
 const services = [
   { icon: '🔬', title: 'Load Testing & Benchmarking', desc: 'Realistic load tests simulating peak traffic scenarios using k6, Locust, or Gatling to establish baselines and find breaking points before users do.' },
-  { icon: '🗄️', title: 'Database Query Optimisation', desc: 'Index analysis, query plan review, N+1 elimination, slow query identification, and schema optimisation to dramatically reduce database latency.' },
+  { icon: '🗄️', title: 'Database Query Optimisation', desc: 'Index analysis, query plan review, N+1 elimination, slow query identification, and schema optimization to dramatically reduce database latency.' },
   { icon: '🌐', title: 'CDN & Caching Strategy', desc: 'CloudFront, Fastly, or Cloudflare configuration with cache-control tuning, edge caching for APIs, and Redis/Memcached for application-layer caching.' },
   { icon: '📈', title: 'Horizontal & Vertical Autoscaling', desc: 'Kubernetes HPA, AWS Auto Scaling Groups, and predictive scaling configured to expand capacity ahead of demand and contract during quiet periods.' },
   { icon: '📊', title: 'APM & Observability (Datadog/Grafana)', desc: 'Application performance monitoring with distributed tracing, custom dashboards, SLO tracking, and alerting so you know about issues before users report them.' },
@@ -39,37 +38,20 @@ const services = [
 
 const steps = [
   { num: '01', title: 'Performance Audit', desc: 'We instrument your application with APM tooling and collect baseline metrics across response times, throughput, error rates, and resource utilisation.' },
-  { num: '02', title: 'Bottleneck Identification', desc: 'Distributed traces, slow query logs, and profiling data are analysed to pinpoint the specific code paths, queries, or infrastructure components causing latency.' },
+  { num: '02', title: 'Bottleneck Identification', desc: 'Distributed traces, slow query logs, and profiling data are analyzed to pinpoint the specific code paths, queries, or infrastructure components causing latency.' },
   { num: '03', title: 'Optimisation Sprints', desc: 'Targeted fixes are implemented in priority order — database indexes, caching layers, connection pooling, async processing — with each change benchmarked.' },
-  { num: '04', title: 'Load Testing', desc: 'Final load tests validate that optimisations hold under peak traffic conditions and that autoscaling responds correctly before returning to production.' },
+  { num: '04', title: 'Load Testing', desc: 'Final load tests validate that optimizations hold under peak traffic conditions and that autoscaling responds correctly before returning to production.' },
 ];
 
 const faqs = [
   { q: 'How do you identify performance bottlenecks?', a: 'We combine multiple data sources: distributed tracing (OpenTelemetry/Jaeger/Datadog APM) to find slow spans, database slow query logs and EXPLAIN plans, application profiling (Py-Spy, async-profiler, Go pprof), infrastructure metrics (CPU, memory, I/O, network), and synthetic load tests to reproduce issues at controlled traffic levels.' },
   { q: 'What load testing tools do you use?', a: 'We primarily use k6 for its developer-friendly JavaScript scripting, Git-friendly test scripts, and cloud execution support. Locust is preferred for Python teams and complex dynamic scenarios. Gatling is used when JVM-compatible reporting is required. Artillery is used for quick API load tests. All tools produce comparable metrics — choice depends on your team\'s language preferences.' },
-  { q: 'Database vs application-layer optimisation — which comes first?', a: 'Database optimisation almost always delivers the highest return first. The majority of web application latency lives in the data layer — slow queries, missing indexes, N+1 problems, and inefficient joins. Once the database is optimised, application-layer caching (Redis), connection pooling, and async processing address the remaining bottlenecks. We profile first to confirm rather than assume.' },
+  { q: 'Database vs application-layer optimization — which comes first?', a: 'Database optimization almost always delivers the highest return first. The majority of web application latency lives in the data layer — slow queries, missing indexes, N+1 problems, and inefficient joins. Once the database is optimized, application-layer caching (Redis), connection pooling, and async processing address the remaining bottlenecks. We profile first to confirm rather than assume.' },
   { q: 'How do you cache effectively without serving stale data?', a: 'Cache strategy depends on data freshness requirements. For static content, long TTLs with cache-busting via hashed filenames are used. For API responses, shorter TTLs with stale-while-revalidate headers are appropriate. For user-specific data, per-user cache keys with event-driven invalidation (on write) keep caches fresh without sacrificing hit rates. We avoid global cache clears which cause thundering herd problems.' },
   { q: 'When should I scale horizontally vs vertically?', a: 'Vertical scaling (larger instances) is fast and requires no code changes — it is the right first response to a sudden capacity problem. Horizontal scaling (more instances) is cost-effective at scale and removes the single-node ceiling, but requires your application to be stateless. We recommend moving toward horizontal scaling for any production system with more than a handful of concurrent users, with stateful data externalised to managed databases and caches.' },
 ];
 
 
-const floatingIcons = [
-  { id: 1, icon: IconReact, className: 'top-[10%] left-[5%]' },
-  { id: 2, icon: IconNextJS, className: 'top-[15%] right-[8%]' },
-  { id: 3, icon: IconNodeJS, className: 'top-[60%] left-[3%]' },
-  { id: 4, icon: IconPython, className: 'bottom-[20%] right-[5%]' },
-  { id: 5, icon: IconAWS, className: 'top-[5%] left-[25%]' },
-  { id: 6, icon: IconDocker, className: 'top-[70%] right-[15%]' },
-  { id: 7, icon: IconKubernetes, className: 'bottom-[15%] left-[20%]' },
-  { id: 8, icon: IconTypeScript, className: 'top-[40%] left-[8%]' },
-  { id: 9, icon: IconGraphQL, className: 'top-[80%] right-[25%]' },
-  { id: 10, icon: IconPostgreSQL, className: 'top-[25%] right-[5%]' },
-  { id: 11, icon: IconMongoDB, className: 'top-[50%] left-[2%]' },
-  { id: 12, icon: IconTensorFlow, className: 'bottom-[25%] right-[10%]' },
-  { id: 13, icon: IconGitHub, className: 'top-[35%] right-[12%]' },
-  { id: 14, icon: IconFigma, className: 'bottom-[10%] left-[10%]' },
-  { id: 15, icon: IconVSCode, className: 'top-[5%] left-[50%]' },
-];
 
 export default function PageClient() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -99,7 +81,6 @@ export default function PageClient() {
         {/* HERO */}
         <section ref={heroRef} style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', paddingTop: 140, paddingBottom: 80, position: 'relative', overflow: 'hidden' }}>
           <HeroBackground variant="right" />
-          <FloatingIconsBackground icons={floatingIcons} />
           <div className="cb-container">
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 480px), 1fr))', gap: 'clamp(24px, 5vw, 60px)', alignItems: 'center' }}>
               <div>
@@ -161,6 +142,10 @@ export default function PageClient() {
         </section>
 
         {/* PROCESS */}
+
+        {/* PORTFOLIO */}
+        <PortfolioShowcase category="cloud-devops" />
+
         <section ref={s2} className="section-padding">
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>

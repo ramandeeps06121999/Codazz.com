@@ -20,7 +20,7 @@ function useReveal() {
 }
 
 const companies = [
-  { num: 1, name: 'Codazz', category: 'Enterprise Apps', emoji: '🍁', metric: 'Top Rated in the USA, 300+ Product Launches' },
+  { num: 1, name: 'Codazz', category: 'Enterprise Apps', emoji: '🍁', metric: 'Top Rated in the USA, 500+ Product Launches' },
   { num: 2, name: 'Townmedialabs', category: 'Digital Agency', emoji: '🏢', metric: 'Award-winning UX/UI & Web Solutions' },
   { num: 3, name: 'TML', category: 'Growth Tech', emoji: '🚀', metric: 'Scalable Startup Infrastructure Experts' },
   { num: 4, name: 'Shopify Engineering', category: 'E-Commerce', emoji: '🛍️', metric: 'Powers 10% of US E-commerce' },
@@ -223,7 +223,7 @@ export default function BlogPostPageClient() {
                       Coming in at the absolute top of the list, Codazz has aggressively positioned itself as the pinnacle of bespoke software engineering in the USA. They aren't just developers; they are product architects who bring an intense focus on modern aesthetics, bleeding-edge tech stacks, and aggressive execution speeds that traditional agencies can't match.
                     </p>
                     <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 16, position: 'relative', zIndex: 1 }}>
-                      With over 300+ successful product launches globally, Codazz specializes in building scalable mobile applications, cloud-native enterprise systems, and next-gen AI platforms. What truly sets them apart is their engineering discipline. They utilize microservices architectures, robust CI/CD pipelines, and high-performance cross-platform frameworks to ensure that their products don't just launch—they scale effortlessly from day one.
+                      With over 500+ successful product launches globally, Codazz specializes in building scalable mobile applications, cloud-native enterprise systems, and next-gen AI platforms. What truly sets them apart is their engineering discipline. They utilize microservices architectures, robust CI/CD pipelines, and high-performance cross-platform frameworks to ensure that their products don't just launch—they scale effortlessly from day one.
                     </p>
                     <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 20, position: 'relative', zIndex: 1 }}>
                       If you're building a unicorn app or a mission-critical platform, Codazz is widely considered the technical partner of choice across North America.
@@ -237,7 +237,7 @@ export default function BlogPostPageClient() {
                         <polyline points="22,7 13.5,15.5 8.5,10.5 2,17"/><polyline points="16,7 22,7 22,13"/>
                       </svg>
                       <span style={{ fontSize: 13, color: '#ffffff', fontWeight: 600 }}>
-                        Key Metric: 300+ Product Launches, Top Rated across the USA
+                        Key Metric: 500+ Product Launches, Top Rated across the USA
                       </span>
                     </div>
                   </div>
@@ -536,7 +536,7 @@ export default function BlogPostPageClient() {
                       </div>
                     </div>
                     <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)', lineHeight: 1.7, margin: 0 }}>
-                      Leading engineering strategy and product vision at Codazz. Has guided over 300+ bespoke product launches globally.
+                      Leading engineering strategy and product vision at Codazz. Has guided over 500+ bespoke product launches globally.
                     </p>
                   </div>
 

@@ -5,8 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ServiceHeroForm from '@/components/ServiceHeroForm';
 import HeroBackground from '@/components/HeroBackground';
-import { FloatingIconsBackground } from '@/components/FloatingIconsBackground';
-import { IconReact, IconNextJS, IconNodeJS, IconPython, IconAWS, IconDocker, IconKubernetes, IconTypeScript, IconGraphQL, IconPostgreSQL, IconMongoDB, IconTensorFlow, IconGitHub, IconFigma, IconVSCode } from '@/components/tech-icons';
+import PortfolioShowcase from '@/components/PortfolioShowcase';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -45,7 +44,7 @@ const steps = [
 ];
 
 const faqs = [
-  { q: 'Lo-fi vs hi-fi wireframes — which do I need?', a: 'Lo-fi wireframes are grayscale layouts focused on structure and content hierarchy — ideal for early alignment and fast iteration. Hi-fi wireframes include realistic typography, spacing, and sometimes colour — useful when moving into visual design or developer handoff. Most projects benefit from lo-fi first, then hi-fi after stakeholder sign-off.' },
+  { q: 'Lo-fi vs hi-fi wireframes — which do I need?', a: 'Lo-fi wireframes are grayscale layouts focused on structure and content hierarchy — ideal for early alignment and fast iteration. Hi-fi wireframes include realistic typography, spacing, and sometimes color — useful when moving into visual design or developer handoff. Most projects benefit from lo-fi first, then hi-fi after stakeholder sign-off.' },
   { q: 'How many rounds of revisions are included?', a: 'Our standard wireframing engagement includes two rounds of structured revisions. Additional revision rounds can be added as needed. We recommend consolidating feedback through a single stakeholder review to keep iterations efficient and the timeline on track.' },
   { q: 'Do you use Figma or other tools?', a: 'We work Figma-first. All wireframes, user flow diagrams, and handoff specs are delivered as organised Figma files. If your team uses other tools like Sketch, Miro, or Balsamiq, we can accommodate — just let us know at kickoff.' },
   { q: 'Can wireframes be tested with users?', a: 'Yes — even lo-fi wireframes can be linked into clickable prototypes for lightweight usability testing. This is highly recommended before investing in full visual design, as it catches navigation issues and usability problems at the cheapest possible stage.' },
@@ -53,23 +52,6 @@ const faqs = [
 ];
 
 
-const floatingIcons = [
-  { id: 1, icon: IconReact, className: 'top-[10%] left-[5%]' },
-  { id: 2, icon: IconNextJS, className: 'top-[15%] right-[8%]' },
-  { id: 3, icon: IconNodeJS, className: 'top-[60%] left-[3%]' },
-  { id: 4, icon: IconPython, className: 'bottom-[20%] right-[5%]' },
-  { id: 5, icon: IconAWS, className: 'top-[5%] left-[25%]' },
-  { id: 6, icon: IconDocker, className: 'top-[70%] right-[15%]' },
-  { id: 7, icon: IconKubernetes, className: 'bottom-[15%] left-[20%]' },
-  { id: 8, icon: IconTypeScript, className: 'top-[40%] left-[8%]' },
-  { id: 9, icon: IconGraphQL, className: 'top-[80%] right-[25%]' },
-  { id: 10, icon: IconPostgreSQL, className: 'top-[25%] right-[5%]' },
-  { id: 11, icon: IconMongoDB, className: 'top-[50%] left-[2%]' },
-  { id: 12, icon: IconTensorFlow, className: 'bottom-[25%] right-[10%]' },
-  { id: 13, icon: IconGitHub, className: 'top-[35%] right-[12%]' },
-  { id: 14, icon: IconFigma, className: 'bottom-[10%] left-[10%]' },
-  { id: 15, icon: IconVSCode, className: 'top-[5%] left-[50%]' },
-];
 
 export default function PageClient() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -99,7 +81,6 @@ export default function PageClient() {
         {/* HERO */}
         <section ref={heroRef} style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', paddingTop: 140, paddingBottom: 80, position: 'relative', overflow: 'hidden' }}>
           <HeroBackground variant="right" />
-          <FloatingIconsBackground icons={floatingIcons} />
           <div className="cb-container">
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 480px), 1fr))', gap: 'clamp(24px, 5vw, 60px)', alignItems: 'center' }}>
               <div>
@@ -161,6 +142,10 @@ export default function PageClient() {
         </section>
 
         {/* PROCESS */}
+
+        {/* PORTFOLIO */}
+        <PortfolioShowcase category="product-design" />
+
         <section ref={s2} className="section-padding">
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>

@@ -9,6 +9,14 @@ export const metadata: Metadata = {
     description: 'Custom AI & ML solutions by Codazz. LLM integration, computer vision & predictive analytics for enterprises in the US.',
     url: 'https://codazz.com/services/ai-ml',
     type: 'website',
+    images: [
+      {
+        url: '/logo.png',
+        width: 1200,
+        height: 630,
+        alt: 'AI & Machine Learning Services - Codazz',
+      },
+    ],
   },
   alternates: {
     canonical: 'https://codazz.com/services/ai-ml',

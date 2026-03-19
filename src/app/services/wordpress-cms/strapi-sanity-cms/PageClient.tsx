@@ -5,8 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ServiceHeroForm from '@/components/ServiceHeroForm';
 import HeroBackground from '@/components/HeroBackground';
-import { FloatingIconsBackground } from '@/components/FloatingIconsBackground';
-import { IconReact, IconNextJS, IconNodeJS, IconPython, IconAWS, IconDocker, IconKubernetes, IconTypeScript, IconGraphQL, IconPostgreSQL, IconMongoDB, IconTensorFlow, IconGitHub, IconFigma, IconVSCode } from '@/components/tech-icons';
+import PortfolioShowcase from '@/components/PortfolioShowcase';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -39,7 +38,7 @@ const services = [
 
 const steps = [
   { num: '01', title: 'CMS Selection', desc: 'We evaluate your content complexity, team size, hosting preference and budget to recommend Strapi or Sanity — both excellent choices for different scenarios.' },
-  { num: '02', title: 'Schema Design', desc: 'Content modelling workshop to define document types, field relationships, reusable components and validation rules before any configuration begins.' },
+  { num: '02', title: 'Schema Design', desc: 'Content modeling workshop to define document types, field relationships, reusable components and validation rules before any configuration begins.' },
   { num: '03', title: 'Studio Configuration', desc: 'CMS installation, custom schema implementation, role-based access control, media library setup, and editorial workflow configuration.' },
   { num: '04', title: 'Frontend Integration', desc: 'Next.js data layer integration with typed queries, live preview wiring, ISR configuration, and end-to-end testing of the content publishing flow.' },
 ];
@@ -47,29 +46,12 @@ const steps = [
 const faqs = [
   { q: 'Strapi vs Sanity — which should I choose?', a: 'Strapi is open-source and self-hostable — ideal if you want full data ownership, lower long-term costs, and a traditional REST/GraphQL API familiar to backend teams. Sanity is a hosted service with a superior real-time editing experience, excellent collaboration features, and GROQ — a powerful query language. Choose Strapi for data control; choose Sanity for editorial experience.' },
   { q: 'How is a headless CMS different from WordPress?', a: 'WordPress bundles content management and page rendering together. A headless CMS only manages content — it has no opinion on how content is presented. Your frontend (Next.js) fetches content via API and controls 100% of the rendering. This separation gives you freedom to deliver content anywhere, upgrade either side independently, and achieve far better frontend performance.' },
-  { q: 'Can non-technical staff use these CMS platforms?', a: 'Yes. Sanity Studio in particular is known for its excellent editorial UX — it feels closer to a design tool than a CMS. Strapi\'s content manager is also intuitive for content editors. We configure both with custom input components, validation and field descriptions tailored to your team\'s workflow, minimising the learning curve.' },
+  { q: 'Can non-technical staff use these CMS platforms?', a: 'Yes. Sanity Studio in particular is known for its excellent editorial UX — it feels closer to a design tool than a CMS. Strapi\'s content manager is also intuitive for content editors. We configure both with custom input components, validation and field descriptions tailored to your team\'s workflow, minimizing the learning curve.' },
   { q: 'How to migrate existing WordPress content?', a: 'We build custom migration scripts that export WordPress content via WP REST API and transform it into your new CMS schema. Content, images, categories, tags and custom fields are all migrated. We run validation checks comparing source and destination data, and keep WordPress live until you\'re ready to cut over.' },
   { q: 'Do you provide CMS training?', a: 'Yes. Every project includes training sessions for content editors covering daily tasks — creating content, managing media, using live preview and publishing workflows. We also provide written documentation and video recordings so your team can onboard new members independently.' },
 ];
 
 
-const floatingIcons = [
-  { id: 1, icon: IconReact, className: 'top-[10%] left-[5%]' },
-  { id: 2, icon: IconNextJS, className: 'top-[15%] right-[8%]' },
-  { id: 3, icon: IconNodeJS, className: 'top-[60%] left-[3%]' },
-  { id: 4, icon: IconPython, className: 'bottom-[20%] right-[5%]' },
-  { id: 5, icon: IconAWS, className: 'top-[5%] left-[25%]' },
-  { id: 6, icon: IconDocker, className: 'top-[70%] right-[15%]' },
-  { id: 7, icon: IconKubernetes, className: 'bottom-[15%] left-[20%]' },
-  { id: 8, icon: IconTypeScript, className: 'top-[40%] left-[8%]' },
-  { id: 9, icon: IconGraphQL, className: 'top-[80%] right-[25%]' },
-  { id: 10, icon: IconPostgreSQL, className: 'top-[25%] right-[5%]' },
-  { id: 11, icon: IconMongoDB, className: 'top-[50%] left-[2%]' },
-  { id: 12, icon: IconTensorFlow, className: 'bottom-[25%] right-[10%]' },
-  { id: 13, icon: IconGitHub, className: 'top-[35%] right-[12%]' },
-  { id: 14, icon: IconFigma, className: 'bottom-[10%] left-[10%]' },
-  { id: 15, icon: IconVSCode, className: 'top-[5%] left-[50%]' },
-];
 
 export default function PageClient() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -99,7 +81,6 @@ export default function PageClient() {
         {/* HERO */}
         <section ref={heroRef} style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', paddingTop: 140, paddingBottom: 80, position: 'relative', overflow: 'hidden' }}>
           <HeroBackground variant="right" />
-          <FloatingIconsBackground icons={floatingIcons} />
           <div className="cb-container">
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 480px), 1fr))', gap: 'clamp(24px, 5vw, 60px)', alignItems: 'center' }}>
               <div>
@@ -161,6 +142,10 @@ export default function PageClient() {
         </section>
 
         {/* PROCESS */}
+
+        {/* PORTFOLIO */}
+        <PortfolioShowcase category="wordpress-cms" />
+
         <section ref={s2} className="section-padding">
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>

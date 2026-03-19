@@ -379,7 +379,7 @@ export default function BlogPostPageClient() {
                       The mobile app — yes, a developer tool with a genuinely useful mobile app — lets engineering leads review and approve PRs from anywhere with a swipe-based interface that surfaces only what matters. Their backend runs a distributed code analysis cluster processing 2.8 million lines of code per second, with results delivered in under 90 seconds for repos up to 500K lines.
                     </p>
                     <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 20 }}>
-                      CodeFlow's growth was almost entirely product-led: teams that integrated it reduced their PR review cycle time by 67% on average, generating the kind of word-of-mouth that no marketing budget can replicate. Their mobile-first approach for review approvals alone drove adoption in engineering organisations where desktop tools had failed to get traction.
+                      CodeFlow's growth was almost entirely product-led: teams that integrated it reduced their PR review cycle time by 67% on average, generating the kind of word-of-mouth that no marketing budget can replicate. Their mobile-first approach for review approvals alone drove adoption in engineering organizations where desktop tools had failed to get traction.
                     </p>
                     <div style={{
                       padding: '14px 20px', borderRadius: 12,
@@ -455,7 +455,7 @@ export default function BlogPostPageClient() {
                     emoji: '🧠', accentColor: '#f472b6', bgColor: 'rgba(244,114,182,',
                     metric: '$1.6B valuation, 72% 90-day retention',
                     paragraphs: [
-                      'MindSpace arrived at a moment when the mental health app market was drowning in meditation timers and breathing exercises. Their differentiation was clinical rigour: the app delivers structured Cognitive Behavioural Therapy programmes co-developed with licensed psychologists, adapted in real time by an AI coach that adjusts difficulty, pacing, and content based on your mood check-ins and engagement patterns.',
+                      'MindSpace arrived at a moment when the mental health app market was drowning in meditation timers and breathing exercises. Their differentiation was clinical rigour: the app delivers structured Cognitive Behavioural Therapy programs co-developed with licensed psychologists, adapted in real time by an AI coach that adjusts difficulty, pacing, and content based on your mood check-ins and engagement patterns.',
                       'The technical architecture is notable for its privacy-first design. All session data and mood logs are processed on-device and never leave the phone unless the user explicitly enables cloud backup. This approach — inspired by Apple\'s on-device ML philosophy — eliminated the privacy objections that plagued competitors and was a direct driver of their exceptional retention rate.',
                       'MindSpace\'s AI coach isn\'t a chatbot. It\'s a structured clinical pathway manager that uses NLP to surface relevant CBT exercises based on what users write in their daily journals. The model was fine-tuned on a dataset of 2M anonymised therapy session transcripts, making its responses feel genuinely empathetic rather than formulaic.',
                     ],
@@ -466,7 +466,7 @@ export default function BlogPostPageClient() {
                     metric: '$2.1B valuation, $900M daily trade volume',
                     paragraphs: [
                       'Retail algorithmic trading was inaccessible before TradeEdge — building a trading bot required Python proficiency, API keys, and a willingness to risk real money while learning. TradeEdge\'s no-code strategy builder lets retail investors construct, backtest, and deploy trading algorithms through a drag-and-drop mobile interface, with simulated paper trading before going live. The democratisation of algo trading, made real.',
-                      'The engineering challenge was latency: retail traders needed institutional-grade execution speeds to compete meaningfully. TradeEdge solved this by co-locating their execution infrastructure within 2ms of every major exchange and building a custom FIX protocol adapter optimised for mobile-originated orders. Average order execution now sits at 4ms — fast enough that their retail users are regularly competitive with professional traders on liquid assets.',
+                      'The engineering challenge was latency: retail traders needed institutional-grade execution speeds to compete meaningfully. TradeEdge solved this by co-locating their execution infrastructure within 2ms of every major exchange and building a custom FIX protocol adapter optimized for mobile-originated orders. Average order execution now sits at 4ms — fast enough that their retail users are regularly competitive with professional traders on liquid assets.',
                       'Risk management is built into the product at a fundamental level: every strategy must pass an automated risk assessment before deployment, with hard limits on drawdown and position sizing. This protects users and protects TradeEdge from the regulatory scrutiny that has hurt competitors who prioritised engagement over safety.',
                     ],
                   },
@@ -477,7 +477,7 @@ export default function BlogPostPageClient() {
                     paragraphs: [
                       'Meal planning apps have existed for a decade and have mostly failed because they create work rather than remove it. FoodForge\'s AI meal planner takes your dietary preferences, current pantry inventory (scanned via camera), local grocery prices, and weekly schedule to generate a complete meal plan with a single tap — then automatically adds missing ingredients to your preferred grocery delivery app.',
                       'The pantry scanning feature, built on a custom computer vision model trained on 4.2 million food packaging images, can identify and quantity-estimate items in 340ms per frame. The nutritional database underneath has 2.3 million food items and accounts for cooking method impacts on macronutrient profiles — a depth of data that makes the meal recommendations genuinely accurate, not aspirational.',
-                      'FoodForge\'s monetisation through grocery partnerships (they earn a percentage of every grocery order generated) aligned incentives perfectly: the better the recommendations, the more groceries users buy, the more FoodForge earns. This flywheel drove rapid unit economics improvement without any deterioration in product quality.',
+                      'FoodForge\'s monetization through grocery partnerships (they earn a percentage of every grocery order generated) aligned incentives perfectly: the better the recommendations, the more groceries users buy, the more FoodForge earns. This flywheel drove rapid unit economics improvement without any deterioration in product quality.',
                     ],
                   },
                   {
@@ -485,9 +485,9 @@ export default function BlogPostPageClient() {
                     emoji: '🔐', accentColor: '#94a3b8', bgColor: 'rgba(148,163,184,',
                     metric: '$1.5B valuation, zero identity breaches to date',
                     paragraphs: [
-                      'VaultID is the decentralised identity app that enterprises actually adopted. While blockchain-based identity projects spent years promising a revolution and delivering complexity, VaultID built on the W3C Decentralised Identifiers standard with a mobile UX that\'s simpler than a password manager. Users hold their own cryptographic credentials on-device, share them selectively with any compatible service, and revoke access instantly — all from an interface that looks like a digital wallet.',
+                      'VaultID is the decentralized identity app that enterprises actually adopted. While blockchain-based identity projects spent years promising a revolution and delivering complexity, VaultID built on the W3C Decentralised Identifiers standard with a mobile UX that\'s simpler than a password manager. Users hold their own cryptographic credentials on-device, share them selectively with any compatible service, and revoke access instantly — all from an interface that looks like a digital wallet.',
                       'The cryptographic architecture uses a hierarchical deterministic key system with biometric binding — your credentials are tied to your face and fingerprint in a way that\'s mathematically provable without any data leaving your device. VaultID is also the first identity app to achieve SOC 2 Type II certification with a purely client-side data model, a significant technical and compliance achievement that unlocked enterprise sales.',
-                      'Their SDK, which allows any app to integrate VaultID authentication in under two hours, has been adopted by 4,200 applications. This network effect — the more places that accept VaultID, the more valuable holding a VaultID becomes — created the adoption spiral that earlier decentralised identity projects could never achieve.',
+                      'Their SDK, which allows any app to integrate VaultID authentication in under two hours, has been adopted by 4,200 applications. This network effect — the more places that accept VaultID, the more valuable holding a VaultID becomes — created the adoption spiral that earlier decentralized identity projects could never achieve.',
                     ],
                   },
                   {
@@ -665,7 +665,7 @@ export default function BlogPostPageClient() {
                       </div>
                     </div>
                     <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)', lineHeight: 1.7, margin: 0 }}>
-                      Former Google engineer and founder of Codazz. Has led engineering for 300+ product launches globally.
+                      Former Google engineer and founder of Codazz. Has led engineering for 500+ product launches globally.
                     </p>
                   </div>
 

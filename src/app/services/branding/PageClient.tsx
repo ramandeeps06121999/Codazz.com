@@ -7,12 +7,6 @@ import Breadcrumb from '@/components/Breadcrumb';
 import ServiceHeroForm from '@/components/ServiceHeroForm';
 import TrustBadges from '@/components/TrustBadges';
 import HeroBackground from '@/components/HeroBackground';
-import { FloatingIconsBackground } from '@/components/FloatingIconsBackground';
-import {
-  IconReact, IconNextJS, IconNodeJS, IconPython, IconAWS,
-  IconDocker, IconKubernetes, IconTypeScript, IconGraphQL,
-  IconPostgreSQL, IconMongoDB, IconTensorFlow, IconGitHub, IconFigma, IconVSCode
-} from '@/components/tech-icons';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -37,7 +31,7 @@ const stats = [
 const services = [
   { icon: '🎯', title: 'Brand Strategy', desc: 'Positioning, audience research and competitive analysis that define where your brand wins and why customers should choose you.' },
   { icon: '✏️', title: 'Logo & Identity', desc: 'Iconic logos and identity systems built for versatility — from business cards to billboards, every format covered.' },
-  { icon: '🎨', title: 'Visual Design System', desc: 'Typography, colour palettes, iconography and layout grids that create a cohesive visual language across every touchpoint.' },
+  { icon: '🎨', title: 'Visual Design System', desc: 'Typography, color palettes, iconography and layout grids that create a cohesive visual language across every touchpoint.' },
   { icon: '📋', title: 'Brand Guidelines', desc: 'Comprehensive brand books that ensure consistency across your team, agency partners and every piece of collateral.' },
   { icon: '💬', title: 'Naming & Messaging', desc: 'Company names, taglines, tone-of-voice frameworks and messaging hierarchies that resonate with your ideal customer.' },
   { icon: '🔄', title: 'Brand Refresh', desc: 'Evolve your existing brand without losing equity — strategic updates that modernise your identity while honouring your heritage.' },
@@ -58,29 +52,12 @@ const results = [
 
 const faqs = [
   { q: 'How long does a full brand identity project take?', a: 'A comprehensive brand identity — strategy through final deliverables — typically takes 6–10 weeks. Logo-only projects can be completed in 3–4 weeks. We set clear milestones at project kickoff.' },
-  { q: 'What do I receive at the end of the project?', a: 'You receive full source files (AI, EPS, SVG, PNG, PDF), a complete brand guidelines document, colour codes for print and digital, font licences guidance, and social media asset templates.' },
+  { q: 'What do I receive at the end of the project?', a: 'You receive full source files (AI, EPS, SVG, PNG, PDF), a complete brand guidelines document, color codes for print and digital, font licenses guidance, and social media asset templates.' },
   { q: 'Do you work with early-stage startups or only established companies?', a: 'Both. We love working with founders building from scratch — getting the brand right early prevents expensive rebrands later. We also work with established businesses ready to evolve their identity.' },
   { q: 'Can you help with brand implementation across our website and marketing?', a: 'Yes. Brand implementation is a natural extension of identity work. We can apply the new brand across your website, pitch decks, social templates and marketing materials.' },
   { q: 'What makes your branding approach different?', a: 'We lead with strategy before picking up a pencil. Every visual decision is anchored to your positioning, audience and business goals — not trends or personal aesthetic preference.' },
 ];
 
-const floatingIcons = [
-  { id: 1, icon: IconReact, className: 'top-[10%] left-[5%]' },
-  { id: 2, icon: IconNextJS, className: 'top-[15%] right-[8%]' },
-  { id: 3, icon: IconNodeJS, className: 'top-[60%] left-[3%]' },
-  { id: 4, icon: IconPython, className: 'bottom-[20%] right-[5%]' },
-  { id: 5, icon: IconAWS, className: 'top-[5%] left-[25%]' },
-  { id: 6, icon: IconDocker, className: 'top-[70%] right-[15%]' },
-  { id: 7, icon: IconKubernetes, className: 'bottom-[15%] left-[20%]' },
-  { id: 8, icon: IconTypeScript, className: 'top-[40%] left-[8%]' },
-  { id: 9, icon: IconGraphQL, className: 'top-[80%] right-[25%]' },
-  { id: 10, icon: IconPostgreSQL, className: 'top-[25%] right-[5%]' },
-  { id: 11, icon: IconMongoDB, className: 'top-[50%] left-[2%]' },
-  { id: 12, icon: IconTensorFlow, className: 'bottom-[25%] right-[10%]' },
-  { id: 13, icon: IconGitHub, className: 'top-[35%] right-[12%]' },
-  { id: 14, icon: IconFigma, className: 'bottom-[10%] left-[10%]' },
-  { id: 15, icon: IconVSCode, className: 'top-[5%] left-[50%]' },
-];
 
 export default function BrandingPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -118,7 +95,6 @@ export default function BrandingPage() {
         {/* HERO */}
         <section ref={heroRef} className="section-padding" style={{ position: 'relative', overflow: 'hidden', minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
           <HeroBackground variant="center" />
-          <FloatingIconsBackground icons={floatingIcons} />
           <div className="cb-container" style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: 860, margin: '0 auto' }}>
             <div className="reveal" style={{ display: 'inline-block', border: '1px solid rgba(34,197,94,0.4)', borderRadius: 999, padding: '6px 20px', fontSize: 13, color: '#ffffff', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>
               Branding & Identity
@@ -127,7 +103,7 @@ export default function BrandingPage() {
               We Build Brands People Remember.
             </h1>
             <p className="reveal" style={{ fontSize: '1.2rem', color: 'rgba(255,255,255,0.7)', marginBottom: '2.5rem', lineHeight: 1.7 }}>
-              Logo, visual identity, brand strategy and guidelines that make your company instantly recognisable.
+              Logo, visual identity, brand strategy and guidelines that make your company instantly recognizable.
             </p>
             <div className="reveal" style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '3.5rem' }}>
               <Link href="/contact" style={{ background: '#22c55e', color: '#000', padding: '14px 32px', borderRadius: 999, fontWeight: 700, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
