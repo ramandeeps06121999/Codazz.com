@@ -30,6 +30,8 @@ const Icon = ({
   index: number;
 }) => {
   const ref = React.useRef<HTMLDivElement>(null);
+  // Use a deterministic duration based on index to avoid hydration mismatch from Math.random()
+  const animationDuration = 5 + ((index * 7 + 3) % 5);
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -86,7 +88,7 @@ const Icon = ({
           rotate: [0, 5, 0, -5, 0],
         }}
         transition={{
-          duration: 5 + Math.random() * 5,
+          duration: animationDuration,
           repeat: Infinity,
           repeatType: 'mirror',
           ease: 'easeInOut',

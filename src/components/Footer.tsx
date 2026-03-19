@@ -137,7 +137,7 @@ export default function Footer() {
               codazz
             </span>
             <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, maxWidth: 280, marginBottom: 20 }}>
-              Dual HQ in New York &amp; Dubai — with the best engineers from around the world working virtually. 99% of our meetings happen online: faster starts, zero travel waste, and a greener way to build software.
+              Headquartered in Toronto with offices in New York &amp; Dubai — with the best engineers from around the world working virtually. 99% of our meetings happen online: faster starts, zero travel waste, and a greener way to build software.
             </p>
 
             {/* Contact */}
@@ -149,7 +149,7 @@ export default function Footer() {
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                 hello@codazz.com
               </a>
-              <a href="https://calendly.com/townmedialabs/30min" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: 8, color: 'rgba(255,255,255,0.5)', textDecoration: 'none', fontSize: 13, transition: 'color 0.2s' }}
+              <a href="https://calendly.com/codazz/30min" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', gap: 8, color: 'rgba(255,255,255,0.5)', textDecoration: 'none', fontSize: 13, transition: 'color 0.2s' }}
                 onMouseEnter={e => e.currentTarget.style.color = '#ffffff'}
                 onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.5)'}
               >
@@ -225,7 +225,7 @@ export default function Footer() {
       <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
         <div className="cb-container" style={{ padding: 'clamp(16px, 3vw, 24px) 0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
           <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.2)' }}>
-            &copy; {new Date().getFullYear()} Codazz Inc. All rights reserved.
+            &copy; 2026 Codazz Inc. All rights reserved.
           </span>
           <div style={{ display: 'flex', gap: 'clamp(16px, 3vw, 32px)', flexWrap: 'wrap' }}>
             {[['Privacy Policy', '/privacy'], ['Terms of Service', '/terms'], ['Cookie Policy', '/cookies']].map(([label, href]) => (

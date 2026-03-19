@@ -1,11 +1,10 @@
 import { BASE_URL, industrySlugs, buildUrlset } from '@/lib/sitemap-data';
 
 export function GET() {
-  const now = new Date().toISOString();
   const xml = buildUrlset(
     industrySlugs.map(slug => ({
       loc: `${BASE_URL}/industries/${slug}`,
-      lastmod: now,
+      lastmod: '2026-03-15',
       changefreq: 'monthly',
       priority: '0.7',
     }))

@@ -1,10 +1,19 @@
+import type { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 
-export const metadata = {
-  title: 'Privacy Policy | Codazz',
-  description: 'Privacy Policy for Codazz. Learn how we collect, use, and protect your information.',
+export const metadata: Metadata = {
+  title: 'Privacy Policy',
+  description: 'Codazz Privacy Policy — how we collect, use, and protect your data.',
+  openGraph: {
+    title: 'Privacy Policy | Codazz',
+    description: 'Codazz Privacy Policy — how we collect, use, and protect your data.',
+    url: 'https://codazz.com/privacy',
+  },
+  alternates: {
+    canonical: 'https://codazz.com/privacy',
+  },
 };
 
 export default function PrivacyPage() {

@@ -48,7 +48,7 @@ export default async function CityPage({ params }: PageProps) {
     name: `Codazz - ${data.name}`,
     url: `https://codazz.com/locations/${data.slug}`,
     priceRange: '$$-$$$',
-    image: 'https://codazz.com/images/og-default.jpg',
+    image: 'https://codazz.com/logo.png',
     address: {
       '@type': 'PostalAddress',
       addressLocality: data.name,
@@ -69,7 +69,7 @@ export default async function CityPage({ params }: PageProps) {
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://codazz.com' },
       { '@type': 'ListItem', position: 2, name: 'Locations', item: 'https://codazz.com/locations' },
-      { '@type': 'ListItem', position: 3, name: data.name },
+      { '@type': 'ListItem', position: 3, name: data.name, item: `https://codazz.com/locations/${data.slug}` },
     ],
   };
 

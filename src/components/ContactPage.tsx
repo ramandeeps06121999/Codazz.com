@@ -1,7 +1,6 @@
 'use client';
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
-import emailjs from '@emailjs/browser';
 import HeroBackground from '@/components/HeroBackground';
 
 
@@ -41,7 +40,7 @@ const FAQS = [
 
 const ENGAGEMENT = [
   { num: '01', tag: 'Most Popular', title: 'Request a Proposal', desc: 'Share your vision and get a detailed scope, timeline & fixed-price quote within 48 hours.', cta: 'Get a Quote →' },
-  { num: '02', tag: 'Free', title: 'Book a Strategy Call', desc: 'Free 30-min call with a senior engineer to map out your technical path and validate your approach.', cta: 'Book a Call →', href: 'https://calendly.com/townmedialabs/30min' },
+  { num: '02', tag: 'Free', title: 'Book a Strategy Call', desc: 'Free 30-min call with a senior engineer to map out your technical path and validate your approach.', cta: 'Book a Call →', href: 'https://calendly.com/codazz/30min' },
   { num: '03', tag: 'Strategic', title: 'Business Partnership', desc: 'Explore white-label, reseller programmes, or deep technology integrations with our team.', cta: 'Partner With Us →' },
 ];
 
@@ -90,27 +89,28 @@ export default function ContactPage() {
     setError('');
 
     try {
-      const templateParams = {
-        name: form.name,
-        email: form.email,
-        company: form.company,
-        projectType: form.projectType,
-        timeline: form.timeline,
-        description: form.description,
-      };
+      const body = new FormData();
+      body.append('access_key', '9646b6a0-81d5-459f-bc00-6656c77bbcae');
+      body.append('name', form.name);
+      body.append('email', form.email);
+      body.append('company', form.company);
+      body.append('projectType', form.projectType);
+      body.append('timeline', form.timeline);
+      body.append('message', form.description);
+      body.append('subject', `New Project Enquiry from ${form.name}`);
 
-      const res = await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '',
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '',
-        templateParams,
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || ''
-      );
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body,
+      });
 
-      if (res.status === 200) {
+      const data = await response.json();
+
+      if (response.ok) {
         setSubmitted(true);
         setForm({ name: '', email: '', company: '', projectType: '', timeline: '', description: '' });
       } else {
-        setError('Something went wrong. Please try again.');
+        setError('Error: ' + data.message);
       }
     } catch (err) {
       console.error(err);
@@ -157,7 +157,7 @@ export default function ContactPage() {
               Start a Project
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
             </a>
-            <a href="https://calendly.com/townmedialabs/30min" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 10, height: 56, padding: '0 clamp(24px, 4vw, 40px)', borderRadius: 100, border: '1px solid rgba(255,255,255,0.08)', color: '#ffffff', fontSize: 15, fontWeight: 500, textDecoration: 'none', transition: '0.3s' }}
+            <a href="https://calendly.com/codazz/30min" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 10, height: 56, padding: '0 clamp(24px, 4vw, 40px)', borderRadius: 100, border: '1px solid rgba(255,255,255,0.08)', color: '#ffffff', fontSize: 15, fontWeight: 500, textDecoration: 'none', transition: '0.3s' }}
               onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)'}
               onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'}>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="4" width="18" height="18" rx="2" /><path d="M16 2v4M8 2v4M3 10h18" /></svg>
@@ -231,7 +231,7 @@ export default function ContactPage() {
                 {[
                   { label: 'General', value: 'hello@codazz.com', href: 'mailto:hello@codazz.com' },
                   { label: 'Sales', value: 'sales@codazz.com', href: 'mailto:sales@codazz.com' },
-                  { label: 'Book a Call', value: 'Schedule with a Dev', href: 'https://calendly.com/townmedialabs/30min' },
+                  { label: 'Book a Call', value: 'Schedule with a Dev', href: 'https://calendly.com/codazz/30min' },
                   { label: 'Response Time', value: 'Within 4 business hours', href: null },
                 ].map(item => (
                   <div key={item.label} style={{ display: 'flex', alignItems: 'center', gap: 16 }}>

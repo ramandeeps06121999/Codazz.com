@@ -141,7 +141,7 @@ export default function Hero() {
 
           {/* Sub */}
           <p className="h-p" style={{ fontSize: 'clamp(0.95rem, 1.6vw, 1.15rem)', color: 'rgba(255,255,255,0.7)', maxWidth: 480, lineHeight: 1.8, margin: '0 0 clamp(28px, 5vw, 52px)' }}>
-            Codazz engineers world-class digital products for companies ready to lead their industry — on time, on budget, every time.
+            Toronto-headquartered engineers building world-class digital products for companies ready to lead their industry — on time, on budget, every time.
           </p>
 
           {/* Buttons */}

@@ -48,7 +48,7 @@ export default function IndustriesSection() {
                 <ind.Icon size={24} stroke={1.5} color="#22c55e" />
               </div>
               <div>
-                <h4 style={{ fontSize: 20, fontWeight: 600, color: '#ffffff', marginBottom: 10, letterSpacing: '-0.02em' }}>{ind.name}</h4>
+                <h3 style={{ fontSize: 20, fontWeight: 600, color: '#ffffff', marginBottom: 10, letterSpacing: '-0.02em' }}>{ind.name}</h3>
                 <p style={{ fontSize: 14, color: '#9ca3af', lineHeight: 1.7, margin: 0 }}>{ind.desc}</p>
               </div>
               <div className="learn-more" style={{ marginTop: 'auto', display: 'flex', alignItems: 'center', gap: 6, color: 'rgba(34,197,94,0.5)', fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', transition: 'color 0.3s ease' }}>

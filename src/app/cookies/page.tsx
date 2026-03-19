@@ -1,10 +1,19 @@
+import type { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 
-export const metadata = {
-  title: 'Cookie Policy | Codazz',
-  description: 'Cookie Policy for Codazz. Learn how we use cookies on our website.',
+export const metadata: Metadata = {
+  title: 'Cookie Policy',
+  description: 'Codazz Cookie Policy — how we use cookies on our website and how you can manage them.',
+  openGraph: {
+    title: 'Cookie Policy | Codazz',
+    description: 'Codazz Cookie Policy — how we use cookies on our website and how you can manage them.',
+    url: 'https://codazz.com/cookies',
+  },
+  alternates: {
+    canonical: 'https://codazz.com/cookies',
+  },
 };
 
 export default function CookiesPage() {

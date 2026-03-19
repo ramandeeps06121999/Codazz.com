@@ -3,6 +3,8 @@ import { BASE_URL, blogSlugs, buildUrlset } from '@/lib/sitemap-data';
 /* Realistic lastmod dates staggered across the last 3 months so Google
    sees organic content updates rather than a single bulk-publish date. */
 const blogLastmod: Record<string, string> = {
+  'app-development-cost-canada':                 '2026-03-18',
+  'how-to-build-ai-chatbot-business':            '2026-03-18',
   'top-10-unicorn-apps-2026':                    '2026-03-15',
   'saas-guide':                                  '2026-03-12',
   'top-seo-companies-usa':                       '2026-03-08',

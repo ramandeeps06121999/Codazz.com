@@ -1,6 +1,5 @@
 'use client';
 import { useState } from 'react';
-import emailjs from '@emailjs/browser';
 
 interface ServiceHeroFormProps {
   service?: string;
@@ -17,26 +16,33 @@ export default function ServiceHeroForm({ service, city }: ServiceHeroFormProps 
     setIsLoading(true);
 
     try {
-      const templateParams = {
-        name: form.name,
-        email: form.email,
-        phone: form.phone,
-        message: form.message,
-        ...(service && { service }),
-        ...(city && { city }),
-      };
+      const body = new FormData();
+      body.append('access_key', '9646b6a0-81d5-459f-bc00-6656c77bbcae');
+      body.append('name', form.name);
+      body.append('email', form.email);
+      body.append('phone', form.phone);
+      body.append('message', form.message);
+      if (service) body.append('service', service);
+      if (city) body.append('city', city);
+      body.append('subject', `New Quote Request${service ? ` - ${service}` : ''}${city ? ` (${city})` : ''}`);
 
-      await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '',
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '',
-        templateParams,
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || ''
-      );
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body,
+      });
 
-      setSubmitted(true);
-      setTimeout(() => setSubmitted(false), 4000);
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitted(true);
+        setForm({ name: '', email: '', phone: '', message: '' });
+        setTimeout(() => setSubmitted(false), 4000);
+      } else {
+        alert('Error: ' + data.message);
+      }
     } catch (err) {
       console.error(err);
+      alert('Something went wrong. Please try again.');
     } finally {
       setIsLoading(false);
     }

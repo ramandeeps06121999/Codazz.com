@@ -1,10 +1,19 @@
+import type { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 
-export const metadata = {
-  title: 'Terms of Service | Codazz',
-  description: 'Terms of Service for Codazz. Read our terms and conditions.',
+export const metadata: Metadata = {
+  title: 'Terms of Service',
+  description: 'Codazz Terms of Service — the terms and conditions for using our services.',
+  openGraph: {
+    title: 'Terms of Service | Codazz',
+    description: 'Codazz Terms of Service — the terms and conditions for using our services.',
+    url: 'https://codazz.com/terms',
+  },
+  alternates: {
+    canonical: 'https://codazz.com/terms',
+  },
 };
 
 export default function TermsPage() {

@@ -14,9 +14,9 @@ export const metadata: Metadata = {
     template: "%s | Codazz",
   },
   description:
-    "Codazz builds custom software, web apps, mobile apps, AI solutions, and blockchain platforms. Dual headquarters in New York & Dubai — delivering worldwide.",
+    "Codazz builds custom software, web apps, mobile apps, AI solutions, and blockchain platforms. Headquartered in Toronto with offices in New York & Dubai — delivering worldwide.",
   keywords:
-    "custom software development, web development, mobile app development, AI solutions, blockchain, New York, Dubai, USA",
+    "custom software development, web development, mobile app development, AI solutions, blockchain, Toronto, Canada, New York, Dubai, USA",
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -24,10 +24,10 @@ export const metadata: Metadata = {
     siteName: "Codazz",
     title: "Codazz | Custom Software Development Company",
     description:
-      "Codazz builds custom software, web apps, mobile apps, AI solutions, and blockchain platforms. Dual headquarters in New York & Dubai — delivering worldwide.",
+      "Codazz builds custom software, web apps, mobile apps, AI solutions, and blockchain platforms. Headquartered in Toronto with offices in New York & Dubai — delivering worldwide.",
     images: [
       {
-        url: "/images/og-default.jpg",
+        url: "/logo.png",
         width: 1200,
         height: 630,
         alt: "Codazz - Custom Software Development Company",
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     creator: "@codazz",
     title: "Codazz | Custom Software Development Company",
     description:
-      "Codazz builds custom software, web apps, mobile apps, AI solutions, and blockchain platforms. Dual headquarters in New York & Dubai — delivering worldwide.",
+      "Codazz builds custom software, web apps, mobile apps, AI solutions, and blockchain platforms. Headquartered in Toronto with offices in New York & Dubai — delivering worldwide.",
   },
   robots: {
     index: true,
@@ -64,8 +64,8 @@ export const metadata: Metadata = {
     apple: "/Favicon.png",
   },
   other: {
-    "geo.region": "US-NY",
-    "geo.placename": "New York",
+    "geo.region": "CA-ON",
+    "geo.placename": "Toronto",
     "theme-color": "#ffffff",
   },
 };
@@ -77,7 +77,7 @@ const organizationSchema = {
   url: "https://codazz.com",
   logo: "https://codazz.com/logo.png",
   description:
-    "Custom software development company founded by Raman Makkar. Dual headquarters in New York & Dubai. 46 locations across 24 countries. Best engineers from around the world working virtually.",
+    "Custom software development company founded by Raman Makkar. Headquartered in Toronto with offices in New York & Dubai. 46 locations across 24 countries. Best engineers from around the world working virtually.",
   address: [
     {
       "@type": "PostalAddress",
@@ -89,6 +89,12 @@ const organizationSchema = {
       "@type": "PostalAddress",
       addressLocality: "Dubai",
       addressCountry: "AE",
+    },
+    {
+      "@type": "PostalAddress",
+      addressLocality: "Toronto",
+      addressRegion: "ON",
+      addressCountry: "CA",
     },
   ],
   sameAs: [

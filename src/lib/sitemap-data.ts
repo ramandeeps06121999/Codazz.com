@@ -24,6 +24,7 @@ export const subServices: Record<string, string[]> = {
 export const industrySlugs = ['fintech', 'healthcare', 'ecommerce', 'logistics', 'edtech', 'enterprise'];
 
 export const blogSlugs = [
+  'app-development-cost-canada', 'how-to-build-ai-chatbot-business',
   'top-10-unicorn-apps-2026', 'saas-guide', 'top-seo-companies-usa',
   'top-software-development-companies-usa',
   'app-development-cost-usa', 'ai-development-companies-usa',

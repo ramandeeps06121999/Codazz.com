@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import emailjs from '@emailjs/browser';
 
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -25,24 +24,30 @@ export default function Contact() {
     setIsLoading(true);
 
     try {
-      const templateParams = {
-        name: formData.name,
-        email: formData.email,
-        company: formData.company,
-        message: formData.message,
-      };
+      const body = new FormData();
+      body.append('access_key', '9646b6a0-81d5-459f-bc00-6656c77bbcae');
+      body.append('name', formData.name);
+      body.append('email', formData.email);
+      body.append('company', formData.company);
+      body.append('message', formData.message);
 
-      await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '',
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '',
-        templateParams,
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || ''
-      );
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body,
+      });
 
-      setSubmitted(true);
-      setTimeout(() => setSubmitted(false), 4000);
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitted(true);
+        setFormData({ name: '', email: '', company: '', message: '' });
+        setTimeout(() => setSubmitted(false), 4000);
+      } else {
+        alert('Error: ' + data.message);
+      }
     } catch (err) {
       console.error(err);
+      alert('Something went wrong. Please try again.');
     } finally {
       setIsLoading(false);
     }
