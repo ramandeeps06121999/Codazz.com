@@ -14,12 +14,17 @@ import FAQWithGlobe from '@/components/FAQWithGlobe';
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
   useEffect(() => {
+    const els = ref.current?.querySelectorAll('.reveal');
     const io = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-      { threshold: 0.08 }
+      entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } }),
+      { threshold: 0.02, rootMargin: '0px 0px 100px 0px' }
     );
-    ref.current?.querySelectorAll('.reveal').forEach(el => io.observe(el));
-    return () => io.disconnect();
+    els?.forEach(el => io.observe(el));
+    // Safety fallback: force visibility if observer misses
+    const fallback = setTimeout(() => {
+      els?.forEach(el => el.classList.add('visible'));
+    }, 4000);
+    return () => { io.disconnect(); clearTimeout(fallback); };
   }, []);
   return ref;
 }
@@ -99,6 +104,7 @@ export default function CityServicePageClient(props: CityServicePageProps) {
   const techRef = useReveal() as React.RefObject<HTMLElement>;
   const testimonialsRef = useReveal() as React.RefObject<HTMLElement>;
   const industryRef = useReveal() as React.RefObject<HTMLElement>;
+  const quoteRef = useReveal() as React.RefObject<HTMLElement>;
   const relatedRef = useReveal() as React.RefObject<HTMLElement>;
 
   useEffect(() => {
@@ -375,143 +381,100 @@ export default function CityServicePageClient(props: CityServicePageProps) {
         <TestimonialMarquee testimonials={testimonials} heading={`What ${cityName} Clients Say`} />
 
         {/* ════════════════════════════════════════════
-            9A. INDUSTRY EXPERTISE — Split Layout
+            9A. INDUSTRY EXPERTISE — Centered Grid
         ════════════════════════════════════════════ */}
         <section ref={industryRef} style={{ ...sectionPad, ...sectionBorder, position: 'relative', overflow: 'hidden' }}>
           {/* Subtle background glow */}
           <div style={{ position: 'absolute', top: '30%', right: '-10%', width: 600, height: 600, background: 'radial-gradient(ellipse, rgba(34,197,94,0.06) 0%, transparent 70%)', filter: 'blur(80px)', pointerEvents: 'none' }} />
 
           <div className="cb-container" style={{ position: 'relative', zIndex: 1 }}>
-            <div className="loc-industry-split reveal" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(40px, 6vw, 80px)', alignItems: 'start' }}>
+            {/* Centered header */}
+            <div className="reveal" style={{ textAlign: 'center', marginBottom: 'clamp(40px, 5vw, 64px)' }}>
+              <div style={subLabel}>Industry Expertise</div>
+              <h2 style={{ ...heading2, marginBottom: 20, maxWidth: 700, marginLeft: 'auto', marginRight: 'auto' }}>
+                {serviceName} for {cityName}&apos;s Key Industries
+              </h2>
+              <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.55)', lineHeight: 1.85, maxWidth: 600, margin: '0 auto' }}>
+                {industryExpertise}
+              </p>
+            </div>
 
-              {/* LEFT — Heading + Description + Tags */}
-              <div>
-                <div style={subLabel}>Industry Expertise</div>
-                <h2 style={{ ...heading2, marginBottom: 24 }}>{serviceName} for {cityName}&apos;s Key Industries</h2>
+            {/* Industry cards grid */}
+            <div className="loc-industry-grid reveal" style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(3, 1fr)',
+              gap: 16,
+              maxWidth: 900,
+              margin: '0 auto',
+            }}>
+              {localIndustries.map((ind, i) => {
+                const industryIconMap: Record<string, string> = {
+                  'FinTech': '\u{1F4B3}', 'Finance': '\u{1F4B3}', 'Banking': '\u{1F3E6}',
+                  'AI & Machine Learning': '\u{1F916}', 'AI': '\u{1F916}', 'Machine Learning': '\u{1F916}',
+                  'HealthTech': '\u{1F3E5}', 'Healthcare': '\u{1F3E5}', 'Health': '\u{1F3E5}',
+                  'E-Commerce': '\u{1F6D2}', 'Retail': '\u{1F6D2}', 'eCommerce': '\u{1F6D2}',
+                  'Media': '\u{1F3AC}', 'Entertainment': '\u{1F3AC}', 'Streaming': '\u{1F3AC}',
+                  'EdTech': '\u{1F393}', 'Education': '\u{1F393}',
+                  'Real Estate': '\u{1F3D7}\u{FE0F}', 'PropTech': '\u{1F3D7}\u{FE0F}', 'Construction': '\u{1F3D7}\u{FE0F}',
+                  'Logistics': '\u{1F69A}', 'Supply Chain': '\u{1F69A}', 'Transportation': '\u{1F69A}',
+                  'Energy': '\u{26A1}', 'CleanTech': '\u{26A1}', 'Oil & Gas': '\u{26A1}',
+                  'SaaS': '\u{2601}\u{FE0F}', 'Cloud': '\u{2601}\u{FE0F}',
+                  'Insurance': '\u{1F6E1}\u{FE0F}', 'InsurTech': '\u{1F6E1}\u{FE0F}',
+                  'Legal': '\u{2696}\u{FE0F}', 'LegalTech': '\u{2696}\u{FE0F}',
+                  'Manufacturing': '\u{1F3ED}', 'Industrial': '\u{1F3ED}',
+                  'Travel': '\u{2708}\u{FE0F}', 'Hospitality': '\u{2708}\u{FE0F}', 'Tourism': '\u{2708}\u{FE0F}',
+                  'Gaming': '\u{1F3AE}', 'Sports': '\u{1F3C6}',
+                  'Agriculture': '\u{1F33E}', 'AgriTech': '\u{1F33E}',
+                  'Telecom': '\u{1F4E1}', 'Telecommunications': '\u{1F4E1}',
+                  'Government': '\u{1F3DB}\u{FE0F}', 'GovTech': '\u{1F3DB}\u{FE0F}',
+                  'Automotive': '\u{1F697}', 'Mobility': '\u{1F697}',
+                };
+                const defaultIcons = ['\u{1F4A1}', '\u{1F52C}', '\u{1F3AF}', '\u{1F680}', '\u{2B50}', '\u{1F527}', '\u{1F4CA}', '\u{1F310}', '\u{1F4BB}', '\u{1F512}'];
+                const icon = industryIconMap[ind] || Object.entries(industryIconMap).find(([k]) => ind.toLowerCase().includes(k.toLowerCase()))?.[1] || defaultIcons[i % defaultIcons.length];
 
-                <div style={{ marginBottom: 40 }}>
-                  <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.7)', lineHeight: 1.85, maxWidth: 520 }}>
-                    {industryExpertise}
-                  </p>
-                </div>
-
-                {/* Industry tags */}
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
-                  {localIndustries.map(ind => (
-                    <span key={ind} style={{ padding: '10px 22px', border: '1px solid rgba(34,197,94,0.2)', borderRadius: 100, fontSize: 14, fontWeight: 600, color: '#ffffff', background: 'rgba(34,197,94,0.06)', transition: '0.25s', cursor: 'default' }}
-                      onMouseEnter={e => { e.currentTarget.style.background = 'rgba(34,197,94,0.15)'; e.currentTarget.style.borderColor = 'rgba(34,197,94,0.5)'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
-                      onMouseLeave={e => { e.currentTarget.style.background = 'rgba(34,197,94,0.06)'; e.currentTarget.style.borderColor = 'rgba(34,197,94,0.2)'; e.currentTarget.style.transform = ''; }}>
-                      {ind}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* RIGHT — Industry visualization grid */}
-              <div>
-                <div className="loc-industry-viz" style={{ position: 'relative', padding: 4 }}>
-                  {/* Grid of industry cards with connection node */}
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16 }}>
-                    {localIndustries.slice(0, 6).map((ind, i) => {
-                      const industryIconMap: Record<string, string> = {
-                        'FinTech': '💳', 'Finance': '💳', 'Banking': '🏦',
-                        'AI & Machine Learning': '🤖', 'AI': '🤖', 'Machine Learning': '🤖',
-                        'HealthTech': '🏥', 'Healthcare': '🏥', 'Health': '🏥',
-                        'E-Commerce': '🛒', 'Retail': '🛒', 'eCommerce': '🛒',
-                        'Media': '🎬', 'Entertainment': '🎬', 'Streaming': '🎬',
-                        'EdTech': '🎓', 'Education': '🎓',
-                        'Real Estate': '🏗️', 'PropTech': '🏗️', 'Construction': '🏗️',
-                        'Logistics': '🚚', 'Supply Chain': '🚚', 'Transportation': '🚚',
-                        'Energy': '⚡', 'CleanTech': '⚡', 'Oil & Gas': '⚡',
-                        'SaaS': '☁️', 'Cloud': '☁️',
-                        'Insurance': '🛡️', 'InsurTech': '🛡️',
-                        'Legal': '⚖️', 'LegalTech': '⚖️',
-                        'Manufacturing': '🏭', 'Industrial': '🏭',
-                        'Travel': '✈️', 'Hospitality': '✈️', 'Tourism': '✈️',
-                        'Gaming': '🎮', 'Sports': '🏆',
-                        'Agriculture': '🌾', 'AgriTech': '🌾',
-                        'Telecom': '📡', 'Telecommunications': '📡',
-                        'Government': '🏛️', 'GovTech': '🏛️',
-                        'Automotive': '🚗', 'Mobility': '🚗',
-                      };
-                      const defaultIcons = ['💡', '🔬', '🎯', '🚀', '⭐', '🔧', '📊', '🌐', '💻', '🔒'];
-                      const icons = defaultIcons;
-                      const icon = industryIconMap[ind] || Object.entries(industryIconMap).find(([k]) => ind.toLowerCase().includes(k.toLowerCase()))?.[1] || icons[i % icons.length];
-                      const delays = [0, 0.1, 0.2, 0.15, 0.25, 0.05];
-                      return (
-                        <div key={ind} className="loc-industry-card" style={{
-                          padding: '28px 24px',
-                          borderRadius: 24,
-                          border: '1px solid rgba(255,255,255,0.06)',
-                          background: 'rgba(255,255,255,0.015)',
-                          backdropFilter: 'blur(12px)',
-                          transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                          position: 'relative',
-                          overflow: 'hidden',
-                        }}
-                          onMouseEnter={e => {
-                            const t = e.currentTarget;
-                            t.style.borderColor = 'rgba(34,197,94,0.3)';
-                            t.style.background = 'rgba(34,197,94,0.04)';
-                            t.style.transform = 'translateY(-4px) scale(1.02)';
-                            t.style.boxShadow = '0 20px 50px rgba(34,197,94,0.1)';
-                          }}
-                          onMouseLeave={e => {
-                            const t = e.currentTarget;
-                            t.style.borderColor = 'rgba(255,255,255,0.06)';
-                            t.style.background = 'rgba(255,255,255,0.015)';
-                            t.style.transform = '';
-                            t.style.boxShadow = '';
-                          }}>
-                          {/* Corner accent */}
-                          <div style={{ position: 'absolute', top: 0, left: 0, width: 40, height: 40, borderTop: '2px solid rgba(34,197,94,0.3)', borderLeft: '2px solid rgba(34,197,94,0.3)', borderRadius: '24px 0 0 0', pointerEvents: 'none' }} />
-                          <div style={{ fontSize: 28, marginBottom: 12 }}>{icon}</div>
-                          <div style={{ fontSize: 14, fontWeight: 600, color: '#ffffff', lineHeight: 1.4 }}>{ind}</div>
-                          {/* Pulse dot */}
-                          <div style={{ position: 'absolute', top: 16, right: 16, width: 6, height: 6, borderRadius: '50%', background: '#22c55e', opacity: 0.6, animation: `industryPulse 2.5s ease-in-out ${delays[i]}s infinite` }} />
-                        </div>
-                      );
-                    })}
-                  </div>
-
-                  {/* Central connection node */}
-                  <div className="loc-center-node" style={{
-                    position: 'absolute',
-                    top: '50%',
-                    left: '50%',
-                    transform: 'translate(-50%, -50%)',
-                    width: 56,
-                    height: 56,
-                    borderRadius: '50%',
-                    background: 'rgba(34,197,94,0.1)',
-                    border: '2px solid rgba(34,197,94,0.25)',
+                return (
+                  <div key={ind} className="loc-industry-card" style={{
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'center',
-                    zIndex: 2,
-                    backdropFilter: 'blur(20px)',
-                    boxShadow: '0 0 40px rgba(34,197,94,0.15)',
-                  }}>
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2" strokeLinecap="round">
-                      <path d="M12 2v20M2 12h20M5.6 5.6l12.8 12.8M18.4 5.6L5.6 18.4" />
-                    </svg>
-                  </div>
-
-                  {/* Remaining count */}
-                  {localIndustries.length > 6 && (
-                    <div style={{
-                      marginTop: 16,
-                      textAlign: 'center',
-                      fontSize: 13,
-                      fontWeight: 600,
-                      color: 'rgba(255,255,255,0.3)',
-                      letterSpacing: '0.05em',
+                    gap: 16,
+                    padding: '20px 24px',
+                    borderRadius: 20,
+                    border: '1px solid rgba(255,255,255,0.06)',
+                    background: 'rgba(255,255,255,0.02)',
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                  }}
+                    onMouseEnter={e => {
+                      const t = e.currentTarget;
+                      t.style.borderColor = 'rgba(34,197,94,0.25)';
+                      t.style.background = 'rgba(34,197,94,0.04)';
+                      t.style.transform = 'translateY(-3px)';
+                      t.style.boxShadow = '0 12px 32px rgba(34,197,94,0.08)';
+                    }}
+                    onMouseLeave={e => {
+                      const t = e.currentTarget;
+                      t.style.borderColor = 'rgba(255,255,255,0.06)';
+                      t.style.background = 'rgba(255,255,255,0.02)';
+                      t.style.transform = '';
+                      t.style.boxShadow = '';
                     }}>
-                      +{localIndustries.length - 6} more industries
+                    <div style={{
+                      width: 48,
+                      height: 48,
+                      borderRadius: '50%',
+                      background: 'rgba(34,197,94,0.1)',
+                      border: '1px solid rgba(34,197,94,0.15)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: 22,
+                      flexShrink: 0,
+                    }}>
+                      {icon}
                     </div>
-                  )}
-                </div>
-              </div>
+                    <span style={{ fontSize: 15, fontWeight: 600, color: '#ffffff' }}>{ind}</span>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -519,7 +482,7 @@ export default function CityServicePageClient(props: CityServicePageProps) {
         {/* ════════════════════════════════════════════
             9B. GET A CUSTOM QUOTE — Split Layout
         ════════════════════════════════════════════ */}
-        <section style={{ ...sectionPad, ...sectionBorder, position: 'relative', overflow: 'hidden' }}>
+        <section ref={quoteRef} style={{ ...sectionPad, ...sectionBorder, position: 'relative', overflow: 'hidden' }}>
           {/* Background glow */}
           <div style={{ position: 'absolute', top: '20%', left: '-5%', width: 700, height: 500, background: 'radial-gradient(ellipse, rgba(34,197,94,0.07) 0%, transparent 65%)', filter: 'blur(80px)', pointerEvents: 'none' }} />
 
@@ -763,9 +726,9 @@ export default function CityServicePageClient(props: CityServicePageProps) {
           .loc-process-card{padding:24px 20px!important;}
           .loc-portfolio-inner{padding:20px!important;}
           .loc-testimonial-card{padding:28px 20px!important;}
-          .loc-industry-split{grid-template-columns:1fr!important;gap:40px!important;}
+          .loc-industry-grid{grid-template-columns:repeat(2,1fr)!important;gap:12px!important;}
+          .loc-industry-card{padding:16px 18px!important;}
           .loc-quote-split{grid-template-columns:1fr!important;gap:40px!important;}
-          .loc-industry-card{padding:20px 18px!important;}
           .loc-quote-card{padding:24px 24px 24px 28px!important;}
           .loc-process-timeline{display:none!important;}
         }
@@ -773,7 +736,7 @@ export default function CityServicePageClient(props: CityServicePageProps) {
           .loc-stats-strip{grid-template-columns:1fr!important;}
           .loc-stats-strip>div{border-right:none!important;padding:20px 12px!important;}
           .loc-hero-stats{grid-template-columns:1fr!important;}
-          .loc-industry-viz>div:first-child{grid-template-columns:1fr!important;}
+          .loc-industry-grid{grid-template-columns:1fr!important;}
         }
       `}</style>
     </>
