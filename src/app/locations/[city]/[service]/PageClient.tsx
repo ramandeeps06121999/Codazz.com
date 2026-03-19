@@ -389,14 +389,14 @@ export default function CityServicePageClient(props: CityServicePageProps) {
                 <div style={subLabel}>Industry Expertise</div>
                 <h2 style={{ ...heading2, marginBottom: 24 }}>{serviceName} for {cityName}&apos;s Key Industries</h2>
 
-                <div className="reveal reveal-d1" style={{ marginBottom: 40 }}>
+                <div style={{ marginBottom: 40 }}>
                   <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.7)', lineHeight: 1.85, maxWidth: 520 }}>
                     {industryExpertise}
                   </p>
                 </div>
 
                 {/* Industry tags */}
-                <div className="reveal reveal-d2" style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
                   {localIndustries.map(ind => (
                     <span key={ind} style={{ padding: '10px 22px', border: '1px solid rgba(34,197,94,0.2)', borderRadius: 100, fontSize: 14, fontWeight: 600, color: '#ffffff', background: 'rgba(34,197,94,0.06)', transition: '0.25s', cursor: 'default' }}
                       onMouseEnter={e => { e.currentTarget.style.background = 'rgba(34,197,94,0.15)'; e.currentTarget.style.borderColor = 'rgba(34,197,94,0.5)'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
@@ -408,13 +408,35 @@ export default function CityServicePageClient(props: CityServicePageProps) {
               </div>
 
               {/* RIGHT — Industry visualization grid */}
-              <div className="reveal reveal-d2">
+              <div>
                 <div className="loc-industry-viz" style={{ position: 'relative', padding: 4 }}>
                   {/* Grid of industry cards with connection node */}
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16 }}>
                     {localIndustries.slice(0, 6).map((ind, i) => {
-                      const icons = ['\u{1F3E5}', '\u{1F3E6}', '\u{1F6D2}', '\u{1F393}', '\u{1F3ED}', '\u{1F680}', '\u{1F3D7}\uFE0F', '\u{1F3AF}', '\u26A1', '\u{1F52C}'];
-                      const icon = icons[i % icons.length];
+                      const industryIconMap: Record<string, string> = {
+                        'FinTech': '💳', 'Finance': '💳', 'Banking': '🏦',
+                        'AI & Machine Learning': '🤖', 'AI': '🤖', 'Machine Learning': '🤖',
+                        'HealthTech': '🏥', 'Healthcare': '🏥', 'Health': '🏥',
+                        'E-Commerce': '🛒', 'Retail': '🛒', 'eCommerce': '🛒',
+                        'Media': '🎬', 'Entertainment': '🎬', 'Streaming': '🎬',
+                        'EdTech': '🎓', 'Education': '🎓',
+                        'Real Estate': '🏗️', 'PropTech': '🏗️', 'Construction': '🏗️',
+                        'Logistics': '🚚', 'Supply Chain': '🚚', 'Transportation': '🚚',
+                        'Energy': '⚡', 'CleanTech': '⚡', 'Oil & Gas': '⚡',
+                        'SaaS': '☁️', 'Cloud': '☁️',
+                        'Insurance': '🛡️', 'InsurTech': '🛡️',
+                        'Legal': '⚖️', 'LegalTech': '⚖️',
+                        'Manufacturing': '🏭', 'Industrial': '🏭',
+                        'Travel': '✈️', 'Hospitality': '✈️', 'Tourism': '✈️',
+                        'Gaming': '🎮', 'Sports': '🏆',
+                        'Agriculture': '🌾', 'AgriTech': '🌾',
+                        'Telecom': '📡', 'Telecommunications': '📡',
+                        'Government': '🏛️', 'GovTech': '🏛️',
+                        'Automotive': '🚗', 'Mobility': '🚗',
+                      };
+                      const defaultIcons = ['💡', '🔬', '🎯', '🚀', '⭐', '🔧', '📊', '🌐', '💻', '🔒'];
+                      const icons = defaultIcons;
+                      const icon = industryIconMap[ind] || Object.entries(industryIconMap).find(([k]) => ind.toLowerCase().includes(k.toLowerCase()))?.[1] || icons[i % icons.length];
                       const delays = [0, 0.1, 0.2, 0.15, 0.25, 0.05];
                       return (
                         <div key={ind} className="loc-industry-card" style={{
@@ -510,12 +532,12 @@ export default function CityServicePageClient(props: CityServicePageProps) {
                 <h2 style={{ ...heading2, marginBottom: 20 }}>
                   Get a Custom Quote for Your {cityName} Project
                 </h2>
-                <p className="reveal reveal-d1" style={{ fontSize: 17, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8, marginBottom: 36, maxWidth: 520 }}>
+                <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8, marginBottom: 36, maxWidth: 520 }}>
                   Every project is unique. Share your requirements and a senior engineer will respond within 4 hours with a detailed scope, timeline, and fixed-price proposal — no obligation.
                 </p>
 
                 {/* Trust badges */}
-                <div className="reveal reveal-d2" style={{ display: 'flex', flexWrap: 'wrap', gap: 20, marginBottom: 40 }}>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 20, marginBottom: 40 }}>
                   {['Fixed-Price Guarantee', 'No Hidden Fees', 'Scope Before Code'].map(t => (
                     <div key={t} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2.5"><path d="M20 6L9 17l-5-5" /></svg>
@@ -525,7 +547,7 @@ export default function CityServicePageClient(props: CityServicePageProps) {
                 </div>
 
                 {/* CTA Buttons */}
-                <div className="reveal reveal-d3" style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
+                <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
                   <Link href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 12, height: 56, padding: '0 36px', borderRadius: 100, background: '#22c55e', color: '#000', fontSize: 15, fontWeight: 700, textDecoration: 'none', transition: '0.3s' }}
                     onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 16px 40px rgba(34,197,94,0.35)'; }}
                     onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}>
@@ -540,20 +562,20 @@ export default function CityServicePageClient(props: CityServicePageProps) {
                 </div>
 
                 {/* Response time badge */}
-                <div className="reveal reveal-d4" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginTop: 32, padding: '10px 20px', borderRadius: 100, background: 'rgba(34,197,94,0.06)', border: '1px solid rgba(34,197,94,0.15)' }}>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, marginTop: 32, padding: '10px 20px', borderRadius: 100, background: 'rgba(34,197,94,0.06)', border: '1px solid rgba(34,197,94,0.15)' }}>
                   <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#22c55e', animation: 'industryPulse 2s ease-in-out infinite' }} />
                   <span style={{ fontSize: 12, fontWeight: 600, color: 'rgba(255,255,255,0.6)', letterSpacing: '0.03em' }}>Average response time: 4 hours</span>
                 </div>
               </div>
 
               {/* RIGHT — Stacked deliverable cards */}
-              <div className="reveal reveal-d2" style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
                 {[
                   { icon: '\u{1F4CB}', title: 'Detailed Scope Document', desc: 'Every feature, screen, and integration mapped out before development starts.', num: '01' },
                   { icon: '\u{1F4C5}', title: 'Milestone Timeline', desc: 'Week-by-week delivery plan with clear checkpoints and demo dates.', num: '02' },
                   { icon: '\u{1F4B0}', title: 'Fixed-Price Proposal', desc: 'Know exactly what you\u2019re investing \u2014 no hourly billing, no surprises.', num: '03' },
                 ].map((item, i) => (
-                  <div key={item.title} className={`loc-quote-card reveal reveal-d${i + 1}`} style={{
+                  <div key={item.title} className="loc-quote-card" style={{
                     position: 'relative',
                     padding: '32px 32px 32px 36px',
                     borderRadius: 24,
