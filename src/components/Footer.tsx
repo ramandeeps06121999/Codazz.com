@@ -18,37 +18,39 @@ const services = [
   { label: 'Branding', href: '/services/branding' },
 ];
 
+const solutions = [
+  { label: 'Build App Like Uber', href: '/solutions/uber-clone' },
+  { label: 'Build App Like Airbnb', href: '/solutions/airbnb-clone' },
+  { label: 'Build App Like DoorDash', href: '/solutions/doordash-clone' },
+  { label: 'Build App Like TikTok', href: '/solutions/tiktok-clone' },
+  { label: 'Build App Like Shopify', href: '/solutions/shopify-clone' },
+  { label: 'All Solutions →', href: '/solutions' },
+];
+
 const industries = [
   { label: 'FinTech', href: '/industries/fintech' },
   { label: 'Healthcare', href: '/industries/healthcare' },
   { label: 'E-Commerce', href: '/industries/ecommerce' },
-  { label: 'Logistics', href: '/industries/logistics' },
-  { label: 'EdTech', href: '/industries/edtech' },
-  { label: 'Enterprise', href: '/industries/enterprise' },
+  { label: 'Food Delivery', href: '/industries/food-delivery' },
+  { label: 'Real Estate', href: '/industries/real-estate' },
+  { label: 'All Industries →', href: '/industries' },
 ];
 
-const company = [
-  { label: 'About Us', href: '/about' },
-  { label: 'Case Studies', href: '/case-studies' },
+const popularLocations = [
+  { label: 'New York', href: '/locations/new-york' },
+  { label: 'Dubai', href: '/locations/dubai' },
+  { label: 'London', href: '/locations/london' },
+  { label: 'San Francisco', href: '/locations/san-francisco' },
+  { label: 'Toronto', href: '/locations/toronto' },
+  { label: 'All Locations →', href: '/locations' },
+];
+
+const resources = [
   { label: 'Blog', href: '/blog' },
+  { label: 'Case Studies', href: '/case-studies' },
+  { label: 'About Us', href: '/about' },
+  { label: 'Careers', href: '/careers' },
   { label: 'Contact', href: '/contact' },
-  { label: 'Locations', href: '/locations' },
-  { label: 'All Services', href: '/services' },
-];
-
-const locations = [
-  { label: 'United States', href: '/locations/usa' },
-  { label: 'UAE', href: '/locations/uae' },
-  { label: 'United Kingdom', href: '/locations/uk' },
-  { label: 'Australia', href: '/locations/australia' },
-  { label: 'Canada', href: '/locations/canada' },
-  { label: 'Saudi Arabia', href: '/locations/saudi-arabia' },
-  { label: 'Singapore', href: '/locations/singapore' },
-  { label: 'Germany', href: '/locations/germany' },
-  { label: 'India', href: '/locations/india' },
-  { label: 'Japan', href: '/locations/japan' },
-  { label: 'Brazil', href: '/locations/brazil' },
-  { label: 'All 24 Countries →', href: '/locations' },
 ];
 
 const socials = [
@@ -119,7 +121,7 @@ export default function Footer() {
 
       {/* Main Footer Grid */}
       <div className="cb-container" style={{ padding: 'clamp(48px, 8vw, 80px) 0' }}>
-        <div className="footer-grid" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: 'clamp(32px, 5vw, 48px)' }}>
+        <div className="footer-grid" style={{ display: 'grid', gridTemplateColumns: '2fr repeat(5, 1fr)', gap: 'clamp(24px, 4vw, 40px)' }}>
 
           {/* Brand Column */}
           <div style={{ gridColumn: 'span 1' }}>
@@ -188,33 +190,42 @@ export default function Footer() {
             </div>
           </nav>
 
-          {/* Industries & Company Column */}
-          <div>
-            <nav aria-label="Footer industries links">
-              <ColTitle>Industries</ColTitle>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                {industries.map(s => (
-                  <FooterLink key={s.label} href={s.href}>{s.label}</FooterLink>
-                ))}
-              </div>
-            </nav>
-
-            <nav aria-label="Footer company links" style={{ marginTop: 28 }}>
-              <ColTitle>Company</ColTitle>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                {company.map(s => (
-                  <FooterLink key={s.label} href={s.href}>{s.label}</FooterLink>
-                ))}
-              </div>
-            </nav>
-          </div>
-
-          {/* Locations Column */}
-          <nav aria-label="Footer locations links">
-            <ColTitle>Locations</ColTitle>
+          {/* Solutions Column */}
+          <nav aria-label="Footer solutions links">
+            <ColTitle>Solutions</ColTitle>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-              {locations.map(s => (
-                <FooterLink key={s.label} href={s.href} lang={'lang' in s ? (s as { lang: string }).lang : undefined}>{s.label}</FooterLink>
+              {solutions.map(s => (
+                <FooterLink key={s.label} href={s.href}>{s.label}</FooterLink>
+              ))}
+            </div>
+          </nav>
+
+          {/* Industries Column */}
+          <nav aria-label="Footer industries links">
+            <ColTitle>Industries</ColTitle>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+              {industries.map(s => (
+                <FooterLink key={s.label} href={s.href}>{s.label}</FooterLink>
+              ))}
+            </div>
+          </nav>
+
+          {/* Popular Locations Column */}
+          <nav aria-label="Footer popular locations links">
+            <ColTitle>Popular Locations</ColTitle>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+              {popularLocations.map(s => (
+                <FooterLink key={s.label} href={s.href}>{s.label}</FooterLink>
+              ))}
+            </div>
+          </nav>
+
+          {/* Resources Column */}
+          <nav aria-label="Footer resources links">
+            <ColTitle>Resources</ColTitle>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+              {resources.map(s => (
+                <FooterLink key={s.label} href={s.href}>{s.label}</FooterLink>
               ))}
             </div>
           </nav>

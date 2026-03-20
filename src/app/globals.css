@@ -217,7 +217,7 @@ h1,h2,h3,h4,h5,h6 {
   .process-step { display: grid; grid-template-columns: 80px 1fr 1fr 200px; gap: 40px; }
   .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(16px, 3vw, 32px); }
   .whyus-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: clamp(28px, 5vw, 60px); }
+  .footer-grid { display: grid; grid-template-columns: 2fr repeat(5, 1fr); gap: clamp(20px, 3vw, 40px); }
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 80px); align-items: center; }
   .services-large-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
   .services-small-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
@@ -255,7 +255,7 @@ h1,h2,h3,h4,h5,h6 {
   .process-duration { justify-content: flex-start !important; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); gap: clamp(16px, 3vw, 32px); }
   .whyus-grid { grid-template-columns: repeat(2, 1fr); }
-  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: repeat(3, 1fr); }
   .services-large-grid { grid-template-columns: 1fr; }
   .services-small-grid { grid-template-columns: repeat(2, 1fr); }
   .portfolio-grid { grid-template-columns: 1fr; }

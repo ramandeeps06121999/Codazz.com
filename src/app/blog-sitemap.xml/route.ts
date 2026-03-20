@@ -19,6 +19,12 @@ const blogLastmod: Record<string, string> = {
   'blockchain-development-companies-usa':        '2026-01-08',
   'digital-marketing-cost-usa':                  '2025-12-28',
   'software-development-companies-austin':       '2025-12-19',
+  'ai-app-development-guide-2026':               '2026-03-18',
+  'flutter-vs-react-native-2026':                '2026-03-18',
+  'how-much-does-app-development-cost-2026':     '2026-03-18',
+  'mvp-development-guide':                       '2026-03-18',
+  'web-development-trends-2026':                 '2026-03-18',
+  'choose-software-development-company':         '2026-03-18',
 };
 
 export function GET() {

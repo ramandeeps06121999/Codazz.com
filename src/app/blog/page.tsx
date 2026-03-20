@@ -2,10 +2,10 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'Blog | Software Development Insights | Codazz',
+  title: 'Codazz Blog | Software Development Insights',
   description: 'Expert insights on software development, AI, web & mobile apps from Codazz. Tips, guides, and industry analysis to grow your business.',
   openGraph: {
-    title: 'Blog | Software Development Insights | Codazz',
+    title: 'Codazz Blog | Software Development Insights',
     description: 'Expert insights on software development, AI, web & mobile apps from Codazz. Tips, guides, and industry analysis.',
     url: 'https://codazz.com/blog',
     type: 'website',

@@ -21,7 +21,7 @@ export const subServices: Record<string, string[]> = {
   'saas-development': ['saas-mvp-development', 'multi-tenant-architecture', 'billing-subscriptions', 'auth-sso', 'analytics-dashboards'],
 };
 
-export const industrySlugs = ['fintech', 'healthcare', 'ecommerce', 'logistics', 'edtech', 'enterprise'];
+export const industrySlugs = ['fintech', 'healthcare', 'ecommerce', 'logistics', 'edtech', 'enterprise', 'food-delivery', 'dating-social', 'travel-hospitality', 'real-estate', 'fitness-wellness'];
 
 export const blogSlugs = [
   'app-development-cost-canada', 'how-to-build-ai-chatbot-business',

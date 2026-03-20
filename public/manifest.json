@@ -1,24 +1,26 @@
 {
   "name": "Codazz | Custom Software Development Company",
   "short_name": "Codazz",
-  "description": "Custom software development company headquartered in Edmonton & Chandigarh. Mobile apps, AI, web, blockchain, and cloud solutions delivered worldwide.",
+  "description": "Custom software development company headquartered in Edmonton & Chandigarh, specializing in AI, Mobile, Web, and Blockchain solutions.",
   "start_url": "/",
   "display": "standalone",
-  "orientation": "portrait-primary",
   "background_color": "#000000",
   "theme_color": "#22c55e",
-  "lang": "en",
-  "categories": ["business", "productivity", "utilities"],
+  "orientation": "portrait-primary",
+  "categories": ["business", "productivity"],
+  "lang": "en-US",
   "icons": [
     {
-      "src": "/favicon.png",
+      "src": "/Favicon.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
-      "src": "/favicon.png",
+      "src": "/Favicon.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }

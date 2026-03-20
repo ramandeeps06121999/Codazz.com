@@ -202,6 +202,15 @@ const serviceCategories = [
   },
 ];
 
+const solutionLinks = [
+  { label: 'Build App Like Uber', href: '/solutions/uber-clone' },
+  { label: 'Build App Like Airbnb', href: '/solutions/airbnb-clone' },
+  { label: 'Build App Like DoorDash', href: '/solutions/doordash-clone' },
+  { label: 'Build App Like TikTok', href: '/solutions/tiktok-clone' },
+  { label: 'Build App Like Shopify', href: '/solutions/shopify-clone' },
+  { label: 'Build App Like Instagram', href: '/solutions/instagram-clone' },
+];
+
 const industryLinks = [
   { label: 'FinTech & Banking', href: '/industries/fintech' },
   { label: 'Healthcare & MedTech', href: '/industries/healthcare' },
@@ -293,6 +302,25 @@ export default function Navbar() {
                 >
                   Services
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ transition: '0.3s', transform: activeMenu === 'services' ? 'rotate(180deg)' : 'none' }}><path d="M6 9l6 6 6-6" /></svg>
+                </button>
+              </div>
+
+              {/* Solutions */}
+              <div onMouseEnter={() => openMenu('solutions')} onMouseLeave={closeMenu} style={{ position: 'relative' }}>
+                <button
+                  className={`nav-link-btn ${activeMenu === 'solutions' ? 'active' : ''}`}
+                  aria-expanded={activeMenu === 'solutions'}
+                  aria-label="Solutions menu"
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      setActiveMenu(activeMenu === 'solutions' ? null : 'solutions');
+                    }
+                    if (e.key === 'Escape') setActiveMenu(null);
+                  }}
+                >
+                  Solutions
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ transition: '0.3s', transform: activeMenu === 'solutions' ? 'rotate(180deg)' : 'none' }}><path d="M6 9l6 6 6-6" /></svg>
                 </button>
               </div>
 
@@ -422,6 +450,52 @@ export default function Navbar() {
                   <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)' }}>{label}</span>
                 </div>
               ))}
+            </div>
+          </div>
+        </div>
+
+        {/* ── DROPDOWN: SOLUTIONS ── */}
+        <div
+          onMouseEnter={cancelClose}
+          onMouseLeave={closeMenu}
+          className="mega-menu-standard"
+          style={{
+            opacity: activeMenu === 'solutions' ? 1 : 0,
+            visibility: activeMenu === 'solutions' ? 'visible' : 'hidden',
+            transform: activeMenu === 'solutions' ? 'translateY(0)' : 'translateY(-8px)',
+            pointerEvents: activeMenu === 'solutions' ? 'auto' : 'none',
+          }}
+        >
+          <div className="cb-container" style={{ padding: '36px 60px 44px' }}>
+            <div style={{ display: 'flex', gap: 'clamp(32px, 6vw, 80px)', alignItems: 'flex-start' }}>
+              <div>
+                <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#ffffff', marginBottom: 6 }}>Ready-Made Solutions</div>
+                <div style={{ fontSize: 20, fontWeight: 500, color: '#e5e7eb', letterSpacing: '-0.03em', marginBottom: 28 }}>Build Apps Like Top Brands</div>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 4, minWidth: 'min(440px, 100%)' }}>
+                  {solutionLinks.map(link => (
+                    <Link key={link.label} href={link.href} onClick={() => setActiveMenu(null)}
+                      style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px', borderRadius: 10, fontSize: 13, color: 'rgba(255,255,255,0.7)', textDecoration: 'none', transition: '0.2s' }}
+                      onMouseEnter={e => { e.currentTarget.style.color = '#ffffff'; e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; }}
+                      onMouseLeave={e => { e.currentTarget.style.color = 'rgba(255,255,255,0.7)'; e.currentTarget.style.background = 'transparent'; }}
+                    >
+                      <span style={{ width: 4, height: 4, borderRadius: '50%', background: '#22c55e', flexShrink: 0 }} />
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              {/* Featured promo */}
+              <div style={{ flex: 1, padding: '28px', borderRadius: 20, border: '1px solid rgba(255,255,255,0.1)', background: 'linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%)', position: 'relative', overflow: 'hidden' }}>
+                <div style={{ position: 'absolute', top: -20, right: -20, width: 120, height: 120, background: 'radial-gradient(circle, rgba(34,197,94,0.12) 0%, transparent 70%)', filter: 'blur(20px)' }} />
+                <div style={{ fontSize: 10, fontWeight: 800, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#22c55e', marginBottom: 10 }}>Clone Solutions</div>
+                <div style={{ fontSize: 18, fontWeight: 600, color: '#ffffff', letterSpacing: '-0.03em', marginBottom: 8 }}>Launch faster with proven blueprints</div>
+                <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)', lineHeight: 1.6, marginBottom: 20 }}>Skip months of research. Our pre-architected solutions replicate the core features of world-class apps, customized to your brand.</div>
+                <Link href="/solutions" onClick={() => setActiveMenu(null)} style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 12, fontWeight: 700, color: '#ffffff', textDecoration: 'none' }}>
+                  View All Solutions
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -566,6 +640,35 @@ export default function Navbar() {
                   style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginTop: 8, padding: '10px 20px', borderRadius: 100, border: '1px solid rgba(255,255,255,0.2)', color: '#ffffff', fontSize: 13, fontWeight: 600, textDecoration: 'none', width: 'fit-content' }}
                 >
                   View All Services
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Solutions — expandable */}
+          <div style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+            <button
+              onClick={() => setMobileExpanded(mobileExpanded === 'solutions' ? null : 'solutions')}
+              style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', fontSize: 'clamp(22px, 5vw, 28px)', fontWeight: 500, color: '#ffffff', background: 'none', border: 'none', cursor: 'pointer', letterSpacing: '-0.03em', padding: '14px 0', minHeight: 44, fontFamily: 'inherit' }}
+            >
+              Solutions
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ transition: '0.3s', transform: mobileExpanded === 'solutions' ? 'rotate(180deg)' : 'none' }}><path d="M6 9l6 6 6-6" /></svg>
+            </button>
+            <div style={{ maxHeight: mobileExpanded === 'solutions' ? 500 : 0, overflow: 'hidden', transition: 'max-height 0.4s ease' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 2, paddingBottom: 16 }}>
+                {solutionLinks.map(link => (
+                  <Link key={link.label} href={link.href} onClick={() => setMenuOpen(false)}
+                    style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '10px 0', minHeight: 44, fontSize: 15, color: 'rgba(255,255,255,0.7)', textDecoration: 'none' }}
+                  >
+                    <span style={{ width: 4, height: 4, borderRadius: '50%', background: '#22c55e', flexShrink: 0 }} />
+                    {link.label}
+                  </Link>
+                ))}
+                <Link href="/solutions" onClick={() => setMenuOpen(false)}
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginTop: 8, padding: '10px 20px', borderRadius: 100, border: '1px solid rgba(255,255,255,0.2)', color: '#ffffff', fontSize: 13, fontWeight: 600, textDecoration: 'none', width: 'fit-content' }}
+                >
+                  View All Solutions
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
                 </Link>
               </div>

@@ -10,7 +10,153 @@ export interface CityData {
   whyCity: { icon: string; title: string; desc: string }[];
   stats: { value: string; label: string }[];
   testimonials: { name: string; company: string; role: string; quote: string }[];
+  nearbyLocations: string[];
+  faqs: { q: string; a: string }[];
+  portfolio: {
+    name: string;
+    description: string;
+    techStack: string[];
+    metrics: { label: string; value: string }[];
+  }[];
+  processSteps: {
+    title: string;
+    description: string;
+    deliverables: string[];
+  }[];
 }
+
+// ─── SHARED PROCESS STEPS (universal across all cities) ─────────────────────
+const PROCESS_STEPS: CityData['processSteps'] = [
+  {
+    title: 'Discovery & Planning',
+    description: 'We dive deep into your business goals, user needs, and technical requirements to create a comprehensive project roadmap.',
+    deliverables: ['Project brief & scope document', 'Technical architecture plan', 'Timeline & milestone schedule', 'Risk assessment & mitigation strategy'],
+  },
+  {
+    title: 'UX/UI Design',
+    description: 'Our designers craft intuitive, beautiful interfaces based on user research, wireframes, and iterative prototyping.',
+    deliverables: ['User research & persona mapping', 'Wireframes & information architecture', 'High-fidelity UI mockups', 'Interactive prototype for testing'],
+  },
+  {
+    title: 'Development & Engineering',
+    description: 'Our engineers build your product using agile sprints, clean code practices, and modern technology stacks.',
+    deliverables: ['Sprint-based development cycles', 'Code reviews & documentation', 'API development & integrations', 'CI/CD pipeline setup'],
+  },
+  {
+    title: 'Testing & QA',
+    description: 'Rigorous testing across devices, browsers, and user scenarios ensures a polished, bug-free product at launch.',
+    deliverables: ['Automated & manual test suites', 'Performance & load testing', 'Security vulnerability scanning', 'Cross-platform compatibility checks'],
+  },
+  {
+    title: 'Launch & Support',
+    description: 'We handle deployment, monitoring, and post-launch optimization to ensure your product thrives in production.',
+    deliverables: ['Production deployment & monitoring', 'Performance optimization', '24/7 technical support', 'Ongoing feature enhancements'],
+  },
+];
+
+// ─── SHARED PORTFOLIO TEMPLATES ─────────────────────────────────────────────
+const PORTFOLIO_FINTECH = {
+  name: 'SecurePayX',
+  description: 'A real-time payment processing platform with AI-powered fraud detection, multi-currency support, and regulatory compliance built in.',
+  techStack: ['React Native', 'Node.js', 'PostgreSQL', 'Stripe API', 'AWS Lambda'],
+  metrics: [{ label: 'Transactions Processed', value: '$2.4B+' }, { label: 'Fraud Detection Rate', value: '99.7%' }, { label: 'Processing Speed', value: '<200ms' }],
+};
+const PORTFOLIO_HEALTHCARE = {
+  name: 'MedConnect Pro',
+  description: 'A HIPAA-compliant telehealth platform with video consultations, e-prescriptions, and integrated health records for clinics and hospitals.',
+  techStack: ['Next.js', 'Python', 'WebRTC', 'MongoDB', 'Azure'],
+  metrics: [{ label: 'Patients Served', value: '180K+' }, { label: 'Consultation Rating', value: '4.8/5' }, { label: 'Appointment No-Shows', value: '-62%' }],
+};
+const PORTFOLIO_ECOMMERCE = {
+  name: 'ShopFlow',
+  description: 'A headless e-commerce marketplace with AI product recommendations, dynamic pricing, and omnichannel inventory management.',
+  techStack: ['Next.js', 'GraphQL', 'Elasticsearch', 'Redis', 'GCP'],
+  metrics: [{ label: 'Monthly Revenue', value: '$12M+' }, { label: 'Conversion Rate Lift', value: '+38%' }, { label: 'Page Load Time', value: '0.8s' }],
+};
+const PORTFOLIO_SAAS = {
+  name: 'CloudMetrics',
+  description: 'An enterprise SaaS analytics dashboard with real-time data visualization, custom reporting, and team collaboration features.',
+  techStack: ['React', 'TypeScript', 'Go', 'ClickHouse', 'Kubernetes'],
+  metrics: [{ label: 'Active Enterprise Users', value: '25K+' }, { label: 'Data Points Processed', value: '1B+/day' }, { label: 'Uptime', value: '99.99%' }],
+};
+const PORTFOLIO_LOGISTICS = {
+  name: 'RouteIQ',
+  description: 'An AI-powered fleet management and route optimization platform with real-time tracking, predictive maintenance, and driver analytics.',
+  techStack: ['Flutter', 'Python', 'TensorFlow', 'PostgreSQL', 'AWS'],
+  metrics: [{ label: 'Fleet Vehicles Managed', value: '15K+' }, { label: 'Fuel Cost Reduction', value: '24%' }, { label: 'Delivery Accuracy', value: '99.2%' }],
+};
+const PORTFOLIO_REALESTATE = {
+  name: 'PropVault',
+  description: 'A property management platform with virtual tours, smart lease management, tenant portals, and predictive maintenance alerts.',
+  techStack: ['React', 'Node.js', 'Three.js', 'PostgreSQL', 'Twilio'],
+  metrics: [{ label: 'Properties Managed', value: '8,500+' }, { label: 'Tenant Satisfaction', value: '4.7/5' }, { label: 'Maintenance Response', value: '-45%' }],
+};
+const PORTFOLIO_AI = {
+  name: 'NeuralForge',
+  description: 'An enterprise AI platform with custom model training, natural language processing, and automated decision-making workflows.',
+  techStack: ['Python', 'PyTorch', 'FastAPI', 'Kubernetes', 'Snowflake'],
+  metrics: [{ label: 'Models Deployed', value: '200+' }, { label: 'Prediction Accuracy', value: '96.3%' }, { label: 'Processing Time', value: '<50ms' }],
+};
+const PORTFOLIO_GAMING = {
+  name: 'PlayNexus',
+  description: 'A cross-platform gaming companion app with live leaderboards, social features, in-app tournaments, and real-time match analytics.',
+  techStack: ['Unity', 'C#', 'Firebase', 'Node.js', 'Redis'],
+  metrics: [{ label: 'Monthly Active Users', value: '500K+' }, { label: 'Session Duration', value: '+35%' }, { label: 'App Store Rating', value: '4.8★' }],
+};
+const PORTFOLIO_ENERGY = {
+  name: 'GridSense',
+  description: 'An IoT-powered energy monitoring platform with predictive analytics, real-time consumption tracking, and automated efficiency optimization.',
+  techStack: ['React', 'Python', 'TimescaleDB', 'MQTT', 'Azure IoT'],
+  metrics: [{ label: 'Sites Monitored', value: '2,400+' }, { label: 'Energy Savings', value: '31%' }, { label: 'Sensor Uptime', value: '99.8%' }],
+};
+const PORTFOLIO_MEDIA = {
+  name: 'StreamCast',
+  description: 'A content streaming platform with adaptive bitrate delivery, personalized recommendations, and creator monetization tools.',
+  techStack: ['Next.js', 'Go', 'FFmpeg', 'CloudFront', 'DynamoDB'],
+  metrics: [{ label: 'Active Subscribers', value: '2.1M+' }, { label: 'Watch Time Increase', value: '+42%' }, { label: 'Buffer Rate', value: '<0.5%' }],
+};
+const PORTFOLIO_EDTECH = {
+  name: 'LearnPath',
+  description: 'An adaptive learning platform with AI-driven personalized curricula, live virtual classrooms, and progress analytics for students and educators.',
+  techStack: ['React', 'Python', 'TensorFlow', 'PostgreSQL', 'WebRTC'],
+  metrics: [{ label: 'Active Learners', value: '340K+' }, { label: 'Course Completion Rate', value: '78%' }, { label: 'Engagement Lift', value: '+55%' }],
+};
+const PORTFOLIO_GOVTECH = {
+  name: 'CivicHub',
+  description: 'A digital government services portal with citizen identity verification, permit management, and real-time service status tracking.',
+  techStack: ['Angular', 'Java', 'Oracle', 'Keycloak', 'Docker'],
+  metrics: [{ label: 'Citizens Served', value: '1.2M+' }, { label: 'Processing Time', value: '-70%' }, { label: 'User Satisfaction', value: '4.6/5' }],
+};
+const PORTFOLIO_CYBERSECURITY = {
+  name: 'ShieldNet',
+  description: 'An enterprise cybersecurity platform with real-time threat detection, automated incident response, and compliance monitoring.',
+  techStack: ['Go', 'Python', 'Kafka', 'Elasticsearch', 'Kubernetes'],
+  metrics: [{ label: 'Threats Blocked', value: '4.2M+/mo' }, { label: 'Detection Speed', value: '<3s' }, { label: 'False Positive Rate', value: '0.02%' }],
+};
+const PORTFOLIO_AUTOMOTIVE = {
+  name: 'AutoConnect',
+  description: 'A connected vehicle platform with OTA updates, driver behavior analytics, predictive maintenance, and fleet telematics.',
+  techStack: ['C++', 'Python', 'MQTT', 'InfluxDB', 'AWS IoT'],
+  metrics: [{ label: 'Vehicles Connected', value: '120K+' }, { label: 'OTA Update Success', value: '99.9%' }, { label: 'Maintenance Costs', value: '-28%' }],
+};
+const PORTFOLIO_TOURISM = {
+  name: 'WanderPlan',
+  description: 'A travel experience marketplace with AI itinerary planning, real-time booking, multi-language support, and local guide matching.',
+  techStack: ['React Native', 'Node.js', 'MongoDB', 'Mapbox', 'Stripe'],
+  metrics: [{ label: 'Bookings Processed', value: '420K+' }, { label: 'User Rating', value: '4.9/5' }, { label: 'Repeat Bookings', value: '67%' }],
+};
+const PORTFOLIO_AGRITECH = {
+  name: 'FarmOS',
+  description: 'A precision agriculture platform with drone data analysis, soil monitoring, crop yield prediction, and supply chain traceability.',
+  techStack: ['React', 'Python', 'TensorFlow', 'PostGIS', 'LoRaWAN'],
+  metrics: [{ label: 'Farms Connected', value: '3,200+' }, { label: 'Yield Improvement', value: '+22%' }, { label: 'Water Usage Reduction', value: '35%' }],
+};
+const PORTFOLIO_AEROSPACE = {
+  name: 'OrbitOps',
+  description: 'A mission operations platform with satellite telemetry visualization, launch sequence management, and anomaly detection.',
+  techStack: ['React', 'Rust', 'TimescaleDB', 'gRPC', 'Kubernetes'],
+  metrics: [{ label: 'Missions Supported', value: '45+' }, { label: 'Telemetry Latency', value: '<100ms' }, { label: 'Anomaly Detection', value: '99.5%' }],
+};
 
 export const cities: CityData[] = [
   {
@@ -71,6 +217,17 @@ export const cities: CityData[] = [
             quote: 'We were burning $40K/month on a platform that kept crashing. They rebuilt it in half the time our last vendor quoted, and it hasn\'t gone down since.',
           },
         ],
+    nearbyLocations: ['san-francisco', 'los-angeles', 'chicago', 'boston', 'miami'],
+    faqs: [
+      { q: 'How much does software development cost in New York?', a: 'In New York, software development costs typically range from $50,000 to $250,000+ depending on project complexity. MVP development usually starts at $30,000-$80,000, while enterprise applications can exceed $500,000. Working with Codazz gives you competitive rates without compromising on quality, as our global delivery model keeps costs 30-40% lower than local-only agencies.' },
+      { q: 'How long does app development take in New York?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in New York?', a: 'While we don\'t have a physical office in New York, we serve New York clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in New York?', a: 'In New York, we specialize in FinTech, Media & Entertainment, Healthcare, Real Estate, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to New York\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for New York clients?', a: 'Yes, we provide 24/7 post-launch support for all our New York clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_FINTECH, PORTFOLIO_MEDIA, PORTFOLIO_HEALTHCARE],
+    processSteps: PROCESS_STEPS,
   },
   {
     slug: 'dubai',
@@ -130,6 +287,17 @@ export const cities: CityData[] = [
             quote: 'Container tracking across 15 countries used to take our ops team hours of manual work. Now it\'s real-time and fully automated.',
           },
         ],
+    nearbyLocations: ['abu-dhabi', 'riyadh', 'jeddah', 'doha', 'cairo'],
+    faqs: [
+      { q: 'How much does software development cost in Dubai?', a: 'Software development costs in Dubai typically range from AED 150,000 to AED 1,000,000+ depending on complexity. MVP projects start around AED 100,000-250,000. Codazz offers competitive rates through our global delivery model, providing premium quality at 30-40% lower costs than traditional local agencies.' },
+      { q: 'How long does app development take in Dubai?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in Dubai?', a: 'While we don\'t have a physical office in Dubai, we serve Dubai clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in Dubai?', a: 'In Dubai, we specialize in Real Estate Tech, FinTech, Smart City, Logistics, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to Dubai\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for Dubai clients?', a: 'Yes, we provide 24/7 post-launch support for all our Dubai clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_REALESTATE, PORTFOLIO_FINTECH, PORTFOLIO_GOVTECH],
+    processSteps: PROCESS_STEPS,
   },
   {
     slug: 'san-francisco',
@@ -189,6 +357,17 @@ export const cities: CityData[] = [
             quote: 'FDA 21 CFR Part 11 compliance is a nightmare to get right. They nailed it on the first audit — our regulatory team was genuinely impressed.',
           },
         ],
+    nearbyLocations: ['los-angeles', 'seattle', 'austin', 'denver', 'new-york'],
+    faqs: [
+      { q: 'How much does software development cost in San Francisco?', a: 'In San Francisco, software development costs typically range from $50,000 to $250,000+ depending on project complexity. MVP development usually starts at $30,000-$80,000, while enterprise applications can exceed $500,000. Working with Codazz gives you competitive rates without compromising on quality, as our global delivery model keeps costs 30-40% lower than local-only agencies.' },
+      { q: 'How long does app development take in San Francisco?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in San Francisco?', a: 'While we don\'t have a physical office in San Francisco, we serve San Francisco clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in San Francisco?', a: 'In San Francisco, we specialize in AI & Machine Learning, SaaS, Biotech, Web3, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to San Francisco\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for San Francisco clients?', a: 'Yes, we provide 24/7 post-launch support for all our San Francisco clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_AI, PORTFOLIO_SAAS, PORTFOLIO_HEALTHCARE],
+    processSteps: PROCESS_STEPS,
   },
   {
     slug: 'los-angeles',
@@ -248,6 +427,17 @@ export const cities: CityData[] = [
             quote: 'The companion app hit 200K downloads in the first month. They understood our player community better than agencies twice their size.',
           },
         ],
+    nearbyLocations: ['san-francisco', 'seattle', 'austin', 'denver', 'miami'],
+    faqs: [
+      { q: 'How much does software development cost in Los Angeles?', a: 'In Los Angeles, software development costs typically range from $50,000 to $250,000+ depending on project complexity. MVP development usually starts at $30,000-$80,000, while enterprise applications can exceed $500,000. Working with Codazz gives you competitive rates without compromising on quality, as our global delivery model keeps costs 30-40% lower than local-only agencies.' },
+      { q: 'How long does app development take in Los Angeles?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in Los Angeles?', a: 'While we don\'t have a physical office in Los Angeles, we serve Los Angeles clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in Los Angeles?', a: 'In Los Angeles, we specialize in Entertainment & Media, E-Commerce, Gaming, Aerospace, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to Los Angeles\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for Los Angeles clients?', a: 'Yes, we provide 24/7 post-launch support for all our Los Angeles clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_MEDIA, PORTFOLIO_ECOMMERCE, PORTFOLIO_GAMING],
+    processSteps: PROCESS_STEPS,
   },
   {
     slug: 'chicago',
@@ -307,6 +497,17 @@ export const cities: CityData[] = [
             quote: 'Patient wait times dropped 40% after the new intake app launched. It plugs into our Epic EHR seamlessly — the nurses love it.',
           },
         ],
+    nearbyLocations: ['new-york', 'dallas', 'houston', 'denver', 'atlanta'],
+    faqs: [
+      { q: 'How much does software development cost in Chicago?', a: 'In Chicago, software development costs typically range from $50,000 to $250,000+ depending on project complexity. MVP development usually starts at $30,000-$80,000, while enterprise applications can exceed $500,000. Working with Codazz gives you competitive rates without compromising on quality, as our global delivery model keeps costs 30-40% lower than local-only agencies.' },
+      { q: 'How long does app development take in Chicago?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in Chicago?', a: 'While we don\'t have a physical office in Chicago, we serve Chicago clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in Chicago?', a: 'In Chicago, we specialize in FinTech, Logistics, Healthcare, Manufacturing, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to Chicago\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for Chicago clients?', a: 'Yes, we provide 24/7 post-launch support for all our Chicago clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_FINTECH, PORTFOLIO_LOGISTICS, PORTFOLIO_HEALTHCARE],
+    processSteps: PROCESS_STEPS,
   },
   {
     slug: 'austin',
@@ -366,6 +567,17 @@ export const cities: CityData[] = [
             quote: 'Eight weeks from concept to a working product. That MVP got us our first round of funding — investors said the polish was what sealed it.',
           },
         ],
+    nearbyLocations: ['dallas', 'houston', 'denver', 'san-francisco', 'atlanta'],
+    faqs: [
+      { q: 'How much does software development cost in Austin?', a: 'In Austin, software development costs typically range from $50,000 to $250,000+ depending on project complexity. MVP development usually starts at $30,000-$80,000, while enterprise applications can exceed $500,000. Working with Codazz gives you competitive rates without compromising on quality, as our global delivery model keeps costs 30-40% lower than local-only agencies.' },
+      { q: 'How long does app development take in Austin?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in Austin?', a: 'While we don\'t have a physical office in Austin, we serve Austin clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in Austin?', a: 'In Austin, we specialize in SaaS, Semiconductors, Gaming, Clean Energy, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to Austin\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for Austin clients?', a: 'Yes, we provide 24/7 post-launch support for all our Austin clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_SAAS, PORTFOLIO_GAMING, PORTFOLIO_ENERGY],
+    processSteps: PROCESS_STEPS,
   },
   {
     slug: 'seattle',
@@ -425,6 +637,17 @@ export const cities: CityData[] = [
             quote: 'FAA-compliant flight ops platform used by 20 airlines. The pilot interfaces are clean enough that training time dropped to almost nothing.',
           },
         ],
+    nearbyLocations: ['san-francisco', 'los-angeles', 'denver', 'vancouver', 'austin'],
+    faqs: [
+      { q: 'How much does software development cost in Seattle?', a: 'In Seattle, software development costs typically range from $50,000 to $250,000+ depending on project complexity. MVP development usually starts at $30,000-$80,000, while enterprise applications can exceed $500,000. Working with Codazz gives you competitive rates without compromising on quality, as our global delivery model keeps costs 30-40% lower than local-only agencies.' },
+      { q: 'How long does app development take in Seattle?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in Seattle?', a: 'While we don\'t have a physical office in Seattle, we serve Seattle clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in Seattle?', a: 'In Seattle, we specialize in Cloud Computing, AI & ML, E-Commerce, Aerospace, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to Seattle\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for Seattle clients?', a: 'Yes, we provide 24/7 post-launch support for all our Seattle clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_SAAS, PORTFOLIO_AI, PORTFOLIO_ECOMMERCE],
+    processSteps: PROCESS_STEPS,
   },
   {
     slug: 'miami',
@@ -484,6 +707,17 @@ export const cities: CityData[] = [
             quote: 'Our DeFi platform handles $20M in daily volume. Security was the top priority and they treated it that way — three audits, zero critical findings.',
           },
         ],
+    nearbyLocations: ['atlanta', 'new-york', 'houston', 'dallas', 'boston'],
+    faqs: [
+      { q: 'How much does software development cost in Miami?', a: 'In Miami, software development costs typically range from $50,000 to $250,000+ depending on project complexity. MVP development usually starts at $30,000-$80,000, while enterprise applications can exceed $500,000. Working with Codazz gives you competitive rates without compromising on quality, as our global delivery model keeps costs 30-40% lower than local-only agencies.' },
+      { q: 'How long does app development take in Miami?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in Miami?', a: 'While we don\'t have a physical office in Miami, we serve Miami clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in Miami?', a: 'In Miami, we specialize in FinTech, Real Estate, Web3 & Crypto, Healthcare, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to Miami\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for Miami clients?', a: 'Yes, we provide 24/7 post-launch support for all our Miami clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_FINTECH, PORTFOLIO_REALESTATE, PORTFOLIO_HEALTHCARE],
+    processSteps: PROCESS_STEPS,
   },
   {
     slug: 'boston',
@@ -543,6 +777,17 @@ export const cities: CityData[] = [
             quote: 'The clinical data platform connects five hospital systems. HL7 FHIR integration was seamless and the ROI showed up in the first quarter.',
           },
         ],
+    nearbyLocations: ['new-york', 'chicago', 'san-francisco', 'atlanta', 'denver'],
+    faqs: [
+      { q: 'How much does software development cost in Boston?', a: 'In Boston, software development costs typically range from $50,000 to $250,000+ depending on project complexity. MVP development usually starts at $30,000-$80,000, while enterprise applications can exceed $500,000. Working with Codazz gives you competitive rates without compromising on quality, as our global delivery model keeps costs 30-40% lower than local-only agencies.' },
+      { q: 'How long does app development take in Boston?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in Boston?', a: 'While we don\'t have a physical office in Boston, we serve Boston clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in Boston?', a: 'In Boston, we specialize in Biotech & Pharma, EdTech, FinTech, Robotics, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to Boston\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for Boston clients?', a: 'Yes, we provide 24/7 post-launch support for all our Boston clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_HEALTHCARE, PORTFOLIO_EDTECH, PORTFOLIO_FINTECH],
+    processSteps: PROCESS_STEPS,
   },
   {
     slug: 'denver',
@@ -602,6 +847,17 @@ export const cities: CityData[] = [
             quote: 'We needed a B2B platform that enterprise buyers would take seriously. They shipped it in eight weeks and we signed our first Fortune 500 client a month later.',
           },
         ],
+    nearbyLocations: ['austin', 'seattle', 'chicago', 'dallas', 'san-francisco'],
+    faqs: [
+      { q: 'How much does software development cost in Denver?', a: 'In Denver, software development costs typically range from $50,000 to $250,000+ depending on project complexity. MVP development usually starts at $30,000-$80,000, while enterprise applications can exceed $500,000. Working with Codazz gives you competitive rates without compromising on quality, as our global delivery model keeps costs 30-40% lower than local-only agencies.' },
+      { q: 'How long does app development take in Denver?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in Denver?', a: 'While we don\'t have a physical office in Denver, we serve Denver clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in Denver?', a: 'In Denver, we specialize in Aerospace & Defense, Clean Energy, Outdoor Tech, Cybersecurity, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to Denver\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for Denver clients?', a: 'Yes, we provide 24/7 post-launch support for all our Denver clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_AEROSPACE, PORTFOLIO_ENERGY, PORTFOLIO_CYBERSECURITY],
+    processSteps: PROCESS_STEPS,
   },
   {
     slug: 'atlanta',
@@ -661,6 +917,17 @@ export const cities: CityData[] = [
             quote: 'Shipping time dropped 30% after the platform went live. Both our drivers and dispatchers actually prefer the new system.',
           },
         ],
+    nearbyLocations: ['miami', 'dallas', 'houston', 'chicago', 'new-york'],
+    faqs: [
+      { q: 'How much does software development cost in Atlanta?', a: 'In Atlanta, software development costs typically range from $50,000 to $250,000+ depending on project complexity. MVP development usually starts at $30,000-$80,000, while enterprise applications can exceed $500,000. Working with Codazz gives you competitive rates without compromising on quality, as our global delivery model keeps costs 30-40% lower than local-only agencies.' },
+      { q: 'How long does app development take in Atlanta?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in Atlanta?', a: 'While we don\'t have a physical office in Atlanta, we serve Atlanta clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in Atlanta?', a: 'In Atlanta, we specialize in FinTech, Healthcare, Logistics, Media, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to Atlanta\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for Atlanta clients?', a: 'Yes, we provide 24/7 post-launch support for all our Atlanta clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_FINTECH, PORTFOLIO_HEALTHCARE, PORTFOLIO_LOGISTICS],
+    processSteps: PROCESS_STEPS,
   },
   {
     slug: 'dallas',
@@ -720,6 +987,17 @@ export const cities: CityData[] = [
             quote: 'Project delays dropped 28% once we had real-time progress tracking across 15 sites. The foremen actually like using it, which never happens.',
           },
         ],
+    nearbyLocations: ['houston', 'austin', 'denver', 'atlanta', 'chicago'],
+    faqs: [
+      { q: 'How much does software development cost in Dallas?', a: 'In Dallas, software development costs typically range from $50,000 to $250,000+ depending on project complexity. MVP development usually starts at $30,000-$80,000, while enterprise applications can exceed $500,000. Working with Codazz gives you competitive rates without compromising on quality, as our global delivery model keeps costs 30-40% lower than local-only agencies.' },
+      { q: 'How long does app development take in Dallas?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in Dallas?', a: 'While we don\'t have a physical office in Dallas, we serve Dallas clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in Dallas?', a: 'In Dallas, we specialize in Telecom, Enterprise IT, Energy, Healthcare, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to Dallas\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for Dallas clients?', a: 'Yes, we provide 24/7 post-launch support for all our Dallas clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_SAAS, PORTFOLIO_ENERGY, PORTFOLIO_HEALTHCARE],
+    processSteps: PROCESS_STEPS,
   },
   {
     slug: 'houston',
@@ -779,6 +1057,17 @@ export const cities: CityData[] = [
             quote: 'Container tracking time dropped 50%. We finally have real-time visibility from port to warehouse without calling anyone.',
           },
         ],
+    nearbyLocations: ['dallas', 'austin', 'miami', 'atlanta', 'denver'],
+    faqs: [
+      { q: 'How much does software development cost in Houston?', a: 'In Houston, software development costs typically range from $50,000 to $250,000+ depending on project complexity. MVP development usually starts at $30,000-$80,000, while enterprise applications can exceed $500,000. Working with Codazz gives you competitive rates without compromising on quality, as our global delivery model keeps costs 30-40% lower than local-only agencies.' },
+      { q: 'How long does app development take in Houston?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in Houston?', a: 'While we don\'t have a physical office in Houston, we serve Houston clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in Houston?', a: 'In Houston, we specialize in Energy & Oil, Space & Aerospace, Healthcare, Shipping & Trade, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to Houston\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for Houston clients?', a: 'Yes, we provide 24/7 post-launch support for all our Houston clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_ENERGY, PORTFOLIO_AEROSPACE, PORTFOLIO_HEALTHCARE],
+    processSteps: PROCESS_STEPS,
   },
   // ─── UK CITIES ──────────────────────────────────────────────────────────────
   {
@@ -839,6 +1128,17 @@ export const cities: CityData[] = [
             quote: 'From concept to 50,000 daily active users in four months. They understood the UK market nuances that our previous agency completely missed.',
           },
         ],
+    nearbyLocations: ['manchester', 'birmingham', 'dublin', 'amsterdam', 'berlin'],
+    faqs: [
+      { q: 'How much does software development cost in London?', a: 'In London, software development costs range from \u00a340,000 to \u00a3200,000+ depending on scope and complexity. MVPs typically start at \u00a325,000-\u00a360,000. Codazz delivers top-tier quality at competitive rates through our global engineering model, saving clients 30-40% compared to UK-only agencies.' },
+      { q: 'How long does app development take in London?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in London?', a: 'While we don\'t have a physical office in London, we serve London clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in London?', a: 'In London, we specialize in FinTech, InsurTech, Media & Publishing, Healthcare, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to London\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for London clients?', a: 'Yes, we provide 24/7 post-launch support for all our London clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_FINTECH, PORTFOLIO_HEALTHCARE, PORTFOLIO_ECOMMERCE],
+    processSteps: PROCESS_STEPS,
   },
   {
     slug: 'manchester',
@@ -898,6 +1198,17 @@ export const cities: CityData[] = [
             quote: 'We migrated our entire e-commerce stack to headless and conversion jumped 34% in Q1. Should have done it two years ago.',
           },
         ],
+    nearbyLocations: ['london', 'birmingham', 'dublin', 'amsterdam', 'berlin'],
+    faqs: [
+      { q: 'How much does software development cost in Manchester?', a: 'In Manchester, software development costs range from \u00a340,000 to \u00a3200,000+ depending on scope and complexity. MVPs typically start at \u00a325,000-\u00a360,000. Codazz delivers top-tier quality at competitive rates through our global engineering model, saving clients 30-40% compared to UK-only agencies.' },
+      { q: 'How long does app development take in Manchester?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in Manchester?', a: 'While we don\'t have a physical office in Manchester, we serve Manchester clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in Manchester?', a: 'In Manchester, we specialize in Digital Media, E-Commerce, HealthTech, Manufacturing, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to Manchester\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for Manchester clients?', a: 'Yes, we provide 24/7 post-launch support for all our Manchester clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_MEDIA, PORTFOLIO_ECOMMERCE, PORTFOLIO_GAMING],
+    processSteps: PROCESS_STEPS,
   },
   {
     slug: 'birmingham',
@@ -957,6 +1268,17 @@ export const cities: CityData[] = [
             quote: 'The patient records platform serves three NHS trusts and half a million patients. Clinicians say it\'s the most intuitive system they\'ve used.',
           },
         ],
+    nearbyLocations: ['london', 'manchester', 'dublin', 'amsterdam', 'berlin'],
+    faqs: [
+      { q: 'How much does software development cost in Birmingham?', a: 'In Birmingham, software development costs range from \u00a340,000 to \u00a3200,000+ depending on scope and complexity. MVPs typically start at \u00a325,000-\u00a360,000. Codazz delivers top-tier quality at competitive rates through our global engineering model, saving clients 30-40% compared to UK-only agencies.' },
+      { q: 'How long does app development take in Birmingham?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in Birmingham?', a: 'While we don\'t have a physical office in Birmingham, we serve Birmingham clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in Birmingham?', a: 'In Birmingham, we specialize in FinTech, Automotive, Healthcare, Logistics, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to Birmingham\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for Birmingham clients?', a: 'Yes, we provide 24/7 post-launch support for all our Birmingham clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_FINTECH, PORTFOLIO_AUTOMOTIVE, PORTFOLIO_HEALTHCARE],
+    processSteps: PROCESS_STEPS,
   },
   // ─── AUSTRALIA CITIES ───────────────────────────────────────────────────────
   {
@@ -1017,6 +1339,17 @@ export const cities: CityData[] = [
             quote: 'Remote site monitoring across the Pilbara with 99.99% uptime. The predictive maintenance alerts have saved us millions in avoided shutdowns.',
           },
         ],
+    nearbyLocations: ['melbourne', 'brisbane', 'auckland', 'singapore', 'tokyo'],
+    faqs: [
+      { q: 'How much does software development cost in Sydney?', a: 'Software development in Sydney typically costs between AUD 60,000 and AUD 300,000+ depending on the project. MVP development starts around AUD 40,000-100,000. Codazz provides world-class engineering at competitive rates through our global delivery model.' },
+      { q: 'How long does app development take in Sydney?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in Sydney?', a: 'While we don\'t have a physical office in Sydney, we serve Sydney clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in Sydney?', a: 'In Sydney, we specialize in FinTech, PropTech, HealthTech, Mining Tech, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to Sydney\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for Sydney clients?', a: 'Yes, we provide 24/7 post-launch support for all our Sydney clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_FINTECH, PORTFOLIO_REALESTATE, PORTFOLIO_HEALTHCARE],
+    processSteps: PROCESS_STEPS,
   },
   {
     slug: 'melbourne',
@@ -1076,6 +1409,17 @@ export const cities: CityData[] = [
             quote: 'Farm-to-fork tracking across 200 Victorian farms. Real-time yield data and weather integration in one dashboard — our growers finally trust the numbers.',
           },
         ],
+    nearbyLocations: ['sydney', 'brisbane', 'auckland', 'singapore', 'tokyo'],
+    faqs: [
+      { q: 'How much does software development cost in Melbourne?', a: 'Software development in Melbourne typically costs between AUD 60,000 and AUD 300,000+ depending on the project. MVP development starts around AUD 40,000-100,000. Codazz provides world-class engineering at competitive rates through our global delivery model.' },
+      { q: 'How long does app development take in Melbourne?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in Melbourne?', a: 'While we don\'t have a physical office in Melbourne, we serve Melbourne clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in Melbourne?', a: 'In Melbourne, we specialize in EdTech, HealthTech, Creative Tech, AgriTech, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to Melbourne\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for Melbourne clients?', a: 'Yes, we provide 24/7 post-launch support for all our Melbourne clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_EDTECH, PORTFOLIO_HEALTHCARE, PORTFOLIO_AGRITECH],
+    processSteps: PROCESS_STEPS,
   },
   {
     slug: 'brisbane',
@@ -1135,6 +1479,17 @@ export const cities: CityData[] = [
             quote: 'IRAP-assessed platform delivered on time and on budget. The team understood defence compliance requirements without us having to spell everything out.',
           },
         ],
+    nearbyLocations: ['sydney', 'melbourne', 'auckland', 'singapore', 'tokyo'],
+    faqs: [
+      { q: 'How much does software development cost in Brisbane?', a: 'Software development in Brisbane typically costs between AUD 60,000 and AUD 300,000+ depending on the project. MVP development starts around AUD 40,000-100,000. Codazz provides world-class engineering at competitive rates through our global delivery model.' },
+      { q: 'How long does app development take in Brisbane?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in Brisbane?', a: 'While we don\'t have a physical office in Brisbane, we serve Brisbane clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in Brisbane?', a: 'In Brisbane, we specialize in Tourism Tech, Mining Tech, Defence, Renewable Energy, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to Brisbane\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for Brisbane clients?', a: 'Yes, we provide 24/7 post-launch support for all our Brisbane clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_TOURISM, PORTFOLIO_ENERGY, PORTFOLIO_CYBERSECURITY],
+    processSteps: PROCESS_STEPS,
   },
   // ─── CANADA CITIES ──────────────────────────────────────────────────────────
   {
@@ -1179,6 +1534,17 @@ export const cities: CityData[] = [
         quote: 'Four portfolio companies built their MVPs with Codazz. All four raised follow-on funding within 8 months. They\'re our go-to technical partner.',
       },
     ],
+    nearbyLocations: ['toronto', 'vancouver', 'montreal', 'seattle', 'san-francisco'],
+    faqs: [
+      { q: 'How much does software development cost in Edmonton?', a: 'In Edmonton, software development costs range from CAD 50,000 to CAD 300,000+ depending on complexity. MVP projects start at CAD 30,000-80,000. As a Canadian-headquartered company, Codazz offers competitive local rates with the advantage of our global engineering team.' },
+      { q: 'How long does app development take in Edmonton?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in Edmonton?', a: 'Yes! Edmonton is home to one of Codazz\'s headquarters. Our local team is available for in-person meetings, sprint reviews, and ongoing collaboration. You\'ll work directly with engineers and project managers based right here in Edmonton.' },
+      { q: 'What industries do you serve in Edmonton?', a: 'In Edmonton, we specialize in Energy Tech, AI & Machine Learning, AgriTech, HealthTech, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to Edmonton\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for Edmonton clients?', a: 'Yes, we provide 24/7 post-launch support for all our Edmonton clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_ENERGY, PORTFOLIO_AI, PORTFOLIO_AGRITECH],
+    processSteps: PROCESS_STEPS,
   },
   {
     slug: 'toronto',
@@ -1222,6 +1588,17 @@ export const cities: CityData[] = [
             quote: 'The patient portal integrates with Ontario Health and serves 300,000 patients. PHIPA-compliant from day one with zero remediation needed.',
           },
         ],
+    nearbyLocations: ['edmonton', 'vancouver', 'montreal', 'new-york', 'chicago'],
+    faqs: [
+      { q: 'How much does software development cost in Toronto?', a: 'In Toronto, software development costs range from CAD 50,000 to CAD 300,000+ depending on complexity. MVP projects start at CAD 30,000-80,000. As a Canadian-headquartered company, Codazz offers competitive local rates with the advantage of our global engineering team.' },
+      { q: 'How long does app development take in Toronto?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in Toronto?', a: 'While we don\'t have a physical office in Toronto, we serve Toronto clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in Toronto?', a: 'In Toronto, we specialize in FinTech, AI & Machine Learning, HealthTech, E-Commerce, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to Toronto\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for Toronto clients?', a: 'Yes, we provide 24/7 post-launch support for all our Toronto clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_FINTECH, PORTFOLIO_AI, PORTFOLIO_HEALTHCARE],
+    processSteps: PROCESS_STEPS,
   },
   {
     slug: 'vancouver',
@@ -1265,6 +1642,17 @@ export const cities: CityData[] = [
             quote: 'The platform processes over $2B in annual transactions. They built it from scratch in 14 weeks and it hasn\'t needed a major fix since.',
           },
         ],
+    nearbyLocations: ['edmonton', 'toronto', 'montreal', 'seattle', 'san-francisco'],
+    faqs: [
+      { q: 'How much does software development cost in Vancouver?', a: 'In Vancouver, software development costs range from CAD 50,000 to CAD 300,000+ depending on complexity. MVP projects start at CAD 30,000-80,000. As a Canadian-headquartered company, Codazz offers competitive local rates with the advantage of our global engineering team.' },
+      { q: 'How long does app development take in Vancouver?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in Vancouver?', a: 'While we don\'t have a physical office in Vancouver, we serve Vancouver clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in Vancouver?', a: 'In Vancouver, we specialize in Gaming & VFX, CleanTech, Real Estate Tech, Film & Animation, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to Vancouver\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for Vancouver clients?', a: 'Yes, we provide 24/7 post-launch support for all our Vancouver clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_GAMING, PORTFOLIO_ENERGY, PORTFOLIO_REALESTATE],
+    processSteps: PROCESS_STEPS,
   },
   {
     slug: 'montreal',
@@ -1308,6 +1696,17 @@ export const cities: CityData[] = [
             quote: 'Player behavior analytics across three million daily active users. The real-time insights directly shaped our game design decisions.',
           },
         ],
+    nearbyLocations: ['toronto', 'edmonton', 'vancouver', 'new-york', 'boston'],
+    faqs: [
+      { q: 'How much does software development cost in Montreal?', a: 'In Montreal, software development costs range from CAD 50,000 to CAD 300,000+ depending on complexity. MVP projects start at CAD 30,000-80,000. As a Canadian-headquartered company, Codazz offers competitive local rates with the advantage of our global engineering team.' },
+      { q: 'How long does app development take in Montreal?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in Montreal?', a: 'While we don\'t have a physical office in Montreal, we serve Montreal clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in Montreal?', a: 'In Montreal, we specialize in AI & Deep Learning, Gaming, Aerospace, Life Sciences, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to Montreal\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for Montreal clients?', a: 'Yes, we provide 24/7 post-launch support for all our Montreal clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_AI, PORTFOLIO_GAMING, PORTFOLIO_AEROSPACE],
+    processSteps: PROCESS_STEPS,
   },
   // ─── SAUDI ARABIA CITIES ────────────────────────────────────────────────────
   {
@@ -1352,6 +1751,17 @@ export const cities: CityData[] = [
             quote: 'Three Vision 2030 projects delivered on time. They have become our default partner for anything mission-critical.',
           },
         ],
+    nearbyLocations: ['jeddah', 'dubai', 'abu-dhabi', 'doha', 'cairo'],
+    faqs: [
+      { q: 'How much does software development cost in Riyadh?', a: 'Software development in Riyadh typically ranges from SAR 150,000 to SAR 1,000,000+ depending on scope. MVP development starts around SAR 100,000-250,000. Codazz offers competitive pricing through our global delivery model while maintaining deep understanding of GCC market requirements.' },
+      { q: 'How long does app development take in Riyadh?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in Riyadh?', a: 'While we don\'t have a physical office in Riyadh, we serve Riyadh clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in Riyadh?', a: 'In Riyadh, we specialize in FinTech, GovTech, Smart City, Energy Tech, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to Riyadh\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for Riyadh clients?', a: 'Yes, we provide 24/7 post-launch support for all our Riyadh clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_FINTECH, PORTFOLIO_GOVTECH, PORTFOLIO_ENERGY],
+    processSteps: PROCESS_STEPS,
   },
   {
     slug: 'jeddah',
@@ -1395,6 +1805,17 @@ export const cities: CityData[] = [
             quote: 'Arabic-first e-commerce platform generating over $50M in annual sales. They understood the Saudi consumer in ways our previous vendor never did.',
           },
         ],
+    nearbyLocations: ['riyadh', 'dubai', 'abu-dhabi', 'doha', 'cairo'],
+    faqs: [
+      { q: 'How much does software development cost in Jeddah?', a: 'Software development in Jeddah typically ranges from SAR 150,000 to SAR 1,000,000+ depending on scope. MVP development starts around SAR 100,000-250,000. Codazz offers competitive pricing through our global delivery model while maintaining deep understanding of GCC market requirements.' },
+      { q: 'How long does app development take in Jeddah?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in Jeddah?', a: 'While we don\'t have a physical office in Jeddah, we serve Jeddah clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in Jeddah?', a: 'In Jeddah, we specialize in E-Commerce, Logistics & Shipping, Tourism Tech, Real Estate, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to Jeddah\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for Jeddah clients?', a: 'Yes, we provide 24/7 post-launch support for all our Jeddah clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_ECOMMERCE, PORTFOLIO_LOGISTICS, PORTFOLIO_TOURISM],
+    processSteps: PROCESS_STEPS,
   },
   // ─── QATAR ──────────────────────────────────────────────────────────────────
   {
@@ -1439,6 +1860,17 @@ export const cities: CityData[] = [
             quote: 'Stadium management platform used across four major venues. Crowd flow, ticketing, and fan experience all handled in one system.',
           },
         ],
+    nearbyLocations: ['dubai', 'abu-dhabi', 'riyadh', 'jeddah', 'cairo'],
+    faqs: [
+      { q: 'How much does software development cost in Doha?', a: 'In Doha, software development costs range from QAR 150,000 to QAR 900,000+ for full-scale projects. MVPs start around QAR 100,000-200,000. Codazz provides premium quality at competitive rates through our global engineering team.' },
+      { q: 'How long does app development take in Doha?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in Doha?', a: 'While we don\'t have a physical office in Doha, we serve Doha clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in Doha?', a: 'In Doha, we specialize in FinTech, Smart City, Sports Tech, Energy, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to Doha\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for Doha clients?', a: 'Yes, we provide 24/7 post-launch support for all our Doha clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_FINTECH, PORTFOLIO_GOVTECH, PORTFOLIO_GAMING],
+    processSteps: PROCESS_STEPS,
   },
   // ─── SINGAPORE ──────────────────────────────────────────────────────────────
   {
@@ -1483,6 +1915,17 @@ export const cities: CityData[] = [
             quote: 'Telemedicine platform serving 100,000 patients across Singapore and Malaysia. PDPA-compliant and the doctors actually prefer it to the old system.',
           },
         ],
+    nearbyLocations: ['ho-chi-minh-city', 'tokyo', 'seoul', 'sydney', 'bangalore'],
+    faqs: [
+      { q: 'How much does software development cost in Singapore?', a: 'Software development costs in Singapore range from SGD 60,000 to SGD 350,000+ depending on complexity. MVPs typically start at SGD 40,000-100,000. Codazz offers competitive rates through our global delivery model.' },
+      { q: 'How long does app development take in Singapore?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in Singapore?', a: 'While we don\'t have a physical office in Singapore, we serve Singapore clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in Singapore?', a: 'In Singapore, we specialize in FinTech, Logistics & Trade, GovTech, HealthTech, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to Singapore\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for Singapore clients?', a: 'Yes, we provide 24/7 post-launch support for all our Singapore clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_FINTECH, PORTFOLIO_LOGISTICS, PORTFOLIO_GOVTECH],
+    processSteps: PROCESS_STEPS,
   },
   // ─── GERMANY CITIES ─────────────────────────────────────────────────────────
   {
@@ -1527,6 +1970,17 @@ export const cities: CityData[] = [
             quote: '300 German SMEs adopted the carbon accounting platform in the first year. They made complex EU sustainability reporting actually manageable.',
           },
         ],
+    nearbyLocations: ['munich', 'amsterdam', 'warsaw', 'london', 'zurich'],
+    faqs: [
+      { q: 'How much does software development cost in Berlin?', a: 'In Berlin, software development costs range from \u20ac40,000 to \u20ac250,000+ depending on project scope. MVP development starts at \u20ac25,000-70,000. Codazz provides top-tier engineering at competitive rates through our global team.' },
+      { q: 'How long does app development take in Berlin?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in Berlin?', a: 'While we don\'t have a physical office in Berlin, we serve Berlin clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in Berlin?', a: 'In Berlin, we specialize in FinTech, Mobility, E-Commerce, SaaS, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to Berlin\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for Berlin clients?', a: 'Yes, we provide 24/7 post-launch support for all our Berlin clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_FINTECH, PORTFOLIO_AUTOMOTIVE, PORTFOLIO_ECOMMERCE],
+    processSteps: PROCESS_STEPS,
   },
   {
     slug: 'munich',
@@ -1570,6 +2024,17 @@ export const cities: CityData[] = [
             quote: 'Digital twin platform for three manufacturing plants. Unplanned downtime dropped 30% in six months — the factory managers are converts.',
           },
         ],
+    nearbyLocations: ['berlin', 'zurich', 'amsterdam', 'warsaw', 'london'],
+    faqs: [
+      { q: 'How much does software development cost in Munich?', a: 'In Munich, software development costs range from \u20ac40,000 to \u20ac250,000+ depending on project scope. MVP development starts at \u20ac25,000-70,000. Codazz provides top-tier engineering at competitive rates through our global team.' },
+      { q: 'How long does app development take in Munich?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in Munich?', a: 'While we don\'t have a physical office in Munich, we serve Munich clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in Munich?', a: 'In Munich, we specialize in Automotive, Insurance & FinTech, Aerospace, Enterprise SaaS, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to Munich\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for Munich clients?', a: 'Yes, we provide 24/7 post-launch support for all our Munich clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_AUTOMOTIVE, PORTFOLIO_FINTECH, PORTFOLIO_AEROSPACE],
+    processSteps: PROCESS_STEPS,
   },
   // ─── INDIA CITIES ───────────────────────────────────────────────────────────
   {
@@ -1614,6 +2079,17 @@ export const cities: CityData[] = [
         quote: 'From concept to 100K users in 4 months. The team in Chandigarh moved faster than any agency we\'ve worked with — and at half the cost of Bangalore firms.',
       },
     ],
+    nearbyLocations: ['delhi', 'bangalore', 'mumbai', 'edmonton', 'dubai'],
+    faqs: [
+      { q: 'How much does software development cost in Chandigarh?', a: 'Software development in Chandigarh is cost-effective compared to Western markets, ranging from \u20b915,00,000 to \u20b980,00,000+ for full-scale projects. MVPs start around \u20b98,00,000-20,00,000. Codazz combines local talent with global quality standards.' },
+      { q: 'How long does app development take in Chandigarh?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in Chandigarh?', a: 'Yes! Chandigarh is home to one of Codazz\'s headquarters. Our local team is available for in-person meetings, sprint reviews, and ongoing collaboration. You\'ll work directly with engineers and project managers based right here in Chandigarh.' },
+      { q: 'What industries do you serve in Chandigarh?', a: 'In Chandigarh, we specialize in IT Services, EdTech, HealthTech, AgriTech, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to Chandigarh\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for Chandigarh clients?', a: 'Yes, we provide 24/7 post-launch support for all our Chandigarh clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_SAAS, PORTFOLIO_EDTECH, PORTFOLIO_HEALTHCARE],
+    processSteps: PROCESS_STEPS,
   },
   {
     slug: 'bangalore',
@@ -1657,6 +2133,17 @@ export const cities: CityData[] = [
             quote: 'NLP platform processing 50 Indian languages. They solved multilingual challenges that three previous vendors couldn\'t even scope properly.',
           },
         ],
+    nearbyLocations: ['mumbai', 'delhi', 'chandigarh', 'singapore', 'dubai'],
+    faqs: [
+      { q: 'How much does software development cost in Bangalore?', a: 'Software development in Bangalore is cost-effective compared to Western markets, ranging from \u20b915,00,000 to \u20b980,00,000+ for full-scale projects. MVPs start around \u20b98,00,000-20,00,000. Codazz combines local talent with global quality standards.' },
+      { q: 'How long does app development take in Bangalore?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in Bangalore?', a: 'While we don\'t have a physical office in Bangalore, we serve Bangalore clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in Bangalore?', a: 'In Bangalore, we specialize in Enterprise SaaS, FinTech, E-Commerce, AI & ML, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to Bangalore\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for Bangalore clients?', a: 'Yes, we provide 24/7 post-launch support for all our Bangalore clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_SAAS, PORTFOLIO_FINTECH, PORTFOLIO_ECOMMERCE],
+    processSteps: PROCESS_STEPS,
   },
   {
     slug: 'mumbai',
@@ -1700,6 +2187,17 @@ export const cities: CityData[] = [
             quote: 'Last-mile delivery across 50 Indian cities with a 98% on-time rate. The routing algorithm is the secret weapon our drivers swear by.',
           },
         ],
+    nearbyLocations: ['bangalore', 'delhi', 'chandigarh', 'dubai', 'singapore'],
+    faqs: [
+      { q: 'How much does software development cost in Mumbai?', a: 'Software development in Mumbai is cost-effective compared to Western markets, ranging from \u20b915,00,000 to \u20b980,00,000+ for full-scale projects. MVPs start around \u20b98,00,000-20,00,000. Codazz combines local talent with global quality standards.' },
+      { q: 'How long does app development take in Mumbai?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in Mumbai?', a: 'While we don\'t have a physical office in Mumbai, we serve Mumbai clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in Mumbai?', a: 'In Mumbai, we specialize in Banking & Finance, Media & Entertainment, Insurance, Logistics, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to Mumbai\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for Mumbai clients?', a: 'Yes, we provide 24/7 post-launch support for all our Mumbai clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_FINTECH, PORTFOLIO_MEDIA, PORTFOLIO_LOGISTICS],
+    processSteps: PROCESS_STEPS,
   },
   {
     slug: 'delhi',
@@ -1743,6 +2241,17 @@ export const cities: CityData[] = [
             quote: 'Adaptive learning platform used by two million students. AI-powered personalization across Hindi, English, and eight regional languages — and it just works.',
           },
         ],
+    nearbyLocations: ['chandigarh', 'bangalore', 'mumbai', 'dubai', 'singapore'],
+    faqs: [
+      { q: 'How much does software development cost in Delhi?', a: 'Software development in Delhi is cost-effective compared to Western markets, ranging from \u20b915,00,000 to \u20b980,00,000+ for full-scale projects. MVPs start around \u20b98,00,000-20,00,000. Codazz combines local talent with global quality standards.' },
+      { q: 'How long does app development take in Delhi?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in Delhi?', a: 'While we don\'t have a physical office in Delhi, we serve Delhi clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in Delhi?', a: 'In Delhi, we specialize in GovTech, EdTech, HealthTech, E-Commerce, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to Delhi\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for Delhi clients?', a: 'Yes, we provide 24/7 post-launch support for all our Delhi clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_GOVTECH, PORTFOLIO_EDTECH, PORTFOLIO_HEALTHCARE],
+    processSteps: PROCESS_STEPS,
   },
   // ─── JAPAN ──────────────────────────────────────────────────────────────────
   {
@@ -1781,6 +2290,17 @@ export const cities: CityData[] = [
             quote: 'Multiplayer backend handling one million concurrent players. Sub-50ms latency across Asia-Pacific — our player retention numbers speak for themselves.',
           },
         ],
+    nearbyLocations: ['seoul', 'singapore', 'sydney', 'ho-chi-minh-city', 'san-francisco'],
+    faqs: [
+      { q: 'How much does software development cost in Tokyo?', a: 'In Tokyo, software development typically costs \u00a55,000,000 to \u00a530,000,000+ depending on complexity. MVPs start around \u00a53,000,000-8,000,000. Codazz offers competitive pricing while meeting Japanese quality standards.' },
+      { q: 'How long does app development take in Tokyo?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in Tokyo?', a: 'While we don\'t have a physical office in Tokyo, we serve Tokyo clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in Tokyo?', a: 'In Tokyo, we specialize in Robotics, Gaming, FinTech, Automotive, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to Tokyo\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for Tokyo clients?', a: 'Yes, we provide 24/7 post-launch support for all our Tokyo clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_AUTOMOTIVE, PORTFOLIO_GAMING, PORTFOLIO_FINTECH],
+    processSteps: PROCESS_STEPS,
   },
   // ─── SOUTH KOREA ────────────────────────────────────────────────────────────
   {
@@ -1819,6 +2339,17 @@ export const cities: CityData[] = [
             quote: 'Device management across two million connected endpoints. OTA updates, telemetry, and predictive maintenance — all in one platform that actually scales.',
           },
         ],
+    nearbyLocations: ['tokyo', 'singapore', 'ho-chi-minh-city', 'sydney', 'san-francisco'],
+    faqs: [
+      { q: 'How much does software development cost in Seoul?', a: 'Software development in Seoul ranges from \u20a950,000,000 to \u20a9300,000,000+ for enterprise projects. MVPs start at \u20a930,000,000-80,000,000. Codazz provides global-quality engineering at competitive rates.' },
+      { q: 'How long does app development take in Seoul?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in Seoul?', a: 'While we don\'t have a physical office in Seoul, we serve Seoul clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in Seoul?', a: 'In Seoul, we specialize in Gaming & Esports, Semiconductor, K-Content, FinTech, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to Seoul\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for Seoul clients?', a: 'Yes, we provide 24/7 post-launch support for all our Seoul clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_GAMING, PORTFOLIO_SAAS, PORTFOLIO_MEDIA],
+    processSteps: PROCESS_STEPS,
   },
   // ─── NETHERLANDS ────────────────────────────────────────────────────────────
   {
@@ -1857,6 +2388,17 @@ export const cities: CityData[] = [
             quote: 'Precision farming platform used by 1,000 Dutch farms. Crop yield increased 20% in the first season — the data finally told farmers what they needed.',
           },
         ],
+    nearbyLocations: ['london', 'berlin', 'dublin', 'munich', 'warsaw'],
+    faqs: [
+      { q: 'How much does software development cost in Amsterdam?', a: 'In Amsterdam, software development costs range from \u20ac40,000 to \u20ac250,000+ depending on scope. MVP development starts at \u20ac25,000-70,000. Codazz delivers top-tier quality at competitive rates through our global delivery model.' },
+      { q: 'How long does app development take in Amsterdam?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in Amsterdam?', a: 'While we don\'t have a physical office in Amsterdam, we serve Amsterdam clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in Amsterdam?', a: 'In Amsterdam, we specialize in FinTech, Travel Tech, AgriTech, Logistics, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to Amsterdam\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for Amsterdam clients?', a: 'Yes, we provide 24/7 post-launch support for all our Amsterdam clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_FINTECH, PORTFOLIO_TOURISM, PORTFOLIO_AGRITECH],
+    processSteps: PROCESS_STEPS,
   },
   // ─── IRELAND ────────────────────────────────────────────────────────────────
   {
@@ -1895,6 +2437,17 @@ export const cities: CityData[] = [
             quote: 'SOC platform monitoring 10,000 endpoints across Europe. Threat detection went from hours to seconds — our security posture transformed overnight.',
           },
         ],
+    nearbyLocations: ['london', 'amsterdam', 'manchester', 'birmingham', 'berlin'],
+    faqs: [
+      { q: 'How much does software development cost in Dublin?', a: 'Software development costs in Dublin typically range from \u20ac40,000 to \u20ac250,000+ for full projects. MVPs start at \u20ac25,000-70,000. Codazz offers competitive pricing through our global engineering team.' },
+      { q: 'How long does app development take in Dublin?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in Dublin?', a: 'While we don\'t have a physical office in Dublin, we serve Dublin clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in Dublin?', a: 'In Dublin, we specialize in Big Tech EMEA HQs, FinTech, Pharma Tech, SaaS, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to Dublin\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for Dublin clients?', a: 'Yes, we provide 24/7 post-launch support for all our Dublin clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_SAAS, PORTFOLIO_FINTECH, PORTFOLIO_CYBERSECURITY],
+    processSteps: PROCESS_STEPS,
   },
   // ─── ISRAEL ─────────────────────────────────────────────────────────────────
   {
@@ -1933,6 +2486,17 @@ export const cities: CityData[] = [
             quote: 'Five portfolio companies, all raised follow-on rounds within six months of launching their product. The speed and quality are hard to find elsewhere.',
           },
         ],
+    nearbyLocations: ['dubai', 'london', 'berlin', 'zurich', 'amsterdam'],
+    faqs: [
+      { q: 'How much does software development cost in Tel Aviv?', a: 'In Tel Aviv, software development typically costs $50,000 to $300,000+ USD depending on complexity. MVPs start around $30,000-80,000. Codazz provides premium engineering at competitive global rates.' },
+      { q: 'How long does app development take in Tel Aviv?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in Tel Aviv?', a: 'While we don\'t have a physical office in Tel Aviv, we serve Tel Aviv clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in Tel Aviv?', a: 'In Tel Aviv, we specialize in Cybersecurity, AI & DeepTech, FinTech, AgriTech, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to Tel Aviv\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for Tel Aviv clients?', a: 'Yes, we provide 24/7 post-launch support for all our Tel Aviv clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_CYBERSECURITY, PORTFOLIO_AI, PORTFOLIO_FINTECH],
+    processSteps: PROCESS_STEPS,
   },
   // ─── POLAND ─────────────────────────────────────────────────────────────────
   {
@@ -1971,6 +2535,17 @@ export const cities: CityData[] = [
             quote: 'Game analytics tracking five million player sessions daily. The real-time insights directly influenced our balancing decisions and retention improved 15%.',
           },
         ],
+    nearbyLocations: ['berlin', 'munich', 'amsterdam', 'london', 'dublin'],
+    faqs: [
+      { q: 'How much does software development cost in Warsaw?', a: 'Software development in Warsaw ranges from PLN 100,000 to PLN 600,000+ depending on project scope. MVPs start at PLN 60,000-150,000. Codazz offers excellent value through our global delivery model.' },
+      { q: 'How long does app development take in Warsaw?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in Warsaw?', a: 'While we don\'t have a physical office in Warsaw, we serve Warsaw clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in Warsaw?', a: 'In Warsaw, we specialize in FinTech, Gaming, E-Commerce, Enterprise IT, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to Warsaw\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for Warsaw clients?', a: 'Yes, we provide 24/7 post-launch support for all our Warsaw clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_FINTECH, PORTFOLIO_GAMING, PORTFOLIO_ECOMMERCE],
+    processSteps: PROCESS_STEPS,
   },
   // ─── BRAZIL ─────────────────────────────────────────────────────────────────
   {
@@ -2009,6 +2584,17 @@ export const cities: CityData[] = [
             quote: 'Last-mile delivery optimization across 50 Brazilian cities. Delivery time dropped 35% while fuel costs fell 20% — the math sold our board instantly.',
           },
         ],
+    nearbyLocations: ['mexico-city', 'miami', 'lagos', 'london', 'new-york'],
+    faqs: [
+      { q: 'How much does software development cost in S\u00e3o Paulo?', a: 'In S\u00e3o Paulo, software development costs range from R$100,000 to R$600,000+ for full-scale projects. MVPs start around R$60,000-150,000. Codazz provides world-class engineering at competitive rates.' },
+      { q: 'How long does app development take in S\u00e3o Paulo?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in S\u00e3o Paulo?', a: 'While we don\'t have a physical office in S\u00e3o Paulo, we serve S\u00e3o Paulo clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in S\u00e3o Paulo?', a: 'In S\u00e3o Paulo, we specialize in FinTech, E-Commerce, AgriTech, HealthTech, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to S\u00e3o Paulo\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for S\u00e3o Paulo clients?', a: 'Yes, we provide 24/7 post-launch support for all our S\u00e3o Paulo clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_FINTECH, PORTFOLIO_ECOMMERCE, PORTFOLIO_AGRITECH],
+    processSteps: PROCESS_STEPS,
   },
   // ─── MEXICO ─────────────────────────────────────────────────────────────────
   {
@@ -2047,6 +2633,17 @@ export const cities: CityData[] = [
             quote: 'Cross-border marketplace connecting Mexican artisans with US buyers. $10M in GMV in the first year — the platform practically sells itself.',
           },
         ],
+    nearbyLocations: ['sao-paulo', 'miami', 'austin', 'dallas', 'houston'],
+    faqs: [
+      { q: 'How much does software development cost in Mexico City?', a: 'Software development costs in Mexico City range from MXN 500,000 to MXN 3,000,000+ depending on complexity. MVPs start at MXN 300,000-800,000. Codazz offers top-tier quality at competitive Latin American rates.' },
+      { q: 'How long does app development take in Mexico City?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in Mexico City?', a: 'While we don\'t have a physical office in Mexico City, we serve Mexico City clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in Mexico City?', a: 'In Mexico City, we specialize in FinTech, E-Commerce, Nearshore IT, Mobility, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to Mexico City\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for Mexico City clients?', a: 'Yes, we provide 24/7 post-launch support for all our Mexico City clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_FINTECH, PORTFOLIO_ECOMMERCE, PORTFOLIO_AUTOMOTIVE],
+    processSteps: PROCESS_STEPS,
   },
   // ─── NIGERIA ────────────────────────────────────────────────────────────────
   {
@@ -2085,6 +2682,17 @@ export const cities: CityData[] = [
             quote: 'Last-mile delivery in Lagos — arguably the most challenging city for logistics on Earth. 95% on-time rate. They solved problems nobody else could.',
           },
         ],
+    nearbyLocations: ['nairobi', 'cairo', 'london', 'dubai', 'sao-paulo'],
+    faqs: [
+      { q: 'How much does software development cost in Lagos?', a: 'In Lagos, software development is highly competitive, ranging from $20,000 to $150,000+ USD for full projects. MVPs start around $15,000-40,000. Codazz brings global best practices to the Nigerian tech ecosystem.' },
+      { q: 'How long does app development take in Lagos?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in Lagos?', a: 'While we don\'t have a physical office in Lagos, we serve Lagos clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in Lagos?', a: 'In Lagos, we specialize in FinTech, E-Commerce, AgriTech, HealthTech, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to Lagos\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for Lagos clients?', a: 'Yes, we provide 24/7 post-launch support for all our Lagos clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_FINTECH, PORTFOLIO_ECOMMERCE, PORTFOLIO_AGRITECH],
+    processSteps: PROCESS_STEPS,
   },
   // ─── KENYA ──────────────────────────────────────────────────────────────────
   {
@@ -2123,6 +2731,17 @@ export const cities: CityData[] = [
             quote: 'Community health worker app deployed across five Kenyan counties. Offline-first design that works in areas with zero connectivity — that\'s what matters.',
           },
         ],
+    nearbyLocations: ['lagos', 'cairo', 'dubai', 'london', 'mumbai'],
+    faqs: [
+      { q: 'How much does software development cost in Nairobi?', a: 'Software development in Nairobi typically costs $20,000 to $150,000+ USD depending on scope. MVPs start around $15,000-40,000. Codazz combines global quality standards with competitive East African pricing.' },
+      { q: 'How long does app development take in Nairobi?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in Nairobi?', a: 'While we don\'t have a physical office in Nairobi, we serve Nairobi clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in Nairobi?', a: 'In Nairobi, we specialize in FinTech & M-Pesa, AgriTech, CleanTech, HealthTech, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to Nairobi\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for Nairobi clients?', a: 'Yes, we provide 24/7 post-launch support for all our Nairobi clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_FINTECH, PORTFOLIO_AGRITECH, PORTFOLIO_ENERGY],
+    processSteps: PROCESS_STEPS,
   },
   // ─── VIETNAM ────────────────────────────────────────────────────────────────
   {
@@ -2161,6 +2780,17 @@ export const cities: CityData[] = [
             quote: 'IoT platform monitoring three supplier factories. Defect rate dropped 45% in the first quarter — the quality team couldn\'t believe the numbers.',
           },
         ],
+    nearbyLocations: ['singapore', 'tokyo', 'seoul', 'sydney', 'bangalore'],
+    faqs: [
+      { q: 'How much does software development cost in Ho Chi Minh City?', a: 'In Ho Chi Minh City, software development is very cost-effective, ranging from $15,000 to $120,000+ USD for full projects. MVPs start around $10,000-35,000. Codazz provides top-tier engineering quality at competitive rates.' },
+      { q: 'How long does app development take in Ho Chi Minh City?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in Ho Chi Minh City?', a: 'While we don\'t have a physical office in Ho Chi Minh City, we serve Ho Chi Minh City clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in Ho Chi Minh City?', a: 'In Ho Chi Minh City, we specialize in E-Commerce, FinTech, Gaming, Manufacturing Tech, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to Ho Chi Minh City\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for Ho Chi Minh City clients?', a: 'Yes, we provide 24/7 post-launch support for all our Ho Chi Minh City clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_ECOMMERCE, PORTFOLIO_FINTECH, PORTFOLIO_GAMING],
+    processSteps: PROCESS_STEPS,
   },
   // ─── EGYPT ──────────────────────────────────────────────────────────────────
   {
@@ -2199,6 +2829,17 @@ export const cities: CityData[] = [
             quote: 'Property marketplace covering 50,000 listings across Egypt. The platform changed how people search for homes here — our agents say it transformed their workflow.',
           },
         ],
+    nearbyLocations: ['dubai', 'riyadh', 'lagos', 'nairobi', 'london'],
+    faqs: [
+      { q: 'How much does software development cost in Cairo?', a: 'Software development costs in Cairo range from $20,000 to $150,000+ USD for full-scale projects. MVPs start around $15,000-40,000. Codazz brings global quality engineering to the Egyptian market.' },
+      { q: 'How long does app development take in Cairo?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in Cairo?', a: 'While we don\'t have a physical office in Cairo, we serve Cairo clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in Cairo?', a: 'In Cairo, we specialize in FinTech, E-Commerce, EdTech, Logistics, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to Cairo\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for Cairo clients?', a: 'Yes, we provide 24/7 post-launch support for all our Cairo clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_FINTECH, PORTFOLIO_ECOMMERCE, PORTFOLIO_EDTECH],
+    processSteps: PROCESS_STEPS,
   },
   // ─── NEW ZEALAND ────────────────────────────────────────────────────────────
   {
@@ -2237,6 +2878,17 @@ export const cities: CityData[] = [
             quote: 'VFX asset management system handling 50TB of production data. The team understood the creative workflow better than anyone we\'ve worked with.',
           },
         ],
+    nearbyLocations: ['sydney', 'melbourne', 'brisbane', 'singapore', 'tokyo'],
+    faqs: [
+      { q: 'How much does software development cost in Auckland?', a: 'In Auckland, software development costs range from NZD 60,000 to NZD 300,000+ depending on complexity. MVPs start at NZD 40,000-100,000. Codazz provides world-class engineering at competitive rates.' },
+      { q: 'How long does app development take in Auckland?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in Auckland?', a: 'While we don\'t have a physical office in Auckland, we serve Auckland clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in Auckland?', a: 'In Auckland, we specialize in AgriTech, Tourism Tech, FinTech, CleanTech, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to Auckland\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for Auckland clients?', a: 'Yes, we provide 24/7 post-launch support for all our Auckland clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_AGRITECH, PORTFOLIO_TOURISM, PORTFOLIO_FINTECH],
+    processSteps: PROCESS_STEPS,
   },
   // ─── SWITZERLAND ────────────────────────────────────────────────────────────
   {
@@ -2275,6 +2927,17 @@ export const cities: CityData[] = [
             quote: 'DeFi protocol with $500M in TVL. Audited, battle-tested, and running flawlessly on Ethereum and Polygon for over a year now.',
           },
         ],
+    nearbyLocations: ['munich', 'berlin', 'amsterdam', 'london', 'dublin'],
+    faqs: [
+      { q: 'How much does software development cost in Zurich?', a: 'Software development in Zurich is among the highest globally, ranging from CHF 80,000 to CHF 400,000+ for enterprise projects. MVPs start at CHF 50,000-120,000. Codazz delivers Swiss-standard quality at significantly more competitive rates through our global team.' },
+      { q: 'How long does app development take in Zurich?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in Zurich?', a: 'While we don\'t have a physical office in Zurich, we serve Zurich clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in Zurich?', a: 'In Zurich, we specialize in Banking & Wealth Tech, Pharma & BioTech, Insurance, Blockchain, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to Zurich\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for Zurich clients?', a: 'Yes, we provide 24/7 post-launch support for all our Zurich clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_FINTECH, PORTFOLIO_HEALTHCARE, PORTFOLIO_SAAS],
+    processSteps: PROCESS_STEPS,
   },
   // ─── ABU DHABI (UAE expansion) ──────────────────────────────────────────────
   {
@@ -2313,6 +2976,17 @@ export const cities: CityData[] = [
             quote: 'Investment analytics platform tracking $50B in portfolio assets. Real-time dashboards and AI-driven deal scoring that our analysts actually trust.',
           },
         ],
+    nearbyLocations: ['dubai', 'riyadh', 'jeddah', 'doha', 'cairo'],
+    faqs: [
+      { q: 'How much does software development cost in Abu Dhabi?', a: 'Software development costs in Abu Dhabi typically range from AED 150,000 to AED 1,000,000+ depending on complexity. MVP projects start around AED 100,000-250,000. Codazz offers competitive rates through our global delivery model, providing premium quality at 30-40% lower costs than traditional local agencies.' },
+      { q: 'How long does app development take in Abu Dhabi?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
+      { q: 'Does Codazz have an office in Abu Dhabi?', a: 'While we don\'t have a physical office in Abu Dhabi, we serve Abu Dhabi clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
+      { q: 'What industries do you serve in Abu Dhabi?', a: 'In Abu Dhabi, we specialize in Oil & Gas Tech, Sovereign Wealth, Defence, Smart City, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to Abu Dhabi\'s business ecosystem.' },
+      { q: 'Do you offer post-launch support for Abu Dhabi clients?', a: 'Yes, we provide 24/7 post-launch support for all our Abu Dhabi clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
+      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+    ],
+    portfolio: [PORTFOLIO_ENERGY, PORTFOLIO_FINTECH, PORTFOLIO_CYBERSECURITY],
+    processSteps: PROCESS_STEPS,
   },
 ];
 

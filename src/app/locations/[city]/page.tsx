@@ -100,10 +100,36 @@ export default async function CityPage({ params }: PageProps) {
     ],
   };
 
+  const defaultFaqs = [
+    { q: `How much does software development cost in ${data.name}?`, a: `Software development costs in ${data.name} typically range from $15,000 for a simple MVP to $250,000+ for enterprise platforms. Codazz offers fixed-price proposals within 24 hours — contact us for a free estimate.` },
+    { q: `How long does app development take in ${data.name}?`, a: `Most projects take 8-16 weeks for MVP delivery. Complex enterprise solutions may take 4-6 months. Our agile process includes weekly demos so you see progress from week one.` },
+    { q: `Does Codazz have an office in ${data.name}?`, a: `Codazz is headquartered in Edmonton, Canada and Chandigarh, India with offices in New York and Dubai. We serve clients in ${data.name} through our distributed team with timezone-aligned communication.` },
+    { q: `What industries do you serve in ${data.name}?`, a: `In ${data.name}, we specialize in ${data.localIndustries.join(', ')}. Our team has deep domain expertise across ${data.localIndustries.length}+ verticals.` },
+    { q: `Do you offer post-launch support?`, a: `Yes, we provide 24/7 post-launch support, monitoring, and maintenance. Every project includes 30 days of free bug-fix support after launch, with optional ongoing SLA plans.` },
+    { q: `What is your development process?`, a: `We follow an agile, milestone-based process: Discovery & Planning → UX/UI Design → Development → Testing & QA → Launch & Support. You get weekly sprint demos and a dedicated project manager.` },
+  ];
+
+  const cityFaqs = (data as unknown as Record<string, unknown>).faqs as { q: string; a: string }[] | undefined;
+  const faqs = cityFaqs || defaultFaqs;
+
+  const faqPageSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map(faq => ({
+      '@type': 'Question',
+      name: faq.q,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.a,
+      },
+    })),
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageSchema) }} />
       <PageClient city={data} />
     </>
   );

@@ -9,6 +9,7 @@ export function GET() {
     { loc: `${BASE_URL}/subservice-sitemap.xml`, lastmod: now },
     { loc: `${BASE_URL}/industry-sitemap.xml`, lastmod: now },
     { loc: `${BASE_URL}/blog-sitemap.xml`, lastmod: now },
+    { loc: `${BASE_URL}/solution-sitemap.xml`, lastmod: now },
     { loc: `${BASE_URL}/location-sitemap.xml`, lastmod: now },
     { loc: `${BASE_URL}/local-seo-sitemap.xml`, lastmod: now },
     { loc: `${BASE_URL}/legal-sitemap.xml`, lastmod: now },
