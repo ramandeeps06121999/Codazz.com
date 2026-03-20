@@ -23,18 +23,46 @@ function useReveal() {
 const tocSections = [
   { id: 'what-is-ai-app', label: 'What Is an AI App?', emoji: '🤖' },
   { id: 'tech-stack', label: 'AI Tech Stack', emoji: '⚙️' },
+  { id: 'api-comparison', label: 'AI API Comparison', emoji: '🔌' },
   { id: 'building-ai', label: 'Building Your First AI Feature', emoji: '🛠️' },
+  { id: 'build-vs-buy', label: 'Build vs Buy', emoji: '⚖️' },
+  { id: 'app-types-costs', label: 'AI App Types & Costs', emoji: '📊' },
   { id: 'examples', label: 'Real AI App Examples', emoji: '📱' },
   { id: 'costs', label: 'Development Costs', emoji: '💰' },
   { id: 'ethics', label: 'Ethics & Legal', emoji: '⚖️' },
   { id: 'mistakes', label: 'Common Mistakes', emoji: '⚠️' },
   { id: 'roadmap', label: 'Your AI App Roadmap', emoji: '🗺️' },
+  { id: 'build-with-codazz', label: 'Build AI with Codazz', emoji: '🚀' },
 ];
 
 const relatedPosts = [
   { slug: 'how-much-does-app-development-cost-2026', title: 'How Much Does App Development Cost in 2026?', category: 'Business', readTime: '12 min' },
   { slug: 'flutter-vs-react-native-2026', title: 'Flutter vs React Native: The Definitive 2026 Comparison', category: 'Engineering', readTime: '15 min' },
 ];
+
+/* ── Reusable style objects ── */
+const tableWrapStyle: React.CSSProperties = {
+  background: 'rgba(255,255,255,0.03)', borderRadius: 16, padding: 24, marginBottom: 32,
+  border: '1px solid rgba(255,255,255,0.06)', overflowX: 'auto',
+};
+const thStyle: React.CSSProperties = { textAlign: 'left', padding: '12px 8px', color: '#ffffff', fontSize: 14, whiteSpace: 'nowrap' };
+const tdStyle: React.CSSProperties = { padding: '12px 8px' };
+const tdBold: React.CSSProperties = { padding: '12px 8px', color: '#b4fd83', fontWeight: 600 };
+const trBorder: React.CSSProperties = { borderBottom: '1px solid rgba(255,255,255,0.05)' };
+const headBorder: React.CSSProperties = { borderBottom: '1px solid rgba(255,255,255,0.1)' };
+
+const proTipStyle: React.CSSProperties = {
+  background: 'linear-gradient(135deg, rgba(180,253,131,0.08) 0%, rgba(180,253,131,0.02) 100%)',
+  borderRadius: 12, padding: '20px 24px', margin: '32px 0',
+  borderLeft: '4px solid #b4fd83',
+};
+const proTipTitle: React.CSSProperties = { fontSize: 13, fontWeight: 700, color: '#b4fd83', marginBottom: 8, letterSpacing: '0.06em', textTransform: 'uppercase' as const };
+
+const h2Style: React.CSSProperties = {
+  fontSize: 'clamp(1.6rem, 3vw, 2rem)', fontWeight: 700, color: '#ffffff',
+  marginTop: 64, marginBottom: 24, letterSpacing: '-0.02em',
+};
+const h3Style: React.CSSProperties = { fontSize: 20, fontWeight: 600, color: '#ffffff', marginTop: 32, marginBottom: 16 };
 
 export default function AIAppDevelopmentClient() {
   const pageRef = useReveal();
@@ -53,7 +81,7 @@ export default function AIAppDevelopmentClient() {
     const handleScroll = () => {
       const sections = tocSections.map(s => document.getElementById(s.id));
       const scrollPos = window.scrollY + 200;
-      
+
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = sections[i];
         if (section && section.offsetTop <= scrollPos) {
@@ -129,7 +157,7 @@ export default function AIAppDevelopmentClient() {
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/>
                 </svg>
-                18 min read
+                22 min read
               </span>
             </div>
 
@@ -144,7 +172,7 @@ export default function AIAppDevelopmentClient() {
               fontSize: 20, color: 'rgba(255,255,255,0.5)', lineHeight: 1.65,
               maxWidth: 720, marginBottom: 48, fontWeight: 400,
             }}>
-              Everything you need to build AI-powered apps in 2026—from choosing the right models to deployment at scale. Real implementation examples and cost breakdowns included.
+              Everything you need to build AI-powered apps in 2026&mdash;from choosing the right models to deployment at scale. Real implementation examples, cost breakdowns, and hard-won lessons from 100+ AI features shipped.
             </p>
 
             {/* Author + Share row */}
@@ -186,10 +214,39 @@ export default function AIAppDevelopmentClient() {
         <section style={{ padding: 'clamp(40px, 6vw, 80px) 0' }}>
           <div className="cb-container">
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 320px', gap: 'clamp(40px, 6vw, 80px)' }}>
-              
+
               {/* ── MAIN ARTICLE ── */}
               <article style={{ color: 'rgba(255,255,255,0.75)', fontSize: 17, lineHeight: 1.75 }}>
-                
+
+                {/* ── KEY TAKEAWAYS BOX ── */}
+                <div className="reveal" style={{
+                  background: 'linear-gradient(135deg, rgba(180,253,131,0.06) 0%, rgba(8,50,61,0.2) 100%)',
+                  borderRadius: 16, padding: 'clamp(24px, 4vw, 32px)', marginBottom: 48,
+                  border: '1px solid rgba(180,253,131,0.15)',
+                }}>
+                  <h3 style={{ fontSize: 18, fontWeight: 700, color: '#b4fd83', marginBottom: 16, display: 'flex', alignItems: 'center', gap: 10 }}>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b4fd83" strokeWidth="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                    Key Takeaways
+                  </h3>
+                  <ul style={{ paddingLeft: 20, margin: 0 }}>
+                    <li style={{ marginBottom: 10, color: '#ffffff', fontSize: 15 }}>
+                      <strong>AI is no longer optional</strong> &mdash; 78% of top-performing apps in 2026 ship with at least one AI-powered feature. Users now expect intelligent personalization as a baseline.
+                    </li>
+                    <li style={{ marginBottom: 10, color: '#ffffff', fontSize: 15 }}>
+                      <strong>Start with APIs, not custom models</strong> &mdash; Pre-built APIs from OpenAI, Anthropic, and Google let you ship AI features in weeks, not months. Fine-tune later when you have the data.
+                    </li>
+                    <li style={{ marginBottom: 10, color: '#ffffff', fontSize: 15 }}>
+                      <strong>Costs range from $8K to $500K+</strong> &mdash; A simple chatbot costs $8K-$20K. A full recommendation engine runs $40K-$100K. Custom model training starts at $100K. Know your tier before you budget.
+                    </li>
+                    <li style={{ marginBottom: 10, color: '#ffffff', fontSize: 15 }}>
+                      <strong>Ongoing AI costs are the hidden killer</strong> &mdash; API calls, vector database hosting, and model retraining can exceed your build cost within 12 months. Plan for $1K-$40K/month depending on scale.
+                    </li>
+                    <li style={{ marginBottom: 0, color: '#ffffff', fontSize: 15 }}>
+                      <strong>Ethics and compliance are non-negotiable</strong> &mdash; GDPR, the EU AI Act, and Canada&apos;s AIDA all regulate AI apps now. Skipping compliance can mean fines up to 6% of global revenue.
+                    </li>
+                  </ul>
+                </div>
+
                 {/* Intro */}
                 <div className="reveal" style={{ marginBottom: 48 }}>
                   <p style={{ fontSize: 20, color: '#ffffff', fontWeight: 500, marginBottom: 24 }}>
@@ -207,18 +264,18 @@ export default function AIAppDevelopmentClient() {
                     </ul>
                   </div>
                   <p>
-                    At Codazz, we&apos;ve integrated AI into <strong style={{ color: '#ffffff' }}>60+ applications</strong> in the past 18 months. Revenue from AI-powered features has grown 400%. User engagement? Up 250%.
+                    At Codazz, we&apos;ve integrated AI into <strong style={{ color: '#ffffff' }}>100+ applications</strong> across healthcare, fintech, e-commerce, and SaaS. Revenue from AI-powered features has grown 400%. User engagement? Up 250%.
                   </p>
                   <p style={{ fontSize: 18, color: '#b4fd83', fontWeight: 600, margin: '24px 0' }}>
                     This isn&apos;t hype. This is the new baseline.
                   </p>
+                  <p>
+                    Whether you&apos;re a startup founder exploring your first AI feature or an enterprise team planning a full intelligent platform, this guide breaks down exactly what you need to know&mdash;no fluff, real numbers, and lessons from the trenches.
+                  </p>
                 </div>
 
-                {/* What is AI App */}
-                <h2 id="what-is-ai-app" className="reveal" style={{
-                  fontSize: 'clamp(1.6rem, 3vw, 2rem)', fontWeight: 700, color: '#ffffff',
-                  marginTop: 64, marginBottom: 24, letterSpacing: '-0.02em',
-                }}>What &ldquo;AI App&rdquo; Actually Means in 2026</h2>
+                {/* ══════════ What is AI App ══════════ */}
+                <h2 id="what-is-ai-app" className="reveal" style={h2Style}>What &ldquo;AI App&rdquo; Actually Means in 2026</h2>
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
@@ -226,12 +283,7 @@ export default function AIAppDevelopmentClient() {
                     alt="Machine learning data science visualization"
                     width={800}
                     height={500}
-                    style={{
-                      width: '100%',
-                      height: 'auto',
-                      borderRadius: 12,
-                      marginBottom: 16,
-                    }}
+                    style={{ width: '100%', height: 'auto', borderRadius: 12, marginBottom: 16 }}
                   />
                   <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
                     Photo by <a href="https://unsplash.com/@lukechesser" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Luke Chesser</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
@@ -239,35 +291,40 @@ export default function AIAppDevelopmentClient() {
                 </div>
 
                 <p className="reveal">
-                  Let&apos;s clear up the confusion. When people say &ldquo;AI app,&rdquo; they usually mean one of these:
+                  Let&apos;s clear up the confusion. When people say &ldquo;AI app,&rdquo; they usually mean one of these four categories&mdash;each with wildly different technical requirements, costs, and timelines:
                 </p>
 
-                <div className="reveal" style={{ 
+                <div className="reveal" style={{
                   display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: 16, margin: '32px 0',
                 }}>
                   <div style={{ background: 'rgba(255,255,255,0.03)', padding: 20, borderRadius: 12, border: '1px solid rgba(255,255,255,0.06)' }}>
                     <h4 style={{ color: '#b4fd83', marginBottom: 8 }}>1. NLP Apps</h4>
-                    <p style={{ fontSize: 14, margin: 0 }}>Chatbots, voice assistants, content analyzers. Models: GPT-4o, Claude 3.5, Gemini Pro</p>
+                    <p style={{ fontSize: 14, margin: 0 }}>Chatbots, voice assistants, content analyzers, sentiment engines. Models: GPT-4o, Claude 3.5 Sonnet, Gemini 2.0 Pro</p>
                   </div>
                   <div style={{ background: 'rgba(255,255,255,0.03)', padding: 20, borderRadius: 12, border: '1px solid rgba(255,255,255,0.06)' }}>
                     <h4 style={{ color: '#b4fd83', marginBottom: 8 }}>2. Computer Vision</h4>
-                    <p style={{ fontSize: 14, margin: 0 }}>Face recognition, object detection, OCR. Models: YOLO v9, Vision Transformers</p>
+                    <p style={{ fontSize: 14, margin: 0 }}>Face recognition, object detection, medical imaging, OCR. Models: YOLO v9, Vision Transformers, SAM 2</p>
                   </div>
                   <div style={{ background: 'rgba(255,255,255,0.03)', padding: 20, borderRadius: 12, border: '1px solid rgba(255,255,255,0.06)' }}>
                     <h4 style={{ color: '#b4fd83', marginBottom: 8 }}>3. Generative AI</h4>
-                    <p style={{ fontSize: 14, margin: 0 }}>Content generators, image creators, code assistants. Models: Stable Diffusion 3, GPT-4o</p>
+                    <p style={{ fontSize: 14, margin: 0 }}>Content generators, image creators, code assistants, music composition. Models: Stable Diffusion 3, DALL-E 3, Sora</p>
                   </div>
                   <div style={{ background: 'rgba(255,255,255,0.03)', padding: 20, borderRadius: 12, border: '1px solid rgba(255,255,255,0.06)' }}>
-                    <h4 style={{ color: '#b4fd83', marginBottom: 8 }}>4. Recommendation</h4>
-                    <p style={{ fontSize: 14, margin: 0 }}>Product recommendations, content feeds, matchmaking</p>
+                    <h4 style={{ color: '#b4fd83', marginBottom: 8 }}>4. Predictive / Recommendation</h4>
+                    <p style={{ fontSize: 14, margin: 0 }}>Product recommendations, demand forecasting, churn prediction, dynamic pricing</p>
                   </div>
                 </div>
 
-                {/* Tech Stack */}
-                <h2 id="tech-stack" className="reveal" style={{
-                  fontSize: 'clamp(1.6rem, 3vw, 2rem)', fontWeight: 700, color: '#ffffff',
-                  marginTop: 64, marginBottom: 24, letterSpacing: '-0.02em',
-                }}>The AI App Tech Stack (2026 Edition)</h2>
+                {/* Pro Tip #1 */}
+                <div className="reveal" style={proTipStyle}>
+                  <p style={proTipTitle}>Pro Tip</p>
+                  <p style={{ margin: 0, fontSize: 15, color: 'rgba(255,255,255,0.85)' }}>
+                    Don&apos;t chase the &ldquo;most advanced&rdquo; AI category. The highest ROI usually comes from <strong style={{ color: '#ffffff' }}>NLP features</strong> (chatbots, search, content generation) because they directly reduce support costs and boost engagement. Start there, validate, then expand.
+                  </p>
+                </div>
+
+                {/* ══════════ AI Tech Stack ══════════ */}
+                <h2 id="tech-stack" className="reveal" style={h2Style}>The AI App Tech Stack (2026 Edition)</h2>
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
@@ -275,75 +332,170 @@ export default function AIAppDevelopmentClient() {
                     alt="Technology stack and cloud infrastructure layers"
                     width={800}
                     height={500}
-                    style={{
-                      width: '100%',
-                      height: 'auto',
-                      borderRadius: 12,
-                      marginBottom: 16,
-                    }}
+                    style={{ width: '100%', height: 'auto', borderRadius: 12, marginBottom: 16 }}
                   />
                   <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
                     Photo by <a href="https://unsplash.com/@nasa" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>NASA</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
                   </p>
                 </div>
 
-                <h3 className="reveal" style={{ fontSize: 20, fontWeight: 600, color: '#ffffff', marginTop: 32, marginBottom: 16 }}>
-                  AI/ML Layer
-                </h3>
-                <div className="reveal" style={{ 
-                  background: 'rgba(255,255,255,0.03)', borderRadius: 16, padding: 24, marginBottom: 32,
-                  border: '1px solid rgba(255,255,255,0.06)',
-                }}>
-                  <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                <p className="reveal">
+                  Building an AI app means assembling the right combination of models, infrastructure, and tooling. Here&apos;s the stack we recommend at Codazz for most production AI applications:
+                </p>
+
+                {/* AI Tech Stack Table */}
+                <h3 className="reveal" style={h3Style}>AI Tech Stack Breakdown</h3>
+                <div className="reveal" style={tableWrapStyle}>
+                  <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 600 }}>
                     <thead>
-                      <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
-                        <th style={{ textAlign: 'left', padding: '12px 8px', color: '#ffffff', fontSize: 14 }}>Service</th>
-                        <th style={{ textAlign: 'left', padding: '12px 8px', color: '#ffffff', fontSize: 14 }}>Use Case</th>
-                        <th style={{ textAlign: 'left', padding: '12px 8px', color: '#ffffff', fontSize: 14 }}>Cost</th>
+                      <tr style={headBorder}>
+                        <th style={thStyle}>Category</th>
+                        <th style={thStyle}>Recommended Tools</th>
+                        <th style={thStyle}>Monthly Cost</th>
+                        <th style={thStyle}>Complexity</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                        <td style={{ padding: '12px 8px' }}><strong style={{ color: '#b4fd83' }}>OpenAI API</strong></td>
-                        <td style={{ padding: '12px 8px' }}>GPT-4, DALL-E, Whisper</td>
-                        <td style={{ padding: '12px 8px' }}>$0.03-0.12 per 1K tokens</td>
+                      <tr style={trBorder}>
+                        <td style={tdBold}>LLM / Text</td>
+                        <td style={tdStyle}>OpenAI GPT-4o, Claude 3.5 Sonnet, Gemini 2.0 Pro, Llama 3.1</td>
+                        <td style={tdStyle}>$500 - $20,000+</td>
+                        <td style={tdStyle}><span style={{ color: '#fbbf24' }}>Medium</span></td>
                       </tr>
-                      <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                        <td style={{ padding: '12px 8px' }}><strong style={{ color: '#b4fd83' }}>Anthropic Claude</strong></td>
-                        <td style={{ padding: '12px 8px' }}>Long context, reasoning</td>
-                        <td style={{ padding: '12px 8px' }}>$0.008-0.024 per 1K tokens</td>
+                      <tr style={trBorder}>
+                        <td style={tdBold}>Vision / Image</td>
+                        <td style={tdStyle}>Google Vision AI, AWS Rekognition, YOLO v9, OpenAI Vision</td>
+                        <td style={tdStyle}>$200 - $10,000+</td>
+                        <td style={tdStyle}><span style={{ color: '#f87171' }}>High</span></td>
                       </tr>
-                      <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                        <td style={{ padding: '12px 8px' }}><strong style={{ color: '#b4fd83' }}>Google Vertex AI</strong></td>
-                        <td style={{ padding: '12px 8px' }}>Enterprise, Gemini</td>
-                        <td style={{ padding: '12px 8px' }}>Pay-per-use</td>
+                      <tr style={trBorder}>
+                        <td style={tdBold}>Speech / Audio</td>
+                        <td style={tdStyle}>OpenAI Whisper, Deepgram, AssemblyAI, ElevenLabs</td>
+                        <td style={tdStyle}>$100 - $5,000+</td>
+                        <td style={tdStyle}><span style={{ color: '#fbbf24' }}>Medium</span></td>
+                      </tr>
+                      <tr style={trBorder}>
+                        <td style={tdBold}>Analytics / ML</td>
+                        <td style={tdStyle}>AWS SageMaker, Google Vertex AI, Databricks, MLflow</td>
+                        <td style={tdStyle}>$300 - $15,000+</td>
+                        <td style={tdStyle}><span style={{ color: '#f87171' }}>High</span></td>
+                      </tr>
+                      <tr style={trBorder}>
+                        <td style={tdBold}>Vector DB</td>
+                        <td style={tdStyle}>Pinecone, Weaviate, Qdrant, pgvector (Supabase)</td>
+                        <td style={tdStyle}>$0 - $2,000+</td>
+                        <td style={tdStyle}><span style={{ color: '#4ade80' }}>Low</span></td>
                       </tr>
                       <tr>
-                        <td style={{ padding: '12px 8px' }}><strong style={{ color: '#b4fd83' }}>Hugging Face</strong></td>
-                        <td style={{ padding: '12px 8px' }}>Open-source models</td>
-                        <td style={{ padding: '12px 8px' }}>Free to $20/month</td>
+                        <td style={tdBold}>Orchestration</td>
+                        <td style={tdStyle}>LangChain, LlamaIndex, Semantic Kernel, Haystack</td>
+                        <td style={tdStyle}>Free (open-source)</td>
+                        <td style={tdStyle}><span style={{ color: '#fbbf24' }}>Medium</span></td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
 
-                <h3 className="reveal" style={{ fontSize: 20, fontWeight: 600, color: '#ffffff', marginTop: 32, marginBottom: 16 }}>
-                  Backend/Database Layer
-                </h3>
+                <h3 className="reveal" style={h3Style}>Backend/Database Layer</h3>
                 <div className="reveal" style={{ margin: '24px 0' }}>
                   <ul style={{ paddingLeft: 24, margin: 0 }}>
-                    <li style={{ marginBottom: 12 }}><strong style={{ color: '#ffffff' }}>Pinecone/Weaviate:</strong> Vector search, embeddings</li>
-                    <li style={{ marginBottom: 12 }}><strong style={{ color: '#ffffff' }}>Supabase:</strong> Postgres + pgvector for AI apps</li>
-                    <li style={{ marginBottom: 12 }}><strong style={{ color: '#ffffff' }}>Firebase:</strong> Real-time AI features</li>
-                    <li><strong style={{ color: '#ffffff' }}>AWS SageMaker:</strong> Custom model training</li>
+                    <li style={{ marginBottom: 12 }}><strong style={{ color: '#ffffff' }}>Pinecone/Weaviate:</strong> Vector search for embeddings&mdash;the backbone of RAG systems and semantic search</li>
+                    <li style={{ marginBottom: 12 }}><strong style={{ color: '#ffffff' }}>Supabase:</strong> Postgres + pgvector for AI apps that need relational + vector search in one place</li>
+                    <li style={{ marginBottom: 12 }}><strong style={{ color: '#ffffff' }}>Firebase:</strong> Real-time AI features with built-in auth and hosting</li>
+                    <li><strong style={{ color: '#ffffff' }}>AWS SageMaker:</strong> Custom model training, hosting, and automated ML pipelines</li>
                   </ul>
                 </div>
 
-                {/* Building AI */}
-                <h2 id="building-ai" className="reveal" style={{
-                  fontSize: 'clamp(1.6rem, 3vw, 2rem)', fontWeight: 700, color: '#ffffff',
-                  marginTop: 64, marginBottom: 24, letterSpacing: '-0.02em',
-                }}>Building Your First AI Feature</h2>
+                {/* Pro Tip #2 */}
+                <div className="reveal" style={proTipStyle}>
+                  <p style={proTipTitle}>Pro Tip</p>
+                  <p style={{ margin: 0, fontSize: 15, color: 'rgba(255,255,255,0.85)' }}>
+                    <strong style={{ color: '#ffffff' }}>Don&apos;t over-architect your vector database on day one.</strong> Start with pgvector in Supabase (free tier available). It handles up to ~1M vectors efficiently. Only migrate to Pinecone or Weaviate when you hit scale issues or need advanced features like hybrid search.
+                  </p>
+                </div>
+
+                {/* ══════════ AI API Comparison ══════════ */}
+                <h2 id="api-comparison" className="reveal" style={h2Style}>AI API Comparison: OpenAI vs Anthropic vs Google vs Meta</h2>
+
+                <p className="reveal">
+                  Choosing the right LLM provider is one of the most consequential decisions you&apos;ll make. Here&apos;s how the top four stack up in 2026:
+                </p>
+
+                <div className="reveal" style={tableWrapStyle}>
+                  <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 700 }}>
+                    <thead>
+                      <tr style={headBorder}>
+                        <th style={thStyle}>Feature</th>
+                        <th style={thStyle}>OpenAI (GPT-4o)</th>
+                        <th style={thStyle}>Anthropic (Claude 3.5)</th>
+                        <th style={thStyle}>Google (Gemini 2.0)</th>
+                        <th style={thStyle}>Meta (Llama 3.1)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr style={trBorder}>
+                        <td style={tdBold}>Best For</td>
+                        <td style={tdStyle}>General-purpose, vision, function calling</td>
+                        <td style={tdStyle}>Long docs, reasoning, safety-critical apps</td>
+                        <td style={tdStyle}>Multimodal, Google ecosystem, enterprise</td>
+                        <td style={tdStyle}>Self-hosting, privacy, customization</td>
+                      </tr>
+                      <tr style={trBorder}>
+                        <td style={tdBold}>Context Window</td>
+                        <td style={tdStyle}>128K tokens</td>
+                        <td style={tdStyle}>200K tokens</td>
+                        <td style={tdStyle}>2M tokens</td>
+                        <td style={tdStyle}>128K tokens</td>
+                      </tr>
+                      <tr style={trBorder}>
+                        <td style={tdBold}>Input Pricing</td>
+                        <td style={tdStyle}>$2.50 / 1M tokens</td>
+                        <td style={tdStyle}>$3.00 / 1M tokens</td>
+                        <td style={tdStyle}>$1.25 / 1M tokens</td>
+                        <td style={tdStyle}>Free (self-hosted) or $0.20-$0.75 via providers</td>
+                      </tr>
+                      <tr style={trBorder}>
+                        <td style={tdBold}>Output Pricing</td>
+                        <td style={tdStyle}>$10.00 / 1M tokens</td>
+                        <td style={tdStyle}>$15.00 / 1M tokens</td>
+                        <td style={tdStyle}>$5.00 / 1M tokens</td>
+                        <td style={tdStyle}>Free (self-hosted) or $0.20-$0.75 via providers</td>
+                      </tr>
+                      <tr style={trBorder}>
+                        <td style={tdBold}>Avg Latency</td>
+                        <td style={tdStyle}><span style={{ color: '#4ade80' }}>Fast</span> (~800ms TTFT)</td>
+                        <td style={tdStyle}><span style={{ color: '#fbbf24' }}>Medium</span> (~1.2s TTFT)</td>
+                        <td style={tdStyle}><span style={{ color: '#4ade80' }}>Fast</span> (~700ms TTFT)</td>
+                        <td style={tdStyle}><span style={{ color: '#fbbf24' }}>Varies</span> (depends on hardware)</td>
+                      </tr>
+                      <tr style={trBorder}>
+                        <td style={tdBold}>Multimodal</td>
+                        <td style={tdStyle}>Text, vision, audio, video</td>
+                        <td style={tdStyle}>Text, vision</td>
+                        <td style={tdStyle}>Text, vision, audio, video, code</td>
+                        <td style={tdStyle}>Text, vision</td>
+                      </tr>
+                      <tr>
+                        <td style={tdBold}>Data Privacy</td>
+                        <td style={tdStyle}>API data not used for training</td>
+                        <td style={tdStyle}>API data not used for training</td>
+                        <td style={tdStyle}>API data not used for training</td>
+                        <td style={tdStyle}>Full control (self-hosted)</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                {/* Pro Tip #3 */}
+                <div className="reveal" style={proTipStyle}>
+                  <p style={proTipTitle}>Pro Tip</p>
+                  <p style={{ margin: 0, fontSize: 15, color: 'rgba(255,255,255,0.85)' }}>
+                    <strong style={{ color: '#ffffff' }}>Use a multi-provider strategy.</strong> We route 70% of our clients&apos; traffic through OpenAI for speed, fall back to Claude for complex reasoning tasks, and use Gemini for multimodal workloads. Tools like LiteLLM or OpenRouter make provider-switching seamless with a single API interface.
+                  </p>
+                </div>
+
+                {/* ══════════ Building AI ══════════ */}
+                <h2 id="building-ai" className="reveal" style={h2Style}>Building Your First AI Feature</h2>
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
@@ -351,64 +503,192 @@ export default function AIAppDevelopmentClient() {
                     alt="Workflow automation and process flow"
                     width={800}
                     height={500}
-                    style={{
-                      width: '100%',
-                      height: 'auto',
-                      borderRadius: 12,
-                      marginBottom: 16,
-                    }}
+                    style={{ width: '100%', height: 'auto', borderRadius: 12, marginBottom: 16 }}
                   />
                   <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@beatriz_perez" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Beatriz Pérez Moya</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
+                    Photo by <a href="https://unsplash.com/@beatriz_perez" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Beatriz Perez Moya</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
                   </p>
                 </div>
 
-                <h3 className="reveal" style={{ fontSize: 20, fontWeight: 600, color: '#ffffff', marginTop: 32, marginBottom: 16 }}>
-                  Example: Adding an AI Chatbot
-                </h3>
+                <p className="reveal">
+                  The fastest path to shipping AI? Don&apos;t reinvent the wheel. Here are the four main approaches ranked by speed-to-market:
+                </p>
 
-                <div className="reveal" style={{ 
-                  background: 'rgba(255,255,255,0.03)', borderRadius: 16, padding: 24, marginBottom: 32,
-                  border: '1px solid rgba(255,255,255,0.06)',
-                }}>
-                  <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                <h3 className="reveal" style={h3Style}>Chatbot Implementation Approaches</h3>
+
+                <div className="reveal" style={tableWrapStyle}>
+                  <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 500 }}>
                     <thead>
-                      <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
-                        <th style={{ textAlign: 'left', padding: '12px 8px', color: '#ffffff', fontSize: 14 }}>Approach</th>
-                        <th style={{ textAlign: 'left', padding: '12px 8px', color: '#ffffff', fontSize: 14 }}>Best For</th>
-                        <th style={{ textAlign: 'left', padding: '12px 8px', color: '#ffffff', fontSize: 14 }}>Cost</th>
+                      <tr style={headBorder}>
+                        <th style={thStyle}>Approach</th>
+                        <th style={thStyle}>Best For</th>
+                        <th style={thStyle}>Cost</th>
+                        <th style={thStyle}>Time to Ship</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                        <td style={{ padding: '12px 8px' }}><strong style={{ color: '#b4fd83' }}>No-Code</strong></td>
-                        <td style={{ padding: '12px 8px' }}>Simple FAQs, quick launch</td>
-                        <td style={{ padding: '12px 8px' }}>$50-500/month</td>
+                      <tr style={trBorder}>
+                        <td style={tdBold}>No-Code</td>
+                        <td style={tdStyle}>Simple FAQs, quick launch</td>
+                        <td style={tdStyle}>$50-500/month</td>
+                        <td style={tdStyle}>1-3 days</td>
                       </tr>
-                      <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                        <td style={{ padding: '12px 8px' }}><strong style={{ color: '#b4fd83' }}>API Integration</strong></td>
-                        <td style={{ padding: '12px 8px' }}>Custom behavior, full control</td>
-                        <td style={{ padding: '12px 8px' }}>Usage-based</td>
+                      <tr style={trBorder}>
+                        <td style={tdBold}>API Integration</td>
+                        <td style={tdStyle}>Custom behavior, full control</td>
+                        <td style={tdStyle}>Usage-based</td>
+                        <td style={tdStyle}>1-4 weeks</td>
                       </tr>
-                      <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                        <td style={{ padding: '12px 8px' }}><strong style={{ color: '#b4fd83' }}>Fine-Tuned Model</strong></td>
-                        <td style={{ padding: '12px 8px' }}>Domain-specific knowledge</td>
-                        <td style={{ padding: '12px 8px' }}>$5,000-50,000</td>
+                      <tr style={trBorder}>
+                        <td style={tdBold}>RAG + Fine-Tuned</td>
+                        <td style={tdStyle}>Domain-specific knowledge</td>
+                        <td style={tdStyle}>$5,000-50,000</td>
+                        <td style={tdStyle}>4-10 weeks</td>
                       </tr>
                       <tr>
-                        <td style={{ padding: '12px 8px' }}><strong style={{ color: '#b4fd83' }}>Self-Hosted</strong></td>
-                        <td style={{ padding: '12px 8px' }}>Data privacy, no API costs</td>
-                        <td style={{ padding: '12px 8px' }}>Infrastructure costs</td>
+                        <td style={tdBold}>Self-Hosted</td>
+                        <td style={tdStyle}>Data privacy, no API costs at scale</td>
+                        <td style={tdStyle}>Infrastructure costs</td>
+                        <td style={tdStyle}>6-16 weeks</td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
 
-                {/* Examples */}
-                <h2 id="examples" className="reveal" style={{
-                  fontSize: 'clamp(1.6rem, 3vw, 2rem)', fontWeight: 700, color: '#ffffff',
-                  marginTop: 64, marginBottom: 24, letterSpacing: '-0.02em',
-                }}>Real AI App Examples</h2>
+                {/* Pro Tip #4 */}
+                <div className="reveal" style={proTipStyle}>
+                  <p style={proTipTitle}>Pro Tip</p>
+                  <p style={{ margin: 0, fontSize: 15, color: 'rgba(255,255,255,0.85)' }}>
+                    <strong style={{ color: '#ffffff' }}>Always implement streaming responses.</strong> Users perceive AI as 3x faster when they see tokens appear in real-time versus waiting for a complete response. The OpenAI and Anthropic SDKs both support server-sent events (SSE) out of the box. There&apos;s no excuse to show a spinner for 5 seconds.
+                  </p>
+                </div>
+
+                {/* ══════════ Build vs Buy ══════════ */}
+                <h2 id="build-vs-buy" className="reveal" style={h2Style}>Build vs Buy: Custom AI vs Pre-Built APIs vs Hybrid</h2>
+
+                <p className="reveal">
+                  This is the decision that trips up most teams. Custom AI sounds impressive on a pitch deck, but it&apos;s usually the wrong call for your first AI feature. Here&apos;s an honest comparison:
+                </p>
+
+                <div className="reveal" style={tableWrapStyle}>
+                  <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 650 }}>
+                    <thead>
+                      <tr style={headBorder}>
+                        <th style={thStyle}>Factor</th>
+                        <th style={thStyle}>Custom AI (Train Your Own)</th>
+                        <th style={thStyle}>Pre-Built APIs</th>
+                        <th style={thStyle}>Hybrid Approach</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr style={trBorder}>
+                        <td style={tdBold}>Upfront Cost</td>
+                        <td style={tdStyle}>$100K - $500K+</td>
+                        <td style={tdStyle}>$0 - $5K</td>
+                        <td style={tdStyle}>$20K - $80K</td>
+                      </tr>
+                      <tr style={trBorder}>
+                        <td style={tdBold}>Time to Launch</td>
+                        <td style={tdStyle}>3-12 months</td>
+                        <td style={tdStyle}>1-4 weeks</td>
+                        <td style={tdStyle}>2-3 months</td>
+                      </tr>
+                      <tr style={trBorder}>
+                        <td style={tdBold}>Data Requirements</td>
+                        <td style={tdStyle}>10K-1M+ labeled examples</td>
+                        <td style={tdStyle}>None (zero-shot)</td>
+                        <td style={tdStyle}>100-10K examples for fine-tuning</td>
+                      </tr>
+                      <tr style={trBorder}>
+                        <td style={tdBold}>Pros</td>
+                        <td style={tdStyle}>Full control, competitive moat, no per-call cost</td>
+                        <td style={tdStyle}>Fast, cheap, state-of-the-art, easy to iterate</td>
+                        <td style={tdStyle}>Best of both worlds, good balance of cost/control</td>
+                      </tr>
+                      <tr style={trBorder}>
+                        <td style={tdBold}>Cons</td>
+                        <td style={tdStyle}>Expensive, needs ML team, slow iteration, data hungry</td>
+                        <td style={tdStyle}>Vendor lock-in, per-call cost at scale, less control</td>
+                        <td style={tdStyle}>More complex architecture, needs skilled engineers</td>
+                      </tr>
+                      <tr>
+                        <td style={tdBold}>Best For</td>
+                        <td style={tdStyle}>Enterprise with unique data, regulated industries</td>
+                        <td style={tdStyle}>Startups, MVPs, standard NLP/vision tasks</td>
+                        <td style={tdStyle}>Growing companies with domain-specific needs</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                {/* Pro Tip #5 */}
+                <div className="reveal" style={proTipStyle}>
+                  <p style={proTipTitle}>Pro Tip</p>
+                  <p style={{ margin: 0, fontSize: 15, color: 'rgba(255,255,255,0.85)' }}>
+                    <strong style={{ color: '#ffffff' }}>The hybrid approach wins 80% of the time.</strong> Use pre-built APIs as your foundation, add RAG (Retrieval-Augmented Generation) with your proprietary data, and fine-tune only the specific layers where generic models fall short. This gets you 90% of custom model quality at 20% of the cost.
+                  </p>
+                </div>
+
+                {/* ══════════ AI App Types & Costs ══════════ */}
+                <h2 id="app-types-costs" className="reveal" style={h2Style}>AI App Types: Timeline, Cost & Complexity</h2>
+
+                <p className="reveal">
+                  Not all AI apps are created equal. Here&apos;s a realistic breakdown of what each type of AI application takes to build from concept to production:
+                </p>
+
+                <div className="reveal" style={tableWrapStyle}>
+                  <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 700 }}>
+                    <thead>
+                      <tr style={headBorder}>
+                        <th style={thStyle}>AI App Type</th>
+                        <th style={thStyle}>Timeline</th>
+                        <th style={thStyle}>Development Cost</th>
+                        <th style={thStyle}>Complexity</th>
+                        <th style={thStyle}>Example Use Cases</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr style={trBorder}>
+                        <td style={tdBold}>Chatbot / Virtual Assistant</td>
+                        <td style={tdStyle}>2-8 weeks</td>
+                        <td style={tdStyle}>$8,000 - $50,000</td>
+                        <td style={tdStyle}><span style={{ color: '#4ade80' }}>Low-Medium</span></td>
+                        <td style={tdStyle}>Customer support, onboarding, internal Q&A</td>
+                      </tr>
+                      <tr style={trBorder}>
+                        <td style={tdBold}>Recommendation Engine</td>
+                        <td style={tdStyle}>8-16 weeks</td>
+                        <td style={tdStyle}>$40,000 - $120,000</td>
+                        <td style={tdStyle}><span style={{ color: '#fbbf24' }}>Medium-High</span></td>
+                        <td style={tdStyle}>E-commerce, content feeds, matchmaking</td>
+                      </tr>
+                      <tr style={trBorder}>
+                        <td style={tdBold}>Computer Vision App</td>
+                        <td style={tdStyle}>10-20 weeks</td>
+                        <td style={tdStyle}>$50,000 - $200,000</td>
+                        <td style={tdStyle}><span style={{ color: '#f87171' }}>High</span></td>
+                        <td style={tdStyle}>Medical imaging, quality inspection, AR filters</td>
+                      </tr>
+                      <tr style={trBorder}>
+                        <td style={tdBold}>Predictive Analytics</td>
+                        <td style={tdStyle}>8-14 weeks</td>
+                        <td style={tdStyle}>$35,000 - $150,000</td>
+                        <td style={tdStyle}><span style={{ color: '#fbbf24' }}>Medium-High</span></td>
+                        <td style={tdStyle}>Demand forecasting, churn prediction, pricing</td>
+                      </tr>
+                      <tr>
+                        <td style={tdBold}>Generative AI Platform</td>
+                        <td style={tdStyle}>12-24 weeks</td>
+                        <td style={tdStyle}>$60,000 - $300,000</td>
+                        <td style={tdStyle}><span style={{ color: '#f87171' }}>High</span></td>
+                        <td style={tdStyle}>Content creation, design tools, code generation</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                {/* ══════════ Examples ══════════ */}
+                <h2 id="examples" className="reveal" style={h2Style}>Real AI App Examples</h2>
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
@@ -416,44 +696,48 @@ export default function AIAppDevelopmentClient() {
                     alt="Health and fitness technology app"
                     width={800}
                     height={500}
-                    style={{
-                      width: '100%',
-                      height: 'auto',
-                      borderRadius: 12,
-                      marginBottom: 16,
-                    }}
+                    style={{ width: '100%', height: 'auto', borderRadius: 12, marginBottom: 16 }}
                   />
                   <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
                     Photo by <a href="https://unsplash.com/@nci" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>National Cancer Institute</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
                   </p>
                 </div>
 
-                <div className="reveal" style={{ 
+                <p className="reveal">
+                  Theory is great, but real numbers are better. Here are two AI applications we&apos;ve built at Codazz, with actual results:
+                </p>
+
+                <div className="reveal" style={{
                   background: 'rgba(255,255,255,0.03)', borderRadius: 16, padding: 24, marginBottom: 24,
                   border: '1px solid rgba(255,255,255,0.06)',
                 }}>
                   <h4 style={{ color: '#b4fd83', marginBottom: 12 }}>Example 1: AI Health & Wellness Coach</h4>
                   <p style={{ fontSize: 14, marginBottom: 8 }}><strong>Client:</strong> HealthTech startup, Toronto</p>
-                  <p style={{ fontSize: 14, marginBottom: 8 }}><strong>AI Features:</strong> Personalized workouts, nutrition analysis from food photos, sleep prediction, mental health NLP</p>
-                  <p style={{ fontSize: 14, marginBottom: 8 }}><strong>Tech Stack:</strong> Flutter, Python/FastAPI, OpenAI GPT-4, TensorFlow Lite</p>
-                  <p style={{ fontSize: 14, margin: 0 }}><strong>Results:</strong> 300,000+ downloads in 6 months, 4.7★ rating, 40% higher retention, <strong style={{ color: '#b4fd83' }}>$85,000 cost to build</strong></p>
+                  <p style={{ fontSize: 14, marginBottom: 8 }}><strong>AI Features:</strong> Personalized workouts via LLM, nutrition analysis from food photos (computer vision), sleep pattern prediction, mental health NLP journaling</p>
+                  <p style={{ fontSize: 14, marginBottom: 8 }}><strong>Tech Stack:</strong> Flutter, Python/FastAPI, OpenAI GPT-4, TensorFlow Lite for on-device inference</p>
+                  <p style={{ fontSize: 14, margin: 0 }}><strong>Results:</strong> 300,000+ downloads in 6 months, 4.7-star rating, 40% higher retention vs non-AI competitor, <strong style={{ color: '#b4fd83' }}>$85,000 total build cost</strong></p>
                 </div>
 
-                <div className="reveal" style={{ 
-                  background: 'rgba(255,255,255,0.03)', borderRadius: 16, padding: 24, marginBottom: 32,
+                <div className="reveal" style={{
+                  background: 'rgba(255,255,255,0.03)', borderRadius: 16, padding: 24, marginBottom: 24,
                   border: '1px solid rgba(255,255,255,0.06)',
                 }}>
                   <h4 style={{ color: '#b4fd83', marginBottom: 12 }}>Example 2: AI Financial Advisor</h4>
                   <p style={{ fontSize: 14, marginBottom: 8 }}><strong>Client:</strong> Fintech company, New York</p>
-                  <p style={{ fontSize: 14, marginBottom: 8 }}><strong>AI Features:</strong> Spending analysis, investment recommendations, fraud detection, natural language queries</p>
-                  <p style={{ fontSize: 14, margin: 0 }}><strong>Results:</strong> $2M+ in assets under AI management, 92% user satisfaction, <strong style={{ color: '#b4fd83' }}>$180,000 cost to build</strong></p>
+                  <p style={{ fontSize: 14, marginBottom: 8 }}><strong>AI Features:</strong> Spending analysis with NLP transaction parsing, investment recommendations, fraud detection using anomaly models, natural language portfolio queries</p>
+                  <p style={{ fontSize: 14, margin: 0 }}><strong>Results:</strong> $2M+ in assets under AI management, 92% user satisfaction, 60% reduction in false fraud alerts, <strong style={{ color: '#b4fd83' }}>$180,000 total build cost</strong></p>
                 </div>
 
-                {/* Costs */}
-                <h2 id="costs" className="reveal" style={{
-                  fontSize: 'clamp(1.6rem, 3vw, 2rem)', fontWeight: 700, color: '#ffffff',
-                  marginTop: 64, marginBottom: 24, letterSpacing: '-0.02em',
-                }}>AI App Development Costs (2026)</h2>
+                {/* Pro Tip #6 */}
+                <div className="reveal" style={proTipStyle}>
+                  <p style={proTipTitle}>Pro Tip</p>
+                  <p style={{ margin: 0, fontSize: 15, color: 'rgba(255,255,255,0.85)' }}>
+                    <strong style={{ color: '#ffffff' }}>Measure AI feature impact from day one.</strong> Set up A/B tests comparing AI-powered vs traditional flows. Track specific metrics: time-to-task-completion, support ticket deflection rate, and user retention at 7/30/90 days. Without data, you&apos;re guessing whether AI is actually helping.
+                  </p>
+                </div>
+
+                {/* ══════════ Costs ══════════ */}
+                <h2 id="costs" className="reveal" style={h2Style}>AI App Development Costs (2026)</h2>
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
@@ -461,113 +745,103 @@ export default function AIAppDevelopmentClient() {
                     alt="Budget planning and cost analysis"
                     width={800}
                     height={500}
-                    style={{
-                      width: '100%',
-                      height: 'auto',
-                      borderRadius: 12,
-                      marginBottom: 16,
-                    }}
+                    style={{ width: '100%', height: 'auto', borderRadius: 12, marginBottom: 16 }}
                   />
                   <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
                     Photo by <a href="https://unsplash.com/@mathieustern" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Mathieu Stern</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
                   </p>
                 </div>
 
-                <h3 className="reveal" style={{ fontSize: 20, fontWeight: 600, color: '#ffffff', marginTop: 32, marginBottom: 16 }}>
-                  Development Costs
-                </h3>
-                <div className="reveal" style={{ 
-                  background: 'rgba(255,255,255,0.03)', borderRadius: 16, padding: 24, marginBottom: 32,
-                  border: '1px solid rgba(255,255,255,0.06)',
-                }}>
-                  <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                <h3 className="reveal" style={h3Style}>Development Costs by Feature</h3>
+                <div className="reveal" style={tableWrapStyle}>
+                  <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 500 }}>
                     <thead>
-                      <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
-                        <th style={{ textAlign: 'left', padding: '12px 8px', color: '#ffffff', fontSize: 14 }}>AI Feature Type</th>
-                        <th style={{ textAlign: 'left', padding: '12px 8px', color: '#ffffff', fontSize: 14 }}>Development Cost</th>
-                        <th style={{ textAlign: 'left', padding: '12px 8px', color: '#ffffff', fontSize: 14 }}>Timeline</th>
+                      <tr style={headBorder}>
+                        <th style={thStyle}>AI Feature Type</th>
+                        <th style={thStyle}>Development Cost</th>
+                        <th style={thStyle}>Timeline</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                        <td style={{ padding: '12px 8px' }}><strong style={{ color: '#b4fd83' }}>Simple Chatbot</strong> (API-based)</td>
-                        <td style={{ padding: '12px 8px', color: '#ffffff' }}>$8,000 - $20,000</td>
-                        <td style={{ padding: '12px 8px' }}>2-4 weeks</td>
+                      <tr style={trBorder}>
+                        <td style={tdBold}>Simple Chatbot (API-based)</td>
+                        <td style={{ ...tdStyle, color: '#ffffff' }}>$8,000 - $20,000</td>
+                        <td style={tdStyle}>2-4 weeks</td>
                       </tr>
-                      <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                        <td style={{ padding: '12px 8px' }}><strong style={{ color: '#b4fd83' }}>RAG Knowledge Base</strong></td>
-                        <td style={{ padding: '12px 8px', color: '#ffffff' }}>$25,000 - $50,000</td>
-                        <td style={{ padding: '12px 8px' }}>4-8 weeks</td>
+                      <tr style={trBorder}>
+                        <td style={tdBold}>RAG Knowledge Base</td>
+                        <td style={{ ...tdStyle, color: '#ffffff' }}>$25,000 - $50,000</td>
+                        <td style={tdStyle}>4-8 weeks</td>
                       </tr>
-                      <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                        <td style={{ padding: '12px 8px' }}><strong style={{ color: '#b4fd83' }}>Image Generation</strong></td>
-                        <td style={{ padding: '12px 8px', color: '#ffffff' }}>$30,000 - $70,000</td>
-                        <td style={{ padding: '12px 8px' }}>6-10 weeks</td>
+                      <tr style={trBorder}>
+                        <td style={tdBold}>Image Generation</td>
+                        <td style={{ ...tdStyle, color: '#ffffff' }}>$30,000 - $70,000</td>
+                        <td style={tdStyle}>6-10 weeks</td>
                       </tr>
-                      <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                        <td style={{ padding: '12px 8px' }}><strong style={{ color: '#b4fd83' }}>Recommendation Engine</strong></td>
-                        <td style={{ padding: '12px 8px', color: '#ffffff' }}>$40,000 - $100,000</td>
-                        <td style={{ padding: '12px 8px' }}>8-12 weeks</td>
+                      <tr style={trBorder}>
+                        <td style={tdBold}>Recommendation Engine</td>
+                        <td style={{ ...tdStyle, color: '#ffffff' }}>$40,000 - $100,000</td>
+                        <td style={tdStyle}>8-12 weeks</td>
                       </tr>
                       <tr>
-                        <td style={{ padding: '12px 8px' }}><strong style={{ color: '#b4fd83' }}>Custom Model Training</strong></td>
-                        <td style={{ padding: '12px 8px', color: '#ffffff' }}>$100,000 - $500,000</td>
-                        <td style={{ padding: '12px 8px' }}>3-6 months</td>
+                        <td style={tdBold}>Custom Model Training</td>
+                        <td style={{ ...tdStyle, color: '#ffffff' }}>$100,000 - $500,000</td>
+                        <td style={tdStyle}>3-6 months</td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
 
-                <h3 className="reveal" style={{ fontSize: 20, fontWeight: 600, color: '#ffffff', marginTop: 32, marginBottom: 16 }}>
-                  Ongoing AI Costs (Monthly)
-                </h3>
-                <div className="reveal" style={{ 
-                  background: 'rgba(255,255,255,0.03)', borderRadius: 16, padding: 24, marginBottom: 32,
-                  border: '1px solid rgba(255,255,255,0.06)',
-                }}>
-                  <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                <h3 className="reveal" style={h3Style}>Ongoing AI Costs (Monthly)</h3>
+                <div className="reveal" style={tableWrapStyle}>
+                  <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 500 }}>
                     <thead>
-                      <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
-                        <th style={{ textAlign: 'left', padding: '12px 8px', color: '#ffffff', fontSize: 14 }}>Usage Level</th>
-                        <th style={{ textAlign: 'left', padding: '12px 8px', color: '#ffffff', fontSize: 14 }}>OpenAI API</th>
-                        <th style={{ textAlign: 'left', padding: '12px 8px', color: '#ffffff', fontSize: 14 }}>Infrastructure</th>
-                        <th style={{ textAlign: 'left', padding: '12px 8px', color: '#ffffff', fontSize: 14 }}>Total</th>
+                      <tr style={headBorder}>
+                        <th style={thStyle}>Usage Level</th>
+                        <th style={thStyle}>API Costs</th>
+                        <th style={thStyle}>Infrastructure</th>
+                        <th style={thStyle}>Total Monthly</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                        <td style={{ padding: '12px 8px' }}><strong style={{ color: '#b4fd83' }}>Startup</strong> (1K users)</td>
-                        <td style={{ padding: '12px 8px' }}>$500</td>
-                        <td style={{ padding: '12px 8px' }}>$200</td>
-                        <td style={{ padding: '12px 8px', color: '#ffffff' }}>$1,000</td>
+                      <tr style={trBorder}>
+                        <td style={tdBold}>Startup (1K users)</td>
+                        <td style={tdStyle}>$500</td>
+                        <td style={tdStyle}>$200</td>
+                        <td style={{ ...tdStyle, color: '#ffffff' }}>$1,000</td>
                       </tr>
-                      <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                        <td style={{ padding: '12px 8px' }}><strong style={{ color: '#b4fd83' }}>Growing</strong> (10K users)</td>
-                        <td style={{ padding: '12px 8px' }}>$3,000</td>
-                        <td style={{ padding: '12px 8px' }}>$800</td>
-                        <td style={{ padding: '12px 8px', color: '#ffffff' }}>$5,800</td>
+                      <tr style={trBorder}>
+                        <td style={tdBold}>Growing (10K users)</td>
+                        <td style={tdStyle}>$3,000</td>
+                        <td style={tdStyle}>$800</td>
+                        <td style={{ ...tdStyle, color: '#ffffff' }}>$5,800</td>
                       </tr>
-                      <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                        <td style={{ padding: '12px 8px' }}><strong style={{ color: '#b4fd83' }}>Scale</strong> (100K users)</td>
-                        <td style={{ padding: '12px 8px' }}>$20,000</td>
-                        <td style={{ padding: '12px 8px' }}>$5,000</td>
-                        <td style={{ padding: '12px 8px', color: '#ffffff' }}>$40,000</td>
+                      <tr style={trBorder}>
+                        <td style={tdBold}>Scale (100K users)</td>
+                        <td style={tdStyle}>$20,000</td>
+                        <td style={tdStyle}>$5,000</td>
+                        <td style={{ ...tdStyle, color: '#ffffff' }}>$40,000</td>
                       </tr>
                       <tr>
-                        <td style={{ padding: '12px 8px' }}><strong style={{ color: '#b4fd83' }}>Enterprise</strong> (1M users)</td>
-                        <td style={{ padding: '12px 8px' }}>$150,000+</td>
-                        <td style={{ padding: '12px 8px' }}>$30,000+</td>
-                        <td style={{ padding: '12px 8px', color: '#ffffff' }}>$280,000+</td>
+                        <td style={tdBold}>Enterprise (1M users)</td>
+                        <td style={tdStyle}>$150,000+</td>
+                        <td style={tdStyle}>$30,000+</td>
+                        <td style={{ ...tdStyle, color: '#ffffff' }}>$280,000+</td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
 
-                {/* Ethics */}
-                <h2 id="ethics" className="reveal" style={{
-                  fontSize: 'clamp(1.6rem, 3vw, 2rem)', fontWeight: 700, color: '#ffffff',
-                  marginTop: 64, marginBottom: 24, letterSpacing: '-0.02em',
-                }}>The Ethics & Legal Side of AI Apps</h2>
+                {/* Pro Tip #7 */}
+                <div className="reveal" style={proTipStyle}>
+                  <p style={proTipTitle}>Pro Tip</p>
+                  <p style={{ margin: 0, fontSize: 15, color: 'rgba(255,255,255,0.85)' }}>
+                    <strong style={{ color: '#ffffff' }}>Implement caching aggressively.</strong> Most AI apps have 30-60% repeated or near-identical queries. A semantic cache (using embeddings to match similar questions) can cut your API costs by 40-50% overnight. Tools like GPTCache or a custom Redis + pgvector setup work well.
+                  </p>
+                </div>
+
+                {/* ══════════ Ethics ══════════ */}
+                <h2 id="ethics" className="reveal" style={h2Style}>The Ethics & Legal Side of AI Apps</h2>
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
@@ -575,35 +849,34 @@ export default function AIAppDevelopmentClient() {
                     alt="Ethics justice and balance concept"
                     width={800}
                     height={500}
-                    style={{
-                      width: '100%',
-                      height: 'auto',
-                      borderRadius: 12,
-                      marginBottom: 16,
-                    }}
+                    style={{ width: '100%', height: 'auto', borderRadius: 12, marginBottom: 16 }}
                   />
                   <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
                     Photo by <a href="https://unsplash.com/@brett_jordan" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Brett Jordan</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
                   </p>
                 </div>
 
-                <h3 className="reveal" style={{ fontSize: 20, fontWeight: 600, color: '#ffffff', marginTop: 32, marginBottom: 16 }}>
-                  What You Must Address
-                </h3>
+                <h3 className="reveal" style={h3Style}>What You Must Address</h3>
                 <div className="reveal" style={{ margin: '24px 0' }}>
                   <ul style={{ paddingLeft: 24, margin: 0 }}>
-                    <li style={{ marginBottom: 12 }}><strong style={{ color: '#ffffff' }}>Data Privacy:</strong> Don&apos;t send PII to third-party APIs. Implement data anonymization.</li>
-                    <li style={{ marginBottom: 12 }}><strong style={{ color: '#ffffff' }}>Transparency:</strong> Disclose when users are interacting with AI. Explain how decisions are made.</li>
-                    <li style={{ marginBottom: 12 }}><strong style={{ color: '#ffffff' }}>Bias & Fairness:</strong> Test AI outputs across demographics. Monitor for discriminatory patterns.</li>
-                    <li><strong style={{ color: '#ffffff' }}>Content Safety:</strong> Use content moderation APIs. Implement input/output filtering.</li>
+                    <li style={{ marginBottom: 12 }}><strong style={{ color: '#ffffff' }}>Data Privacy:</strong> Don&apos;t send PII to third-party APIs. Implement data anonymization. Review your AI provider&apos;s data retention policies&mdash;most don&apos;t train on API data, but verify it.</li>
+                    <li style={{ marginBottom: 12 }}><strong style={{ color: '#ffffff' }}>Transparency:</strong> Disclose when users are interacting with AI. The EU AI Act requires it. Show confidence levels on AI-generated content.</li>
+                    <li style={{ marginBottom: 12 }}><strong style={{ color: '#ffffff' }}>Bias & Fairness:</strong> Test AI outputs across demographics. Monitor for discriminatory patterns. Document your testing methodology&mdash;regulators will ask for it.</li>
+                    <li style={{ marginBottom: 12 }}><strong style={{ color: '#ffffff' }}>Content Safety:</strong> Use content moderation APIs. Implement input/output filtering. Have human review for high-stakes decisions.</li>
+                    <li><strong style={{ color: '#ffffff' }}>Regulatory Compliance:</strong> GDPR (EU), AIDA (Canada), state-level AI laws (US). If your AI makes decisions affecting people&apos;s rights, you need an AI impact assessment.</li>
                   </ul>
                 </div>
 
-                {/* Mistakes */}
-                <h2 id="mistakes" className="reveal" style={{
-                  fontSize: 'clamp(1.6rem, 3vw, 2rem)', fontWeight: 700, color: '#ffffff',
-                  marginTop: 64, marginBottom: 24, letterSpacing: '-0.02em',
-                }}>Common AI App Mistakes</h2>
+                {/* Pro Tip #8 */}
+                <div className="reveal" style={proTipStyle}>
+                  <p style={proTipTitle}>Pro Tip</p>
+                  <p style={{ margin: 0, fontSize: 15, color: 'rgba(255,255,255,0.85)' }}>
+                    <strong style={{ color: '#ffffff' }}>Build an &ldquo;AI card&rdquo; for every AI feature you ship.</strong> Document what data it uses, what decisions it makes, known limitations, and how to override it. This isn&apos;t just good ethics&mdash;it&apos;s becoming a legal requirement in many jurisdictions and it makes debugging 10x faster.
+                  </p>
+                </div>
+
+                {/* ══════════ Mistakes ══════════ */}
+                <h2 id="mistakes" className="reveal" style={h2Style}>Common AI App Mistakes (And How to Avoid Them)</h2>
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
@@ -611,32 +884,29 @@ export default function AIAppDevelopmentClient() {
                     alt="Warning signs and error alerts"
                     width={800}
                     height={500}
-                    style={{
-                      width: '100%',
-                      height: 'auto',
-                      borderRadius: 12,
-                      marginBottom: 16,
-                    }}
+                    style={{ width: '100%', height: 'auto', borderRadius: 12, marginBottom: 16 }}
                   />
                   <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
                     Photo by <a href="https://unsplash.com/@mojahidmottakin" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Mojahid Mottakin</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
                   </p>
                 </div>
 
+                <p className="reveal">
+                  After building 100+ AI features, we&apos;ve seen every mistake in the book. Here are the ones that cost real money:
+                </p>
+
                 <div className="reveal" style={{ margin: '24px 0' }}>
                   <ul style={{ paddingLeft: 24, margin: 0 }}>
-                    <li style={{ marginBottom: 16 }}><strong style={{ color: '#ffffff' }}>Over-Engineering:</strong> Building custom models when APIs suffice. Cost: $100K+ wasted. Fix: Start with APIs.</li>
-                    <li style={{ marginBottom: 16 }}><strong style={{ color: '#ffffff' }}>Ignoring Latency:</strong> AI responses taking 5-10 seconds. Fix: Use streaming responses, show loading states.</li>
-                    <li style={{ marginBottom: 16 }}><strong style={{ color: '#ffffff' }}>Poor Error Handling:</strong> AI hallucinations shown as facts. Fix: Verify critical outputs, show confidence scores.</li>
-                    <li><strong style={{ color: '#ffffff' }}>Neglecting Mobile Optimization:</strong> AI features drain battery. Fix: Use on-device models where possible.</li>
+                    <li style={{ marginBottom: 16 }}><strong style={{ color: '#ffffff' }}>Over-Engineering:</strong> Building custom models when APIs suffice. <span style={{ color: '#f87171' }}>Cost: $100K+ wasted.</span> Fix: Start with APIs, fine-tune only after you have 10K+ domain-specific examples and proof that generic models aren&apos;t good enough.</li>
+                    <li style={{ marginBottom: 16 }}><strong style={{ color: '#ffffff' }}>Ignoring Latency:</strong> AI responses taking 5-10 seconds kills UX. Fix: Use streaming responses, implement optimistic UI patterns, and cache frequent queries. Target under 2 seconds for perceived response time.</li>
+                    <li style={{ marginBottom: 16 }}><strong style={{ color: '#ffffff' }}>Poor Error Handling:</strong> AI hallucinations shown as facts. Fix: Verify critical outputs against your data, show confidence scores, and always provide a &ldquo;this doesn&apos;t look right&rdquo; feedback button.</li>
+                    <li style={{ marginBottom: 16 }}><strong style={{ color: '#ffffff' }}>No Cost Controls:</strong> A single prompt injection attack or viral moment can blow through your entire monthly API budget in hours. Fix: Implement rate limiting, per-user quotas, and hard spending caps from day one.</li>
+                    <li><strong style={{ color: '#ffffff' }}>Neglecting Mobile Optimization:</strong> AI features drain battery and consume data. Fix: Use on-device models where possible (TensorFlow Lite, Core ML), batch API calls, and implement intelligent prefetching.</li>
                   </ul>
                 </div>
 
-                {/* Roadmap */}
-                <h2 id="roadmap" className="reveal" style={{
-                  fontSize: 'clamp(1.6rem, 3vw, 2rem)', fontWeight: 700, color: '#ffffff',
-                  marginTop: 64, marginBottom: 24, letterSpacing: '-0.02em',
-                }}>Getting Started: Your AI App Roadmap</h2>
+                {/* ══════════ Roadmap ══════════ */}
+                <h2 id="roadmap" className="reveal" style={h2Style}>Getting Started: Your AI App Roadmap</h2>
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
@@ -644,50 +914,84 @@ export default function AIAppDevelopmentClient() {
                     alt="Roadmap journey and path forward"
                     width={800}
                     height={500}
-                    style={{
-                      width: '100%',
-                      height: 'auto',
-                      borderRadius: 12,
-                      marginBottom: 16,
-                    }}
+                    style={{ width: '100%', height: 'auto', borderRadius: 12, marginBottom: 16 }}
                   />
                   <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
                     Photo by <a href="https://unsplash.com/@martenbjork" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Marten Newhall</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
                   </p>
                 </div>
 
-                <div className="reveal" style={{ 
+                <div className="reveal" style={{
                   display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 16, marginBottom: 32,
                 }}>
                   <div style={{ background: 'rgba(255,255,255,0.03)', padding: 20, borderRadius: 12, border: '1px solid rgba(255,255,255,0.06)' }}>
                     <h4 style={{ color: '#b4fd83', marginBottom: 8 }}>Phase 1: Validate (Weeks 1-2)</h4>
-                    <p style={{ fontSize: 14, margin: 0 }}>Identify user problem AI solves. Build simple prototype. Test with 5-10 users.</p>
+                    <p style={{ fontSize: 14, margin: 0 }}>Identify the user problem AI actually solves. Build a simple prototype with API calls. Test with 5-10 real users. Kill the idea fast if it doesn&apos;t resonate.</p>
                   </div>
                   <div style={{ background: 'rgba(255,255,255,0.03)', padding: 20, borderRadius: 12, border: '1px solid rgba(255,255,255,0.06)' }}>
                     <h4 style={{ color: '#b4fd83', marginBottom: 8 }}>Phase 2: MVP (Weeks 3-8)</h4>
-                    <p style={{ fontSize: 14, margin: 0 }}>Choose tech stack. Implement core AI feature. Build basic UI. Internal testing.</p>
+                    <p style={{ fontSize: 14, margin: 0 }}>Choose your tech stack and primary AI provider. Implement core AI feature with streaming. Build basic UI. Internal testing with 20+ scenarios. Set up cost monitoring.</p>
                   </div>
                   <div style={{ background: 'rgba(255,255,255,0.03)', padding: 20, borderRadius: 12, border: '1px solid rgba(255,255,255,0.06)' }}>
                     <h4 style={{ color: '#b4fd83', marginBottom: 8 }}>Phase 3: Beta (Weeks 9-14)</h4>
-                    <p style={{ fontSize: 14, margin: 0 }}>Expand AI capabilities. Beta launch (100-500 users). Gather feedback.</p>
+                    <p style={{ fontSize: 14, margin: 0 }}>Expand AI capabilities based on user feedback. Beta launch with 100-500 users. Implement caching and rate limiting. Gather quality and cost metrics.</p>
                   </div>
                   <div style={{ background: 'rgba(255,255,255,0.03)', padding: 20, borderRadius: 12, border: '1px solid rgba(255,255,255,0.06)' }}>
                     <h4 style={{ color: '#b4fd83', marginBottom: 8 }}>Phase 4: Launch (Weeks 15-20)</h4>
-                    <p style={{ fontSize: 14, margin: 0 }}>Performance optimization. Security audit. App store submission. Public launch.</p>
+                    <p style={{ fontSize: 14, margin: 0 }}>Performance optimization and load testing. Security audit and compliance review. App store submission. Public launch with monitoring dashboards.</p>
                   </div>
                 </div>
 
+                {/* ══════════ Build AI with Codazz ══════════ */}
+                <h2 id="build-with-codazz" className="reveal" style={h2Style}>Build AI with Codazz</h2>
+
+                <div className="reveal" style={{
+                  background: 'rgba(255,255,255,0.03)', borderRadius: 16, padding: 'clamp(24px, 4vw, 32px)', marginBottom: 32,
+                  border: '1px solid rgba(255,255,255,0.06)',
+                }}>
+                  <p style={{ fontSize: 18, color: '#ffffff', fontWeight: 600, marginBottom: 16 }}>
+                    Why Teams Choose Codazz for AI Development
+                  </p>
+                  <p style={{ marginBottom: 24 }}>
+                    We&apos;ve shipped <strong style={{ color: '#b4fd83' }}>100+ AI-powered features</strong> across mobile apps, web platforms, and enterprise systems. Our team doesn&apos;t just plug in APIs&mdash;we architect intelligent systems that scale, stay within budget, and actually move business metrics.
+                  </p>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 16, marginBottom: 24 }}>
+                    <div style={{ padding: '16px 20px', background: 'rgba(180,253,131,0.05)', borderRadius: 10, border: '1px solid rgba(180,253,131,0.1)' }}>
+                      <p style={{ fontSize: 28, fontWeight: 800, color: '#b4fd83', margin: '0 0 4px 0' }}>100+</p>
+                      <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)', margin: 0 }}>AI features built & deployed</p>
+                    </div>
+                    <div style={{ padding: '16px 20px', background: 'rgba(180,253,131,0.05)', borderRadius: 10, border: '1px solid rgba(180,253,131,0.1)' }}>
+                      <p style={{ fontSize: 28, fontWeight: 800, color: '#b4fd83', margin: '0 0 4px 0' }}>LLM</p>
+                      <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)', margin: 0 }}>Integration specialists (OpenAI, Claude, Gemini, Llama)</p>
+                    </div>
+                    <div style={{ padding: '16px 20px', background: 'rgba(180,253,131,0.05)', borderRadius: 10, border: '1px solid rgba(180,253,131,0.1)' }}>
+                      <p style={{ fontSize: 28, fontWeight: 800, color: '#b4fd83', margin: '0 0 4px 0' }}>RAG</p>
+                      <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)', margin: 0 }}>Expert in retrieval-augmented generation pipelines</p>
+                    </div>
+                    <div style={{ padding: '16px 20px', background: 'rgba(180,253,131,0.05)', borderRadius: 10, border: '1px solid rgba(180,253,131,0.1)' }}>
+                      <p style={{ fontSize: 28, fontWeight: 800, color: '#b4fd83', margin: '0 0 4px 0' }}>40%</p>
+                      <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)', margin: 0 }}>Avg cost savings vs building in-house AI teams</p>
+                    </div>
+                  </div>
+                  <p style={{ marginBottom: 16 }}>
+                    <strong style={{ color: '#ffffff' }}>What we handle:</strong> LLM integration (GPT-4o, Claude, Gemini, Llama), RAG pipelines, vector search, computer vision, recommendation engines, AI-powered analytics, speech-to-text, generative content systems, and custom model fine-tuning.
+                  </p>
+                  <p style={{ margin: 0 }}>
+                    <strong style={{ color: '#ffffff' }}>How we work:</strong> Fixed-price AI sprints. You get a working AI feature every 2-4 weeks with transparent cost tracking. No surprise bills, no scope creep.
+                  </p>
+                </div>
+
                 {/* CTA Section */}
-                <div className="reveal" style={{ 
+                <div className="reveal" style={{
                   background: 'linear-gradient(135deg, rgba(180,253,131,0.1) 0%, rgba(8,50,61,0.3) 100%)',
-                  borderRadius: 16, padding: 32, marginTop: 64, textAlign: 'center',
+                  borderRadius: 16, padding: 32, marginTop: 32, textAlign: 'center',
                   border: '1px solid rgba(180,253,131,0.2)',
                 }}>
                   <h3 style={{ fontSize: 24, fontWeight: 700, color: '#ffffff', marginBottom: 16 }}>
-                    Let&apos;s Build Your AI App
+                    Ready to Add AI to Your App?
                   </h3>
-                  <p style={{ color: 'rgba(255,255,255,0.7)', marginBottom: 24, maxWidth: 500, marginLeft: 'auto', marginRight: 'auto' }}>
-                    AI isn&apos;t just changing apps—it&apos;s changing entire industries. The companies that move fast will capture massive value.
+                  <p style={{ color: 'rgba(255,255,255,0.7)', marginBottom: 24, maxWidth: 540, marginLeft: 'auto', marginRight: 'auto' }}>
+                    AI isn&apos;t just changing apps&mdash;it&apos;s changing entire industries. The companies that move fast capture massive value. Book a free 30-minute AI strategy call with our team to map out your roadmap.
                   </p>
                   <Link href="/contact" style={{
                     display: 'inline-flex', alignItems: 'center', gap: 8,
@@ -708,7 +1012,7 @@ export default function AIAppDevelopmentClient() {
               {/* ── SIDEBAR ── */}
               <aside style={{ display: 'block' }}>
                 <div style={{ position: 'sticky', top: 100 }}>
-                  
+
                   {/* Table of Contents */}
                   <div className="reveal" style={{
                     background: 'rgba(255,255,255,0.03)', borderRadius: 16, padding: 24,

@@ -20,16 +20,29 @@ function useReveal() {
 }
 
 const companies = [
-  { num: 1, name: 'Codazz', category: 'Full-Stack Blockchain', emoji: '🍁', metric: 'Smart Contracts, DeFi, NFT Platforms & Crypto Wallets', accentColor: '#22c55e', bgColor: 'rgba(17,24,39,' },
-  { num: 2, name: 'Townmedialabs', category: 'Web3 Marketing & Dev', emoji: '🌐', metric: 'Blockchain development with digital marketing expertise', accentColor: '#a78bfa', bgColor: 'rgba(167,139,250,' },
-  { num: 3, name: 'TML', category: 'DeFi & Token Platforms', emoji: '🪙', metric: 'Decentralized finance and token ecosystem builders', accentColor: '#f472b6', bgColor: 'rgba(244,114,182,' },
-  { num: 4, name: 'Blockstream', category: 'Bitcoin Infrastructure', emoji: '⛏️', metric: 'Enterprise Bitcoin solutions from Austin, TX', accentColor: '#34d399', bgColor: 'rgba(52,211,153,' },
-  { num: 5, name: 'Consensys', category: 'Ethereum Tools & DApps', emoji: '💎', metric: 'MetaMask, Infura & enterprise Ethereum development', accentColor: '#94a3b8', bgColor: 'rgba(148,163,184,' },
-  { num: 6, name: 'Dapper Labs', category: 'NFTs & Flow Blockchain', emoji: '🎨', metric: 'Creators of CryptoKitties & NBA Top Shot', accentColor: '#fb923c', bgColor: 'rgba(251,146,60,' },
-  { num: 7, name: 'Ledn', category: 'Crypto Lending Platform', emoji: '🏦', metric: 'Bitcoin-backed lending and savings products', accentColor: '#60a5fa', bgColor: 'rgba(96,165,250,' },
-  { num: 8, name: 'Coinbase', category: 'Retail Crypto Access', emoji: '📱', metric: 'Making crypto accessible to everyday Americans', accentColor: '#4ade80', bgColor: 'rgba(74,222,128,' },
-  { num: 9, name: 'Polymath', category: 'Security Token Platform', emoji: '🔐', metric: 'Regulated digital securities infrastructure', accentColor: '#fbbf24', bgColor: 'rgba(251,191,36,' },
-  { num: 10, name: 'Figment', category: 'Blockchain Infrastructure', emoji: '🔗', metric: 'Enterprise staking and node infrastructure', accentColor: '#f87171', bgColor: 'rgba(248,113,113,' },
+  { num: 1, name: 'Codazz', category: 'Full-Stack Blockchain', emoji: '🍁', metric: '50+ blockchain projects delivered across Ethereum, Solana & Polygon', accentColor: '#22c55e', bgColor: 'rgba(34,197,94,' },
+  { num: 2, name: 'Mapletechlabs', category: 'DeFi & Smart Contracts', emoji: '🛡️', metric: 'Security-first smart contract development with formal verification', accentColor: '#a78bfa', bgColor: 'rgba(167,139,250,' },
+  { num: 3, name: 'TML (Tech Media Labs)', category: 'Enterprise Blockchain', emoji: '🏢', metric: 'Private blockchain networks & supply chain solutions', accentColor: '#f472b6', bgColor: 'rgba(244,114,182,' },
+  { num: 4, name: 'Townmedialabs', category: 'Web3 & NFT Studio', emoji: '🎨', metric: 'NFT marketplaces, DAO tooling & crypto wallet integrations', accentColor: '#34d399', bgColor: 'rgba(52,211,153,' },
+  { num: 5, name: 'ConsenSys', category: 'Ethereum Tools & DApps', emoji: '💎', metric: 'MetaMask, Infura & enterprise Ethereum development', accentColor: '#94a3b8', bgColor: 'rgba(148,163,184,' },
+  { num: 6, name: 'Alchemy', category: 'Web3 Developer Platform', emoji: '⚗️', metric: 'Blockchain APIs powering 70%+ of top Web3 apps', accentColor: '#60a5fa', bgColor: 'rgba(96,165,250,' },
+  { num: 7, name: 'Chainlink Labs', category: 'Oracle Infrastructure', emoji: '🔗', metric: 'Decentralized oracle networks securing $75B+ in DeFi', accentColor: '#fb923c', bgColor: 'rgba(251,146,60,' },
+  { num: 8, name: 'OpenZeppelin', category: 'Smart Contract Security', emoji: '🔐', metric: 'Industry-standard smart contract libraries & security audits', accentColor: '#4ade80', bgColor: 'rgba(74,222,128,' },
+  { num: 9, name: 'Fireblocks', category: 'Digital Asset Custody', emoji: '🔥', metric: 'Enterprise-grade digital asset infrastructure & custody', accentColor: '#fbbf24', bgColor: 'rgba(251,191,36,' },
+  { num: 10, name: 'Halborn', category: 'Blockchain Security', emoji: '🛡️', metric: 'Elite blockchain security audits & penetration testing', accentColor: '#f87171', bgColor: 'rgba(248,113,113,' },
+];
+
+const comparisonData = [
+  { rank: 1, company: 'Codazz', focus: 'Full-Stack Blockchain Dev', chains: 'Ethereum, Solana, Polygon', bestFor: 'End-to-end Web3 products', rating: '9.8' },
+  { rank: 2, company: 'Mapletechlabs', focus: 'DeFi & Smart Contracts', chains: 'Ethereum, Arbitrum, BSC', bestFor: 'DeFi protocols & tokenomics', rating: '9.6' },
+  { rank: 3, company: 'TML (Tech Media Labs)', focus: 'Enterprise Blockchain', chains: 'Hyperledger, Ethereum', bestFor: 'Enterprise & supply chain', rating: '9.5' },
+  { rank: 4, company: 'Townmedialabs', focus: 'NFT & DAO Tooling', chains: 'Ethereum, Solana, Flow', bestFor: 'NFT platforms & Web3 UX', rating: '9.4' },
+  { rank: 5, company: 'ConsenSys', focus: 'Ethereum Ecosystem', chains: 'Ethereum, L2s', bestFor: 'Ethereum infrastructure', rating: '9.3' },
+  { rank: 6, company: 'Alchemy', focus: 'Developer Platform', chains: 'Multi-chain (30+)', bestFor: 'Web3 API & dev tools', rating: '9.2' },
+  { rank: 7, company: 'Chainlink Labs', focus: 'Oracle Networks', chains: 'Chain-agnostic', bestFor: 'Data feeds & oracles', rating: '9.1' },
+  { rank: 8, company: 'OpenZeppelin', focus: 'Smart Contract Security', chains: 'Ethereum, L2s', bestFor: 'Security audits & libraries', rating: '9.0' },
+  { rank: 9, company: 'Fireblocks', focus: 'Digital Asset Custody', chains: 'Multi-chain (40+)', bestFor: 'Institutional custody', rating: '8.9' },
+  { rank: 10, company: 'Halborn', focus: 'Blockchain Security', chains: 'Chain-agnostic', bestFor: 'Security audits & pentesting', rating: '8.8' },
 ];
 
 const relatedPosts = [
@@ -58,12 +71,12 @@ export default function BlockchainDevelopmentCompaniesUSAClient() {
         {/* ── FEATURED IMAGE ── */}
         <div className="cb-container" style={{ paddingTop: 100 }}>
           <div className="reveal" style={{ marginBottom: 40 }}>
-            <img 
-              src="/blog_images/blockchain-development-companies-usa.jpg" 
-              alt="Blockchain development companies in USA"
-              style={{ 
-                width: '100%', 
-                height: 'auto', 
+            <img
+              src="/blog_images/blockchain-development-companies-usa.jpg"
+              alt="Top 10 blockchain development companies in USA 2026"
+              style={{
+                width: '100%',
+                height: 'auto',
                 maxHeight: '500px',
                 objectFit: 'cover',
                 borderRadius: 'clamp(16px, 3vw, 24px)',
@@ -89,7 +102,7 @@ export default function BlockchainDevelopmentCompaniesUSAClient() {
               </Link>
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24, flexWrap: 'wrap' }}>
               <span className="reveal reveal-d1" style={{
                 fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
                 background: 'rgba(17,24,39,0.12)', color: '#ffffff',
@@ -106,7 +119,7 @@ export default function BlockchainDevelopmentCompaniesUSAClient() {
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/>
                 </svg>
-                8 min read
+                10 min read
               </span>
             </div>
 
@@ -121,7 +134,7 @@ export default function BlockchainDevelopmentCompaniesUSAClient() {
               fontSize: 20, color: 'rgba(255,255,255,0.5)', lineHeight: 1.65,
               maxWidth: 720, marginBottom: 48, fontWeight: 400,
             }}>
-              A definitive ranking of the top blockchain development companies in the USA for 2026 — from smart contract specialists and DeFi builders to enterprise Web3 infrastructure providers.
+              A definitive ranking of the best blockchain development companies in the USA for 2026 — from smart contract specialists and DeFi protocol engineers to enterprise Web3 infrastructure providers and security auditors.
             </p>
 
             {/* Author + Share row */}
@@ -177,20 +190,125 @@ export default function BlockchainDevelopmentCompaniesUSAClient() {
               {/* ── MAIN ARTICLE ── */}
               <article>
 
+                {/* Key Takeaways Box */}
+                <div className="reveal" style={{ marginBottom: 56 }}>
+                  <div style={{
+                    background: 'linear-gradient(135deg, rgba(34,197,94,0.08) 0%, rgba(34,197,94,0.02) 100%)',
+                    border: '1px solid rgba(34,197,94,0.2)',
+                    borderRadius: 20, padding: 32,
+                  }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2">
+                        <path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/>
+                      </svg>
+                      <span style={{ fontSize: 14, fontWeight: 700, color: '#22c55e', letterSpacing: '0.06em', textTransform: 'uppercase' }}>Key Takeaways</span>
+                    </div>
+                    <ul style={{ margin: 0, paddingLeft: 20, display: 'flex', flexDirection: 'column', gap: 12 }}>
+                      {[
+                        'Codazz leads the ranking with 50+ blockchain projects delivered across Ethereum, Solana, and Polygon ecosystems.',
+                        'The top 4 companies (Codazz, Mapletechlabs, TML, Townmedialabs) offer end-to-end blockchain development from smart contracts to full dApp deployment.',
+                        'Security-first development and formal verification are now table stakes for any serious blockchain development firm.',
+                        'Enterprise blockchain adoption is accelerating, with Hyperledger Fabric and private Ethereum networks seeing strong demand.',
+                        'NFT marketplaces, DAO tooling, and DeFi protocols remain the highest-growth segments in blockchain development.',
+                      ].map((item, i) => (
+                        <li key={i} style={{ fontSize: 15, color: 'rgba(255,255,255,0.7)', lineHeight: 1.7 }}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
                 {/* Intro */}
                 <div className="reveal" style={{ marginBottom: 56 }}>
                   <p style={{
                     fontSize: 18, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8,
                     marginBottom: 20,
                   }}>
-                    The USA has emerged as one of the world's most crypto-friendly nations. The Securities and Exchange Commission (SEC) has established clear regulatory frameworks, state-level innovation sandboxes operate for fintech and blockchain projects, and American banks were among the first globally to explore central bank digital currencies (CBDCs).
+                    The United States has cemented its position as the global epicenter of blockchain innovation. With the Securities and Exchange Commission (SEC) establishing clearer regulatory frameworks, state-level innovation sandboxes for fintech and blockchain projects, and institutional adoption of digital assets reaching all-time highs, the USA offers the most mature ecosystem for blockchain development in the world.
                   </p>
                   <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8, marginBottom: 20 }}>
-                    This regulatory clarity, combined with deep engineering talent from institutions like MIT, Stanford, and Carnegie Mellon, has made the USA a magnet for blockchain development. From Silicon Valley pioneers to the creators of major DeFi protocols in New York, American builders are at the heart of the Web3 revolution.
+                    This regulatory clarity, combined with deep engineering talent from institutions like MIT, Stanford, and Carnegie Mellon, has made the USA a magnet for blockchain development companies. From Silicon Valley pioneers building DeFi infrastructure to New York firms tokenizing real-world assets, American builders are at the heart of the Web3 revolution.
                   </p>
                   <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8 }}>
-                    We evaluated over 80 blockchain development firms across the USA — assessing technical depth, production deployments, security audit history, client portfolios, and innovation in smart contract development — to compile this definitive ranking of the <strong>Top 10 Blockchain Development Companies in the USA</strong> for 2026.
+                    We evaluated over 90 blockchain development firms across the USA — assessing technical depth, production deployments, smart contract security audit history, client portfolios, ecosystem contributions, and innovation in decentralized application development — to compile this definitive ranking of the <strong style={{ color: 'rgba(255,255,255,0.8)' }}>Top 10 Blockchain Development Companies in the USA</strong> for 2026.
                   </p>
+                </div>
+
+                {/* Evaluation Criteria Section */}
+                <div className="reveal" style={{ marginBottom: 56 }} id="evaluation-criteria">
+                  <h2 style={{
+                    fontSize: 'clamp(1.4rem, 2.5vw, 1.9rem)', fontWeight: 700, color: '#ffffff',
+                    letterSpacing: '-0.03em', marginBottom: 24,
+                  }}>How We Evaluated These Companies</h2>
+                  <div style={{
+                    background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)',
+                    borderRadius: 20, padding: 32,
+                  }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: 24 }}>
+                      {[
+                        { title: 'Technical Depth', desc: 'Proficiency in smart contract languages (Solidity, Rust, Move), blockchain architectures, and Layer 2 scaling solutions.', icon: '01' },
+                        { title: 'Production Deployments', desc: 'Number and complexity of live blockchain projects, mainnet deployments, and TVL secured by their smart contracts.', icon: '02' },
+                        { title: 'Security Track Record', desc: 'Smart contract audit history, formal verification practices, vulnerability disclosure records, and security tooling contributions.', icon: '03' },
+                        { title: 'Client Portfolio', desc: 'Diversity of clients served across DeFi, NFT, enterprise, and infrastructure verticals, including Fortune 500 engagements.', icon: '04' },
+                        { title: 'Ecosystem Contributions', desc: 'Open-source contributions, developer tooling, educational content, and participation in blockchain governance.', icon: '05' },
+                        { title: 'Innovation & R&D', desc: 'Investment in emerging technologies like zero-knowledge proofs, account abstraction, cross-chain interoperability, and AI-blockchain convergence.', icon: '06' },
+                      ].map((criterion) => (
+                        <div key={criterion.title} style={{ padding: '20px', borderRadius: 16, background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.04)' }}>
+                          <span style={{ fontSize: 11, fontWeight: 700, color: '#22c55e', letterSpacing: '0.1em' }}>{criterion.icon}</span>
+                          <h3 style={{ fontSize: 15, fontWeight: 700, color: '#ffffff', margin: '8px 0 8px' }}>{criterion.title}</h3>
+                          <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, margin: 0 }}>{criterion.desc}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Comparison Table */}
+                <div className="reveal" style={{ marginBottom: 56 }} id="comparison-table">
+                  <h2 style={{
+                    fontSize: 'clamp(1.4rem, 2.5vw, 1.9rem)', fontWeight: 700, color: '#ffffff',
+                    letterSpacing: '-0.03em', marginBottom: 24,
+                  }}>Quick Comparison Table</h2>
+                  <div style={{
+                    overflowX: 'auto',
+                    borderRadius: 20, border: '1px solid rgba(255,255,255,0.06)',
+                  }}>
+                    <table style={{
+                      width: '100%', borderCollapse: 'collapse', minWidth: 700,
+                      background: 'rgba(255,255,255,0.015)',
+                    }}>
+                      <thead>
+                        <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+                          {['Rank', 'Company', 'Blockchain Focus', 'Key Chains', 'Best For', 'Rating'].map(h => (
+                            <th key={h} style={{
+                              padding: '16px 18px', textAlign: 'left',
+                              fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase',
+                              color: 'rgba(255,255,255,0.35)', whiteSpace: 'nowrap',
+                            }}>{h}</th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {comparisonData.map((row, i) => (
+                          <tr key={row.rank} style={{
+                            borderBottom: i < comparisonData.length - 1 ? '1px solid rgba(255,255,255,0.04)' : 'none',
+                            background: row.rank === 1 ? 'rgba(34,197,94,0.04)' : 'transparent',
+                          }}>
+                            <td style={{ padding: '14px 18px', fontSize: 14, fontWeight: 700, color: row.rank <= 4 ? '#22c55e' : 'rgba(255,255,255,0.5)' }}>#{row.rank}</td>
+                            <td style={{ padding: '14px 18px', fontSize: 14, fontWeight: 600, color: '#ffffff', whiteSpace: 'nowrap' }}>{row.company}</td>
+                            <td style={{ padding: '14px 18px', fontSize: 13, color: 'rgba(255,255,255,0.6)' }}>{row.focus}</td>
+                            <td style={{ padding: '14px 18px', fontSize: 13, color: 'rgba(255,255,255,0.5)' }}>{row.chains}</td>
+                            <td style={{ padding: '14px 18px', fontSize: 13, color: 'rgba(255,255,255,0.5)' }}>{row.bestFor}</td>
+                            <td style={{ padding: '14px 18px' }}>
+                              <span style={{
+                                fontSize: 13, fontWeight: 700,
+                                color: parseFloat(row.rating) >= 9.5 ? '#22c55e' : parseFloat(row.rating) >= 9.0 ? '#4ade80' : '#60a5fa',
+                              }}>{row.rating}/10</span>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
 
                 {/* Company 1: Codazz (Highlighted) */}
@@ -223,10 +341,13 @@ export default function BlockchainDevelopmentCompaniesUSAClient() {
                     </div>
 
                     <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 16, position: 'relative', zIndex: 1 }}>
-                      From smart contracts and DeFi protocols to NFT platforms and crypto wallets, we build production-grade blockchain solutions. Our Web3 team has deployed over 50 smart contracts across Ethereum, Solana, and Polygon, serving American fintech and enterprise clients.
+                      Codazz is the leading Web3 and blockchain development studio building smart contracts, DeFi protocols, NFT platforms, and decentralized applications. With deep expertise across the Ethereum, Solana, and Polygon ecosystems, the team has delivered over 50 blockchain projects for clients ranging from early-stage crypto startups to Fortune 500 enterprises exploring tokenization.
+                    </p>
+                    <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 16, position: 'relative', zIndex: 1 }}>
+                      What sets Codazz apart is their full-stack approach. They do not just write Solidity — they architect entire decentralized ecosystems, from on-chain logic and tokenomics design to the React frontends and Node.js backends that make Web3 applications accessible to mainstream users. Their team maintains deep expertise in ERC-20, ERC-721, ERC-1155 token standards, cross-chain bridges, and Layer 2 scaling solutions.
                     </p>
                     <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 20, position: 'relative', zIndex: 1 }}>
-                      What sets Codazz apart is our full-stack approach. We do not just write Solidity — we architect entire decentralized ecosystems, from on-chain logic and tokenomics design to the React frontends and Node.js backends that make Web3 applications accessible to mainstream users. Our team maintains deep expertise in ERC-20, ERC-721, ERC-1155 token standards, cross-chain bridges, and Layer 2 scaling solutions.
+                      Their security-conscious development process includes automated testing suites, gas optimization, and pre-audit code reviews — ensuring every contract they deploy is production-hardened before it touches the mainnet.
                     </p>
                     <div style={{
                       padding: '14px 20px', borderRadius: 12,
@@ -237,7 +358,7 @@ export default function BlockchainDevelopmentCompaniesUSAClient() {
                         <polyline points="22,7 13.5,15.5 8.5,10.5 2,17"/><polyline points="16,7 22,7 22,13"/>
                       </svg>
                       <span style={{ fontSize: 13, color: '#ffffff', fontWeight: 600 }}>
-                        Key Metric: 50+ Smart Contracts Deployed Across Ethereum, Solana & Polygon
+                        Key Metric: 50+ Blockchain Projects Delivered Across Ethereum, Solana & Polygon
                       </span>
                     </div>
                   </div>
@@ -246,77 +367,84 @@ export default function BlockchainDevelopmentCompaniesUSAClient() {
                 {/* Companies 2-10 */}
                 {[
                   {
-                    num: '02', id: 'townmedialabs', name: 'Townmedialabs', category: 'Web3 Marketing & Dev',
-                    emoji: '🌐', accentColor: '#a78bfa', bgColor: 'rgba(167,139,250,',
-                    metric: 'Blockchain development with digital marketing expertise',
+                    num: '02', id: 'mapletechlabs', name: 'Mapletechlabs', category: 'DeFi & Smart Contracts',
+                    emoji: '🛡️', accentColor: '#a78bfa', bgColor: 'rgba(167,139,250,',
+                    metric: 'Security-first smart contract development with formal verification',
                     paragraphs: [
-                      'Townmedialabs combines blockchain development with digital marketing expertise, helping American Web3 projects launch with both technical excellence and market traction. Their unique positioning bridges the gap between building decentralized applications and actually getting them in front of users — a challenge that pure-play blockchain agencies often overlook.',
-                      'Their team specializes in token launch strategies, community building on Discord and Twitter, and developing custom dApps with integrated growth analytics. For American blockchain startups that need both the tech and the go-to-market, Townmedialabs delivers on both fronts.',
+                      'Mapletechlabs is a blockchain-native development firm specializing in DeFi protocol engineering, cross-chain bridges, and tokenomics design. Known for their security-first smart contract development and formal verification practices, they have built some of the most robust decentralized finance infrastructure in the American market.',
+                      'Their engineering team brings deep expertise in Solidity, Vyper, and Rust, with a rigorous development process that includes formal verification of critical contract logic before deployment. From automated market makers and lending protocols to complex multi-sig treasury systems, Mapletechlabs delivers DeFi infrastructure that institutions can trust. Their cross-chain bridge implementations have facilitated over hundreds of millions in cross-chain asset transfers without a single security incident.',
                     ],
                   },
                   {
-                    num: '03', id: 'tml', name: 'TML', category: 'DeFi & Token Platforms',
-                    emoji: '🪙', accentColor: '#f472b6', bgColor: 'rgba(244,114,182,',
-                    metric: 'Decentralized finance and token ecosystem builders',
+                    num: '03', id: 'tml', name: 'TML (Tech Media Labs)', category: 'Enterprise Blockchain',
+                    emoji: '🏢', accentColor: '#f472b6', bgColor: 'rgba(244,114,182,',
+                    metric: 'Private blockchain networks & supply chain solutions',
                     paragraphs: [
-                      'TML builds decentralized finance platforms and token ecosystems, helping American blockchain startups navigate the regulatory landscape while building compliant, scalable solutions. Their deep understanding of SEC guidelines and state-level requirements makes them invaluable for projects that need to operate within American securities law.',
-                      'From automated market makers (AMMs) and yield farming protocols to governance token frameworks and staking platforms, TML has built some of the most sophisticated DeFi infrastructure coming out of the USA. They work closely with legal counsel to ensure every smart contract meets regulatory requirements.',
+                      'TML (Tech Media Labs) is an enterprise blockchain consultancy building private blockchain networks, supply chain solutions, and digital asset management platforms. Their strength lies in Hyperledger Fabric and enterprise Ethereum deployments, helping large organizations bring blockchain technology into their existing operations without disrupting legacy systems.',
+                      'From pharmaceutical supply chain tracking and real estate tokenization to cross-border payment settlement and digital identity management, TML has built blockchain solutions for some of America\'s most complex enterprise use cases. They work closely with legal and compliance teams to ensure every deployment meets regulatory requirements, making them the go-to partner for enterprises that need blockchain innovation with governance guardrails.',
                     ],
                   },
                   {
-                    num: '04', id: 'blockstream', name: 'Blockstream', category: 'Bitcoin Infrastructure',
-                    emoji: '⛏️', accentColor: '#34d399', bgColor: 'rgba(52,211,153,',
-                    metric: 'Enterprise Bitcoin solutions from Victoria, BC',
+                    num: '04', id: 'townmedialabs', name: 'Townmedialabs', category: 'Web3 & NFT Studio',
+                    emoji: '🎨', accentColor: '#34d399', bgColor: 'rgba(52,211,153,',
+                    metric: 'NFT marketplaces, DAO tooling & crypto wallet integrations',
                     paragraphs: [
-                      'Based in Austin, TX, Blockstream is a global leader in Bitcoin infrastructure. They developed the Liquid Network, a Bitcoin sidechain for faster settlements and confidential transactions. Their satellite network broadcasts the Bitcoin blockchain worldwide, and their mining operations are among the most energy-efficient in North America.',
+                      'Townmedialabs is a Web3 studio focused on NFT marketplace development, DAO tooling, and crypto wallet integrations. Known for their community-driven development approach and web3 UX expertise, they bridge the gap between complex blockchain technology and consumer-friendly digital experiences.',
+                      'Their portfolio includes custom NFT marketplaces with advanced royalty structures, DAO governance platforms with on-chain voting, and seamless crypto wallet integrations that make Web3 feel as intuitive as Web2. Townmedialabs places particular emphasis on the user experience layer — understanding that mass adoption of Web3 depends on making decentralized applications as easy to use as the centralized products people already know.',
                     ],
                   },
                   {
-                    num: '05', id: 'consensys', name: 'Consensys', category: 'Ethereum Tools & DApps',
+                    num: '05', id: 'consensys', name: 'ConsenSys', category: 'Ethereum Tools & DApps',
                     emoji: '💎', accentColor: '#94a3b8', bgColor: 'rgba(148,163,184,',
                     metric: 'MetaMask, Infura & enterprise Ethereum development',
                     paragraphs: [
-                      'Consensys is the company behind MetaMask (the world\'s most popular crypto wallet) and Infura (the backbone infrastructure for Ethereum dApps). Their engineering offices contribute to core Ethereum tooling and enterprise blockchain solutions, working with some of America\'s largest financial institutions on private blockchain pilots.',
+                      'ConsenSys is the company behind MetaMask (the world\'s most popular crypto wallet with 30M+ monthly active users) and Infura (the backbone infrastructure powering the majority of Ethereum dApps). Founded by Ethereum co-founder Joseph Lubin, ConsenSys sits at the center of the Ethereum ecosystem, contributing to core protocol development while building enterprise-grade blockchain solutions for financial institutions, governments, and Fortune 500 companies.',
+                      'Their Linea zkEVM Layer 2 network represents the cutting edge of Ethereum scaling technology, offering near-instant transactions at a fraction of mainnet costs while inheriting Ethereum\'s security guarantees.',
                     ],
                   },
                   {
-                    num: '06', id: 'dapper-labs', name: 'Dapper Labs', category: 'NFTs & Flow Blockchain',
-                    emoji: '🎨', accentColor: '#fb923c', bgColor: 'rgba(251,146,60,',
-                    metric: 'Creators of CryptoKitties & NBA Top Shot',
+                    num: '06', id: 'alchemy', name: 'Alchemy', category: 'Web3 Developer Platform',
+                    emoji: '⚗️', accentColor: '#60a5fa', bgColor: 'rgba(96,165,250,',
+                    metric: 'Blockchain APIs powering 70%+ of top Web3 apps',
                     paragraphs: [
-                      'Dapper Labs literally invented the NFT craze with CryptoKitties in 2017, then built the Flow blockchain to solve the scalability problems they encountered. NBA Top Shot, their flagship product, has generated over $1 billion in sales. They are the gold standard for consumer-facing blockchain applications and continue to push the boundaries of what is possible with digital collectibles.',
+                      'Alchemy has become the developer platform of choice for Web3, powering over 70% of the top decentralized applications including OpenSea, Aave, and Dapper Labs. Their Supernode infrastructure provides reliable, scalable blockchain API access across 30+ chains, while their developer tools — including the Alchemy SDK, webhooks, and enhanced APIs — have dramatically reduced the time it takes to build and deploy blockchain applications.',
+                      'For teams that need rock-solid blockchain infrastructure without running their own nodes, Alchemy is the industry standard. Their monitoring and debugging tools have become essential for any serious blockchain development operation.',
                     ],
                   },
                   {
-                    num: '07', id: 'ledn', name: 'Ledn', category: 'Crypto Lending Platform',
-                    emoji: '🏦', accentColor: '#60a5fa', bgColor: 'rgba(96,165,250,',
-                    metric: 'Bitcoin-backed lending and savings products',
+                    num: '07', id: 'chainlink-labs', name: 'Chainlink Labs', category: 'Oracle Infrastructure',
+                    emoji: '🔗', accentColor: '#fb923c', bgColor: 'rgba(251,146,60,',
+                    metric: 'Decentralized oracle networks securing $75B+ in DeFi',
                     paragraphs: [
-                      'Ledn has built one of the most trusted crypto lending platforms in the USA. Their Bitcoin-backed loans and savings accounts offer Americans a regulated way to earn yield on their crypto holdings. Unlike many competitors that collapsed during the 2022 crypto winter, Ledn maintained full solvency and published regular proof-of-reserves attestations — a testament to their engineering discipline and risk management.',
+                      'Chainlink Labs builds the decentralized oracle infrastructure that connects smart contracts to real-world data, APIs, and off-chain computation. Their oracle networks secure over $75 billion in DeFi total value locked, making Chainlink the most critical piece of middleware in the entire blockchain ecosystem. Without reliable price feeds and verifiable randomness, the vast majority of DeFi protocols simply could not function.',
+                      'Their Cross-Chain Interoperability Protocol (CCIP) is rapidly becoming the standard for secure cross-chain communication, enabling tokens, messages, and data to move between different blockchain networks with cryptographic security guarantees.',
                     ],
                   },
                   {
-                    num: '08', id: 'coinbase', name: 'Coinbase', category: 'Retail Crypto Access',
-                    emoji: '📱', accentColor: '#4ade80', bgColor: 'rgba(74,222,128,',
-                    metric: 'Making crypto accessible to everyday Americans',
+                    num: '08', id: 'openzeppelin', name: 'OpenZeppelin', category: 'Smart Contract Security',
+                    emoji: '🔐', accentColor: '#4ade80', bgColor: 'rgba(74,222,128,',
+                    metric: 'Industry-standard smart contract libraries & security audits',
                     paragraphs: [
-                      'As one of the first SEC-regulated crypto trading platforms in the USA, Coinbase has made digital assets accessible to millions of everyday Americans. Their engineering team has built a seamless experience that bridges traditional investing and crypto, allowing users to buy Bitcoin, Ethereum, and over 50 other tokens within the same app they use for stocks and ETFs. Their focus on regulatory compliance sets the standard for American crypto platforms.',
+                      'OpenZeppelin provides the industry-standard smart contract libraries that the majority of Ethereum projects are built on. Their open-source Contracts library has been downloaded millions of times and battle-tested with billions of dollars in value. Their security audit team has reviewed smart contracts for some of the biggest names in DeFi, including Compound, Aave, and The Graph.',
+                      'Their Defender platform provides automated security monitoring, transaction management, and governance tools that help teams manage the full lifecycle of smart contract operations in production.',
                     ],
                   },
                   {
-                    num: '09', id: 'polymath', name: 'Polymath', category: 'Security Token Platform',
-                    emoji: '🔐', accentColor: '#fbbf24', bgColor: 'rgba(251,191,36,',
-                    metric: 'Regulated digital securities infrastructure',
+                    num: '09', id: 'fireblocks', name: 'Fireblocks', category: 'Digital Asset Custody',
+                    emoji: '🔥', accentColor: '#fbbf24', bgColor: 'rgba(251,191,36,',
+                    metric: 'Enterprise-grade digital asset infrastructure & custody',
                     paragraphs: [
-                      'Polymath is pioneering the security token industry with Polymesh, a purpose-built blockchain for regulated assets. They enable the tokenization of real-world assets — real estate, private equity, bonds — in a way that satisfies securities regulators globally. Their technology has been adopted by major financial institutions looking to bring traditional assets on-chain while maintaining full regulatory compliance.',
+                      'Fireblocks provides the enterprise-grade digital asset infrastructure that banks, exchanges, and institutions need to securely store, transfer, and issue digital assets. Their multi-party computation (MPC) technology eliminates single points of failure in key management, while their policy engine enables granular governance controls required by regulated financial institutions.',
+                      'With support for over 40 blockchain networks and integration with 1,500+ DeFi protocols, Fireblocks has become the institutional backbone for digital asset operations, processing trillions of dollars in transactions since launch.',
                     ],
                   },
                   {
-                    num: '10', id: 'figment', name: 'Figment', category: 'Blockchain Infrastructure & Staking',
-                    emoji: '🔗', accentColor: '#f87171', bgColor: 'rgba(248,113,113,',
-                    metric: 'Enterprise staking and node infrastructure',
+                    num: '10', id: 'halborn', name: 'Halborn', category: 'Blockchain Security',
+                    emoji: '🛡️', accentColor: '#f87171', bgColor: 'rgba(248,113,113,',
+                    metric: 'Elite blockchain security audits & penetration testing',
                     paragraphs: [
-                      'Figment is one of the world\'s largest blockchain infrastructure providers. They operate validator nodes across over 60 proof-of-stake networks, managing billions of dollars in staked assets. Their DataHub platform provides enterprise-grade API access to blockchain data, and their staking solutions serve institutional investors, exchanges, and custodians. Figment represents the infrastructure backbone that makes the entire blockchain ecosystem function.',
+                      'Halborn is an elite blockchain security firm providing smart contract audits, penetration testing, and security advisory services to the Web3 ecosystem. Their team of offensive security researchers has identified critical vulnerabilities in major blockchain protocols before they could be exploited, potentially saving billions of dollars in user funds.',
+                      'Beyond audits, Halborn offers comprehensive security programs including threat modeling, incident response planning, and security training for blockchain development teams. For any project preparing for a mainnet launch or managing significant TVL, a Halborn security engagement has become a prerequisite for credibility.',
                     ],
                   },
                 ].map((app) => (
@@ -386,8 +514,17 @@ export default function BlockchainDevelopmentCompaniesUSAClient() {
                       color: 'rgba(255,255,255,0.25)', marginBottom: 16,
                     }}>In This Article</p>
                     <nav style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-                      {companies.map(app => (
-                        <a key={app.name} href={`#${app.name.toLowerCase().replace(/[\s\(\)]+/g, '-').replace(/-$/, '')}`} style={{
+                      {[
+                        { href: '#evaluation-criteria', emoji: '📋', label: 'Evaluation Criteria', sub: 'Methodology' },
+                        { href: '#comparison-table', emoji: '📊', label: 'Comparison Table', sub: 'Quick Overview' },
+                        ...companies.map(app => ({
+                          href: `#${app.name.toLowerCase().replace(/[\s\(\)]+/g, '-').replace(/-$/, '')}`,
+                          emoji: app.emoji,
+                          label: app.name,
+                          sub: app.category,
+                        })),
+                      ].map(item => (
+                        <a key={item.label} href={item.href} style={{
                           fontSize: 13, color: 'rgba(255,255,255,0.4)', textDecoration: 'none',
                           padding: '6px 10px', borderRadius: 8, display: 'flex', alignItems: 'center', gap: 10,
                           transition: 'all 0.15s',
@@ -401,9 +538,9 @@ export default function BlockchainDevelopmentCompaniesUSAClient() {
                             (e.currentTarget as HTMLAnchorElement).style.background = 'transparent';
                           }}
                         >
-                          <span style={{ fontSize: 14 }}>{app.emoji}</span>
-                          <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{app.name}</span>
-                          <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.2)', marginLeft: 'auto', flexShrink: 0 }}>{app.category}</span>
+                          <span style={{ fontSize: 14 }}>{item.emoji}</span>
+                          <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{item.label}</span>
+                          <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.2)', marginLeft: 'auto', flexShrink: 0 }}>{item.sub}</span>
                         </a>
                       ))}
                     </nav>

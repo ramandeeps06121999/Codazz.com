@@ -20,17 +20,20 @@ function useReveal() {
 }
 
 const tocItems = [
+  { id: 'key-takeaways', label: 'Key Takeaways', emoji: '🎯' },
+  { id: 'cost-by-channel', label: 'Cost by Channel', emoji: '📊' },
   { id: 'seo', label: 'SEO', emoji: '🔍' },
   { id: 'ppc', label: 'Google Ads (PPC)', emoji: '🎯' },
   { id: 'social', label: 'Social Media Marketing', emoji: '📱' },
   { id: 'content', label: 'Content Marketing', emoji: '✍️' },
   { id: 'email', label: 'Email Marketing', emoji: '📧' },
   { id: 'full-service', label: 'Full-Service', emoji: '🚀' },
+  { id: 'agency-vs-inhouse', label: 'Agency vs In-House vs Freelancer', emoji: '🤔' },
+  { id: 'budget-by-size', label: 'Budget by Business Size', emoji: '🏢' },
   { id: 'pricing-models', label: 'Pricing Models', emoji: '💰' },
   { id: 'roi', label: 'ROI Expectations', emoji: '📈' },
-  { id: 'agency-vs-freelancer', label: 'Agency vs Freelancer', emoji: '🤔' },
-  { id: 'codazz-approach', label: 'Codazz Approach', emoji: '🍁' },
   { id: 'red-flags', label: 'Red Flags', emoji: '🚩' },
+  { id: 'why-codazz', label: 'Why Codazz', emoji: '🍁' },
 ];
 
 const relatedPosts = [
@@ -78,6 +81,60 @@ const costCards = [
   },
 ];
 
+/* ── Comparison Table Data ── */
+const channelComparisonData = [
+  { channel: 'SEO', monthlyCost: '$1,500 - $10,000', roiTimeline: '4 - 8 months', bestFor: 'Long-term organic growth & authority' },
+  { channel: 'PPC (Google Ads)', monthlyCost: '$2,000 - $15,000 + ad spend', roiTimeline: '1 - 3 months', bestFor: 'Immediate traffic & lead generation' },
+  { channel: 'Social Media', monthlyCost: '$1,000 - $8,000', roiTimeline: '3 - 6 months', bestFor: 'Brand awareness & community building' },
+  { channel: 'Content Marketing', monthlyCost: '$2,000 - $10,000', roiTimeline: '6 - 12 months', bestFor: 'Thought leadership & SEO support' },
+  { channel: 'Email Marketing', monthlyCost: '$500 - $3,000', roiTimeline: '1 - 3 months', bestFor: 'Customer retention & nurturing leads' },
+];
+
+const agencyComparisonData = [
+  { factor: 'Monthly Cost', agency: '$5,000 - $25,000+', inHouse: '$12,000 - $35,000+ (salaries)', freelancer: '$1,000 - $5,000' },
+  { factor: 'Team Size', agency: '5-15 specialists', inHouse: '2-5 hires minimum', freelancer: '1 person' },
+  { factor: 'Expertise Breadth', agency: 'Multi-channel specialists', inHouse: 'Depends on hires', freelancer: 'Usually 1-2 channels' },
+  { factor: 'Scalability', agency: 'High (flex up/down)', inHouse: 'Low (hiring cycles)', freelancer: 'Very limited' },
+  { factor: 'Accountability', agency: 'Contracted KPIs', inHouse: 'Direct management', freelancer: 'Varies widely' },
+  { factor: 'Ramp-Up Time', agency: '2-4 weeks', inHouse: '3-6 months to hire & train', freelancer: '1-2 weeks' },
+  { factor: 'Risk Level', agency: 'Low (diversified team)', inHouse: 'Medium (turnover risk)', freelancer: 'High (single point of failure)' },
+];
+
+const budgetByBusinessSize = [
+  { size: 'Startup (<$500K revenue)', seo: '$1,500 - $3,000', ppc: '$1,000 - $3,000', social: '$500 - $2,000', content: '$1,000 - $2,500', email: '$300 - $800', total: '$4,300 - $11,300' },
+  { size: 'Small Business ($500K - $5M)', seo: '$3,000 - $6,000', ppc: '$3,000 - $8,000', social: '$1,500 - $4,000', content: '$2,000 - $5,000', email: '$500 - $1,500', total: '$10,000 - $24,500' },
+  { size: 'Mid-Market ($5M - $50M)', seo: '$5,000 - $10,000', ppc: '$5,000 - $15,000', social: '$3,000 - $8,000', content: '$4,000 - $8,000', email: '$1,500 - $3,000', total: '$18,500 - $44,000' },
+  { size: 'Enterprise ($50M+)', seo: '$8,000 - $15,000+', ppc: '$10,000 - $30,000+', social: '$5,000 - $15,000+', content: '$6,000 - $15,000+', email: '$2,000 - $5,000+', total: '$31,000 - $80,000+' },
+];
+
+/* ── Shared Styles ── */
+const tableHeaderStyle: React.CSSProperties = {
+  padding: '14px 18px', textAlign: 'left', fontSize: 12, fontWeight: 700,
+  letterSpacing: '0.08em', textTransform: 'uppercase', color: '#22c55e',
+  borderBottom: '1px solid rgba(34,197,94,0.2)', background: 'rgba(34,197,94,0.06)',
+  whiteSpace: 'nowrap',
+};
+
+const tableCellStyle: React.CSSProperties = {
+  padding: '14px 18px', fontSize: 14, color: 'rgba(255,255,255,0.6)',
+  borderBottom: '1px solid rgba(255,255,255,0.04)', lineHeight: 1.5,
+};
+
+const tableCellBoldStyle: React.CSSProperties = {
+  ...tableCellStyle, color: '#ffffff', fontWeight: 600,
+};
+
+const proTipBoxStyle: React.CSSProperties = {
+  background: 'linear-gradient(135deg, rgba(251,191,36,0.08) 0%, rgba(255,255,255,0.015) 100%)',
+  border: '1px solid rgba(251,191,36,0.25)',
+  borderRadius: 20, padding: '28px 32px', marginBottom: 32, position: 'relative', overflow: 'hidden',
+};
+
+const sectionHeadingStyle: React.CSSProperties = {
+  fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', fontWeight: 700, color: '#ffffff',
+  letterSpacing: '-0.03em', marginBottom: 24,
+};
+
 export default function DigitalMarketingCostUSAClient() {
   const pageRef = useReveal();
   const [copied, setCopied] = useState(false);
@@ -97,12 +154,12 @@ export default function DigitalMarketingCostUSAClient() {
 
         {/* ── FEATURED IMAGE ── */}
         <div className="reveal" style={{ marginBottom: 40 }}>
-          <img 
-            src="/blog_images/digital-marketing-cost-usa.jpg" 
-            alt="Digital marketing cost in USA"
-            style={{ 
-              width: '100%', 
-              height: 'auto', 
+          <img
+            src="/blog_images/digital-marketing-cost-usa.jpg"
+            alt="Digital marketing cost in USA — a transparent 2026 pricing guide for every channel"
+            style={{
+              width: '100%',
+              height: 'auto',
               maxHeight: '500px',
               objectFit: 'cover',
               borderRadius: 'clamp(16px, 3vw, 24px)',
@@ -127,7 +184,7 @@ export default function DigitalMarketingCostUSAClient() {
               </Link>
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24, flexWrap: 'wrap' }}>
               <span className="reveal reveal-d1" style={{
                 fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
                 background: 'rgba(17,24,39,0.12)', color: '#ffffff',
@@ -135,7 +192,7 @@ export default function DigitalMarketingCostUSAClient() {
               }}>Digital Marketing</span>
               <span className="reveal reveal-d1" style={{ fontSize: 13, color: 'rgba(255,255,255,0.25)' }}>March 14, 2026</span>
               <span style={{ color: 'rgba(255,255,255,0.4)', margin: '0 8px' }}>·</span>
-              <span style={{ color: 'rgba(255,255,255,0.4)' }}>Updated Mar 2026</span>
+              <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: 13 }}>Updated Mar 2026</span>
               <span className="reveal reveal-d1" style={{ fontSize: 13, color: 'rgba(255,255,255,0.25)' }}>·</span>
               <span className="reveal reveal-d1" style={{
                 fontSize: 13, color: 'rgba(255,255,255,0.25)',
@@ -144,7 +201,7 @@ export default function DigitalMarketingCostUSAClient() {
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/>
                 </svg>
-                9 min read
+                12 min read
               </span>
             </div>
 
@@ -159,7 +216,7 @@ export default function DigitalMarketingCostUSAClient() {
               fontSize: 20, color: 'rgba(255,255,255,0.5)', lineHeight: 1.65,
               maxWidth: 720, marginBottom: 48, fontWeight: 400,
             }}>
-              A transparent breakdown of digital marketing costs across every channel in the USA for 2026, so you can budget wisely and avoid overpaying or underspending.
+              A transparent breakdown of digital marketing costs across every channel in the USA for 2026 &mdash; with comparison tables, budget benchmarks by business size, and actionable tips to maximize your ROI.
             </p>
 
             {/* Author + Share row */}
@@ -215,6 +272,52 @@ export default function DigitalMarketingCostUSAClient() {
               {/* -- MAIN ARTICLE -- */}
               <article>
 
+                {/* ══════════════════════════════════════════════════════
+                    KEY TAKEAWAYS BOX
+                    ══════════════════════════════════════════════════════ */}
+                <div className="reveal" style={{ marginBottom: 56 }} id="key-takeaways">
+                  <div style={{
+                    background: 'linear-gradient(135deg, rgba(34,197,94,0.12) 0%, rgba(96,165,250,0.06) 100%)',
+                    border: '1px solid rgba(34,197,94,0.3)',
+                    borderRadius: 24, padding: '36px 40px', position: 'relative', overflow: 'hidden',
+                  }}>
+                    <div style={{ position: 'absolute', top: -30, right: -30, width: 180, height: 180, background: 'radial-gradient(circle, rgba(34,197,94,0.12) 0%, transparent 70%)', filter: 'blur(30px)' }} />
+                    <div style={{ position: 'relative', zIndex: 1 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
+                        <div style={{
+                          width: 40, height: 40, borderRadius: 12,
+                          background: 'rgba(34,197,94,0.15)', border: '1px solid rgba(34,197,94,0.3)',
+                          display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20,
+                        }}>
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                        </div>
+                        <h2 style={{ fontSize: 20, fontWeight: 800, color: '#ffffff', letterSpacing: '-0.02em', margin: 0 }}>
+                          Key Takeaways
+                        </h2>
+                      </div>
+                      <ul style={{ margin: 0, padding: '0 0 0 4px', listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 14 }}>
+                        {[
+                          'Most US businesses spend $4,000 - $25,000/month on digital marketing across all channels combined.',
+                          'SEO delivers the highest long-term ROI ($1,500 - $10K/month), while PPC provides the fastest results ($2K - $15K/month + ad spend).',
+                          'Agencies cost more upfront ($5K - $25K/month) than freelancers ($1K - $5K/month) but provide broader expertise, lower risk, and better scalability.',
+                          'The SBA recommends allocating 7 - 15% of gross revenue to marketing, with 60 - 80% going to digital channels in 2026.',
+                          'Technical website performance (load speed, Core Web Vitals) can amplify marketing ROI by 3 - 5x across every channel.',
+                        ].map((item, idx) => (
+                          <li key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
+                            <span style={{
+                              flexShrink: 0, width: 24, height: 24, borderRadius: 8,
+                              background: 'rgba(34,197,94,0.15)', border: '1px solid rgba(34,197,94,0.25)',
+                              display: 'flex', alignItems: 'center', justifyContent: 'center',
+                              fontSize: 12, fontWeight: 800, color: '#22c55e', marginTop: 1,
+                            }}>{idx + 1}</span>
+                            <span style={{ fontSize: 15, color: 'rgba(255,255,255,0.75)', lineHeight: 1.7 }}>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
                 {/* Intro */}
                 <div className="reveal" style={{ marginBottom: 56 }}>
                   <p style={{
@@ -231,7 +334,53 @@ export default function DigitalMarketingCostUSAClient() {
                   </p>
                 </div>
 
-                {/* Cost Cards */}
+                {/* ══════════════════════════════════════════════════════
+                    MARKETING COST BY CHANNEL — COMPARISON TABLE
+                    ══════════════════════════════════════════════════════ */}
+                <div className="reveal" style={{ marginBottom: 56 }} id="cost-by-channel">
+                  <h2 style={sectionHeadingStyle}>Marketing Cost by Channel at a Glance</h2>
+                  <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8, marginBottom: 24 }}>
+                    Before diving deep into each channel, here is a side-by-side comparison so you can quickly gauge where your dollars go furthest.
+                  </p>
+                  <div style={{ overflowX: 'auto', borderRadius: 20, border: '1px solid rgba(255,255,255,0.06)' }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 640 }}>
+                      <thead>
+                        <tr>
+                          <th style={tableHeaderStyle}>Channel</th>
+                          <th style={tableHeaderStyle}>Monthly Cost Range</th>
+                          <th style={tableHeaderStyle}>ROI Timeline</th>
+                          <th style={tableHeaderStyle}>Best For</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {channelComparisonData.map((row, idx) => (
+                          <tr key={row.channel} style={{ background: idx % 2 === 0 ? 'rgba(255,255,255,0.015)' : 'transparent' }}>
+                            <td style={tableCellBoldStyle}>{row.channel}</td>
+                            <td style={{ ...tableCellStyle, color: '#22c55e', fontWeight: 600 }}>{row.monthlyCost}</td>
+                            <td style={tableCellStyle}>{row.roiTimeline}</td>
+                            <td style={tableCellStyle}>{row.bestFor}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                {/* Pro Tip #1 */}
+                <div className="reveal" style={proTipBoxStyle}>
+                  <div style={{ position: 'absolute', top: -20, left: -20, width: 120, height: 120, background: 'radial-gradient(circle, rgba(251,191,36,0.15) 0%, transparent 70%)', filter: 'blur(20px)' }} />
+                  <div style={{ position: 'relative', zIndex: 1 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
+                      <span style={{ fontSize: 20 }}>💡</span>
+                      <span style={{ fontSize: 14, fontWeight: 800, color: '#fbbf24', letterSpacing: '0.06em', textTransform: 'uppercase' }}>Pro Tip — Start Smart</span>
+                    </div>
+                    <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, margin: 0 }}>
+                      Don&apos;t spread your budget thin across five channels on day one. Pick the <strong style={{ color: '#ffffff' }}>two highest-impact channels</strong> for your business (usually SEO + one paid channel), invest properly, measure results for 90 days, then expand. A focused $5,000/month beats a scattered $10,000/month every time.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Cost Cards — Deep Dive per Channel */}
                 {costCards.map((card) => (
                   <div key={card.id} className="reveal" style={{ marginBottom: 56 }} id={card.id}>
                     <div style={{
@@ -290,12 +439,124 @@ export default function DigitalMarketingCostUSAClient() {
                   </div>
                 ))}
 
+                {/* Pro Tip #2 */}
+                <div className="reveal" style={proTipBoxStyle}>
+                  <div style={{ position: 'absolute', top: -20, left: -20, width: 120, height: 120, background: 'radial-gradient(circle, rgba(251,191,36,0.15) 0%, transparent 70%)', filter: 'blur(20px)' }} />
+                  <div style={{ position: 'relative', zIndex: 1 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
+                      <span style={{ fontSize: 20 }}>💡</span>
+                      <span style={{ fontSize: 14, fontWeight: 800, color: '#fbbf24', letterSpacing: '0.06em', textTransform: 'uppercase' }}>Pro Tip — Negotiate Smarter</span>
+                    </div>
+                    <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, margin: 0 }}>
+                      Ask agencies for a <strong style={{ color: '#ffffff' }}>3-month pilot at 70-80% of their standard rate</strong> in exchange for a case study or testimonial if results are strong. Most reputable agencies will agree because it reduces their sales cycle and gives them proven results to show future clients. You save 20-30% while they gain social proof &mdash; everyone wins.
+                    </p>
+                  </div>
+                </div>
+
+                {/* ══════════════════════════════════════════════════════
+                    AGENCY vs IN-HOUSE vs FREELANCER TABLE
+                    ══════════════════════════════════════════════════════ */}
+                <div className="reveal" style={{ marginBottom: 56 }} id="agency-vs-inhouse">
+                  <h2 style={sectionHeadingStyle}>Agency vs. In-House vs. Freelancer: The Full Comparison</h2>
+                  <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8, marginBottom: 24 }}>
+                    This is one of the biggest decisions you will make. The right model depends on your budget, timeline, and how quickly you need to scale. Here is a head-to-head comparison across every factor that matters.
+                  </p>
+                  <div style={{ overflowX: 'auto', borderRadius: 20, border: '1px solid rgba(255,255,255,0.06)' }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 700 }}>
+                      <thead>
+                        <tr>
+                          <th style={tableHeaderStyle}>Factor</th>
+                          <th style={{ ...tableHeaderStyle, color: '#22c55e' }}>Agency</th>
+                          <th style={{ ...tableHeaderStyle, color: '#a78bfa' }}>In-House Team</th>
+                          <th style={{ ...tableHeaderStyle, color: '#f472b6' }}>Freelancer</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {agencyComparisonData.map((row, idx) => (
+                          <tr key={row.factor} style={{ background: idx % 2 === 0 ? 'rgba(255,255,255,0.015)' : 'transparent' }}>
+                            <td style={tableCellBoldStyle}>{row.factor}</td>
+                            <td style={tableCellStyle}>{row.agency}</td>
+                            <td style={tableCellStyle}>{row.inHouse}</td>
+                            <td style={tableCellStyle}>{row.freelancer}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+
+                  {/* Verdict Box */}
+                  <div style={{
+                    marginTop: 24, padding: '20px 24px', borderRadius: 16,
+                    background: 'rgba(34,197,94,0.06)', border: '1px solid rgba(34,197,94,0.15)',
+                    display: 'flex', alignItems: 'flex-start', gap: 14,
+                  }}>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, marginTop: 2 }}>
+                      <polyline points="22,7 13.5,15.5 8.5,10.5 2,17"/><polyline points="16,7 22,7 22,13"/>
+                    </svg>
+                    <span style={{ fontSize: 14, color: 'rgba(255,255,255,0.7)', lineHeight: 1.7 }}>
+                      <strong style={{ color: '#ffffff' }}>Our verdict:</strong> For most American businesses between $500K and $50M in revenue, a specialized agency delivers the best balance of cost, expertise, and results. Once you exceed $50M, a hybrid model (lean in-house team + agency partnership) often makes the most sense.
+                    </span>
+                  </div>
+                </div>
+
+                {/* ══════════════════════════════════════════════════════
+                    MARKETING BUDGET BY BUSINESS SIZE TABLE
+                    ══════════════════════════════════════════════════════ */}
+                <div className="reveal" style={{ marginBottom: 56 }} id="budget-by-size">
+                  <h2 style={sectionHeadingStyle}>Recommended Monthly Budget by Business Size</h2>
+                  <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8, marginBottom: 24 }}>
+                    Not sure where you fit? This table breaks down recommended monthly spend per channel based on your company&apos;s revenue. These are benchmarks from hundreds of US-based campaigns &mdash; use them as a starting point, not a hard rule.
+                  </p>
+                  <div style={{ overflowX: 'auto', borderRadius: 20, border: '1px solid rgba(255,255,255,0.06)' }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 800 }}>
+                      <thead>
+                        <tr>
+                          <th style={tableHeaderStyle}>Business Size</th>
+                          <th style={tableHeaderStyle}>SEO</th>
+                          <th style={tableHeaderStyle}>PPC</th>
+                          <th style={tableHeaderStyle}>Social</th>
+                          <th style={tableHeaderStyle}>Content</th>
+                          <th style={tableHeaderStyle}>Email</th>
+                          <th style={{ ...tableHeaderStyle, color: '#ffffff', background: 'rgba(34,197,94,0.12)' }}>Total / Month</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {budgetByBusinessSize.map((row, idx) => (
+                          <tr key={row.size} style={{ background: idx % 2 === 0 ? 'rgba(255,255,255,0.015)' : 'transparent' }}>
+                            <td style={tableCellBoldStyle}>{row.size}</td>
+                            <td style={tableCellStyle}>{row.seo}</td>
+                            <td style={tableCellStyle}>{row.ppc}</td>
+                            <td style={tableCellStyle}>{row.social}</td>
+                            <td style={tableCellStyle}>{row.content}</td>
+                            <td style={tableCellStyle}>{row.email}</td>
+                            <td style={{ ...tableCellStyle, color: '#22c55e', fontWeight: 700 }}>{row.total}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                {/* Pro Tip #3 */}
+                <div className="reveal" style={proTipBoxStyle}>
+                  <div style={{ position: 'absolute', top: -20, left: -20, width: 120, height: 120, background: 'radial-gradient(circle, rgba(251,191,36,0.15) 0%, transparent 70%)', filter: 'blur(20px)' }} />
+                  <div style={{ position: 'relative', zIndex: 1 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
+                      <span style={{ fontSize: 20 }}>💡</span>
+                      <span style={{ fontSize: 14, fontWeight: 800, color: '#fbbf24', letterSpacing: '0.06em', textTransform: 'uppercase' }}>Pro Tip — Hidden Cost Savings</span>
+                    </div>
+                    <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, margin: '0 0 12px' }}>
+                      Most businesses overpay because their website <em>leaks</em> conversions. Before increasing your marketing budget, invest in <strong style={{ color: '#ffffff' }}>conversion rate optimization (CRO)</strong>. A 1% improvement in conversion rate on a site getting 10,000 visits/month could mean 100 extra leads &mdash; without spending a single extra dollar on ads. Fix the bucket before you pour in more water.
+                    </p>
+                    <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, margin: 0 }}>
+                      Also ask your agency about <strong style={{ color: '#ffffff' }}>bundled pricing</strong>. Agencies that handle SEO + PPC + content together often discount 15-25% versus buying each service separately, and cross-channel data sharing improves results for every channel.
+                    </p>
+                  </div>
+                </div>
+
                 {/* Pricing Models */}
                 <div className="reveal" style={{ marginBottom: 56 }} id="pricing-models">
-                  <h2 style={{
-                    fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', fontWeight: 700, color: '#ffffff',
-                    letterSpacing: '-0.03em', marginBottom: 24,
-                  }}>How Digital Marketing Pricing Models Work in the USA</h2>
+                  <h2 style={sectionHeadingStyle}>How Digital Marketing Pricing Models Work in the USA</h2>
 
                   {[
                     {
@@ -329,17 +590,14 @@ export default function DigitalMarketingCostUSAClient() {
 
                 {/* ROI Expectations */}
                 <div className="reveal" style={{ marginBottom: 56 }} id="roi">
-                  <h2 style={{
-                    fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', fontWeight: 700, color: '#ffffff',
-                    letterSpacing: '-0.03em', marginBottom: 24,
-                  }}>ROI Expectations by Budget Level</h2>
+                  <h2 style={sectionHeadingStyle}>ROI Expectations by Budget Level</h2>
                   <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8, marginBottom: 24 }}>
                     Understanding what you can realistically expect at each budget tier prevents disappointment and helps you set proper KPIs with your agency partner.
                   </p>
 
                   {[
                     { tier: '$2,000 - $5,000/month', label: 'Starter', color: '#94a3b8', expectations: 'Foundation building. Expect improved local search visibility, basic social presence, and initial lead generation. Timeline: 4-6 months to see meaningful results. Best for small businesses and startups in low-competition niches.' },
-                    { tier: '$5,000 - $15,000/month', label: 'Growth', color: '#ffffff', expectations: 'Aggressive scaling. Expect significant organic traffic growth (50-200%), multi-channel campaigns, and measurable revenue attribution. Timeline: 3-6 months for early wins, 6-12 months for compound growth. Best for established SMBs targeting regional or national markets.' },
+                    { tier: '$5,000 - $15,000/month', label: 'Growth', color: '#22c55e', expectations: 'Aggressive scaling. Expect significant organic traffic growth (50-200%), multi-channel campaigns, and measurable revenue attribution. Timeline: 3-6 months for early wins, 6-12 months for compound growth. Best for established SMBs targeting regional or national markets.' },
                     { tier: '$15,000 - $25,000+/month', label: 'Enterprise', color: '#fbbf24', expectations: 'Market domination. Expect comprehensive omnichannel strategies, competitive displacement, advanced analytics, and executive-level reporting. Timeline: 2-4 months for quick wins, ongoing optimization. Best for companies with $5M+ revenue targeting category leadership.' },
                   ].map((item) => (
                     <div key={item.tier} style={{
@@ -350,7 +608,7 @@ export default function DigitalMarketingCostUSAClient() {
                         <span style={{
                           fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase',
                           padding: '3px 10px', borderRadius: 100, color: item.color,
-                          background: `rgba(${item.color === '#94a3b8' ? '148,163,184' : item.color === '#22c55e' ? '245,41,13' : '251,191,36'},0.12)`,
+                          background: `rgba(${item.color === '#94a3b8' ? '148,163,184' : item.color === '#22c55e' ? '34,197,94' : '251,191,36'},0.12)`,
                         }}>{item.label}</span>
                         <span style={{ fontSize: 14, fontWeight: 700, color: '#ffffff' }}>{item.tier}</span>
                       </div>
@@ -359,104 +617,9 @@ export default function DigitalMarketingCostUSAClient() {
                   ))}
                 </div>
 
-                {/* Agency vs Freelancer vs In-House */}
-                <div className="reveal" style={{ marginBottom: 56 }} id="agency-vs-freelancer">
-                  <h2 style={{
-                    fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', fontWeight: 700, color: '#ffffff',
-                    letterSpacing: '-0.03em', marginBottom: 24,
-                  }}>Agency vs. Freelancer vs. In-House: What Works for American Businesses?</h2>
-
-                  {[
-                    {
-                      option: 'Digital Marketing Agency', pros: 'Full team of specialists, scalable resources, proven processes, accountability, cross-industry experience, access to enterprise tools',
-                      cons: 'Higher cost ($5K-$25K+/month), less direct control, potential communication layers', best: 'Businesses with $1M+ revenue needing multi-channel expertise',
-                      accentColor: '#22c55e', bgColor: 'rgba(17,24,39,',
-                    },
-                    {
-                      option: 'Freelancer', pros: 'Lower cost ($1K-$5K/month), direct communication, flexibility, niche expertise',
-                      cons: 'Single point of failure, limited capacity, no backup if they leave, narrower skill set', best: 'Startups and small businesses with focused needs (e.g., SEO-only or social-only)',
-                      accentColor: '#a78bfa', bgColor: 'rgba(167,139,250,',
-                    },
-                    {
-                      option: 'In-House Team', pros: 'Full control, deep brand knowledge, immediate availability, cultural alignment',
-                      cons: 'Very expensive ($150K-$400K+/year for a small team), recruitment challenges, limited perspective, tool costs', best: 'Enterprises with $10M+ revenue and complex, ongoing marketing needs',
-                      accentColor: '#34d399', bgColor: 'rgba(52,211,153,',
-                    },
-                  ].map((item) => (
-                    <div key={item.option} style={{
-                      background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)',
-                      borderRadius: 20, padding: 28, marginBottom: 20,
-                    }}>
-                      <h3 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', margin: '0 0 16px' }}>{item.option}</h3>
-                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))', gap: 16, marginBottom: 16 }}>
-                        <div>
-                          <p style={{ fontSize: 12, fontWeight: 700, color: '#34d399', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 8 }}>Pros</p>
-                          <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, margin: 0 }}>{item.pros}</p>
-                        </div>
-                        <div>
-                          <p style={{ fontSize: 12, fontWeight: 700, color: '#f87171', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 8 }}>Cons</p>
-                          <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, margin: 0 }}>{item.cons}</p>
-                        </div>
-                      </div>
-                      <div style={{
-                        padding: '12px 16px', borderRadius: 12,
-                        background: `${item.bgColor}0.06)`, border: `1px solid ${item.bgColor}0.12)`,
-                      }}>
-                        <span style={{ fontSize: 13, color: item.accentColor, fontWeight: 600 }}>Best for: {item.best}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Codazz Approach */}
-                <div className="reveal" style={{ marginBottom: 56 }} id="codazz-approach">
-                  <div style={{
-                    background: 'linear-gradient(135deg, rgba(34,197,94,0.1) 0%, rgba(255,255,255,0.015) 100%)',
-                    border: '1px solid rgba(34,197,94,0.3)',
-                    borderRadius: 24, padding: 36, position: 'relative', overflow: 'hidden',
-                  }}>
-                    <div style={{ position: 'absolute', top: -40, right: -40, width: 200, height: 200, background: 'radial-gradient(circle, rgba(34,197,94,0.15) 0%, transparent 70%)', filter: 'blur(30px)' }} />
-                    <div style={{ position: 'relative', zIndex: 1 }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
-                        <span style={{ fontSize: 28 }}>🍁</span>
-                        <h2 style={{
-                          fontSize: 'clamp(1.4rem, 2.5vw, 1.9rem)', fontWeight: 700, color: '#ffffff',
-                          letterSpacing: '-0.03em', margin: 0,
-                        }}>How Codazz Approaches Digital Marketing Differently</h2>
-                      </div>
-
-                      <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 16 }}>
-                        Most digital marketing agencies treat SEO, paid ads, and development as separate silos. At Codazz, we believe this fragmentation is why most marketing campaigns underperform. Our approach integrates technical SEO directly into the development process, ensuring your website is built from the ground up for search engine dominance.
-                      </p>
-                      <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 16 }}>
-                        We build every client project on Next.js with server-side rendering, achieving perfect Google Lighthouse scores that give you a structural advantage over competitors running on bloated WordPress themes. Our data-driven methodology combines real-time analytics, AI-assisted content optimization, and conversion rate engineering to maximize every dollar of your marketing budget.
-                      </p>
-                      <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 20 }}>
-                        The result? American businesses working with Codazz see 3-5x higher ROI on their digital marketing spend because the technical foundation amplifies every marketing initiative. When your site loads in under 1 second and is architecturally perfect for Google&apos;s crawlers, every piece of content, every backlink, and every ad click converts at a significantly higher rate.
-                      </p>
-
-                      <div style={{
-                        padding: '14px 20px', borderRadius: 12,
-                        background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.2)',
-                        display: 'flex', alignItems: 'center', gap: 10,
-                      }}>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2">
-                          <polyline points="22,7 13.5,15.5 8.5,10.5 2,17"/><polyline points="16,7 22,7 22,13"/>
-                        </svg>
-                        <span style={{ fontSize: 13, color: '#ffffff', fontWeight: 600 }}>
-                          Technical SEO + Custom Development = 3-5x Higher Marketing ROI
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
                 {/* Red Flags */}
                 <div className="reveal" style={{ marginBottom: 56 }} id="red-flags">
-                  <h2 style={{
-                    fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', fontWeight: 700, color: '#ffffff',
-                    letterSpacing: '-0.03em', marginBottom: 24,
-                  }}>Red Flags in Agency Pricing: What to Watch For</h2>
+                  <h2 style={sectionHeadingStyle}>Red Flags in Agency Pricing: What to Watch For</h2>
 
                   <div style={{
                     background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)',
@@ -485,6 +648,88 @@ export default function DigitalMarketingCostUSAClient() {
                       <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8, margin: 0 }}>
                         Some agencies charge $30,000+/month for work that a skilled boutique agency delivers for $10,000. Large agencies often have high overhead&mdash;downtown offices, large sales teams, and management layers&mdash;that inflate pricing without improving output quality. Always evaluate based on team expertise, case studies, and projected ROI, not brand prestige.
                       </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Pro Tip #4 */}
+                <div className="reveal" style={proTipBoxStyle}>
+                  <div style={{ position: 'absolute', top: -20, left: -20, width: 120, height: 120, background: 'radial-gradient(circle, rgba(251,191,36,0.15) 0%, transparent 70%)', filter: 'blur(20px)' }} />
+                  <div style={{ position: 'relative', zIndex: 1 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
+                      <span style={{ fontSize: 20 }}>💡</span>
+                      <span style={{ fontSize: 14, fontWeight: 800, color: '#fbbf24', letterSpacing: '0.06em', textTransform: 'uppercase' }}>Pro Tip — The 90-Day Audit</span>
+                    </div>
+                    <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, margin: 0 }}>
+                      Every 90 days, run a quick audit: calculate your <strong style={{ color: '#ffffff' }}>Customer Acquisition Cost (CAC)</strong> per channel by dividing total channel spend (agency fee + ad spend + tools) by the number of customers acquired from that channel. If any channel&apos;s CAC is more than 3x your average customer lifetime value (LTV), either optimize aggressively or reallocate that budget to a higher-performing channel.
+                    </p>
+                  </div>
+                </div>
+
+                {/* ══════════════════════════════════════════════════════
+                    WHY CODAZZ FOR DIGITAL MARKETING
+                    ══════════════════════════════════════════════════════ */}
+                <div className="reveal" style={{ marginBottom: 56 }} id="why-codazz">
+                  <div style={{
+                    background: 'linear-gradient(135deg, rgba(34,197,94,0.1) 0%, rgba(96,165,250,0.05) 50%, rgba(255,255,255,0.015) 100%)',
+                    border: '1px solid rgba(34,197,94,0.3)',
+                    borderRadius: 24, padding: 'clamp(32px, 5vw, 48px)', position: 'relative', overflow: 'hidden',
+                  }}>
+                    <div style={{ position: 'absolute', top: -50, right: -50, width: 250, height: 250, background: 'radial-gradient(circle, rgba(34,197,94,0.15) 0%, transparent 70%)', filter: 'blur(40px)' }} />
+                    <div style={{ position: 'absolute', bottom: -30, left: -30, width: 180, height: 180, background: 'radial-gradient(circle, rgba(96,165,250,0.1) 0%, transparent 70%)', filter: 'blur(30px)' }} />
+                    <div style={{ position: 'relative', zIndex: 1 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
+                        <span style={{ fontSize: 32 }}>🍁</span>
+                        <h2 style={{
+                          fontSize: 'clamp(1.5rem, 3vw, 2.2rem)', fontWeight: 800, color: '#ffffff',
+                          letterSpacing: '-0.03em', margin: 0,
+                        }}>Why Codazz for Digital Marketing?</h2>
+                      </div>
+
+                      <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 20 }}>
+                        Most digital marketing agencies treat SEO, paid ads, and development as separate silos. At Codazz, we believe this fragmentation is why most marketing campaigns underperform. Our approach integrates technical SEO directly into the development process, ensuring your website is built from the ground up for search engine dominance.
+                      </p>
+
+                      <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8, marginBottom: 28 }}>
+                        We build every client project on Next.js with server-side rendering, achieving perfect Google Lighthouse scores that give you a structural advantage over competitors running on bloated WordPress themes. Our data-driven methodology combines real-time analytics, AI-assisted content optimization, and conversion rate engineering to maximize every dollar of your marketing budget.
+                      </p>
+
+                      {/* What Makes Codazz Different — Grid */}
+                      <div style={{
+                        display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(260px, 100%), 1fr))',
+                        gap: 16, marginBottom: 28,
+                      }}>
+                        {[
+                          { icon: '🚀', title: 'Performance-First Development', desc: 'Sub-1-second load times via Next.js SSR. Faster sites = higher ad Quality Scores = lower CPC.' },
+                          { icon: '📊', title: 'Unified Analytics Dashboard', desc: 'One source of truth for SEO, PPC, social, and email — no more juggling five logins.' },
+                          { icon: '🔍', title: 'SEO Baked Into Code', desc: 'Schema markup, semantic HTML, and Core Web Vitals optimization built at the code level, not bolted on after.' },
+                          { icon: '🤝', title: 'Transparent Pricing', desc: 'No hidden fees, no long lock-ins. Monthly reporting with clear ROI attribution per channel.' },
+                          { icon: '🌎', title: 'North American + Global Talent', desc: 'HQ in Edmonton (Canada) + Chandigarh (India) means senior strategy stays local while execution scales affordably.' },
+                          { icon: '📈', title: '3-5x Higher Marketing ROI', desc: 'When technical foundations are perfect, every marketing dollar works harder — proven across 500+ projects.' },
+                        ].map((item) => (
+                          <div key={item.title} style={{
+                            padding: '20px 22px', borderRadius: 16,
+                            background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)',
+                          }}>
+                            <span style={{ fontSize: 24, display: 'block', marginBottom: 10 }}>{item.icon}</span>
+                            <h4 style={{ fontSize: 14, fontWeight: 700, color: '#ffffff', margin: '0 0 6px', letterSpacing: '-0.01em' }}>{item.title}</h4>
+                            <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', lineHeight: 1.65, margin: 0 }}>{item.desc}</p>
+                          </div>
+                        ))}
+                      </div>
+
+                      <div style={{
+                        padding: '16px 22px', borderRadius: 14,
+                        background: 'rgba(34,197,94,0.1)', border: '1px solid rgba(34,197,94,0.25)',
+                        display: 'flex', alignItems: 'center', gap: 12,
+                      }}>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                          <polyline points="22,7 13.5,15.5 8.5,10.5 2,17"/><polyline points="16,7 22,7 22,13"/>
+                        </svg>
+                        <span style={{ fontSize: 14, color: '#ffffff', fontWeight: 600 }}>
+                          Technical SEO + Custom Development = 3-5x Higher Marketing ROI
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>

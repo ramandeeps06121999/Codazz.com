@@ -1,15 +1,23 @@
 {
   "name": "Codazz | Custom Software Development Company",
   "short_name": "Codazz",
-  "description": "Toronto's leading custom software development agency specializing in AI, Mobile, and Web solutions.",
+  "description": "Custom software development company headquartered in Edmonton & Chandigarh. Mobile apps, AI, web, blockchain, and cloud solutions delivered worldwide.",
   "start_url": "/",
   "display": "standalone",
+  "orientation": "portrait-primary",
   "background_color": "#000000",
   "theme_color": "#22c55e",
+  "lang": "en",
+  "categories": ["business", "productivity", "utilities"],
   "icons": [
     {
-      "src": "/Favicon.png",
-      "sizes": "192x192 512x512",
+      "src": "/favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.png",
+      "sizes": "512x512",
       "type": "image/png"
     }
   ]

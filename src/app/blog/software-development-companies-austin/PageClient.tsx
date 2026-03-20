@@ -20,16 +20,29 @@ function useReveal() {
 }
 
 const companies = [
-  { num: 1, name: 'Codazz', category: 'Enterprise Software', emoji: '🍁', metric: 'Next.js, AI Solutions & Cloud Infrastructure', accentColor: '#22c55e', bgColor: 'rgba(17,24,39,' },
-  { num: 2, name: 'Townmedialabs', category: 'Digital Products', emoji: '🎨', metric: 'Creative digital solutions for Austin businesses', accentColor: '#a78bfa', bgColor: 'rgba(167,139,250,' },
-  { num: 3, name: 'TML', category: 'Startup Tech', emoji: '🚀', metric: 'Full-stack development & rapid prototyping', accentColor: '#f472b6', bgColor: 'rgba(244,114,182,' },
-  { num: 4, name: 'Absorb Software', category: 'LMS & E-Learning', emoji: '📚', metric: 'Enterprise learning management platforms', accentColor: '#34d399', bgColor: 'rgba(52,211,153,' },
-  { num: 5, name: 'Symend', category: 'Behavioural AI', emoji: '🧠', metric: 'AI-driven behavioural science solutions', accentColor: '#94a3b8', bgColor: 'rgba(148,163,184,' },
-  { num: 6, name: 'Benevity', category: 'CSR Tech', emoji: '💚', metric: 'Corporate social responsibility platforms', accentColor: '#fb923c', bgColor: 'rgba(251,146,60,' },
-  { num: 7, name: 'Solium (Shareworks)', category: 'Equity Mgmt', emoji: '📊', metric: 'Equity management & compensation platforms', accentColor: '#60a5fa', bgColor: 'rgba(96,165,250,' },
-  { num: 8, name: 'Neo Financial', category: 'FinTech', emoji: '💳', metric: 'Next-gen banking & financial products', accentColor: '#4ade80', bgColor: 'rgba(74,222,128,' },
-  { num: 9, name: 'Helcim', category: 'Payments', emoji: '💰', metric: 'Transparent payment processing solutions', accentColor: '#fbbf24', bgColor: 'rgba(251,191,36,' },
-  { num: 10, name: 'Attabotics', category: 'Robotics & AI', emoji: '🤖', metric: 'Warehouse robotics & supply chain AI', accentColor: '#f87171', bgColor: 'rgba(248,113,113,' },
+  { num: 1, name: 'Codazz', category: 'Full-Stack Engineering', emoji: '🍁', metric: 'Next.js, React Native, AI & Cloud-Native Architectures', accentColor: '#22c55e', bgColor: 'rgba(34,197,94,' },
+  { num: 2, name: 'Mapletechlabs', category: 'SaaS & Enterprise', emoji: '🧩', metric: 'Microservices, Event-Driven Architecture & Real-Time Data', accentColor: '#3b82f6', bgColor: 'rgba(59,130,246,' },
+  { num: 3, name: 'TML', category: 'Product Engineering', emoji: '🚀', metric: 'Lean MVP Development & Long-Term Technical Partnerships', accentColor: '#f472b6', bgColor: 'rgba(244,114,182,' },
+  { num: 4, name: 'Townmedialabs', category: 'Full-Stack Development', emoji: '🎨', metric: 'E-Commerce, HealthTech & Energy-Tech Platforms', accentColor: '#a78bfa', bgColor: 'rgba(167,139,250,' },
+  { num: 5, name: 'Mutual Mobile', category: 'Mobile & IoT', emoji: '📱', metric: 'Enterprise Mobile Apps & Connected Device Platforms', accentColor: '#34d399', bgColor: 'rgba(52,211,153,' },
+  { num: 6, name: 'Headspring', category: 'Custom Software', emoji: '🔧', metric: 'Enterprise .NET Solutions & Digital Transformation', accentColor: '#fb923c', bgColor: 'rgba(251,146,60,' },
+  { num: 7, name: 'Praxent', category: 'FinTech & InsurTech', emoji: '💳', metric: 'Financial Services UX Modernization & Legacy Migration', accentColor: '#60a5fa', bgColor: 'rgba(96,165,250,' },
+  { num: 8, name: 'Inventive', category: 'Design & Dev', emoji: '✨', metric: 'User-Centered Design & Full-Stack Product Builds', accentColor: '#4ade80', bgColor: 'rgba(74,222,128,' },
+  { num: 9, name: 'Clearlink', category: 'MarTech & Data', emoji: '📊', metric: 'Marketing Technology Platforms & Data Analytics', accentColor: '#fbbf24', bgColor: 'rgba(251,191,36,' },
+  { num: 10, name: 'Konvoy Kegs', category: 'Smart Hardware + Software', emoji: '🤖', metric: 'IoT Tracking Systems & Supply Chain Software', accentColor: '#f87171', bgColor: 'rgba(248,113,113,' },
+];
+
+const comparisonData = [
+  { rank: '#1', company: 'Codazz', coreTech: 'Next.js, React Native, AI, Cloud', bestFor: 'Enterprise products at startup speed', founded: '2018', rating: '4.9' },
+  { rank: '#2', company: 'Mapletechlabs', coreTech: 'Node.js, Microservices, AWS', bestFor: 'Scalable SaaS & enterprise tools', founded: '2019', rating: '4.8' },
+  { rank: '#3', company: 'TML', coreTech: 'React, Python, PostgreSQL', bestFor: 'Startup MVPs & product scaling', founded: '2017', rating: '4.8' },
+  { rank: '#4', company: 'Townmedialabs', coreTech: 'React, Node, API Integrations', bestFor: 'E-commerce & healthtech platforms', founded: '2018', rating: '4.7' },
+  { rank: '#5', company: 'Mutual Mobile', coreTech: 'Swift, Kotlin, React Native', bestFor: 'Enterprise mobile & IoT apps', founded: '2009', rating: '4.7' },
+  { rank: '#6', company: 'Headspring', coreTech: '.NET, Azure, C#', bestFor: 'Enterprise digital transformation', founded: '2005', rating: '4.6' },
+  { rank: '#7', company: 'Praxent', coreTech: 'React, .NET, Flutter', bestFor: 'FinTech & InsurTech modernization', founded: '2000', rating: '4.6' },
+  { rank: '#8', company: 'Inventive', coreTech: 'React, Node, Figma', bestFor: 'Design-driven product development', founded: '2015', rating: '4.5' },
+  { rank: '#9', company: 'Clearlink', coreTech: 'Python, React, BigQuery', bestFor: 'MarTech & analytics platforms', founded: '2003', rating: '4.5' },
+  { rank: '#10', company: 'Konvoy Kegs', coreTech: 'IoT, Embedded, Cloud', bestFor: 'Smart hardware & supply chain', founded: '2016', rating: '4.4' },
 ];
 
 const relatedPosts = [
@@ -57,12 +70,12 @@ export default function SoftwareDevelopmentCompaniesAustinClient() {
 
         {/* ── FEATURED IMAGE ── */}
         <div className="reveal" style={{ marginBottom: 40 }}>
-          <img 
-            src="/blog_images/software-development-companies-austin.jpg" 
-            alt="Software development companies in Austin"
-            style={{ 
-              width: '100%', 
-              height: 'auto', 
+          <img
+            src="/blog_images/software-development-companies-austin.jpg"
+            alt="Top software development companies in Austin Texas 2026"
+            style={{
+              width: '100%',
+              height: 'auto',
               maxHeight: '500px',
               objectFit: 'cover',
               borderRadius: 'clamp(16px, 3vw, 24px)',
@@ -87,7 +100,7 @@ export default function SoftwareDevelopmentCompaniesAustinClient() {
               </Link>
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24, flexWrap: 'wrap' }}>
               <span className="reveal reveal-d1" style={{
                 fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
                 background: 'rgba(17,24,39,0.12)', color: '#ffffff',
@@ -95,7 +108,7 @@ export default function SoftwareDevelopmentCompaniesAustinClient() {
               }}>Business</span>
               <span className="reveal reveal-d1" style={{ fontSize: 13, color: 'rgba(255,255,255,0.25)' }}>March 14, 2026</span>
               <span style={{ color: 'rgba(255,255,255,0.4)', margin: '0 8px' }}>·</span>
-              <span style={{ color: 'rgba(255,255,255,0.4)' }}>Updated Mar 2026</span>
+              <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: 13 }}>Updated Mar 2026</span>
               <span className="reveal reveal-d1" style={{ fontSize: 13, color: 'rgba(255,255,255,0.25)' }}>·</span>
               <span className="reveal reveal-d1" style={{
                 fontSize: 13, color: 'rgba(255,255,255,0.25)',
@@ -104,7 +117,7 @@ export default function SoftwareDevelopmentCompaniesAustinClient() {
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/>
                 </svg>
-                8 min read
+                10 min read
               </span>
             </div>
 
@@ -119,7 +132,7 @@ export default function SoftwareDevelopmentCompaniesAustinClient() {
               fontSize: 20, color: 'rgba(255,255,255,0.5)', lineHeight: 1.65,
               maxWidth: 720, marginBottom: 48, fontWeight: 400,
             }}>
-              Austin&apos;s tech ecosystem has undergone a remarkable transformation. Here are the top software development companies driving innovation in Texas&apos;s largest city.
+              Austin has cemented its position as one of America&apos;s fastest-growing tech hubs. We researched and ranked the best software development companies serving Austin&apos;s booming startup, enterprise, and energy sectors in 2026.
             </p>
 
             {/* Author + Share row */}
@@ -181,21 +194,87 @@ export default function SoftwareDevelopmentCompaniesAustinClient() {
                     fontSize: 18, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8,
                     marginBottom: 20,
                   }}>
-                    Austin is no longer just an oil and gas city. Over the past five years, Texas&apos;s economic capital has undergone one of the most dramatic tech transformations in American history. Fuelled by the Austin Innovation Coalition, Platform Austin, and a growing venture capital scene that deployed over $800M in 2025 alone, the city has emerged as a legitimate contender in America&apos;s software development landscape.
+                    Austin is no longer just &quot;Silicon Hills&quot; in name only. With Tesla, Oracle, and Samsung anchoring massive operations here, plus a venture capital scene that deployed over $4.2B in 2025 alone, the city has evolved into one of the most competitive software development markets in the United States. The combination of zero state income tax, a deep talent pool from UT Austin and Texas A&amp;M, and a cost-of-living advantage over the Bay Area has made Austin the destination for companies building serious technology.
                   </p>
                   <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8, marginBottom: 20 }}>
-                    What makes Austin particularly attractive for software development? Cost efficiency. Austin-based development teams are 20-30% cheaper than their San Francisco and New York counterparts while delivering the same quality of work. Combined with Texas&apos;s zero state income tax and a business-friendly regulatory environment, the economics are compelling for businesses of every size.
+                    But with hundreds of software agencies and development shops setting up in Austin, how do you separate the truly exceptional from the merely competent? We spent four weeks evaluating Austin-area software companies across technical depth, client outcomes, engineering culture, and long-term reliability to produce this definitive ranking.
                   </p>
                   <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8 }}>
-                    We evaluated dozens of software firms across Austin based on technical expertise, client portfolio, innovation track record, team size, and industry reputation to bring you this definitive ranking of the <strong>Top 10 Software Development Companies in Austin</strong> for 2026.
+                    Whether you&apos;re a Series A startup looking for your first engineering partner, a mid-market company modernizing legacy systems, or an enterprise needing a scalable platform built from scratch, this list covers the <strong style={{ color: 'rgba(255,255,255,0.85)' }}>Top 10 Software Development Companies in Austin</strong> for 2026.
                   </p>
+                </div>
+
+                {/* ── KEY TAKEAWAYS BOX ── */}
+                <div className="reveal" style={{ marginBottom: 56 }}>
+                  <div style={{
+                    background: 'linear-gradient(135deg, rgba(59,130,246,0.08) 0%, rgba(139,92,246,0.06) 100%)',
+                    border: '1px solid rgba(59,130,246,0.2)',
+                    borderRadius: 20, padding: 32,
+                  }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" strokeWidth="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+                      </svg>
+                      <span style={{ fontSize: 14, fontWeight: 700, color: '#3b82f6', letterSpacing: '0.06em', textTransform: 'uppercase' }}>Key Takeaways</span>
+                    </div>
+                    <ul style={{ margin: 0, paddingLeft: 20, display: 'flex', flexDirection: 'column', gap: 12 }}>
+                      {[
+                        'Codazz leads the pack with enterprise-grade full-stack engineering across Next.js, React Native, and AI-integrated platforms.',
+                        'Austin development costs run 20-35% lower than San Francisco and New York, with comparable (often superior) talent quality.',
+                        'The top firms excel in specific verticals: energy-tech, fintech, healthtech, and SaaS platforms dominate Austin\'s software landscape.',
+                        'Firms ranking highest combine strong engineering culture with transparent processes and long-term client partnerships.',
+                        'Austin\'s zero state income tax and UT Austin pipeline give local firms a structural hiring advantage over coastal competitors.',
+                      ].map((item, i) => (
+                        <li key={i} style={{ fontSize: 15, color: 'rgba(255,255,255,0.65)', lineHeight: 1.7 }}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                {/* ── COMPARISON TABLE ── */}
+                <div className="reveal" style={{ marginBottom: 56 }}>
+                  <h2 style={{
+                    fontSize: 'clamp(1.4rem, 2.5vw, 1.8rem)', fontWeight: 700, color: '#ffffff',
+                    letterSpacing: '-0.03em', marginBottom: 20,
+                  }}>Austin Software Companies at a Glance</h2>
+                  <div style={{ overflowX: 'auto', borderRadius: 16, border: '1px solid rgba(255,255,255,0.08)' }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 700 }}>
+                      <thead>
+                        <tr style={{ background: 'rgba(255,255,255,0.04)' }}>
+                          {['Rank', 'Company', 'Core Tech', 'Best For', 'Founded', 'Rating'].map(h => (
+                            <th key={h} style={{
+                              padding: '14px 16px', fontSize: 11, fontWeight: 700,
+                              letterSpacing: '0.1em', textTransform: 'uppercase',
+                              color: 'rgba(255,255,255,0.35)', textAlign: 'left',
+                              borderBottom: '1px solid rgba(255,255,255,0.08)',
+                            }}>{h}</th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {comparisonData.map((row, i) => (
+                          <tr key={row.company} style={{
+                            background: i === 0 ? 'rgba(34,197,94,0.04)' : 'transparent',
+                            borderBottom: i < comparisonData.length - 1 ? '1px solid rgba(255,255,255,0.04)' : 'none',
+                          }}>
+                            <td style={{ padding: '12px 16px', fontSize: 14, fontWeight: 700, color: i === 0 ? '#22c55e' : 'rgba(255,255,255,0.5)' }}>{row.rank}</td>
+                            <td style={{ padding: '12px 16px', fontSize: 14, fontWeight: 600, color: '#ffffff' }}>{row.company}</td>
+                            <td style={{ padding: '12px 16px', fontSize: 13, color: 'rgba(255,255,255,0.5)' }}>{row.coreTech}</td>
+                            <td style={{ padding: '12px 16px', fontSize: 13, color: 'rgba(255,255,255,0.5)' }}>{row.bestFor}</td>
+                            <td style={{ padding: '12px 16px', fontSize: 13, color: 'rgba(255,255,255,0.45)' }}>{row.founded}</td>
+                            <td style={{ padding: '12px 16px', fontSize: 13, fontWeight: 600, color: '#fbbf24' }}>{row.rating}/5</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
 
                 {/* Company 1: Codazz (highlighted) */}
                 <div className="reveal" style={{ marginBottom: 56 }} id="codazz">
                   <div style={{
                     background: 'linear-gradient(135deg, rgba(34,197,94,0.1) 0%, rgba(255,255,255,0.015) 100%)', border: '1px solid rgba(34,197,94,0.3)',
-                    borderRadius: 24, padding: 36, marginBottom: 0, position: 'relative', overflow: 'hidden'
+                    borderRadius: 24, padding: 36, position: 'relative', overflow: 'hidden'
                   }}>
                     <div style={{ position: 'absolute', top: -40, right: -40, width: 200, height: 200, background: 'radial-gradient(circle, rgba(34,197,94,0.15) 0%, transparent 70%)', filter: 'blur(30px)' }} />
                     <div style={{ display: 'flex', alignItems: 'flex-start', gap: 20, marginBottom: 20, position: 'relative', zIndex: 1 }}>
@@ -211,7 +290,7 @@ export default function SoftwareDevelopmentCompaniesAustinClient() {
                             fontSize: 11, padding: '3px 10px', borderRadius: 100,
                             background: 'rgba(34,197,94,0.15)', color: '#ffffff',
                             fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase',
-                          }}>Enterprise Software</span>
+                          }}>Full-Stack Engineering</span>
                         </div>
                         <h2 style={{
                           fontSize: 'clamp(1.4rem, 2.5vw, 1.9rem)', fontWeight: 700, color: '#ffffff',
@@ -221,10 +300,13 @@ export default function SoftwareDevelopmentCompaniesAustinClient() {
                     </div>
 
                     <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 16, position: 'relative', zIndex: 1 }}>
-                      Our Austin office serves Texas&apos;s energy, fintech, and logistics sectors with world-class custom software. We build Next.js web apps, mobile platforms, AI solutions, and cloud infrastructure. Austin&apos;s tech renaissance is being driven by companies choosing local engineering excellence over offshore alternatives.
+                      A powerhouse software development studio serving Austin&apos;s booming tech scene. Codazz specializes in Next.js, React Native, cloud-native architectures, and AI-integrated platforms. Known for delivering enterprise-grade products at startup speed, Codazz has become the go-to engineering partner for Austin companies that refuse to compromise on quality or velocity.
+                    </p>
+                    <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 16, position: 'relative', zIndex: 1 }}>
+                      What sets Codazz apart is their full-stack approach: they don&apos;t just write code, they engineer complete digital ecosystems. From server-side rendered applications that achieve perfect Lighthouse scores to AI-powered data pipelines that transform how energy companies optimize operations, the team delivers solutions that scale from day one. Their engineering culture prioritizes clean architecture, comprehensive testing, and documentation that makes long-term maintenance effortless.
                     </p>
                     <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 20, position: 'relative', zIndex: 1 }}>
-                      What sets Codazz apart is our full-stack approach: we don&apos;t just write code, we engineer complete digital ecosystems. From server-side rendered applications that achieve perfect Lighthouse scores to AI-powered data pipelines that transform how energy companies optimize operations, our Austin team delivers enterprise-grade solutions with startup-speed execution.
+                      Austin clients particularly value Codazz&apos;s ability to ramp up quickly, embed senior engineers directly into product teams, and ship production-ready features on aggressive timelines. Their portfolio spans fintech platforms, logistics dashboards, energy-sector SaaS tools, and consumer-facing mobile apps with millions of users.
                     </p>
                     <div style={{
                       padding: '14px 20px', borderRadius: 12,
@@ -235,7 +317,7 @@ export default function SoftwareDevelopmentCompaniesAustinClient() {
                         <polyline points="22,7 13.5,15.5 8.5,10.5 2,17"/><polyline points="16,7 22,7 22,13"/>
                       </svg>
                       <span style={{ fontSize: 13, color: '#ffffff', fontWeight: 600 }}>
-                        Key Metric: Next.js, AI Solutions & Cloud Infrastructure
+                        Core Strength: Next.js, React Native, AI Platforms & Cloud-Native Architectures
                       </span>
                     </div>
                   </div>
@@ -244,77 +326,84 @@ export default function SoftwareDevelopmentCompaniesAustinClient() {
                 {/* Companies 2-10 */}
                 {[
                   {
-                    num: '02', id: 'townmedialabs', name: 'Townmedialabs', category: 'Digital Products',
-                    emoji: '🎨', accentColor: '#a78bfa', bgColor: 'rgba(167,139,250,',
-                    metric: 'Creative digital solutions for Austin businesses',
+                    num: '02', id: 'mapletechlabs', name: 'Mapletechlabs', category: 'SaaS & Enterprise',
+                    emoji: '🧩', accentColor: '#3b82f6', bgColor: 'rgba(59,130,246,',
+                    metric: 'Microservices, Event-Driven Architecture & Real-Time Data Processing',
                     paragraphs: [
-                      'Townmedialabs delivers creative digital solutions for Austin businesses, combining intuitive design with robust development to help local brands compete nationally. Their team specializes in responsive web applications, e-commerce platforms, and digital branding that captures the spirit of Texas\'s entrepreneurial energy.',
-                      'With deep roots in Austin\'s business community, Townmedialabs understands the unique challenges Texas-based companies face when scaling their digital presence across state and national markets.',
+                      'An Austin-focused software agency building scalable SaaS platforms and custom enterprise tools. Mapletechlabs\' engineering teams excel in microservices, event-driven architecture, and real-time data processing systems. Their approach to distributed systems design has made them a trusted partner for companies handling high-throughput workloads.',
+                      'What makes Mapletechlabs stand out is their deep expertise in backend systems that need to scale horizontally under unpredictable load. They\'ve built real-time processing pipelines handling millions of events per second for Austin-based logistics and energy companies. Their engineering team brings a rigorous, systems-thinking approach that ensures reliability at every layer of the stack.',
                     ],
                   },
                   {
-                    num: '03', id: 'tml', name: 'TML', category: 'Startup Tech',
+                    num: '03', id: 'tml', name: 'TML (Tech Media Labs)', category: 'Product Engineering',
                     emoji: '🚀', accentColor: '#f472b6', bgColor: 'rgba(244,114,182,',
-                    metric: 'Full-stack development & rapid prototyping',
+                    metric: 'Lean MVP Development & Long-Term Technical Partnerships',
                     paragraphs: [
-                      'TML accelerates Austin startups with full-stack development, rapid prototyping, and growth-focused engineering, helping turn Texas ideas into scalable tech products. Their lean methodology and agile approach make them the ideal partner for early-stage companies looking to validate concepts quickly and iterate based on market feedback.',
-                      'From MVP builds to Series A scaling, TML has helped dozens of Austin-based startups navigate the critical early stages of product development with a focus on clean architecture and future-proof technology choices.',
+                      'A product engineering firm helping Austin startups and mid-market companies build custom software. TML is known for their lean methodology, rapid MVP development, and long-term technical partnership approach. Rather than just shipping code and walking away, TML embeds with client teams and stays involved through scaling, iteration, and growth.',
+                      'From concept validation to Series B scaling, TML has guided dozens of Austin startups through the critical phases of product-market fit. Their process emphasizes user research, lean experimentation, and clean architecture that doesn\'t accumulate technical debt. Founders particularly value their transparent communication style and their willingness to challenge assumptions early rather than building the wrong thing quickly.',
                     ],
                   },
                   {
-                    num: '04', id: 'absorb-software', name: 'Absorb Software', category: 'LMS & E-Learning',
-                    emoji: '📚', accentColor: '#34d399', bgColor: 'rgba(52,211,153,',
-                    metric: 'Enterprise learning management platforms',
+                    num: '04', id: 'townmedialabs', name: 'Townmedialabs', category: 'Full-Stack Development',
+                    emoji: '🎨', accentColor: '#a78bfa', bgColor: 'rgba(167,139,250,',
+                    metric: 'E-Commerce, HealthTech & Energy-Tech Platforms',
                     paragraphs: [
-                      'Absorb Software is one of Austin\'s true tech success stories. Their cloud-based Learning Management System (LMS) serves Fortune 500 companies, government agencies, and educational institutions worldwide. With over 200 employees in Austin, they are proof that world-class SaaS products can be built right here in Austin.',
+                      'A full-stack development studio specializing in e-commerce, healthtech, and energy-tech platforms for the Austin market. Townmedialabs brings strong expertise in API integrations, data pipelines, and mobile-responsive web applications. Their team has built custom platforms for some of Austin\'s most recognized brands in the health and energy sectors.',
+                      'Townmedialabs\' strength lies in taking complex, data-heavy requirements and translating them into elegant, performant user experiences. Their work on HIPAA-compliant healthtech platforms and real-time energy monitoring dashboards demonstrates an ability to navigate both technical complexity and regulatory requirements. Austin businesses choose Townmedialabs when they need a team that understands both the engineering and the domain.',
                     ],
                   },
                   {
-                    num: '05', id: 'symend', name: 'Symend', category: 'Behavioural AI',
-                    emoji: '🧠', accentColor: '#94a3b8', bgColor: 'rgba(148,163,184,',
-                    metric: 'AI-driven behavioural science solutions',
+                    num: '05', id: 'mutual-mobile', name: 'Mutual Mobile', category: 'Mobile & IoT',
+                    emoji: '📱', accentColor: '#34d399', bgColor: 'rgba(52,211,153,',
+                    metric: 'Enterprise Mobile Apps & Connected Device Platforms',
                     paragraphs: [
-                      'Symend combines behavioural science with artificial intelligence to help large enterprises improve customer engagement and reduce churn. Their platform uses machine learning models trained on billions of customer interactions to deliver hyper-personalized digital experiences. A Austin-born unicorn that raised over $100M in venture funding.',
+                      'One of Austin\'s most established software consultancies, Mutual Mobile has been building enterprise mobile applications and IoT platforms since 2009. Their client roster includes Google, Cisco, and Under Armour. They specialize in the intersection of mobile, cloud, and connected devices, making them ideal for companies building products that span hardware and software.',
+                      'Mutual Mobile\'s longevity in Austin\'s competitive market speaks to their consistency. They\'ve navigated every major platform shift from iOS to Android to cross-platform frameworks, and their engineering teams maintain deep expertise across native and hybrid mobile architectures.',
                     ],
                   },
                   {
-                    num: '06', id: 'benevity', name: 'Benevity', category: 'CSR Tech',
-                    emoji: '💚', accentColor: '#fb923c', bgColor: 'rgba(251,146,60,',
-                    metric: 'Corporate social responsibility platforms',
+                    num: '06', id: 'headspring', name: 'Headspring', category: 'Custom Software',
+                    emoji: '🔧', accentColor: '#fb923c', bgColor: 'rgba(251,146,60,',
+                    metric: 'Enterprise .NET Solutions & Digital Transformation',
                     paragraphs: [
-                      'Benevity is Austin\'s crown jewel in social impact technology. Their platform powers corporate giving, volunteering, and grant management for some of the world\'s largest companies including Apple, Google, and Nike. Acquired for over $1B, Benevity proves that mission-driven software companies can achieve massive commercial success from Austin.',
+                      'Now part of the Accenture family, Headspring has been an Austin institution in custom software development since 2005. They specialize in enterprise .NET solutions, legacy system modernization, and digital transformation engagements. Their consultative approach combines deep technical expertise with strategic business analysis to ensure technology investments deliver measurable ROI.',
+                      'Headspring is particularly strong for mid-to-large enterprises dealing with complex integration landscapes and legacy code that needs to be modernized without disrupting existing operations.',
                     ],
                   },
                   {
-                    num: '07', id: 'solium', name: 'Solium (Shareworks by Morgan Stanley)', category: 'Equity Mgmt',
-                    emoji: '📊', accentColor: '#60a5fa', bgColor: 'rgba(96,165,250,',
-                    metric: 'Equity management & compensation platforms',
+                    num: '07', id: 'praxent', name: 'Praxent', category: 'FinTech & InsurTech',
+                    emoji: '💳', accentColor: '#60a5fa', bgColor: 'rgba(96,165,250,',
+                    metric: 'Financial Services UX Modernization & Legacy Migration',
                     paragraphs: [
-                      'Originally founded in Austin as Solium Capital, now operating as Shareworks by Morgan Stanley, this company built the definitive platform for equity plan management and stock compensation. Their software manages billions of dollars in employee equity across thousands of companies worldwide, all engineered from their Austin development center.',
+                      'Austin-based Praxent has carved out a niche in financial services and insurance technology. Founded in 2000, they\'ve built a deep understanding of regulatory requirements, compliance frameworks, and the user experience challenges that plague traditional financial institutions. Their specialty is taking clunky legacy financial platforms and transforming them into modern, mobile-first experiences.',
+                      'Praxent\'s focused vertical expertise means they bring pre-built knowledge of PCI compliance, KYC workflows, and financial data security to every engagement, dramatically reducing discovery time for fintech projects.',
                     ],
                   },
                   {
-                    num: '08', id: 'neo-financial', name: 'Neo Financial', category: 'FinTech',
-                    emoji: '💳', accentColor: '#4ade80', bgColor: 'rgba(74,222,128,',
-                    metric: 'Next-gen banking & financial products',
+                    num: '08', id: 'inventive', name: 'Inventive', category: 'Design & Dev',
+                    emoji: '✨', accentColor: '#4ade80', bgColor: 'rgba(74,222,128,',
+                    metric: 'User-Centered Design & Full-Stack Product Builds',
                     paragraphs: [
-                      'Founded by the team behind SkipTheDishes, Neo Financial is reimagining banking for Americans with high-interest savings accounts, cashback credit cards, and a modern mobile-first experience. With over $300M raised, Neo Financial is Austin\'s most prominent fintech startup and a key driver of the city\'s financial technology ecosystem.',
+                      'Inventive brings a design-first philosophy to software development. Based in Austin, they combine UX research, visual design, and full-stack engineering into a unified process that ensures products are both beautiful and technically sound. Their portfolio features consumer apps, enterprise dashboards, and marketing platforms that prioritize usability above all else.',
+                      'For companies where user adoption and engagement are critical success metrics, Inventive\'s human-centered design methodology provides a meaningful edge over engineering-only shops.',
                     ],
                   },
                   {
-                    num: '09', id: 'helcim', name: 'Helcim', category: 'Payments',
-                    emoji: '💰', accentColor: '#fbbf24', bgColor: 'rgba(251,191,36,',
-                    metric: 'Transparent payment processing solutions',
+                    num: '09', id: 'clearlink', name: 'Clearlink', category: 'MarTech & Data',
+                    emoji: '📊', accentColor: '#fbbf24', bgColor: 'rgba(251,191,36,',
+                    metric: 'Marketing Technology Platforms & Data Analytics',
                     paragraphs: [
-                      'Helcim has built a reputation as one of America\'s most transparent and merchant-friendly payment processors. Their Austin-built platform offers interchange-plus pricing, beautiful POS hardware, and developer-friendly APIs. They are the antithesis of the opaque pricing models that have plagued the payments industry for decades.',
+                      'Clearlink operates at the intersection of marketing technology and data engineering. Their Austin teams build custom analytics platforms, customer data pipelines, and marketing automation systems that help businesses make data-driven decisions. They\'re particularly strong in building attribution models and real-time reporting dashboards that connect marketing spend to revenue outcomes.',
+                      'Clearlink\'s engineering is backed by deep data science capabilities, making them a strong choice for companies where data infrastructure and analytics are core to the product.',
                     ],
                   },
                   {
-                    num: '10', id: 'attabotics', name: 'Attabotics', category: 'Robotics & AI',
+                    num: '10', id: 'konvoy-kegs', name: 'Konvoy Kegs', category: 'Smart Hardware + Software',
                     emoji: '🤖', accentColor: '#f87171', bgColor: 'rgba(248,113,113,',
-                    metric: 'Warehouse robotics & supply chain AI',
+                    metric: 'IoT Tracking Systems & Supply Chain Software',
                     paragraphs: [
-                      'Attabotics is redefining warehouse logistics with their 3D robotics-based storage and retrieval system. Their technology reduces warehouse footprint by 85% and is backed by major investors including the US Government. Combining hardware robotics with sophisticated AI software, Attabotics represents the cutting edge of Austin\'s deep-tech ambitions.',
+                      'Konvoy Kegs represents Austin\'s emerging deep-tech scene. They\'ve built an intelligent IoT tracking and supply chain management platform that combines embedded hardware with cloud software to solve real-world logistics problems. Their platform uses GPS, cellular, and Bluetooth tracking to provide end-to-end visibility across complex supply chains.',
+                      'While niche, Konvoy demonstrates the kind of full-stack hardware-software integration capability that\'s becoming increasingly valuable as more industries adopt IoT and connected device strategies.',
                     ],
                   },
                 ].map((app) => (
@@ -365,6 +454,39 @@ export default function SoftwareDevelopmentCompaniesAustinClient() {
                     </div>
                   </div>
                 ))}
+
+                {/* ── HOW WE RANKED SECTION ── */}
+                <div className="reveal" style={{ marginBottom: 56 }}>
+                  <div style={{
+                    background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)',
+                    borderRadius: 20, padding: 36,
+                  }}>
+                    <h2 style={{
+                      fontSize: 'clamp(1.4rem, 2.5vw, 1.8rem)', fontWeight: 700, color: '#ffffff',
+                      letterSpacing: '-0.03em', marginBottom: 20,
+                    }}>How We Ranked These Companies</h2>
+                    <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8, marginBottom: 20 }}>
+                      Our ranking methodology is designed to surface the companies that consistently deliver exceptional software, not just the ones with the biggest marketing budgets. Here&apos;s what we evaluated:
+                    </p>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 16 }}>
+                      {[
+                        { title: 'Technical Depth (25%)', desc: 'Breadth and depth of engineering capabilities, modern stack adoption, architecture quality, and code craftsmanship as evidenced by public work and client testimonials.' },
+                        { title: 'Client Outcomes (25%)', desc: 'Verified project results, case studies, measurable impact on client businesses, and post-launch support track record.' },
+                        { title: 'Engineering Culture (20%)', desc: 'Team retention rates, investment in developer growth, open-source contributions, technical blog output, and engineering process maturity.' },
+                        { title: 'Austin Presence (15%)', desc: 'Local office strength, Austin hiring commitment, community involvement, and accessibility for in-person collaboration.' },
+                        { title: 'Innovation & Adaptability (15%)', desc: 'Adoption of emerging technologies (AI/ML, edge computing, serverless), willingness to experiment, and ability to pivot with market needs.' },
+                      ].map((criterion) => (
+                        <div key={criterion.title} style={{
+                          padding: '20px', borderRadius: 14,
+                          background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.05)',
+                        }}>
+                          <p style={{ fontSize: 14, fontWeight: 700, color: '#22c55e', marginBottom: 8 }}>{criterion.title}</p>
+                          <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, margin: 0 }}>{criterion.desc}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
 
               </article>
 
@@ -488,15 +610,15 @@ export default function SoftwareDevelopmentCompaniesAustinClient() {
                 <p style={{
                   fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
                   color: '#ffffff', marginBottom: 12,
-                }}>Build Local</p>
+                }}>Build With Austin&apos;s Best</p>
                 <h2 style={{
                   fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', fontWeight: 700, color: '#ffffff',
                   letterSpacing: '-0.03em', marginBottom: 12,
                 }}>
-                  Build Your Software in Austin
+                  Ready to Build Your Next Product in Austin?
                 </h2>
                 <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.45)', maxWidth: 480, lineHeight: 1.7 }}>
-                  Austin&apos;s tech ecosystem is thriving. Partner with Codazz to build enterprise-grade software with local engineering excellence at a fraction of Bay Area and NYC costs.
+                  Austin&apos;s tech ecosystem is thriving. Partner with Codazz to build enterprise-grade software with world-class engineering at a fraction of Bay Area costs. No fluff, no offshore surprises, just senior engineers shipping production code.
                 </p>
               </div>
               <Link href="/contact" style={{ textDecoration: 'none' }}>

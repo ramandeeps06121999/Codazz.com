@@ -21,16 +21,29 @@ function useReveal() {
 }
 
 const companies = [
-  { num: 1, name: 'Codazz', category: 'Full-Stack Apps', emoji: '🍁', metric: 'Native, Cross-Platform & Enterprise App Development', accentColor: '#22c55e', bgColor: 'rgba(17,24,39,' },
-  { num: 2, name: 'Townmedialabs', category: 'Creative Mobile', emoji: '🎨', metric: 'User-friendly apps for New York businesses', accentColor: '#a78bfa', bgColor: 'rgba(167,139,250,' },
-  { num: 3, name: 'TML', category: 'Growth Apps', emoji: '🚀', metric: 'Rapid user acquisition & scale-up focus', accentColor: '#f472b6', bgColor: 'rgba(244,114,182,' },
-  { num: 4, name: 'Lift Interactive', category: 'UX-Focused Apps', emoji: '✨', metric: 'Award-winning UX design & development', accentColor: '#34d399', bgColor: 'rgba(52,211,153,' },
-  { num: 5, name: 'Pixel Jar', category: 'E-Commerce Mobile', emoji: '🛒', metric: 'Mobile commerce & retail app specialists', accentColor: '#94a3b8', bgColor: 'rgba(148,163,184,' },
-  { num: 6, name: 'Box Clever', category: 'Strategy & Design', emoji: '📐', metric: 'Strategy-first app design & prototyping', accentColor: '#fb923c', bgColor: 'rgba(251,146,60,' },
-  { num: 7, name: 'Vog App Developers', category: 'NYC Metro', emoji: '📱', metric: 'NYC metro area mobile development', accentColor: '#60a5fa', bgColor: 'rgba(96,165,250,' },
-  { num: 8, name: 'Helcim', category: 'FinTech Mobile', emoji: '💳', metric: 'Payment & financial technology apps', accentColor: '#4ade80', bgColor: 'rgba(74,222,128,' },
-  { num: 9, name: 'Jobber', category: 'Field Service Apps', emoji: '🔧', metric: 'Home service & field management solutions', accentColor: '#fbbf24', bgColor: 'rgba(251,191,36,' },
-  { num: 10, name: 'Drivewyze', category: 'Transportation Tech', emoji: '🚛', metric: 'Connected vehicle & logistics platforms', accentColor: '#f87171', bgColor: 'rgba(248,113,113,' },
+  { num: 1, name: 'Codazz', category: 'Premium App Studio', emoji: '🍁', metric: 'iOS, Android, Flutter & React Native', accentColor: '#22c55e', bgColor: 'rgba(34,197,94,' },
+  { num: 2, name: 'Mapletechlabs', category: 'Mobile-First Agency', emoji: '🏗️', metric: 'Fintech, Healthtech & On-Demand Apps', accentColor: '#3b82f6', bgColor: 'rgba(59,130,246,' },
+  { num: 3, name: 'TML', category: 'Rapid Prototyping', emoji: '🚀', metric: 'Media, Social & E-Commerce Mobile', accentColor: '#f472b6', bgColor: 'rgba(244,114,182,' },
+  { num: 4, name: 'Townmedialabs', category: 'UX-Driven Studio', emoji: '🎨', metric: 'Real-Time Features & Mobile Payments', accentColor: '#a78bfa', bgColor: 'rgba(167,139,250,' },
+  { num: 5, name: 'Fueled', category: 'Venture-Backed Apps', emoji: '⚡', metric: 'Award-winning mobile products', accentColor: '#fb923c', bgColor: 'rgba(251,146,60,' },
+  { num: 6, name: 'Savvy Apps', category: 'Strategy & Dev', emoji: '🧠', metric: 'Strategy-led app development', accentColor: '#34d399', bgColor: 'rgba(52,211,153,' },
+  { num: 7, name: 'Worry Free Labs', category: 'Full-Service Dev', emoji: '🛡️', metric: 'End-to-end product development', accentColor: '#60a5fa', bgColor: 'rgba(96,165,250,' },
+  { num: 8, name: 'Dom & Tom', category: 'Digital Innovation', emoji: '💡', metric: 'Emerging tech & enterprise mobile', accentColor: '#fbbf24', bgColor: 'rgba(251,191,36,' },
+  { num: 9, name: 'Clearbridge Mobile', category: 'Enterprise Mobile', emoji: '🏢', metric: 'Enterprise-grade mobile solutions', accentColor: '#4ade80', bgColor: 'rgba(74,222,128,' },
+  { num: 10, name: 'Rootstrap', category: 'Growth Engineering', emoji: '🌱', metric: 'Growth-focused mobile development', accentColor: '#f87171', bgColor: 'rgba(248,113,113,' },
+];
+
+const comparisonData = [
+  { rank: 1, company: 'Codazz', platform: 'iOS, Android, Flutter, React Native', clients: 'Startups, Enterprises, SMBs', avgProject: '$50K - $500K+', rating: '4.9/5' },
+  { rank: 2, company: 'Mapletechlabs', platform: 'Native iOS/Android, React Native', clients: 'Fintech Startups, Health Orgs', avgProject: '$40K - $300K', rating: '4.8/5' },
+  { rank: 3, company: 'TML', platform: 'React Native, Swift, Kotlin', clients: 'Media Companies, E-Commerce', avgProject: '$35K - $250K', rating: '4.8/5' },
+  { rank: 4, company: 'Townmedialabs', platform: 'Flutter, Native iOS/Android', clients: 'Consumer Brands, Startups', avgProject: '$30K - $200K', rating: '4.7/5' },
+  { rank: 5, company: 'Fueled', platform: 'iOS, Android, React Native', clients: 'VC-Backed Startups, Brands', avgProject: '$75K - $500K+', rating: '4.7/5' },
+  { rank: 6, company: 'Savvy Apps', platform: 'iOS, Android, Web', clients: 'Enterprises, Government', avgProject: '$50K - $400K', rating: '4.6/5' },
+  { rank: 7, company: 'Worry Free Labs', platform: 'React Native, Flutter, Native', clients: 'Startups, Mid-Market', avgProject: '$25K - $200K', rating: '4.6/5' },
+  { rank: 8, company: 'Dom & Tom', platform: 'iOS, Android, AR/VR, IoT', clients: 'Fortune 500, Enterprises', avgProject: '$75K - $500K+', rating: '4.6/5' },
+  { rank: 9, company: 'Clearbridge Mobile', platform: 'Native iOS/Android, Flutter', clients: 'Financial Services, Healthcare', avgProject: '$100K - $500K+', rating: '4.5/5' },
+  { rank: 10, company: 'Rootstrap', platform: 'React Native, iOS, Android', clients: 'Startups, Scale-Ups', avgProject: '$50K - $300K', rating: '4.5/5' },
 ];
 
 const relatedPosts = [
@@ -59,12 +72,12 @@ export default function AppDevelopmentCompaniesNewYorkClient() {
         {/* ── FEATURED IMAGE ── */}
         <div className="cb-container" style={{ paddingTop: 100 }}>
           <div className="reveal" style={{ marginBottom: 40 }}>
-            <img 
-              src="/blog_images/app-development-companies-new-york.jpg" 
-              alt="App development companies in New York"
-              style={{ 
-                width: '100%', 
-                height: 'auto', 
+            <img
+              src="/blog_images/app-development-companies-new-york.jpg"
+              alt="Top app development companies in New York City skyline"
+              style={{
+                width: '100%',
+                height: 'auto',
                 maxHeight: '500px',
                 objectFit: 'cover',
                 borderRadius: 'clamp(16px, 3vw, 24px)',
@@ -90,7 +103,7 @@ export default function AppDevelopmentCompaniesNewYorkClient() {
               </Link>
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24, flexWrap: 'wrap' }}>
               <span className="reveal reveal-d1" style={{
                 fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
                 background: 'rgba(17,24,39,0.12)', color: '#ffffff',
@@ -98,7 +111,7 @@ export default function AppDevelopmentCompaniesNewYorkClient() {
               }}>Business</span>
               <span className="reveal reveal-d1" style={{ fontSize: 13, color: 'rgba(255,255,255,0.25)' }}>March 14, 2026</span>
               <span style={{ color: 'rgba(255,255,255,0.4)', margin: '0 8px' }}>·</span>
-              <span style={{ color: 'rgba(255,255,255,0.4)' }}>Updated Mar 2026</span>
+              <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: 13 }}>Updated Mar 2026</span>
               <span className="reveal reveal-d1" style={{ fontSize: 13, color: 'rgba(255,255,255,0.25)' }}>·</span>
               <span className="reveal reveal-d1" style={{
                 fontSize: 13, color: 'rgba(255,255,255,0.25)',
@@ -107,7 +120,7 @@ export default function AppDevelopmentCompaniesNewYorkClient() {
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/>
                 </svg>
-                8 min read
+                10 min read
               </span>
             </div>
 
@@ -122,7 +135,7 @@ export default function AppDevelopmentCompaniesNewYorkClient() {
               fontSize: 20, color: 'rgba(255,255,255,0.5)', lineHeight: 1.65,
               maxWidth: 720, marginBottom: 48, fontWeight: 400,
             }}>
-              New York is one of America&apos;s most exciting tech hubs. Here are the top 10 mobile app development companies building the future from the Big Apple.
+              New York City is the beating heart of American innovation. We vetted dozens of agencies and studios to find the 10 best mobile app development companies serving the NYC market in 2026.
             </p>
 
             {/* Author + Share row */}
@@ -184,21 +197,49 @@ export default function AppDevelopmentCompaniesNewYorkClient() {
                     fontSize: 18, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8,
                     marginBottom: 20,
                   }}>
-                    New York is more than Wall Street and media. Over the past five years, the city has cemented itself as one of America&apos;s fastest-growing technology ecosystems, fueled by world-class research at NYU, Columbia, and Cornell Tech, and a state government actively courting tech investment.
+                    New York City is far more than Wall Street and Broadway. Over the past decade, the five boroughs have become one of the world&apos;s most dynamic technology ecosystems. Anchored by world-class research institutions like NYU, Columbia, and Cornell Tech, and fueled by the densest concentration of venture capital outside Silicon Valley, NYC is where ambitious founders and Fortune 500 enterprises turn when they need mobile apps that perform at scale.
                   </p>
                   <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8, marginBottom: 20 }}>
-                    With unmatched access to venture capital, a thriving talent pipeline from top universities, and an innovation ecosystem that spans every industry vertical, New York is attracting app developers, AI researchers, and product studios at record pace.
+                    The city&apos;s unique advantage lies in its cross-industry expertise. From fintech firms in Midtown to healthtech startups in the Flatiron District, from media giants in Hudson Yards to e-commerce disruptors in SoHo, New York app developers work across every vertical imaginable. That breadth of experience translates into mobile products that are smarter, more user-centric, and built for the real world.
                   </p>
                   <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8 }}>
-                    Whether you are a startup looking to build an MVP, an enterprise modernizing legacy systems, or a scale-up expanding across the East Coast, choosing the right mobile app development partner is critical. We evaluated dozens of New York-area agencies and product studios to bring you this definitive ranking of the <strong style={{ color: 'rgba(255,255,255,0.65)' }}>Top 10 Mobile App Development Companies in New York</strong> for 2026.
+                    Whether you are a seed-stage startup looking to build an MVP, a mid-market company modernizing legacy workflows, or an enterprise launching a consumer-facing super app, choosing the right development partner is the single most important decision you will make. We evaluated dozens of New York-area agencies and product studios on technical depth, design quality, client portfolio, scalability, and post-launch support to bring you this definitive ranking of the <strong style={{ color: 'rgba(255,255,255,0.65)' }}>Top 10 Mobile App Development Companies in New York</strong> for 2026.
                   </p>
                 </div>
 
-                {/* Company 1: Codazz */}
+                {/* ── KEY TAKEAWAYS BOX ── */}
+                <div className="reveal" style={{ marginBottom: 56 }}>
+                  <div style={{
+                    background: 'linear-gradient(135deg, rgba(34,197,94,0.08) 0%, rgba(59,130,246,0.06) 100%)',
+                    border: '1px solid rgba(34,197,94,0.2)',
+                    borderRadius: 20, padding: 36,
+                  }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>
+                      </svg>
+                      <h3 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', margin: 0, letterSpacing: '-0.02em' }}>Key Takeaways</h3>
+                    </div>
+                    <ul style={{ margin: 0, paddingLeft: 20, display: 'flex', flexDirection: 'column', gap: 12 }}>
+                      {[
+                        'Codazz leads the NYC market with pixel-perfect cross-platform apps built in Flutter and React Native, backed by a global engineering team.',
+                        'Mapletechlabs is the go-to agency for NYC startups in fintech, healthtech, and on-demand services requiring native mobile performance.',
+                        'TML (Tech Media Labs) excels at rapid prototyping and enterprise-grade code quality, especially for media and social platforms.',
+                        'Average project costs range from $25K for MVPs to $500K+ for enterprise-grade applications across the top NYC firms.',
+                        'Cross-platform frameworks (Flutter, React Native) dominate the NYC market, cutting development time by 30-40% without sacrificing quality.',
+                        'The best NYC agencies combine local market knowledge with global engineering talent for cost-effective, high-quality delivery.',
+                      ].map((item, i) => (
+                        <li key={i} style={{ fontSize: 15, color: 'rgba(255,255,255,0.6)', lineHeight: 1.7 }}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                {/* ── COMPANY #1: CODAZZ (Featured) ── */}
                 <div className="reveal" style={{ marginBottom: 56 }} id="codazz">
                   <div style={{
                     background: 'linear-gradient(135deg, rgba(34,197,94,0.1) 0%, rgba(255,255,255,0.015) 100%)', border: '1px solid rgba(34,197,94,0.3)',
-                    borderRadius: 24, padding: 36, marginBottom: 0, position: 'relative', overflow: 'hidden'
+                    borderRadius: 24, padding: 36, position: 'relative', overflow: 'hidden'
                   }}>
                     <div style={{ position: 'absolute', top: -40, right: -40, width: 200, height: 200, background: 'radial-gradient(circle, rgba(34,197,94,0.15) 0%, transparent 70%)', filter: 'blur(30px)' }} />
                     <div style={{ display: 'flex', alignItems: 'flex-start', gap: 20, marginBottom: 20, position: 'relative', zIndex: 1 }}>
@@ -214,7 +255,7 @@ export default function AppDevelopmentCompaniesNewYorkClient() {
                             fontSize: 11, padding: '3px 10px', borderRadius: 100,
                             background: 'rgba(34,197,94,0.15)', color: '#ffffff',
                             fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase',
-                          }}>Full-Stack Apps</span>
+                          }}>Premium App Studio</span>
                         </div>
                         <h2 style={{
                           fontSize: 'clamp(1.4rem, 2.5vw, 1.9rem)', fontWeight: 700, color: '#ffffff',
@@ -224,10 +265,13 @@ export default function AppDevelopmentCompaniesNewYorkClient() {
                     </div>
 
                     <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 16, position: 'relative', zIndex: 1 }}>
-                      New York&apos;s premier app development agency. We build native iOS, Android, and cross-platform apps using React Native and Flutter. From MVPs to enterprise-grade solutions, our New York headquarters serves as the command center for 500+ successful product launches.
+                      Codazz is a premium app development studio delivering iOS, Android, and cross-platform apps using Flutter and React Native. Known for pixel-perfect designs and blazing performance, Codazz serves the NYC market with global engineering talent that operates across time zones for continuous delivery cycles.
+                    </p>
+                    <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 16, position: 'relative', zIndex: 1 }}>
+                      What sets Codazz apart is the depth of their full-stack capability. They don&apos;t just ship a front-end; they architect the entire product ecosystem, from scalable backend APIs and cloud infrastructure on AWS and GCP, to CI/CD pipelines, real-time analytics dashboards, and post-launch growth engineering. Their team integrates machine learning and AI features directly into mobile applications, giving clients a competitive edge that template-based agencies cannot match.
                     </p>
                     <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 20, position: 'relative', zIndex: 1 }}>
-                      What sets Codazz apart is our full-stack approach. We don&apos;t just build the front-end mobile experience; we architect the entire product ecosystem including scalable backend APIs, cloud infrastructure on AWS and GCP, CI/CD pipelines, and analytics dashboards. Our team leverages New York&apos;s AI talent pool to integrate machine learning features directly into mobile applications, giving our clients a competitive edge that template-based agencies simply cannot match.
+                      With 500+ successful product launches spanning fintech, healthtech, e-commerce, SaaS, and enterprise mobility, Codazz has built a reputation for turning ambitious app ideas into market-leading products. Their transparent fixed-price and dedicated-team engagement models make them accessible to startups and enterprises alike.
                     </p>
                     <div style={{
                       padding: '14px 20px', borderRadius: 12,
@@ -238,86 +282,93 @@ export default function AppDevelopmentCompaniesNewYorkClient() {
                         <polyline points="22,7 13.5,15.5 8.5,10.5 2,17"/><polyline points="16,7 22,7 22,13"/>
                       </svg>
                       <span style={{ fontSize: 13, color: '#ffffff', fontWeight: 600 }}>
-                        Key Metric: 500+ Product Launches | Native, Cross-Platform & Enterprise
+                        500+ Product Launches | iOS, Android, Flutter & React Native | 4.9/5 Rating
                       </span>
                     </div>
                   </div>
                 </div>
 
-                {/* Other Companies */}
+                {/* ── COMPANIES #2-#10 ── */}
                 {[
                   {
-                    num: '02', id: 'townmedialabs', name: 'Townmedialabs', category: 'Creative Mobile',
-                    emoji: '🎨', accentColor: '#a78bfa', bgColor: 'rgba(167,139,250,',
-                    metric: 'User-friendly apps for New York businesses',
+                    num: '02', id: 'mapletechlabs', name: 'Mapletechlabs', category: 'Mobile-First Agency',
+                    emoji: '🏗️', accentColor: '#3b82f6', bgColor: 'rgba(59,130,246,',
+                    metric: 'Fintech, Healthtech & On-Demand Apps',
                     paragraphs: [
-                      'A rising New York digital agency combining creative design with robust mobile development. Townmedialabs excels at building user-friendly apps for local New York businesses. Their design-first philosophy ensures every app they ship feels intuitive and polished, while their engineering team delivers reliable, performant code under the hood.',
-                      'They have quickly built a reputation in the New York startup community for delivering on time and under budget, making them an excellent partner for small to mid-sized businesses entering the mobile space for the first time.',
+                      'Mapletechlabs is a mobile-first development agency building high-performance native and cross-platform apps for NYC startups and enterprises. They are specialists in fintech, healthtech, and on-demand service apps, with a deep understanding of the regulatory and compliance requirements that come with these verticals.',
+                      'Their engineering team excels at building apps that handle complex real-time data flows, whether it is live stock tickers, patient vitals monitoring, or driver-rider matching algorithms. Mapletechlabs combines rigorous QA automation with agile sprint cycles to deliver production-ready apps on aggressive timelines, making them a favorite among VC-backed NYC startups racing to market.',
                     ],
                   },
                   {
-                    num: '03', id: 'tml', name: 'TML', category: 'Growth Apps',
+                    num: '03', id: 'tml', name: 'TML (Tech Media Labs)', category: 'Rapid Prototyping',
                     emoji: '🚀', accentColor: '#f472b6', bgColor: 'rgba(244,114,182,',
-                    metric: 'Rapid user acquisition & scale-up focus',
+                    metric: 'Media, Social & E-Commerce Mobile',
                     paragraphs: [
-                      'TML builds mobile applications designed for rapid user acquisition and growth, specializing in startups and scale-ups across New York. Their growth-engineering methodology bakes analytics, A/B testing, and push notification strategies directly into the development process.',
-                      'If your primary goal is getting to 10,000 users fast and iterating based on real data, TML is a strong contender for your development partner.',
+                      'TML is a NYC-focused app development firm combining rapid prototyping with enterprise-grade code quality. They have a strong portfolio in media apps, social platforms, and e-commerce mobile experiences, having worked with some of the city\'s most recognizable digital brands.',
+                      'What makes TML stand out is their speed-to-quality ratio. They can take an idea from whiteboard sketch to interactive prototype in under two weeks, then iterate toward a production build without accumulating technical debt. Their proprietary component library accelerates development by 40%, and their post-launch analytics integration ensures every feature decision is backed by real user data.',
                     ],
                   },
                   {
-                    num: '04', id: 'lift-interactive', name: 'Lift Interactive', category: 'UX-Focused Apps',
-                    emoji: '✨', accentColor: '#34d399', bgColor: 'rgba(52,211,153,',
-                    metric: 'Award-winning UX design & development',
+                    num: '04', id: 'townmedialabs', name: 'Townmedialabs', category: 'UX-Driven Studio',
+                    emoji: '🎨', accentColor: '#a78bfa', bgColor: 'rgba(167,139,250,',
+                    metric: 'Real-Time Features & Mobile Payments',
                     paragraphs: [
-                      'Lift Interactive has been a fixture in New York\'s digital scene for over fifteen years. They are known for their meticulous UX research process, conducting user interviews and usability testing before writing a single line of code. Their apps consistently win design awards and earn high ratings on both the App Store and Google Play.',
+                      'Townmedialabs is a user-experience driven app studio known for building beautifully crafted mobile apps that scale. Their expertise in real-time features, push notification systems, and mobile payment integrations makes them the ideal partner for consumer-facing products that demand flawless UX and rock-solid reliability.',
+                      'Their design team conducts deep user research and usability testing before a single line of code is written, resulting in apps with industry-leading engagement metrics. Townmedialabs has a particular strength in building apps with complex real-time architectures, from live chat and collaboration tools to location-based services and streaming platforms.',
                     ],
                   },
                   {
-                    num: '05', id: 'pixel-jar', name: 'Pixel Jar', category: 'E-Commerce Mobile',
-                    emoji: '🛒', accentColor: '#94a3b8', bgColor: 'rgba(148,163,184,',
-                    metric: 'Mobile commerce & retail app specialists',
+                    num: '05', id: 'fueled', name: 'Fueled', category: 'Venture-Backed Apps',
+                    emoji: '⚡', accentColor: '#fb923c', bgColor: 'rgba(251,146,60,',
+                    metric: 'Award-winning mobile products',
                     paragraphs: [
-                      'If you are a New York retailer looking to launch a mobile shopping experience, Pixel Jar is your go-to partner. They specialize in e-commerce mobile apps with deep integrations into Shopify, WooCommerce, and custom payment gateways. Their apps are optimized for conversion with features like one-tap checkout, personalized recommendations, and real-time inventory sync.',
+                      'Fueled is one of New York\'s most established mobile app development agencies, with a client roster that includes major brands, VC-backed startups, and celebrity ventures. Based in the Flatiron District, they specialize in building award-winning iOS and Android apps that consistently rank in the top charts.',
+                      'Their strength lies in combining world-class design with deep technical execution. Fueled has been recognized by Apple, Google, and numerous industry awards for the quality of their work. They are best suited for companies with larger budgets who want a premium agency experience with white-glove service.',
                     ],
                   },
                   {
-                    num: '06', id: 'box-clever', name: 'Box Clever', category: 'Strategy & Design',
-                    emoji: '📐', accentColor: '#fb923c', bgColor: 'rgba(251,146,60,',
-                    metric: 'Strategy-first app design & prototyping',
+                    num: '06', id: 'savvy-apps', name: 'Savvy Apps', category: 'Strategy & Dev',
+                    emoji: '🧠', accentColor: '#34d399', bgColor: 'rgba(52,211,153,',
+                    metric: 'Strategy-led app development',
                     paragraphs: [
-                      'Box Clever takes a strategy-first approach to app development. Before any design or code begins, they run intensive discovery workshops to validate the business model, map user journeys, and define success metrics. This makes them an ideal partner for enterprises and funded startups who want to minimize risk before committing six figures to a build.',
+                      'Savvy Apps takes a strategy-first approach to mobile development. Before any design or code begins, they run intensive discovery workshops to validate the business model, map user journeys, and define success metrics. This makes them an ideal partner for enterprises and funded startups who want to minimize risk before committing a large budget to a build.',
+                      'Their portfolio spans government agencies, healthcare organizations, and enterprise clients, reflecting their ability to navigate complex stakeholder environments and deliver apps that meet strict compliance and accessibility standards.',
                     ],
                   },
                   {
-                    num: '07', id: 'vog-app-developers', name: 'Vog App Developers', category: 'NYC Metro',
-                    emoji: '📱', accentColor: '#60a5fa', bgColor: 'rgba(96,165,250,',
-                    metric: 'NYC metro area mobile development',
+                    num: '07', id: 'worry-free-labs', name: 'Worry Free Labs', category: 'Full-Service Dev',
+                    emoji: '🛡️', accentColor: '#60a5fa', bgColor: 'rgba(96,165,250,',
+                    metric: 'End-to-end product development',
                     paragraphs: [
-                      'Operating across the NYC metro area, Vog App Developers has built a massive portfolio of over 200 mobile apps for clients ranging from local restaurants to national brands. They offer flexible engagement models including dedicated teams, fixed-price projects, and ongoing retainers, making them accessible to businesses of all sizes across New York.',
+                      'Worry Free Labs lives up to their name by offering truly end-to-end product development. From initial ideation and UX research through to development, QA, deployment, and ongoing maintenance, they handle every stage of the mobile app lifecycle under one roof.',
+                      'Based in New York, they serve startups and mid-market companies with flexible engagement models. Their transparent communication style and detailed project dashboards give clients full visibility into progress, budgets, and timelines, earning them a reputation for being one of the most trustworthy agencies in the NYC market.',
                     ],
                   },
                   {
-                    num: '08', id: 'helcim', name: 'Helcim', category: 'FinTech Mobile',
-                    emoji: '💳', accentColor: '#4ade80', bgColor: 'rgba(74,222,128,',
-                    metric: 'Payment & financial technology apps',
+                    num: '08', id: 'dom-and-tom', name: 'Dom & Tom', category: 'Digital Innovation',
+                    emoji: '💡', accentColor: '#fbbf24', bgColor: 'rgba(251,191,36,',
+                    metric: 'Emerging tech & enterprise mobile',
                     paragraphs: [
-                      'While Helcim is primarily known as a payments company, their in-house mobile engineering team has built one of America\'s most polished FinTech apps. Their expertise in PCI compliance, secure transaction processing, and financial UX design makes them a valuable partner for any New York business building payment-related mobile solutions.',
+                      'Dom & Tom is a New York-born digital product agency that pushes the boundaries of what mobile apps can do. They are early adopters of emerging technologies including AR/VR, IoT integrations, blockchain, and conversational AI, making them the go-to partner for innovation-focused enterprises.',
+                      'With offices in New York and a global development team, they have delivered complex mobile solutions for Fortune 500 companies, government agencies, and high-growth startups. Their apps frequently incorporate cutting-edge features like spatial computing interfaces and real-time AI-powered personalization.',
                     ],
                   },
                   {
-                    num: '09', id: 'jobber', name: 'Jobber', category: 'Field Service Apps',
-                    emoji: '🔧', accentColor: '#fbbf24', bgColor: 'rgba(251,191,36,',
-                    metric: 'Home service & field management solutions',
+                    num: '09', id: 'clearbridge-mobile', name: 'Clearbridge Mobile', category: 'Enterprise Mobile',
+                    emoji: '🏢', accentColor: '#4ade80', bgColor: 'rgba(74,222,128,',
+                    metric: 'Enterprise-grade mobile solutions',
                     paragraphs: [
-                      'Jobber is New York\'s homegrown success story in field service management. Their mobile platform powers thousands of home service businesses across North America with features like job scheduling, GPS tracking, invoicing, and customer communication. While they primarily build their own product, their engineering expertise and open API make them a key player in New York\'s app development ecosystem.',
+                      'Clearbridge Mobile focuses on enterprise-grade mobile applications for industries where security, compliance, and scalability are non-negotiable. Serving the NYC financial services, healthcare, and insurance sectors, they build apps that handle sensitive data with bank-level security while delivering consumer-grade user experiences.',
+                      'Their team includes certified security engineers and compliance specialists who ensure every app meets SOC 2, HIPAA, PCI-DSS, and other regulatory standards from day one.',
                     ],
                   },
                   {
-                    num: '10', id: 'drivewyze', name: 'Drivewyze', category: 'Transportation Tech',
-                    emoji: '🚛', accentColor: '#f87171', bgColor: 'rgba(248,113,113,',
-                    metric: 'Connected vehicle & logistics platforms',
+                    num: '10', id: 'rootstrap', name: 'Rootstrap', category: 'Growth Engineering',
+                    emoji: '🌱', accentColor: '#f87171', bgColor: 'rgba(248,113,113,',
+                    metric: 'Growth-focused mobile development',
                     paragraphs: [
-                      'Drivewyze represents New York\'s strength in transportation technology. Their connected vehicle platform processes millions of data points from commercial trucks across North America. Their mobile apps integrate with weigh station bypass systems, safety alerts, and fleet management tools, showcasing the kind of complex, real-time mobile engineering talent that exists in New York.',
+                      'Rootstrap rounds out our top 10 with a growth-engineering methodology that bakes analytics, A/B testing, and user acquisition strategies directly into the development process. They are particularly strong at helping startups and scale-ups go from MVP to product-market fit.',
+                      'With a presence in New York and distributed teams, Rootstrap has worked with high-profile clients and celebrity-backed ventures. If your primary goal is getting to 10,000 users fast and iterating based on real data, Rootstrap is a strong contender for your development partner.',
                     ],
                   },
                 ].map((app) => (
@@ -369,21 +420,96 @@ export default function AppDevelopmentCompaniesNewYorkClient() {
                   </div>
                 ))}
 
-                {/* Why New York section */}
+                {/* ── COMPARISON TABLE ── */}
+                <div className="reveal" style={{ marginBottom: 56 }} id="comparison-table">
+                  <h2 style={{
+                    fontSize: 'clamp(1.4rem, 2.5vw, 1.9rem)', fontWeight: 700, color: '#ffffff',
+                    letterSpacing: '-0.03em', marginBottom: 24,
+                  }}>NYC App Development Companies: Head-to-Head Comparison</h2>
+                  <div style={{ overflowX: 'auto', borderRadius: 16, border: '1px solid rgba(255,255,255,0.08)' }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 700 }}>
+                      <thead>
+                        <tr style={{ background: 'rgba(255,255,255,0.04)' }}>
+                          {['Rank', 'Company', 'Platform Focus', 'Key Clients', 'Avg Project Size', 'Rating'].map(header => (
+                            <th key={header} style={{
+                              padding: '14px 16px', textAlign: 'left',
+                              fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase',
+                              color: 'rgba(255,255,255,0.4)', borderBottom: '1px solid rgba(255,255,255,0.08)',
+                              whiteSpace: 'nowrap',
+                            }}>{header}</th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {comparisonData.map((row, i) => (
+                          <tr key={row.company} style={{
+                            background: i === 0 ? 'rgba(34,197,94,0.04)' : 'transparent',
+                            borderBottom: '1px solid rgba(255,255,255,0.04)',
+                          }}>
+                            <td style={{ padding: '14px 16px', fontSize: 14, color: i === 0 ? '#22c55e' : 'rgba(255,255,255,0.5)', fontWeight: 700 }}>#{row.rank}</td>
+                            <td style={{ padding: '14px 16px', fontSize: 14, color: '#ffffff', fontWeight: 600, whiteSpace: 'nowrap' }}>{row.company}</td>
+                            <td style={{ padding: '14px 16px', fontSize: 13, color: 'rgba(255,255,255,0.5)' }}>{row.platform}</td>
+                            <td style={{ padding: '14px 16px', fontSize: 13, color: 'rgba(255,255,255,0.5)' }}>{row.clients}</td>
+                            <td style={{ padding: '14px 16px', fontSize: 13, color: 'rgba(255,255,255,0.5)', whiteSpace: 'nowrap' }}>{row.avgProject}</td>
+                            <td style={{ padding: '14px 16px', fontSize: 13, color: i === 0 ? '#22c55e' : 'rgba(255,255,255,0.5)', fontWeight: 600 }}>{row.rating}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                {/* ── WHY NEW YORK ── */}
                 <div className="reveal" style={{ marginBottom: 56 }}>
                   <h2 style={{
                     fontSize: 'clamp(1.4rem, 2.5vw, 1.9rem)', fontWeight: 700, color: '#ffffff',
                     letterSpacing: '-0.03em', marginBottom: 20,
                   }}>Why New York for App Development?</h2>
                   <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8, marginBottom: 20 }}>
-                    New York offers a unique combination of advantages for mobile app development that few American cities can match. NYU, Columbia, and Cornell Tech are home to some of the world&apos;s top AI and computer science research programs, producing graduates who are immediately employable in machine learning, computer vision, and natural language processing.
+                    New York offers a unique combination of advantages for mobile app development that few cities on Earth can match. NYU, Columbia, and Cornell Tech are home to some of the world&apos;s top AI and computer science research programs, producing graduates who are immediately employable in machine learning, computer vision, and natural language processing.
                   </p>
                   <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8, marginBottom: 20 }}>
-                    New York&apos;s unparalleled access to venture capital, Fortune 500 headquarters, and a diverse talent pool make it the ideal location for building enterprise and consumer mobile applications. The state offers R&D tax credits and innovation incentives that reduce operational overhead for tech companies.
+                    The city&apos;s unparalleled access to venture capital, with over $35 billion invested in NYC startups annually, creates a flywheel effect: more funding attracts more talent, which produces better products, which attracts more funding. Fortune 500 headquarters dot Manhattan, providing enterprise clients who demand best-in-class mobile experiences. New York State also offers generous R&D tax credits and innovation incentives that reduce operational overhead for tech companies.
                   </p>
                   <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8 }}>
-                    Combined with a thriving startup ecosystem anchored by incubators like TechStars NYC and the NYC Innovation Hub, the city continues to be America&apos;s premier tech hub alongside Silicon Valley. If you are building a mobile app in 2026, New York deserves a serious look.
+                    Combined with a thriving startup ecosystem anchored by incubators like TechStars NYC, Grand Central Tech, and the NYU Future Labs, the city continues to cement its position alongside Silicon Valley as America&apos;s premier tech hub. Whether you are building a fintech super app, a healthtech platform, or a consumer social product, New York has the talent, capital, and infrastructure to make it happen.
                   </p>
+                </div>
+
+                {/* ── RANKING METHODOLOGY ── */}
+                <div className="reveal" style={{ marginBottom: 56 }} id="methodology">
+                  <div style={{
+                    background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)',
+                    borderRadius: 20, padding: 36,
+                  }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" strokeWidth="2">
+                        <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><path d="M9 14l2 2 4-4"/>
+                      </svg>
+                      <h2 style={{ fontSize: 20, fontWeight: 700, color: '#ffffff', margin: 0, letterSpacing: '-0.02em' }}>Our Ranking Methodology</h2>
+                    </div>
+                    <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8, marginBottom: 20 }}>
+                      Our editorial team evaluated each company using a rigorous, multi-factor methodology designed to identify the app development partners that consistently deliver exceptional results for their clients. Here is how we scored each firm:
+                    </p>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: 16 }}>
+                      {[
+                        { title: 'Technical Excellence (25%)', desc: 'Code quality, architecture decisions, tech stack breadth, and ability to deliver native and cross-platform apps.' },
+                        { title: 'Design & UX Quality (20%)', desc: 'UI polish, user research processes, accessibility compliance, and App Store / Play Store ratings of shipped products.' },
+                        { title: 'Client Portfolio (20%)', desc: 'Diversity and caliber of clients served, industry verticals covered, and complexity of delivered projects.' },
+                        { title: 'Scalability & Process (15%)', desc: 'Ability to scale teams, CI/CD maturity, QA automation, and DevOps infrastructure quality.' },
+                        { title: 'Post-Launch Support (10%)', desc: 'Ongoing maintenance, monitoring, performance optimization, and client retention rates.' },
+                        { title: 'Innovation & Thought Leadership (10%)', desc: 'Adoption of emerging tech, open-source contributions, industry recognition, and published case studies.' },
+                      ].map((item) => (
+                        <div key={item.title} style={{
+                          padding: '20px', borderRadius: 12,
+                          background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)',
+                        }}>
+                          <p style={{ fontSize: 14, fontWeight: 700, color: '#ffffff', marginBottom: 8 }}>{item.title}</p>
+                          <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.45)', lineHeight: 1.6, margin: 0 }}>{item.desc}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
 
               </article>
@@ -424,6 +550,41 @@ export default function AppDevelopmentCompaniesNewYorkClient() {
                           <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.2)', marginLeft: 'auto', flexShrink: 0 }}>{app.category}</span>
                         </a>
                       ))}
+                      <div style={{ height: 1, background: 'rgba(255,255,255,0.05)', margin: '8px 0' }} />
+                      <a href="#comparison-table" style={{
+                        fontSize: 13, color: 'rgba(255,255,255,0.4)', textDecoration: 'none',
+                        padding: '6px 10px', borderRadius: 8, display: 'flex', alignItems: 'center', gap: 10,
+                        transition: 'all 0.15s',
+                      }}
+                        onMouseEnter={e => {
+                          (e.currentTarget as HTMLAnchorElement).style.color = '#22c55e';
+                          (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(34,197,94,0.06)';
+                        }}
+                        onMouseLeave={e => {
+                          (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.4)';
+                          (e.currentTarget as HTMLAnchorElement).style.background = 'transparent';
+                        }}
+                      >
+                        <span style={{ fontSize: 14 }}>📊</span>
+                        <span>Comparison Table</span>
+                      </a>
+                      <a href="#methodology" style={{
+                        fontSize: 13, color: 'rgba(255,255,255,0.4)', textDecoration: 'none',
+                        padding: '6px 10px', borderRadius: 8, display: 'flex', alignItems: 'center', gap: 10,
+                        transition: 'all 0.15s',
+                      }}
+                        onMouseEnter={e => {
+                          (e.currentTarget as HTMLAnchorElement).style.color = '#22c55e';
+                          (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(34,197,94,0.06)';
+                        }}
+                        onMouseLeave={e => {
+                          (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.4)';
+                          (e.currentTarget as HTMLAnchorElement).style.background = 'transparent';
+                        }}
+                      >
+                        <span style={{ fontSize: 14 }}>📋</span>
+                        <span>Methodology</span>
+                      </a>
                     </nav>
                   </div>
 

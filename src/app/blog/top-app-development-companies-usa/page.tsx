@@ -1,10 +1,10 @@
 import { Metadata } from 'next';
 import PageClient from './PageClient';
 
-const TITLE = 'How Much Does App Development Cost in Canada? (2026 Guide)';
-const DESCRIPTION = 'Complete guide to mobile app development costs in Canada for 2026. Real pricing from Toronto agencies, MVP costs, enterprise app budgets, and how to save without sacrificing quality.';
-const SLUG = 'app-development-cost-canada';
-const DATE = '2026-03-18';
+const TITLE = 'Top 10 App Development Companies in the USA (2026)';
+const DESCRIPTION = 'A data-driven ranking of the best mobile app development companies in the USA for 2026 — from iOS and Android specialists to cross-platform powerhouses.';
+const SLUG = 'top-app-development-companies-usa';
+const DATE = '2026-03-19';
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -27,7 +27,7 @@ const jsonLd = {
   headline: TITLE,
   description: DESCRIPTION,
   datePublished: DATE,
-  dateModified: '2026-03-18',
+  dateModified: DATE,
   author: {
     '@type': 'Person',
     name: 'Raman Makkar',
