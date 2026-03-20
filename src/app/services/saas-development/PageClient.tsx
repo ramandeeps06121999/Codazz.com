@@ -1095,7 +1095,7 @@ export default function SaaSDevelopmentPage() {
                   ...cardStyle,
                   padding: '32px 28px',
                 }}>
-                  <h3 style={{ fontSize: 16, fontWeight: 700, color: '#22c55e', letterSpacing: '-0.01em', marginBottom: 20, textTransform: 'uppercase', fontSize: 12, letterSpacing: '0.08em' }}>{sf.category}</h3>
+                  <h3 style={{ fontSize: 12, fontWeight: 700, color: '#22c55e', letterSpacing: '0.08em', marginBottom: 20, textTransform: 'uppercase' as const }}>{sf.category}</h3>
                   <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 12 }}>
                     {sf.items.map((item, ii) => (
                       <li key={ii} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontSize: 13, color: 'rgba(255,255,255,0.55)', lineHeight: 1.5 }}>

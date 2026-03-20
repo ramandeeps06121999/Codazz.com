@@ -1,0 +1,96 @@
+# Codazz - Software Development Company
+
+> Codazz is a leading software development company headquartered in Edmonton, Alberta, Canada with development centers in Chandigarh, India. We specialize in mobile app development, AI/ML solutions, web development, blockchain, cloud/DevOps, SaaS platforms, and digital marketing. Founded by Raman Makkar, we have delivered 500+ projects for clients across 48 cities in 24 countries.
+
+## Company Overview
+- Name: Codazz
+- Founded: 2020
+- CEO: Raman Makkar
+- Headquarters: Edmonton, Alberta, Canada
+- Development Center: Chandigarh, India
+- Team Size: 100+ engineers
+- Projects Delivered: 500+
+- Client Satisfaction: 99%
+- Industries Served: 16+
+- Countries Served: 24
+- Cities Served: 48
+
+## Services
+- Mobile App Development (iOS, Android, Flutter, React Native, Cross-Platform)
+- AI & Machine Learning Development (LLMs, Computer Vision, NLP, Predictive Analytics)
+- Web Development (Next.js, React, Node.js, Python, SaaS Platforms)
+- Blockchain & Web3 Development (Smart Contracts, DeFi, NFT, dApps)
+- Cloud & DevOps Services (AWS, GCP, Azure, Kubernetes, CI/CD)
+- SaaS Platform Development (Multi-tenant, Billing, Auth, Analytics)
+- UI/UX Product Design (Strategy, Wireframing, Design Systems, Prototyping)
+- Digital Marketing & SEO (SEO, PPC, Social Media, Content Marketing)
+
+## Ready-Made App Solutions
+We offer customizable app solutions based on proven business models:
+- Uber Clone (Ride-Hailing) - Starting $45,000
+- Airbnb Clone (Rental Marketplace) - Starting $50,000
+- DoorDash Clone (Food Delivery) - Starting $40,000
+- Instacart Clone (Grocery Delivery) - Starting $45,000
+- Netflix Clone (Streaming Platform) - Starting $60,000
+- Tinder Clone (Dating App) - Starting $60,000
+- Shopify Clone (E-Commerce) - Starting $80,000
+- WhatsApp Clone (Messaging) - Starting $70,000
+- Spotify Clone (Music Streaming) - Starting $80,000
+- TikTok Clone (Short Video) - Starting $90,000
+- Amazon Clone (Marketplace) - Starting $100,000
+- LinkedIn Clone (Professional Network) - Starting $80,000
+- Zoom Clone (Video Conferencing) - Starting $70,000
+- Stripe Clone (Payment Platform) - Starting $120,000
+- Slack Clone (Team Communication) - Starting $70,000
+
+## Industries We Serve
+FinTech, Healthcare, E-Commerce, Logistics, EdTech, Enterprise Software, Food & Restaurant Delivery, Dating & Social Media, Travel & Hospitality, Real Estate & PropTech, Fitness & Wellness, On-Demand Services, Fantasy Sports & Betting, Streaming & Entertainment, Grocery & Retail, Telemedicine & Digital Health
+
+## Technology Expertise
+- Frontend: React, Next.js, Vue.js, Angular, TypeScript
+- Backend: Node.js, Python, Go, Java, Django, FastAPI
+- Mobile: React Native, Flutter, Swift, Kotlin
+- AI/ML: OpenAI GPT-4, Claude, LLaMA, TensorFlow, PyTorch, LangChain
+- Blockchain: Solidity, Rust, Ethereum, Polygon, Solana, Hyperledger
+- Database: PostgreSQL, MongoDB, Redis, Elasticsearch
+- Cloud: AWS (Advanced Partner), Google Cloud, Microsoft Azure
+- DevOps: Docker, Kubernetes, Terraform, GitHub Actions, Jenkins
+
+## Hire Developers
+- Hire React Developers
+- Hire Node.js Developers
+- Hire Flutter Developers
+- Hire Python Developers
+- Hire AI/ML Engineers
+
+## Certifications & Awards
+- Clutch Top App Development Company 2026
+- Clutch Top Generative AI Company 2026
+- AWS Advanced Tier Partner
+- SOC 2 Type II Certified
+- ISO/IEC 27001:2022 Certified
+
+## Global Presence
+North America: New York, San Francisco, Los Angeles, Chicago, Austin, Seattle, Miami, Boston, Denver, Atlanta, Dallas, Houston, Edmonton (HQ), Toronto, Vancouver, Montreal
+Middle East: Dubai, Abu Dhabi, Riyadh, Jeddah, Doha
+Europe: London, Manchester, Birmingham, Berlin, Munich, Amsterdam, Dublin, Warsaw, Zurich
+Asia-Pacific: Singapore, Bangalore, Mumbai, Delhi, Chandigarh (Dev Center), Tokyo, Seoul, Ho Chi Minh City, Sydney, Melbourne, Brisbane, Auckland
+Africa: Lagos, Nairobi, Cairo
+Latin America: São Paulo, Mexico City
+
+## Contact
+- Website: https://codazz.com
+- Email: hello@codazz.com
+- LinkedIn: https://www.linkedin.com/company/codazz
+
+## Key URLs
+- Homepage: https://codazz.com
+- Services: https://codazz.com/services
+- Solutions: https://codazz.com/solutions
+- Industries: https://codazz.com/industries
+- Blog: https://codazz.com/blog
+- Locations: https://codazz.com/locations
+- Case Studies: https://codazz.com/case-studies
+- Careers: https://codazz.com/careers
+- Contact: https://codazz.com/contact
+- Hire Developers: https://codazz.com/hire

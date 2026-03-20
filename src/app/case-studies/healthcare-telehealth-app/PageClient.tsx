@@ -48,7 +48,7 @@ function Card({ children, style }: { children: React.ReactNode; style?: React.CS
   );
 }
 
-export default function FintechTradingPlatformPage() {
+export default function HealthcareTelehealthPage() {
   const heroRef = useRef<HTMLElement>(null);
   const s1 = useReveal() as React.RefObject<HTMLElement>;
   const s2 = useReveal() as React.RefObject<HTMLElement>;
@@ -70,7 +70,7 @@ export default function FintechTradingPlatformPage() {
           <Breadcrumb items={[
             { label: 'Home', href: '/' },
             { label: 'Case Studies', href: '/case-studies' },
-            { label: 'FinTech Trading Platform' },
+            { label: 'Healthcare Telehealth App' },
           ]} />
         </div>
 
@@ -79,21 +79,21 @@ export default function FintechTradingPlatformPage() {
           <HeroBackground variant="center" />
           <div className="cb-container" style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: 900, margin: '0 auto' }}>
             <div className="reveal" style={{ display: 'inline-block', border: '1px solid rgba(34,197,94,0.4)', borderRadius: 999, padding: '6px 20px', fontSize: 13, color: '#22c55e', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>
-              FinTech &bull; Case Study
+              Healthcare &bull; Case Study
             </div>
             <h1 className="reveal" style={{ fontSize: 'clamp(2.2rem, 5.5vw, 4rem)', fontWeight: 800, lineHeight: 1.1, marginBottom: '1.5rem', letterSpacing: '-0.02em' }}>
-              How We Built a FinTech Trading Platform with{' '}
-              <span style={{ color: '#22c55e' }}>100K+ Active Users</span>
+              Building a HIPAA-Compliant Telehealth Platform for{' '}
+              <span style={{ color: '#22c55e' }}>50K+ Patients</span>
             </h1>
             <p className="reveal" style={{ fontSize: '1.15rem', color: 'rgba(255,255,255,0.7)', marginBottom: '2.5rem', lineHeight: 1.7, maxWidth: 700, margin: '0 auto 2.5rem' }}>
-              A real-time, multi-asset trading platform with AI-driven analytics, institutional-grade security, and sub-50ms order execution.
+              A fully compliant telehealth platform with HD video consultations, e-prescriptions, EHR integration, and automated appointment management.
             </p>
             <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(140px, 100%), 1fr))', gap: '1.5rem', maxWidth: 700, margin: '0 auto' }}>
               {[
-                ['100K+', 'Active Users'],
-                ['4.9\u2605', 'App Store Rating'],
-                ['99.99%', 'Uptime'],
-                ['$50M+', 'Traded Volume'],
+                ['50K+', 'Patients Served'],
+                ['HIPAA', 'Certified'],
+                ['40%', 'Fewer No-Shows'],
+                ['4.8\u2605', 'App Store Rating'],
               ].map(([val, label]) => (
                 <div key={label} style={{ textAlign: 'center' }}>
                   <div style={{ fontSize: '1.8rem', fontWeight: 800, color: '#ffffff' }}>{val}</div>
@@ -110,17 +110,17 @@ export default function FintechTradingPlatformPage() {
             <div className="reveal" style={{ marginBottom: '3rem' }}>
               <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.25)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>The Challenge</div>
               <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '1.5rem' }}>
-                A Growing FinTech Needed to Scale &mdash; Fast
+                A Regional Health Network Needed to Go Digital
               </h2>
               <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.05rem', lineHeight: 1.8 }}>
-                Our client, a US-based FinTech startup, had validated their product with early adopters but hit a wall. Their existing platform was a monolithic Ruby on Rails app that couldn&apos;t handle growing concurrency. Order execution times exceeded 2 seconds. The mobile experience was a web wrapper with poor performance. Compliance gaps were blocking their Series B fundraise.
+                Our client, a multi-location healthcare provider in the Midwest, was losing patients to telehealth competitors. Their legacy scheduling system generated a 35% no-show rate. They needed a HIPAA-compliant virtual care platform that integrated with their existing Epic EHR — without disrupting clinical workflows.
               </p>
             </div>
             <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem' }}>
               {[
-                { icon: '\u26A0\uFE0F', title: '2+ Second Latency', desc: 'Order execution was too slow for active traders, causing user churn.' },
-                { icon: '\uD83D\uDCF1', title: 'No Native Mobile', desc: 'The mobile app was a WebView wrapper with frequent crashes and poor UX.' },
-                { icon: '\uD83D\uDD12', title: 'Compliance Gaps', desc: 'Missing SOC 2 and SEC regulatory requirements were blocking fundraising.' },
+                { icon: '\uD83C\uDFE5', title: '35% No-Show Rate', desc: 'Appointment no-shows were costing the practice $2M+ annually in lost revenue.' },
+                { icon: '\uD83D\uDD12', title: 'HIPAA Compliance Required', desc: 'All video, messaging, and data storage needed full HIPAA compliance with BAA coverage.' },
+                { icon: '\uD83D\uDD17', title: 'EHR Integration', desc: 'Seamless bi-directional integration with Epic EHR for patient records, scheduling, and billing.' },
               ].map(c => (
                 <Card key={c.title}>
                   <div style={{ fontSize: '2rem', marginBottom: '0.75rem' }}>{c.icon}</div>
@@ -138,18 +138,18 @@ export default function FintechTradingPlatformPage() {
             <div className="reveal" style={{ marginBottom: '3rem' }}>
               <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.25)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>Our Solution</div>
               <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '1.5rem' }}>
-                A Complete Platform Rebuild &mdash; Architecture to App Store
+                A Complete Telehealth Platform — Built for Clinicians and Patients
               </h2>
               <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.05rem', lineHeight: 1.8, marginBottom: '1.5rem' }}>
-                We decomposed the monolith into event-driven microservices, built a native mobile experience with React Native, and implemented a real-time data pipeline that handles 50K+ concurrent WebSocket connections with sub-50ms latency.
+                We designed and built a cross-platform mobile app and provider dashboard with HD video consultations, automated reminders, e-prescriptions via Surescripts, and deep EHR integration — all within a HIPAA-compliant infrastructure.
               </p>
             </div>
             <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
               {[
-                { icon: '\uD83C\uDFD7\uFE0F', title: 'Microservices Architecture', desc: 'Decomposed into 12 independently deployable services with event-driven communication via Kafka, enabling zero-downtime deployments.' },
-                { icon: '\uD83D\uDCF1', title: 'Native Mobile with React Native', desc: 'Built from the ground up with React Native for iOS and Android, featuring real-time charts, biometric auth, and push notifications.' },
-                { icon: '\u26A1', title: 'Real-time Data Pipeline', desc: 'Custom WebSocket gateway handles 50K+ concurrent connections. Market data streams with sub-50ms latency using Redis pub/sub.' },
-                { icon: '\uD83D\uDD10', title: 'Security & Compliance', desc: 'SOC 2 Type II certified infrastructure with end-to-end encryption, audit logging, and SEC-compliant trade reporting.' },
+                { icon: '\uD83D\uDCF9', title: 'HD Video Consultations', desc: 'WebRTC-powered video with adaptive bitrate, screen sharing, and HIPAA-compliant recording with patient consent management.' },
+                { icon: '\uD83D\uDCCB', title: 'Smart Scheduling & Reminders', desc: 'AI-optimized scheduling with automated SMS/email reminders at 48hr, 24hr, and 1hr intervals, reducing no-shows by 40%.' },
+                { icon: '\uD83D\uDC8A', title: 'E-Prescriptions', desc: 'Integrated Surescripts EPCS for electronic prescribing including controlled substances, with pharmacy network lookup.' },
+                { icon: '\uD83D\uDD04', title: 'Epic EHR Integration', desc: 'HL7 FHIR R4 bi-directional integration for patient records, visit notes, lab results, and automated billing via HL7v2 ADT messages.' },
               ].map(s => (
                 <Card key={s.title}>
                   <div style={{ fontSize: '2rem', marginBottom: '0.75rem' }}>{s.icon}</div>
@@ -170,12 +170,12 @@ export default function FintechTradingPlatformPage() {
             </div>
             <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.5rem' }}>
               {[
-                { cat: 'Frontend', items: ['React Native', 'TypeScript', 'Redux Toolkit', 'Victory Charts'] },
-                { cat: 'Backend', items: ['Node.js', 'Express', 'Apache Kafka', 'WebSocket (ws)'] },
-                { cat: 'Database', items: ['PostgreSQL', 'Redis', 'TimescaleDB', 'S3'] },
-                { cat: 'Infrastructure', items: ['AWS (ECS, RDS, ElastiCache)', 'Terraform', 'DataDog', 'PagerDuty'] },
-                { cat: 'Integrations', items: ['Plaid API', 'Alpaca Markets', 'Twilio', 'SendGrid'] },
-                { cat: 'Security', items: ['AWS KMS', 'HashiCorp Vault', 'OAuth 2.0', 'FIDO2/WebAuthn'] },
+                { cat: 'Frontend', items: ['React Native', 'TypeScript', 'React (Provider Portal)', 'TailwindCSS'] },
+                { cat: 'Backend', items: ['Node.js', 'Express', 'GraphQL', 'Bull Queue'] },
+                { cat: 'Video & Comms', items: ['WebRTC', 'Twilio Video', 'Twilio SMS', 'SendGrid'] },
+                { cat: 'Healthcare', items: ['HL7 FHIR R4', 'Surescripts EPCS', 'ICD-10', 'CPT Codes'] },
+                { cat: 'Database', items: ['PostgreSQL', 'Redis', 'S3 (encrypted)', 'Elasticsearch'] },
+                { cat: 'Infrastructure', items: ['AWS HIPAA', 'ECS Fargate', 'CloudWatch', 'WAF'] },
               ].map(t => (
                 <Card key={t.cat}>
                   <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.25)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>{t.cat}</div>
@@ -196,15 +196,15 @@ export default function FintechTradingPlatformPage() {
             <div className="reveal" style={{ marginBottom: '3rem' }}>
               <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.25)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>Process</div>
               <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '1rem' }}>Development Timeline</h2>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.05rem', lineHeight: 1.8 }}>8 months from kickoff to App Store launch, delivered in 2-week sprint cycles.</p>
+              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.05rem', lineHeight: 1.8 }}>7 months from discovery to HIPAA-certified production launch.</p>
             </div>
             <div className="reveal" style={{ display: 'grid', gap: '1rem' }}>
               {[
-                { phase: 'Weeks 1-2', title: 'Discovery & Architecture', desc: 'Stakeholder interviews, technical audit of existing system, architecture design, and sprint planning.' },
-                { phase: 'Weeks 3-8', title: 'Core Platform Build', desc: 'Microservices scaffolding, database design, real-time data pipeline, authentication system, and Plaid integration.' },
-                { phase: 'Weeks 9-16', title: 'Mobile App & Trading Engine', desc: 'React Native app development, order execution engine, real-time charting, portfolio management, and push notifications.' },
-                { phase: 'Weeks 17-24', title: 'Security Hardening & Compliance', desc: 'Penetration testing, SOC 2 audit preparation, SEC reporting integration, performance optimization, and load testing.' },
-                { phase: 'Weeks 25-32', title: 'Beta Testing & Launch', desc: 'Closed beta with 5,000 users, bug fixes, App Store submission, marketing site, and production deployment.' },
+                { phase: 'Weeks 1-3', title: 'Clinical Discovery & Compliance Planning', desc: 'Shadowed clinicians, mapped patient journeys, identified HIPAA requirements, designed HL7 FHIR integration architecture.' },
+                { phase: 'Weeks 4-10', title: 'Core Platform & Video Engine', desc: 'Built WebRTC video infrastructure, patient/provider portals, scheduling engine, and notification system.' },
+                { phase: 'Weeks 11-18', title: 'EHR Integration & E-Prescriptions', desc: 'Implemented HL7 FHIR R4 interface with Epic, Surescripts e-prescribing, lab result viewer, and clinical note templates.' },
+                { phase: 'Weeks 19-24', title: 'HIPAA Compliance & Security Audit', desc: 'Penetration testing, HIPAA risk assessment, BAA execution with all vendors, encryption audit, and access control review.' },
+                { phase: 'Weeks 25-28', title: 'Pilot Launch & Iteration', desc: 'Soft launch with 3 clinic locations, clinician training, patient onboarding flow optimization, and bug resolution.' },
               ].map((p, i) => (
                 <div key={p.phase} style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
                   <div style={{ minWidth: 48, height: 48, borderRadius: '50%', background: 'rgba(34,197,94,0.1)', border: '1px solid rgba(34,197,94,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.85rem', fontWeight: 700, color: '#22c55e', flexShrink: 0 }}>
@@ -227,16 +227,16 @@ export default function FintechTradingPlatformPage() {
             <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
               <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.25)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>Results</div>
               <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '1rem' }}>Measurable Impact</h2>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.05rem', lineHeight: 1.8 }}>Within 6 months of launch, every key metric exceeded initial targets.</p>
+              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.05rem', lineHeight: 1.8 }}>Within 4 months of launch, the platform transformed patient engagement and clinic revenue.</p>
             </div>
             <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem' }}>
               {[
-                { value: '100K+', label: 'Active Users', before: '8K users on legacy platform' },
-                { value: '4.9\u2605', label: 'App Store Rating', before: 'No mobile app previously' },
-                { value: '99.99%', label: 'Uptime', before: '97.5% uptime on legacy' },
-                { value: '$50M+', label: 'Monthly Trade Volume', before: '$2M monthly on legacy' },
-                { value: '<50ms', label: 'Order Execution', before: '2+ second latency before' },
-                { value: 'SOC 2', label: 'Type II Certified', before: 'No compliance certification' },
+                { value: '50K+', label: 'Patients Onboarded', before: 'In-person only previously' },
+                { value: 'HIPAA', label: 'Fully Certified', before: 'Independent third-party audit' },
+                { value: '40%', label: 'Reduction in No-Shows', before: '35% no-show rate before' },
+                { value: '4.8\u2605', label: 'App Store Rating', before: '2,400+ patient reviews' },
+                { value: '$1.2M', label: 'Annual Revenue Recovered', before: 'From reduced no-shows alone' },
+                { value: '92%', label: 'Patient Satisfaction', before: 'Post-visit survey score' },
               ].map(r => (
                 <Card key={r.label}>
                   <div style={{ fontSize: '1.6rem', fontWeight: 800, color: '#22c55e', marginBottom: '0.25rem' }}>{r.value}</div>
@@ -254,11 +254,11 @@ export default function FintechTradingPlatformPage() {
             <div className="reveal" style={{ border: '1px solid rgba(34,197,94,0.15)', borderRadius: 32, background: 'rgba(34,197,94,0.03)', padding: 'clamp(2rem, 5vw, 3.5rem)', textAlign: 'center' }}>
               <blockquote style={{ margin: 0 }}>
                 <p style={{ fontSize: 'clamp(1.1rem, 2.5vw, 1.4rem)', lineHeight: 1.7, color: 'rgba(255,255,255,0.7)', fontStyle: 'italic', marginBottom: '1.5rem' }}>
-                  &ldquo;Codazz didn&apos;t just rebuild our platform &mdash; they transformed our business. The new trading engine is faster, more reliable, and our users love the mobile experience. They helped us close our Series B.&rdquo;
+                  &ldquo;Our clinicians were skeptical about telehealth. Within 3 months, it became their preferred workflow. Codazz understood healthcare — the compliance, the integrations, and most importantly, the patient experience.&rdquo;
                 </p>
                 <div>
-                  <div style={{ fontWeight: 700, color: '#ffffff', fontSize: '1rem' }}>CTO</div>
-                  <div style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.3)' }}>Series B FinTech, New York</div>
+                  <div style={{ fontWeight: 700, color: '#ffffff', fontSize: '1rem' }}>Chief Medical Officer</div>
+                  <div style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.3)' }}>Regional Healthcare Network, Midwest US</div>
                 </div>
               </blockquote>
             </div>
@@ -273,7 +273,7 @@ export default function FintechTradingPlatformPage() {
             </div>
             <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: '1.5rem' }}>
               {[
-                { title: 'HIPAA Telehealth Platform', industry: 'Healthcare', metric: '50K+ Patients', href: '/case-studies/healthcare-telehealth-app' },
+                { title: 'FinTech Trading Platform', industry: 'FinTech', metric: '100K+ Active Users', href: '/case-studies/fintech-trading-platform' },
                 { title: 'E-Commerce Marketplace', industry: 'E-Commerce', metric: '340% Conversion Lift', href: '/case-studies/ecommerce-marketplace' },
               ].map(r => (
                 <Link
@@ -305,10 +305,10 @@ export default function FintechTradingPlatformPage() {
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', maxWidth: 700, margin: '0 auto' }}>
               <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 800, lineHeight: 1.15, marginBottom: '1.5rem' }}>
-                Build Your <span style={{ color: '#22c55e' }}>FinTech Platform.</span>
+                Build Your <span style={{ color: '#22c55e' }}>Healthcare Platform.</span>
               </h2>
               <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.15rem', marginBottom: '2.5rem', lineHeight: 1.7 }}>
-                Whether you&apos;re rebuilding a legacy system or launching from scratch, we have the FinTech engineering expertise to deliver.
+                HIPAA-compliant, EHR-integrated, and built for real clinical workflows. Let&apos;s talk.
               </p>
               <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '2.5rem' }}>
                 <Link href="/contact" style={{ background: '#22c55e', color: '#000', padding: '16px 36px', borderRadius: 999, fontWeight: 700, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
@@ -319,7 +319,7 @@ export default function FintechTradingPlatformPage() {
                 </Link>
               </div>
               <div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                {['NDA on Day 1', 'Fixed-Price Sprints', 'SOC II Certified', '24hr Response'].map(t => (
+                {['HIPAA Compliant', 'NDA on Day 1', 'SOC II Certified', '24hr Response'].map(t => (
                   <span key={t} style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.25)' }}>{'\u2713'} {t}</span>
                 ))}
               </div>

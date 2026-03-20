@@ -1,12 +1,15 @@
 'use client';
-
-import { useRef, useEffect, useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Breadcrumb from '@/components/Breadcrumb';
-import Link from 'next/link';
+import TrustBadges from '@/components/TrustBadges';
 import HeroBackground from '@/components/HeroBackground';
 
+/* ═══════════════════════════════════════════════════════════════════════════
+   REVEAL HOOK
+   ═══════════════════════════════════════════════════════════════════════════ */
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
   useEffect(() => {
@@ -20,401 +23,342 @@ function useReveal() {
   return ref;
 }
 
-const caseStudies = [
+/* ═══════════════════════════════════════════════════════════════════════════
+   CARD
+   ═══════════════════════════════════════════════════════════════════════════ */
+const cardBase: React.CSSProperties = {
+  border: '1px solid rgba(255,255,255,0.06)',
+  borderRadius: 24,
+  background: 'rgba(255,255,255,0.015)',
+  padding: '2rem',
+  transition: 'border-color 0.3s, background 0.3s, transform 0.3s, box-shadow 0.3s',
+  textDecoration: 'none',
+  display: 'block',
+};
+
+const cardHover: React.CSSProperties = {
+  borderColor: 'rgba(34,197,94,0.2)',
+  background: 'rgba(34,197,94,0.03)',
+  transform: 'translateY(-4px)',
+  boxShadow: '0 24px 60px rgba(255,255,255,0.06)',
+};
+
+function CaseCard({ cs }: { cs: CaseStudy }) {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <Link
+      href={cs.href}
+      style={{ ...cardBase, ...(hovered ? cardHover : {}) }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
+        <span style={{
+          background: 'rgba(34,197,94,0.1)',
+          border: '1px solid rgba(34,197,94,0.25)',
+          borderRadius: 999,
+          padding: '3px 12px',
+          fontSize: 11,
+          fontWeight: 600,
+          color: '#22c55e',
+          letterSpacing: '0.03em',
+        }}>
+          {cs.industry}
+        </span>
+      </div>
+      <h3 style={{ fontSize: '1.2rem', fontWeight: 700, color: '#ffffff', marginBottom: '0.75rem', lineHeight: 1.3 }}>
+        {cs.name}
+      </h3>
+      <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.95rem', lineHeight: 1.7, marginBottom: '1.25rem' }}>
+        {cs.description}
+      </p>
+      <div style={{ display: 'grid', gridTemplateColumns: `repeat(${cs.metrics.length}, 1fr)`, gap: '0.75rem', marginBottom: '1.25rem' }}>
+        {cs.metrics.map(m => (
+          <div key={m.label}>
+            <div style={{ fontSize: '1.15rem', fontWeight: 800, color: '#ffffff' }}>{m.value}</div>
+            <div style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.3)', marginTop: 2, letterSpacing: '0.04em' }}>{m.label}</div>
+          </div>
+        ))}
+      </div>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem', marginBottom: '1.25rem' }}>
+        {cs.tech.map(t => (
+          <span key={t} style={{
+            background: 'rgba(255,255,255,0.04)',
+            borderRadius: 8,
+            padding: '3px 10px',
+            fontSize: '0.75rem',
+            color: 'rgba(255,255,255,0.5)',
+          }}>
+            {t}
+          </span>
+        ))}
+      </div>
+      <span style={{ fontSize: '0.9rem', fontWeight: 600, color: '#22c55e', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+        Read Case Study
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+          <path d="M5 12h14M12 5l7 7-7 7" />
+        </svg>
+      </span>
+    </Link>
+  );
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   DATA
+   ═══════════════════════════════════════════════════════════════════════════ */
+interface Metric { value: string; label: string }
+interface CaseStudy {
+  name: string;
+  industry: string;
+  description: string;
+  metrics: Metric[];
+  tech: string[];
+  href: string;
+}
+
+const industries = ['All', 'FinTech', 'Healthcare', 'E-Commerce', 'Logistics', 'Food Delivery'];
+
+const caseStudies: CaseStudy[] = [
   {
-    slug: 'fintech-trading-platform',
-    category: 'Fintech',
-    title: 'AI-Powered Trading Platform',
-    client: 'Fintech Client \u00b7 San Francisco',
-    description: 'Built a real-time AI trading engine for a Series B fintech startup in San Francisco. The system processes 50K+ daily transactions with 99.99% uptime and 300ms average response time. We implemented ML-driven risk assessment models, real-time portfolio analytics, and automated compliance reporting \u2014 reducing operational costs by 40%.',
-    metric: { value: '50K+', label: 'Daily Transactions' },
-    metrics: ['99.99% Uptime', '300ms Response', '40% Cost Reduction'],
-    tech: ['React', 'Python', 'AWS', 'PostgreSQL'],
-    gradient: 'linear-gradient(135deg, rgba(124,58,237,0.1), rgba(34,197,94,0.05))',
+    name: 'FinTech Trading Platform',
+    industry: 'FinTech',
+    description: 'A real-time trading platform with AI-driven analytics, multi-asset support, and institutional-grade security serving 100K+ active users.',
+    metrics: [
+      { value: '100K+', label: 'Active Users' },
+      { value: '4.9\u2605', label: 'App Store' },
+      { value: '$50M+', label: 'Traded' },
+    ],
+    tech: ['React Native', 'Node.js', 'PostgreSQL', 'Redis', 'AWS'],
+    href: '/case-studies/fintech-trading-platform',
   },
   {
-    slug: 'healthcare-telehealth',
-    category: 'Healthcare',
-    title: 'HIPAA-Compliant Telehealth Platform',
-    client: 'Healthcare Client \u00b7 Austin',
-    description: 'Developed a fully HIPAA and CCPA-compliant telehealth platform for a healthcare SaaS company in Austin. The platform supports encrypted HD video consultations, integrated EHR workflows via HL7 FHIR, and a mobile-first patient experience. Over 200K+ patient sessions completed with a 4.8-star rating and 60% faster consultation times compared to the client\'s previous system.',
-    metric: { value: '200K+', label: 'Patient Sessions' },
-    metrics: ['4.8\u2605 Rating', 'HIPAA Compliant', '60% Faster Consults'],
-    tech: ['React Native', 'WebRTC', 'Node.js', 'AWS'],
-    gradient: 'linear-gradient(135deg, rgba(6,182,212,0.1), rgba(34,197,94,0.05))',
+    name: 'HIPAA Telehealth Platform',
+    industry: 'Healthcare',
+    description: 'A fully HIPAA-compliant telehealth app with video consultations, e-prescriptions, and EHR integration for 50K+ patients.',
+    metrics: [
+      { value: '50K+', label: 'Patients' },
+      { value: '40%', label: 'Fewer No-Shows' },
+      { value: '4.8\u2605', label: 'Rating' },
+    ],
+    tech: ['React Native', 'WebRTC', 'HL7 FHIR', 'AWS HIPAA'],
+    href: '/case-studies/healthcare-telehealth-app',
   },
   {
-    slug: 'ecommerce-platform',
-    category: 'E-Commerce',
-    title: 'Enterprise E-Commerce Platform',
-    client: 'E-Commerce Client \u00b7 New York',
-    description: 'Migrated a legacy monolithic e-commerce platform to a headless Next.js architecture for a New York-based retail brand. The new system serves 2M+ monthly visitors with sub-second page loads, resulting in 3x revenue growth within 4 months. We integrated Stripe for payments, built a custom recommendation engine, and implemented real-time inventory sync across 12 warehouse locations.',
-    metric: { value: '3x', label: 'Revenue Growth' },
-    metrics: ['Sub-1s Load', '12 Warehouses', '4-Month ROI'],
-    tech: ['Next.js', 'Stripe', 'PostgreSQL', 'Redis'],
-    gradient: 'linear-gradient(135deg, rgba(16,185,129,0.1), rgba(34,197,94,0.05))',
+    name: 'E-Commerce Marketplace',
+    industry: 'E-Commerce',
+    description: 'A multi-vendor marketplace scaled from MVP to $10M+ annual revenue with AI-powered search, dynamic pricing, and 2M+ product listings.',
+    metrics: [
+      { value: '340%', label: 'Conversion Lift' },
+      { value: '3x', label: 'Revenue Growth' },
+      { value: '2M+', label: 'Products' },
+    ],
+    tech: ['Next.js', 'Node.js', 'PostgreSQL', 'Elasticsearch', 'Stripe'],
+    href: '/case-studies/ecommerce-marketplace',
   },
   {
-    slug: 'logistics-platform',
-    category: 'Logistics',
-    title: 'Real-Time Logistics & Fleet Management',
-    client: 'Logistics Client \u00b7 Los Angeles',
-    description: 'Built an IoT-integrated fleet management platform for a logistics company in Los Angeles managing 500+ vehicles. The system tracks 15K+ daily deliveries in real time using GPS and sensor data, with AI-powered route optimization that reduced fuel costs by 25%. We integrated predictive maintenance alerts using TensorFlow, preventing an estimated $200K+ in annual vehicle downtime.',
-    metric: { value: '25%', label: 'Fuel Savings' },
-    metrics: ['500+ Vehicles', 'Real-time GPS', '$200K+ Savings'],
-    tech: ['React', 'Python', 'TensorFlow', 'AWS IoT'],
-    gradient: 'linear-gradient(135deg, rgba(245,158,11,0.1), rgba(34,197,94,0.05))',
+    name: 'Fleet Management System',
+    industry: 'Logistics',
+    description: 'Real-time fleet tracking with route optimization, predictive maintenance alerts, and driver performance analytics across 5,000+ vehicles.',
+    metrics: [
+      { value: '5,000+', label: 'Vehicles' },
+      { value: '28%', label: 'Fuel Savings' },
+      { value: '99.9%', label: 'Uptime' },
+    ],
+    tech: ['React', 'Go', 'PostgreSQL', 'Redis', 'Google Maps API'],
+    href: '/case-studies/fintech-trading-platform',
+  },
+  {
+    name: 'Food Delivery Super App',
+    industry: 'Food Delivery',
+    description: 'A multi-service delivery platform handling 200K+ daily orders with real-time tracking, dynamic surge pricing, and multi-restaurant management.',
+    metrics: [
+      { value: '200K+', label: 'Daily Orders' },
+      { value: '12 min', label: 'Avg Delivery' },
+      { value: '4.7\u2605', label: 'Rating' },
+    ],
+    tech: ['Flutter', 'Node.js', 'MongoDB', 'Redis', 'AWS'],
+    href: '/case-studies/fintech-trading-platform',
+  },
+  {
+    name: 'Digital Banking App',
+    industry: 'FinTech',
+    description: 'A mobile-first digital banking platform with KYC/AML, multi-currency wallets, peer-to-peer transfers, and biometric authentication.',
+    metrics: [
+      { value: '250K+', label: 'Users' },
+      { value: '$1B+', label: 'Processed' },
+      { value: 'PCI-DSS', label: 'Certified' },
+    ],
+    tech: ['React Native', 'Python', 'PostgreSQL', 'Vault', 'AWS'],
+    href: '/case-studies/fintech-trading-platform',
+  },
+  {
+    name: 'Patient Management EHR',
+    industry: 'Healthcare',
+    description: 'A cloud-native electronic health records system with clinical decision support, lab integrations, and cross-facility data sharing.',
+    metrics: [
+      { value: '120+', label: 'Clinics' },
+      { value: '2M+', label: 'Patient Records' },
+      { value: 'HL7 FHIR', label: 'Compliant' },
+    ],
+    tech: ['React', 'Python', 'PostgreSQL', 'Docker', 'Azure'],
+    href: '/case-studies/healthcare-telehealth-app',
+  },
+  {
+    name: 'D2C Fashion Platform',
+    industry: 'E-Commerce',
+    description: 'A headless commerce platform with AI-powered styling recommendations, virtual try-on, and omnichannel inventory management.',
+    metrics: [
+      { value: '180%', label: 'AOV Increase' },
+      { value: '4.9\u2605', label: 'App Store' },
+      { value: '500K+', label: 'Users' },
+    ],
+    tech: ['Next.js', 'Shopify Hydrogen', 'Algolia', 'Stripe', 'Vercel'],
+    href: '/case-studies/ecommerce-marketplace',
   },
 ];
 
-const categoryColors: Record<string, string> = {
-  Fintech: '#a78bfa',
-  Healthcare: '#22d3ee',
-  'E-Commerce': '#34d399',
-  Logistics: '#fbbf24',
-};
+/* ═══════════════════════════════════════════════════════════════════════════
+   PAGE
+   ═══════════════════════════════════════════════════════════════════════════ */
+export default function CaseStudiesPage() {
+  const heroRef = useRef<HTMLElement>(null);
+  const s1 = useReveal() as React.RefObject<HTMLElement>;
+  const s2 = useReveal() as React.RefObject<HTMLElement>;
+  const s3 = useReveal() as React.RefObject<HTMLElement>;
 
-const categories = ['All', 'Fintech', 'Healthcare', 'E-Commerce', 'Logistics'];
+  const [activeFilter, setActiveFilter] = useState('All');
 
-export default function CaseStudiesPageClient() {
-  const pageRef = useReveal();
-  const [activeCategory, setActiveCategory] = useState('All');
+  useEffect(() => {
+    heroRef.current?.querySelectorAll('.reveal').forEach(n => setTimeout(() => n.classList.add('visible'), 100));
+  }, []);
 
-  const filtered = caseStudies.filter(
-    cs => activeCategory === 'All' || cs.category === activeCategory
-  );
+  const filtered = activeFilter === 'All'
+    ? caseStudies
+    : caseStudies.filter(cs => cs.industry === activeFilter);
 
   return (
     <>
       <Navbar />
-      <main ref={pageRef as React.RefObject<HTMLElement>} style={{ background: '#000000', minHeight: '100vh' }}>
+      <main style={{ background: '#000000', color: '#ffffff', paddingTop: 80 }}>
+        <div className="cb-container">
+          <Breadcrumb items={[
+            { label: 'Home', href: '/' },
+            { label: 'Case Studies' },
+          ]} />
+        </div>
 
-        {/* ── HERO ── */}
-        <section style={{ padding: 'clamp(120px, 12vw, 160px) 0 clamp(48px, 6vw, 80px)', position: 'relative', overflow: 'hidden' }}>
-          <HeroBackground variant="wide" />
-          <div className="cb-container">
-            <Breadcrumb items={[
-              { label: 'Home', href: '/' },
-              { label: 'Case Studies' },
-            ]} />
-
-            <div className="reveal" style={{ marginBottom: 24, marginTop: 32 }}>
-              <span style={{
-                fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                color: '#ffffff',
-              }}>
-                Client Success Stories
-              </span>
+        {/* HERO */}
+        <section ref={heroRef} className="section-padding" style={{ position: 'relative', overflow: 'hidden', minHeight: '80vh', display: 'flex', alignItems: 'center' }}>
+          <HeroBackground variant="center" />
+          <div className="cb-container" style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: 900, margin: '0 auto' }}>
+            <div className="reveal" style={{ display: 'inline-block', border: '1px solid rgba(34,197,94,0.4)', borderRadius: 999, padding: '6px 20px', fontSize: 13, color: '#ffffff', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>
+              Our Portfolio
             </div>
-            <h1 className="reveal reveal-d1" style={{
-              fontSize: 'clamp(3rem, 6vw, 5.5rem)', fontWeight: 700, color: '#ffffff',
-              lineHeight: 1.05, letterSpacing: '-0.04em', marginBottom: 24, maxWidth: 800,
-            }}>
-              Our Work Speaks<br />for Itself
+            <h1 className="reveal" style={{ fontSize: 'clamp(2.4rem, 6vw, 4.5rem)', fontWeight: 800, lineHeight: 1.1, marginBottom: '1.5rem', letterSpacing: '-0.02em' }}>
+              Our Work Speaks for Itself{' '}
+              <span style={{ display: 'block', color: 'rgba(255,255,255,0.5)', fontSize: '0.55em', fontWeight: 600, marginTop: '0.5rem' }}>
+                500+ Projects Delivered
+              </span>
             </h1>
-            <p className="reveal reveal-d2" style={{
-              fontSize: 18, color: 'rgba(255,255,255,0.45)', lineHeight: 1.7,
-              maxWidth: 600, marginBottom: 48,
-            }}>
-              Real results from real projects. These aren&apos;t hypothetical scenarios &mdash; each case study represents a product we architected, built, and shipped to production. Explore how we&apos;ve helped businesses across fintech, healthcare, e-commerce, and logistics build scalable, high-performance software that drives measurable ROI.
+            <p className="reveal" style={{ fontSize: '1.2rem', color: 'rgba(255,255,255,0.7)', marginBottom: '2.5rem', lineHeight: 1.7, maxWidth: 680, margin: '0 auto 2.5rem' }}>
+              From early-stage startups to Fortune 500 enterprises, we engineer software that drives real business outcomes. Explore the results.
             </p>
+            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(180px, 100%), 1fr))', gap: '2rem', maxWidth: 700, margin: '0 auto' }}>
+              {[
+                ['500+', 'Projects Delivered'],
+                ['$2B+', 'Client Revenue Generated'],
+                ['50M+', 'End Users Served'],
+              ].map(([val, label]) => (
+                <div key={label} style={{ textAlign: 'center' }}>
+                  <div style={{ fontSize: '2rem', fontWeight: 800, color: '#ffffff' }}>{val}</div>
+                  <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.25)', marginTop: 4, letterSpacing: '0.05em' }}>{label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
-            {/* Category filter pills */}
-            <div className="reveal reveal-d3" style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-              {categories.map(cat => (
+        {/* FILTER + GRID */}
+        <section ref={s1} className="section-padding">
+          <div className="cb-container">
+            {/* Filters */}
+            <div className="reveal" style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', justifyContent: 'center', marginBottom: '3rem' }}>
+              {industries.map(ind => (
                 <button
-                  key={cat}
-                  onClick={() => setActiveCategory(cat)}
+                  key={ind}
+                  onClick={() => setActiveFilter(ind)}
                   style={{
-                    padding: '8px 20px', borderRadius: 100, fontSize: 13, fontWeight: 500,
-                    cursor: 'pointer', border: 'none', transition: 'all 0.2s',
-                    background: activeCategory === cat ? '#22c55e' : 'rgba(255,255,255,0.03)',
-                    color: activeCategory === cat ? '#ffffff' : 'rgba(255,255,255,0.45)',
+                    background: activeFilter === ind ? '#22c55e' : 'rgba(255,255,255,0.04)',
+                    color: activeFilter === ind ? '#000' : 'rgba(255,255,255,0.6)',
+                    border: activeFilter === ind ? '1px solid #22c55e' : '1px solid rgba(255,255,255,0.08)',
+                    borderRadius: 999,
+                    padding: '8px 20px',
+                    fontSize: '0.85rem',
+                    fontWeight: 600,
+                    cursor: 'pointer',
+                    transition: 'all 0.3s',
+                    fontFamily: 'inherit',
                   }}
                 >
-                  {cat}
+                  {ind}
                 </button>
               ))}
             </div>
-          </div>
-        </section>
 
-        {/* ── CASE STUDIES GRID ── */}
-        <section style={{ paddingBottom: 'clamp(48px, 8vw, 100px)', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-          <div className="cb-container" style={{ paddingTop: 'clamp(48px, 6vw, 80px)' }}>
-            <p className="reveal" style={{
-              fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-              color: 'rgba(255,255,255,0.25)', marginBottom: 40,
-            }}>
-              {activeCategory === 'All' ? 'All Projects' : activeCategory + ' Projects'}
-            </p>
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(min(320px, 100%), 1fr))',
-              gap: 24,
-            }}>
-              {filtered.map((cs, i) => {
-                const accentColor = categoryColors[cs.category] || '#22c55e';
-                return (
-                  <Link key={cs.slug} href={`/case-studies/${cs.slug}`} style={{ textDecoration: 'none' }}>
-                    <article
-                      className={`reveal reveal-d${Math.min(i + 1, 4)}`}
-                      style={{
-                        background: 'rgba(255,255,255,0.015)',
-                        border: '1px solid rgba(255,255,255,0.06)',
-                        borderRadius: 24,
-                        overflow: 'hidden',
-                        height: '100%',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        transition: 'all 0.3s cubic-bezier(0.16,1,0.3,1)',
-                        cursor: 'pointer',
-                      }}
-                      onMouseEnter={e => {
-                        (e.currentTarget as HTMLElement).style.borderColor = 'rgba(17,24,39,0.25)';
-                        (e.currentTarget as HTMLElement).style.background = 'rgba(34,197,94,0.03)';
-                        (e.currentTarget as HTMLElement).style.transform = 'translateY(-6px)';
-                      }}
-                      onMouseLeave={e => {
-                        (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.06)';
-                        (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.015)';
-                        (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
-                      }}
-                    >
-                      {/* Placeholder image area — 16:9 */}
-                      <div style={{
-                        width: '100%',
-                        aspectRatio: '16/9',
-                        background: cs.gradient,
-                        borderBottom: '1px solid rgba(255,255,255,0.03)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        position: 'relative',
-                        overflow: 'hidden',
-                      }}>
-                        {/* Decorative grid pattern */}
-                        <div style={{
-                          position: 'absolute', inset: 0, opacity: 0.15,
-                          backgroundImage: 'radial-gradient(rgba(255,255,255,0.25) 1px, transparent 1px)',
-                          backgroundSize: '24px 24px',
-                        }} />
-                        {/* Metric callout in image */}
-                        <div style={{ textAlign: 'center', position: 'relative', zIndex: 1 }}>
-                          <div style={{
-                            fontSize: 'clamp(32px, 6vw, 48px)', fontWeight: 800, color: '#ffffff', letterSpacing: '-0.03em',
-                            lineHeight: 1,
-                          }}>
-                            {cs.metric.value}
-                          </div>
-                          <div style={{
-                            fontSize: 12, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase',
-                            color: 'rgba(255,255,255,0.45)', marginTop: 8,
-                          }}>
-                            {cs.metric.label}
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Card body */}
-                      <div style={{ padding: '28px 28px 32px', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
-                        {/* Category badge */}
-                        <div style={{ marginBottom: 16 }}>
-                          <span style={{
-                            fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase',
-                            background: `${accentColor}18`, color: accentColor,
-                            padding: '4px 12px', borderRadius: 100,
-                          }}>
-                            {cs.category}
-                          </span>
-                        </div>
-
-                        {/* Title */}
-                        <h3 style={{
-                          fontSize: 20, fontWeight: 700, color: '#ffffff',
-                          letterSpacing: '-0.02em', lineHeight: 1.25, marginBottom: 8,
-                        }}>
-                          {cs.title}
-                        </h3>
-
-                        {/* Client */}
-                        <p style={{
-                          fontSize: 13, color: 'rgba(255,255,255,0.35)', marginBottom: 12,
-                        }}>
-                          {cs.client}
-                        </p>
-
-                        {/* Description */}
-                        <p style={{
-                          fontSize: 14, color: 'rgba(255,255,255,0.45)', lineHeight: 1.7,
-                          marginBottom: 24, flexGrow: 1,
-                        }}>
-                          {cs.description}
-                        </p>
-
-                        {/* Tech stack tags */}
-                        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 24 }}>
-                          {cs.tech.map(t => (
-                            <span key={t} style={{
-                              fontSize: 11, fontWeight: 600, color: 'rgba(255,255,255,0.45)',
-                              padding: '5px 12px', border: '1px solid rgba(255,255,255,0.06)',
-                              borderRadius: 100, background: 'rgba(255,255,255,0.03)',
-                            }}>
-                              {t}
-                            </span>
-                          ))}
-                        </div>
-
-                        {/* Additional metrics */}
-                        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 16 }}>
-                          {cs.metrics.map((m: string) => (
-                            <span key={m} style={{
-                              fontSize: 10, fontWeight: 700, color: '#22c55e',
-                              padding: '4px 10px', border: '1px solid rgba(34,197,94,0.2)',
-                              borderRadius: 100, background: 'rgba(34,197,94,0.05)',
-                              letterSpacing: '0.04em', textTransform: 'uppercase',
-                            }}>
-                              {m}
-                            </span>
-                          ))}
-                        </div>
-
-                        {/* CTA link */}
-                        <div style={{
-                          paddingTop: 20, borderTop: '1px solid rgba(255,255,255,0.03)',
-                          marginTop: 'auto',
-                        }}>
-                          <span style={{
-                            fontSize: 13, fontWeight: 600, color: '#ffffff',
-                            display: 'inline-flex', alignItems: 'center', gap: 6,
-                          }}>
-                            Read Case Study
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                              <path d="M5 12h14M12 5l7 7-7 7" />
-                            </svg>
-                          </span>
-                        </div>
-                      </div>
-                    </article>
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* ── STATS BAR ── */}
-        <section style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-          <div className="cb-container" style={{ padding: 'clamp(32px, 6vw, 64px) 0' }}>
-            <div className="reveal" style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(min(140px, 100%), 1fr))',
-              gap: 32,
-              textAlign: 'center',
-            }}>
-              {[
-                { value: '500+', label: 'Projects Shipped' },
-                { value: '150+', label: 'Happy Clients' },
-                { value: '99%', label: 'Satisfaction Rate' },
-                { value: '24', label: 'Countries Served' },
-              ].map(stat => (
-                <div key={stat.label}>
-                  <div style={{
-                    fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, color: '#ffffff',
-                    letterSpacing: '-0.03em', lineHeight: 1,
-                  }}>
-                    {stat.value}
-                  </div>
-                  <div style={{
-                    fontSize: 12, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase',
-                    color: 'rgba(255,255,255,0.35)', marginTop: 10,
-                  }}>
-                    {stat.label}
-                  </div>
-                </div>
+            {/* Grid */}
+            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 360px), 1fr))', gap: '1.5rem' }}>
+              {filtered.map(cs => (
+                <CaseCard key={cs.name} cs={cs} />
               ))}
             </div>
           </div>
         </section>
 
-        {/* ── WHY WORK WITH US ── */}
-        <section className="section-padding" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+        {/* STATS STRIP */}
+        <section ref={s2} className="section-padding" style={{ borderTop: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
-            <div className="reveal" style={{ textAlign: 'center', marginBottom: 48 }}>
-              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.25)', display: 'block', marginBottom: 16 }}>Why Us</span>
-              <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '-0.03em', marginBottom: 16 }}>What Makes Our Work Different</h2>
-            </div>
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 20 }}>
+            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(200px, 100%), 1fr))', gap: '2rem', textAlign: 'center' }}>
               {[
-                { title: 'Fixed-Price Contracts', desc: 'You know exactly what you\'ll pay before we write a line of code. No hourly billing, no scope creep surprises.' },
-                { title: 'Weekly Progress Demos', desc: 'Every week you see working software. Not wireframes, not slide decks — actual running code you can interact with.' },
-                { title: 'Production-Grade From Day One', desc: 'CI/CD pipelines, automated testing, monitoring, and error tracking are set up in the first sprint, not as an afterthought.' },
-                { title: 'Your IP, 100%', desc: 'Every line of code, every design file, every deployment script — it\'s all yours. Full IP transfer on every project.' },
-              ].map(item => (
-                <div key={item.title} style={{
-                  background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)',
-                  borderRadius: 24, padding: 32,
-                }}>
-                  <h3 style={{ fontSize: 16, fontWeight: 700, color: '#ffffff', marginBottom: 12 }}>{item.title}</h3>
-                  <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.45)', lineHeight: 1.7, margin: 0 }}>{item.desc}</p>
+                { value: '500+', label: 'Projects Shipped', desc: 'Across 20+ industries' },
+                { value: '$2B+', label: 'Client Revenue Generated', desc: 'Measurable business impact' },
+                { value: '50M+', label: 'End Users Served', desc: 'Global reach, local precision' },
+                { value: '4.9\u2605', label: 'Clutch Rating', desc: 'Verified by 127+ reviews' },
+                { value: '16+', label: 'Years in Business', desc: 'Since 2010' },
+              ].map(s => (
+                <div key={s.label}>
+                  <div style={{ fontSize: '2.2rem', fontWeight: 800, color: '#ffffff', marginBottom: '0.25rem' }}>{s.value}</div>
+                  <div style={{ fontSize: '0.9rem', fontWeight: 600, color: 'rgba(255,255,255,0.6)', marginBottom: '0.25rem' }}>{s.label}</div>
+                  <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.25)' }}>{s.desc}</div>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ── BOTTOM CTA ── */}
-        <section className="section-padding" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-          <div className="cb-container" style={{ paddingTop: 'clamp(48px, 6vw, 80px)' }}>
-            <div
-              className="reveal"
-              style={{
-                background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)',
-                borderRadius: 28, padding: 'clamp(32px, 6vw, 64px) clamp(20px, 4vw, 48px)', textAlign: 'center',
-              }}
-            >
-              <span style={{
-                fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                color: '#ffffff', display: 'block', marginBottom: 20,
-              }}>
-                Let&apos;s Build Together
-              </span>
-              <h2 style={{
-                fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', fontWeight: 700, color: '#ffffff',
-                letterSpacing: '-0.03em', marginBottom: 16,
-              }}>
-                Have a Similar Project?
+        {/* CTA */}
+        <section ref={s3} className="section-padding">
+          <div className="cb-container">
+            <div className="reveal" style={{ textAlign: 'center', maxWidth: 700, margin: '0 auto' }}>
+              <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 800, lineHeight: 1.15, marginBottom: '1.5rem' }}>
+                Ready to Be Our Next <span style={{ color: '#ffffff' }}>Success Story?</span>
               </h2>
-              <p style={{
-                fontSize: 16, color: 'rgba(255,255,255,0.4)', marginBottom: 40,
-                maxWidth: 500, margin: '0 auto 40px',
-                lineHeight: 1.7,
-              }}>
-                Tell us about your idea and we&apos;ll show you how we can turn it into a success story.
+              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.15rem', marginBottom: '2.5rem', lineHeight: 1.7 }}>
+                Tell us about your project and get a free technical proposal within 24 hours.
               </p>
-              <Link
-                href="/contact"
-                style={{
-                  display: 'inline-flex', alignItems: 'center', gap: 10,
-                  height: 52, padding: '0 36px', borderRadius: 100,
-                  background: '#22c55e', color: '#000',
-                  fontSize: 15, fontWeight: 700, textDecoration: 'none',
-                  transition: 'all 0.2s',
-                }}
-                onMouseEnter={e => {
-                  (e.currentTarget as HTMLElement).style.background = '#d9220a';
-                  (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)';
-                }}
-                onMouseLeave={e => {
-                  (e.currentTarget as HTMLElement).style.background = '#22c55e';
-                  (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
-                }}
-              >
-                Start Your Project
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </Link>
+              <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '2.5rem' }}>
+                <Link href="/contact" style={{ background: '#22c55e', color: '#000', padding: '16px 36px', borderRadius: 999, fontWeight: 700, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
+                  Start Your Project
+                </Link>
+                <Link href="/services" style={{ border: '1px solid rgba(255,255,255,0.1)', color: '#ffffff', padding: '16px 36px', borderRadius: 999, fontWeight: 600, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
+                  Explore Services
+                </Link>
+              </div>
+              <div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                {['NDA on Day 1', 'Fixed-Price Sprints', 'SOC II Certified', '24hr Response'].map(t => (
+                  <span key={t} style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.25)' }}>{'\u2713'} {t}</span>
+                ))}
+              </div>
+              <TrustBadges compact />
             </div>
           </div>
         </section>

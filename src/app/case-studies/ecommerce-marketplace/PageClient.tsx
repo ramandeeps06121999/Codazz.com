@@ -48,7 +48,7 @@ function Card({ children, style }: { children: React.ReactNode; style?: React.CS
   );
 }
 
-export default function FintechTradingPlatformPage() {
+export default function EcommerceMarketplacePage() {
   const heroRef = useRef<HTMLElement>(null);
   const s1 = useReveal() as React.RefObject<HTMLElement>;
   const s2 = useReveal() as React.RefObject<HTMLElement>;
@@ -70,7 +70,7 @@ export default function FintechTradingPlatformPage() {
           <Breadcrumb items={[
             { label: 'Home', href: '/' },
             { label: 'Case Studies', href: '/case-studies' },
-            { label: 'FinTech Trading Platform' },
+            { label: 'E-Commerce Marketplace' },
           ]} />
         </div>
 
@@ -79,21 +79,21 @@ export default function FintechTradingPlatformPage() {
           <HeroBackground variant="center" />
           <div className="cb-container" style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: 900, margin: '0 auto' }}>
             <div className="reveal" style={{ display: 'inline-block', border: '1px solid rgba(34,197,94,0.4)', borderRadius: 999, padding: '6px 20px', fontSize: 13, color: '#22c55e', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>
-              FinTech &bull; Case Study
+              E-Commerce &bull; Case Study
             </div>
             <h1 className="reveal" style={{ fontSize: 'clamp(2.2rem, 5.5vw, 4rem)', fontWeight: 800, lineHeight: 1.1, marginBottom: '1.5rem', letterSpacing: '-0.02em' }}>
-              How We Built a FinTech Trading Platform with{' '}
-              <span style={{ color: '#22c55e' }}>100K+ Active Users</span>
+              Scaling an E-Commerce Marketplace to{' '}
+              <span style={{ color: '#22c55e' }}>$10M+ Annual Revenue</span>
             </h1>
             <p className="reveal" style={{ fontSize: '1.15rem', color: 'rgba(255,255,255,0.7)', marginBottom: '2.5rem', lineHeight: 1.7, maxWidth: 700, margin: '0 auto 2.5rem' }}>
-              A real-time, multi-asset trading platform with AI-driven analytics, institutional-grade security, and sub-50ms order execution.
+              A multi-vendor marketplace with AI-powered search, dynamic pricing, real-time inventory sync, and a checkout experience that converted 340% better.
             </p>
             <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(140px, 100%), 1fr))', gap: '1.5rem', maxWidth: 700, margin: '0 auto' }}>
               {[
-                ['100K+', 'Active Users'],
-                ['4.9\u2605', 'App Store Rating'],
+                ['340%', 'Conversion Increase'],
+                ['3x', 'Revenue Growth'],
+                ['2M+', 'Product Listings'],
                 ['99.99%', 'Uptime'],
-                ['$50M+', 'Traded Volume'],
               ].map(([val, label]) => (
                 <div key={label} style={{ textAlign: 'center' }}>
                   <div style={{ fontSize: '1.8rem', fontWeight: 800, color: '#ffffff' }}>{val}</div>
@@ -110,17 +110,17 @@ export default function FintechTradingPlatformPage() {
             <div className="reveal" style={{ marginBottom: '3rem' }}>
               <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.25)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>The Challenge</div>
               <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '1.5rem' }}>
-                A Growing FinTech Needed to Scale &mdash; Fast
+                A Promising Marketplace Was Leaving Revenue on the Table
               </h2>
               <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.05rem', lineHeight: 1.8 }}>
-                Our client, a US-based FinTech startup, had validated their product with early adopters but hit a wall. Their existing platform was a monolithic Ruby on Rails app that couldn&apos;t handle growing concurrency. Order execution times exceeded 2 seconds. The mobile experience was a web wrapper with poor performance. Compliance gaps were blocking their Series B fundraise.
+                Our client had built an initial marketplace on WooCommerce that worked for their first 50 vendors. But with growing traffic, the platform buckled. Page load times exceeded 6 seconds, search was broken, cart abandonment hit 82%, and the vendor onboarding process took weeks of manual work. They needed a ground-up rebuild to scale.
               </p>
             </div>
             <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem' }}>
               {[
-                { icon: '\u26A0\uFE0F', title: '2+ Second Latency', desc: 'Order execution was too slow for active traders, causing user churn.' },
-                { icon: '\uD83D\uDCF1', title: 'No Native Mobile', desc: 'The mobile app was a WebView wrapper with frequent crashes and poor UX.' },
-                { icon: '\uD83D\uDD12', title: 'Compliance Gaps', desc: 'Missing SOC 2 and SEC regulatory requirements were blocking fundraising.' },
+                { icon: '\uD83D\uDCC9', title: '82% Cart Abandonment', desc: 'Slow checkout, limited payment options, and poor mobile UX were killing conversions.' },
+                { icon: '\u23F3', title: '6+ Second Page Loads', desc: 'WooCommerce couldn\'t handle 2M+ SKUs. Search was slow, filtering was broken.' },
+                { icon: '\uD83D\uDCE6', title: 'Manual Vendor Ops', desc: 'Onboarding new vendors took 2+ weeks of manual catalog import and account setup.' },
               ].map(c => (
                 <Card key={c.title}>
                   <div style={{ fontSize: '2rem', marginBottom: '0.75rem' }}>{c.icon}</div>
@@ -138,18 +138,18 @@ export default function FintechTradingPlatformPage() {
             <div className="reveal" style={{ marginBottom: '3rem' }}>
               <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.25)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>Our Solution</div>
               <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '1.5rem' }}>
-                A Complete Platform Rebuild &mdash; Architecture to App Store
+                A Headless Commerce Platform Built for Scale
               </h2>
               <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.05rem', lineHeight: 1.8, marginBottom: '1.5rem' }}>
-                We decomposed the monolith into event-driven microservices, built a native mobile experience with React Native, and implemented a real-time data pipeline that handles 50K+ concurrent WebSocket connections with sub-50ms latency.
+                We rebuilt the entire platform as a headless commerce architecture — Next.js frontend for lightning-fast pages, Elasticsearch for sub-100ms search across 2M+ products, and a custom vendor portal that automated onboarding from weeks to hours.
               </p>
             </div>
             <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
               {[
-                { icon: '\uD83C\uDFD7\uFE0F', title: 'Microservices Architecture', desc: 'Decomposed into 12 independently deployable services with event-driven communication via Kafka, enabling zero-downtime deployments.' },
-                { icon: '\uD83D\uDCF1', title: 'Native Mobile with React Native', desc: 'Built from the ground up with React Native for iOS and Android, featuring real-time charts, biometric auth, and push notifications.' },
-                { icon: '\u26A1', title: 'Real-time Data Pipeline', desc: 'Custom WebSocket gateway handles 50K+ concurrent connections. Market data streams with sub-50ms latency using Redis pub/sub.' },
-                { icon: '\uD83D\uDD10', title: 'Security & Compliance', desc: 'SOC 2 Type II certified infrastructure with end-to-end encryption, audit logging, and SEC-compliant trade reporting.' },
+                { icon: '\u26A1', title: 'Next.js Headless Frontend', desc: 'Server-side rendered product pages with ISR, achieving sub-1s LCP. Responsive across all devices with a mobile-first checkout flow.' },
+                { icon: '\uD83D\uDD0D', title: 'AI-Powered Search & Discovery', desc: 'Elasticsearch with ML-ranked results, typo tolerance, faceted filtering, and personalized recommendations driving 45% of revenue.' },
+                { icon: '\uD83D\uDCB3', title: 'Optimized Checkout', desc: 'Single-page checkout with Stripe, Apple Pay, Google Pay, and buy-now-pay-later. Address autocomplete and saved payment methods.' },
+                { icon: '\uD83C\uDFEA', title: 'Self-Serve Vendor Portal', desc: 'Automated onboarding with bulk CSV/API catalog import, real-time analytics dashboard, and automated payout scheduling via Stripe Connect.' },
               ].map(s => (
                 <Card key={s.title}>
                   <div style={{ fontSize: '2rem', marginBottom: '0.75rem' }}>{s.icon}</div>
@@ -170,12 +170,12 @@ export default function FintechTradingPlatformPage() {
             </div>
             <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.5rem' }}>
               {[
-                { cat: 'Frontend', items: ['React Native', 'TypeScript', 'Redux Toolkit', 'Victory Charts'] },
-                { cat: 'Backend', items: ['Node.js', 'Express', 'Apache Kafka', 'WebSocket (ws)'] },
-                { cat: 'Database', items: ['PostgreSQL', 'Redis', 'TimescaleDB', 'S3'] },
-                { cat: 'Infrastructure', items: ['AWS (ECS, RDS, ElastiCache)', 'Terraform', 'DataDog', 'PagerDuty'] },
-                { cat: 'Integrations', items: ['Plaid API', 'Alpaca Markets', 'Twilio', 'SendGrid'] },
-                { cat: 'Security', items: ['AWS KMS', 'HashiCorp Vault', 'OAuth 2.0', 'FIDO2/WebAuthn'] },
+                { cat: 'Frontend', items: ['Next.js 14', 'TypeScript', 'TailwindCSS', 'Framer Motion'] },
+                { cat: 'Backend', items: ['Node.js', 'Express', 'GraphQL', 'Bull Queue'] },
+                { cat: 'Search & Data', items: ['Elasticsearch', 'PostgreSQL', 'Redis', 'S3/CloudFront'] },
+                { cat: 'Payments', items: ['Stripe', 'Stripe Connect', 'Apple Pay', 'Klarna'] },
+                { cat: 'Infrastructure', items: ['AWS (ECS, RDS, CloudFront)', 'Vercel (Frontend)', 'Terraform', 'DataDog'] },
+                { cat: 'Integrations', items: ['ShipStation', 'Segment', 'Google Analytics 4', 'Klaviyo'] },
               ].map(t => (
                 <Card key={t.cat}>
                   <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.25)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>{t.cat}</div>
@@ -196,15 +196,15 @@ export default function FintechTradingPlatformPage() {
             <div className="reveal" style={{ marginBottom: '3rem' }}>
               <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.25)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>Process</div>
               <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '1rem' }}>Development Timeline</h2>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.05rem', lineHeight: 1.8 }}>8 months from kickoff to App Store launch, delivered in 2-week sprint cycles.</p>
+              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.05rem', lineHeight: 1.8 }}>6 months from kickoff to launch, with zero downtime migration from the legacy WooCommerce platform.</p>
             </div>
             <div className="reveal" style={{ display: 'grid', gap: '1rem' }}>
               {[
-                { phase: 'Weeks 1-2', title: 'Discovery & Architecture', desc: 'Stakeholder interviews, technical audit of existing system, architecture design, and sprint planning.' },
-                { phase: 'Weeks 3-8', title: 'Core Platform Build', desc: 'Microservices scaffolding, database design, real-time data pipeline, authentication system, and Plaid integration.' },
-                { phase: 'Weeks 9-16', title: 'Mobile App & Trading Engine', desc: 'React Native app development, order execution engine, real-time charting, portfolio management, and push notifications.' },
-                { phase: 'Weeks 17-24', title: 'Security Hardening & Compliance', desc: 'Penetration testing, SOC 2 audit preparation, SEC reporting integration, performance optimization, and load testing.' },
-                { phase: 'Weeks 25-32', title: 'Beta Testing & Launch', desc: 'Closed beta with 5,000 users, bug fixes, App Store submission, marketing site, and production deployment.' },
+                { phase: 'Weeks 1-2', title: 'Discovery & Data Audit', desc: 'Analyzed 2M+ product records, mapped vendor workflows, audited conversion funnel, and designed new information architecture.' },
+                { phase: 'Weeks 3-8', title: 'Core Platform & Search Engine', desc: 'Built Next.js storefront, Elasticsearch indexing pipeline, product catalog API, and real-time inventory sync.' },
+                { phase: 'Weeks 9-14', title: 'Checkout & Payments', desc: 'Single-page checkout, Stripe Connect multi-vendor payouts, Apple/Google Pay, Klarna integration, and tax automation.' },
+                { phase: 'Weeks 15-20', title: 'Vendor Portal & Analytics', desc: 'Self-serve vendor dashboard, bulk product import, real-time sales analytics, automated payout scheduling, and review system.' },
+                { phase: 'Weeks 21-24', title: 'Migration, QA & Launch', desc: 'Zero-downtime data migration from WooCommerce, load testing to 10x traffic, SEO redirect mapping, and phased rollout.' },
               ].map((p, i) => (
                 <div key={p.phase} style={{ display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
                   <div style={{ minWidth: 48, height: 48, borderRadius: '50%', background: 'rgba(34,197,94,0.1)', border: '1px solid rgba(34,197,94,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.85rem', fontWeight: 700, color: '#22c55e', flexShrink: 0 }}>
@@ -227,16 +227,16 @@ export default function FintechTradingPlatformPage() {
             <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
               <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.25)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>Results</div>
               <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '1rem' }}>Measurable Impact</h2>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.05rem', lineHeight: 1.8 }}>Within 6 months of launch, every key metric exceeded initial targets.</p>
+              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.05rem', lineHeight: 1.8 }}>The new platform paid for itself within the first quarter post-launch.</p>
             </div>
             <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem' }}>
               {[
-                { value: '100K+', label: 'Active Users', before: '8K users on legacy platform' },
-                { value: '4.9\u2605', label: 'App Store Rating', before: 'No mobile app previously' },
-                { value: '99.99%', label: 'Uptime', before: '97.5% uptime on legacy' },
-                { value: '$50M+', label: 'Monthly Trade Volume', before: '$2M monthly on legacy' },
-                { value: '<50ms', label: 'Order Execution', before: '2+ second latency before' },
-                { value: 'SOC 2', label: 'Type II Certified', before: 'No compliance certification' },
+                { value: '340%', label: 'Conversion Increase', before: '1.2% to 5.3% conversion rate' },
+                { value: '3x', label: 'Revenue Growth', before: '$3.2M to $10.4M annual revenue' },
+                { value: '2M+', label: 'Product Listings', before: 'Scaled from 200K products' },
+                { value: '99.99%', label: 'Uptime', before: '94% uptime on WooCommerce' },
+                { value: '<1s', label: 'Page Load Time', before: '6+ seconds on legacy platform' },
+                { value: '85%', label: 'Faster Vendor Onboarding', before: 'From 2 weeks to 2 days' },
               ].map(r => (
                 <Card key={r.label}>
                   <div style={{ fontSize: '1.6rem', fontWeight: 800, color: '#22c55e', marginBottom: '0.25rem' }}>{r.value}</div>
@@ -254,11 +254,11 @@ export default function FintechTradingPlatformPage() {
             <div className="reveal" style={{ border: '1px solid rgba(34,197,94,0.15)', borderRadius: 32, background: 'rgba(34,197,94,0.03)', padding: 'clamp(2rem, 5vw, 3.5rem)', textAlign: 'center' }}>
               <blockquote style={{ margin: 0 }}>
                 <p style={{ fontSize: 'clamp(1.1rem, 2.5vw, 1.4rem)', lineHeight: 1.7, color: 'rgba(255,255,255,0.7)', fontStyle: 'italic', marginBottom: '1.5rem' }}>
-                  &ldquo;Codazz didn&apos;t just rebuild our platform &mdash; they transformed our business. The new trading engine is faster, more reliable, and our users love the mobile experience. They helped us close our Series B.&rdquo;
+                  &ldquo;We went from a WooCommerce site that crashed during sales events to a platform handling Black Friday traffic without breaking a sweat. Revenue tripled in 6 months. Codazz delivered exactly what they promised.&rdquo;
                 </p>
                 <div>
-                  <div style={{ fontWeight: 700, color: '#ffffff', fontSize: '1rem' }}>CTO</div>
-                  <div style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.3)' }}>Series B FinTech, New York</div>
+                  <div style={{ fontWeight: 700, color: '#ffffff', fontSize: '1rem' }}>CEO & Co-Founder</div>
+                  <div style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.3)' }}>Multi-Vendor Marketplace, Los Angeles</div>
                 </div>
               </blockquote>
             </div>
@@ -273,8 +273,8 @@ export default function FintechTradingPlatformPage() {
             </div>
             <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: '1.5rem' }}>
               {[
+                { title: 'FinTech Trading Platform', industry: 'FinTech', metric: '100K+ Active Users', href: '/case-studies/fintech-trading-platform' },
                 { title: 'HIPAA Telehealth Platform', industry: 'Healthcare', metric: '50K+ Patients', href: '/case-studies/healthcare-telehealth-app' },
-                { title: 'E-Commerce Marketplace', industry: 'E-Commerce', metric: '340% Conversion Lift', href: '/case-studies/ecommerce-marketplace' },
               ].map(r => (
                 <Link
                   key={r.href}
@@ -305,10 +305,10 @@ export default function FintechTradingPlatformPage() {
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', maxWidth: 700, margin: '0 auto' }}>
               <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 800, lineHeight: 1.15, marginBottom: '1.5rem' }}>
-                Build Your <span style={{ color: '#22c55e' }}>FinTech Platform.</span>
+                Scale Your <span style={{ color: '#22c55e' }}>E-Commerce Business.</span>
               </h2>
               <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.15rem', marginBottom: '2.5rem', lineHeight: 1.7 }}>
-                Whether you&apos;re rebuilding a legacy system or launching from scratch, we have the FinTech engineering expertise to deliver.
+                Whether you&apos;re migrating from a legacy platform or building a marketplace from scratch, we have the commerce engineering expertise to deliver.
               </p>
               <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '2.5rem' }}>
                 <Link href="/contact" style={{ background: '#22c55e', color: '#000', padding: '16px 36px', borderRadius: 999, fontWeight: 700, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>

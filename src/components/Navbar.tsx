@@ -222,6 +222,7 @@ const industryLinks = [
 
 const companyLinks = [
   { label: 'About Us', href: '/about' },
+  { label: 'Careers', href: '/careers' },
   { label: 'Portfolio', href: '/portfolio' },
   { label: 'Blog & Insights', href: '/blog' },
   { label: 'Contact Us', href: '/contact' },

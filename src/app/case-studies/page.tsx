@@ -1,63 +1,74 @@
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'Case Studies | Client Success Stories',
-  description: 'Explore how Codazz has helped American businesses build scalable software. Real results from fintech, healthcare, e-commerce, and logistics projects.',
+  title: 'Case Studies | 500+ Projects Delivered | Codazz',
+  description:
+    'Explore Codazz case studies: real results from 500+ projects across FinTech, Healthcare, E-Commerce, Logistics & more. $2B+ in client revenue generated. See how we build.',
+  keywords: [
+    'case studies',
+    'app development case studies',
+    'software development portfolio',
+    'mobile app case studies',
+    'fintech case study',
+    'healthcare app case study',
+    'ecommerce case study',
+    'Codazz portfolio',
+  ],
   openGraph: {
-    title: 'Case Studies | Codazz',
-    description: 'Real client success stories from Codazz.',
+    title: 'Case Studies | 500+ Projects Delivered | Codazz',
+    description:
+      'Real results from 500+ projects across FinTech, Healthcare, E-Commerce & more. $2B+ in client revenue generated.',
     url: 'https://codazz.com/case-studies',
     type: 'website',
+    siteName: 'Codazz',
   },
-  alternates: { canonical: 'https://codazz.com/case-studies' },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Case Studies | Codazz',
+    description: '500+ projects delivered. $2B+ in client revenue. See real results.',
+  },
+  alternates: {
+    canonical: 'https://codazz.com/case-studies',
+  },
+  robots: { index: true, follow: true },
 };
 
-
-const jsonLd0 = {
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  "name": "Codazz Case Studies \u2014 Real Project Results",
-  "url": "https://codazz.com/case-studies",
-  "description": "Explore how Codazz delivers measurable results in fintech, healthcare, e-commerce, and logistics projects.",
-  "publisher": {
-    "@type": "Organization",
-    "name": "Codazz",
-    "url": "https://codazz.com"
-  }
+const collectionSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Codazz Case Studies',
+  description:
+    'Explore Codazz case studies: real results from 500+ projects across FinTech, Healthcare, E-Commerce, Logistics & more.',
+  url: 'https://codazz.com/case-studies',
+  publisher: {
+    '@type': 'Organization',
+    name: 'Codazz',
+    url: 'https://codazz.com',
+  },
 };
 
-const jsonLd1 = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://codazz.com"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Case Studies",
-      "item": "https://codazz.com/case-studies"
-    }
-  ]
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://codazz.com' },
+    { '@type': 'ListItem', position: 2, name: 'Case Studies', item: 'https://codazz.com/case-studies' },
+  ],
 };
 
 export default function Page() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <PageClient />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd0) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd1) }}
-        />
     </>
   );
 }

@@ -2,32 +2,32 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'FinTech Trading Platform Case Study | 100K+ Users | Codazz',
+  title: 'HIPAA Telehealth Platform Case Study | 50K+ Patients | Codazz',
   description:
-    'How Codazz built a FinTech trading platform with 100K+ active users, 4.9-star App Store rating, and 99.99% uptime. React Native, Node.js, PostgreSQL, AWS.',
+    'How Codazz built a HIPAA-compliant telehealth platform serving 50K+ patients with video consultations, e-prescriptions, and 40% reduction in no-shows.',
   keywords: [
-    'fintech trading platform case study',
-    'trading app development',
-    'fintech app case study',
-    'React Native trading app',
-    'mobile trading platform',
+    'telehealth app case study',
+    'HIPAA compliant app development',
+    'healthcare app case study',
+    'telehealth platform development',
+    'medical app development',
     'Codazz case study',
   ],
   openGraph: {
-    title: 'FinTech Trading Platform Case Study | Codazz',
+    title: 'HIPAA Telehealth Platform Case Study | Codazz',
     description:
-      'How we built a trading platform with 100K+ active users and $50M+ traded. Real metrics, real results.',
-    url: 'https://codazz.com/case-studies/fintech-trading-platform',
+      'Building a HIPAA-compliant telehealth platform for 50K+ patients. Real metrics, real results.',
+    url: 'https://codazz.com/case-studies/healthcare-telehealth-app',
     type: 'article',
     siteName: 'Codazz',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'FinTech Trading Platform | Codazz Case Study',
-    description: '100K+ users, 4.9-star rating, 99.99% uptime. See how we built it.',
+    title: 'Telehealth Platform | Codazz Case Study',
+    description: '50K+ patients, HIPAA certified, 40% fewer no-shows. See how we built it.',
   },
   alternates: {
-    canonical: 'https://codazz.com/case-studies/fintech-trading-platform',
+    canonical: 'https://codazz.com/case-studies/healthcare-telehealth-app',
   },
   robots: { index: true, follow: true },
 };
@@ -35,10 +35,10 @@ export const metadata: Metadata = {
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: 'How We Built a FinTech Trading Platform with 100K+ Active Users',
+  headline: 'Building a HIPAA-Compliant Telehealth Platform for 50K+ Patients',
   description:
-    'Case study: building a real-time trading platform with React Native, Node.js, PostgreSQL, Redis, and AWS for 100K+ active users.',
-  url: 'https://codazz.com/case-studies/fintech-trading-platform',
+    'Case study: building a HIPAA-compliant telehealth app with React Native, WebRTC, HL7 FHIR, and AWS HIPAA for 50K+ patients.',
+  url: 'https://codazz.com/case-studies/healthcare-telehealth-app',
   author: { '@type': 'Organization', name: 'Codazz', url: 'https://codazz.com' },
   publisher: {
     '@type': 'Organization',
@@ -46,8 +46,8 @@ const articleSchema = {
     url: 'https://codazz.com',
     logo: { '@type': 'ImageObject', url: 'https://codazz.com/logo.png' },
   },
-  datePublished: '2025-08-15',
-  dateModified: '2026-03-01',
+  datePublished: '2025-06-20',
+  dateModified: '2026-02-15',
 };
 
 const breadcrumbSchema = {
@@ -56,7 +56,7 @@ const breadcrumbSchema = {
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://codazz.com' },
     { '@type': 'ListItem', position: 2, name: 'Case Studies', item: 'https://codazz.com/case-studies' },
-    { '@type': 'ListItem', position: 3, name: 'FinTech Trading Platform', item: 'https://codazz.com/case-studies/fintech-trading-platform' },
+    { '@type': 'ListItem', position: 3, name: 'Healthcare Telehealth App', item: 'https://codazz.com/case-studies/healthcare-telehealth-app' },
   ],
 };
 

@@ -1,0 +1,13 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Codazz",
+  "name_for_model": "codazz",
+  "description_for_human": "Leading software development company specializing in mobile apps, AI, web, blockchain, and cloud solutions.",
+  "description_for_model": "Codazz is a software development company headquartered in Edmonton, Canada with development centers in Chandigarh, India. Founded by Raman Makkar. They specialize in mobile app development (iOS, Android, Flutter, React Native), AI/ML solutions (LLMs, computer vision, NLP), web development (Next.js, React, Node.js), blockchain development (Solidity, DeFi, NFT), cloud/DevOps (AWS, GCP, Azure), and SaaS platforms. They serve 16+ industries including FinTech, Healthcare, E-Commerce, and more. They have delivered 500+ projects across 48 cities in 24 countries. They also offer ready-made clone app solutions (Uber, Airbnb, DoorDash, etc.) starting from $40,000. Certifications include AWS Advanced Partner, SOC 2 Type II, ISO 27001.",
+  "auth": {
+    "type": "none"
+  },
+  "logo_url": "https://codazz.com/logo.png",
+  "contact_email": "hello@codazz.com",
+  "legal_info_url": "https://codazz.com/legal/privacy-policy"
+}

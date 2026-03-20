@@ -1,10 +1,9 @@
-import { BASE_URL, buildUrlset } from '@/lib/sitemap-data';
-import { solutionSlugs } from '@/data/solutions';
+import { BASE_URL, buildUrlset, allSolutionSlugs } from '@/lib/sitemap-data';
 
 export function GET() {
   const now = new Date().toISOString();
 
-  const urls = solutionSlugs.map(slug => ({
+  const urls = allSolutionSlugs.map(slug => ({
     loc: `${BASE_URL}/solutions/${slug}`,
     lastmod: now,
     changefreq: 'weekly',

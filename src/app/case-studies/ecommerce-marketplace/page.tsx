@@ -2,32 +2,32 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'FinTech Trading Platform Case Study | 100K+ Users | Codazz',
+  title: 'E-Commerce Marketplace Case Study | 340% Conversion Lift | Codazz',
   description:
-    'How Codazz built a FinTech trading platform with 100K+ active users, 4.9-star App Store rating, and 99.99% uptime. React Native, Node.js, PostgreSQL, AWS.',
+    'How Codazz scaled an e-commerce marketplace to $10M+ annual revenue with 340% conversion increase, 2M+ products, and 99.99% uptime. Next.js, Node.js, AWS.',
   keywords: [
-    'fintech trading platform case study',
-    'trading app development',
-    'fintech app case study',
-    'React Native trading app',
-    'mobile trading platform',
+    'ecommerce marketplace case study',
+    'ecommerce app development',
+    'marketplace platform case study',
+    'Next.js ecommerce',
+    'multi-vendor marketplace development',
     'Codazz case study',
   ],
   openGraph: {
-    title: 'FinTech Trading Platform Case Study | Codazz',
+    title: 'E-Commerce Marketplace Case Study | Codazz',
     description:
-      'How we built a trading platform with 100K+ active users and $50M+ traded. Real metrics, real results.',
-    url: 'https://codazz.com/case-studies/fintech-trading-platform',
+      'Scaling a marketplace to $10M+ revenue with 340% conversion lift. Real metrics, real results.',
+    url: 'https://codazz.com/case-studies/ecommerce-marketplace',
     type: 'article',
     siteName: 'Codazz',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'FinTech Trading Platform | Codazz Case Study',
-    description: '100K+ users, 4.9-star rating, 99.99% uptime. See how we built it.',
+    title: 'E-Commerce Marketplace | Codazz Case Study',
+    description: '340% conversion lift, 3x revenue, 2M+ products. See how we built it.',
   },
   alternates: {
-    canonical: 'https://codazz.com/case-studies/fintech-trading-platform',
+    canonical: 'https://codazz.com/case-studies/ecommerce-marketplace',
   },
   robots: { index: true, follow: true },
 };
@@ -35,10 +35,10 @@ export const metadata: Metadata = {
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: 'How We Built a FinTech Trading Platform with 100K+ Active Users',
+  headline: 'Scaling an E-Commerce Marketplace to $10M+ Annual Revenue',
   description:
-    'Case study: building a real-time trading platform with React Native, Node.js, PostgreSQL, Redis, and AWS for 100K+ active users.',
-  url: 'https://codazz.com/case-studies/fintech-trading-platform',
+    'Case study: scaling a multi-vendor e-commerce marketplace with Next.js, Node.js, PostgreSQL, Elasticsearch, Stripe, and AWS.',
+  url: 'https://codazz.com/case-studies/ecommerce-marketplace',
   author: { '@type': 'Organization', name: 'Codazz', url: 'https://codazz.com' },
   publisher: {
     '@type': 'Organization',
@@ -46,8 +46,8 @@ const articleSchema = {
     url: 'https://codazz.com',
     logo: { '@type': 'ImageObject', url: 'https://codazz.com/logo.png' },
   },
-  datePublished: '2025-08-15',
-  dateModified: '2026-03-01',
+  datePublished: '2025-10-10',
+  dateModified: '2026-03-10',
 };
 
 const breadcrumbSchema = {
@@ -56,7 +56,7 @@ const breadcrumbSchema = {
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://codazz.com' },
     { '@type': 'ListItem', position: 2, name: 'Case Studies', item: 'https://codazz.com/case-studies' },
-    { '@type': 'ListItem', position: 3, name: 'FinTech Trading Platform', item: 'https://codazz.com/case-studies/fintech-trading-platform' },
+    { '@type': 'ListItem', position: 3, name: 'E-Commerce Marketplace', item: 'https://codazz.com/case-studies/ecommerce-marketplace' },
   ],
 };
 
