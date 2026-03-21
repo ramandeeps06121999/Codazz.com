@@ -153,7 +153,7 @@ export default function TestimonialsSection() {
             color: 'rgba(255,255,255,0.25)',
             marginBottom: 20,
           }}>
-            Testimonials
+            Client Testimonials
           </div>
           <div className="testimonials-heading-grid">
             <h2 style={{
@@ -164,8 +164,8 @@ export default function TestimonialsSection() {
               lineHeight: 1.05,
               margin: 0,
             }}>
-              Trusted by People<br />
-              <span style={{ color: 'rgba(255,255,255,0.2)' }}>Changing the World.</span>
+              What Our Clients<br />
+              <span style={{ color: 'rgba(255,255,255,0.2)' }}>Say About Us.</span>
             </h2>
             <div>
               <p style={{ fontSize: 17, color: '#9ca3af', lineHeight: 1.7, margin: '0 0 24px' }}>
@@ -188,6 +188,39 @@ export default function TestimonialsSection() {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Testimonials Marquee Strip */}
+      <div style={{ position: 'relative', overflow: 'hidden', borderTop: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)', padding: '13px 0', marginBottom: 'clamp(32px,5vw,56px)' }}>
+        <div style={{ position: 'absolute', top: 0, left: 0, width: 100, height: '100%', background: 'linear-gradient(to right, #000000, transparent)', zIndex: 2, pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', top: 0, right: 0, width: 100, height: '100%', background: 'linear-gradient(to left, #000000, transparent)', zIndex: 2, pointerEvents: 'none' }} />
+        <div style={{ display: 'flex', gap: 48, width: 'max-content', animation: 'testimonials-marquee 28s linear infinite' }}>
+          {[
+            { icon: '⭐', label: '4.9 / 5 on Clutch' },
+            { icon: '🏆', label: 'Top Rated on GoodFirms' },
+            { icon: '✅', label: '150+ Happy Clients' },
+            { icon: '🌍', label: '15+ Countries Served' },
+            { icon: '💬', label: '500+ Verified Reviews' },
+            { icon: '🚀', label: '200+ Apps Shipped' },
+            { icon: '🤝', label: '95% Client Retention' },
+            { icon: '📱', label: 'Trusted by Fortune 500' },
+            { icon: '⭐', label: '4.9 / 5 on Clutch' },
+            { icon: '🏆', label: 'Top Rated on GoodFirms' },
+            { icon: '✅', label: '150+ Happy Clients' },
+            { icon: '🌍', label: '15+ Countries Served' },
+            { icon: '💬', label: '500+ Verified Reviews' },
+            { icon: '🚀', label: '200+ Apps Shipped' },
+            { icon: '🤝', label: '95% Client Retention' },
+            { icon: '📱', label: 'Trusted by Fortune 500' },
+          ].map((item, i) => (
+            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8, whiteSpace: 'nowrap', flexShrink: 0 }}>
+              <span style={{ fontSize: 14 }}>{item.icon}</span>
+              <span style={{ fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{item.label}</span>
+              <span style={{ color: 'rgba(34,197,94,0.3)', fontSize: 8, marginLeft: 12 }}>◆</span>
+            </div>
+          ))}
+        </div>
+        <style>{`@keyframes testimonials-marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }`}</style>
       </div>
 
       {/* Carousel */}
