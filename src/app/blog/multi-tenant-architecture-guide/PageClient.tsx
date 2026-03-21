@@ -125,7 +125,7 @@ export default function PageClient() {
                 key={s.id}
                 onClick={() => scrollTo(s.id)}
                 style={{
-                  display: 'block', width: '100%', textAlign: 'left', background: 'none', border: 'none', cursor: 'pointer',
+                  display: 'block', width: '100%', textAlign: 'left', border: 'none', cursor: 'pointer',
                   padding: '7px 10px', borderRadius: '6px', fontSize: '13px', marginBottom: '2px',
                   color: activeSection === s.id ? G : 'rgba(255,255,255,0.55)',
                   background: activeSection === s.id ? 'rgba(34,197,94,0.08)' : 'transparent',
