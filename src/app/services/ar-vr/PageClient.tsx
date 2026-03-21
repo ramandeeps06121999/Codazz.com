@@ -61,16 +61,7 @@ const faqs = [
 
 export default function ARVRPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const s1 = useReveal() as React.RefObject<HTMLElement>;
-  const s2 = useReveal() as React.RefObject<HTMLElement>;
-  const techRef = useReveal() as React.RefObject<HTMLElement>;
-  const industryRef = useReveal() as React.RefObject<HTMLElement>;
-  const pricingRef = useReveal() as React.RefObject<HTMLElement>;
-  const s3 = useReveal() as React.RefObject<HTMLElement>;
-  const s4 = useReveal() as React.RefObject<HTMLElement>;
-  const s5 = useReveal() as React.RefObject<HTMLElement>;
-  const heroRef = useReveal() as React.RefObject<HTMLElement>;
-  const s6 = useReveal() as React.RefObject<HTMLElement>;
+  const pageRef = useReveal() as React.RefObject<HTMLElement>;
 
   return (
     <>
@@ -83,7 +74,7 @@ export default function ARVRPage() {
         .reveal-d4 { transition-delay: 0.4s; }
       `}</style>
       <Navbar />
-      <main style={{ background: '#000000', color: '#ffffff', paddingTop: 80 }}>
+      <main ref={pageRef} style={{ background: '#000000', color: '#ffffff', paddingTop: 80 }}>
         <div className="cb-container">
           <Breadcrumb items={[
             { label: 'Home', href: '/' },
@@ -93,7 +84,7 @@ export default function ARVRPage() {
         </div>
 
         {/* HERO */}
-        <section ref={heroRef} className="section-padding" style={{ position: 'relative', overflow: 'hidden', minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
+        <section className="section-padding" style={{ position: 'relative', overflow: 'hidden', minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
           <HeroBackground variant="center" />
           <div className="cb-container" style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: 860, margin: '0 auto' }}>
             <div className="reveal" style={{ display: 'inline-block', border: '1px solid rgba(34,197,94,0.4)', borderRadius: 999, padding: '6px 20px', fontSize: 13, color: '#ffffff', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>
@@ -129,7 +120,7 @@ export default function ARVRPage() {
         </section>
 
         {/* STATS */}
-        <section ref={s1} style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(140px, 100%), 1fr))' }}>
               {stats.map((s, i) => (
@@ -143,7 +134,7 @@ export default function ARVRPage() {
         </section>
 
         {/* SERVICES */}
-        <section ref={s2} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 16 }}>
               <span style={{ fontSize: 11, fontWeight: 700, color: '#ffffff', letterSpacing: '0.12em', textTransform: 'uppercase' }}>What We Build</span>
@@ -167,7 +158,7 @@ export default function ARVRPage() {
         </section>
 
         {/* TECH STACK */}
-        <section ref={techRef} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div className="reveal" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 64, gap: 40, flexWrap: 'wrap' }}>
               <div>
@@ -209,7 +200,7 @@ export default function ARVRPage() {
         </section>
 
         {/* INDUSTRY USE CASES */}
-        <section ref={industryRef} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 64 }}>
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#ffffff', marginBottom: 20 }}>Industries</div>
@@ -240,7 +231,7 @@ export default function ARVRPage() {
         </section>
 
         {/* PRICING TIERS */}
-        <section ref={pricingRef} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#ffffff', marginBottom: 20 }}>Pricing</div>
@@ -310,7 +301,7 @@ export default function ARVRPage() {
         </section>
 
         {/* PROCESS */}
-        <section ref={s3} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 16 }}>
               <span style={{ fontSize: 11, fontWeight: 700, color: '#ffffff', letterSpacing: '0.12em', textTransform: 'uppercase' }}>How We Build</span>
@@ -332,7 +323,7 @@ export default function ARVRPage() {
         </section>
 
         {/* RESULTS */}
-        <section ref={s4} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 16 }}>
               <span style={{ fontSize: 11, fontWeight: 700, color: '#ffffff', letterSpacing: '0.12em', textTransform: 'uppercase' }}>Results</span>
@@ -351,7 +342,7 @@ export default function ARVRPage() {
         </section>
 
         {/* FAQ */}
-        <section ref={s5} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container" style={{ maxWidth: 760 }}>
             <div className="reveal" style={{ marginBottom: 16 }}>
               <span style={{ fontSize: 11, fontWeight: 700, color: '#ffffff', letterSpacing: '0.12em', textTransform: 'uppercase' }}>FAQ</span>
@@ -403,7 +394,7 @@ export default function ARVRPage() {
         </section>
 
         {/* CTA */}
-        <section ref={s6} className="section-padding">
+        <section className="section-padding">
           <div className="cb-container" style={{ textAlign: 'center' }}>
             <div className="reveal" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.2)', borderRadius: 100, padding: '8px 20px', marginBottom: 32 }}>
               <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#22c55e', boxShadow: '0 0 8px #22c55e' }} />

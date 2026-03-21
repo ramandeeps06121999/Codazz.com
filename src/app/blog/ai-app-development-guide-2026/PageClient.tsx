@@ -104,7 +104,7 @@ export default function AIAppDevelopmentClient() {
         <div className="cb-container" style={{ paddingTop: 100 }}>
           <div className="reveal" style={{ marginBottom: 40 }}>
             <Image
-              src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=675&fit=crop"
+              src="/blog_images/ai-app-development-guide-2026.jpg"
               alt="Artificial intelligence and machine learning visualization"
               width={1200}
               height={675}
@@ -117,9 +117,6 @@ export default function AIAppDevelopmentClient() {
                 borderRadius: 'clamp(16px, 3vw, 24px)',
               }}
             />
-            <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', marginTop: 8, textAlign: 'center' }}>
-              Photo by <a href="https://unsplash.com/@googledeepmind" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Google DeepMind</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-            </p>
           </div>
         </div>
 
@@ -279,15 +276,12 @@ export default function AIAppDevelopmentClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop"
+                    src="/blog_images/ai-app-development-guide-2026.jpg"
                     alt="Machine learning data science visualization"
                     width={800}
                     height={500}
                     style={{ width: '100%', height: 'auto', borderRadius: 12, marginBottom: 16 }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@lukechesser" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Luke Chesser</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <p className="reveal">
@@ -328,15 +322,12 @@ export default function AIAppDevelopmentClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=500&fit=crop"
+                    src="/blog_images/ai-app-development-guide-2026.jpg"
                     alt="Technology stack and cloud infrastructure layers"
                     width={800}
                     height={500}
                     style={{ width: '100%', height: 'auto', borderRadius: 12, marginBottom: 16 }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@nasa" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>NASA</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <p className="reveal">
@@ -499,15 +490,12 @@ export default function AIAppDevelopmentClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=800&h=500&fit=crop"
+                    src="/blog_images/ai-app-development-guide-2026.jpg"
                     alt="Workflow automation and process flow"
                     width={800}
                     height={500}
                     style={{ width: '100%', height: 'auto', borderRadius: 12, marginBottom: 16 }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@beatriz_perez" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Beatriz Perez Moya</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <p className="reveal">
@@ -692,15 +680,12 @@ export default function AIAppDevelopmentClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=500&fit=crop"
+                    src="/blog_images/ai-app-development-guide-2026.jpg"
                     alt="Health and fitness technology app"
                     width={800}
                     height={500}
                     style={{ width: '100%', height: 'auto', borderRadius: 12, marginBottom: 16 }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@nci" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>National Cancer Institute</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <p className="reveal">
@@ -741,15 +726,12 @@ export default function AIAppDevelopmentClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=800&h=500&fit=crop"
+                    src="/blog_images/ai-app-development-guide-2026.jpg"
                     alt="Budget planning and cost analysis"
                     width={800}
                     height={500}
                     style={{ width: '100%', height: 'auto', borderRadius: 12, marginBottom: 16 }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@mathieustern" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Mathieu Stern</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <h3 className="reveal" style={h3Style}>Development Costs by Feature</h3>
@@ -845,15 +827,12 @@ export default function AIAppDevelopmentClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=800&h=500&fit=crop"
+                    src="/blog_images/ai-app-development-guide-2026.jpg"
                     alt="Ethics justice and balance concept"
                     width={800}
                     height={500}
                     style={{ width: '100%', height: 'auto', borderRadius: 12, marginBottom: 16 }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@brett_jordan" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Brett Jordan</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <h3 className="reveal" style={h3Style}>What You Must Address</h3>
@@ -880,15 +859,12 @@ export default function AIAppDevelopmentClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1621252179027-94459d27d3ee?w=800&h=500&fit=crop"
+                    src="/blog_images/ai-app-development-guide-2026.jpg"
                     alt="Warning signs and error alerts"
                     width={800}
                     height={500}
                     style={{ width: '100%', height: 'auto', borderRadius: 12, marginBottom: 16 }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@mojahidmottakin" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Mojahid Mottakin</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <p className="reveal">
@@ -910,15 +886,12 @@ export default function AIAppDevelopmentClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=800&h=500&fit=crop"
+                    src="/blog_images/ai-app-development-guide-2026.jpg"
                     alt="Roadmap journey and path forward"
                     width={800}
                     height={500}
                     style={{ width: '100%', height: 'auto', borderRadius: 12, marginBottom: 16 }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@martenbjork" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Marten Newhall</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <div className="reveal" style={{

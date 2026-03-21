@@ -199,7 +199,7 @@ export default function TopFintechApps2026Client() {
         <div className="cb-container" style={{ paddingTop: 100 }}>
           <div className="reveal" style={{ marginBottom: 40 }}>
             <Image
-              src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&h=675&fit=crop"
+              src="/blog_images/top-fintech-apps-2026.jpg"
               alt="Top fintech apps and digital finance platforms in 2026"
               width={1200}
               height={675}
@@ -212,9 +212,6 @@ export default function TopFintechApps2026Client() {
                 borderRadius: 'clamp(16px, 3vw, 24px)',
               }}
             />
-            <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', marginTop: 8, textAlign: 'center' }}>
-              Photo by <a href="https://unsplash.com/@maxim_berg" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Maxim Berg</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-            </p>
           </div>
         </div>
 

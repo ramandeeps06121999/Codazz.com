@@ -76,7 +76,7 @@ export default function NativeVsCrossPlatformClient() {
         <div className="cb-container" style={{ paddingTop: 100 }}>
           <div className="reveal" style={{ marginBottom: 40 }}>
             <Image
-              src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1200&h=675&fit=crop"
+              src="/blog_images/native-vs-cross-platform-2026.jpg"
               alt="Mobile app development on multiple devices"
               width={1200}
               height={675}
@@ -89,9 +89,6 @@ export default function NativeVsCrossPlatformClient() {
                 borderRadius: 'clamp(16px, 3vw, 24px)',
               }}
             />
-            <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', marginTop: 8, textAlign: 'center' }}>
-              Photo by <a href="https://unsplash.com/@williamhook" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>William Hook</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-            </p>
           </div>
         </div>
 
@@ -267,15 +264,12 @@ export default function NativeVsCrossPlatformClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop"
+                    src="/blog_images/native-vs-cross-platform-2026.jpg"
                     alt="Performance metrics dashboard"
                     width={800}
                     height={500}
                     style={{ width: '100%', height: 'auto', borderRadius: 12, marginBottom: 16 }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@lukechesser" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Luke Chesser</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <p className="reveal">
@@ -420,15 +414,12 @@ export default function NativeVsCrossPlatformClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1542744094-3a31f272c490?w=800&h=500&fit=crop"
+                    src="/blog_images/native-vs-cross-platform-2026.jpg"
                     alt="Mobile app interface design"
                     width={800}
                     height={500}
                     style={{ width: '100%', height: 'auto', borderRadius: 12, marginBottom: 16 }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@kellysikkema" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Kelly Sikkema</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <div className="reveal" style={{
@@ -505,15 +496,12 @@ export default function NativeVsCrossPlatformClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&h=500&fit=crop"
+                    src="/blog_images/native-vs-cross-platform-2026.jpg"
                     alt="Strategic decision-making and planning"
                     width={800}
                     height={500}
                     style={{ width: '100%', height: 'auto', borderRadius: 12, marginBottom: 16 }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@clyders" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Clyde RS</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 {[

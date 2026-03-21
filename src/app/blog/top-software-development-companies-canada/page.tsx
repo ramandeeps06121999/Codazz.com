@@ -1,10 +1,10 @@
 import { Metadata } from 'next';
 import PageClient from './PageClient';
 
-const TITLE = 'Top 10 Software Development Companies in Canada (2026)';
-const DESCRIPTION = 'Ranking the best software development companies in Canada for 2026 — from Edmonton-based engineering powerhouses to enterprise IT giants building world-class platforms.';
+const TITLE = 'Top Software Development Companies in Canada (2026)';
+const DESCRIPTION = 'The definitive ranking of top software development companies in Canada for 2026 — covering Toronto, Vancouver, Montreal, Edmonton, and Calgary. Compare rates ($85–$175/hr CAD), SR&ED tax credits, and why Codazz leads the list from Edmonton.';
 const SLUG = 'top-software-development-companies-canada';
-const DATE = '2026-03-19';
+const DATE = '2026-03-20';
 
 export const metadata: Metadata = {
   title: TITLE,

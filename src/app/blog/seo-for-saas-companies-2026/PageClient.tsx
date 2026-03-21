@@ -20,656 +20,702 @@ function useReveal() {
 }
 
 const tocItems = [
-  { id: 'why-saas-seo', label: 'Why SaaS SEO is Different', emoji: '🎯' },
-  { id: 'technical-seo', label: 'Technical SEO Foundation', emoji: '🔧' },
-  { id: 'keyword-strategy', label: 'Keyword Strategy', emoji: '🔍' },
-  { id: 'pillar-content', label: 'Pillar Content Strategy', emoji: '📚' },
+  { id: 'saas-seo-different', label: 'Why SaaS SEO is Different', emoji: '🎯' },
+  { id: 'product-led-seo', label: 'Product-Led SEO', emoji: '🚀' },
   { id: 'programmatic-seo', label: 'Programmatic SEO', emoji: '🤖' },
-  { id: 'link-building', label: 'Link Building for SaaS', emoji: '🔗' },
-  { id: 'conversion-optimization', label: 'Conversion Optimization', emoji: '📈' },
-  { id: 'metrics', label: 'Metrics & KPIs', emoji: '📊' },
-  { id: 'codazz-approach', label: 'Codazz Approach', emoji: '🍁' },
-  { id: 'faqs', label: 'FAQs', emoji: '❓' },
+  { id: 'comparison-pages', label: 'Comparison Pages Strategy', emoji: '⚖️' },
+  { id: 'integration-pages', label: 'Integration Pages', emoji: '🔗' },
+  { id: 'free-tools', label: 'Free Tools as SEO Magnets', emoji: '🧲' },
+  { id: 'g2-capterra', label: 'G2 & Capterra Optimization', emoji: '⭐' },
+  { id: 'content-clusters', label: 'Content Cluster Strategy', emoji: '📚' },
+  { id: 'technical-seo', label: 'Technical SEO for SaaS', emoji: '🔧' },
+  { id: 'why-codazz', label: 'Why Codazz', emoji: '🏆' },
+  { id: 'faq', label: 'FAQ', emoji: '❓' },
 ];
 
 const relatedPosts = [
-  { slug: 'top-seo-companies-usa', title: 'Top 10 SEO Companies in the USA (2026)', category: 'Digital Marketing', readTime: '9 min' },
-  { slug: 'saas-guide', title: 'From Idea to MRR: How to Build a Profitable SaaS in 2026', category: 'Business', readTime: '7 min' },
-  { slug: 'digital-marketing-cost-usa', title: 'How Much Does Digital Marketing Cost in the USA?', category: 'Digital Marketing', readTime: '9 min' },
+  { slug: 'startup-marketing-guide-2026', title: 'Startup Marketing Guide 2026', category: 'Marketing', readTime: '16 min' },
+  { slug: 'ppc-vs-seo-2026', title: 'PPC vs SEO in 2026: Which Drives More ROI?', category: 'Marketing', readTime: '12 min' },
+  { slug: 'nextjs-vs-react-2026', title: 'Next.js vs React in 2026', category: 'Tech', readTime: '11 min' },
 ];
 
-const faqs = [
-  {
-    q: 'How long does SEO take to work for a SaaS company?',
-    a: 'Most SaaS companies see initial organic traffic improvements within 3-4 months, with significant pipeline impact at 6-9 months. Enterprise SaaS targeting competitive keywords like "CRM software" or "project management tool" should expect 9-12 months for top-3 rankings. The compounding nature of SEO means that by month 12-18, organic becomes your highest-ROI channel.',
-  },
-  {
-    q: 'How much should a SaaS company invest in SEO?',
-    a: 'Early-stage SaaS (pre-Series A) should allocate $3,000-$8,000/month. Growth-stage SaaS (Series A-B) should invest $8,000-$20,000/month across content, technical SEO, and link building. Enterprise SaaS companies typically spend $20,000-$50,000+/month on comprehensive organic programs. A good rule of thumb is 15-25% of your total marketing budget.',
-  },
-  {
-    q: 'Should SaaS companies focus on blog content or product pages for SEO?',
-    a: 'Both, but the strategy differs by funnel stage. Product and feature pages target bottom-of-funnel keywords with high purchase intent (e.g., "best invoicing software"). Blog content captures top-of-funnel and mid-funnel traffic (e.g., "how to automate invoicing"). The best SaaS SEO strategies use pillar content to bridge both, creating internal linking structures that pass authority from informational content to conversion pages.',
-  },
-  {
-    q: 'What is programmatic SEO and should SaaS companies use it?',
-    a: 'Programmatic SEO is the automated creation of hundreds or thousands of unique, valuable pages targeting long-tail keyword patterns. For SaaS, this could mean generating pages for "[Your Product] vs [Competitor]", "[Your Product] for [Industry]", or "[Feature] + [Use Case]" combinations. It works exceptionally well for SaaS companies because the pattern is repeatable and scalable. Companies like Zapier, Notion, and HubSpot have built millions of organic visits using programmatic SEO.',
-  },
-  {
-    q: 'How important is technical SEO for SaaS websites?',
-    a: 'Critical. Most SaaS websites are built on React or Next.js and suffer from JavaScript rendering issues, slow load times, and poor Core Web Vitals. Google explicitly uses page experience signals as ranking factors. A SaaS site scoring below 80 on Google Lighthouse is leaving rankings on the table. Technical SEO is the foundation that makes content and link building efforts effective.',
-  },
-  {
-    q: 'Should SaaS companies hire an in-house SEO team or work with an agency?',
-    a: 'For companies under $10M ARR, an agency or fractional SEO lead is more cost-effective. A single in-house SEO hire costs $120,000-$180,000/year in the USA and lacks the breadth of skills needed (technical SEO, content, link building, analytics). An agency provides a full team of specialists for $5,000-$15,000/month. At $10M+ ARR, a hybrid model works best: an in-house SEO manager coordinating with an agency for execution.',
-  },
-  {
-    q: 'How do you measure SEO ROI for a SaaS product?',
-    a: 'The primary metric is pipeline influenced by organic search. Track the full funnel: organic sessions, sign-ups from organic, trial-to-paid conversions from organic, and ultimately MRR attributed to organic. Tools like HubSpot, Salesforce, and GA4 can attribute revenue to organic touch points. Most mature SaaS companies see a 5-10x ROI on SEO spend within 18 months, making it the highest-ROI marketing channel.',
-  },
-  {
-    q: 'What are the biggest SEO mistakes SaaS companies make?',
-    a: 'The top five mistakes are: (1) Building on client-side rendered React without server-side rendering, making content invisible to Google. (2) Targeting only high-volume, competitive keywords instead of building a long-tail foundation. (3) Ignoring technical SEO while pumping out blog content. (4) Not creating comparison and alternative pages that capture high-intent bottom-of-funnel traffic. (5) Treating SEO as a one-time project instead of an ongoing, compounding investment.',
-  },
-];
-
-export default function SeoForSaasCompaniesClient() {
-  const pageRef = useReveal();
-  const [copied, setCopied] = useState(false);
+export default function SeoForSaasClient() {
+  const mainRef = useReveal();
+  const [activeSection, setActiveSection] = useState('saas-seo-different');
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  const handleCopy = () => {
-    if (typeof window !== 'undefined') {
-      navigator.clipboard.writeText(window.location.href);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    }
-  };
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = tocItems.map(t => document.getElementById(t.id)).filter(Boolean);
+      let current = tocItems[0].id;
+      for (const section of sections) {
+        if (section && section.getBoundingClientRect().top <= 120) {
+          current = section.id;
+        }
+      }
+      setActiveSection(current);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const faqs = [
+    {
+      q: 'How is SaaS SEO different from regular SEO?',
+      a: 'SaaS SEO targets a buyer journey that spans weeks or months across multiple decision-makers. You need content for every funnel stage: awareness (problem-aware content), consideration (comparison pages, use case pages), and decision (pricing, case studies, free trials). Unlike e-commerce or local SEO, SaaS also relies heavily on programmatic pages, integration directories, and review platforms like G2 and Capterra that traditional businesses do not deal with.',
+    },
+    {
+      q: 'What is product-led SEO and how do I implement it for my SaaS?',
+      a: 'Product-led SEO means creating pages that demonstrate your product\'s value directly in search results. Examples: Canva\'s free design templates that rank for "resume template" or "poster maker", Ahrefs\' free SEO tools that rank for "backlink checker", Notion\'s public template gallery. Implement it by identifying your product\'s most useful features, building public-facing pages around those outputs (reports, templates, results), and optimizing each for relevant keywords. The product itself becomes your best content asset.',
+    },
+    {
+      q: 'How many comparison pages should a SaaS company have?',
+      a: 'Prioritize your top 5–10 direct competitors and create a dedicated "[Your Product] vs [Competitor]" page for each. Then create "alternatives to [Competitor]" pages targeting users actively looking to switch. Beyond direct competitors, create "best [category] software" pages to capture category-level searches. A mature SaaS in a competitive market typically has 20–50 comparison and alternative pages. Start with your two or three most-searched competitors and expand from there.',
+    },
+    {
+      q: 'How long does SaaS SEO take to show results?',
+      a: 'Expect 6–12 months before significant organic traffic gains for a new or low-authority SaaS site. Technical SEO fixes show results fastest (1–3 months). Content clusters and comparison pages typically rank within 3–6 months with active link building. Programmatic SEO pages can show early signals in 2–4 months. Domains with existing authority (DA 40+) see faster results. Most SaaS companies see meaningful ROI from SEO at 12–18 months, after which the compounding effect accelerates.',
+    },
+    {
+      q: 'Is G2 or Capterra worth investing in for SaaS SEO?',
+      a: 'Yes — both platforms rank on the first page for nearly every "[software category] software" search. Getting listed and actively collecting reviews is essential. G2 is the higher-authority platform (preferred for B2B). Capterra has higher volume but lower quality traffic. Invest in getting to 25+ reviews on G2 to unlock badges and higher category visibility. These platforms also pass significant referral traffic independent of your organic rankings. A combined investment in G2 + Capterra profile optimization typically returns 3–8x in pipeline influence.',
+    },
+  ];
 
   return (
-    <>
+    <main ref={mainRef} style={{ background: '#000', color: '#fff', minHeight: '100vh', fontFamily: 'system-ui, sans-serif' }}>
       <Navbar />
-      <main ref={pageRef as React.RefObject<HTMLElement>} style={{ background: '#000000', minHeight: '100vh' }}>
 
-        {/* ── FEATURED IMAGE ── */}
-        <div className="cb-container" style={{ paddingTop: 100 }}>
-          <div className="reveal" style={{ marginBottom: 40 }}>
-            <img
-              src="/blog_images/seo-for-saas-companies-2026.jpg"
-              alt="SEO for SaaS companies guide 2026"
-              style={{
-                width: '100%',
-                height: 'auto',
-                maxHeight: '500px',
-                objectFit: 'cover',
-                borderRadius: 'clamp(16px, 3vw, 24px)',
-              }}
-            />
+      {/* Hero */}
+      <section style={{ position: 'relative', padding: '120px 24px 80px', textAlign: 'center', overflow: 'hidden' }}>
+        <HeroBackground />
+        <div style={{ position: 'relative', zIndex: 1, maxWidth: 820, margin: '0 auto' }}>
+          <div className="reveal" style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 24 }}>
+            <span style={{ background: 'rgba(34,197,94,0.15)', border: '1px solid rgba(34,197,94,0.3)', color: '#22c55e', padding: '6px 16px', borderRadius: 100, fontSize: 13, fontWeight: 600 }}>SaaS Growth</span>
+            <span style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', color: '#aaa', padding: '6px 16px', borderRadius: 100, fontSize: 13 }}>March 20, 2026</span>
+            <span style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', color: '#aaa', padding: '6px 16px', borderRadius: 100, fontSize: 13 }}>18 min read</span>
+          </div>
+          <h1 className="reveal" style={{ fontSize: 'clamp(28px,5vw,52px)', fontWeight: 800, lineHeight: 1.15, marginBottom: 20, letterSpacing: '-0.02em' }}>
+            SEO for SaaS Companies 2026:<br />
+            <span style={{ color: '#22c55e' }}>Complete Growth Guide</span>
+          </h1>
+          <p className="reveal" style={{ fontSize: 18, color: '#bbb', lineHeight: 1.7, marginBottom: 32 }}>
+            Product-led SEO, programmatic pages, comparison strategies, integration directories, free tools, G2 optimization, and technical SEO — everything SaaS founders and CMOs need to dominate organic search in 2026.
+          </p>
+          <div className="reveal" style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
+            <Link href="/contact" style={{ background: '#22c55e', color: '#000', padding: '14px 32px', borderRadius: 100, fontWeight: 700, textDecoration: 'none', fontSize: 15 }}>Grow My SaaS with SEO</Link>
+            <a href="#saas-seo-different" style={{ background: 'rgba(255,255,255,0.08)', color: '#fff', padding: '14px 32px', borderRadius: 100, fontWeight: 600, textDecoration: 'none', fontSize: 15 }}>Read the Guide</a>
           </div>
         </div>
+      </section>
 
-        {/* ── ARTICLE HERO ── */}
-        <section style={{ padding: 'clamp(100px, 15vw, 140px) 0 clamp(32px, 5vw, 64px)', position: 'relative', overflow: 'hidden' }}>
-          <HeroBackground variant="left" />
-          <div className="cb-container">
-            <div className="reveal" style={{ marginBottom: 24 }}>
-              <Link href="/blog" style={{
-                fontSize: 13, color: 'rgba(255,255,255,0.4)', textDecoration: 'none',
-                display: 'inline-flex', alignItems: 'center', gap: 8,
-                transition: 'color 0.2s',
-              }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M19 12H5M12 19l-7-7 7-7"/>
-                </svg>
-                All Articles
-              </Link>
-            </div>
+      {/* Main content + TOC */}
+      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '60px 24px', display: 'grid', gridTemplateColumns: '1fr 260px', gap: 48, alignItems: 'start' }}>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24, flexWrap: 'wrap' }}>
-              <span className="reveal reveal-d1" style={{
-                fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                background: 'rgba(17,24,39,0.12)', color: '#ffffff',
-                padding: '5px 14px', borderRadius: 100,
-              }}>Digital Marketing</span>
-              <span className="reveal reveal-d1" style={{ fontSize: 13, color: 'rgba(255,255,255,0.25)' }}>March 19, 2026</span>
-              <span className="reveal reveal-d1" style={{ fontSize: 13, color: 'rgba(255,255,255,0.25)' }}>·</span>
-              <span className="reveal reveal-d1" style={{
-                fontSize: 13, color: 'rgba(255,255,255,0.25)',
-                display: 'inline-flex', alignItems: 'center', gap: 6,
-              }}>
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/>
-                </svg>
-                12 min read
-              </span>
-            </div>
+        {/* Article body */}
+        <article>
 
-            <h1 className="reveal reveal-d2" style={{
-              fontSize: 'clamp(2.4rem, 5vw, 4.5rem)', fontWeight: 800, color: '#ffffff',
-              letterSpacing: '-0.04em', lineHeight: 1.05, marginBottom: 24, maxWidth: 840,
-            }}>
-              SEO for SaaS Companies: Complete Guide 2026
-            </h1>
-
-            <p className="reveal reveal-d3" style={{
-              fontSize: 20, color: 'rgba(255,255,255,0.5)', lineHeight: 1.65,
-              maxWidth: 720, marginBottom: 48, fontWeight: 400,
-            }}>
-              How the fastest-growing SaaS companies build organic traffic engines that generate thousands of qualified leads every month without paying for every click.
+          {/* Why SaaS SEO is Different */}
+          <section id="saas-seo-different" style={{ marginBottom: 72 }}>
+            <h2 className="reveal" style={{ fontSize: 32, fontWeight: 800, color: '#fff', marginBottom: 16 }}>
+              🎯 Why SaaS SEO is Fundamentally Different
+            </h2>
+            <p className="reveal" style={{ color: '#bbb', lineHeight: 1.8, marginBottom: 24 }}>
+              SaaS companies cannot use the same SEO playbook as e-commerce or local businesses. Your buyer journey is longer (30–90+ days), involves multiple stakeholders, and crosses stages from problem awareness to product evaluation to purchase. Your SEO must match this complexity.
             </p>
-
-            {/* Author + Share row */}
-            <div className="reveal reveal-d4" style={{
-              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-              flexWrap: 'wrap', gap: 24, paddingTop: 32,
-              borderTop: '1px solid rgba(255,255,255,0.05)',
-            }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-                <div style={{
-                  width: 48, height: 48, borderRadius: '50%',
-                  background: 'rgba(17,24,39,0.12)', border: '1px solid rgba(17,24,39,0.25)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: 15, fontWeight: 700, color: '#ffffff',
-                }}>RM</div>
-                <div>
-                  <p style={{ fontSize: 15, fontWeight: 600, color: '#ffffff', margin: 0 }}>Raman Makkar</p>
-                  <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)', margin: 0 }}>CEO, Codazz</p>
+            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 20, marginBottom: 28 }}>
+              {[
+                { stage: 'TOFU — Awareness', intent: 'Problem-aware, not solution-aware', content: 'Educational guides, trend reports, problem definition posts', example: '"how to manage remote teams"' },
+                { stage: 'MOFU — Consideration', intent: 'Evaluating solutions and categories', content: 'Use case pages, comparison pages, feature deep-dives', example: '"best project management software"' },
+                { stage: 'BOFU — Decision', intent: 'Comparing specific vendors', content: 'vs pages, pricing transparency, case studies, reviews', example: '"Asana vs Monday pricing"' },
+                { stage: 'Retention', intent: 'Existing customers seeking help', content: 'Help docs (which rank!), tutorials, changelog posts', example: '"how to use [feature]"' },
+              ].map((stage, i) => (
+                <div key={i} style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 20, padding: 24 }}>
+                  <div style={{ background: 'rgba(34,197,94,0.12)', color: '#22c55e', padding: '3px 10px', borderRadius: 100, fontSize: 11, fontWeight: 700, display: 'inline-block', marginBottom: 10 }}>{stage.stage}</div>
+                  <div style={{ color: '#bbb', fontSize: 13, marginBottom: 8 }}>{stage.intent}</div>
+                  <div style={{ color: '#fff', fontSize: 13, fontWeight: 600, marginBottom: 8 }}>{stage.content}</div>
+                  <div style={{ color: '#888', fontSize: 12, fontStyle: 'italic' }}>e.g. {stage.example}</div>
                 </div>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.25)', marginRight: 4 }}>Share:</span>
-                {[
-                  { label: 'Twitter', icon: '\u{1D54F}' },
-                  { label: 'LinkedIn', icon: 'in' },
-                ].map(s => (
-                  <button key={s.label} style={{
-                    width: 36, height: 36, borderRadius: '50%', border: '1px solid rgba(255,255,255,0.08)',
-                    background: 'rgba(255,255,255,0.02)', color: 'rgba(255,255,255,0.45)',
-                    fontSize: 13, fontWeight: 700, cursor: 'pointer', display: 'flex',
-                    alignItems: 'center', justifyContent: 'center',
-                  }}>{s.icon}</button>
-                ))}
-                <button onClick={handleCopy} style={{
-                  padding: '8px 16px', borderRadius: 100, border: '1px solid rgba(255,255,255,0.08)',
-                  background: copied ? 'rgba(34,197,94,0.1)' : 'rgba(255,255,255,0.02)',
-                  color: copied ? '#22c55e' : 'rgba(255,255,255,0.45)',
-                  fontSize: 12, fontWeight: 600, cursor: 'pointer',
-                  transition: 'all 0.2s',
-                }}>
-                  {copied ? 'Copied!' : 'Copy Link'}
-                </button>
-              </div>
+              ))}
             </div>
-          </div>
-        </section>
-
-        {/* ── ARTICLE BODY + SIDEBAR ── */}
-        <section className="section-padding" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-          <div className="cb-container" style={{ paddingTop: 80 }}>
-            <div className="blog-layout" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 80, alignItems: 'start' }}>
-
-              {/* ── MAIN ARTICLE ── */}
-              <article>
-
-                {/* Intro */}
-                <div className="reveal" style={{ marginBottom: 56 }}>
-                  <p style={{ fontSize: 18, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 20 }}>
-                    SaaS SEO is fundamentally different from traditional SEO. You are not selling a one-time product. You are acquiring users who pay monthly, which means every organic visitor has a compounding lifetime value. A single blog post ranking on page one can generate tens of thousands of dollars in MRR over its lifetime.
-                  </p>
-                  <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8, marginBottom: 20 }}>
-                    Yet most SaaS companies treat SEO as an afterthought, pumping out generic blog content while ignoring the technical infrastructure, keyword architecture, and conversion engineering that actually drive pipeline. The result? Millions spent on paid ads while competitors quietly build organic moats that get stronger every month.
-                  </p>
-                  <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8 }}>
-                    This guide covers the exact framework that companies like HubSpot, Notion, Zapier, and Ahrefs have used to build organic traffic engines generating millions of visitors per month. We will cover technical SEO, keyword strategy, pillar content, programmatic SEO, link building, and conversion optimization specifically for SaaS.
-                  </p>
-                </div>
-
-                {/* Why SaaS SEO is Different */}
-                <div className="reveal" style={{ marginBottom: 56 }} id="why-saas-seo">
-                  <h2 style={{ fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '-0.03em', marginBottom: 24 }}>
-                    Why SaaS SEO is Fundamentally Different
-                  </h2>
-                  <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8, marginBottom: 24 }}>
-                    Traditional SEO focuses on ranking and traffic. SaaS SEO must focus on ranking, traffic, sign-ups, activation, and monthly recurring revenue. The entire funnel matters because a visitor who signs up but never activates is worth zero dollars.
-                  </p>
-
-                  {[
-                    { title: 'Compounding Returns', description: 'Unlike e-commerce where each sale is discrete, SaaS organic traffic compounds. A user acquired today through organic search pays you every month for years. At a $100/month price point with 24-month average retention, one organic sign-up is worth $2,400 in LTV.', color: '#22c55e' },
-                    { title: 'Multi-Touch Attribution', description: 'SaaS buyers rarely convert on their first visit. The average B2B SaaS buyer touches 7-12 content pieces before signing up. Your SEO strategy must cover the entire buyer journey: awareness, consideration, comparison, and decision.', color: '#a78bfa' },
-                    { title: 'Product-Led SEO', description: 'The most successful SaaS SEO strategies make the product itself discoverable. Free tools, calculators, templates, and interactive demos rank in search and double as product onboarding. This is how Canva, Ahrefs, and HubSpot built billion-dollar organic channels.', color: '#f472b6' },
-                    { title: 'Competitive Intelligence Pages', description: 'SaaS buyers actively search for "[Product A] vs [Product B]" and "[Product] alternatives." These high-intent pages are unique to SaaS and often have the highest conversion rates of any content type. Ignoring them is leaving revenue on the table.', color: '#fbbf24' },
-                  ].map((item) => (
-                    <div key={item.title} style={{
-                      background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)',
-                      borderRadius: 20, padding: 28, marginBottom: 20,
-                    }}>
-                      <h3 style={{ fontSize: 18, fontWeight: 700, color: item.color, margin: '0 0 12px' }}>{item.title}</h3>
-                      <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8, margin: 0 }}>{item.description}</p>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Technical SEO Foundation */}
-                <div className="reveal" style={{ marginBottom: 56 }} id="technical-seo">
-                  <h2 style={{ fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '-0.03em', marginBottom: 24 }}>
-                    Technical SEO Foundation for SaaS
-                  </h2>
-                  <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8, marginBottom: 24 }}>
-                    Technical SEO is where most SaaS companies fail before they even start. Your marketing site might look beautiful, but if Google cannot efficiently crawl, render, and index your pages, none of your content will rank. Here is the technical checklist every SaaS company needs.
-                  </p>
-
-                  {[
-                    {
-                      title: 'Server-Side Rendering (SSR)', emoji: '🖥️',
-                      description: 'Most SaaS sites are built on React or Vue.js with client-side rendering. Google can render JavaScript, but it is slower, more error-prone, and deprioritized compared to server-rendered content. Migrating to Next.js with SSR or static generation gives you a structural SEO advantage. At Codazz, every client site is built on Next.js with SSR from day one.',
-                      accentColor: '#22c55e', bgColor: 'rgba(34,197,94,',
-                    },
-                    {
-                      title: 'Core Web Vitals', emoji: '⚡',
-                      description: 'Google uses Largest Contentful Paint (LCP), First Input Delay (FID), and Cumulative Layout Shift (CLS) as ranking factors. SaaS sites loaded with third-party scripts (Intercom, Segment, Hotjar, analytics) often fail these metrics. Lazy-load third-party scripts, optimize images with next/image, and eliminate render-blocking resources.',
-                      accentColor: '#a78bfa', bgColor: 'rgba(167,139,250,',
-                    },
-                    {
-                      title: 'Schema Markup', emoji: '🏷️',
-                      description: 'Implement SoftwareApplication, FAQPage, HowTo, and Article structured data across your site. Schema markup improves click-through rates by 20-35% through rich snippets in search results. Most SaaS companies implement zero structured data, giving you an immediate competitive edge.',
-                      accentColor: '#f472b6', bgColor: 'rgba(244,114,182,',
-                    },
-                    {
-                      title: 'Crawl Budget Optimization', emoji: '🕷️',
-                      description: 'SaaS applications often expose thousands of authenticated URLs (dashboard pages, settings, user-generated content) to Google. Use robots.txt, canonical tags, and noindex directives to focus Google on crawling only your public-facing marketing and content pages. Every wasted crawl is a missed opportunity to index valuable content.',
-                      accentColor: '#60a5fa', bgColor: 'rgba(96,165,250,',
-                    },
-                    {
-                      title: 'Site Architecture', emoji: '🏗️',
-                      description: 'Build a flat site architecture where every important page is within 3 clicks of the homepage. Use hub-and-spoke internal linking: pillar pages link to cluster content, and cluster content links back to pillars. This distributes PageRank efficiently and signals topical authority to Google.',
-                      accentColor: '#fbbf24', bgColor: 'rgba(251,191,36,',
-                    },
-                  ].map((item) => (
-                    <div key={item.title} style={{
-                      background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)',
-                      borderRadius: 24, padding: 36, marginBottom: 20,
-                    }}>
-                      <div style={{ display: 'flex', alignItems: 'flex-start', gap: 20, marginBottom: 16 }}>
-                        <div style={{
-                          width: 56, height: 56, borderRadius: 16, flexShrink: 0,
-                          background: `${item.bgColor}0.1)`, border: `1px solid ${item.bgColor}0.2)`,
-                          display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 28,
-                        }}>{item.emoji}</div>
-                        <div>
-                          <h3 style={{ fontSize: 'clamp(1.2rem, 2vw, 1.5rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '-0.02em', margin: 0 }}>{item.title}</h3>
-                        </div>
-                      </div>
-                      <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8, margin: 0 }}>{item.description}</p>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Keyword Strategy */}
-                <div className="reveal" style={{ marginBottom: 56 }} id="keyword-strategy">
-                  <h2 style={{ fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '-0.03em', marginBottom: 24 }}>
-                    SaaS Keyword Strategy: The Funnel Framework
-                  </h2>
-                  <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8, marginBottom: 24 }}>
-                    Most SaaS companies only target two types of keywords: branded terms and high-volume head terms. This leaves 80% of the opportunity untapped. Here is the four-tier keyword framework that captures the entire buyer journey.
-                  </p>
-
-                  {[
-                    { tier: 'Top of Funnel (TOFU)', keywords: '"what is project management", "how to manage remote teams", "team productivity tips"', intent: 'Informational', volume: 'High (10K-100K+)', conversion: 'Low (0.5-2%)', strategy: 'Educational blog content, ultimate guides, how-to articles. Goal is brand awareness and email capture.' },
-                    { tier: 'Middle of Funnel (MOFU)', keywords: '"best project management software", "project management tools for startups", "Asana pricing"', intent: 'Consideration', volume: 'Medium (1K-10K)', conversion: 'Medium (2-5%)', strategy: 'Comparison articles, feature pages, buyer guides. Goal is product consideration and free trial sign-ups.' },
-                    { tier: 'Bottom of Funnel (BOFU)', keywords: '"[Product] vs [Competitor]", "[Product] alternative", "[Product] review 2026"', intent: 'Decision', volume: 'Low (100-1K)', conversion: 'High (5-15%)', strategy: 'Comparison landing pages, alternatives pages, case studies, ROI calculators. Goal is conversion.' },
-                    { tier: 'Product-Led (PLG)', keywords: '"free Gantt chart maker", "project timeline template", "sprint planning template"', intent: 'Tool/Template', volume: 'Medium (1K-10K)', conversion: 'Very High (10-25%)', strategy: 'Free tools, templates, calculators embedded in the product. Goal is product-led acquisition.' },
-                  ].map((item) => (
-                    <div key={item.tier} style={{
-                      background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)',
-                      borderRadius: 20, padding: 28, marginBottom: 20,
-                    }}>
-                      <h3 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', margin: '0 0 16px' }}>{item.tier}</h3>
-                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(200px, 100%), 1fr))', gap: 16, marginBottom: 16 }}>
-                        <div>
-                          <p style={{ fontSize: 12, fontWeight: 700, color: '#22c55e', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 4 }}>Example Keywords</p>
-                          <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)', lineHeight: 1.6, margin: 0 }}>{item.keywords}</p>
-                        </div>
-                        <div>
-                          <p style={{ fontSize: 12, fontWeight: 700, color: '#a78bfa', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 4 }}>Volume</p>
-                          <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)', margin: 0 }}>{item.volume}</p>
-                        </div>
-                        <div>
-                          <p style={{ fontSize: 12, fontWeight: 700, color: '#fbbf24', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 4 }}>Conversion Rate</p>
-                          <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)', margin: 0 }}>{item.conversion}</p>
-                        </div>
-                      </div>
-                      <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8, margin: 0 }}><strong style={{ color: 'rgba(255,255,255,0.7)' }}>Strategy:</strong> {item.strategy}</p>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Pillar Content Strategy */}
-                <div className="reveal" style={{ marginBottom: 56 }} id="pillar-content">
-                  <h2 style={{ fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '-0.03em', marginBottom: 24 }}>
-                    Pillar Content Strategy for SaaS
-                  </h2>
-                  <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8, marginBottom: 24 }}>
-                    Pillar content is the backbone of SaaS SEO. Instead of publishing random blog posts, you build comprehensive topic clusters where one pillar page (3,000-5,000 words) links to 15-30 cluster articles, each targeting specific long-tail variations. This signals extreme topical authority to Google and creates a content moat competitors cannot easily replicate.
-                  </p>
-                  <div style={{
-                    background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)',
-                    borderRadius: 24, padding: 36, marginBottom: 20,
-                  }}>
-                    <h3 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', margin: '0 0 20px' }}>Example Pillar Cluster: Project Management SaaS</h3>
-                    <div style={{ marginBottom: 20 }}>
-                      <p style={{ fontSize: 14, fontWeight: 700, color: '#22c55e', marginBottom: 8 }}>Pillar Page</p>
-                      <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.6)', margin: 0 }}>&ldquo;The Complete Guide to Project Management&rdquo; (5,000 words, targeting &ldquo;project management guide&rdquo;)</p>
-                    </div>
-                    <div>
-                      <p style={{ fontSize: 14, fontWeight: 700, color: '#a78bfa', marginBottom: 8 }}>Cluster Articles (20+ pieces)</p>
-                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-                        {['Agile vs Waterfall', 'Sprint Planning Guide', 'Remote Team Management', 'Project Budgeting', 'Risk Management', 'Gantt Chart Tutorial', 'Scrum Master Guide', 'Kanban Board Setup', 'Project Scope Template', 'Stakeholder Management'].map((item, idx) => (
-                          <span key={idx} style={{
-                            fontSize: 12, color: 'rgba(255,255,255,0.45)', padding: '4px 12px',
-                            borderRadius: 100, background: 'rgba(255,255,255,0.02)',
-                            border: '1px solid rgba(255,255,255,0.06)',
-                          }}>{item}</span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                  <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8 }}>
-                    Each cluster article links back to the pillar page and to related cluster articles. The pillar page links out to every cluster article. This creates a tight topical network that Google interprets as deep expertise on the subject. Companies using pillar strategies consistently outrank competitors with 10x more total content because relevance and structure beat volume.
-                  </p>
-                </div>
-
-                {/* Programmatic SEO */}
-                <div className="reveal" style={{ marginBottom: 56 }} id="programmatic-seo">
-                  <h2 style={{ fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '-0.03em', marginBottom: 24 }}>
-                    Programmatic SEO for SaaS: Scaling to Millions of Visitors
-                  </h2>
-                  <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8, marginBottom: 24 }}>
-                    Programmatic SEO is the SaaS growth hack that HubSpot, Zapier, Notion, and Deel used to build massive organic traffic. The concept is simple: identify repeatable keyword patterns, then automatically generate unique, valuable pages for each variation.
-                  </p>
-
-                  {[
-                    { pattern: 'Comparison Pages', example: '"[Your Product] vs [Competitor]"', scale: '50-200 pages', description: 'Create a template that dynamically pulls competitor data, feature comparisons, and pricing differences. Zapier has thousands of these pages generating millions of visits.', color: '#22c55e' },
-                    { pattern: 'Integration Pages', example: '"[Your Product] + [Integration] Integration"', scale: '100-1,000+ pages', description: 'If your SaaS connects with other tools, create a page for each integration. Describe the use case, setup process, and benefits. Zapier perfected this model.', color: '#a78bfa' },
-                    { pattern: 'Use Case Pages', example: '"[Your Product] for [Industry/Role]"', scale: '50-500 pages', description: 'Target every industry and role your product serves. "Project management for architects," "CRM for real estate agents," etc. Each page should include industry-specific language and use cases.', color: '#f472b6' },
-                    { pattern: 'Template/Tool Pages', example: '"Free [Type] Template"', scale: '50-200 pages', description: 'Offer free templates, calculators, or micro-tools that solve specific problems. These pages rank well, attract backlinks naturally, and convert at extremely high rates because users experience your product value immediately.', color: '#fbbf24' },
-                  ].map((item) => (
-                    <div key={item.pattern} style={{
-                      background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)',
-                      borderRadius: 20, padding: 28, marginBottom: 20,
-                    }}>
-                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12, flexWrap: 'wrap', gap: 12 }}>
-                        <h3 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', margin: 0 }}>{item.pattern}</h3>
-                        <span style={{
-                          fontSize: 13, fontWeight: 700, color: item.color,
-                          padding: '4px 14px', borderRadius: 100, background: `${item.color}15`,
-                        }}>{item.scale}</span>
-                      </div>
-                      <p style={{ fontSize: 13, color: item.color, marginBottom: 12, fontWeight: 600 }}>Pattern: {item.example}</p>
-                      <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8, margin: 0 }}>{item.description}</p>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Link Building */}
-                <div className="reveal" style={{ marginBottom: 56 }} id="link-building">
-                  <h2 style={{ fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '-0.03em', marginBottom: 24 }}>
-                    Link Building Strategies Specifically for SaaS
-                  </h2>
-                  <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8, marginBottom: 24 }}>
-                    Backlinks remain one of Google&apos;s top ranking factors. But SaaS link building is different from traditional outreach. SaaS companies have unique assets that naturally attract links when leveraged correctly.
-                  </p>
-
-                  <div style={{
-                    background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)',
-                    borderRadius: 24, padding: 36,
-                  }}>
-                    {[
-                      { strategy: 'Original Research & Data Reports', description: 'Publish annual industry reports, surveys, and benchmarks using your own product data. "State of Project Management 2026" or "Remote Work Productivity Report" — these earn links from journalists, bloggers, and industry publications naturally.', icon: '📊' },
-                      { strategy: 'Free Tools & Calculators', description: 'Build free micro-tools that solve specific problems. An ROI calculator, a pricing estimator, or a grading tool. These earn hundreds of backlinks because people reference and embed useful tools.', icon: '🛠️' },
-                      { strategy: 'Product-Led Digital PR', description: 'Use unique data from your platform to pitch stories to journalists. "Our data shows 47% of remote teams miss deadlines without async tools" is a headline that earns press coverage and links.', icon: '📰' },
-                      { strategy: 'Integration Partner Co-Marketing', description: 'Partner with tools in your integration ecosystem for joint content, webinars, and guest posts. Each partner links to the shared content, building authority for both parties.', icon: '🤝' },
-                      { strategy: 'HARO & Expert Quotes', description: 'Respond to journalist queries on HARO, Qwoted, and Terkel. Position your CEO or product leaders as industry experts. Each published quote earns a high-authority backlink from major publications.', icon: '🎙️' },
-                    ].map((item, idx) => (
-                      <div key={item.strategy} style={{ marginBottom: idx < 4 ? 24 : 0 }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
-                          <span style={{ fontSize: 24 }}>{item.icon}</span>
-                          <h3 style={{ fontSize: 16, fontWeight: 700, color: '#ffffff', margin: 0 }}>{item.strategy}</h3>
-                        </div>
-                        <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8, margin: 0, paddingLeft: 36 }}>{item.description}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Conversion Optimization */}
-                <div className="reveal" style={{ marginBottom: 56 }} id="conversion-optimization">
-                  <h2 style={{ fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '-0.03em', marginBottom: 24 }}>
-                    Conversion Optimization: Turning Organic Traffic into MRR
-                  </h2>
-                  <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8, marginBottom: 24 }}>
-                    Traffic without conversions is vanity. The best SaaS SEO programs obsess over converting organic visitors into trial users and ultimately paying customers. Here is how to optimize every stage.
-                  </p>
-
-                  {[
-                    { stage: 'Blog to Email', rate: '2-5% conversion', tactics: 'Content upgrades (downloadable templates, checklists, worksheets related to the article), exit-intent popups, in-line CTAs, and sticky banners. Every blog post should have a specific lead magnet relevant to the topic.' },
-                    { stage: 'Email to Trial', rate: '10-25% conversion', tactics: 'Nurture sequences that educate on product value, case studies showing ROI, and limited-time trial offers. Segment leads by topic interest and send targeted product education.' },
-                    { stage: 'BOFU Content to Trial', rate: '5-15% conversion', tactics: 'Comparison pages, alternatives pages, and feature pages should have prominent trial CTAs, embedded product demos, and social proof (customer logos, testimonials, review scores).' },
-                    { stage: 'Trial to Paid', rate: '15-30% conversion', tactics: 'Onboarding flows triggered by organic signup source, personalized product tours based on the keyword they searched, and targeted upgrade prompts at value-realization moments.' },
-                  ].map((item) => (
-                    <div key={item.stage} style={{
-                      background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)',
-                      borderRadius: 20, padding: 28, marginBottom: 20,
-                    }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
-                        <h3 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', margin: 0 }}>{item.stage}</h3>
-                        <span style={{ fontSize: 13, fontWeight: 700, color: '#22c55e', padding: '4px 14px', borderRadius: 100, background: 'rgba(34,197,94,0.12)' }}>{item.rate}</span>
-                      </div>
-                      <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8, margin: 0 }}>{item.tactics}</p>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Metrics & KPIs */}
-                <div className="reveal" style={{ marginBottom: 56 }} id="metrics">
-                  <h2 style={{ fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '-0.03em', marginBottom: 24 }}>
-                    SaaS SEO Metrics That Actually Matter
-                  </h2>
-                  <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8, marginBottom: 24 }}>
-                    Stop reporting on rankings and traffic alone. These are the metrics that connect SEO performance to revenue.
-                  </p>
-
-                  <div style={{
-                    background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)',
-                    borderRadius: 24, padding: 36,
-                  }}>
-                    {[
-                      { metric: 'Organic Sign-ups', description: 'Total free trial or freemium sign-ups attributed to organic search. This is your primary volume metric.' },
-                      { metric: 'Organic Pipeline Value', description: 'Total ARR value of opportunities influenced by organic touch points. Track in your CRM.' },
-                      { metric: 'Organic CAC', description: 'Total SEO spend (agency + tools + content) divided by organic customers acquired. Compare against paid CAC.' },
-                      { metric: 'Content Efficiency Ratio', description: 'MRR generated per piece of content. Identify your top-performing content and double down.' },
-                      { metric: 'Non-Branded Organic Growth', description: 'Month-over-month growth in non-branded organic traffic. This measures your true SEO progress independent of brand awareness.' },
-                      { metric: 'Keyword Coverage', description: 'Percentage of your target keyword universe where you rank in the top 10. Aim for 60%+ coverage within 18 months.' },
-                    ].map((item, idx) => (
-                      <div key={item.metric} style={{ marginBottom: idx < 5 ? 20 : 0 }}>
-                        <h3 style={{ fontSize: 16, fontWeight: 700, color: '#22c55e', marginBottom: 8 }}>{item.metric}</h3>
-                        <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8, margin: 0 }}>{item.description}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Codazz Approach */}
-                <div className="reveal" style={{ marginBottom: 56 }} id="codazz-approach">
-                  <div style={{
-                    background: 'linear-gradient(135deg, rgba(34,197,94,0.1) 0%, rgba(255,255,255,0.015) 100%)',
-                    border: '1px solid rgba(34,197,94,0.3)',
-                    borderRadius: 24, padding: 36, position: 'relative', overflow: 'hidden',
-                  }}>
-                    <div style={{ position: 'absolute', top: -40, right: -40, width: 200, height: 200, background: 'radial-gradient(circle, rgba(34,197,94,0.15) 0%, transparent 70%)', filter: 'blur(30px)' }} />
-                    <div style={{ position: 'relative', zIndex: 1 }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
-                        <span style={{ fontSize: 28 }}>🍁</span>
-                        <h2 style={{ fontSize: 'clamp(1.4rem, 2.5vw, 1.9rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '-0.03em', margin: 0 }}>
-                          How Codazz Builds SaaS SEO Engines
-                        </h2>
-                      </div>
-                      <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 16 }}>
-                        Most SEO agencies cannot touch your code. They write blog posts and build links but have zero ability to fix the technical infrastructure that determines whether those efforts work. Codazz is different because we are a software development company first.
-                      </p>
-                      <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 16 }}>
-                        We build your SaaS application on Next.js with server-side rendering, perfect Schema markup, and sub-second load times from the start. Then we layer on content strategy, programmatic SEO, and conversion optimization. The result is a fully integrated organic growth engine where the technical foundation amplifies every piece of content and every backlink.
-                      </p>
-                      <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 20 }}>
-                        SaaS companies working with Codazz see 3-5x faster time-to-rank because the technical SEO score is already perfect before the first blog post goes live. You cannot outrank bad code, and most SEO agencies cannot fix bad code.
-                      </p>
-                      <div style={{
-                        padding: '14px 20px', borderRadius: 12,
-                        background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.2)',
-                        display: 'flex', alignItems: 'center', gap: 10,
-                      }}>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2">
-                          <polyline points="22,7 13.5,15.5 8.5,10.5 2,17"/><polyline points="16,7 22,7 22,13"/>
-                        </svg>
-                        <span style={{ fontSize: 13, color: '#ffffff', fontWeight: 600 }}>
-                          Development + SEO Under One Roof = 3-5x Faster Results
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* FAQs */}
-                <div className="reveal" style={{ marginBottom: 56 }} id="faqs">
-                  <h2 style={{ fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '-0.03em', marginBottom: 24 }}>
-                    Frequently Asked Questions
-                  </h2>
-                  <div>
-                    {faqs.map((faq, idx) => (
-                      <div key={idx} style={{
-                        background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)',
-                        borderRadius: 16, marginBottom: 12, overflow: 'hidden',
-                      }}>
-                        <button
-                          onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                          style={{
-                            width: '100%', padding: '20px 24px', background: 'transparent', border: 'none',
-                            color: '#ffffff', fontSize: 16, fontWeight: 600, textAlign: 'left',
-                            cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16,
-                          }}
-                        >
-                          <span>{faq.q}</span>
-                          <span style={{ fontSize: 20, color: 'rgba(255,255,255,0.3)', flexShrink: 0, transform: openFaq === idx ? 'rotate(45deg)' : 'none', transition: 'transform 0.2s' }}>+</span>
-                        </button>
-                        {openFaq === idx && (
-                          <div style={{ padding: '0 24px 20px' }}>
-                            <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8, margin: 0 }}>{faq.a}</p>
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-              </article>
-
-              {/* ── SIDEBAR ── */}
-              <aside>
-                <div style={{ position: 'sticky', top: 100, display: 'flex', flexDirection: 'column', gap: 24 }}>
-                  {/* Table of Contents */}
-                  <div style={{ background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 20, padding: 24 }}>
-                    <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.25)', marginBottom: 16 }}>In This Article</p>
-                    <nav style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-                      {tocItems.map(item => (
-                        <a key={item.id} href={`#${item.id}`} style={{
-                          fontSize: 13, color: 'rgba(255,255,255,0.4)', textDecoration: 'none',
-                          padding: '6px 10px', borderRadius: 8, display: 'flex', alignItems: 'center', gap: 10,
-                          transition: 'all 0.15s',
-                        }}
-                          onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.color = '#22c55e'; (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(34,197,94,0.06)'; }}
-                          onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.4)'; (e.currentTarget as HTMLAnchorElement).style.background = 'transparent'; }}
-                        >
-                          <span style={{ fontSize: 14 }}>{item.emoji}</span>
-                          <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{item.label}</span>
-                        </a>
-                      ))}
-                    </nav>
-                  </div>
-
-                  {/* Author card */}
-                  <div style={{ background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 20, padding: 24 }}>
-                    <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.25)', marginBottom: 16 }}>About the Author</p>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
-                      <div style={{ width: 44, height: 44, borderRadius: '50%', background: 'rgba(17,24,39,0.12)', border: '1px solid rgba(17,24,39,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 14, fontWeight: 700, color: '#ffffff', flexShrink: 0 }}>RM</div>
-                      <div>
-                        <p style={{ fontSize: 14, fontWeight: 600, color: '#ffffff', margin: 0 }}>Raman Makkar</p>
-                        <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', margin: 0 }}>CEO, Codazz</p>
-                      </div>
-                    </div>
-                    <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)', lineHeight: 1.7, margin: 0 }}>
-                      Leading engineering strategy and product vision at Codazz. Has guided over 500+ bespoke product launches globally.
-                    </p>
-                  </div>
-
-                  {/* Related posts */}
-                  <div style={{ background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 20, padding: 24 }}>
-                    <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.25)', marginBottom: 16 }}>Related Articles</p>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-                      {relatedPosts.map(post => (
-                        <Link key={post.slug} href={`/blog/${post.slug}`} style={{
-                          textDecoration: 'none', display: 'block', padding: '14px',
-                          borderRadius: 12, border: '1px solid rgba(255,255,255,0.03)',
-                          background: 'transparent', transition: 'all 0.2s',
-                        }}
-                          onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(34,197,94,0.15)'; (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(34,197,94,0.03)'; }}
-                          onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(255,255,255,0.03)'; (e.currentTarget as HTMLAnchorElement).style.background = 'transparent'; }}
-                        >
-                          <p style={{ fontSize: 11, color: '#ffffff', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', margin: '0 0 6px' }}>{post.category}</p>
-                          <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.7)', lineHeight: 1.4, margin: '0 0 8px', fontWeight: 600 }}>{post.title}</p>
-                          <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.25)', margin: 0 }}>{post.readTime} read</p>
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </aside>
-
+            <div className="reveal" style={{ background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.2)', borderRadius: 20, padding: 24 }}>
+              <p style={{ color: '#bbb', lineHeight: 1.7, margin: 0 }}>
+                <strong style={{ color: '#22c55e' }}>Key principle:</strong> SaaS SEO is not about one viral post. It is about building a content moat — hundreds of pages that capture intent at every stage, every use case, and every competitor comparison. The compounding effect kicks in at month 12–18.
+              </p>
             </div>
-          </div>
-        </section>
+          </section>
 
-        {/* ── BOTTOM CTA ── */}
-        <section className="section-padding" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-          <div className="cb-container" style={{ paddingTop: 80 }}>
-            <div className="reveal" style={{
-              background: 'rgba(34,197,94,0.04)', border: '1px solid rgba(34,197,94,0.15)',
-              borderRadius: 28, padding: '64px 56px',
-              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-              flexWrap: 'wrap', gap: 32,
-            }}>
+          {/* Product-Led SEO */}
+          <section id="product-led-seo" style={{ marginBottom: 72 }}>
+            <h2 className="reveal" style={{ fontSize: 32, fontWeight: 800, color: '#fff', marginBottom: 16 }}>
+              🚀 Product-Led SEO: Your Unfair Advantage
+            </h2>
+            <p className="reveal" style={{ color: '#bbb', lineHeight: 1.8, marginBottom: 24 }}>
+              Product-led SEO (coined by Eli Schwartz) means building SEO into your product itself. Instead of writing articles about what your product does, you create pages that let users experience the value — and those pages rank for high-intent keywords.
+            </p>
+            <div className="reveal" style={{ display: 'grid', gap: 20, marginBottom: 28 }}>
+              {[
+                { company: 'Canva', tactic: 'Free template library — 10M+ pages', rank: '"resume template", "birthday card maker", "poster design"', lesson: 'Each template is a standalone SEO page targeting a specific use case keyword.' },
+                { company: 'Ahrefs', tactic: 'Free SEO tools (backlink checker, keyword explorer lite)', rank: '"free backlink checker", "keyword research tool"', lesson: 'The free version is a lead magnet that ranks, captures intent, and demonstrates product value simultaneously.' },
+                { company: 'Zapier', tactic: 'App integration directory — 50,000+ pages', rank: '"Slack Gmail integration", "HubSpot Zapier"', lesson: 'Every integration gets its own page. Users searching for specific integrations find Zapier at the exact moment of highest intent.' },
+                { company: 'Notion', tactic: 'Public template gallery with user submissions', rank: '"project tracker template", "meeting notes template"', lesson: 'User-generated templates scale content production with zero editorial cost while ranking for long-tail keywords.' },
+              ].map((ex, i) => (
+                <div key={i} style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 20, padding: 24 }}>
+                  <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 10, alignItems: 'center' }}>
+                    <span style={{ fontWeight: 800, color: '#22c55e', fontSize: 16 }}>{ex.company}</span>
+                    <span style={{ color: '#aaa', fontSize: 13 }}>{ex.tactic}</span>
+                  </div>
+                  <div style={{ color: '#bbb', fontSize: 13, marginBottom: 8 }}>Ranking for: <span style={{ color: '#fff', fontStyle: 'italic' }}>{ex.rank}</span></div>
+                  <div style={{ color: '#888', fontSize: 13, lineHeight: 1.6 }}>Lesson: {ex.lesson}</div>
+                </div>
+              ))}
+            </div>
+            <div className="reveal" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 28, padding: 28 }}>
+              <h3 style={{ color: '#22c55e', fontWeight: 700, fontSize: 17, marginBottom: 14 }}>How to Implement Product-Led SEO</h3>
+              {['Identify your product\'s most shareable outputs (reports, templates, calculations, summaries)', 'Build public-facing pages for each output type with proper URL structure (/templates/[category])', 'Allow user-generated content where quality can be moderated (community, marketplace)', 'Create "free tools" that demonstrate core product value (ROI calculator, free tier, trial mode)', 'Optimize each page for the specific keyword its output targets, not just generic product keywords'].map((item, i) => (
+                <div key={i} style={{ color: '#bbb', fontSize: 14, marginBottom: 8, display: 'flex', gap: 10 }}>
+                  <span style={{ color: '#22c55e', flexShrink: 0 }}>→</span> {item}
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Programmatic SEO */}
+          <section id="programmatic-seo" style={{ marginBottom: 72 }}>
+            <h2 className="reveal" style={{ fontSize: 32, fontWeight: 800, color: '#fff', marginBottom: 16 }}>
+              🤖 Programmatic SEO: Scale to Thousands of Pages
+            </h2>
+            <p className="reveal" style={{ color: '#bbb', lineHeight: 1.8, marginBottom: 24 }}>
+              Programmatic SEO uses templates and structured data to generate hundreds or thousands of unique, rankable pages automatically. Done right, it is one of the highest-leverage SEO strategies for SaaS companies.
+            </p>
+            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 20, marginBottom: 28 }}>
+              {[
+                { pageType: 'Use Case Pages', template: '[Product] for [Industry/Role]', example: '"CRM for real estate agents"', volume: '50–500 pages' },
+                { pageType: 'Location Pages', template: '[Service] in [City]', example: '"accounting software for UK businesses"', volume: '20–200 pages' },
+                { pageType: 'Integration Pages', template: '[Product] + [App] Integration', example: '"Slack HubSpot integration"', volume: '100–5,000 pages' },
+                { pageType: 'Comparison Pages', template: '[Product] vs [Competitor]', example: '"Monday vs Asana"', volume: '10–100 pages' },
+                { pageType: 'Feature Deep Dives', template: '[Feature] Software / Tools', example: '"time tracking software"', volume: '20–100 pages' },
+                { pageType: 'Job Role Pages', template: '[Product] for [Job Title]', example: '"project management for freelancers"', volume: '20–200 pages' },
+              ].map((pt, i) => (
+                <div key={i} style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 20, padding: 24 }}>
+                  <div style={{ fontWeight: 700, color: '#22c55e', fontSize: 14, marginBottom: 8 }}>{pt.pageType}</div>
+                  <div style={{ color: '#888', fontSize: 12, marginBottom: 6 }}>Template: {pt.template}</div>
+                  <div style={{ color: '#bbb', fontSize: 13, fontStyle: 'italic', marginBottom: 8 }}>"{pt.example}"</div>
+                  <div style={{ color: '#22c55e', fontSize: 12, fontWeight: 600 }}>{pt.volume}</div>
+                </div>
+              ))}
+            </div>
+            <div className="reveal" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 20, padding: 24 }}>
+              <h3 style={{ color: '#fff', fontWeight: 700, fontSize: 16, marginBottom: 12 }}>Programmatic SEO Quality Rules</h3>
+              <p style={{ color: '#bbb', fontSize: 14, lineHeight: 1.7, marginBottom: 12 }}>Google has become aggressive about thin programmatic content. Every programmatic page must pass these tests:</p>
+              {['Unique, substantial content beyond just changing the [variable] in the template', 'Real utility to the user — not just keyword stuffing with variable substitution', 'Internal links connecting related programmatic pages into topic clusters', 'Canonical tags where near-duplicate pages exist', 'Structured data (FAQ, HowTo, SoftwareApplication schema) for rich results', 'Regular quality audits — remove or consolidate underperforming pages'].map((rule, i) => (
+                <div key={i} style={{ color: '#bbb', fontSize: 13, marginBottom: 6, display: 'flex', gap: 8 }}>
+                  <span style={{ color: '#22c55e', flexShrink: 0 }}>✓</span> {rule}
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Comparison Pages */}
+          <section id="comparison-pages" style={{ marginBottom: 72 }}>
+            <h2 className="reveal" style={{ fontSize: 32, fontWeight: 800, color: '#fff', marginBottom: 16 }}>
+              ⚖️ Comparison Pages: Capturing High-Intent Buyers
+            </h2>
+            <p className="reveal" style={{ color: '#bbb', lineHeight: 1.8, marginBottom: 24 }}>
+              "[Product A] vs [Product B]" searches have some of the highest buyer intent in all of SaaS. Users searching these queries are ready to buy — they just need to decide between options. Owning these pages is critical.
+            </p>
+            <div className="reveal" style={{ display: 'grid', gap: 20, marginBottom: 28 }}>
+              {[
+                { type: '[Your Product] vs [Competitor]', strategy: 'You control the narrative. Be honest about where competitors are stronger — credibility wins. Lead with your strengths but acknowledge trade-offs. Include a comparison table, pricing comparison, and migration resources.', priority: 'Highest' },
+                { type: 'Alternatives to [Competitor]', strategy: 'Capture users already dissatisfied with a competitor. Rank for "[Competitor] alternatives" and "[Competitor] pricing too high". These users are actively churning from a competitor and are your hottest leads.', priority: 'High' },
+                { type: 'Best [Category] Software', strategy: 'Category-level searches have massive volume. Create a "Best [category] tools in 2026" page where your product is prominently featured. Include multiple legitimate options — Google trusts balanced reviews.', priority: 'High' },
+                { type: '[Competitor] Pricing / [Competitor] Reviews', strategy: 'Capture research intent around competitors. "HubSpot pricing" is searched 50K+ times/month. Create content addressing competitor pricing concerns, then position your product as the value alternative.', priority: 'Medium' },
+              ].map((comp, i) => (
+                <div key={i} style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 20, padding: 24 }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8, marginBottom: 10 }}>
+                    <div style={{ fontWeight: 700, color: '#fff', fontSize: 16 }}>{comp.type}</div>
+                    <span style={{ background: comp.priority === 'Highest' ? 'rgba(34,197,94,0.15)' : comp.priority === 'High' ? 'rgba(59,130,246,0.15)' : 'rgba(251,191,36,0.15)', color: comp.priority === 'Highest' ? '#22c55e' : comp.priority === 'High' ? '#60a5fa' : '#fbbf24', padding: '2px 10px', borderRadius: 100, fontSize: 11, fontWeight: 700 }}>{comp.priority} Priority</span>
+                  </div>
+                  <p style={{ color: '#bbb', fontSize: 14, lineHeight: 1.7, margin: 0 }}>{comp.strategy}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Integration Pages */}
+          <section id="integration-pages" style={{ marginBottom: 72 }}>
+            <h2 className="reveal" style={{ fontSize: 32, fontWeight: 800, color: '#fff', marginBottom: 16 }}>
+              🔗 Integration Pages: The Most Underrated SaaS SEO Strategy
+            </h2>
+            <p className="reveal" style={{ color: '#bbb', lineHeight: 1.8, marginBottom: 24 }}>
+              Users searching "[Your Product] + [Popular App]" integration are almost always existing users or high-intent prospects who already use both tools. These are your highest-converting pages — often with 5–10x better conversion than top-of-funnel content.
+            </p>
+            <div className="reveal" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 28, padding: 32, marginBottom: 24 }}>
+              <h3 style={{ color: '#22c55e', fontWeight: 700, fontSize: 17, marginBottom: 16 }}>Integration Page Template</h3>
+              {[
+                { section: 'Hero', content: '[Product] + [App] Integration — clear, bold heading with both logos' },
+                { section: 'What it does', content: '2–3 sentences explaining what the integration enables (not how it works technically)' },
+                { section: 'Use cases', content: '3–5 specific workflows users can automate or improve' },
+                { section: 'Setup guide', content: 'Step-by-step instructions with screenshots — this earns backlinks and reduces support load' },
+                { section: 'Video demo', content: '2–3 minute Loom or custom video of the integration in action' },
+                { section: 'CTA', content: 'Start free trial / Connect your [App] now — conversion-optimized with low friction' },
+              ].map((sec, i) => (
+                <div key={i} style={{ display: 'flex', gap: 16, paddingBottom: 12, marginBottom: 12, borderBottom: i < 5 ? '1px solid rgba(255,255,255,0.06)' : 'none' }}>
+                  <div style={{ minWidth: 100, color: '#22c55e', fontWeight: 700, fontSize: 13 }}>{sec.section}</div>
+                  <div style={{ color: '#bbb', fontSize: 14, lineHeight: 1.6 }}>{sec.content}</div>
+                </div>
+              ))}
+            </div>
+            <div className="reveal" style={{ background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.2)', borderRadius: 20, padding: 24 }}>
+              <p style={{ color: '#bbb', lineHeight: 1.7, margin: 0 }}>
+                <strong style={{ color: '#22c55e' }}>Prioritize integrations by search volume:</strong> Use Ahrefs or SEMrush to find which integrations have existing search volume. Start with your highest-traffic app integrations (Salesforce, HubSpot, Slack, Google Workspace, Zapier) before building pages for low-volume integrations.
+              </p>
+            </div>
+          </section>
+
+          {/* Free Tools */}
+          <section id="free-tools" style={{ marginBottom: 72 }}>
+            <h2 className="reveal" style={{ fontSize: 32, fontWeight: 800, color: '#fff', marginBottom: 16 }}>
+              🧲 Free Tools as SEO Magnets
+            </h2>
+            <p className="reveal" style={{ color: '#bbb', lineHeight: 1.8, marginBottom: 24 }}>
+              Free tools are the highest-ROI content investment for SaaS companies. A useful free tool ranks for high-volume transactional keywords, earns natural backlinks (often from competitors and media), demonstrates product capability, and captures lead emails — all simultaneously.
+            </p>
+            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 20, marginBottom: 28 }}>
+              {[
+                { tool: 'ROI Calculator', keywords: '"[category] ROI calculator"', effort: 'Low (2–4 weeks)', impact: 'Captures BOFU intent from buyers justifying purchase' },
+                { tool: 'Free Audit / Analysis', keywords: '"free [category] audit"', effort: 'Medium (4–8 weeks)', impact: 'Demonstrates product depth, high email capture rate' },
+                { tool: 'Generator / Maker', keywords: '"[content type] generator"', effort: 'Medium (4–8 weeks)', impact: 'Massive volume potential (Canva, Copy.ai proven this)' },
+                { tool: 'Grader / Checker', keywords: '"[metric] checker"', effort: 'Medium (4–8 weeks)', impact: 'HubSpot Marketing Grader has earned 1,000s of links' },
+                { tool: 'Template Library', keywords: '"[use case] template"', effort: 'Low (ongoing)', impact: 'Scales via community; each template = a ranking page' },
+                { tool: 'API / Embeddable Widget', keywords: '[brand] + [function] queries', effort: 'High', impact: 'Embeds create backlinks; API drives developer signups' },
+              ].map((tool, i) => (
+                <div key={i} style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 20, padding: 24 }}>
+                  <div style={{ fontWeight: 700, color: '#22c55e', fontSize: 15, marginBottom: 8 }}>{tool.tool}</div>
+                  <div style={{ color: '#888', fontSize: 12, marginBottom: 6 }}>Target: {tool.keywords}</div>
+                  <div style={{ color: '#bbb', fontSize: 12, marginBottom: 8 }}>Effort: {tool.effort}</div>
+                  <p style={{ color: '#aaa', fontSize: 12, lineHeight: 1.5, margin: 0 }}>{tool.impact}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* G2 & Capterra */}
+          <section id="g2-capterra" style={{ marginBottom: 72 }}>
+            <h2 className="reveal" style={{ fontSize: 32, fontWeight: 800, color: '#fff', marginBottom: 16 }}>
+              ⭐ G2 & Capterra: Optimize Your Review Presence
+            </h2>
+            <p className="reveal" style={{ color: '#bbb', lineHeight: 1.8, marginBottom: 24 }}>
+              Review platforms are a parallel search engine for B2B SaaS buyers. G2, Capterra, and Trustpilot rank on the first page for virtually every "[software] software" or "[software] reviews" query. Ignoring them means handing first-page real estate to competitors.
+            </p>
+            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, marginBottom: 28 }}>
+              {[
+                {
+                  platform: 'G2',
+                  authority: 'DA 91 — highest authority review platform',
+                  bestFor: 'B2B SaaS, enterprise software',
+                  keyActions: ['Complete 100% of profile fields', 'Get to 25+ reviews to unlock G2 badges', 'Use G2 badges on your pricing page (+20% conversion)', 'Respond to every review (positive and negative)', 'Apply for G2 Leader categories quarterly'],
+                  color: '#ef4444',
+                },
+                {
+                  platform: 'Capterra',
+                  authority: 'DA 88 — largest review directory by listing count',
+                  bestFor: 'SMB, mid-market, all categories',
+                  keyActions: ['Claim and complete your listing profile', 'Request reviews via email after user milestones', 'Use Capterra\'s "Best Value" badge in paid ads', 'Update product screenshots quarterly', 'Run Capterra PPC ads for high-intent category traffic'],
+                  color: '#3b82f6',
+                },
+              ].map((plat, i) => (
+                <div key={i} style={{ background: 'rgba(255,255,255,0.04)', border: `1px solid ${plat.color}33`, borderRadius: 28, padding: 28 }}>
+                  <h3 style={{ fontSize: 20, fontWeight: 800, color: plat.color, marginBottom: 6 }}>{plat.platform}</h3>
+                  <div style={{ color: '#888', fontSize: 13, marginBottom: 4 }}>{plat.authority}</div>
+                  <div style={{ color: '#aaa', fontSize: 13, marginBottom: 16 }}>Best for: {plat.bestFor}</div>
+                  {plat.keyActions.map((action, j) => (
+                    <div key={j} style={{ color: '#bbb', fontSize: 13, marginBottom: 7, display: 'flex', gap: 8 }}>
+                      <span style={{ color: plat.color, flexShrink: 0 }}>✓</span> {action}
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+            <div className="reveal" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 20, padding: 24 }}>
+              <h3 style={{ color: '#fff', fontWeight: 700, fontSize: 16, marginBottom: 12 }}>Review Generation Strategy</h3>
+              <p style={{ color: '#bbb', fontSize: 14, lineHeight: 1.7, marginBottom: 12 }}>Getting reviews is a systematic process, not a one-time ask. Build it into your customer journey:</p>
+              {['Trigger review request email at 30 days after first meaningful product usage (not at sign-up)', 'Personalize: "You\'ve [specific action] 47 times this month — would you share your experience?"', 'Make it frictionless: direct link to G2/Capterra review form, pre-filled where allowed', 'Offer value exchange: early access to new features, swag, or charitable donation in their name', 'Follow up once at day 45 for non-responders — then stop', 'Train customer success to verbally ask for reviews during quarterly business reviews'].map((tip, i) => (
+                <div key={i} style={{ color: '#bbb', fontSize: 13, marginBottom: 7, display: 'flex', gap: 8 }}>
+                  <span style={{ color: '#22c55e', flexShrink: 0 }}>→</span> {tip}
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Content Clusters */}
+          <section id="content-clusters" style={{ marginBottom: 72 }}>
+            <h2 className="reveal" style={{ fontSize: 32, fontWeight: 800, color: '#fff', marginBottom: 16 }}>
+              📚 Content Cluster Strategy for SaaS
+            </h2>
+            <p className="reveal" style={{ color: '#bbb', lineHeight: 1.8, marginBottom: 24 }}>
+              Content clusters (pillar pages + supporting cluster content) are how SaaS companies build topical authority that Google rewards with consistent rankings. A well-built cluster dominates an entire topic area, not just individual keywords.
+            </p>
+            <div className="reveal" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 28, padding: 32, marginBottom: 24 }}>
+              <h3 style={{ color: '#22c55e', fontWeight: 700, fontSize: 17, marginBottom: 20 }}>Example Cluster: "Project Management Software"</h3>
+              <div style={{ marginBottom: 20 }}>
+                <div style={{ fontWeight: 700, color: '#fff', fontSize: 15, marginBottom: 10 }}>Pillar Page (Target: "project management software" — 50K/mo searches)</div>
+                <p style={{ color: '#bbb', fontSize: 14, lineHeight: 1.7 }}>A comprehensive 5,000+ word guide covering what project management software is, key features, how to choose, and pricing. This page links out to all cluster content and receives links back from cluster articles.</p>
+              </div>
               <div>
-                <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#ffffff', marginBottom: 12 }}>SaaS SEO</p>
-                <h2 style={{ fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '-0.03em', marginBottom: 12 }}>
-                  Build Your SaaS Organic Growth Engine
-                </h2>
-                <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.45)', maxWidth: 480, lineHeight: 1.7 }}>
-                  Stop paying for every click. Let Codazz build a technical SEO foundation that compounds into your highest-ROI acquisition channel.
-                </p>
+                <div style={{ fontWeight: 700, color: '#fff', fontSize: 15, marginBottom: 10 }}>Cluster Content (15–30 supporting articles)</div>
+                {[
+                  '"project management software for small business" — 8K/mo',
+                  '"agile project management software" — 12K/mo',
+                  '"project management software with time tracking" — 5K/mo',
+                  '"how to manage remote teams effectively" — 18K/mo (TOFU)',
+                  '"Monday vs Asana" — 22K/mo (BOFU)',
+                  '"project management templates" — 40K/mo (product-led)',
+                ].map((item, i) => (
+                  <div key={i} style={{ color: '#bbb', fontSize: 13, marginBottom: 7, display: 'flex', gap: 8 }}>
+                    <span style={{ color: '#22c55e', flexShrink: 0 }}>→</span> {item}
+                  </div>
+                ))}
               </div>
-              <Link href="/contact" style={{ textDecoration: 'none' }}>
-                <button style={{
-                  padding: '18px 40px', borderRadius: 100, background: '#22c55e', color: '#000',
-                  fontSize: 15, fontWeight: 700, border: 'none', cursor: 'pointer',
-                  transition: 'all 0.2s', whiteSpace: 'nowrap',
-                }}>
-                  Get a Free SEO Audit →
-                </button>
+            </div>
+            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 16 }}>
+              {[
+                { stat: '3–5x', label: 'more organic traffic from cluster vs standalone articles' },
+                { stat: '6–12', label: 'months to see full cluster ranking potential' },
+                { stat: '2,000+', label: 'words minimum for a competitive pillar page' },
+                { stat: '15–30', label: 'supporting cluster articles per pillar topic' },
+              ].map((s, i) => (
+                <div key={i} style={{ background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.2)', borderRadius: 20, padding: 24, textAlign: 'center' }}>
+                  <div style={{ color: '#22c55e', fontSize: 28, fontWeight: 800, marginBottom: 8 }}>{s.stat}</div>
+                  <div style={{ color: '#aaa', fontSize: 13, lineHeight: 1.5 }}>{s.label}</div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Technical SEO */}
+          <section id="technical-seo" style={{ marginBottom: 72 }}>
+            <h2 className="reveal" style={{ fontSize: 32, fontWeight: 800, color: '#fff', marginBottom: 16 }}>
+              🔧 Technical SEO for SaaS: The Foundation
+            </h2>
+            <p className="reveal" style={{ color: '#bbb', lineHeight: 1.8, marginBottom: 24 }}>
+              SaaS products introduce unique technical SEO challenges: app subdomain vs subdirectory, authenticated content, dynamic pages, and JavaScript-heavy interfaces. Fix these foundations before scaling content.
+            </p>
+            <div className="reveal" style={{ display: 'grid', gap: 16 }}>
+              {[
+                { issue: 'Subdomain vs Subdirectory', fix: 'Use /blog/, /help/, /integrations/ on your root domain instead of blog.yoursaas.com. Subdirectories share root domain authority. Moving a blog from subdomain to subdirectory typically increases organic traffic 20–60%.', priority: 'Critical' },
+                { issue: 'App Content Behind Login', fix: 'Ensure your marketing site (public pages) is fully crawlable. Your app.yoursaas.com can be behind auth — but your website, blog, and feature pages must be indexable. Use hreflang for multi-language versions.', priority: 'Critical' },
+                { issue: 'Core Web Vitals', fix: 'SaaS marketing sites often fail LCP (large hero images, video backgrounds) and CLS (dynamic elements). Use Next.js Image optimization, lazy load non-critical resources, and defer third-party scripts (Intercom, HubSpot, analytics).', priority: 'High' },
+                { issue: 'JavaScript Rendering', fix: 'If your marketing site uses heavy client-side rendering, Google may not index content correctly. Use SSR or SSG (Next.js recommended). Test with Google Search Console\'s URL Inspection tool — check rendered HTML vs source HTML.', priority: 'High' },
+                { issue: 'Internal Link Architecture', fix: 'Map your pillar pages and ensure every cluster article links back to its pillar. Add contextual internal links between related articles. Every new page should be reachable within 3 clicks from your homepage.', priority: 'Medium' },
+                { issue: 'Schema Markup', fix: 'Implement SoftwareApplication schema on product pages, FAQPage schema on FAQ sections, Article schema on blog posts, and BreadcrumbList on all pages. Rich results increase CTR by 15–30%.', priority: 'Medium' },
+                { issue: 'Canonical Tags', fix: 'Critical for programmatic SEO pages, pagination, and filtered views. Ensure every page has a self-referencing canonical. Paginated series should use rel="next" / rel="prev" or canonicalize to the first page.', priority: 'High' },
+              ].map((item, i) => (
+                <div key={i} style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 20, padding: 24, display: 'flex', gap: 20 }}>
+                  <div style={{ flexShrink: 0, marginTop: 2 }}>
+                    <span style={{ background: item.priority === 'Critical' ? 'rgba(239,68,68,0.15)' : item.priority === 'High' ? 'rgba(34,197,94,0.12)' : 'rgba(251,191,36,0.12)', color: item.priority === 'Critical' ? '#ef4444' : item.priority === 'High' ? '#22c55e' : '#fbbf24', padding: '2px 8px', borderRadius: 100, fontSize: 10, fontWeight: 700, whiteSpace: 'nowrap' }}>{item.priority}</span>
+                  </div>
+                  <div>
+                    <div style={{ fontWeight: 700, color: '#fff', fontSize: 15, marginBottom: 6 }}>{item.issue}</div>
+                    <p style={{ color: '#bbb', fontSize: 13, lineHeight: 1.7, margin: 0 }}>{item.fix}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Link Building */}
+          <section style={{ marginBottom: 72 }}>
+            <h2 className="reveal" style={{ fontSize: 32, fontWeight: 800, color: '#fff', marginBottom: 16 }}>
+              🔗 Link Building for SaaS: Strategies That Actually Work
+            </h2>
+            <p className="reveal" style={{ color: '#bbb', lineHeight: 1.8, marginBottom: 24 }}>
+              Backlinks remain a core ranking signal in 2026. But generic link building (guest posts on random sites, directory submissions) delivers diminishing returns. SaaS-specific link building strategies earn higher-quality links that compound in value.
+            </p>
+            <div className="reveal" style={{ display: 'grid', gap: 20, marginBottom: 28 }}>
+              {[
+                {
+                  strategy: 'Digital PR & Data Studies',
+                  difficulty: 'High',
+                  payoff: 'Very High',
+                  desc: 'Publish original research using data you already have (product usage trends, anonymized benchmarks, industry surveys). Journalists cite original data — earning links from TechCrunch, Forbes, and industry publications. Even a modest study can earn 50–200+ high-DA links.',
+                  examples: 'Intercom\'s Customer Support Benchmark Report, HubSpot\'s State of Marketing annual study',
+                },
+                {
+                  strategy: 'Integration Partner Link Exchange',
+                  difficulty: 'Low–Medium',
+                  payoff: 'High',
+                  desc: 'Every app you integrate with is a potential link partner. Request a listing in their integration directory or co-marketing page. These links are topically relevant and come from DA 40–90+ SaaS domains. Create a dedicated /integrations/ page with rich content about each integration.',
+                  examples: 'Zapier app directory, HubSpot App Marketplace, Shopify App Store partner pages',
+                },
+                {
+                  strategy: 'Free Tool Link Magnets',
+                  difficulty: 'Medium',
+                  payoff: 'Very High',
+                  desc: 'Useful free tools earn links naturally as bloggers and journalists reference them in articles. Ahrefs\' free backlink checker has earned 100,000+ links. Build tools your target audience needs even if they are not direct product users — they become your top-of-funnel link magnets.',
+                  examples: 'HubSpot\'s Website Grader, CoSchedule\'s Headline Analyzer, Shopify\'s business name generator',
+                },
+                {
+                  strategy: 'HARO / Journalist Outreach',
+                  difficulty: 'Low',
+                  payoff: 'Medium–High',
+                  desc: 'Help a Reporter Out (HARO) and similar platforms (Qwoted, SourceBottle) connect you with journalists seeking expert quotes. Respond to relevant queries with data-backed insights. 5–10 quality responses per week can earn 2–4 links monthly from high-DA publications.',
+                  examples: 'Business Insider, Forbes, Inc, Entrepreneur, industry trade publications',
+                },
+                {
+                  strategy: 'Content-Led Link Building',
+                  difficulty: 'Medium',
+                  payoff: 'Medium',
+                  desc: 'Create comprehensive guides or tools that naturally get linked to as resources. "Best practices" guides, industry glossaries, and certification programs all earn passive links over time as others reference them. Target keywords where existing content is weak or outdated.',
+                  examples: 'Comprehensive glossary pages, "ultimate guide" posts, industry certification programs',
+                },
+                {
+                  strategy: 'Podcast & Speaking Links',
+                  difficulty: 'Medium',
+                  payoff: 'Medium',
+                  desc: 'Podcast episode pages almost always link to guests\' companies. Guest on 2–4 relevant podcasts per month and you earn consistent high-quality, topically relevant links. Conference speaking also generates event page links — often from .edu or established industry sites.',
+                  examples: 'SaaStr, Lenny\'s Podcast, How I Built This, industry-specific shows',
+                },
+              ].map((strat, i) => (
+                <div key={i} style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 20, padding: 24 }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8, marginBottom: 10 }}>
+                    <h3 style={{ fontWeight: 700, color: '#fff', fontSize: 17, margin: 0 }}>{strat.strategy}</h3>
+                    <div style={{ display: 'flex', gap: 8 }}>
+                      <span style={{ background: 'rgba(255,255,255,0.08)', color: '#aaa', padding: '2px 10px', borderRadius: 100, fontSize: 11 }}>Difficulty: {strat.difficulty}</span>
+                      <span style={{ background: 'rgba(34,197,94,0.12)', color: '#22c55e', padding: '2px 10px', borderRadius: 100, fontSize: 11, fontWeight: 600 }}>Payoff: {strat.payoff}</span>
+                    </div>
+                  </div>
+                  <p style={{ color: '#bbb', fontSize: 14, lineHeight: 1.7, marginBottom: 10 }}>{strat.desc}</p>
+                  <div style={{ color: '#888', fontSize: 12 }}>Examples: {strat.examples}</div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* SaaS SEO Roadmap */}
+          <section style={{ marginBottom: 72 }}>
+            <h2 className="reveal" style={{ fontSize: 32, fontWeight: 800, color: '#fff', marginBottom: 16 }}>
+              🗓️ SaaS SEO Roadmap: 12-Month Execution Plan
+            </h2>
+            <p className="reveal" style={{ color: '#bbb', lineHeight: 1.8, marginBottom: 28 }}>
+              SEO without a structured roadmap leads to scattered effort and slow results. Here is a proven 12-month execution plan for SaaS companies starting from a low or moderate organic baseline.
+            </p>
+            <div className="reveal" style={{ display: 'grid', gap: 20 }}>
+              {[
+                {
+                  period: 'Month 1–2: Foundation',
+                  color: '#f97316',
+                  tasks: [
+                    'Full technical SEO audit — fix critical crawl errors, Core Web Vitals, and indexation issues',
+                    'Keyword research — build a master list of 500–2,000 target keywords organized by funnel stage',
+                    'Competitor gap analysis — identify content and link gaps vs top 3 competitors',
+                    'Set up GA4, Search Console, and rank tracking for baseline measurement',
+                    'Publish 2 foundational pillar pages on your most important topics',
+                  ],
+                },
+                {
+                  period: 'Month 3–4: Content Engine',
+                  color: '#fbbf24',
+                  tasks: [
+                    'Launch first content cluster (pillar + 8–10 supporting articles)',
+                    'Build out first 10 comparison/vs pages targeting direct competitors',
+                    'Create 5 integration pages for highest-traffic integrations',
+                    'Start G2 and Capterra review generation campaign (target: 25 reviews by month 6)',
+                    'Begin HARO outreach for link building — aim for 2 responses/day',
+                  ],
+                },
+                {
+                  period: 'Month 5–6: Scale',
+                  color: '#22c55e',
+                  tasks: [
+                    'Launch programmatic SEO system (use case pages, location pages) — 50–200 pages',
+                    'Build second content cluster on adjacent topic',
+                    'Publish first original research or data study for digital PR',
+                    'Launch free tool or ROI calculator',
+                    'Integration partner link exchange outreach to top 20 integration partners',
+                  ],
+                },
+                {
+                  period: 'Month 7–9: Amplify',
+                  color: '#60a5fa',
+                  tasks: [
+                    'Scale content production to 12–20 articles/month via editorial team or content agency',
+                    'Expand comparison pages to cover 20+ competitors and "alternatives" keywords',
+                    'Second programmatic SEO batch (new template type)',
+                    'Podcast guest campaign — 4–6 appearances/month',
+                    'Audit and refresh top 20 existing pages — update statistics, add new sections, improve internal links',
+                  ],
+                },
+                {
+                  period: 'Month 10–12: Compound & Optimize',
+                  color: '#a78bfa',
+                  tasks: [
+                    'Attribution analysis — which content pieces are driving pipeline? Double down on those topics',
+                    'Full technical SEO re-audit — address any new issues from site expansion',
+                    'Build out product-led SEO pages (templates, generators, calculators)',
+                    'G2 Leader badge campaign — get category placement for Q1 next year',
+                    'Plan year 2 roadmap based on what is working — expect 3–8x organic traffic growth vs start',
+                  ],
+                },
+              ].map((phase, i) => (
+                <div key={i} style={{ background: 'rgba(255,255,255,0.04)', border: `1px solid ${phase.color}33`, borderRadius: 20, padding: 28 }}>
+                  <h3 style={{ fontSize: 16, fontWeight: 700, color: phase.color, marginBottom: 14 }}>{phase.period}</h3>
+                  {phase.tasks.map((task, j) => (
+                    <div key={j} style={{ color: '#bbb', fontSize: 13, marginBottom: 8, display: 'flex', gap: 10, alignItems: 'flex-start' }}>
+                      <span style={{ color: phase.color, flexShrink: 0, marginTop: 1 }}>→</span> {task}
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 16, marginTop: 24 }}>
+              {[
+                { month: 'Month 1–3', result: 'Technical fixes indexed, first content live, baseline established' },
+                { month: 'Month 4–6', result: 'First keyword movements, G2 profile active, early link gains' },
+                { month: 'Month 7–9', result: 'Noticeable traffic growth, comparison pages ranking, programmatic pages indexed' },
+                { month: 'Month 10–12', result: '3–8x organic traffic vs baseline, meaningful organic pipeline contribution' },
+              ].map((milestone, i) => (
+                <div key={i} style={{ background: 'rgba(34,197,94,0.06)', border: '1px solid rgba(34,197,94,0.15)', borderRadius: 16, padding: 20 }}>
+                  <div style={{ color: '#22c55e', fontWeight: 700, fontSize: 13, marginBottom: 6 }}>{milestone.month}</div>
+                  <div style={{ color: '#bbb', fontSize: 12, lineHeight: 1.5 }}>{milestone.result}</div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* SaaS SEO Metrics */}
+          <section style={{ marginBottom: 72 }}>
+            <h2 className="reveal" style={{ fontSize: 32, fontWeight: 800, color: '#fff', marginBottom: 16 }}>
+              📊 SaaS SEO Metrics & KPIs to Track
+            </h2>
+            <p className="reveal" style={{ color: '#bbb', lineHeight: 1.8, marginBottom: 24 }}>
+              Vanity metrics (page views, social shares) do not predict revenue. Track these SaaS-specific SEO KPIs that connect directly to pipeline and ARR.
+            </p>
+            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 20, marginBottom: 28 }}>
+              {[
+                { metric: 'Organic MQL Rate', desc: 'What % of organic visitors become Marketing Qualified Leads? Target 0.5–2% for informational content, 5–15% for BOFU content. This tells you if your content is attracting the right audience.' },
+                { metric: 'Organic Pipeline Attribution', desc: 'Track how many opportunities in your CRM have organic touchpoints. Most SaaS companies find organic contributes 20–40% of total pipeline — often underreported due to attribution gaps.' },
+                { metric: 'Keyword Visibility Score', desc: 'Track rankings across your full target keyword set, not just top 10 keywords. Tools like Ahrefs, SEMrush, or SERPwoo provide visibility scores that capture the complete picture.' },
+                { metric: 'Content ROI by Page', desc: 'Monthly organic traffic × conversion rate × ACV = organic revenue by page. Identify your 20% of pages driving 80% of organic revenue and prioritize their optimization.' },
+                { metric: 'Backlink Velocity', desc: 'New referring domains per month. Consistent growth (even 5–10/month) compounds over time. A sudden drop signals potential link issues. Target quality over quantity (DA 40+ domains).' },
+                { metric: 'Organic CAC vs Paid CAC', desc: 'Compare Customer Acquisition Cost from organic vs paid channels. Mature SaaS organic CAC is typically 60–80% lower than paid. Track quarterly — the gap widens as content compounds.' },
+              ].map((kpi, i) => (
+                <div key={i} style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 20, padding: 24 }}>
+                  <div style={{ fontWeight: 700, color: '#22c55e', fontSize: 15, marginBottom: 10 }}>{kpi.metric}</div>
+                  <p style={{ color: '#bbb', fontSize: 13, lineHeight: 1.6, margin: 0 }}>{kpi.desc}</p>
+                </div>
+              ))}
+            </div>
+            <div className="reveal" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 20, padding: 24 }}>
+              <h3 style={{ color: '#fff', fontWeight: 700, fontSize: 16, marginBottom: 12 }}>Recommended SEO Tool Stack for SaaS</h3>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 16 }}>
+                {[
+                  { category: 'Keyword Research', tools: 'Ahrefs, SEMrush, Google Search Console' },
+                  { category: 'Technical SEO', tools: 'Screaming Frog, Sitebulb, PageSpeed Insights' },
+                  { category: 'Content Optimization', tools: 'Clearscope, Surfer SEO, MarketMuse' },
+                  { category: 'Link Building', tools: 'Ahrefs, BuzzStream, Hunter.io, HARO' },
+                  { category: 'Rank Tracking', tools: 'Ahrefs, SEMrush, SERPwoo' },
+                  { category: 'Analytics', tools: 'GA4, Plausible, Segment (for pipeline attribution)' },
+                ].map((tool, i) => (
+                  <div key={i} style={{ background: 'rgba(255,255,255,0.04)', borderRadius: 12, padding: 16 }}>
+                    <div style={{ color: '#22c55e', fontWeight: 700, fontSize: 12, marginBottom: 6 }}>{tool.category}</div>
+                    <div style={{ color: '#bbb', fontSize: 12 }}>{tool.tools}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Why Codazz */}
+          <section id="why-codazz" style={{ marginBottom: 72 }}>
+            <h2 className="reveal" style={{ fontSize: 32, fontWeight: 800, color: '#fff', marginBottom: 16 }}>
+              🏆 Grow Your SaaS with Codazz
+            </h2>
+            <p className="reveal" style={{ color: '#bbb', lineHeight: 1.8, marginBottom: 28 }}>
+              Codazz combines deep SaaS product expertise with advanced SEO strategy. We build the technical foundations (Next.js SSR, schema markup, Core Web Vitals) and execute the content strategy (programmatic pages, comparison content, integration directories) that drives compound organic growth.
+            </p>
+            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 20, marginBottom: 32 }}>
+              {[
+                { icon: '🔧', title: 'Technical SEO Foundation', desc: 'Next.js SSR migration, Core Web Vitals optimization, schema implementation, and crawl budget management.' },
+                { icon: '🤖', title: 'Programmatic SEO Build', desc: 'Engineering-led programmatic page systems for integration pages, location pages, and use case pages at scale.' },
+                { icon: '📝', title: 'Content Strategy & Production', desc: 'Pillar + cluster content, comparison pages, and product-led SEO content — written by SaaS domain experts.' },
+                { icon: '⭐', title: 'Review Platform Optimization', desc: 'G2 and Capterra profile optimization, review generation campaigns, and badge integration.' },
+                { icon: '🔗', title: 'Link Building for SaaS', desc: 'Digital PR, integration partner link exchanges, HARO, and resource page outreach tailored for SaaS.' },
+                { icon: '📊', title: 'Monthly SEO Reporting', desc: 'Transparent dashboards tracking rankings, traffic, conversions, and CAC from organic — not just vanity metrics.' },
+              ].map((item, i) => (
+                <div key={i} style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 20, padding: 24 }}>
+                  <div style={{ fontSize: 28, marginBottom: 10 }}>{item.icon}</div>
+                  <div style={{ fontWeight: 700, color: '#fff', fontSize: 15, marginBottom: 8 }}>{item.title}</div>
+                  <p style={{ color: '#aaa', fontSize: 13, lineHeight: 1.6, margin: 0 }}>{item.desc}</p>
+                </div>
+              ))}
+            </div>
+            <div className="reveal" style={{ background: 'linear-gradient(135deg, rgba(34,197,94,0.15), rgba(34,197,94,0.05))', border: '1px solid rgba(34,197,94,0.3)', borderRadius: 28, padding: 36, textAlign: 'center' }}>
+              <h3 style={{ fontSize: 24, fontWeight: 800, color: '#fff', marginBottom: 12 }}>Ready to Build Your SaaS SEO Moat?</h3>
+              <p style={{ color: '#bbb', marginBottom: 24, lineHeight: 1.7 }}>Book a free SEO audit. We will analyze your current organic presence, identify your biggest growth opportunities, and give you a prioritized 90-day action plan.</p>
+              <Link href="/contact" style={{ background: '#22c55e', color: '#000', padding: '14px 36px', borderRadius: 100, fontWeight: 700, textDecoration: 'none', fontSize: 16, display: 'inline-block' }}>
+                Get Free SEO Audit
               </Link>
             </div>
-          </div>
-        </section>
+          </section>
 
-      </main>
+          {/* FAQ */}
+          <section id="faq" style={{ marginBottom: 72 }}>
+            <h2 className="reveal" style={{ fontSize: 32, fontWeight: 800, color: '#fff', marginBottom: 28 }}>
+              ❓ Frequently Asked Questions
+            </h2>
+            <div>
+              {faqs.map((faq, i) => (
+                <div key={i} className="reveal" style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 20, marginBottom: 12, overflow: 'hidden' }}>
+                  <button
+                    onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                    style={{ width: '100%', background: openFaq === i ? 'rgba(34,197,94,0.08)' : 'rgba(255,255,255,0.03)', border: 'none', padding: '20px 24px', textAlign: 'left', cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 16 }}
+                  >
+                    <span style={{ color: '#fff', fontWeight: 600, fontSize: 15, lineHeight: 1.4 }}>{faq.q}</span>
+                    <span style={{ color: '#22c55e', fontSize: 22, fontWeight: 300, flexShrink: 0, transform: openFaq === i ? 'rotate(45deg)' : 'none', transition: 'transform 0.2s' }}>+</span>
+                  </button>
+                  {openFaq === i && (
+                    <div style={{ padding: '0 24px 20px', background: 'rgba(34,197,94,0.05)' }}>
+                      <p style={{ color: '#bbb', lineHeight: 1.7, margin: 0, fontSize: 14 }}>{faq.a}</p>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Related Posts */}
+          <section style={{ marginBottom: 48 }}>
+            <h2 className="reveal" style={{ fontSize: 24, fontWeight: 700, color: '#fff', marginBottom: 20 }}>Related Articles</h2>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 20 }}>
+              {relatedPosts.map((post, i) => (
+                <Link key={i} href={`/blog/${post.slug}`} style={{ textDecoration: 'none' }}>
+                  <div className="reveal" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 20, padding: 24 }}>
+                    <span style={{ background: 'rgba(34,197,94,0.12)', color: '#22c55e', padding: '3px 10px', borderRadius: 100, fontSize: 11, fontWeight: 600 }}>{post.category}</span>
+                    <div style={{ color: '#fff', fontWeight: 600, fontSize: 15, marginTop: 12, marginBottom: 8, lineHeight: 1.4 }}>{post.title}</div>
+                    <div style={{ color: '#666', fontSize: 12 }}>{post.readTime}</div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </section>
+        </article>
+
+        {/* TOC Sidebar */}
+        <aside style={{ position: 'sticky', top: 100, alignSelf: 'start' }}>
+          <div style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 20, padding: 24 }}>
+            <div style={{ color: '#22c55e', fontWeight: 700, fontSize: 12, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 16 }}>Table of Contents</div>
+            {tocItems.map(item => (
+              <a key={item.id} href={`#${item.id}`} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '8px 10px', borderRadius: 10, textDecoration: 'none', marginBottom: 2, background: activeSection === item.id ? 'rgba(34,197,94,0.12)' : 'transparent', transition: 'background 0.2s' }}>
+                <span style={{ fontSize: 14 }}>{item.emoji}</span>
+                <span style={{ color: activeSection === item.id ? '#22c55e' : '#aaa', fontSize: 13, fontWeight: activeSection === item.id ? 600 : 400, lineHeight: 1.3 }}>{item.label}</span>
+              </a>
+            ))}
+          </div>
+        </aside>
+      </div>
+
       <Footer />
-    </>
+    </main>
   );
 }

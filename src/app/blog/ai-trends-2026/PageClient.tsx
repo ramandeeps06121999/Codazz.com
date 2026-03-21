@@ -78,7 +78,7 @@ export default function AiTrends2026Client() {
         <div className="cb-container" style={{ paddingTop: 100 }}>
           <div className="reveal" style={{ marginBottom: 40 }}>
             <Image
-              src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=675&fit=crop"
+              src="/blog_images/ai-trends-2026.jpg"
               alt="AI development trends and artificial intelligence technology"
               width={1200}
               height={675}
@@ -91,9 +91,6 @@ export default function AiTrends2026Client() {
                 borderRadius: 'clamp(16px, 3vw, 24px)',
               }}
             />
-            <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', marginTop: 8, textAlign: 'center' }}>
-              Photo by <a href="https://unsplash.com/@googledeepmind" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Google DeepMind</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-            </p>
           </div>
         </div>
 
@@ -250,15 +247,12 @@ export default function AiTrends2026Client() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&h=500&fit=crop"
+                    src="/blog_images/ai-trends-2026.jpg"
                     alt="Agentic AI and autonomous AI systems"
                     width={800}
                     height={500}
                     style={{ width: '100%', height: 'auto', borderRadius: 12, marginBottom: 16 }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@possessedphotography" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Possessed Photography</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <div className="reveal" style={{ marginBottom: 32 }}>

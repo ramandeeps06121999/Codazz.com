@@ -353,18 +353,7 @@ export default function ProductDesignPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [activeCaseStudy, setActiveCaseStudy] = useState(0);
 
-  const heroRef = useReveal() as React.RefObject<HTMLElement>;
-  const awardsRef = useReveal() as React.RefObject<HTMLElement>;
-  const servicesRef = useReveal() as React.RefObject<HTMLElement>;
-  const processRef = useReveal() as React.RefObject<HTMLElement>;
-  const portfolioRef = useReveal() as React.RefObject<HTMLElement>;
-  const toolsRef = useReveal() as React.RefObject<HTMLElement>;
-  const principlesRef = useReveal() as React.RefObject<HTMLElement>;
-  const whyRef = useReveal() as React.RefObject<HTMLElement>;
-  const testimonialsRef = useReveal() as React.RefObject<HTMLElement>;
-  const industriesRef = useReveal() as React.RefObject<HTMLElement>;
-  const faqRef = useReveal() as React.RefObject<HTMLElement>;
-  const ctaRef = useReveal() as React.RefObject<HTMLElement>;
+  const pageRef = useReveal() as React.RefObject<HTMLElement>;
 
   return (
     <>
@@ -381,7 +370,7 @@ export default function ProductDesignPage() {
         @keyframes gradient-shift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
       `}</style>
       <Navbar />
-      <main style={{ background: '#000000', color: '#ffffff', paddingTop: 80 }}>
+      <main ref={pageRef} style={{ background: '#000000', color: '#ffffff', paddingTop: 80 }}>
         <div className="cb-container">
           <Breadcrumb items={[
             { label: 'Home', href: '/' },
@@ -393,7 +382,7 @@ export default function ProductDesignPage() {
         {/* ================================================================
             SECTION 1: HERO
         ================================================================ */}
-        <section ref={heroRef} className="section-padding" style={{ position: 'relative', overflow: 'hidden', minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
+        <section className="section-padding" style={{ position: 'relative', overflow: 'hidden', minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
           <HeroBackground variant="center" />
           <div className="cb-container" style={{ position: 'relative', zIndex: 1 }}>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 480px), 1fr))', gap: 'clamp(40px, 6vw, 80px)', alignItems: 'center' }}>
@@ -439,7 +428,7 @@ export default function ProductDesignPage() {
         {/* ================================================================
             SECTION 2: AWARDS / TRUST BADGES
         ================================================================ */}
-        <section ref={awardsRef} style={{ ...sectionBorder, padding: 'clamp(32px, 5vw, 56px) 0' }}>
+        <section style={{ ...sectionBorder, padding: 'clamp(32px, 5vw, 56px) 0' }}>
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 32 }}>
               <span style={{ ...labelStyle, color: 'rgba(255,255,255,0.35)' }}>Recognized By</span>
@@ -460,7 +449,7 @@ export default function ProductDesignPage() {
         {/* ================================================================
             SECTION 3: DESIGN SERVICES GRID
         ================================================================ */}
-        <section ref={servicesRef} className="section-padding" style={sectionBorder}>
+        <section className="section-padding" style={sectionBorder}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 16 }}>
               <span style={labelStyle}>Our Design Services</span>
@@ -497,7 +486,7 @@ export default function ProductDesignPage() {
         {/* ================================================================
             SECTION 4: DESIGN PROCESS
         ================================================================ */}
-        <section ref={processRef} className="section-padding" style={sectionBorder}>
+        <section className="section-padding" style={sectionBorder}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 16 }}>
               <span style={labelStyle}>Our Design Process</span>
@@ -534,7 +523,7 @@ export default function ProductDesignPage() {
         {/* ================================================================
             SECTION 5: PORTFOLIO / CASE STUDIES
         ================================================================ */}
-        <section ref={portfolioRef} className="section-padding" style={sectionBorder}>
+        <section className="section-padding" style={sectionBorder}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 16 }}>
               <span style={labelStyle}>Portfolio</span>
@@ -602,7 +591,7 @@ export default function ProductDesignPage() {
         {/* ================================================================
             SECTION 6: DESIGN TOOLS
         ================================================================ */}
-        <section ref={toolsRef} className="section-padding" style={sectionBorder}>
+        <section className="section-padding" style={sectionBorder}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 16 }}>
               <span style={labelStyle}>Our Toolkit</span>
@@ -632,7 +621,7 @@ export default function ProductDesignPage() {
         {/* ================================================================
             SECTION 7: DESIGN PRINCIPLES
         ================================================================ */}
-        <section ref={principlesRef} className="section-padding" style={sectionBorder}>
+        <section className="section-padding" style={sectionBorder}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 16 }}>
               <span style={labelStyle}>Design Philosophy</span>
@@ -663,7 +652,7 @@ export default function ProductDesignPage() {
         {/* ================================================================
             SECTION 8: WHY CODAZZ
         ================================================================ */}
-        <section ref={whyRef} className="section-padding" style={sectionBorder}>
+        <section className="section-padding" style={sectionBorder}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 16 }}>
               <span style={labelStyle}>Why Codazz</span>
@@ -692,7 +681,7 @@ export default function ProductDesignPage() {
         {/* ================================================================
             SECTION 9: TESTIMONIALS
         ================================================================ */}
-        <section ref={testimonialsRef} className="section-padding" style={sectionBorder}>
+        <section className="section-padding" style={sectionBorder}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 16 }}>
               <span style={labelStyle}>Client Testimonials</span>
@@ -729,7 +718,7 @@ export default function ProductDesignPage() {
         {/* ================================================================
             SECTION 10: INDUSTRIES
         ================================================================ */}
-        <section ref={industriesRef} className="section-padding" style={sectionBorder}>
+        <section className="section-padding" style={sectionBorder}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 16, textAlign: 'center' }}>
               <span style={labelStyle}>Industries We Design For</span>
@@ -757,7 +746,7 @@ export default function ProductDesignPage() {
         {/* ================================================================
             SECTION 11: FAQ
         ================================================================ */}
-        <section ref={faqRef} className="section-padding" style={sectionBorder}>
+        <section className="section-padding" style={sectionBorder}>
           <div className="cb-container" style={{ maxWidth: 800, margin: '0 auto' }}>
             <div className="reveal" style={{ marginBottom: 16, textAlign: 'center' }}>
               <span style={labelStyle}>FAQ</span>
@@ -798,7 +787,7 @@ export default function ProductDesignPage() {
         {/* ================================================================
             SECTION 12: CTA + LEAD CAPTURE FORM
         ================================================================ */}
-        <section ref={ctaRef} className="section-padding" style={{ position: 'relative', overflow: 'hidden' }}>
+        <section className="section-padding" style={{ position: 'relative', overflow: 'hidden' }}>
           <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at center, rgba(34,197,94,0.06) 0%, transparent 70%)' }} />
           <div className="cb-container" style={{ position: 'relative', zIndex: 1 }}>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 440px), 1fr))', gap: 'clamp(40px, 6vw, 80px)', alignItems: 'center' }}>

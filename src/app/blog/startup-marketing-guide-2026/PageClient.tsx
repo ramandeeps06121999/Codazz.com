@@ -75,7 +75,7 @@ export default function StartupMarketingGuideClient() {
         <div className="cb-container" style={{ paddingTop: 100 }}>
           <div className="reveal" style={{ marginBottom: 40 }}>
             <Image
-              src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&h=675&fit=crop"
+              src="/blog_images/startup-marketing-guide-2026.jpg"
               alt="Startup team brainstorming marketing strategy on a whiteboard"
               width={1200}
               height={675}
@@ -88,9 +88,6 @@ export default function StartupMarketingGuideClient() {
                 borderRadius: 'clamp(16px, 3vw, 24px)',
               }}
             />
-            <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', marginTop: 8, textAlign: 'center' }}>
-              Photo by <a href="https://unsplash.com/@campaign_creators" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Campaign Creators</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-            </p>
           </div>
         </div>
 
@@ -210,7 +207,7 @@ export default function StartupMarketingGuideClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=800&h=500&fit=crop"
+                    src="/blog_images/startup-marketing-guide-2026.jpg"
                     alt="Product planning and wireframing on a desk with sticky notes"
                     width={800}
                     height={500}
@@ -221,9 +218,6 @@ export default function StartupMarketingGuideClient() {
                       marginBottom: 16,
                     }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@alvannee" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Alvaro Reyes</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <p className="reveal">
@@ -331,7 +325,7 @@ export default function StartupMarketingGuideClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop"
+                    src="/blog_images/startup-marketing-guide-2026.jpg"
                     alt="Growth analytics dashboard showing upward trending metrics"
                     width={800}
                     height={500}
@@ -342,9 +336,6 @@ export default function StartupMarketingGuideClient() {
                       marginBottom: 16,
                     }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@lukechesser" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Luke Chesser</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <p className="reveal">

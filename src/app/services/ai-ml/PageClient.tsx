@@ -721,23 +721,7 @@ function FAQItem({ faq, index, active, setActive }: { faq: { q: string; a: strin
 // ─── MAIN PAGE ──────────────────────────────────────────────────────────────
 
 export default function AiMlPage() {
-  const heroRef = useReveal() as React.RefObject<HTMLElement>;
-  const awardsRef = useReveal() as React.RefObject<HTMLElement>;
-  const servicesRef = useReveal() as React.RefObject<HTMLElement>;
-  const capabilitiesRef = useReveal() as React.RefObject<HTMLElement>;
-  const industryRef = useReveal() as React.RefObject<HTMLElement>;
-  const techRef = useReveal() as React.RefObject<HTMLElement>;
-  const processRef = useReveal() as React.RefObject<HTMLElement>;
-  const caseStudiesRef = useReveal() as React.RefObject<HTMLElement>;
-  const complianceRef = useReveal() as React.RefObject<HTMLElement>;
-  const marketRef = useReveal() as React.RefObject<HTMLElement>;
-  const whyRef = useReveal() as React.RefObject<HTMLElement>;
-  const engagementRef = useReveal() as React.RefObject<HTMLElement>;
-  const metricsRef = useReveal() as React.RefObject<HTMLElement>;
-  const testimonialsRef = useReveal() as React.RefObject<HTMLElement>;
-  const faqRef = useReveal() as React.RefObject<HTMLElement>;
-  const blogsRef = useReveal() as React.RefObject<HTMLElement>;
-  const ctaRef = useReveal() as React.RefObject<HTMLElement>;
+  const pageRef = useReveal() as React.RefObject<HTMLElement>;
 
   const [faqActive, setFaqActive] = useState<number | null>(null);
   const [activeIndustry, setActiveIndustry] = useState(0);
@@ -745,7 +729,7 @@ export default function AiMlPage() {
   return (
     <>
       <Navbar />
-      <main style={{ background: '#000000', color: '#ffffff', paddingTop: 80 }}>
+      <main ref={pageRef} style={{ background: '#000000', color: '#ffffff', paddingTop: 80 }}>
         <div className="cb-container">
           <Breadcrumb items={[
             { label: 'Home', href: '/' },
@@ -757,7 +741,7 @@ export default function AiMlPage() {
         {/* ═══════════════════════════════════════════════════════════════════
             SECTION 1: HERO
         ═══════════════════════════════════════════════════════════════════ */}
-        <section ref={heroRef} className="section-padding" style={{ position: 'relative', overflow: 'hidden', minHeight: '92vh', display: 'flex', alignItems: 'center' }}>
+        <section className="section-padding" style={{ position: 'relative', overflow: 'hidden', minHeight: '92vh', display: 'flex', alignItems: 'center' }}>
           <HeroBackground variant="center" />
           <div className="cb-container" style={{ position: 'relative', zIndex: 1 }}>
             <div className="ai-hero-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 420px', gap: 'clamp(40px, 6vw, 80px)', alignItems: 'center' }}>
@@ -805,7 +789,7 @@ export default function AiMlPage() {
         {/* ═══════════════════════════════════════════════════════════════════
             SECTION 2: AWARDS MARQUEE
         ═══════════════════════════════════════════════════════════════════ */}
-        <section ref={awardsRef} style={{ borderTop: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)', overflow: 'hidden', padding: '20px 0' }}>
+        <section style={{ borderTop: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)', overflow: 'hidden', padding: '20px 0' }}>
           <div className="reveal" style={{ display: 'flex', animation: 'marquee 30s linear infinite', width: 'max-content' }}>
             {[...awards, ...awards].map((a, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 40px', whiteSpace: 'nowrap', flexShrink: 0 }}>
@@ -873,7 +857,7 @@ export default function AiMlPage() {
         {/* ═══════════════════════════════════════════════════════════════════
             SECTION 3: AI SERVICES GRID
         ═══════════════════════════════════════════════════════════════════ */}
-        <section ref={servicesRef} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 64 }}>
               <div style={sectionLabel}>Our AI Services</div>
@@ -916,7 +900,7 @@ export default function AiMlPage() {
         {/* ═══════════════════════════════════════════════════════════════════
             SECTION 4: AI CAPABILITIES
         ═══════════════════════════════════════════════════════════════════ */}
-        <section ref={capabilitiesRef} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div className="reveal" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 64, gap: 40, flexWrap: 'wrap' }}>
               <div>
@@ -990,7 +974,7 @@ export default function AiMlPage() {
         {/* ═══════════════════════════════════════════════════════════════════
             SECTION 5: USE CASES BY INDUSTRY
         ═══════════════════════════════════════════════════════════════════ */}
-        <section ref={industryRef} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 64 }}>
               <div style={sectionLabel}>AI By Industry</div>
@@ -1036,7 +1020,7 @@ export default function AiMlPage() {
         {/* ═══════════════════════════════════════════════════════════════════
             SECTION 6: AI TECH STACK
         ═══════════════════════════════════════════════════════════════════ */}
-        <section ref={techRef} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div className="reveal" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 64, gap: 40, flexWrap: 'wrap' }}>
               <div>
@@ -1073,7 +1057,7 @@ export default function AiMlPage() {
         {/* ═══════════════════════════════════════════════════════════════════
             SECTION 7: DEVELOPMENT PROCESS
         ═══════════════════════════════════════════════════════════════════ */}
-        <section ref={processRef} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 80 }}>
               <div style={sectionLabel}>Our AI Development Process</div>
@@ -1118,7 +1102,7 @@ export default function AiMlPage() {
         {/* ═══════════════════════════════════════════════════════════════════
             SECTION 8: CASE STUDIES
         ═══════════════════════════════════════════════════════════════════ */}
-        <section ref={caseStudiesRef} id="case-studies" className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section id="case-studies" className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 64 }}>
               <div style={sectionLabel}>Case Studies</div>
@@ -1172,7 +1156,7 @@ export default function AiMlPage() {
         {/* ═══════════════════════════════════════════════════════════════════
             SECTION 9: COMPLIANCE & RESPONSIBLE AI
         ═══════════════════════════════════════════════════════════════════ */}
-        <section ref={complianceRef} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 64 }}>
               <div style={sectionLabel}>Responsible AI</div>
@@ -1200,7 +1184,7 @@ export default function AiMlPage() {
         {/* ═══════════════════════════════════════════════════════════════════
             SECTION 10: MARKET INTELLIGENCE
         ═══════════════════════════════════════════════════════════════════ */}
-        <section ref={marketRef} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', position: 'relative', overflow: 'hidden' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', position: 'relative', overflow: 'hidden' }}>
           <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: 1000, height: 600, background: 'radial-gradient(ellipse, rgba(34,197,94,0.06) 0%, transparent 65%)', filter: 'blur(80px)', pointerEvents: 'none' }} />
           <div className="cb-container" style={{ position: 'relative', zIndex: 1 }}>
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>
@@ -1229,7 +1213,7 @@ export default function AiMlPage() {
         {/* ═══════════════════════════════════════════════════════════════════
             SECTION 11: WHY CODAZZ FOR AI
         ═══════════════════════════════════════════════════════════════════ */}
-        <section ref={whyRef} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 64 }}>
               <div style={sectionLabel}>Why Codazz</div>
@@ -1316,7 +1300,7 @@ export default function AiMlPage() {
         {/* ═══════════════════════════════════════════════════════════════════
             SECTION 11B: ENGAGEMENT MODELS
         ═══════════════════════════════════════════════════════════════════ */}
-        <section ref={engagementRef} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>
               <div style={{ ...sectionLabel, textAlign: 'center' }}>How We Work</div>
@@ -1372,7 +1356,7 @@ export default function AiMlPage() {
         {/* ═══════════════════════════════════════════════════════════════════
             SECTION 11C: BEFORE / AFTER METRICS
         ═══════════════════════════════════════════════════════════════════ */}
-        <section ref={metricsRef} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>
               <div style={{ ...sectionLabel, textAlign: 'center' }}>Real Impact</div>
@@ -1411,7 +1395,7 @@ export default function AiMlPage() {
         {/* ═══════════════════════════════════════════════════════════════════
             SECTION 12: TESTIMONIALS
         ═══════════════════════════════════════════════════════════════════ */}
-        <section ref={testimonialsRef} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 64 }}>
               <div style={sectionLabel}>Client Testimonials</div>
@@ -1495,7 +1479,7 @@ export default function AiMlPage() {
         {/* ═══════════════════════════════════════════════════════════════════
             SECTION 13: FAQ
         ═══════════════════════════════════════════════════════════════════ */}
-        <section ref={faqRef} id="faq" className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section id="faq" className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div className="faq-grid">
               {/* Left sticky column */}
@@ -1530,7 +1514,7 @@ export default function AiMlPage() {
         {/* ═══════════════════════════════════════════════════════════════════
             SECTION 14: RELATED BLOGS
         ═══════════════════════════════════════════════════════════════════ */}
-        <section ref={blogsRef} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div className="reveal" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 48, flexWrap: 'wrap', gap: 24 }}>
               <div>
@@ -1630,7 +1614,7 @@ export default function AiMlPage() {
         {/* ═══════════════════════════════════════════════════════════════════
             SECTION 15: BOTTOM CTA WITH FORM
         ═══════════════════════════════════════════════════════════════════ */}
-        <section ref={ctaRef} className="section-padding" style={{ position: 'relative', overflow: 'hidden' }}>
+        <section className="section-padding" style={{ position: 'relative', overflow: 'hidden' }}>
           <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: 1100, height: 600, background: 'radial-gradient(ellipse, rgba(34,197,94,0.09) 0%, transparent 65%)', filter: 'blur(70px)', pointerEvents: 'none' }} />
           <div className="cb-container" style={{ position: 'relative', zIndex: 1 }}>
             <div className="ai-cta-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 420px', gap: 'clamp(40px, 6vw, 80px)', alignItems: 'center' }}>

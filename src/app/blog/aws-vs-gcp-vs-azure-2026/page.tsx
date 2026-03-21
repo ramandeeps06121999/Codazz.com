@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     url: `https://codazz.com/blog/${SLUG}`,
     images: [
       {
-        url: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&h=630&fit=crop',
+        url: 'https://codazz.com/blog_images/aws-vs-gcp-vs-azure-2026.jpg',
         width: 1200,
         height: 630,
         alt: 'Cloud computing infrastructure and data centers',
@@ -51,7 +51,7 @@ const jsonLd = {
       url: 'https://codazz.com/logo.png',
     },
   },
-  image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&h=630&fit=crop',
+  image: 'https://codazz.com/blog_images/aws-vs-gcp-vs-azure-2026.jpg',
   url: `https://codazz.com/blog/${SLUG}`,
   mainEntityOfPage: `https://codazz.com/blog/${SLUG}`,
 };

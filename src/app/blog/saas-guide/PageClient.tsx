@@ -19,23 +19,27 @@ function useReveal() {
   return ref;
 }
 
-const sections = [
-  { id: 'takeaways', title: 'Key Takeaways' },
-  { id: 'definition', title: 'What is SaaS in 2026?' },
-  { id: 'comparison', title: 'Business Model Comparison' },
-  { id: 'features', title: 'How SaaS Earns Money' },
-  { id: 'metrics', title: 'SaaS Metrics Dashboard' },
-  { id: 'mistake', title: 'The Biggest Mistake' },
-  { id: 'timeline', title: 'Idea to MRR in 90 Days' },
-  { id: 'stack', title: 'Custom vs. No-Code' },
-  { id: 'techstack', title: 'Recommended Tech Stack' },
-  { id: 'cost', title: 'Development Costs' },
-  { id: 'build-with-codazz', title: 'Build with Codazz' },
+const tocItems = [
+  { id: 'key-takeaways', label: 'Key Takeaways', emoji: '🎯' },
+  { id: 'what-is-saas', label: 'What is SaaS in 2026?', emoji: '☁️' },
+  { id: 'architecture', label: 'SaaS Architecture', emoji: '🏗️' },
+  { id: 'multi-tenancy', label: 'Multi-Tenancy Deep Dive', emoji: '🏢' },
+  { id: 'auth', label: 'Authentication & Auth0', emoji: '🔐' },
+  { id: 'pricing-models', label: 'Pricing Models', emoji: '💰' },
+  { id: 'stripe-billing', label: 'Stripe Billing', emoji: '💳' },
+  { id: 'analytics', label: 'Analytics & Metrics', emoji: '📊' },
+  { id: 'tech-stack', label: 'Recommended Tech Stack', emoji: '🛠️' },
+  { id: 'cost', label: 'Development Costs', emoji: '💵' },
+  { id: 'go-to-market', label: 'Go-to-Market Strategy', emoji: '🚀' },
+  { id: 'timeline', label: 'Launch Timeline', emoji: '📅' },
+  { id: 'why-codazz', label: 'Build with Codazz', emoji: '✨' },
+  { id: 'faq', label: 'FAQ', emoji: '❓' },
 ];
 
 const relatedPosts = [
-  { slug: 'top-10-unicorn-apps-2026', title: 'Top 10 Unicorn Apps of 2026', category: 'Business', readTime: '8 min' },
-  { slug: 'top-software-development-companies-usa', title: 'Top 10 Software Development Companies in the USA', category: 'Business', readTime: '10 min' },
+  { slug: 'saas-development-cost-guide', title: 'SaaS Development Cost Guide 2026', category: 'Business', readTime: '12 min' },
+  { slug: 'mvp-development-guide', title: 'MVP Development Guide 2026', category: 'Engineering', readTime: '10 min' },
+  { slug: 'nextjs-vs-react-2026', title: 'Next.js vs React 2026: Which to Build With?', category: 'Engineering', readTime: '9 min' },
 ];
 
 /* ── Reusable style helpers ── */
@@ -69,6 +73,36 @@ function FounderTip({ children }: { children: React.ReactNode }) {
   );
 }
 
+function FAQItem({ q, a }: { q: string; a: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div style={{
+      borderBottom: '1px solid rgba(255,255,255,0.06)',
+      paddingBottom: 20, marginBottom: 20,
+    }}>
+      <button
+        onClick={() => setOpen(o => !o)}
+        style={{
+          width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+          gap: 16, background: 'none', border: 'none', cursor: 'pointer',
+          padding: 0, marginBottom: open ? 14 : 0,
+        }}
+      >
+        <span style={{ fontSize: 16, fontWeight: 600, color: '#ffffff', textAlign: 'left', lineHeight: 1.4 }}>{q}</span>
+        <span style={{
+          width: 28, height: 28, borderRadius: '50%', border: '1px solid rgba(34,197,94,0.3)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          color: '#22c55e', fontSize: 18, flexShrink: 0,
+          transition: 'transform 0.2s', transform: open ? 'rotate(45deg)' : 'rotate(0deg)',
+        }}>+</span>
+      </button>
+      {open && (
+        <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.55)', lineHeight: 1.8, margin: 0 }}>{a}</p>
+      )}
+    </div>
+  );
+}
+
 export default function SaaSGuide2026Client() {
   const pageRef = useReveal();
   const [copied, setCopied] = useState(false);
@@ -85,21 +119,6 @@ export default function SaaSGuide2026Client() {
     <>
       <Navbar />
       <main ref={pageRef as React.RefObject<HTMLElement>} style={{ background: '#000000', minHeight: '100vh' }}>
-
-        {/* ── FEATURED IMAGE ── */}
-        <div className="reveal" style={{ marginBottom: 40 }}>
-          <img
-            src="/blog_images/saas-guide.jpg"
-            alt="Complete SaaS startup guide 2026 - from idea to monthly recurring revenue"
-            style={{
-              width: '100%',
-              height: 'auto',
-              maxHeight: '500px',
-              objectFit: 'cover',
-              borderRadius: 'clamp(16px, 3vw, 24px)',
-            }}
-          />
-        </div>
 
         {/* ── ARTICLE HERO ── */}
         <section style={{ padding: 'clamp(100px, 15vw, 140px) 0 clamp(32px, 5vw, 64px)', position: 'relative', overflow: 'hidden' }}>
@@ -121,11 +140,11 @@ export default function SaaSGuide2026Client() {
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24, flexWrap: 'wrap' }}>
               <span className="reveal reveal-d1" style={{
                 fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                background: 'rgba(17,24,39,0.12)', color: '#ffffff',
-                padding: '5px 14px', borderRadius: 100,
-              }}>Business</span>
-              <span className="reveal reveal-d1" style={{ fontSize: 13, color: 'rgba(255,255,255,0.25)' }}>March 14, 2026</span>
-              <span style={{ color: 'rgba(255,255,255,0.4)', margin: '0 8px' }}>·</span>
+                background: 'rgba(34,197,94,0.1)', color: '#22c55e',
+                padding: '5px 14px', borderRadius: 100, border: '1px solid rgba(34,197,94,0.2)',
+              }}>Engineering</span>
+              <span className="reveal reveal-d1" style={{ fontSize: 13, color: 'rgba(255,255,255,0.25)' }}>March 20, 2026</span>
+              <span style={{ color: 'rgba(255,255,255,0.15)', margin: '0 4px' }}>·</span>
               <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: 13 }}>Updated Mar 2026</span>
               <span className="reveal reveal-d1" style={{ fontSize: 13, color: 'rgba(255,255,255,0.25)' }}>·</span>
               <span className="reveal reveal-d1" style={{
@@ -135,22 +154,22 @@ export default function SaaSGuide2026Client() {
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/>
                 </svg>
-                12 min read
+                18 min read
               </span>
             </div>
 
             <h1 className="reveal reveal-d2" style={{
               fontSize: 'clamp(2.4rem, 5vw, 4.5rem)', fontWeight: 800, color: '#ffffff',
-              letterSpacing: '-0.04em', lineHeight: 1.05, marginBottom: 24, maxWidth: 840,
+              letterSpacing: '-0.04em', lineHeight: 1.05, marginBottom: 24, maxWidth: 860,
             }}>
-              From Idea to MRR: How to Build a Profitable SaaS in 2026
+              How to Build a SaaS Product in 2026: Complete Guide
             </h1>
 
             <p className="reveal reveal-d3" style={{
               fontSize: 20, color: 'rgba(255,255,255,0.5)', lineHeight: 1.65,
-              maxWidth: 720, marginBottom: 48, fontWeight: 400,
+              maxWidth: 740, marginBottom: 48, fontWeight: 400,
             }}>
-              The definitive blueprint non-technical founders use to build, launch, and scale successful B2B SaaS applications — with comparison tables, real metrics, a 90-day timeline, and the tech stack recommendations that matter in 2026.
+              Everything you need to architect, build, and launch a scalable SaaS product — multi-tenancy design, Auth0 authentication, Stripe subscription billing, analytics, pricing models, and go-to-market strategy. Built from 500+ real product launches.
             </p>
 
             {/* Author + Share row */}
@@ -162,7 +181,8 @@ export default function SaaSGuide2026Client() {
               <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
                 <div style={{
                   width: 48, height: 48, borderRadius: '50%',
-                  background: 'rgba(17,24,39,0.12)', border: '1px solid rgba(17,24,39,0.25)',
+                  background: 'linear-gradient(135deg, rgba(34,197,94,0.2) 0%, rgba(34,197,94,0.05) 100%)',
+                  border: '1px solid rgba(34,197,94,0.25)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   fontSize: 15, fontWeight: 700, color: '#ffffff',
                 }}>RM</div>
@@ -201,29 +221,37 @@ export default function SaaSGuide2026Client() {
         {/* ── ARTICLE BODY + SIDEBAR ── */}
         <section className="section-padding" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container" style={{ paddingTop: 80 }}>
-            <div className="blog-layout" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 80, alignItems: 'start' }}>
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'minmax(0,1fr) 320px',
+              gap: 64,
+              alignItems: 'start',
+            }}
+              className="blog-layout"
+            >
 
               {/* ── MAIN ARTICLE ── */}
               <article>
 
                 {/* ── KEY TAKEAWAYS BOX ── */}
-                <div className="reveal" id="takeaways" style={{
+                <div className="reveal" id="key-takeaways" style={{
                   background: 'linear-gradient(135deg, rgba(34,197,94,0.08) 0%, rgba(34,197,94,0.02) 100%)',
-                  border: '1px solid rgba(34,197,94,0.2)', borderRadius: 24, padding: 'clamp(28px, 4vw, 40px)',
+                  border: '1px solid rgba(34,197,94,0.2)', borderRadius: 28, padding: 'clamp(28px, 4vw, 40px)',
                   marginBottom: 56, position: 'relative', overflow: 'hidden',
                 }}>
                   <div style={{ position: 'absolute', top: -30, right: -30, width: 150, height: 150, background: 'radial-gradient(circle, rgba(34,197,94,0.15) 0%, transparent 70%)', filter: 'blur(30px)' }} />
                   <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20, position: 'relative', zIndex: 1 }}>
-                    <div style={{ width: 36, height: 36, borderRadius: 10, background: 'rgba(34,197,94,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18 }}>🔑</div>
+                    <div style={{ width: 36, height: 36, borderRadius: 10, background: 'rgba(34,197,94,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18 }}>🎯</div>
                     <h2 style={{ fontSize: 20, fontWeight: 800, color: '#22c55e', margin: 0, letterSpacing: '-0.02em' }}>Key Takeaways</h2>
                   </div>
                   <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 14, position: 'relative', zIndex: 1 }}>
                     {[
-                      'B2B SaaS with niche focus outperforms broad B2C by 3-5x on revenue per customer in 2026.',
-                      'Validate before you build: a 2-week landing page test can save you $50,000+ in wasted development.',
-                      'The winning 2026 tech stack is Next.js + Node.js + PostgreSQL — fast, scalable, and AI-ready.',
-                      'Target 90 days from idea to first paying customer using the week-by-week launch timeline below.',
-                      'Track five core metrics from day one: MRR, Churn Rate, CAC, LTV, and NPS — they determine survival.',
+                      'Multi-tenant architecture is the foundation of any scalable SaaS — choose your isolation model (shared DB, schema-per-tenant, or DB-per-tenant) before writing a single line of application code.',
+                      'Auth0 or Clerk handle enterprise SSO, MFA, and role-based access in days, not weeks — never build authentication from scratch in 2026.',
+                      'Stripe Billing with its subscription API covers tiered pricing, usage-based metering, annual contracts, trials, and dunning management out of the box.',
+                      'The winning 2026 SaaS tech stack: Next.js 15 + Node.js + PostgreSQL (Supabase) + Stripe + PostHog — production-ready for under $100/month at MVP stage.',
+                      'Freemium and usage-based pricing are now table stakes. The 2026 winning formula is a hybrid: flat base fee plus usage-based add-ons for AI features and API consumption.',
+                      'A realistic SaaS MVP costs $25K–$75K with a professional agency and takes 8–14 weeks — not $5K and 2 weeks as no-code influencers claim.',
                     ].map((item, i) => (
                       <li key={i} style={{ display: 'flex', gap: 14, alignItems: 'flex-start' }}>
                         <div style={{
@@ -239,93 +267,240 @@ export default function SaaSGuide2026Client() {
 
                 {/* Intro */}
                 <div className="reveal" style={{ marginBottom: 56 }}>
-                  <p style={{
-                    fontSize: 18, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8,
-                    marginBottom: 20,
-                  }}>
-                    The Software as a Service (SaaS) landscape has shifted dramatically. What worked in 2022 no longer works in 2026. With the rise of advanced AI integrations, hyper-niche B2B solutions, and demanding user expectations, launching a generic tool will not cut it anymore.
+                  <p style={{ fontSize: 18, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 20 }}>
+                    Building a SaaS product in 2026 is simultaneously easier and harder than it has ever been. Easier because the tooling is incredible — Stripe handles billing in hours, Auth0 handles authentication in days, and Next.js ships full-stack apps at blistering speed. Harder because user expectations are higher than ever, competition is fiercer, and the technical architecture decisions you make at the start will either compound your growth or strangle it at scale.
+                  </p>
+                  <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8, marginBottom: 20 }}>
+                    This guide does not teach you how to use Bubble or Webflow. It teaches you how to architect and build a production-grade SaaS product that can serve thousands of tenants, handle enterprise security requirements, scale its billing model as you grow, and generate the kind of recurring revenue that attracts investors and acquirers.
                   </p>
                   <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8 }}>
-                    If you are a founder looking to build a profitable SaaS product this year — whether you are technical or not — this guide is your complete blueprint. We are covering business models, tech stacks, real metrics, a 90-day launch plan, and the exact mistakes that kill 90% of SaaS startups before they hit $10K MRR.
+                    At Codazz, we have shipped over 500 software products — many of them SaaS platforms ranging from $25K MVPs to $2M+ enterprise platforms. Everything in this guide is backed by real delivery data, not theory.
                   </p>
                 </div>
 
                 <FounderTip>
-                  <strong>Before you read further:</strong> bookmark this page. Founders who revisit this guide during each phase of their build have told us it saved them months of trial and error. This is not a skim-it-once article — it is a reference manual.
+                  <strong>Architecture first, always.</strong> The most expensive mistake we see founders make is starting to code before the data model and tenancy strategy are locked. Retrofitting multi-tenancy into a single-tenant app midway through development costs 3-5x more than designing it correctly upfront. Read the architecture and multi-tenancy sections before you touch your codebase.
                 </FounderTip>
 
-                {/* ── SECTION: WHAT IS SAAS ── */}
-                <div className="reveal" style={{ marginBottom: 56 }} id="definition">
+                {/* ── WHAT IS SAAS ── */}
+                <div className="reveal" style={{ marginBottom: 56 }} id="what-is-saas">
                   <h2 style={{
                     fontSize: 'clamp(1.5rem, 2.8vw, 2.2rem)', fontWeight: 700, color: '#ffffff',
                     letterSpacing: '-0.03em', marginBottom: 24,
                   }}>
-                    What Exactly is a SaaS Business Model in 2026?
+                    What is SaaS in 2026? The Modern Definition
                   </h2>
                   <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 16 }}>
-                    At its core, SaaS is software hosted in the cloud that customers pay a recurring subscription (Monthly Recurring Revenue or MRR) to access. No downloads, no installations — just log in and go.
+                    Software as a Service is cloud-hosted software that customers pay a recurring fee to access. That definition has not changed. What has changed is what customers expect from it: in 2026, SaaS is not just about organizing data or automating workflows — it is about delivering <strong style={{ color: '#ffffff' }}>measurable business outcomes</strong> through AI-augmented automation.
                   </p>
-                  <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 20 }}>
-                    In 2026, the definition has evolved. Modern SaaS is not just about providing a digital tool — it is about providing an <strong>automated outcome</strong>. The most successful products today do not just organize data. They use AI to analyze it, act on it, and save the user hours of manual labor every single week.
+                  <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 24 }}>
+                    The most successful SaaS products today do not replace what a user does manually — they eliminate the need to think about it at all. Predictive analytics, AI-generated content, automated compliance checks, intelligent routing. The bar is higher, which means the technical foundation needs to be stronger.
                   </p>
-                  <div style={{
-                    background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)',
-                    borderRadius: 16, padding: 24, marginBottom: 16,
-                  }}>
-                    <p style={{ fontSize: 16, color: '#ffffff', margin: '0 0 8px', fontWeight: 600 }}>B2C SaaS (Business-to-Consumer):</p>
-                    <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.5)', margin: 0 }}>Think Netflix or Spotify — high volume, low price per user. Great for mass markets but brutal on margins.</p>
+
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(260px, 100%), 1fr))', gap: 16, marginBottom: 24 }}>
+                    {[
+                      { model: 'B2B SaaS', desc: 'Software sold to businesses. High ACV ($500–$25K+/month), long sales cycles, low churn, high LTV. The dominant model for profitable SaaS in 2026. Examples: Salesforce, Slack, Notion.', highlight: true },
+                      { model: 'B2C SaaS', desc: 'Software sold directly to consumers. High volume, low price per user ($5–$50/month), high churn. Requires massive user acquisition to reach meaningful revenue. Examples: Spotify, Duolingo.', highlight: false },
+                      { model: 'B2B2C SaaS', desc: 'Platform sold to businesses who use it to serve their own customers. Network effects, high stickiness, dual revenue streams. Complex to build but category-defining at scale. Examples: Stripe, Shopify, Twilio.', highlight: false },
+                    ].map((item, i) => (
+                      <div key={i} style={{
+                        background: item.highlight ? 'rgba(34,197,94,0.04)' : 'rgba(255,255,255,0.015)',
+                        border: `1px solid ${item.highlight ? 'rgba(34,197,94,0.2)' : 'rgba(255,255,255,0.06)'}`,
+                        borderRadius: 20, padding: 24,
+                      }}>
+                        <p style={{ fontSize: 15, fontWeight: 700, color: item.highlight ? '#22c55e' : '#ffffff', margin: '0 0 10px' }}>{item.model}</p>
+                        <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)', margin: 0, lineHeight: 1.65 }}>{item.desc}</p>
+                      </div>
+                    ))}
                   </div>
-                  <div style={{
-                    background: 'rgba(34,197,94,0.04)', border: '1px solid rgba(34,197,94,0.15)',
-                    borderRadius: 16, padding: 24, marginBottom: 16,
-                  }}>
-                    <p style={{ fontSize: 16, color: '#ffffff', margin: '0 0 8px', fontWeight: 600 }}>B2B SaaS (Business-to-Business):</p>
-                    <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.7)', margin: 0 }}>Think Salesforce, Slack, or niche industry tools like software specifically for dental clinics — lower volume, high price per customer. <strong>This is where the real money is made in 2026.</strong></p>
-                  </div>
-                  <div style={{
-                    background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)',
-                    borderRadius: 16, padding: 24,
-                  }}>
-                    <p style={{ fontSize: 16, color: '#ffffff', margin: '0 0 8px', fontWeight: 600 }}>B2B2C SaaS (Business-to-Business-to-Consumer):</p>
-                    <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.5)', margin: 0 }}>Think Stripe or Shopify — you sell to businesses who then serve their consumers through your platform. Massive scale potential with strong retention.</p>
-                  </div>
+
+                  <FounderTip>
+                    If this is your first SaaS, go B2B and pick a niche you already know. You only need 20–50 paying customers at $500/month to reach $10K–$25K MRR. With B2C, you would need thousands. Niche B2B is the fastest path to your first $1M ARR — and it is far more acquirable.
+                  </FounderTip>
                 </div>
 
-                {/* ── TABLE: SaaS Business Model Comparison ── */}
-                <div className="reveal" style={{ marginBottom: 56 }} id="comparison">
+                {/* ── SAAS ARCHITECTURE ── */}
+                <div className="reveal" style={{ marginBottom: 56 }} id="architecture">
                   <h2 style={{
                     fontSize: 'clamp(1.5rem, 2.8vw, 2.2rem)', fontWeight: 700, color: '#ffffff',
-                    letterSpacing: '-0.03em', marginBottom: 24,
+                    letterSpacing: '-0.03em', marginBottom: 16,
                   }}>
-                    SaaS Business Model Comparison
+                    SaaS Architecture: How to Structure Your Application
                   </h2>
                   <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 24 }}>
-                    Choosing the right model determines your pricing, your sales motion, and ultimately how fast you can scale. Here is how the three dominant models compare head-to-head:
+                    A SaaS application is not a website with a login. It is a multi-layered distributed system with stateless API services, a persistent data layer, background job processing, event-driven webhooks, real-time capabilities, and an authentication plane that sits above everything else. Getting the architecture right means understanding these layers before you touch code.
                   </p>
-                  <div style={{ overflowX: 'auto', borderRadius: 16, border: '1px solid rgba(255,255,255,0.06)', marginBottom: 24 }}>
-                    <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 650 }}>
+
+                  <div style={{ overflowX: 'auto', borderRadius: 16, border: '1px solid rgba(255,255,255,0.06)', marginBottom: 32 }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 680 }}>
                       <thead>
                         <tr>
-                          <th style={tableHeaderStyle}>Factor</th>
-                          <th style={tableHeaderStyle}>B2B</th>
-                          <th style={tableHeaderStyle}>B2C</th>
-                          <th style={tableHeaderStyle}>B2B2C</th>
+                          <th style={tableHeaderStyle}>Layer</th>
+                          <th style={tableHeaderStyle}>What it Does</th>
+                          <th style={tableHeaderStyle}>2026 Best Practice</th>
+                          <th style={tableHeaderStyle}>Pitfall to Avoid</th>
                         </tr>
                       </thead>
                       <tbody>
                         {[
-                          ['Revenue Model', 'High-ticket subscriptions, annual contracts', 'Low-cost monthly subs, freemium', 'Platform fees, revenue share, per-transaction'],
-                          ['Avg. Deal Size', '$500 - $25,000+/mo', '$5 - $50/mo', '$100 - $5,000/mo per partner'],
-                          ['Sales Cycle', '2-12 weeks (relationship-driven)', 'Instant (self-serve)', '4-16 weeks (partnership-driven)'],
-                          ['Pros', 'High LTV, predictable revenue, low churn', 'Massive TAM, viral growth potential', 'Network effects, high stickiness, dual revenue'],
-                          ['Cons', 'Long sales cycles, requires sales team', 'High churn, expensive acquisition', 'Complex integrations, slower to launch'],
-                          ['Examples', 'Salesforce, HubSpot, Codazz client portals', 'Netflix, Spotify, Notion', 'Stripe, Shopify, Plaid'],
-                          ['Best For', 'Founders with industry expertise', 'Consumer-grade UX teams', 'Platform thinkers with dev resources'],
+                          ['Presentation', 'UI, routing, SSR, SEO', 'Next.js 15 with React Server Components', 'Client-side-only SPAs — terrible for SEO and Time to First Byte'],
+                          ['API Layer', 'Business logic, validation, orchestration', 'tRPC or REST with strict Zod validation', 'Exposing raw DB queries through API endpoints'],
+                          ['Authentication', 'Identity, sessions, MFA, SSO', 'Auth0 or Clerk — never roll your own', 'JWT with no refresh token rotation — a security disaster'],
+                          ['Data Layer', 'Persistent storage, tenant isolation', 'PostgreSQL with row-level security (RLS)', 'Using a single unpartitioned table for all tenant data'],
+                          ['Background Jobs', 'Async tasks, emails, webhooks, billing', 'BullMQ on Redis or Inngest for serverless', 'Running long jobs synchronously in API handlers'],
+                          ['File Storage', 'User uploads, exports, attachments', 'AWS S3 or Cloudflare R2 with signed URLs', 'Storing binary files in PostgreSQL — destroys performance'],
+                          ['Observability', 'Logs, traces, errors, uptime', 'Datadog or Sentry + uptime monitoring', 'Console.log in production — you will be blind when it matters'],
+                          ['CDN / Edge', 'Static assets, edge caching, geo-routing', 'Cloudflare or Vercel Edge Network', 'Serving assets from origin on every request at scale'],
+                        ].map((row, i) => (
+                          <tr key={i}>
+                            <td style={{ ...tableCellBoldStyle, color: '#22c55e', whiteSpace: 'nowrap' }}>{row[0]}</td>
+                            <td style={tableCellBoldStyle}>{row[1]}</td>
+                            <td style={tableCellStyle}>{row[2]}</td>
+                            <td style={{ ...tableCellStyle, color: 'rgba(248,113,113,0.8)' }}>{row[3]}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8, marginBottom: 16 }}>
+                    The architecture philosophy that wins in 2026 is <strong style={{ color: '#ffffff' }}>boring infrastructure, exciting product.</strong> Use established, well-supported tools for every layer of the stack. Save your engineering creativity for the domain logic and AI features that are your actual competitive advantage. Nobody pays you for your custom session management — they pay you for the outcome your product delivers.
+                  </p>
+                  <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8 }}>
+                    Design your API layer to be completely stateless from day one. Every request should carry enough information to be processed independently — no sticky sessions, no server-side state. This is what allows you to auto-scale horizontally when traffic spikes without any code changes.
+                  </p>
+                </div>
+
+                {/* ── MULTI-TENANCY ── */}
+                <div className="reveal" style={{ marginBottom: 56 }} id="multi-tenancy">
+                  <h2 style={{
+                    fontSize: 'clamp(1.5rem, 2.8vw, 2.2rem)', fontWeight: 700, color: '#ffffff',
+                    letterSpacing: '-0.03em', marginBottom: 16,
+                  }}>
+                    Multi-Tenancy Deep Dive: Isolation Models Explained
+                  </h2>
+                  <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 16 }}>
+                    Multi-tenancy is the defining characteristic of SaaS architecture. It means a single deployed instance of your software serves multiple customers (tenants) simultaneously, with their data completely isolated from each other. How you implement that isolation is one of the most consequential architectural decisions you will make.
+                  </p>
+                  <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 28 }}>
+                    There are three primary isolation models, each with dramatically different cost, complexity, and compliance profiles. Understanding the tradeoffs before you choose is critical — migrating between models at scale is an expensive, weeks-long engineering project.
+                  </p>
+
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 20, marginBottom: 28 }}>
+                    {[
+                      {
+                        model: 'Shared Database, Shared Schema',
+                        icon: '🟢',
+                        cost: 'Lowest cost',
+                        complexity: 'Low',
+                        isolation: 'Row-level (tenant_id column)',
+                        bestFor: 'SMB SaaS, freemium products, high-volume low-ACV markets',
+                        tradeoff: 'One misconfigured query can leak cross-tenant data. Requires PostgreSQL Row-Level Security (RLS) configured perfectly. A single noisy tenant can impact performance for all others.',
+                        highlight: true,
+                      },
+                      {
+                        model: 'Shared Database, Schema-per-Tenant',
+                        icon: '🟡',
+                        cost: 'Medium cost',
+                        complexity: 'Medium',
+                        isolation: 'Schema-level (each tenant gets their own PG schema)',
+                        bestFor: 'Mid-market SaaS with compliance needs, 100–10,000 tenants',
+                        tradeoff: 'Schema migrations must run across all tenant schemas simultaneously — requires careful tooling (Prisma Migrate with multi-schema support or custom migration runner). More robust than shared schema.',
+                        highlight: false,
+                      },
+                      {
+                        model: 'Database-per-Tenant',
+                        icon: '🔵',
+                        cost: 'Highest cost',
+                        complexity: 'High',
+                        isolation: 'Full database isolation (separate Postgres instance per tenant)',
+                        bestFor: 'Enterprise SaaS, regulated industries (healthcare, finance, government), high-ACV deals',
+                        tradeoff: 'Infrastructure costs scale linearly with tenant count. Requires orchestration tooling for provisioning, migrations, and backup management. But this is what enterprise buyers demand for SOC2, HIPAA, and GDPR compliance.',
+                        highlight: false,
+                      },
+                    ].map((item, i) => (
+                      <div key={i} style={{
+                        background: item.highlight ? 'rgba(34,197,94,0.04)' : 'rgba(255,255,255,0.015)',
+                        border: `1px solid ${item.highlight ? 'rgba(34,197,94,0.2)' : 'rgba(255,255,255,0.06)'}`,
+                        borderRadius: 20, padding: 28,
+                      }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
+                          <span style={{ fontSize: 20 }}>{item.icon}</span>
+                          <h3 style={{ fontSize: 17, fontWeight: 700, color: '#ffffff', margin: 0 }}>{item.model}</h3>
+                        </div>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(200px, 100%), 1fr))', gap: 12, marginBottom: 16 }}>
+                          {[
+                            { label: 'Infrastructure Cost', value: item.cost },
+                            { label: 'Implementation', value: item.complexity },
+                            { label: 'Isolation Level', value: item.isolation },
+                            { label: 'Best For', value: item.bestFor },
+                          ].map((detail, j) => (
+                            <div key={j}>
+                              <p style={{ fontSize: 11, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'rgba(255,255,255,0.25)', margin: '0 0 4px' }}>{detail.label}</p>
+                              <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.7)', margin: 0, lineHeight: 1.5 }}>{detail.value}</p>
+                            </div>
+                          ))}
+                        </div>
+                        <div style={{ background: 'rgba(248,113,113,0.05)', border: '1px solid rgba(248,113,113,0.1)', borderRadius: 12, padding: '12px 16px' }}>
+                          <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', margin: 0, lineHeight: 1.6 }}>
+                            <strong style={{ color: 'rgba(248,113,113,0.8)' }}>Key tradeoff: </strong>{item.tradeoff}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <FounderTip>
+                    <strong>Start with shared schema + RLS for your MVP.</strong> Use PostgreSQL&apos;s built-in Row-Level Security policies to enforce tenant isolation at the database level — not just in application code. This is the fastest and cheapest path to a working multi-tenant system. When you land your first enterprise customer who requires database isolation, provision a dedicated instance for them and migrate their data over. You do not need to redesign the whole platform.
+                  </FounderTip>
+
+                  <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8 }}>
+                    Regardless of which model you choose, <strong style={{ color: '#ffffff' }}>never rely solely on application-level tenant filtering.</strong> Always implement a second layer of protection at the data layer. The consequence of a tenant data leak — especially in regulated industries — is catastrophic: breach notification laws, GDPR fines, and customer churn that kills the company.
+                  </p>
+                </div>
+
+                {/* ── AUTHENTICATION ── */}
+                <div className="reveal" style={{ marginBottom: 56 }} id="auth">
+                  <h2 style={{
+                    fontSize: 'clamp(1.5rem, 2.8vw, 2.2rem)', fontWeight: 700, color: '#ffffff',
+                    letterSpacing: '-0.03em', marginBottom: 16,
+                  }}>
+                    Authentication in 2026: Auth0, Clerk, and What to Actually Use
+                  </h2>
+                  <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 16 }}>
+                    Authentication is not a feature you build — it is infrastructure you buy. Rolling your own auth in 2026 is the engineering equivalent of building your own database. You will get it working, then a subtle bug in your session token rotation will expose user accounts six months later. Auth0 and Clerk exist specifically because getting auth right is incredibly hard and the consequences of getting it wrong are existential.
+                  </p>
+                  <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 28 }}>
+                    Here is what enterprise SaaS buyers require from authentication in 2026 — and what each provider offers out of the box:
+                  </p>
+
+                  <div style={{ overflowX: 'auto', borderRadius: 16, border: '1px solid rgba(255,255,255,0.06)', marginBottom: 28 }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 700 }}>
+                      <thead>
+                        <tr>
+                          <th style={tableHeaderStyle}>Feature</th>
+                          <th style={tableHeaderStyle}>Auth0</th>
+                          <th style={tableHeaderStyle}>Clerk</th>
+                          <th style={tableHeaderStyle}>NextAuth.js</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {[
+                          ['SSO / SAML 2.0', 'Yes (enterprise tier)', 'Yes (enterprise tier)', 'Manual — not built in'],
+                          ['Social Login (Google, GitHub, etc.)', 'Yes — 30+ providers', 'Yes — built in', 'Yes — via providers'],
+                          ['MFA / 2FA', 'Yes — TOTP, SMS, push', 'Yes — TOTP, SMS', 'Manual — not built in'],
+                          ['Magic Links / Passwordless', 'Yes', 'Yes — first-class feature', 'Via plugins'],
+                          ['RBAC (Role-Based Access)', 'Yes — Actions & Rules', 'Yes — Organizations', 'Manual implementation'],
+                          ['Org / Tenant Management', 'Organizations feature', 'Organizations — first-class', 'Manual implementation'],
+                          ['Next.js Integration', 'SDK — moderate effort', 'Native Next.js integration', 'Purpose-built for Next.js'],
+                          ['SOC2 Compliant', 'Yes', 'Yes', 'N/A (self-hosted)'],
+                          ['Pricing (starter)', 'Free to 7,500 MAU', 'Free to 10K MAU', 'Free (open source)'],
+                          ['Pricing (scale)', '$240+/month', '$25+/month', 'Infrastructure cost only'],
                         ].map((row, i) => (
                           <tr key={i}>
                             <td style={tableCellBoldStyle}>{row[0]}</td>
                             <td style={tableCellStyle}>{row[1]}</td>
-                            <td style={tableCellStyle}>{row[2]}</td>
+                            <td style={{ ...tableCellStyle, background: 'rgba(34,197,94,0.02)' }}>{row[2]}</td>
                             <td style={tableCellStyle}>{row[3]}</td>
                           </tr>
                         ))}
@@ -333,85 +508,275 @@ export default function SaaSGuide2026Client() {
                     </table>
                   </div>
 
-                  <FounderTip>
-                    If this is your first SaaS, go B2B and pick a niche you already understand. You only need 20-50 paying customers at $500/mo to hit $10K-$25K MRR. With B2C you would need thousands of users to reach the same number. Niche B2B is the fastest path to profitability.
-                  </FounderTip>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(260px, 100%), 1fr))', gap: 16, marginBottom: 28 }}>
+                    {[
+                      { title: 'Use Clerk if...', points: ['You are building on Next.js (native App Router support)', 'You want the fastest integration — production auth in under a day', 'You need Organizations for multi-tenant management built in', 'Budget is a concern at early stage'], color: '#22c55e' },
+                      { title: 'Use Auth0 if...', points: ['You have complex compliance requirements (SOC2 Type II, HIPAA)', 'You need support for legacy enterprise SAML IdPs (Okta, Azure AD)', 'Your team already has Auth0 expertise', 'You need the full suite of enterprise security features'], color: '#60a5fa' },
+                    ].map((item, i) => (
+                      <div key={i} style={{
+                        background: 'rgba(255,255,255,0.015)', border: `1px solid rgba(255,255,255,0.06)`,
+                        borderRadius: 20, padding: 24,
+                      }}>
+                        <p style={{ fontSize: 15, fontWeight: 700, color: item.color, margin: '0 0 14px' }}>{item.title}</p>
+                        <ul style={{ padding: 0, margin: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 10 }}>
+                          {item.points.map((point, j) => (
+                            <li key={j} style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
+                              <svg style={{ flexShrink: 0, marginTop: 3, color: item.color }} width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                              <span style={{ fontSize: 14, color: 'rgba(255,255,255,0.55)', lineHeight: 1.5 }}>{point}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+
+                  <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8, marginBottom: 16 }}>
+                    Whichever provider you choose, implement these authentication patterns from day one: <strong style={{ color: '#ffffff' }}>short-lived access tokens (15 minutes)</strong> with automatic silent refresh, <strong style={{ color: '#ffffff' }}>refresh token rotation</strong> (invalidate the old token on every use), and <strong style={{ color: '#ffffff' }}>device-aware sessions</strong> that let users see and revoke active sessions from their account settings.
+                  </p>
+                  <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8 }}>
+                    For enterprise B2B SaaS, SAML 2.0 SSO is a table-stakes requirement. Without it, you will lose deals to competitors who have it. Plan for SAML from the start — implementing it after launch typically requires significant architecture changes to your session management.
+                  </p>
                 </div>
 
-                {/* ── SECTION: HOW SAAS EARNS MONEY ── */}
-                <div className="reveal" style={{ marginBottom: 56 }} id="features">
+                {/* ── PRICING MODELS ── */}
+                <div className="reveal" style={{ marginBottom: 56 }} id="pricing-models">
                   <h2 style={{
                     fontSize: 'clamp(1.5rem, 2.8vw, 2.2rem)', fontWeight: 700, color: '#ffffff',
-                    letterSpacing: '-0.03em', marginBottom: 24,
+                    letterSpacing: '-0.03em', marginBottom: 16,
                   }}>
-                    How SaaS Companies Actually Earn Money
+                    SaaS Pricing Models: Freemium, Usage-Based, Tiered, and Hybrid
                   </h2>
-                  <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 24 }}>
-                    It sounds simple: charge a monthly fee. But pricing strategy is the single biggest lever between a side hustle and a scalable enterprise. Get this wrong and nothing else matters.
+                  <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 28 }}>
+                    Pricing is not a tactical decision — it is a strategic one that shapes your sales motion, your cost structure, and your valuation multiple. The pricing model you choose determines which customers you attract, how you handle enterprise negotiations, and whether your gross margins can sustain growth. Here is how the four dominant models work in 2026:
                   </p>
 
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))', gap: 20, marginBottom: 24 }}>
-                    <div style={{ background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 20, padding: 24 }}>
-                      <div style={{ width: 40, height: 40, borderRadius: 12, background: 'rgba(255,255,255,0.03)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20, marginBottom: 16 }}>📊</div>
-                      <h3 style={{ fontSize: 18, color: '#ffffff', fontWeight: 700, margin: '0 0 8px' }}>1. Tiered Pricing</h3>
-                      <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.4)', margin: 0, lineHeight: 1.6 }}>The gold standard. Offer Basic, Pro, and Enterprise tiers. This captures small businesses early and upsells them as they grow. Most B2B SaaS unicorns use this model.</p>
-                    </div>
-                    <div style={{ background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 20, padding: 24 }}>
-                      <div style={{ width: 40, height: 40, borderRadius: 12, background: 'rgba(255,255,255,0.03)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20, marginBottom: 16 }}>⚡</div>
-                      <h3 style={{ fontSize: 18, color: '#ffffff', fontWeight: 700, margin: '0 0 8px' }}>2. Usage-Based</h3>
-                      <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.4)', margin: 0, lineHeight: 1.6 }}>Charge based on consumption — API calls, AI tokens, emails sent, or storage used. This model has exploded in 2026 thanks to AI-powered features with variable costs.</p>
-                    </div>
-                    <div style={{ background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 20, padding: 24 }}>
-                      <div style={{ width: 40, height: 40, borderRadius: 12, background: 'rgba(255,255,255,0.03)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20, marginBottom: 16 }}>🎁</div>
-                      <h3 style={{ fontSize: 18, color: '#ffffff', fontWeight: 700, margin: '0 0 8px' }}>3. Freemium</h3>
-                      <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.4)', margin: 0, lineHeight: 1.6 }}>Offer a limited version for free to acquire users rapidly, then gate the most valuable features behind a paywall. Works best when your free tier is addictive.</p>
-                    </div>
-                    <div style={{ background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 20, padding: 24 }}>
-                      <div style={{ width: 40, height: 40, borderRadius: 12, background: 'rgba(255,255,255,0.03)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20, marginBottom: 16 }}>⏱️</div>
-                      <h3 style={{ fontSize: 18, color: '#ffffff', fontWeight: 700, margin: '0 0 8px' }}>4. Annual Contracts</h3>
-                      <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.4)', margin: 0, lineHeight: 1.6 }}>Lock in annual commitments at a discount (typically 15-20% off monthly pricing). This gives you upfront cash to fund development and reduces churn simultaneously.</p>
-                    </div>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))', gap: 20, marginBottom: 28 }}>
+                    {[
+                      {
+                        icon: '📊',
+                        model: 'Tiered Pricing',
+                        example: 'Starter $49/mo · Pro $149/mo · Enterprise Custom',
+                        pros: 'Easy to understand, natural upsell path, best for self-serve B2B',
+                        cons: 'Feature gating creates customer resentment; middle tier often cannibalizes top tier',
+                        verdict: 'The default choice for B2B SaaS. Start here.',
+                        highlight: true,
+                      },
+                      {
+                        icon: '⚡',
+                        model: 'Usage-Based',
+                        example: '$0.01 per API call, $0.10 per AI generation, $5 per GB',
+                        pros: 'Aligns cost with value; customers love paying only for what they use; NRR easily exceeds 120%',
+                        cons: 'Revenue is unpredictable; customers may throttle usage; hard to budget for buyers',
+                        verdict: 'Excellent for AI and API products. Layer on top of a base subscription.',
+                        highlight: false,
+                      },
+                      {
+                        icon: '🎁',
+                        model: 'Freemium',
+                        example: 'Free tier (limited features) + paid plans',
+                        pros: 'Massive top-of-funnel; product-led growth; viral distribution',
+                        cons: 'High support cost for non-paying users; free tier must be carefully gated to drive conversion',
+                        verdict: 'Only works if your product is inherently viral or has strong network effects.',
+                        highlight: false,
+                      },
+                      {
+                        icon: '🔀',
+                        model: 'Hybrid (2026 Winner)',
+                        example: '$99/mo base + $0.05 per AI credit + $10 per extra seat',
+                        pros: 'Predictable base revenue plus usage upside; NRR can exceed 130%; captures value from both light and power users',
+                        cons: 'More complex billing logic; requires proper Stripe metering setup; can confuse prospects',
+                        verdict: 'The model winning the most ARR in 2026. Implement this at Series A.',
+                        highlight: true,
+                      },
+                    ].map((item, i) => (
+                      <div key={i} style={{
+                        background: item.highlight ? 'rgba(34,197,94,0.04)' : 'rgba(255,255,255,0.015)',
+                        border: `1px solid ${item.highlight ? 'rgba(34,197,94,0.2)' : 'rgba(255,255,255,0.06)'}`,
+                        borderRadius: 20, padding: 24,
+                      }}>
+                        <span style={{ fontSize: 28, display: 'block', marginBottom: 12 }}>{item.icon}</span>
+                        <h3 style={{ fontSize: 16, fontWeight: 700, color: '#ffffff', margin: '0 0 6px' }}>{item.model}</h3>
+                        <p style={{ fontSize: 12, color: '#22c55e', margin: '0 0 14px', fontFamily: 'monospace' }}>{item.example}</p>
+                        <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', margin: '0 0 8px', lineHeight: 1.6 }}>
+                          <strong style={{ color: 'rgba(255,255,255,0.7)' }}>Pros: </strong>{item.pros}
+                        </p>
+                        <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', margin: '0 0 14px', lineHeight: 1.6 }}>
+                          <strong style={{ color: 'rgba(255,255,255,0.7)' }}>Cons: </strong>{item.cons}
+                        </p>
+                        <div style={{ background: 'rgba(34,197,94,0.06)', borderRadius: 10, padding: '10px 14px' }}>
+                          <p style={{ fontSize: 13, color: '#22c55e', margin: 0, fontWeight: 600 }}>Verdict: {item.verdict}</p>
+                        </div>
+                      </div>
+                    ))}
                   </div>
 
                   <FounderTip>
-                    <strong>The hybrid approach wins in 2026:</strong> combine tiered pricing with usage-based add-ons. Charge a base monthly fee for core features, then meter AI usage, API calls, or premium integrations on top. This protects your margins while letting power users scale their spend naturally.
+                    <strong>The pricing research hack:</strong> before setting your prices, look up the top 3 competitors in your niche on G2 or Capterra. Find their pricing pages. Your entry tier should be 20–30% cheaper than the market leader (to steal their dissatisfied customers) while your enterprise tier should be at parity or premium (to signal quality). Pricing too low is the most common mistake early-stage founders make — it sets a ceiling on your valuation and attracts the wrong customers.
                   </FounderTip>
                 </div>
 
-                {/* ── TABLE: SaaS Metrics Dashboard ── */}
-                <div className="reveal" style={{ marginBottom: 56 }} id="metrics">
+                {/* ── STRIPE BILLING ── */}
+                <div className="reveal" style={{ marginBottom: 56 }} id="stripe-billing">
                   <h2 style={{
                     fontSize: 'clamp(1.5rem, 2.8vw, 2.2rem)', fontWeight: 700, color: '#ffffff',
-                    letterSpacing: '-0.03em', marginBottom: 12,
+                    letterSpacing: '-0.03em', marginBottom: 16,
                   }}>
-                    SaaS Metrics Dashboard: The 5 Numbers That Determine Survival
+                    Stripe Billing: The Complete Implementation Guide
                   </h2>
-                  <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 24 }}>
-                    You cannot improve what you do not measure. From day one of your launch, these five metrics should be on a dashboard you check every single morning. Miss one, and your SaaS slowly bleeds out. Nail all five, and you have a machine.
+                  <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 16 }}>
+                    Stripe Billing is the de facto standard for SaaS subscription management in 2026. It handles subscriptions, usage-based metering, invoicing, tax calculation (Stripe Tax), dunning (failed payment recovery), and global payment methods. Building a billing system from scratch instead of using Stripe is a 3–6 month engineering project that solves a problem already solved.
                   </p>
-                  <div style={{ overflowX: 'auto', borderRadius: 16, border: '1px solid rgba(255,255,255,0.06)', marginBottom: 24 }}>
-                    <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 700 }}>
+                  <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 28 }}>
+                    Here are the core Stripe objects and how they map to your SaaS billing model:
+                  </p>
+
+                  <div style={{ overflowX: 'auto', borderRadius: 16, border: '1px solid rgba(255,255,255,0.06)', marginBottom: 28 }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 660 }}>
                       <thead>
                         <tr>
-                          <th style={tableHeaderStyle}>Metric</th>
-                          <th style={tableHeaderStyle}>What It Is</th>
-                          <th style={tableHeaderStyle}>Target Range</th>
-                          <th style={tableHeaderStyle}>How to Improve</th>
+                          <th style={tableHeaderStyle}>Stripe Object</th>
+                          <th style={tableHeaderStyle}>What it Represents</th>
+                          <th style={tableHeaderStyle}>When to Use</th>
                         </tr>
                       </thead>
                       <tbody>
                         {[
-                          ['MRR', 'Monthly Recurring Revenue — total predictable revenue each month', '$10K+ within 12 months', 'Increase pricing, upsell existing customers, reduce discounting'],
-                          ['Churn Rate', 'Percentage of customers who cancel each month', 'Under 5% monthly (under 2% for enterprise)', 'Improve onboarding, add sticky features, proactive customer success'],
-                          ['CAC', 'Customer Acquisition Cost — total spend to land one paying customer', 'Less than 1/3 of LTV', 'Optimize ad spend, build organic channels, improve conversion funnels'],
-                          ['LTV', 'Lifetime Value — total revenue a customer generates before churning', '3x or higher than CAC', 'Reduce churn, increase ARPU with upsells and add-ons, annual contracts'],
-                          ['NPS', 'Net Promoter Score — would customers recommend you? (-100 to +100)', '+40 or higher', 'Act on feedback fast, ship quality releases, invest in support experience'],
+                          ['Customer', 'A paying organization (your tenant)', 'Create on signup. Attach to your tenant record in the DB.'],
+                          ['Product', 'A subscription plan or add-on (e.g., "Pro Plan", "AI Credits")', 'Create once per plan. Link from your pricing page.'],
+                          ['Price', 'The specific pricing for a product (e.g., $99/mo, $0.05/credit)', 'One product can have multiple prices (monthly/annual, currencies).'],
+                          ['Subscription', 'An active recurring billing arrangement', 'Created when a customer selects a plan. Contains items (prices).'],
+                          ['Usage Record', 'A metered event (API call, AI generation, etc.)', 'Submit via Stripe API after each billable event for usage-based billing.'],
+                          ['Invoice', 'A statement generated each billing cycle', 'Automatically created by Stripe. Send to customers via webhook.'],
+                          ['Payment Intent', 'A single payment transaction', 'Used for one-time charges (setup fees, overages).'],
+                          ['Webhook', 'Real-time events pushed from Stripe to your API', 'Listen for invoice.paid, customer.subscription.deleted, payment_intent.failed.'],
+                        ].map((row, i) => (
+                          <tr key={i}>
+                            <td style={{ ...tableCellBoldStyle, color: '#22c55e', whiteSpace: 'nowrap', fontFamily: 'monospace', fontSize: 13 }}>{row[0]}</td>
+                            <td style={tableCellBoldStyle}>{row[1]}</td>
+                            <td style={tableCellStyle}>{row[2]}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 16, marginBottom: 28 }}>
+                    <p style={{ fontSize: 16, fontWeight: 700, color: '#ffffff', margin: 0 }}>Critical Stripe implementation rules:</p>
+                    {[
+                      { rule: 'Always verify webhooks using Stripe\'s signature verification', detail: 'Never trust webhook payloads without verifying the stripe-signature header. An attacker can send fake payment events and unlock premium features for free.' },
+                      { rule: 'Implement idempotency keys on all Stripe API calls', detail: 'Network errors cause duplicate requests. Without idempotency keys, a customer could be charged twice. Pass a unique key per operation using the Idempotency-Key header.' },
+                      { rule: 'Store the Stripe customer ID, not the payment method', detail: 'Never store raw card numbers — Stripe handles PCI compliance. Store stripe_customer_id in your users/orgs table and retrieve payment methods from Stripe on demand.' },
+                      { rule: 'Enable Stripe\'s Smart Retries for dunning', detail: 'Failed payments cost SaaS companies an average of 7% of MRR. Stripe\'s Smart Retries uses ML to optimize retry timing, recovering 38% more failed payments than manual retry schedules.' },
+                      { rule: 'Use Stripe Tax for automatic tax collection', detail: 'US sales tax nexus, EU VAT, Canadian GST — tax compliance for SaaS is a minefield. Stripe Tax handles it automatically with a single line of configuration. Not optional if you sell internationally.' },
+                    ].map((item, i) => (
+                      <div key={i} style={{
+                        background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)',
+                        borderRadius: 16, padding: 20,
+                      }}>
+                        <p style={{ fontSize: 14, fontWeight: 700, color: '#ffffff', margin: '0 0 8px' }}>{i + 1}. {item.rule}</p>
+                        <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)', margin: 0, lineHeight: 1.6 }}>{item.detail}</p>
+                      </div>
+                    ))}
+                  </div>
+
+                  <FounderTip>
+                    <strong>The Stripe Customer Portal is your secret weapon.</strong> Enable it and let customers manage their own subscriptions, upgrade plans, download invoices, and update payment methods — without you writing any UI code. It takes 30 minutes to set up and eliminates an entire category of support tickets. Your customers will actually prefer it to contacting you.
+                  </FounderTip>
+                </div>
+
+                {/* ── ANALYTICS ── */}
+                <div className="reveal" style={{ marginBottom: 56 }} id="analytics">
+                  <h2 style={{
+                    fontSize: 'clamp(1.5rem, 2.8vw, 2.2rem)', fontWeight: 700, color: '#ffffff',
+                    letterSpacing: '-0.03em', marginBottom: 16,
+                  }}>
+                    SaaS Analytics: The Metrics That Actually Matter
+                  </h2>
+                  <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 28 }}>
+                    Vanity metrics kill SaaS companies slowly. Page views, total registered users, app downloads — none of these tell you whether you have a sustainable business. From the day you launch, track these operational metrics weekly. They are not optional.
+                  </p>
+
+                  <div style={{ overflowX: 'auto', borderRadius: 16, border: '1px solid rgba(255,255,255,0.06)', marginBottom: 28 }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 700 }}>
+                      <thead>
+                        <tr>
+                          <th style={tableHeaderStyle}>Metric</th>
+                          <th style={tableHeaderStyle}>Definition</th>
+                          <th style={tableHeaderStyle}>Healthy Target</th>
+                          <th style={tableHeaderStyle}>Warning Sign</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {[
+                          ['MRR', 'Monthly Recurring Revenue — total predictable revenue per month', '$10K+ within 12 months of launch', 'Flat MRR for 60+ days — product-market fit issue'],
+                          ['NRR', 'Net Revenue Retention — revenue from existing customers including expansion', '110%+ (120%+ is world-class)', 'Under 100% — you are losing more than you are gaining from expansions'],
+                          ['Churn Rate', 'Percentage of customers who cancel each billing period', 'Under 3% monthly (under 1% for enterprise)', 'Over 5% monthly — immediate product or onboarding crisis'],
+                          ['CAC', 'Customer Acquisition Cost — fully loaded spend to land one paying customer', 'Under 1/3 of LTV', 'CAC higher than LTV — you are paying to lose money'],
+                          ['LTV', 'Lifetime Value — total revenue before a customer churns', '3x CAC or higher', 'Under 1x CAC — business model is fundamentally broken'],
+                          ['Activation Rate', '% of signups who complete the core "aha moment" within 7 days', 'Over 40%', 'Under 20% — onboarding flow is broken, fix before scaling acquisition'],
+                          ['Time to Value', 'How long from signup until a user gets tangible value', 'Under 10 minutes for self-serve', 'Over 30 minutes — customers will churn before they see the value'],
+                          ['NPS', 'Net Promoter Score — would customers recommend you (-100 to +100)', '+40 or higher', 'Under +20 — product has fundamental experience issues'],
                         ].map((row, i) => (
                           <tr key={i}>
                             <td style={{ ...tableCellBoldStyle, color: '#22c55e', whiteSpace: 'nowrap' }}>{row[0]}</td>
                             <td style={tableCellStyle}>{row[1]}</td>
-                            <td style={{ ...tableCellStyle, color: '#ffffff', fontWeight: 600, whiteSpace: 'nowrap' }}>{row[2]}</td>
-                            <td style={tableCellStyle}>{row[3]}</td>
+                            <td style={{ ...tableCellStyle, color: '#ffffff', fontWeight: 600 }}>{row[2]}</td>
+                            <td style={{ ...tableCellStyle, color: 'rgba(248,113,113,0.8)' }}>{row[3]}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8, marginBottom: 16 }}>
+                    For product analytics tooling, use <strong style={{ color: '#ffffff' }}>PostHog</strong> — it is open source, self-hostable (important for GDPR compliance), and combines product analytics, session replay, feature flags, and A/B testing in a single platform. Its generous free tier handles most MVPs comfortably. Mixpanel is the enterprise alternative if you need more advanced cohort analysis.
+                  </p>
+                  <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8 }}>
+                    Track <strong style={{ color: '#ffffff' }}>feature usage events</strong> from day one — not just page views. Which core features do your best customers use most? Which features do churned customers never touched? This data tells you where to invest engineering time and which features to sunset.
+                  </p>
+                </div>
+
+                {/* ── TECH STACK ── */}
+                <div className="reveal" style={{ marginBottom: 56 }} id="tech-stack">
+                  <h2 style={{
+                    fontSize: 'clamp(1.5rem, 2.8vw, 2.2rem)', fontWeight: 700, color: '#ffffff',
+                    letterSpacing: '-0.03em', marginBottom: 12,
+                  }}>
+                    The 2026 SaaS Tech Stack: Battle-Tested at Scale
+                  </h2>
+                  <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 24 }}>
+                    We have built over 500 products at Codazz. This is the stack that wins in 2026 — fast to build, cheap to run at MVP stage, and capable of scaling to millions of users without a rewrite.
+                  </p>
+
+                  <div style={{ overflowX: 'auto', borderRadius: 16, border: '1px solid rgba(255,255,255,0.06)', marginBottom: 24 }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 680 }}>
+                      <thead>
+                        <tr>
+                          <th style={tableHeaderStyle}>Layer</th>
+                          <th style={tableHeaderStyle}>Recommended Tools</th>
+                          <th style={tableHeaderStyle}>Why This Choice</th>
+                          <th style={tableHeaderStyle}>MVP Cost/mo</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {[
+                          ['Frontend', 'Next.js 15 + React 19 + Tailwind CSS', 'RSC for speed, SSR for SEO, massive ecosystem, Vercel deployment', '$0 (open source)'],
+                          ['Backend / API', 'Node.js + tRPC or Next.js API Routes', 'TypeScript end-to-end type safety, no REST schema drift', '$0 (open source)'],
+                          ['Database', 'PostgreSQL via Supabase or Neon', 'RLS for multi-tenancy, JSON support, ACID compliance, connection pooling', '$0 – $25/mo'],
+                          ['Auth', 'Clerk (startup) or Auth0 (enterprise)', 'SSO, MFA, RBAC, Organizations — production-ready in < 1 day', '$0 – $25/mo'],
+                          ['Billing', 'Stripe Billing + Stripe Tax', 'Subscriptions, usage metering, invoicing, tax compliance, global', '2.9% + $0.30 per txn'],
+                          ['Hosting', 'Vercel (frontend) + Railway or Fly.io (backend)', 'Zero-config CI/CD, auto-scaling, edge deployment', '$20 – $50/mo'],
+                          ['Email', 'Resend or Postmark', 'High deliverability, developer-first APIs, React Email templates', '$0 – $20/mo'],
+                          ['Analytics', 'PostHog', 'Product analytics + session replay + feature flags + A/B testing', '$0 – $50/mo'],
+                          ['Background Jobs', 'Inngest (serverless) or BullMQ + Redis', 'Reliable async job processing with retry logic and observability', '$0 – $25/mo'],
+                          ['AI / LLM', 'OpenAI API + Vercel AI SDK', 'GPT-4o for features, streaming responses, embeddings for semantic search', '$20 – $200/mo'],
+                          ['Error Tracking', 'Sentry', 'Real-time error monitoring with stack traces and user context', '$0 – $26/mo'],
+                        ].map((row, i) => (
+                          <tr key={i}>
+                            <td style={{ ...tableCellBoldStyle, color: '#22c55e', whiteSpace: 'nowrap' }}>{row[0]}</td>
+                            <td style={tableCellBoldStyle}>{row[1]}</td>
+                            <td style={tableCellStyle}>{row[2]}</td>
+                            <td style={{ ...tableCellStyle, whiteSpace: 'nowrap' }}>{row[3]}</td>
                           </tr>
                         ))}
                       </tbody>
@@ -419,81 +784,176 @@ export default function SaaSGuide2026Client() {
                   </div>
 
                   <FounderTip>
-                    <strong>The golden ratio:</strong> if your LTV:CAC ratio is 3:1 or better, you have a scalable business. If it is under 1:1, you are literally paying more to acquire customers than they are worth. We have seen founders burn through $200K in ad spend before realizing this. Check this ratio weekly.
+                    <strong>Total MVP infrastructure cost: $40–$420/month.</strong> Start with Vercel + Supabase + Stripe — that gets you live for under $75/month in infrastructure. Migrate to dedicated AWS or GCP infrastructure when you hit $10K MRR and need the customization. Premature optimization is the primary way early-stage SaaS founders burn runway without shipping.
                   </FounderTip>
                 </div>
 
-                {/* ── SECTION: BIGGEST MISTAKE ── */}
-                <div className="reveal" style={{ marginBottom: 56 }} id="mistake">
+                {/* ── COST ── */}
+                <div className="reveal" style={{ marginBottom: 56 }} id="cost">
                   <h2 style={{
                     fontSize: 'clamp(1.5rem, 2.8vw, 2.2rem)', fontWeight: 700, color: '#ffffff',
-                    letterSpacing: '-0.03em', marginBottom: 24,
+                    letterSpacing: '-0.03em', marginBottom: 16,
                   }}>
-                    The Biggest Mistake: Building Before Validating
+                    How Much Does It Cost to Build a SaaS in 2026?
                   </h2>
                   <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 16 }}>
-                    We see it constantly at Codazz: a founder spends $50,000 and six months building a massive application, only to launch it and realize nobody wants to pay for it. The graveyard of SaaS products is full of beautifully engineered tools that solved problems nobody had.
+                    Transparency matters. Most agencies avoid this question — we will not. A custom SaaS MVP with authentication, multi-tenancy, billing, core features, and a polished dashboard costs between <strong style={{ color: '#ffffff' }}>$25,000 and $75,000</strong> with a professional agency in 2026. Here is why, broken down by component.
                   </p>
-                  <div style={{
-                    background: 'rgba(34,197,94,0.05)', border: '1px solid rgba(34,197,94,0.2)',
-                    borderRadius: 20, padding: 28, position: 'relative', overflow: 'hidden', marginBottom: 24,
-                  }}>
-                    <div style={{ position: 'absolute', top: -20, right: -20, width: 100, height: 100, background: 'radial-gradient(circle, rgba(34,197,94,0.1) 0%, transparent 70%)', filter: 'blur(20px)' }} />
-                    <p style={{ fontSize: 16, color: '#ffffff', lineHeight: 1.8, margin: 0, position: 'relative', zIndex: 1, fontWeight: 500 }}>
-                      Before writing a single line of code, you need an <strong>MVP (Minimum Viable Product)</strong>. An MVP is not a broken version of your app. It is the absolute <em>minimum</em> amount of features required to solve your customer's core problem and prove they are willing to pay real money for it.
-                    </p>
+
+                  <div style={{ overflowX: 'auto', borderRadius: 16, border: '1px solid rgba(255,255,255,0.06)', marginBottom: 24 }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 600 }}>
+                      <thead>
+                        <tr>
+                          <th style={tableHeaderStyle}>Component</th>
+                          <th style={tableHeaderStyle}>Description</th>
+                          <th style={tableHeaderStyle}>Cost Range</th>
+                          <th style={tableHeaderStyle}>Weeks</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {[
+                          ['Discovery & Architecture', 'Requirements, data model, API design, multi-tenancy strategy, tech stack finalization', '$3,000 – $8,000', '1 – 2'],
+                          ['UI/UX Design', 'Figma wireframes, component system, full hi-fi prototype', '$4,000 – $12,000', '2 – 3'],
+                          ['Auth & Multi-Tenancy', 'Auth0/Clerk setup, RBAC, tenant isolation, org management', '$3,000 – $8,000', '1 – 2'],
+                          ['Core Feature Development', 'The 2-3 features that make your SaaS valuable', '$8,000 – $25,000', '4 – 6'],
+                          ['Stripe Billing Integration', 'Subscription plans, webhooks, Customer Portal, usage metering', '$2,000 – $6,000', '1 – 2'],
+                          ['Admin Dashboard', 'Tenant management, analytics, user management, settings', '$3,000 – $8,000', '1 – 2'],
+                          ['DevOps & Deployment', 'CI/CD pipeline, staging environment, monitoring, security hardening', '$2,000 – $5,000', '1'],
+                          ['QA & Testing', 'End-to-end tests, security review, load testing, bug fixes', '$2,000 – $6,000', '1 – 2'],
+                        ].map((row, i) => (
+                          <tr key={i}>
+                            <td style={tableCellBoldStyle}>{row[0]}</td>
+                            <td style={tableCellStyle}>{row[1]}</td>
+                            <td style={{ ...tableCellBoldStyle, color: '#22c55e', whiteSpace: 'nowrap' }}>{row[2]}</td>
+                            <td style={{ ...tableCellStyle, whiteSpace: 'nowrap' }}>{row[3]}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
                   </div>
 
-                  <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 16 }}>
-                    <strong style={{ color: '#ffffff' }}>The validation playbook:</strong> before any development starts, do these three things in order:
-                  </p>
-                  <ol style={{ padding: '0 0 0 20px', margin: '0 0 24px', display: 'flex', flexDirection: 'column', gap: 12 }}>
-                    <li style={{ fontSize: 15, color: 'rgba(255,255,255,0.65)', lineHeight: 1.7 }}>
-                      <strong style={{ color: '#ffffff' }}>Talk to 20 potential customers.</strong> Not friends. Not family. Real people who match your target customer profile. Ask them what their biggest pain point is — do not pitch your solution yet.
-                    </li>
-                    <li style={{ fontSize: 15, color: 'rgba(255,255,255,0.65)', lineHeight: 1.7 }}>
-                      <strong style={{ color: '#ffffff' }}>Build a landing page with a waitlist.</strong> Spend $500 on targeted ads driving to a page that explains your solution. If you cannot get 100 signups in 2 weeks, rethink your positioning.
-                    </li>
-                    <li style={{ fontSize: 15, color: 'rgba(255,255,255,0.65)', lineHeight: 1.7 }}>
-                      <strong style={{ color: '#ffffff' }}>Pre-sell before building.</strong> Offer early-bird annual pricing at 50% off. If 5-10 people hand you money for a product that does not exist yet, you have validated demand.
-                    </li>
-                  </ol>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(260px, 100%), 1fr))', gap: 16, marginBottom: 24 }}>
+                    {[
+                      { range: '$15K – $30K', label: 'Simple MVP', desc: 'Auth, single-tenant, 1-2 core features, basic Stripe integration, simple dashboard', timeline: '6–8 weeks', highlighted: false },
+                      { range: '$30K – $65K', label: 'Standard SaaS', desc: 'Multi-tenant, RBAC, 3-4 features, usage-based billing, analytics, API', timeline: '10–14 weeks', highlighted: true },
+                      { range: '$65K – $150K+', label: 'Enterprise Platform', desc: 'SAML SSO, compliance docs, white-labeling, complex integrations, mobile app', timeline: '16–24 weeks', highlighted: false },
+                    ].map((tier, i) => (
+                      <div key={i} style={{
+                        background: tier.highlighted ? 'rgba(34,197,94,0.05)' : 'rgba(255,255,255,0.015)',
+                        border: `1px solid ${tier.highlighted ? 'rgba(34,197,94,0.2)' : 'rgba(255,255,255,0.06)'}`,
+                        borderRadius: 20, padding: 24,
+                      }}>
+                        <p style={{ fontSize: 26, fontWeight: 800, color: tier.highlighted ? '#22c55e' : '#ffffff', margin: '0 0 4px' }}>{tier.range}</p>
+                        <p style={{ fontSize: 13, fontWeight: 700, color: '#ffffff', margin: '0 0 12px', textTransform: 'uppercase', letterSpacing: '0.06em' }}>{tier.label}</p>
+                        <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)', margin: '0 0 12px', lineHeight: 1.6 }}>{tier.desc}</p>
+                        <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', margin: 0 }}>Timeline: {tier.timeline}</p>
+                      </div>
+                    ))}
+                  </div>
 
                   <FounderTip>
-                    <strong>The "Mom Test" rule:</strong> never ask "would you use this?" — people always say yes to be polite. Instead ask: "Tell me about the last time you dealt with [problem]. What did you do? How much did it cost you?" If they light up and start venting, you have found a real pain point worth solving.
+                    <strong>Think ROI, not sticker price.</strong> A $40K SaaS MVP that generates $8K MRR pays for itself in 5 months — then compounds indefinitely. Compare that to hiring one senior developer at $160K+/year who still needs a designer, DevOps engineer, and product manager alongside them. A specialized agency gives you an entire multi-disciplinary team for a fraction of the hiring cost with zero equity dilution and no HR overhead.
                   </FounderTip>
                 </div>
 
-                {/* ── TABLE: 90-Day Launch Timeline ── */}
+                {/* ── GO TO MARKET ── */}
+                <div className="reveal" style={{ marginBottom: 56 }} id="go-to-market">
+                  <h2 style={{
+                    fontSize: 'clamp(1.5rem, 2.8vw, 2.2rem)', fontWeight: 700, color: '#ffffff',
+                    letterSpacing: '-0.03em', marginBottom: 16,
+                  }}>
+                    Go-to-Market Strategy: From Launch to $100K ARR
+                  </h2>
+                  <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 16 }}>
+                    A great SaaS product with a poor go-to-market strategy fails. The GTM is not a marketing afterthought — it is a core business decision that should be designed in parallel with the product itself. Here are the three GTM motions that work for B2B SaaS in 2026, and when to use each.
+                  </p>
+
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 20, marginBottom: 28 }}>
+                    {[
+                      {
+                        motion: 'Product-Led Growth (PLG)',
+                        description: 'The product itself drives acquisition, conversion, and expansion. Users discover value before talking to sales. Classic examples: Figma, Notion, Slack. The freemium model is the enabler of PLG.',
+                        bestFor: 'Products with strong viral loops, low time-to-value, and self-serve adoption. Works best when the value is immediately obvious and the product is inherently shareable.',
+                        tactics: ['Freemium tier with genuine value (not crippled)', 'In-product viral loops (share a link, invite teammates)', 'Usage-based expansion — customers grow their own bill naturally', 'Self-serve upgrade flow that converts without sales touchpoint'],
+                        icon: '🚀',
+                      },
+                      {
+                        motion: 'Sales-Led Growth (SLG)',
+                        description: 'A sales team drives acquisition through outbound prospecting, inbound lead qualification, and relationship-driven enterprise deals. Works for high-ACV products where the buyer is not the user.',
+                        bestFor: 'Complex B2B software with long procurement cycles, multiple stakeholders, and deal sizes above $10K ACV. Common in compliance, finance, healthcare, and enterprise software.',
+                        tactics: ['Targeted outbound to ICP (Ideal Customer Profile) using LinkedIn + Clay', 'Demo-driven sales with personalized discovery calls', 'Land-and-expand: start with one team, expand to the org', 'Case studies and ROI calculators for economic buyers'],
+                        icon: '🤝',
+                      },
+                      {
+                        motion: 'Content-Led Growth (CLG)',
+                        description: 'SEO content and thought leadership drive organic acquisition. Visitors find you through Google, consume high-value content, and self-educate into a buying decision.',
+                        bestFor: 'SaaS products solving problems that buyers research extensively before purchasing. Compound channel — slow to start (6–18 months) but drives the highest-quality, lowest-CAC leads at scale.',
+                        tactics: ['Long-form SEO content targeting bottom-of-funnel keywords ("best [category] software")', 'Comparison pages (Your Product vs. Competitor)', 'Free tools and calculators that attract organic traffic', 'Newsletter to nurture subscribers into product trials'],
+                        icon: '✍️',
+                      },
+                    ].map((item, i) => (
+                      <div key={i} style={{
+                        background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)',
+                        borderRadius: 20, padding: 28,
+                      }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
+                          <span style={{ fontSize: 24 }}>{item.icon}</span>
+                          <h3 style={{ fontSize: 17, fontWeight: 700, color: '#ffffff', margin: 0 }}>{item.motion}</h3>
+                        </div>
+                        <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.6)', lineHeight: 1.7, margin: '0 0 12px' }}>{item.description}</p>
+                        <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.45)', lineHeight: 1.6, margin: '0 0 16px' }}>
+                          <strong style={{ color: 'rgba(255,255,255,0.6)' }}>Best for: </strong>{item.bestFor}
+                        </p>
+                        <div>
+                          <p style={{ fontSize: 12, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#22c55e', margin: '0 0 10px' }}>Core Tactics</p>
+                          <ul style={{ padding: 0, margin: 0, listStyle: 'none', display: 'flex', flexDirection: 'column', gap: 8 }}>
+                            {item.tactics.map((tactic, j) => (
+                              <li key={j} style={{ display: 'flex', gap: 10 }}>
+                                <svg style={{ flexShrink: 0, marginTop: 3, color: '#22c55e' }} width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                                <span style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)', lineHeight: 1.5 }}>{tactic}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <FounderTip>
+                    <strong>Do not try all three GTM motions at once.</strong> Pick one and go deep. Most successful B2B SaaS companies start with sales-led growth to reach $1M ARR (you need the customer learning you get from sales conversations), then layer in content and PLG once you understand your ICP deeply. Trying to be product-led, content-led, and sales-led simultaneously means you are half-committed to all three and winning at none.
+                  </FounderTip>
+                </div>
+
+                {/* ── TIMELINE ── */}
                 <div className="reveal" style={{ marginBottom: 56 }} id="timeline">
                   <h2 style={{
                     fontSize: 'clamp(1.5rem, 2.8vw, 2.2rem)', fontWeight: 700, color: '#ffffff',
                     letterSpacing: '-0.03em', marginBottom: 12,
                   }}>
-                    SaaS Launch Timeline: Idea to MRR in 90 Days
+                    SaaS Launch Timeline: Idea to First Customer in 90 Days
                   </h2>
                   <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 24 }}>
-                    This is the exact week-by-week framework we use with Codazz clients to go from napkin sketch to first paying customer in 90 days. It is aggressive but realistic if you stay disciplined and avoid scope creep.
+                    This is the exact week-by-week framework Codazz uses with clients to go from validated idea to first paying customer in 13 weeks. It is aggressive — but achievable when you stay disciplined about scope.
                   </p>
                   <div style={{ overflowX: 'auto', borderRadius: 16, border: '1px solid rgba(255,255,255,0.06)', marginBottom: 24 }}>
-                    <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 650 }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 680 }}>
                       <thead>
                         <tr>
                           <th style={tableHeaderStyle}>Week</th>
                           <th style={tableHeaderStyle}>Phase</th>
                           <th style={tableHeaderStyle}>Key Activities</th>
-                          <th style={tableHeaderStyle}>Deliverables</th>
+                          <th style={tableHeaderStyle}>Deliverable</th>
                         </tr>
                       </thead>
                       <tbody>
                         {[
-                          ['1-2', 'Validation', 'Customer interviews (20+), competitor analysis, define ICP, pain-point mapping', 'Validated problem statement, ICP document'],
-                          ['3-4', 'Design & Architecture', 'Wireframes, user flows, database schema, API design, tech stack finalization', 'Figma prototype, technical spec document'],
-                          ['5-6', 'Core MVP Build', 'Authentication, core feature #1, database setup, basic dashboard', 'Working auth flow, core feature functional'],
-                          ['7-8', 'Feature Completion', 'Core feature #2-3, payment integration (Stripe), email notifications', 'Feature-complete MVP, payment flow working'],
-                          ['9-10', 'Polish & Testing', 'UI polish, bug fixes, security audit, load testing, onboarding flow', 'Production-ready MVP, staging environment'],
-                          ['11-12', 'Beta Launch', 'Invite 20-50 beta users, collect feedback, iterate rapidly, build waitlist', 'Beta feedback report, prioritized backlog'],
-                          ['13', 'Public Launch', 'Launch on Product Hunt, activate waitlist, turn on paid acquisition, PR push', 'First paying customers, MRR started'],
+                          ['1 – 2', 'Validation', '20+ customer interviews, competitor teardown, ICP definition, pricing hypothesis', 'Validated problem statement + ICP document'],
+                          ['3 – 4', 'Design & Architecture', 'Figma wireframes, data model, API design, multi-tenancy decision, tech stack lock-in', 'Hi-fi prototype + technical spec'],
+                          ['5 – 6', 'Foundation', 'Auth setup (Clerk/Auth0), database schema, multi-tenant scaffolding, CI/CD pipeline', 'Working auth flow + DB with RLS'],
+                          ['7 – 9', 'Core Features', 'Feature #1 and #2 (your core value), Stripe integration, basic dashboard', 'Feature-complete MVP, billing working'],
+                          ['10 – 11', 'Polish & Security', 'UI refinement, onboarding flow, security audit, load testing, error handling', 'Production-ready MVP on staging'],
+                          ['12', 'Beta Launch', '20–50 beta users, feedback collection, rapid iteration, Product Hunt teaser', 'Beta feedback report + prioritized backlog'],
+                          ['13', 'Public Launch', 'Product Hunt launch, activate waitlist, first paid acquisition, PR outreach', 'First paying customers, MRR begins'],
                         ].map((row, i) => (
                           <tr key={i}>
                             <td style={{ ...tableCellBoldStyle, color: '#22c55e', whiteSpace: 'nowrap' }}>{row[0]}</td>
@@ -507,145 +967,15 @@ export default function SaaSGuide2026Client() {
                   </div>
 
                   <FounderTip>
-                    <strong>Weeks 1-4 are the most important.</strong> Most founders want to skip straight to building. Do not. The teams that spend proper time on validation and architecture end up shipping faster and pivoting less. We have seen clients save 3+ months of rework by investing 4 weeks upfront in design and validation.
+                    <strong>Weeks 3–4 are make-or-break.</strong> The teams that invest properly in design and architecture during these weeks ship the rest of the timeline predictably. Teams that skip it spend weeks 7–11 firefighting architecture decisions made in a rush. We have seen clients save 6+ weeks of rework by spending two weeks on a proper technical spec before writing a line of application code.
                   </FounderTip>
                 </div>
 
-                {/* ── SECTION: CUSTOM VS NO-CODE ── */}
-                <div className="reveal" style={{ marginBottom: 56 }} id="stack">
-                  <h2 style={{
-                    fontSize: 'clamp(1.5rem, 2.8vw, 2.2rem)', fontWeight: 700, color: '#ffffff',
-                    letterSpacing: '-0.03em', marginBottom: 24,
-                  }}>
-                    Custom Software vs. No-Code in 2026
-                  </h2>
-                  <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 16 }}>
-                    In 2026, no-code tools are more powerful than ever — but they still have major limitations when building a serious, scalable SaaS product that handles real money and real data.
-                  </p>
-                  <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 24 }}>
-                    If you are just testing an idea for two weeks, a no-code wrapper might work. But if you are building an application that handles complex data, integrates proprietary AI, or needs to scale securely to thousands of users, you need custom architecture. Here is why:
-                  </p>
-
-                  <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 24px', display: 'flex', flexDirection: 'column', gap: 16 }}>
-                    {[
-                      { title: 'Performance', desc: 'A Next.js and Node.js application loads instantly and handles thousands of concurrent users without breaking a sweat. No-code platforms buckle under real traffic and add 2-5 seconds of latency.' },
-                      { title: 'Ownership', desc: 'You actually own the intellectual property and the codebase. You do not lease your core product from a third-party builder who can change their pricing or shut down overnight.' },
-                      { title: 'Security & Compliance', desc: 'B2B clients demand rigorous security compliance (SOC2, HIPAA, GDPR) that no-code builders simply cannot guarantee. One data breach kills your company.' },
-                      { title: 'AI Integration', desc: 'Custom code lets you integrate any AI model, fine-tune it on your data, and build proprietary features that no-code tools cannot replicate. This is your competitive moat in 2026.' },
-                      { title: 'Exit Value', desc: 'Acquirers pay 5-10x more for companies with proprietary codebases than for companies built on no-code platforms. Your tech stack is part of your valuation.' },
-                    ].map((item, i) => (
-                      <li key={i} style={{ display: 'flex', gap: 16 }}>
-                        <div style={{ width: 24, height: 24, borderRadius: '50%', background: 'rgba(34,197,94,0.1)', color: '#22c55e', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 4 }}>
-                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                        </div>
-                        <div>
-                          <strong style={{ color: '#ffffff', display: 'block', marginBottom: 4 }}>{item.title}</strong>
-                          <span style={{ color: 'rgba(255,255,255,0.5)', fontSize: 15, lineHeight: 1.6 }}>{item.desc}</span>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* ── TABLE: Recommended Tech Stack ── */}
-                <div className="reveal" style={{ marginBottom: 56 }} id="techstack">
-                  <h2 style={{
-                    fontSize: 'clamp(1.5rem, 2.8vw, 2.2rem)', fontWeight: 700, color: '#ffffff',
-                    letterSpacing: '-0.03em', marginBottom: 12,
-                  }}>
-                    The 2026 SaaS Tech Stack: What to Use and What It Costs
-                  </h2>
-                  <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 24 }}>
-                    Stop googling "best tech stack" — we have built over 500 products and this is what actually works for SaaS in 2026. Every recommendation below is battle-tested at scale.
-                  </p>
-                  <div style={{ overflowX: 'auto', borderRadius: 16, border: '1px solid rgba(255,255,255,0.06)', marginBottom: 24 }}>
-                    <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 650 }}>
-                      <thead>
-                        <tr>
-                          <th style={tableHeaderStyle}>Layer</th>
-                          <th style={tableHeaderStyle}>Recommended Tools</th>
-                          <th style={tableHeaderStyle}>Why This Choice</th>
-                          <th style={tableHeaderStyle}>Monthly Cost (MVP)</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {[
-                          ['Frontend', 'Next.js 15 + React 19 + Tailwind CSS', 'SSR for SEO, server components for speed, massive ecosystem', '$0 (open source)'],
-                          ['Backend / API', 'Node.js + tRPC or Next.js API Routes', 'TypeScript end-to-end, type-safe APIs, fast iteration', '$0 (open source)'],
-                          ['Database', 'PostgreSQL (via Supabase or Neon)', 'Relational data integrity, JSON support, scales to millions of rows', '$0 - $25/mo'],
-                          ['Authentication', 'Clerk or NextAuth.js', 'SSO, MFA, role-based access out of the box, SOC2 ready', '$0 - $25/mo'],
-                          ['Hosting', 'Vercel (frontend) + AWS/Railway (backend)', 'Edge deployment, auto-scaling, zero-config CI/CD', '$20 - $50/mo'],
-                          ['Payments', 'Stripe Billing + Stripe Tax', 'Subscription management, invoicing, tax compliance, global payouts', '2.9% + $0.30 per txn'],
-                          ['Email', 'Resend or Postmark', 'Transactional email with high deliverability, developer-friendly APIs', '$0 - $20/mo'],
-                          ['Analytics', 'PostHog or Mixpanel', 'Product analytics, funnel tracking, feature flags, session replay', '$0 - $50/mo'],
-                          ['AI / LLM', 'OpenAI API + LangChain', 'GPT-4o for features, embeddings for search, fine-tuning for custom models', '$20 - $200/mo (usage)'],
-                        ].map((row, i) => (
-                          <tr key={i}>
-                            <td style={{ ...tableCellBoldStyle, color: '#22c55e', whiteSpace: 'nowrap' }}>{row[0]}</td>
-                            <td style={tableCellBoldStyle}>{row[1]}</td>
-                            <td style={tableCellStyle}>{row[2]}</td>
-                            <td style={{ ...tableCellStyle, whiteSpace: 'nowrap' }}>{row[3]}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                  <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.4)', lineHeight: 1.7, marginBottom: 16 }}>
-                    <strong style={{ color: 'rgba(255,255,255,0.6)' }}>Total estimated infrastructure cost for MVP:</strong> $40 - $370/month. Compare that to the $25K-$75K+ in no-code platform fees and limitations you would face at scale.
-                  </p>
-
-                  <FounderTip>
-                    <strong>Do not over-engineer on day one.</strong> Start with Vercel + Supabase + Stripe. That stack gets you from zero to launch for under $50/month in infrastructure. You can migrate to dedicated AWS infrastructure once you hit $10K MRR and actually need the scale. Premature optimization is how startups burn cash.
-                  </FounderTip>
-                </div>
-
-                {/* ── SECTION: DEVELOPMENT COSTS ── */}
-                <div className="reveal" style={{ marginBottom: 56 }} id="cost">
-                  <h2 style={{
-                    fontSize: 'clamp(1.5rem, 2.8vw, 2.2rem)', fontWeight: 700, color: '#ffffff',
-                    letterSpacing: '-0.03em', marginBottom: 24,
-                  }}>
-                    How Much Does It Actually Cost to Build a SaaS in 2026?
-                  </h2>
-                  <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 16 }}>
-                    Transparency is key, and most agencies dodge this question. We will not. Building a robust MVP with a professional agency in the USA is an investment in your business infrastructure — and you should know exactly what you are paying for.
-                  </p>
-                  <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 16 }}>
-                    While a simple informational website costs a few thousand dollars, a custom SaaS application — with user authentication, database architecture, payment gateways, AI features, and a polished dashboard — typically ranges from <strong style={{ color: '#ffffff' }}>$25,000 to $75,000+</strong> for an MVP.
-                  </p>
-                  <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 24 }}>
-                    Why? Because you are not buying a template. You are hiring a team of engineers, designers, and project managers to architect a digital product that generates revenue passively — month after month, year after year. The ROI on a well-built SaaS typically exceeds 10x within 18 months.
-                  </p>
-
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(260px, 100%), 1fr))', gap: 16, marginBottom: 24 }}>
-                    {[
-                      { range: '$15K - $30K', label: 'Simple MVP', desc: 'Auth, 1-2 core features, basic dashboard, Stripe integration', timeline: '6-8 weeks' },
-                      { range: '$30K - $60K', label: 'Standard SaaS', desc: 'Multi-tenant, role-based access, AI features, analytics, API', timeline: '10-14 weeks' },
-                      { range: '$60K - $120K+', label: 'Enterprise Platform', desc: 'SSO/SAML, compliance, white-labeling, complex integrations, mobile', timeline: '16-24 weeks' },
-                    ].map((tier, i) => (
-                      <div key={i} style={{
-                        background: i === 1 ? 'rgba(34,197,94,0.05)' : 'rgba(255,255,255,0.015)',
-                        border: `1px solid ${i === 1 ? 'rgba(34,197,94,0.2)' : 'rgba(255,255,255,0.06)'}`,
-                        borderRadius: 20, padding: 24,
-                      }}>
-                        <p style={{ fontSize: 24, fontWeight: 800, color: i === 1 ? '#22c55e' : '#ffffff', margin: '0 0 4px' }}>{tier.range}</p>
-                        <p style={{ fontSize: 14, fontWeight: 700, color: '#ffffff', margin: '0 0 12px', textTransform: 'uppercase', letterSpacing: '0.06em' }}>{tier.label}</p>
-                        <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)', margin: '0 0 12px', lineHeight: 1.6 }}>{tier.desc}</p>
-                        <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.35)', margin: 0 }}>Timeline: {tier.timeline}</p>
-                      </div>
-                    ))}
-                  </div>
-
-                  <FounderTip>
-                    <strong>Think investment, not expense.</strong> A $40K MVP that generates $10K MRR pays for itself in 4 months — then prints money every month after that. Compare that to hiring a single full-time senior developer at $150K+/year who still needs a designer, project manager, and DevOps engineer. An agency gives you an entire team for a fraction of the cost with zero HR overhead.
-                  </FounderTip>
-                </div>
-
-                {/* ── SECTION: BUILD YOUR SAAS WITH CODAZZ ── */}
-                <div className="reveal" style={{ marginBottom: 56 }} id="build-with-codazz">
+                {/* ── WHY CODAZZ ── */}
+                <div className="reveal" style={{ marginBottom: 56 }} id="why-codazz">
                   <div style={{
                     background: 'linear-gradient(135deg, rgba(34,197,94,0.08) 0%, rgba(34,197,94,0.02) 100%)',
-                    border: '1px solid rgba(34,197,94,0.2)', borderRadius: 24,
+                    border: '1px solid rgba(34,197,94,0.2)', borderRadius: 28,
                     padding: 'clamp(32px, 5vw, 56px)', position: 'relative', overflow: 'hidden',
                   }}>
                     <div style={{ position: 'absolute', top: -40, right: -40, width: 200, height: 200, background: 'radial-gradient(circle, rgba(34,197,94,0.12) 0%, transparent 70%)', filter: 'blur(40px)' }} />
@@ -660,15 +990,15 @@ export default function SaaSGuide2026Client() {
                         Stop Reading About Building a SaaS.<br />Start Actually Building One.
                       </h2>
                       <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8, marginBottom: 28, maxWidth: 640 }}>
-                        At Codazz, we have helped over 500 founders turn their SaaS ideas into revenue-generating products. Our engineering team in Edmonton and Chandigarh specializes in building custom Next.js SaaS platforms — from MVP to scale — with the exact tech stack and timeline covered in this guide.
+                        At Codazz, we have helped over 500 founders turn their SaaS ideas into revenue-generating products. Our engineering teams in Edmonton and Chandigarh specialize in building custom Next.js SaaS platforms — complete with multi-tenancy, Auth0/Clerk, Stripe Billing, and AI features — using exactly the architecture and tech stack covered in this guide.
                       </p>
 
                       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(200px, 100%), 1fr))', gap: 16, marginBottom: 32 }}>
                         {[
-                          { icon: '🚀', title: 'MVP in 8-12 Weeks', desc: 'From validated idea to live product with paying customers' },
-                          { icon: '🤖', title: 'AI-Native Architecture', desc: 'Built-in AI features that give you a competitive moat' },
-                          { icon: '📈', title: 'Built to Scale', desc: 'Enterprise-grade infrastructure that grows with your MRR' },
-                          { icon: '🔒', title: 'Security First', desc: 'SOC2-ready architecture with compliance baked in from day one' },
+                          { icon: '🏗️', title: 'Architecture-First', desc: 'We design multi-tenancy, auth, and data models before we write a line of product code' },
+                          { icon: '🚀', title: 'MVP in 8–12 Weeks', desc: 'From validated idea to live product with your first paying customers' },
+                          { icon: '🤖', title: 'AI-Native by Default', desc: 'Built-in AI features with OpenAI, LangChain, and vector search from day one' },
+                          { icon: '🔒', title: 'Security First', desc: 'SOC2-ready architecture, RBAC, RLS, and penetration testing included' },
                         ].map((item, i) => (
                           <div key={i} style={{
                             background: 'rgba(0,0,0,0.2)', borderRadius: 16, padding: 20,
@@ -691,9 +1021,44 @@ export default function SaaSGuide2026Client() {
                             Book a Free Discovery Call →
                           </button>
                         </Link>
-                        <span style={{ fontSize: 14, color: 'rgba(255,255,255,0.35)' }}>No commitment. 30-minute call. We will tell you if your idea is viable.</span>
+                        <span style={{ fontSize: 14, color: 'rgba(255,255,255,0.35)' }}>No commitment. 30 minutes. We will tell you if your idea is viable.</span>
                       </div>
                     </div>
+                  </div>
+                </div>
+
+                {/* ── FAQ ── */}
+                <div className="reveal" style={{ marginBottom: 56 }} id="faq">
+                  <h2 style={{
+                    fontSize: 'clamp(1.5rem, 2.8vw, 2.2rem)', fontWeight: 700, color: '#ffffff',
+                    letterSpacing: '-0.03em', marginBottom: 32,
+                  }}>
+                    Frequently Asked Questions
+                  </h2>
+                  <div style={{
+                    background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)',
+                    borderRadius: 28, padding: 'clamp(28px, 4vw, 40px)',
+                  }}>
+                    <FAQItem
+                      q="What is the difference between multi-tenant and single-tenant SaaS?"
+                      a="In a multi-tenant architecture, a single deployed application instance serves all of your customers simultaneously, with their data isolated via row-level security, schemas, or separate databases. In single-tenant, each customer gets their own dedicated deployment. Multi-tenant is the standard for SaaS because it is far cheaper to operate — one codebase, one deployment pipeline, shared infrastructure costs. Single-tenant is only warranted for high-security enterprise clients with strict data residency requirements, and you typically charge 3-5x more for it."
+                    />
+                    <FAQItem
+                      q="Should I use Auth0 or Clerk for my SaaS authentication?"
+                      a="For most SaaS products being built in 2026, Clerk is the better starting choice: it has native Next.js App Router integration, a first-class Organizations feature for multi-tenant management, and significantly lower pricing at early stage ($0 to 10,000 MAU vs Auth0's $240/month for equivalent enterprise features). Switch to Auth0 if you have specific compliance requirements (FedRAMP, certain HIPAA scenarios), need complex enterprise SAML integration with legacy IdPs, or your team has existing Auth0 expertise. The migration path between the two is manageable at early stage but painful post-scale."
+                    />
+                    <FAQItem
+                      q="How does Stripe handle usage-based billing for SaaS?"
+                      a="Stripe's metered billing works by creating a subscription with a usage_type: 'metered' price. After each billable event in your application (an API call, an AI generation, a document processed), you submit a usage record to Stripe via the API with the customer's subscription item ID and the quantity consumed. At the end of the billing period, Stripe aggregates all usage records and generates an invoice for the total. For real-time usage, use Stripe's sum aggregation mode. For maximum-seat licensing, use max aggregation. You can also add usage-based prices on top of a flat base subscription — this is the hybrid pricing model that is winning the most ARR in 2026."
+                    />
+                    <FAQItem
+                      q="How long does it actually take to build a SaaS MVP?"
+                      a="With a professional development agency, a proper SaaS MVP — multi-tenancy, authentication, Stripe billing, core features, and a polished UI — takes 8 to 14 weeks. With an in-house team hired specifically for the project, add 4-8 weeks for hiring and onboarding. Founders who tell you they built a 'real SaaS' in 2 weeks built a single-tenant app with no billing, no RBAC, and no production hardening — not a scalable product. No-code tools can produce a demo faster, but they hit a wall at scale, compliance requirements, and investor due diligence. Budget 10-12 weeks for a quality MVP."
+                    />
+                    <FAQItem
+                      q="What is the best go-to-market strategy for a B2B SaaS with no audience?"
+                      a="Start with direct outbound sales — not ads. Identify 200 companies that are your perfect ICP, find the decision-maker on LinkedIn, and send a hyper-personalized cold email or LinkedIn message referencing a specific pain point they have publicly discussed. Your goal is 20 discovery calls. From those 20 calls, you should get 3-5 pilot customers who pay even a discounted rate in exchange for shaping the product. These first customers are your case studies, your testimonials, and your validation. Once you have 3 paying customers and understand exactly why they bought, then invest in content, paid acquisition, and PLG. Building distribution before product-market fit is how founders burn runway."
+                    />
                   </div>
                 </div>
 
@@ -714,11 +1079,11 @@ export default function SaaSGuide2026Client() {
                       fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
                       color: 'rgba(255,255,255,0.25)', marginBottom: 16,
                     }}>In This Article</p>
-                    <nav style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-                      {sections.map(section => (
-                        <a key={section.id} href={`#${section.id}`} style={{
+                    <nav style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                      {tocItems.map(item => (
+                        <a key={item.id} href={`#${item.id}`} style={{
                           fontSize: 13, color: 'rgba(255,255,255,0.4)', textDecoration: 'none',
-                          padding: '8px 10px', borderRadius: 8, display: 'flex', alignItems: 'center', gap: 10,
+                          padding: '7px 10px', borderRadius: 8, display: 'flex', alignItems: 'center', gap: 8,
                           transition: 'all 0.15s',
                         }}
                           onMouseEnter={e => {
@@ -730,10 +1095,30 @@ export default function SaaSGuide2026Client() {
                             (e.currentTarget as HTMLAnchorElement).style.background = 'transparent';
                           }}
                         >
-                          <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{section.title}</span>
+                          <span style={{ flexShrink: 0, fontSize: 14 }}>{item.emoji}</span>
+                          <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{item.label}</span>
                         </a>
                       ))}
                     </nav>
+                  </div>
+
+                  {/* CTA card */}
+                  <div style={{
+                    background: 'rgba(34,197,94,0.05)', border: '1px solid rgba(34,197,94,0.15)',
+                    borderRadius: 20, padding: 24,
+                  }}>
+                    <p style={{ fontSize: 15, fontWeight: 700, color: '#ffffff', margin: '0 0 8px' }}>Ready to Build Your SaaS?</p>
+                    <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.45)', lineHeight: 1.6, margin: '0 0 16px' }}>
+                      Codazz has shipped 500+ products. Book a free 30-minute call and we will tell you if your idea is viable.
+                    </p>
+                    <Link href="/contact" style={{ textDecoration: 'none', display: 'block' }}>
+                      <button style={{
+                        width: '100%', padding: '12px 20px', borderRadius: 100, background: '#22c55e', color: '#000',
+                        fontSize: 13, fontWeight: 700, border: 'none', cursor: 'pointer',
+                      }}>
+                        Book a Call →
+                      </button>
+                    </Link>
                   </div>
 
                   {/* Author card */}
@@ -748,7 +1133,8 @@ export default function SaaSGuide2026Client() {
                     <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
                       <div style={{
                         width: 44, height: 44, borderRadius: '50%',
-                        background: 'rgba(17,24,39,0.12)', border: '1px solid rgba(17,24,39,0.25)',
+                        background: 'linear-gradient(135deg, rgba(34,197,94,0.2) 0%, rgba(34,197,94,0.05) 100%)',
+                        border: '1px solid rgba(34,197,94,0.25)',
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
                         fontSize: 14, fontWeight: 700, color: '#ffffff', flexShrink: 0,
                       }}>RM</div>
@@ -758,7 +1144,7 @@ export default function SaaSGuide2026Client() {
                       </div>
                     </div>
                     <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)', lineHeight: 1.7, margin: 0 }}>
-                      Leading engineering strategy and product vision at Codazz. Has guided over 500+ bespoke product launches globally.
+                      Leading engineering strategy and product vision at Codazz. Has guided 500+ product launches globally across SaaS, fintech, healthcare, and enterprise software.
                     </p>
                   </div>
 
@@ -787,7 +1173,7 @@ export default function SaaSGuide2026Client() {
                             (e.currentTarget as HTMLAnchorElement).style.background = 'transparent';
                           }}
                         >
-                          <p style={{ fontSize: 11, color: '#ffffff', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', margin: '0 0 6px' }}>{post.category}</p>
+                          <p style={{ fontSize: 11, color: '#22c55e', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', margin: '0 0 6px' }}>{post.category}</p>
                           <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.7)', lineHeight: 1.4, margin: '0 0 8px', fontWeight: 600 }}>{post.title}</p>
                           <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.25)', margin: 0 }}>{post.readTime} read</p>
                         </Link>
@@ -808,7 +1194,7 @@ export default function SaaSGuide2026Client() {
               className="reveal"
               style={{
                 background: 'rgba(34,197,94,0.04)', border: '1px solid rgba(34,197,94,0.15)',
-                borderRadius: 28, padding: '64px 56px',
+                borderRadius: 28, padding: 'clamp(40px, 6vw, 64px) clamp(32px, 5vw, 56px)',
                 display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                 flexWrap: 'wrap', gap: 32,
               }}
@@ -816,16 +1202,16 @@ export default function SaaSGuide2026Client() {
               <div>
                 <p style={{
                   fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                  color: '#ffffff', marginBottom: 12,
+                  color: '#22c55e', marginBottom: 12,
                 }}>Start Building</p>
                 <h2 style={{
                   fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', fontWeight: 700, color: '#ffffff',
                   letterSpacing: '-0.03em', marginBottom: 12,
                 }}>
-                  Building something ambitious?<br />Let&apos;s talk.
+                  Your SaaS idea deserves<br />a serious engineering team.
                 </h2>
                 <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.45)', maxWidth: 480, lineHeight: 1.7 }}>
-                  We develop the engineering foundations of the fastest-growing companies in the USA. Let us build yours.
+                  Codazz builds production-grade SaaS platforms — with the multi-tenancy, Stripe billing, Auth0/Clerk, and AI architecture this guide covers — for founders and companies across North America and globally.
                 </p>
               </div>
               <Link href="/contact" style={{ textDecoration: 'none' }}>
@@ -847,9 +1233,9 @@ export default function SaaSGuide2026Client() {
             <h2 style={{ fontSize: 'clamp(1.3rem, 2.5vw, 1.8rem)', fontWeight: 700, color: '#ffffff', marginBottom: 32 }}>Related Articles</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 20 }}>
               {[
-                { title: 'SaaS Development Cost in the USA', href: '/blog/saas-development-cost-usa' },
-                { title: 'Top 10 Unicorn Apps of 2026', href: '/blog/top-10-unicorn-apps-2026' },
-                { title: 'How Much Does App Development Cost in the USA?', href: '/blog/app-development-cost-usa' },
+                { title: 'Custom CRM Development Guide 2026', href: '/blog/custom-crm-development-guide' },
+                { title: 'Enterprise Software Development Guide 2026', href: '/blog/enterprise-software-development-guide' },
+                { title: 'MVP Development Guide 2026', href: '/blog/mvp-development-guide' },
               ].map((post) => (
                 <a key={post.href} href={post.href} style={{
                   display: 'block', padding: '24px', borderRadius: 16,
@@ -857,8 +1243,8 @@ export default function SaaSGuide2026Client() {
                   textDecoration: 'none', transition: 'all 0.3s ease',
                   fontSize: 15, fontWeight: 600, color: '#ffffff', lineHeight: 1.5,
                 }}
-                onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(34,197,94,0.2)'; e.currentTarget.style.transform = 'translateY(-4px)'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)'; e.currentTarget.style.transform = 'translateY(0)'; }}
+                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(34,197,94,0.2)'; e.currentTarget.style.transform = 'translateY(-4px)'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)'; e.currentTarget.style.transform = 'translateY(0)'; }}
                 >
                   {post.title} →
                 </a>

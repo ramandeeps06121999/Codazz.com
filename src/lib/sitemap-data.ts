@@ -4,6 +4,8 @@ export const serviceSlugs = [
   'mobile-app-development', 'ai-ml', 'web-development', 'product-design',
   'blockchain-web3', 'cloud-devops', 'ar-vr', 'digital-marketing',
   'wordpress-cms', 'game-development', 'branding', 'saas-development',
+  'ai-agent-development', 'cybersecurity', 'generative-ai', 'iot-development',
+  'legacy-modernization', 'llm-integration', 'qa-testing', 'rag-development',
 ];
 
 export const subServices: Record<string, string[]> = {
@@ -28,32 +30,57 @@ export const industrySlugs = [
 ];
 
 export const blogSlugs = [
-  'ai-app-development-guide-2026', 'ai-chatbot-development-cost', 'ai-trends-2026',
-  'ai-development-companies-usa', 'ai-development-cost-usa', 'api-development-guide-2026',
-  'app-development-companies-abu-dhabi', 'app-development-companies-bangalore',
-  'app-development-companies-dubai', 'app-development-companies-new-york',
-  'app-development-companies-riyadh', 'app-development-companies-saudi-arabia',
-  'app-development-cost-dubai', 'app-development-cost-usa',
-  'aws-vs-gcp-vs-azure-2026', 'blockchain-development-companies-usa', 'blockchain-development-cost',
+  'ai-app-development-guide-2026', 'ai-chatbot-development-cost', 'ai-development-companies-usa',
+  'ai-agent-development-guide', 'ai-development-cost-guide-2026', 'ai-development-cost-usa',
+  'ai-in-ecommerce-2026', 'ai-in-fintech-2026', 'ai-in-healthcare-2026', 'ai-trends-2026',
+  'api-development-guide-2026', 'app-development-companies-abu-dhabi',
+  'app-development-companies-bangalore', 'app-development-companies-dubai',
+  'app-development-companies-new-york', 'app-development-companies-riyadh',
+  'app-development-companies-saudi-arabia', 'app-development-cost-dubai', 'app-development-cost-usa',
+  'apple-vision-pro-development-guide', 'aws-vs-gcp-vs-azure-2026',
+  'blockchain-development-companies-usa', 'blockchain-development-cost',
+  'chatgpt-integration-guide', 'choose-software-development-company',
   'choose-software-development-company-usa', 'custom-crm-development-guide',
-  'dating-app-development-guide', 'digital-marketing-cost-usa', 'ecommerce-app-development-cost',
-  'ecommerce-trends-2026', 'enterprise-software-development-guide', 'flutter-vs-react-native-2026',
+  'custom-vs-off-the-shelf-software', 'dating-app-development-guide',
+  'content-marketing-guide-2026', 'digital-marketing-cost-usa', 'ecommerce-app-development-cost', 'ecommerce-trends-2026',
+  'education-app-development-guide', 'enterprise-software-development-guide',
+  'fitness-app-development-guide', 'flutter-vs-react-native-2026',
   'food-delivery-app-cost', 'food-delivery-app-development-guide', 'healthcare-app-trends-2026',
   'how-much-does-app-development-cost-2026', 'how-to-build-fintech-app', 'how-to-build-healthcare-app',
-  'how-to-build-marketplace-app', 'how-to-build-on-demand-app', 'microservices-vs-monolith-2026',
-  'mobile-app-marketing-strategy', 'mvp-development-guide', 'native-vs-cross-platform-2026',
-  'nextjs-vs-react-2026', 'ppc-vs-seo-2026', 'python-vs-nodejs-backend-2026',
-  'real-estate-app-development-guide', 'saas-development-cost-usa', 'saas-guide',
-  'seo-for-saas-companies-2026', 'software-development-companies-austin',
-  'software-development-companies-dubai',
-  'software-development-cost-india', 'startup-marketing-guide-2026', 'top-10-unicorn-apps-2026',
-  'top-ai-development-companies-dubai', 'top-app-development-companies-canada',
-  'top-app-development-companies-chicago', 'top-app-development-companies-dubai',
-  'top-app-development-companies-london', 'top-app-development-companies-los-angeles',
-  'top-app-development-companies-san-francisco', 'top-app-development-companies-usa',
-  'top-fintech-apps-2026', 'top-seo-companies-usa', 'top-software-development-companies-canada',
-  'top-software-development-companies-usa', 'uber-like-app-development-guide',
-  'web-development-companies-san-francisco', 'website-cost-usa',
+  'how-to-build-marketplace-app', 'how-to-build-on-demand-app', 'in-house-vs-outsourcing-development',
+  'iot-app-development-guide', 'logistics-app-development-guide', 'microservices-vs-monolith-2026',
+  'mobile-app-development-cost-breakdown', 'mobile-app-marketing-strategy', 'mvp-development-guide',
+  'native-vs-cross-platform-2026', 'nextjs-performance-optimization', 'nextjs-vs-react-2026',
+  'ppc-vs-seo-2026', 'postgresql-vs-mongodb-2026', 'python-vs-nodejs-backend-2026',
+  'kubernetes-vs-docker-guide', 'react-vs-angular-2026',
+  'real-estate-app-development-guide', 'saas-development-cost-guide', 'saas-development-cost-usa',
+  'saas-guide', 'saas-vs-custom-software-2026', 'seo-for-saas-companies-2026',
+  'social-media-app-development-guide', 'software-development-companies-austin',
+  'software-development-companies-dubai', 'software-development-cost-india',
+  'startup-marketing-guide-2026', 'stripe-payment-integration-guide', 'aws-architecture-guide-2026',
+  'cicd-pipeline-guide-2026',
+  'top-10-unicorn-apps-2026', 'top-ai-development-companies-dubai',
+  'top-app-development-companies-austin', 'top-app-development-companies-boston',
+  'top-app-development-companies-canada', 'top-app-development-companies-chicago',
+  'top-app-development-companies-dubai', 'top-app-development-companies-london',
+  'top-app-development-companies-los-angeles', 'top-app-development-companies-miami',
+  'top-app-development-companies-san-francisco', 'top-app-development-companies-seattle',
+  'top-app-development-companies-usa', 'top-fintech-apps-2026', 'top-seo-companies-usa',
+  'top-software-development-companies-canada', 'top-software-development-companies-usa',
+  'mobile-game-development-guide', 'video-streaming-app-development',
+  'taxi-booking-app-development', 'travel-app-development-guide',
+  'uber-like-app-development-guide', 'web-app-development-cost-2026',
+  'web-development-companies-san-francisco', 'web-development-trends-2026',
+  'web3-development-guide-2026', 'website-cost-usa',
+  'wearable-app-development-guide', 'ar-app-development-guide',
+  'offshore-vs-nearshore-development', 'agile-vs-waterfall-software-development',
+  'how-to-find-cto-startup', 'product-roadmap-guide-2026',
+];
+
+export const landingPageSlugs = [
+  'dedicated-development-team',
+  'software-outsourcing',
+  'offshore-development',
 ];
 
 export const allSolutionSlugs = [
@@ -63,7 +90,10 @@ export const allSolutionSlugs = [
 ];
 
 export const hireSlugs = [
-  'react-developers', 'nodejs-developers', 'flutter-developers', 'python-developers', 'ai-ml-engineers',
+  'react-developers', 'nodejs-developers', 'flutter-developers', 'react-native-developers', 'python-developers', 'ai-ml-engineers',
+  'ios-developers', 'android-developers', 'blockchain-developers', 'devops-engineers', 'ui-ux-designers',
+  'golang-developers', 'java-developers', 'aws-engineers', 'data-engineers', 'qa-engineers',
+  'typescript-developers', 'vue-developers', 'cloud-architects', 'ml-engineers',
 ];
 
 export const citySlugs = [

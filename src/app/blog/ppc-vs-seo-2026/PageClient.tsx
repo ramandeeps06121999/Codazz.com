@@ -75,7 +75,7 @@ export default function PpcVsSeoClient() {
         <div className="cb-container" style={{ paddingTop: 100 }}>
           <div className="reveal" style={{ marginBottom: 40 }}>
             <Image
-              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=675&fit=crop"
+              src="/blog_images/ppc-vs-seo-2026.jpg"
               alt="Digital marketing analytics dashboard showing campaign performance data"
               width={1200}
               height={675}
@@ -88,9 +88,6 @@ export default function PpcVsSeoClient() {
                 borderRadius: 'clamp(16px, 3vw, 24px)',
               }}
             />
-            <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', marginTop: 8, textAlign: 'center' }}>
-              Photo by <a href="https://unsplash.com/@carlheyerdahl" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Carl Heyerdahl</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-            </p>
           </div>
         </div>
 
@@ -268,7 +265,7 @@ export default function PpcVsSeoClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1611926653458-09294b3142bf?w=800&h=500&fit=crop"
+                    src="/blog_images/ppc-vs-seo-2026.jpg"
                     alt="Google Ads dashboard showing campaign performance and bidding data"
                     width={800}
                     height={500}
@@ -279,9 +276,6 @@ export default function PpcVsSeoClient() {
                       marginBottom: 16,
                     }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@mjessier" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Myriam Jessier</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <p className="reveal">
@@ -348,7 +342,7 @@ export default function PpcVsSeoClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1562577309-4932fdd64cd1?w=800&h=500&fit=crop"
+                    src="/blog_images/ppc-vs-seo-2026.jpg"
                     alt="SEO strategy and keyword research on a digital screen"
                     width={800}
                     height={500}
@@ -359,9 +353,6 @@ export default function PpcVsSeoClient() {
                       marginBottom: 16,
                     }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@diggitymarketing" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Diggity Marketing</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <p className="reveal">
@@ -534,7 +525,7 @@ export default function PpcVsSeoClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&h=500&fit=crop"
+                    src="/blog_images/ppc-vs-seo-2026.jpg"
                     alt="Team collaborating on marketing strategy with data dashboards"
                     width={800}
                     height={500}
@@ -545,9 +536,6 @@ export default function PpcVsSeoClient() {
                       marginBottom: 16,
                     }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@clyders" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Clyde RS</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <p className="reveal" style={{ fontSize: 18, color: '#ffffff', fontWeight: 500 }}>

@@ -57,7 +57,7 @@ export default function AIDevelopmentCostUSAClient() {
         <div className="cb-container" style={{ paddingTop: 100 }}>
           <div className="reveal" style={{ marginBottom: 40 }}>
             <img
-              src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=675&fit=crop"
+              src="/blog_images/ai-development-cost-usa.jpg"
               alt="AI development cost in USA - artificial intelligence and machine learning"
               style={{
                 width: '100%',

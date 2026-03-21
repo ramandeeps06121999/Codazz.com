@@ -76,6 +76,23 @@ export default function MicroservicesVsMonolithClient() {
       <Navbar />
       <main ref={pageRef as React.RefObject<HTMLElement>} style={{ background: '#000000', minHeight: '100vh' }}>
 
+        {/* -- FEATURED IMAGE -- */}
+        <div className="cb-container" style={{ paddingTop: 100 }}>
+          <div className="reveal" style={{ marginBottom: 40 }}>
+            <img
+              src="/blog_images/microservices-vs-monolith-2026.jpg"
+              alt="microservices vs monolith 2026"
+              style={{
+                width: '100%',
+                height: 'auto',
+                maxHeight: '500px',
+                objectFit: 'cover',
+                borderRadius: 'clamp(16px, 3vw, 24px)',
+              }}
+            />
+          </div>
+        </div>
+
         {/* ── ARTICLE HERO ── */}
         <section style={{ padding: 'clamp(100px, 14vw, 160px) 0 clamp(32px, 5vw, 64px)', position: 'relative', overflow: 'hidden' }}>
           <HeroBackground variant="left" />

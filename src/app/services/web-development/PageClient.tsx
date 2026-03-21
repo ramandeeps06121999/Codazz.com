@@ -458,23 +458,7 @@ const faqs = [
 
 export default function WebDevelopmentPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const heroRef = useReveal() as React.RefObject<HTMLElement>;
-  const awardsRef = useReveal() as React.RefObject<HTMLElement>;
-  const servicesRef = useReveal() as React.RefObject<HTMLElement>;
-  const benefitsRef = useReveal() as React.RefObject<HTMLElement>;
-  const logosRef = useReveal() as React.RefObject<HTMLElement>;
-  const caseRef = useReveal() as React.RefObject<HTMLElement>;
-  const techRef = useReveal() as React.RefObject<HTMLElement>;
-  const processRef = useReveal() as React.RefObject<HTMLElement>;
-  const whyRef = useReveal() as React.RefObject<HTMLElement>;
-  const complianceRef = useReveal() as React.RefObject<HTMLElement>;
-  const perfRef = useReveal() as React.RefObject<HTMLElement>;
-  const testimonialsRef = useReveal() as React.RefObject<HTMLElement>;
-  const engagementRef = useReveal() as React.RefObject<HTMLElement>;
-  const industriesRef = useReveal() as React.RefObject<HTMLElement>;
-  const compareRef = useReveal() as React.RefObject<HTMLElement>;
-  const faqRef = useReveal() as React.RefObject<HTMLElement>;
-  const ctaRef = useReveal() as React.RefObject<HTMLElement>;
+  const pageRef = useReveal() as React.RefObject<HTMLElement>;
 
   return (
     <>
@@ -581,7 +565,7 @@ export default function WebDevelopmentPage() {
       `}</style>
 
       <Navbar />
-      <main style={{ background: '#000000', color: '#ffffff', paddingTop: 80 }}>
+      <main ref={pageRef} style={{ background: '#000000', color: '#ffffff', paddingTop: 80 }}>
         <div className="cb-container">
           <Breadcrumb items={[
             { label: 'Home', href: '/' },
@@ -593,7 +577,7 @@ export default function WebDevelopmentPage() {
         {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
             1. HERO — H1 + stats + CTAs + inline lead form
         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-        <section ref={heroRef} className="section-padding" style={{ position: 'relative', overflow: 'hidden', minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
+        <section className="section-padding" style={{ position: 'relative', overflow: 'hidden', minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
           <HeroBackground variant="wide" />
           <div className="cb-container" style={{ position: 'relative', zIndex: 1 }}>
             <div className="hero-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 420px', gap: 64, alignItems: 'center' }}>
@@ -644,7 +628,7 @@ export default function WebDevelopmentPage() {
         {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
             2. AWARDS STRIP — Trust badges
         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-        <section ref={awardsRef} style={{ ...sectionBorder, padding: '32px 0' }}>
+        <section style={{ ...sectionBorder, padding: '32px 0' }}>
           <div className="cb-container reveal">
             <TrustBadges compact />
           </div>
@@ -653,7 +637,7 @@ export default function WebDevelopmentPage() {
         {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
             3. WEB SERVICES GRID — 6 cards linking to sub-pages
         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-        <section ref={servicesRef} className="section-padding" style={sectionBorder}>
+        <section className="section-padding" style={sectionBorder}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 16 }}>
               <span style={tagStyle}>Our Web Services</span>
@@ -684,7 +668,7 @@ export default function WebDevelopmentPage() {
         {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
             4. BENEFITS — Why invest in professional web development
         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-        <section ref={benefitsRef} className="section-padding" style={sectionBorder}>
+        <section className="section-padding" style={sectionBorder}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 16 }}>
               <span style={tagStyle}>Why It Matters</span>
@@ -719,7 +703,7 @@ export default function WebDevelopmentPage() {
         {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
             5. CLIENT LOGOS — Scrolling brand names
         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-        <section ref={logosRef} style={{ ...sectionBorder, padding: '48px 0', overflow: 'hidden' }}>
+        <section style={{ ...sectionBorder, padding: '48px 0', overflow: 'hidden' }}>
           <div className="reveal" style={{ textAlign: 'center', marginBottom: 32 }}>
             <span style={{ ...tagStyle, color: subtleWhite }}>Trusted By Industry Leaders</span>
           </div>
@@ -737,7 +721,7 @@ export default function WebDevelopmentPage() {
         {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
             6. CASE STUDIES — 3 web projects with metrics
         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-        <section ref={caseRef} className="section-padding" style={sectionBorder}>
+        <section className="section-padding" style={sectionBorder}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 16 }}>
               <span style={tagStyle}>Case Studies</span>
@@ -794,7 +778,7 @@ export default function WebDevelopmentPage() {
         {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
             7. TECH STACK — 18 technologies
         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-        <section ref={techRef} className="section-padding" style={sectionBorder}>
+        <section className="section-padding" style={sectionBorder}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 16 }}>
               <span style={tagStyle}>Technology Stack</span>
@@ -819,7 +803,7 @@ export default function WebDevelopmentPage() {
         {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
             8. DEVELOPMENT PROCESS — 6 steps
         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-        <section ref={processRef} className="section-padding" style={sectionBorder}>
+        <section className="section-padding" style={sectionBorder}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 16 }}>
               <span style={tagStyle}>Our Process</span>
@@ -856,7 +840,7 @@ export default function WebDevelopmentPage() {
         {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
             9. WHY CODAZZ — 4 differentiators
         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-        <section ref={whyRef} className="section-padding" style={sectionBorder}>
+        <section className="section-padding" style={sectionBorder}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 16 }}>
               <span style={tagStyle}>Why Codazz</span>
@@ -891,7 +875,7 @@ export default function WebDevelopmentPage() {
         {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
             10. COMPLIANCE — WCAG, Core Web Vitals, GDPR, PCI DSS
         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-        <section ref={complianceRef} className="section-padding" style={sectionBorder}>
+        <section className="section-padding" style={sectionBorder}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 16 }}>
               <span style={tagStyle}>Compliance & Standards</span>
@@ -923,7 +907,7 @@ export default function WebDevelopmentPage() {
         {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
             11. PERFORMANCE METRICS — Big numbers
         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-        <section ref={perfRef} className="section-padding" style={sectionBorder}>
+        <section className="section-padding" style={sectionBorder}>
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 48 }}>
               <span style={tagStyle}>Performance Benchmarks</span>
@@ -951,7 +935,7 @@ export default function WebDevelopmentPage() {
         {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
             12. TESTIMONIALS — 4 cards
         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-        <section ref={testimonialsRef} className="section-padding" style={sectionBorder}>
+        <section className="section-padding" style={sectionBorder}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 16 }}>
               <span style={tagStyle}>Client Testimonials</span>
@@ -987,7 +971,7 @@ export default function WebDevelopmentPage() {
         {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
             12b. ENGAGEMENT MODELS — 3 ways to work with us
         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-        <section ref={engagementRef} className="section-padding" style={sectionBorder}>
+        <section className="section-padding" style={sectionBorder}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 16 }}>
               <span style={tagStyle}>Engagement Models</span>
@@ -1074,7 +1058,7 @@ export default function WebDevelopmentPage() {
         {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
             12c. INDUSTRIES — 6 industry verticals
         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-        <section ref={industriesRef} className="section-padding" style={sectionBorder}>
+        <section className="section-padding" style={sectionBorder}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 16 }}>
               <span style={tagStyle}>Industries We Serve</span>
@@ -1152,7 +1136,7 @@ export default function WebDevelopmentPage() {
         {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
             12c. HOW WE COMPARE — Comparison table
         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-        <section ref={compareRef} className="section-padding" style={sectionBorder}>
+        <section className="section-padding" style={sectionBorder}>
           <div className="cb-container" style={{ maxWidth: 900, margin: '0 auto' }}>
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 16 }}>
               <span style={tagStyle}>How We Compare</span>
@@ -1263,7 +1247,7 @@ export default function WebDevelopmentPage() {
         {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
             13. FAQ — 8 web-specific FAQs
         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-        <section ref={faqRef} className="section-padding" style={sectionBorder}>
+        <section className="section-padding" style={sectionBorder}>
           <div className="cb-container" style={{ maxWidth: 800, margin: '0 auto' }}>
             <div className="reveal" style={{ marginBottom: 16 }}>
               <span style={tagStyle}>Frequently Asked Questions</span>
@@ -1323,7 +1307,7 @@ export default function WebDevelopmentPage() {
         {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
             14. CTA WITH FORM — Bottom lead capture
         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
-        <section ref={ctaRef} className="section-padding" style={{ position: 'relative', overflow: 'hidden' }}>
+        <section className="section-padding" style={{ position: 'relative', overflow: 'hidden' }}>
           {/* Background glow */}
           <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: 800, height: 600, background: 'radial-gradient(ellipse, rgba(34,197,94,0.06) 0%, transparent 70%)', pointerEvents: 'none' }} />
 

@@ -76,7 +76,7 @@ export default function PythonVsNodejsClient() {
         <div className="cb-container" style={{ paddingTop: 100 }}>
           <div className="reveal" style={{ marginBottom: 40 }}>
             <Image
-              src="https://images.unsplash.com/photo-1516116216624-53e697fedbea?w=1200&h=675&fit=crop"
+              src="/blog_images/python-vs-nodejs-backend-2026.jpg"
               alt="Backend development and server infrastructure"
               width={1200}
               height={675}
@@ -89,9 +89,6 @@ export default function PythonVsNodejsClient() {
                 borderRadius: 'clamp(16px, 3vw, 24px)',
               }}
             />
-            <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', marginTop: 8, textAlign: 'center' }}>
-              Photo by <a href="https://unsplash.com/@jstrippa" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>James Harrison</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-            </p>
           </div>
         </div>
 
@@ -267,15 +264,12 @@ export default function PythonVsNodejsClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop"
+                    src="/blog_images/python-vs-nodejs-backend-2026.jpg"
                     alt="Performance analytics and monitoring dashboard"
                     width={800}
                     height={500}
                     style={{ width: '100%', height: 'auto', borderRadius: 12, marginBottom: 16 }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@lukechesser" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Luke Chesser</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <p className="reveal">
@@ -365,15 +359,12 @@ export default function PythonVsNodejsClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=500&fit=crop"
+                    src="/blog_images/python-vs-nodejs-backend-2026.jpg"
                     alt="Artificial intelligence and machine learning visualization"
                     width={800}
                     height={500}
                     style={{ width: '100%', height: 'auto', borderRadius: 12, marginBottom: 16 }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@ussamaazam" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Ussama Azam</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <p className="reveal">
@@ -418,15 +409,12 @@ export default function PythonVsNodejsClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=500&fit=crop"
+                    src="/blog_images/python-vs-nodejs-backend-2026.jpg"
                     alt="Connected technology ecosystem"
                     width={800}
                     height={500}
                     style={{ width: '100%', height: 'auto', borderRadius: 12, marginBottom: 16 }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@nasa" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>NASA</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <div className="reveal" style={{
@@ -542,15 +530,12 @@ export default function PythonVsNodejsClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&h=500&fit=crop"
+                    src="/blog_images/python-vs-nodejs-backend-2026.jpg"
                     alt="Team making technology decisions"
                     width={800}
                     height={500}
                     style={{ width: '100%', height: 'auto', borderRadius: 12, marginBottom: 16 }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@clyders" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Clyde RS</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <div className="reveal" style={{ margin: '24px 0' }}>

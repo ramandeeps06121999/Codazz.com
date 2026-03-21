@@ -1,10 +1,10 @@
 import { Metadata } from 'next';
 import PageClient from './PageClient';
 
-const TITLE = 'SEO for SaaS Companies: Complete Guide 2026';
-const DESCRIPTION = 'The definitive guide to SaaS SEO in 2026 — technical SEO, content strategy, link building, programmatic SEO, and conversion optimization for B2B and B2C SaaS products.';
+const TITLE = 'SEO for SaaS Companies 2026: Complete Growth Guide';
+const DESCRIPTION = 'The definitive SEO guide for SaaS companies in 2026 — product-led SEO, programmatic SEO, comparison pages, integration pages, free tools strategy, G2/Capterra optimization, content clusters, and technical SEO for SaaS products.';
 const SLUG = 'seo-for-saas-companies-2026';
-const DATE = '2026-03-19';
+const DATE = '2026-03-20';
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -15,6 +15,14 @@ export const metadata: Metadata = {
     type: 'article',
     publishedTime: DATE,
     url: `https://codazz.com/blog/${SLUG}`,
+    images: [
+      {
+        url: `https://codazz.com/blog_images/${SLUG}.jpg`,
+        width: 1200,
+        height: 630,
+        alt: 'SEO for SaaS companies 2026 complete growth guide',
+      },
+    ],
   },
   alternates: {
     canonical: `https://codazz.com/blog/${SLUG}`,

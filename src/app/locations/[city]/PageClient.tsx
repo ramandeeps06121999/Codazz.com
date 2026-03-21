@@ -791,49 +791,67 @@ function TechTabs() {
           </button>
         ))}
       </div>
-      {/* Tech grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 160px), 1fr))', gap: 16 }}>
-        {techCategories[activeTab].techs.map((tech) => (
-          <div
-            key={tech.name}
-            style={{
-              padding: '24px 20px',
-              borderRadius: 20,
-              border: '1px solid rgba(255,255,255,0.06)',
-              background: 'rgba(255,255,255,0.015)',
-              textAlign: 'center',
-              transition: 'all 0.3s',
-              cursor: 'default',
-            }}
-            onMouseEnter={e => {
-              (e.currentTarget as HTMLElement).style.borderColor = `${tech.color}33`;
-              (e.currentTarget as HTMLElement).style.background = `${tech.color}08`;
-              (e.currentTarget as HTMLElement).style.transform = 'translateY(-4px)';
-            }}
-            onMouseLeave={e => {
-              (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.06)';
-              (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.015)';
-              (e.currentTarget as HTMLElement).style.transform = '';
-            }}
-          >
-            <div style={{
-              width: 48,
-              height: 48,
-              borderRadius: 14,
-              background: `${tech.color}15`,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              margin: '0 auto 14px',
-              fontSize: 20,
-              fontWeight: 700,
-              color: tech.color,
-            }}>
-              {tech.name.charAt(0)}
+      {/* Tech horizontal scroll */}
+      <div style={{ position: 'relative' }}>
+        <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 40, background: 'linear-gradient(90deg, #000 0%, transparent 100%)', zIndex: 2, pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 40, background: 'linear-gradient(270deg, #000 0%, transparent 100%)', zIndex: 2, pointerEvents: 'none' }} />
+        <div
+          className="loc-carousel-wrap"
+          style={{
+            display: 'flex',
+            gap: 14,
+            overflowX: 'auto',
+            scrollSnapType: 'x mandatory',
+            padding: '8px 20px',
+            msOverflowStyle: 'none',
+            scrollbarWidth: 'none',
+          }}
+        >
+          {techCategories[activeTab].techs.map((tech) => (
+            <div
+              key={tech.name}
+              style={{
+                flexShrink: 0,
+                width: 130,
+                scrollSnapAlign: 'start',
+                padding: '24px 20px',
+                borderRadius: 20,
+                border: '1px solid rgba(255,255,255,0.06)',
+                background: 'rgba(255,255,255,0.015)',
+                textAlign: 'center',
+                transition: 'all 0.3s',
+                cursor: 'default',
+              }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLElement).style.borderColor = `${tech.color}33`;
+                (e.currentTarget as HTMLElement).style.background = `${tech.color}08`;
+                (e.currentTarget as HTMLElement).style.transform = 'translateY(-4px)';
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.06)';
+                (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.015)';
+                (e.currentTarget as HTMLElement).style.transform = '';
+              }}
+            >
+              <div style={{
+                width: 48,
+                height: 48,
+                borderRadius: 14,
+                background: `${tech.color}15`,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                margin: '0 auto 14px',
+                fontSize: 20,
+                fontWeight: 700,
+                color: tech.color,
+              }}>
+                {tech.name.charAt(0)}
+              </div>
+              <div style={{ fontSize: 14, fontWeight: 600, color: '#ffffff', letterSpacing: '-0.01em' }}>{tech.name}</div>
             </div>
-            <div style={{ fontSize: 14, fontWeight: 600, color: '#ffffff', letterSpacing: '-0.01em' }}>{tech.name}</div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -842,17 +860,89 @@ function TechTabs() {
 // ─── ANIMATED COUNTER COMPONENT ──────────────────────────────────────────────
 
 function AnimatedStat({ value, label }: { value: string; label: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [displayValue, setDisplayValue] = useState('0');
+  const [hasAnimated, setHasAnimated] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const io = new IntersectionObserver(
+      entries => {
+        if (entries[0].isIntersecting && !hasAnimated) {
+          setHasAnimated(true);
+
+          // Extract numeric part, prefix, and suffix
+          const match = value.match(/^([^\d]*)([\d,.]+)(.*)$/);
+          if (!match) {
+            setDisplayValue(value);
+            return;
+          }
+          const prefix = match[1];
+          const numStr = match[2].replace(/,/g, '');
+          const suffix = match[3];
+          const target = parseFloat(numStr);
+          const isDecimal = numStr.includes('.');
+          const hasCommas = match[2].includes(',');
+
+          const duration = 1800;
+          const startTime = performance.now();
+
+          function animate(now: number) {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            // Ease out cubic
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const current = eased * target;
+
+            let formatted: string;
+            if (isDecimal) {
+              formatted = current.toFixed(numStr.split('.')[1]?.length || 1);
+            } else {
+              const rounded = Math.round(current);
+              formatted = hasCommas ? rounded.toLocaleString() : String(rounded);
+            }
+
+            setDisplayValue(`${prefix}${formatted}${suffix}`);
+
+            if (progress < 1) {
+              requestAnimationFrame(animate);
+            } else {
+              setDisplayValue(value);
+            }
+          }
+          requestAnimationFrame(animate);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    io.observe(el);
+    return () => io.disconnect();
+  }, [value, hasAnimated]);
+
   return (
-    <div style={{ textAlign: 'center', padding: '32px 16px' }}>
+    <div ref={ref} style={{ textAlign: 'center', padding: '32px 16px', position: 'relative' }}>
+      {/* Green accent line */}
+      <div style={{
+        width: 40,
+        height: 3,
+        borderRadius: 2,
+        background: '#22c55e',
+        margin: '0 auto 20px',
+        opacity: 0.7,
+      }} />
       <div style={{
         fontSize: 'clamp(2.5rem, 5vw, 4.5rem)',
         fontWeight: 700,
         color: '#ffffff',
         letterSpacing: '-0.04em',
         lineHeight: 1,
-        marginBottom: 8,
+        marginBottom: 10,
+        fontVariantNumeric: 'tabular-nums',
       }}>
-        {value}
+        {displayValue}
       </div>
       <div style={{
         fontSize: 13,
@@ -876,12 +966,22 @@ function MarqueeStyles() {
         0% { transform: translateX(0); }
         100% { transform: translateX(-50%); }
       }
+      @keyframes cityMarqueeL {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+      @keyframes cityMarqueeR {
+        0% { transform: translateX(-50%); }
+        100% { transform: translateX(0); }
+      }
       .loc-hero-form-grid {
         display: grid;
         grid-template-columns: 1fr 420px;
         gap: 60px;
         align-items: center;
       }
+      .loc-carousel-wrap::-webkit-scrollbar { display: none; }
+      .loc-city-marquee:hover .loc-city-track { animation-play-state: paused !important; }
       @media (max-width: 900px) {
         .loc-hero-form-grid {
           grid-template-columns: 1fr !important;
@@ -1061,29 +1161,58 @@ export default function PageClient({ city }: { city: CityData }) {
         {/* ════════════════════════════════════════════════════════════════════
             3. CLIENT LOGOS — Scrolling marquee
         ════════════════════════════════════════════════════════════════════ */}
-        <section ref={logosRef} style={{ ...sectionBorder, padding: 'clamp(40px, 6vw, 64px) 0', overflow: 'hidden' }}>
-          <div className="cb-container reveal" style={{ textAlign: 'center', marginBottom: 32 }}>
-            <div style={subLabel}>Trusted by Industry Leaders</div>
+        <section ref={logosRef} style={{ ...sectionBorder, padding: 'clamp(48px, 8vw, 80px) 0', overflow: 'hidden' }}>
+          <div className="cb-container reveal" style={{ textAlign: 'center', marginBottom: 40 }}>
+            <div style={{ ...subLabel, color: 'rgba(255,255,255,0.35)' }}>Trusted by Industry Leaders</div>
           </div>
-          <div style={{ position: 'relative', width: '100%', overflow: 'hidden', maskImage: 'linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%)', WebkitMaskImage: 'linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%)' }}>
-            <div style={{ display: 'flex', gap: 60, animation: 'marqueeScroll 30s linear infinite', width: 'max-content' }}>
-              {[...clientLogos, ...clientLogos].map((logo, i) => (
-                <div key={`${logo}-${i}`} style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: 10, padding: '12px 0' }}>
+          {/* Row 1 — scrolls left */}
+          <div style={{ position: 'relative', width: '100%', overflow: 'hidden', maskImage: 'linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%)', WebkitMaskImage: 'linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%)', marginBottom: 16 }}>
+            <div style={{ display: 'flex', gap: 48, animation: 'marqueeScroll 35s linear infinite', width: 'max-content' }}>
+              {[...clientLogos, ...clientLogos, ...clientLogos].map((logo, i) => (
+                <div key={`row1-${logo}-${i}`} style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: 14, padding: '14px 0' }}>
                   <div style={{
-                    width: 36,
-                    height: 36,
-                    borderRadius: 10,
-                    background: 'rgba(255,255,255,0.04)',
+                    width: 44,
+                    height: 44,
+                    borderRadius: 12,
+                    background: 'rgba(34,197,94,0.06)',
+                    border: '1px solid rgba(34,197,94,0.1)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    fontSize: 16,
+                    fontSize: 18,
                     fontWeight: 800,
-                    color: 'rgba(255,255,255,0.2)',
+                    color: '#22c55e',
                   }}>
                     {logo.charAt(0)}
                   </div>
-                  <span style={{ fontSize: 16, fontWeight: 600, color: 'rgba(255,255,255,0.25)', letterSpacing: '-0.02em', whiteSpace: 'nowrap' }}>
+                  <span style={{ fontSize: 18, fontWeight: 700, color: 'rgba(255,255,255,0.55)', letterSpacing: '-0.02em', whiteSpace: 'nowrap' }}>
+                    {logo}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+          {/* Row 2 — scrolls right (reverse) */}
+          <div style={{ position: 'relative', width: '100%', overflow: 'hidden', maskImage: 'linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%)', WebkitMaskImage: 'linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%)' }}>
+            <div style={{ display: 'flex', gap: 48, animation: 'marqueeScroll 40s linear infinite reverse', width: 'max-content' }}>
+              {[...clientLogos.slice().reverse(), ...clientLogos.slice().reverse(), ...clientLogos.slice().reverse()].map((logo, i) => (
+                <div key={`row2-${logo}-${i}`} style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: 14, padding: '14px 0' }}>
+                  <div style={{
+                    width: 44,
+                    height: 44,
+                    borderRadius: 12,
+                    background: 'rgba(255,255,255,0.03)',
+                    border: '1px solid rgba(255,255,255,0.06)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: 18,
+                    fontWeight: 800,
+                    color: 'rgba(255,255,255,0.4)',
+                  }}>
+                    {logo.charAt(0)}
+                  </div>
+                  <span style={{ fontSize: 18, fontWeight: 700, color: 'rgba(255,255,255,0.45)', letterSpacing: '-0.02em', whiteSpace: 'nowrap' }}>
                     {logo}
                   </span>
                 </div>
@@ -1097,28 +1226,66 @@ export default function PageClient({ city }: { city: CityData }) {
         ════════════════════════════════════════════════════════════════════ */}
         <section ref={industriesRef} style={{ ...sectionPad, ...sectionBorder }}>
           <div className="cb-container">
-            <div style={{ textAlign: 'center', marginBottom: 56 }}>
+            <div style={{ textAlign: 'center', marginBottom: 40 }}>
               <div className="reveal" style={subLabel}>Industries We Serve</div>
               <h2 className="reveal" style={{ ...heading2, marginBottom: 16 }}>
                 Key Industries in <span style={{ color: '#ffffff' }}>{city.name}</span>
               </h2>
               <p className="reveal" style={{ ...bodyText, maxWidth: 640, margin: '0 auto', color: 'rgba(255,255,255,0.7)' }}>
-                We bring deep domain expertise to the industries that power {city.name}&apos;s economy. Our engineers understand your regulatory landscape, user expectations, and competitive dynamics.
+                Deep domain expertise across the industries that power {city.name}&apos;s economy.
               </p>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 300px), 1fr))', gap: 20 }}>
-              {industryCards.map((ind, i) => (
-                <div
+          </div>
+          {/* Horizontal scroll pill strip */}
+          <div className="reveal" style={{ position: 'relative' }}>
+            {/* Left fade */}
+            <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 60, background: 'linear-gradient(90deg, #000 0%, transparent 100%)', zIndex: 2, pointerEvents: 'none' }} />
+            {/* Right fade */}
+            <div style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 60, background: 'linear-gradient(270deg, #000 0%, transparent 100%)', zIndex: 2, pointerEvents: 'none' }} />
+            <div
+              className="loc-carousel-wrap"
+              style={{
+                display: 'flex',
+                gap: 12,
+                overflowX: 'auto',
+                scrollSnapType: 'x mandatory',
+                padding: '8px 40px',
+                msOverflowStyle: 'none',
+                scrollbarWidth: 'none',
+              }}
+            >
+              {industryCards.map((ind) => (
+                <Link
                   key={ind.name}
-                  className={`reveal reveal-d${(i % 4) + 1}`}
-                  style={cardStyle}
-                  onMouseEnter={e => hoverCard(e, true)}
-                  onMouseLeave={e => hoverCard(e, false)}
+                  href={`/industries/${ind.name.toLowerCase().replace(/[\s&]+/g, '-')}`}
+                  style={{
+                    flexShrink: 0,
+                    scrollSnapAlign: 'start',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 10,
+                    padding: '14px 24px',
+                    borderRadius: 100,
+                    border: '1px solid rgba(255,255,255,0.06)',
+                    background: 'rgba(255,255,255,0.015)',
+                    textDecoration: 'none',
+                    whiteSpace: 'nowrap',
+                    transition: 'border-color 0.3s, background 0.3s, transform 0.3s',
+                  }}
+                  onMouseEnter={e => {
+                    (e.currentTarget as HTMLElement).style.borderColor = 'rgba(34,197,94,0.25)';
+                    (e.currentTarget as HTMLElement).style.background = 'rgba(34,197,94,0.05)';
+                    (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)';
+                  }}
+                  onMouseLeave={e => {
+                    (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.06)';
+                    (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.015)';
+                    (e.currentTarget as HTMLElement).style.transform = '';
+                  }}
                 >
-                  <div style={{ fontSize: 36, marginBottom: 16 }}>{ind.icon}</div>
-                  <h3 style={{ fontSize: 18, fontWeight: 600, color: '#ffffff', marginBottom: 10, letterSpacing: '-0.01em' }}>{ind.name}</h3>
-                  <p style={{ ...bodyText, margin: 0, fontSize: 14 }}>{ind.desc}</p>
-                </div>
+                  <span style={{ fontSize: 20 }}>{ind.icon}</span>
+                  <span style={{ fontSize: 14, fontWeight: 600, color: '#ffffff', letterSpacing: '-0.01em' }}>{ind.name}</span>
+                </Link>
               ))}
             </div>
           </div>
@@ -1172,110 +1339,144 @@ export default function PageClient({ city }: { city: CityData }) {
             </div>
 
             <div className="loc-portfolio-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 360px), 1fr))', gap: 24 }}>
-              {portfolioProjects.map((project, i) => (
-                <div
-                  key={project.name}
-                  className={`reveal reveal-d${i + 1}`}
-                  style={{
-                    borderRadius: 28,
-                    border: '1px solid rgba(255,255,255,0.06)',
-                    background: 'rgba(255,255,255,0.015)',
-                    overflow: 'hidden',
-                    transition: 'border-color 0.3s, transform 0.3s, box-shadow 0.3s',
-                  }}
-                  onMouseEnter={e => {
-                    (e.currentTarget as HTMLElement).style.borderColor = 'rgba(34,197,94,0.2)';
-                    (e.currentTarget as HTMLElement).style.transform = 'translateY(-4px)';
-                    (e.currentTarget as HTMLElement).style.boxShadow = '0 24px 60px rgba(255,255,255,0.06)';
-                  }}
-                  onMouseLeave={e => {
-                    (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.06)';
-                    (e.currentTarget as HTMLElement).style.transform = '';
-                    (e.currentTarget as HTMLElement).style.boxShadow = '';
-                  }}
-                >
-                  {/* Screenshot placeholder */}
-                  <div style={{
-                    height: 200,
-                    background: project.gradient,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    borderBottom: '1px solid rgba(255,255,255,0.04)',
-                    position: 'relative',
-                    overflow: 'hidden',
-                  }}>
-                    {/* Mock app screen */}
+              {(city.portfolio && city.portfolio.length > 0 ? city.portfolio : portfolioProjects).map((project, i) => {
+                // Normalize shape: city.portfolio uses `metrics`, hardcoded uses `results`
+                const projectName = project.name;
+                const projectDesc = project.description;
+                const projectTech = project.techStack;
+                const projectMetrics = 'metrics' in project ? (project as { metrics: { label: string; value: string }[] }).metrics : ('results' in project ? (project as { results: { label: string; value: string }[] }).results : []);
+                const gradients = [
+                  'linear-gradient(135deg, rgba(34,197,94,0.15) 0%, rgba(34,197,94,0.02) 100%)',
+                  'linear-gradient(135deg, rgba(59,130,246,0.15) 0%, rgba(59,130,246,0.02) 100%)',
+                  'linear-gradient(135deg, rgba(168,85,247,0.15) 0%, rgba(168,85,247,0.02) 100%)',
+                ];
+                const categoryIcons: Record<string, string> = {
+                  'FinTech': '💰', 'Healthcare': '🏥', 'Logistics': '🚛', 'E-Commerce': '🛒',
+                  'SaaS': '☁️', 'Real Estate': '🏠', 'AI': '🧠', 'Gaming': '🎮',
+                  'Energy': '⚡', 'EdTech': '📚', 'Media': '🎬', 'Cybersecurity': '🔒',
+                };
+                // Derive a category from the project name for the icon
+                const categoryKey = Object.keys(categoryIcons).find(k => projectName.toLowerCase().includes(k.toLowerCase())) || '';
+                const categoryIcon = categoryIcons[categoryKey] || '🚀';
+
+                return (
+                  <div
+                    key={projectName}
+                    className={`reveal reveal-d${i + 1}`}
+                    style={{
+                      borderRadius: 28,
+                      border: '1px solid rgba(255,255,255,0.06)',
+                      background: 'rgba(255,255,255,0.015)',
+                      overflow: 'hidden',
+                      transition: 'border-color 0.3s, transform 0.3s, box-shadow 0.3s',
+                    }}
+                    onMouseEnter={e => {
+                      (e.currentTarget as HTMLElement).style.borderColor = 'rgba(34,197,94,0.2)';
+                      (e.currentTarget as HTMLElement).style.transform = 'translateY(-4px)';
+                      (e.currentTarget as HTMLElement).style.boxShadow = '0 24px 60px rgba(255,255,255,0.06)';
+                    }}
+                    onMouseLeave={e => {
+                      (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.06)';
+                      (e.currentTarget as HTMLElement).style.transform = '';
+                      (e.currentTarget as HTMLElement).style.boxShadow = '';
+                    }}
+                  >
+                    {/* Project card header with category icon, tech chips, gradient overlay */}
                     <div style={{
-                      width: '70%',
-                      height: '75%',
-                      borderRadius: 12,
-                      background: 'rgba(0,0,0,0.4)',
-                      border: '1px solid rgba(255,255,255,0.1)',
+                      height: 200,
+                      background: gradients[i % gradients.length],
                       display: 'flex',
                       flexDirection: 'column',
-                      padding: 16,
-                      gap: 8,
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      borderBottom: '1px solid rgba(255,255,255,0.04)',
+                      position: 'relative',
+                      overflow: 'hidden',
+                      gap: 16,
                     }}>
-                      <div style={{ display: 'flex', gap: 6 }}>
-                        <div style={{ width: 8, height: 8, borderRadius: '50%', background: 'rgba(255,255,255,0.15)' }} />
-                        <div style={{ width: 8, height: 8, borderRadius: '50%', background: 'rgba(255,255,255,0.1)' }} />
-                        <div style={{ width: 8, height: 8, borderRadius: '50%', background: 'rgba(255,255,255,0.1)' }} />
-                      </div>
-                      <div style={{ width: '60%', height: 6, borderRadius: 3, background: 'rgba(255,255,255,0.08)' }} />
-                      <div style={{ width: '80%', height: 6, borderRadius: 3, background: 'rgba(255,255,255,0.05)' }} />
-                      <div style={{ flex: 1, borderRadius: 8, background: 'rgba(255,255,255,0.03)', marginTop: 4 }} />
-                    </div>
-                  </div>
-
-                  <div style={{ padding: '28px 28px 32px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
-                      <span style={{
-                        fontSize: 11,
-                        fontWeight: 700,
-                        letterSpacing: '0.1em',
-                        textTransform: 'uppercase',
-                        color: '#22c55e',
-                        padding: '4px 12px',
-                        borderRadius: 100,
-                        background: 'rgba(34,197,94,0.08)',
-                        border: '1px solid rgba(34,197,94,0.15)',
+                      {/* Gradient overlay */}
+                      <div style={{
+                        position: 'absolute', inset: 0,
+                        background: 'linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.4) 100%)',
+                        pointerEvents: 'none',
+                      }} />
+                      {/* Category icon */}
+                      <div style={{
+                        position: 'relative', zIndex: 1,
+                        width: 64, height: 64, borderRadius: 20,
+                        background: 'rgba(0,0,0,0.5)',
+                        border: '1px solid rgba(255,255,255,0.1)',
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        fontSize: 32,
                       }}>
-                        {project.category}
-                      </span>
+                        {categoryIcon}
+                      </div>
+                      {/* Tech stack chips overlay */}
+                      <div style={{
+                        position: 'relative', zIndex: 1,
+                        display: 'flex', flexWrap: 'wrap', gap: 6, justifyContent: 'center',
+                        padding: '0 20px',
+                      }}>
+                        {projectTech.slice(0, 4).map(tech => (
+                          <span key={tech} style={{
+                            fontSize: 10, fontWeight: 700,
+                            color: 'rgba(255,255,255,0.7)',
+                            padding: '4px 10px', borderRadius: 6,
+                            background: 'rgba(0,0,0,0.5)',
+                            border: '1px solid rgba(255,255,255,0.1)',
+                            letterSpacing: '0.04em',
+                          }}>
+                            {tech}
+                          </span>
+                        ))}
+                        {projectTech.length > 4 && (
+                          <span style={{
+                            fontSize: 10, fontWeight: 700,
+                            color: 'rgba(255,255,255,0.5)',
+                            padding: '4px 10px', borderRadius: 6,
+                            background: 'rgba(0,0,0,0.5)',
+                            border: '1px solid rgba(255,255,255,0.08)',
+                          }}>
+                            +{projectTech.length - 4}
+                          </span>
+                        )}
+                      </div>
                     </div>
-                    <h3 style={{ fontSize: 20, fontWeight: 600, color: '#ffffff', marginBottom: 12, letterSpacing: '-0.02em' }}>{project.name}</h3>
-                    <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', lineHeight: 1.7, marginBottom: 20 }}>{project.description}</p>
 
-                    {/* Tech stack tags */}
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 20 }}>
-                      {project.techStack.map(tech => (
-                        <span key={tech} style={{
-                          fontSize: 11,
-                          fontWeight: 600,
-                          color: 'rgba(255,255,255,0.4)',
-                          padding: '5px 12px',
-                          borderRadius: 8,
-                          background: 'rgba(255,255,255,0.04)',
-                          border: '1px solid rgba(255,255,255,0.04)',
-                        }}>
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
+                    <div style={{ padding: '28px 28px 32px' }}>
+                      <h3 style={{ fontSize: 20, fontWeight: 600, color: '#ffffff', marginBottom: 12, letterSpacing: '-0.02em' }}>{projectName}</h3>
+                      <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', lineHeight: 1.7, marginBottom: 20 }}>{projectDesc}</p>
 
-                    {/* Results */}
-                    <div style={{ display: 'grid', gridTemplateColumns: `repeat(${project.results.length}, 1fr)`, gap: 12, paddingTop: 20, borderTop: '1px solid rgba(255,255,255,0.04)' }}>
-                      {project.results.map(r => (
-                        <div key={r.label} style={{ textAlign: 'center' }}>
-                          <div style={{ fontSize: 18, fontWeight: 700, color: '#22c55e', letterSpacing: '-0.02em' }}>{r.value}</div>
-                          <div style={{ fontSize: 10, fontWeight: 600, color: 'rgba(255,255,255,0.3)', textTransform: 'uppercase', letterSpacing: '0.08em', marginTop: 4 }}>{r.label}</div>
-                        </div>
-                      ))}
+                      {/* Tech stack tags (full list) */}
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 20 }}>
+                        {projectTech.map(tech => (
+                          <span key={tech} style={{
+                            fontSize: 11,
+                            fontWeight: 600,
+                            color: 'rgba(255,255,255,0.4)',
+                            padding: '5px 12px',
+                            borderRadius: 8,
+                            background: 'rgba(255,255,255,0.04)',
+                            border: '1px solid rgba(255,255,255,0.04)',
+                          }}>
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Metrics */}
+                      <div style={{ display: 'grid', gridTemplateColumns: `repeat(${projectMetrics.length}, 1fr)`, gap: 12, paddingTop: 20, borderTop: '1px solid rgba(255,255,255,0.04)' }}>
+                        {projectMetrics.map(r => (
+                          <div key={r.label} style={{ textAlign: 'center' }}>
+                            <div style={{ fontSize: 18, fontWeight: 700, color: '#22c55e', letterSpacing: '-0.02em' }}>{r.value}</div>
+                            <div style={{ fontSize: 10, fontWeight: 600, color: 'rgba(255,255,255,0.3)', textTransform: 'uppercase', letterSpacing: '0.08em', marginTop: 4 }}>{r.label}</div>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
 
             <div className="reveal" style={{ textAlign: 'center', marginTop: 48 }}>
@@ -1313,36 +1514,66 @@ export default function PageClient({ city }: { city: CityData }) {
               <ServiceAccordion services={servicesBreakdown} cityName={city.name} />
             </div>
 
-            {/* Quick-link grid for all 12 services */}
+            {/* Quick-link horizontal carousel for all 12 services */}
             <div className="reveal" style={{ marginTop: 56 }}>
               <div style={{ textAlign: 'center', marginBottom: 28 }}>
                 <div style={{ fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,0.3)' }}>All Services in {city.name}</div>
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 260px), 1fr))', gap: 12 }}>
-                {services.map((svc) => (
-                  <Link
-                    key={svc.slug}
-                    href={`/locations/${city.slug}/${svc.slug}`}
-                    style={{
-                      ...cardStyle,
-                      padding: '24px 24px',
-                      textDecoration: 'none',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 14,
-                      borderRadius: 20,
-                    }}
-                    onMouseEnter={e => hoverCard(e, true)}
-                    onMouseLeave={e => hoverCard(e, false)}
-                  >
-                    <span style={{ fontSize: 24, flexShrink: 0 }}>{svc.icon}</span>
-                    <div style={{ flex: 1 }}>
+              <div style={{ position: 'relative' }}>
+                {/* Left fade */}
+                <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 48, background: 'linear-gradient(90deg, #000 0%, transparent 100%)', zIndex: 2, pointerEvents: 'none' }} />
+                {/* Right fade */}
+                <div style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 48, background: 'linear-gradient(270deg, #000 0%, transparent 100%)', zIndex: 2, pointerEvents: 'none' }} />
+                <div
+                  className="loc-carousel-wrap"
+                  style={{
+                    display: 'flex',
+                    gap: 12,
+                    overflowX: 'auto',
+                    scrollSnapType: 'x mandatory',
+                    padding: '8px 24px',
+                    msOverflowStyle: 'none',
+                    scrollbarWidth: 'none',
+                  }}
+                >
+                  {services.map((svc) => (
+                    <Link
+                      key={svc.slug}
+                      href={`/locations/${city.slug}/${svc.slug}`}
+                      style={{
+                        flexShrink: 0,
+                        width: 240,
+                        scrollSnapAlign: 'start',
+                        padding: '24px 24px',
+                        borderRadius: 28,
+                        border: '1px solid rgba(255,255,255,0.06)',
+                        background: 'rgba(255,255,255,0.015)',
+                        textDecoration: 'none',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: 12,
+                        transition: 'border-color 0.3s, background 0.3s, transform 0.3s',
+                      }}
+                      onMouseEnter={e => {
+                        (e.currentTarget as HTMLElement).style.borderColor = 'rgba(34,197,94,0.2)';
+                        (e.currentTarget as HTMLElement).style.background = 'rgba(34,197,94,0.03)';
+                        (e.currentTarget as HTMLElement).style.transform = 'translateY(-4px)';
+                      }}
+                      onMouseLeave={e => {
+                        (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.06)';
+                        (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.015)';
+                        (e.currentTarget as HTMLElement).style.transform = '';
+                      }}
+                    >
+                      <span style={{ fontSize: 28 }}>{svc.icon}</span>
                       <div style={{ fontSize: 14, fontWeight: 600, color: '#ffffff', letterSpacing: '-0.01em' }}>{svc.name}</div>
-                      <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.3)', marginTop: 3 }}>in {city.name}</div>
-                    </div>
-                    <svg style={{ flexShrink: 0, opacity: 0.2 }} width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-                  </Link>
-                ))}
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 600, color: '#22c55e', marginTop: 'auto' }}>
+                        Learn More
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -1364,86 +1595,96 @@ export default function PageClient({ city }: { city: CityData }) {
             </div>
 
             {/* Timeline */}
-            <div className="loc-process-timeline" style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 20, position: 'relative' }}>
-              {/* Connector line — desktop only */}
-              <div style={{
-                position: 'absolute',
-                top: 44,
-                left: '10%',
-                right: '10%',
-                height: 2,
-                background: 'linear-gradient(90deg, rgba(34,197,94,0.3), rgba(34,197,94,0.1))',
-                zIndex: 0,
-              }} />
+            {(() => {
+              const useCitySteps = city.processSteps && city.processSteps.length > 0;
+              const stepsToRender = useCitySteps ? city.processSteps : processSteps;
+              const defaultIcons = ['🔍', '📐', '🎨', '⚙️', '🚀'];
 
-              {processSteps.map((step, i) => (
-                <div
-                  key={step.step}
-                  className={`reveal reveal-d${i + 1}`}
-                  style={{
-                    position: 'relative',
-                    zIndex: 1,
-                    textAlign: 'center',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                  }}
-                >
-                  {/* Step circle */}
+              return (
+                <div className="loc-process-timeline" style={{ display: 'grid', gridTemplateColumns: `repeat(${stepsToRender.length}, 1fr)`, gap: 20, position: 'relative' }}>
+                  {/* Connector line — desktop only */}
                   <div style={{
-                    width: 72,
-                    height: 72,
-                    borderRadius: '50%',
-                    border: '2px solid rgba(34,197,94,0.2)',
-                    background: 'rgba(34,197,94,0.06)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: 32,
-                    marginBottom: 20,
-                  }}>
-                    {step.icon}
-                  </div>
+                    position: 'absolute',
+                    top: 44,
+                    left: '10%',
+                    right: '10%',
+                    height: 2,
+                    background: 'linear-gradient(90deg, rgba(34,197,94,0.3), rgba(34,197,94,0.1))',
+                    zIndex: 0,
+                  }} />
 
-                  {/* Step number */}
-                  <div style={{ fontSize: 11, fontWeight: 700, color: '#22c55e', letterSpacing: '0.1em', marginBottom: 8 }}>
-                    STEP {step.step}
-                  </div>
-
-                  <h3 style={{ fontSize: 'clamp(15px, 2vw, 18px)', fontWeight: 600, color: '#ffffff', marginBottom: 12, letterSpacing: '-0.01em' }}>
-                    {step.title}
-                  </h3>
-
-                  <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, marginBottom: 16 }}>
-                    {step.description}
-                  </p>
-
-                  {/* Duration badge */}
-                  <div style={{
-                    fontSize: 11,
-                    fontWeight: 600,
-                    color: 'rgba(255,255,255,0.3)',
-                    padding: '6px 14px',
-                    borderRadius: 100,
-                    border: '1px solid rgba(255,255,255,0.06)',
-                    background: 'rgba(255,255,255,0.02)',
-                    marginBottom: 16,
-                  }}>
-                    {step.duration}
-                  </div>
-
-                  {/* Deliverables */}
-                  <div style={{ textAlign: 'left', width: '100%' }}>
-                    {step.deliverables.map(d => (
-                      <div key={d} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
-                        <div style={{ width: 4, height: 4, borderRadius: '50%', background: '#22c55e', flexShrink: 0 }} />
-                        <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)' }}>{d}</span>
+                  {stepsToRender.map((step, i) => (
+                    <div
+                      key={i}
+                      className={`reveal reveal-d${i + 1}`}
+                      style={{
+                        position: 'relative',
+                        zIndex: 1,
+                        textAlign: 'center',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                      }}
+                    >
+                      {/* Step circle */}
+                      <div style={{
+                        width: 72,
+                        height: 72,
+                        borderRadius: '50%',
+                        border: '2px solid rgba(34,197,94,0.2)',
+                        background: 'rgba(34,197,94,0.06)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontSize: 32,
+                        marginBottom: 20,
+                      }}>
+                        {useCitySteps ? defaultIcons[i % defaultIcons.length] : (step as typeof processSteps[number]).icon}
                       </div>
-                    ))}
-                  </div>
+
+                      {/* Step number */}
+                      <div style={{ fontSize: 11, fontWeight: 700, color: '#22c55e', letterSpacing: '0.1em', marginBottom: 8 }}>
+                        STEP {i + 1}
+                      </div>
+
+                      <h3 style={{ fontSize: 'clamp(15px, 2vw, 18px)', fontWeight: 600, color: '#ffffff', marginBottom: 12, letterSpacing: '-0.01em' }}>
+                        {step.title}
+                      </h3>
+
+                      <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, marginBottom: 16 }}>
+                        {step.description}
+                      </p>
+
+                      {/* Duration badge — only for hardcoded steps */}
+                      {'duration' in step && (
+                        <div style={{
+                          fontSize: 11,
+                          fontWeight: 600,
+                          color: 'rgba(255,255,255,0.3)',
+                          padding: '6px 14px',
+                          borderRadius: 100,
+                          border: '1px solid rgba(255,255,255,0.06)',
+                          background: 'rgba(255,255,255,0.02)',
+                          marginBottom: 16,
+                        }}>
+                          {(step as typeof processSteps[number]).duration}
+                        </div>
+                      )}
+
+                      {/* Deliverables */}
+                      <div style={{ textAlign: 'left', width: '100%' }}>
+                        {step.deliverables.map(d => (
+                          <div key={d} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
+                            <div style={{ width: 4, height: 4, borderRadius: '50%', background: '#22c55e', flexShrink: 0 }} />
+                            <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)' }}>{d}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
+              );
+            })()}
           </div>
         </section>
 
@@ -1590,9 +1831,9 @@ export default function PageClient({ city }: { city: CityData }) {
         {/* ════════════════════════════════════════════════════════════════════
             14. RELATED LOCATIONS
         ════════════════════════════════════════════════════════════════════ */}
-        <section ref={relatedRef} style={{ ...sectionPad, ...sectionBorder }}>
+        <section ref={relatedRef} style={{ ...sectionPad, ...sectionBorder, overflow: 'hidden' }}>
           <div className="cb-container">
-            <div style={{ textAlign: 'center', marginBottom: 48 }}>
+            <div style={{ textAlign: 'center', marginBottom: 40 }}>
               <div className="reveal" style={subLabel}>Other Locations</div>
               <h2 className="reveal" style={heading2}>
                 We Also Serve These Cities
@@ -1601,60 +1842,52 @@ export default function PageClient({ city }: { city: CityData }) {
                 Explore our software development services in other major cities around the world.
               </p>
             </div>
-            <div className="loc-related-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 280px), 1fr))', gap: 16 }}>
-              {relatedCities.map((rc, i) => {
-                const rcLabel = rc.country === 'UAE' ? `${rc.name}, UAE` : `${rc.name}, ${rc.state}`;
-                return (
-                  <Link
-                    key={rc.slug}
-                    href={`/locations/${rc.slug}`}
-                    className={`reveal reveal-d${(i % 4) + 1}`}
-                    style={{
-                      ...cardStyle,
-                      padding: '28px 28px',
-                      textDecoration: 'none',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 16,
-                      borderRadius: 24,
-                    }}
-                    onMouseEnter={e => hoverCard(e, true)}
-                    onMouseLeave={e => hoverCard(e, false)}
+          </div>
+
+          {/* 2-row auto-scrolling marquee */}
+          <div className="reveal loc-city-marquee" style={{ display: 'flex', flexDirection: 'column', gap: 12, position: 'relative' }}>
+            <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 80, background: 'linear-gradient(90deg, #000 0%, transparent 100%)', zIndex: 2, pointerEvents: 'none' }} />
+            <div style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 80, background: 'linear-gradient(270deg, #000 0%, transparent 100%)', zIndex: 2, pointerEvents: 'none' }} />
+
+            {/* Row 1 - scrolls left */}
+            <div style={{ overflow: 'hidden' }}>
+              <div className="loc-city-track" style={{ display: 'flex', gap: 12, width: 'max-content', animation: 'cityMarqueeL 35s linear infinite' }}>
+                {[...relatedCities, ...cities.filter(c => c.slug !== city.slug).slice(0, 12), ...relatedCities, ...cities.filter(c => c.slug !== city.slug).slice(0, 12)].map((rc, i) => (
+                  <Link key={`r1-${rc.slug}-${i}`} href={`/locations/${rc.slug}`} style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: 8, padding: '12px 22px', borderRadius: 100, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.015)', textDecoration: 'none', whiteSpace: 'nowrap', transition: 'border-color 0.3s, background 0.3s' }}
+                    onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(34,197,94,0.25)'; (e.currentTarget as HTMLElement).style.background = 'rgba(34,197,94,0.05)'; }}
+                    onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.06)'; (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.015)'; }}
                   >
-                    <div style={{
-                      width: 48,
-                      height: 48,
-                      borderRadius: 14,
-                      background: 'rgba(34,197,94,0.06)',
-                      border: '1px solid rgba(34,197,94,0.12)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontSize: 20,
-                      flexShrink: 0,
-                    }}>
-                      📍
-                    </div>
-                    <div style={{ flex: 1 }}>
-                      <div style={{ fontSize: 16, fontWeight: 600, color: '#ffffff', letterSpacing: '-0.01em' }}>{rc.name}</div>
-                      <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)', marginTop: 3 }}>{rcLabel}</div>
-                    </div>
-                    <svg style={{ flexShrink: 0, opacity: 0.2 }} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+                    <span style={{ fontSize: 14 }}>📍</span>
+                    <span style={{ fontSize: 14, fontWeight: 600, color: '#ffffff' }}>{rc.name}</span>
+                    <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.3)' }}>{rc.country === 'UAE' ? 'UAE' : rc.state}</span>
                   </Link>
-                );
-              })}
+                ))}
+              </div>
             </div>
 
-            <div className="reveal" style={{ textAlign: 'center', marginTop: 40 }}>
-              <Link href="/locations" style={{
-                display: 'inline-flex', alignItems: 'center', gap: 10,
-                height: 48, padding: '0 28px', borderRadius: 100,
-                border: '1px solid rgba(255,255,255,0.08)', color: '#ffffff',
-                fontSize: 13, fontWeight: 500, textDecoration: 'none', transition: '0.3s',
-              }}
+            {/* Row 2 - scrolls right */}
+            <div style={{ overflow: 'hidden' }}>
+              <div className="loc-city-track" style={{ display: 'flex', gap: 12, width: 'max-content', animation: 'cityMarqueeR 40s linear infinite' }}>
+                {[...cities.filter(c => c.slug !== city.slug).slice(6, 18), ...relatedCities, ...cities.filter(c => c.slug !== city.slug).slice(6, 18), ...relatedCities].map((rc, i) => (
+                  <Link key={`r2-${rc.slug}-${i}`} href={`/locations/${rc.slug}`} style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: 8, padding: '12px 22px', borderRadius: 100, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.015)', textDecoration: 'none', whiteSpace: 'nowrap', transition: 'border-color 0.3s, background 0.3s' }}
+                    onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(34,197,94,0.25)'; (e.currentTarget as HTMLElement).style.background = 'rgba(34,197,94,0.05)'; }}
+                    onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.06)'; (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.015)'; }}
+                  >
+                    <span style={{ fontSize: 14 }}>📍</span>
+                    <span style={{ fontSize: 14, fontWeight: 600, color: '#ffffff' }}>{rc.name}</span>
+                    <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.3)' }}>{rc.country === 'UAE' ? 'UAE' : rc.state}</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div className="cb-container" style={{ marginTop: 32 }}>
+            <div className="reveal" style={{ textAlign: 'center' }}>
+              <Link href="/locations" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, height: 48, padding: '0 28px', borderRadius: 100, border: '1px solid rgba(255,255,255,0.08)', color: '#ffffff', fontSize: 13, fontWeight: 500, textDecoration: 'none', transition: '0.3s' }}
                 onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)'}
                 onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'}>
-                View All 48 Locations
+                View All Locations
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
               </Link>
             </div>
@@ -1668,64 +1901,54 @@ export default function PageClient({ city }: { city: CityData }) {
           {/* Background glow */}
           <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: 1000, height: 500, background: 'radial-gradient(ellipse, rgba(34,197,94,0.08) 0%, transparent 70%)', pointerEvents: 'none' }} />
 
-          <div className="cb-container" style={{ position: 'relative', zIndex: 1 }}>
-            <div className="loc-hero-form-grid" style={{ maxWidth: 1200, margin: '0 auto' }}>
-              {/* Left — CTA text */}
-              <div style={{ maxWidth: 560 }}>
-                <div className="reveal" style={subLabel}>Let&apos;s Talk</div>
-                <h2 className="reveal" style={{ ...heading2, marginBottom: 20, fontSize: 'clamp(2rem, 4vw, 3.5rem)' }}>
-                  Ready to Build Something Great in <span style={{ color: '#ffffff' }}>{city.name}</span>?
-                </h2>
-                <p className="reveal" style={{ ...bodyText, marginBottom: 36, color: 'rgba(255,255,255,0.7)' }}>
-                  Whether you need a mobile app, a web platform, or an AI-powered solution, our team is ready to bring your vision to life. Get a free consultation and project estimate within 24 hours.
-                </p>
+          <div className="cb-container" style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: 720, margin: '0 auto' }}>
+            <div className="reveal" style={subLabel}>Let&apos;s Talk</div>
+            <h2 className="reveal" style={{ ...heading2, marginBottom: 20, fontSize: 'clamp(2rem, 4vw, 3.5rem)' }}>
+              Ready to Build Something Great in <span style={{ color: '#ffffff' }}>{city.name}</span>?
+            </h2>
+            <p className="reveal" style={{ ...bodyText, marginBottom: 40, color: 'rgba(255,255,255,0.7)', maxWidth: 560, margin: '0 auto 40px' }}>
+              Whether you need a mobile app, a web platform, or an AI-powered solution, our team is ready to bring your vision to life. Get a free consultation and project estimate within 24 hours.
+            </p>
 
-                <div className="reveal" style={{ display: 'flex', gap: 14, flexWrap: 'wrap', marginBottom: 40 }}>
-                  <Link href="/contact" style={{
-                    display: 'inline-flex', alignItems: 'center', gap: 10,
-                    height: 56, padding: '0 40px', borderRadius: 100,
-                    background: '#22c55e', color: '#000',
-                    fontSize: 14, fontWeight: 700, textDecoration: 'none',
-                    transition: '0.3s',
-                  }}
-                    onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 16px 40px rgba(34,197,94,0.35)'; }}
-                    onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}>
-                    Start Your Project
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-                  </Link>
-                  <a href="https://calendly.com/codazz" target="_blank" rel="noopener noreferrer" style={{
-                    display: 'inline-flex', alignItems: 'center', gap: 8,
-                    height: 56, padding: '0 32px', borderRadius: 100,
-                    border: '1px solid rgba(255,255,255,0.08)', color: '#ffffff',
-                    fontSize: 14, fontWeight: 500, textDecoration: 'none',
-                    transition: '0.3s',
-                  }}
-                    onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)'}
-                    onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'}>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="4" width="18" height="18" rx="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" /></svg>
-                    Book a Call
-                  </a>
+            <div className="reveal" style={{ display: 'flex', gap: 14, flexWrap: 'wrap', justifyContent: 'center', marginBottom: 40 }}>
+              <Link href="/contact" style={{
+                display: 'inline-flex', alignItems: 'center', gap: 10,
+                height: 56, padding: '0 40px', borderRadius: 100,
+                background: '#22c55e', color: '#000',
+                fontSize: 14, fontWeight: 700, textDecoration: 'none',
+                transition: '0.3s',
+              }}
+                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 16px 40px rgba(34,197,94,0.35)'; }}
+                onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}>
+                Start Your Project
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+              </Link>
+              <a href="https://calendly.com/codazz" target="_blank" rel="noopener noreferrer" style={{
+                display: 'inline-flex', alignItems: 'center', gap: 8,
+                height: 56, padding: '0 32px', borderRadius: 100,
+                border: '1px solid rgba(255,255,255,0.08)', color: '#ffffff',
+                fontSize: 14, fontWeight: 500, textDecoration: 'none',
+                transition: '0.3s',
+              }}
+                onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)'}
+                onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="4" width="18" height="18" rx="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" /></svg>
+                Book a Call
+              </a>
+            </div>
+
+            {/* Quick contact details */}
+            <div className="reveal" style={{ display: 'flex', gap: 32, justifyContent: 'center', flexWrap: 'wrap' }}>
+              {[
+                { icon: '✉️', text: 'hello@codazz.com' },
+                { icon: '📞', text: '+1 (825) 365-4567' },
+                { icon: '⏰', text: 'Response within 24 hours' },
+              ].map(item => (
+                <div key={item.text} style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                  <span style={{ fontSize: 16 }}>{item.icon}</span>
+                  <span style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)' }}>{item.text}</span>
                 </div>
-
-                {/* Quick contact details */}
-                <div className="reveal" style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-                  {[
-                    { icon: '✉️', text: 'hello@codazz.com' },
-                    { icon: '📞', text: '+1 (825) 365-4567' },
-                    { icon: '⏰', text: 'Response within 24 hours' },
-                  ].map(item => (
-                    <div key={item.text} style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                      <span style={{ fontSize: 16 }}>{item.icon}</span>
-                      <span style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)' }}>{item.text}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Right — CTA form */}
-              <div className="reveal">
-                <LeadCaptureForm cityName={city.name} />
-              </div>
+              ))}
             </div>
           </div>
         </section>

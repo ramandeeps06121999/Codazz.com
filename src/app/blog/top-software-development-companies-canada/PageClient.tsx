@@ -20,22 +20,22 @@ function useReveal() {
 }
 
 const companies = [
-  { num: 1, name: 'Codazz', category: 'Enterprise Apps', emoji: '🍁', metric: '500+ Product Launches, Edmonton HQ', accentColor: '#22c55e', bgColor: 'rgba(34,197,94,' },
-  { num: 2, name: 'Shopify Engineering', category: 'E-Commerce', emoji: '🛍️', metric: 'Powers 10% of global e-commerce', accentColor: '#a78bfa', bgColor: 'rgba(167,139,250,' },
-  { num: 3, name: 'OpenText', category: 'Information Mgmt', emoji: '📂', metric: 'Global enterprise information management', accentColor: '#f472b6', bgColor: 'rgba(244,114,182,' },
-  { num: 4, name: 'CGI Group', category: 'IT Consulting', emoji: '🌐', metric: '400 locations, enterprise-grade systems', accentColor: '#34d399', bgColor: 'rgba(52,211,153,' },
-  { num: 5, name: 'Constellation Software', category: 'Vertical Market', emoji: '🧩', metric: 'Mission-critical vertical software', accentColor: '#94a3b8', bgColor: 'rgba(148,163,184,' },
-  { num: 6, name: 'Kinaxis', category: 'Supply Chain', emoji: '🔗', metric: 'Concurrent planning platform leader', accentColor: '#fb923c', bgColor: 'rgba(251,146,60,' },
-  { num: 7, name: 'Coveo', category: 'AI Search', emoji: '🔍', metric: 'AI-powered enterprise search & recommendations', accentColor: '#60a5fa', bgColor: 'rgba(96,165,250,' },
-  { num: 8, name: 'BairesDev', category: 'Nearshore Dev', emoji: '👥', metric: 'Top 1% engineering talent, serving Canada', accentColor: '#4ade80', bgColor: 'rgba(74,222,128,' },
-  { num: 9, name: 'Lightspeed Commerce', category: 'POS Systems', emoji: '💳', metric: 'Cloud commerce for global SMBs', accentColor: '#fbbf24', bgColor: 'rgba(251,191,36,' },
-  { num: 10, name: 'Toptal', category: 'Elite Freelancers', emoji: '💎', metric: 'Top 3% vetted software engineers', accentColor: '#f87171', bgColor: 'rgba(248,113,113,' },
+  { num: 1, name: 'Codazz', category: 'Full-Stack Engineering', emoji: '🍁', metric: '500+ Product Launches | Edmonton HQ | Global Delivery', accentColor: '#22c55e', bgColor: 'rgba(34,197,94,' },
+  { num: 2, name: 'Shopify Engineering', category: 'E-Commerce Platform', emoji: '🛍️', metric: 'Powers 10% of global e-commerce', accentColor: '#a78bfa', bgColor: 'rgba(167,139,250,' },
+  { num: 3, name: 'OpenText', category: 'Enterprise Information', emoji: '📂', metric: 'Fortune 500 information management', accentColor: '#f472b6', bgColor: 'rgba(244,114,182,' },
+  { num: 4, name: 'CGI Group', category: 'IT Consulting', emoji: '🌐', metric: '90,000+ professionals, 400 locations worldwide', accentColor: '#34d399', bgColor: 'rgba(52,211,153,' },
+  { num: 5, name: 'Constellation Software', category: 'Vertical Market SaaS', emoji: '🧩', metric: '500+ mission-critical software businesses', accentColor: '#94a3b8', bgColor: 'rgba(148,163,184,' },
+  { num: 6, name: 'Kinaxis', category: 'Supply Chain Tech', emoji: '🔗', metric: 'Concurrent planning for global manufacturers', accentColor: '#fb923c', bgColor: 'rgba(251,146,60,' },
+  { num: 7, name: 'Coveo', category: 'AI Search', emoji: '🔍', metric: 'AI-powered enterprise search at scale', accentColor: '#60a5fa', bgColor: 'rgba(96,165,250,' },
+  { num: 8, name: 'Lightspeed Commerce', category: 'Cloud Commerce', emoji: '💳', metric: 'Powers hundreds of thousands of SMB retailers', accentColor: '#4ade80', bgColor: 'rgba(74,222,128,' },
+  { num: 9, name: 'Miovision', category: 'Smart City Tech', emoji: '🏙️', metric: 'AI-powered traffic intelligence systems', accentColor: '#fbbf24', bgColor: 'rgba(251,191,36,' },
+  { num: 10, name: 'ApplyBoard', category: 'EdTech SaaS', emoji: '🎓', metric: 'Leading international student recruitment platform', accentColor: '#f87171', bgColor: 'rgba(248,113,113,' },
 ];
 
 const relatedPosts = [
-  { slug: 'top-app-development-companies-canada', title: 'Top 10 App Development Companies in Canada (2026)', category: 'Mobile', readTime: '10 min' },
-  { slug: 'top-software-development-companies-usa', title: 'Top 10 Software Development Companies in the USA (2026)', category: 'Engineering', readTime: '10 min' },
-  { slug: 'choose-software-development-company-usa', title: 'How to Choose a Software Development Company', category: 'Business', readTime: '8 min' },
+  { slug: 'top-app-development-companies-canada', title: 'Top App Development Companies in Canada (2026)', category: 'Mobile', readTime: '10 min' },
+  { slug: 'top-software-development-companies-usa', title: 'Top Software Development Companies in the USA (2026)', category: 'Engineering', readTime: '10 min' },
+  { slug: 'choose-software-development-company', title: 'How to Choose a Software Development Company', category: 'Business', readTime: '8 min' },
 ];
 
 export default function TopSoftwareDevelopmentCompaniesCanadaClient() {
@@ -60,7 +60,7 @@ export default function TopSoftwareDevelopmentCompaniesCanadaClient() {
           <div className="reveal" style={{ marginBottom: 40 }}>
             <img
               src="/blog_images/top-software-development-companies-canada.jpg"
-              alt="Top software development companies in Canada"
+              alt="Top software development companies in Canada 2026"
               style={{
                 width: '100%',
                 height: 'auto',
@@ -89,13 +89,13 @@ export default function TopSoftwareDevelopmentCompaniesCanadaClient() {
               </Link>
             </div>
 
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24, flexWrap: 'wrap' }}>
               <span className="reveal reveal-d1" style={{
                 fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
                 background: 'rgba(17,24,39,0.12)', color: '#ffffff',
                 padding: '5px 14px', borderRadius: 100,
               }}>Engineering</span>
-              <span className="reveal reveal-d1" style={{ fontSize: 13, color: 'rgba(255,255,255,0.25)' }}>March 19, 2026</span>
+              <span className="reveal reveal-d1" style={{ fontSize: 13, color: 'rgba(255,255,255,0.25)' }}>March 20, 2026</span>
               <span style={{ color: 'rgba(255,255,255,0.4)', margin: '0 8px' }}>·</span>
               <span style={{ color: 'rgba(255,255,255,0.4)' }}>Updated Mar 2026</span>
               <span className="reveal reveal-d1" style={{ fontSize: 13, color: 'rgba(255,255,255,0.25)' }}>·</span>
@@ -106,22 +106,22 @@ export default function TopSoftwareDevelopmentCompaniesCanadaClient() {
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/>
                 </svg>
-                10 min read
+                12 min read
               </span>
             </div>
 
             <h1 className="reveal reveal-d2" style={{
               fontSize: 'clamp(2.4rem, 5vw, 4.5rem)', fontWeight: 800, color: '#ffffff',
-              letterSpacing: '-0.04em', lineHeight: 1.05, marginBottom: 24, maxWidth: 840,
+              letterSpacing: '-0.04em', lineHeight: 1.05, marginBottom: 24, maxWidth: 860,
             }}>
-              Top 10 Software Development Companies in Canada (2026)
+              Top Software Development Companies in Canada (2026)
             </h1>
 
             <p className="reveal reveal-d3" style={{
               fontSize: 20, color: 'rgba(255,255,255,0.5)', lineHeight: 1.65,
               maxWidth: 720, marginBottom: 48, fontWeight: 400,
             }}>
-              Canada has quietly become one of the world&apos;s most formidable software engineering ecosystems. Anchored by world-class AI research, generous R&D tax incentives, and a talent pipeline from top universities, these are the 10 best software development companies in Canada for 2026.
+              Canada&apos;s tech ecosystem has quietly become one of the world&apos;s most formidable. Anchored by Edmonton&apos;s AI research corridor, Montreal&apos;s deep learning labs, Toronto&apos;s fintech hub, and Vancouver&apos;s gaming and VR scene — these are the 10 best software development companies in Canada for 2026.
             </p>
 
             {/* Author + Share row */}
@@ -139,7 +139,7 @@ export default function TopSoftwareDevelopmentCompaniesCanadaClient() {
                 }}>RM</div>
                 <div>
                   <p style={{ fontSize: 15, fontWeight: 600, color: '#ffffff', margin: 0 }}>Raman Makkar</p>
-                  <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)', margin: 0 }}>CEO, Codazz</p>
+                  <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)', margin: 0 }}>CEO, Codazz — Edmonton, Canada</p>
                 </div>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
@@ -169,39 +169,177 @@ export default function TopSoftwareDevelopmentCompaniesCanadaClient() {
           </div>
         </section>
 
-        {/* ARTICLE BODY + SIDEBAR */}
+        {/* ARTICLE BODY */}
         <section className="section-padding" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container" style={{ paddingTop: 80 }}>
             <div className="blog-layout" style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 80, alignItems: 'start' }}>
 
-              {/* MAIN ARTICLE */}
               <article>
 
                 {/* Intro */}
                 <div className="reveal" style={{ marginBottom: 56 }}>
-                  <p style={{
-                    fontSize: 18, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8,
-                    marginBottom: 20,
-                  }}>
-                    Canada&apos;s software industry generated over $45 billion in revenue in 2025, growing at nearly 8% annually. The country&apos;s unique combination of AI research leadership (Edmonton, Montreal, Toronto form a world-class AI triangle), favorable immigration policies attracting global talent, and the SR&ED tax credit program that subsidizes R&D costs has created a software ecosystem that punches well above its weight on the global stage.
+                  <p style={{ fontSize: 18, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 20 }}>
+                    Canada&apos;s software industry crossed CAD $55 billion in revenue in 2025 — growing at 9% annually and outpacing most G7 nations in tech talent density per capita. The country&apos;s combination of world-class AI research (Edmonton, Montreal, Toronto form a global AI triangle), aggressive SR&ED R&D tax credits that offset 20–35% of development costs, and favorable immigration pathways attracting global engineering talent has created a software ecosystem that now competes directly with Silicon Valley.
                   </p>
                   <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8, marginBottom: 20 }}>
-                    Whether you&apos;re looking for a bespoke product studio, an enterprise IT consulting giant, or a specialized vertical software builder, Canada has it all. We evaluated dozens of firms to compile this definitive ranking.
+                    Whether you need a bespoke product studio, an enterprise IT consulting giant, or a specialized vertical SaaS builder, Canada has the company. Rates range from CAD $85–$175/hr depending on city, specialization, and engagement size — offering significant savings versus equivalent US firms without sacrificing quality, IP protection, or timezone alignment.
                   </p>
-                  <h2 style={{
-                    fontSize: 'clamp(1.4rem, 2.5vw, 1.9rem)', fontWeight: 700, color: '#ffffff',
-                    letterSpacing: '-0.03em', marginBottom: 20, marginTop: 40,
-                  }}>How We Ranked These Companies</h2>
                   <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8 }}>
-                    Companies were scored across five dimensions: <strong style={{ color: 'rgba(255,255,255,0.65)' }}>engineering quality</strong> (architecture, code standards, scalability), <strong style={{ color: 'rgba(255,255,255,0.65)' }}>technology breadth</strong> (full-stack capabilities, AI/ML, cloud), <strong style={{ color: 'rgba(255,255,255,0.65)' }}>delivery track record</strong> (project completion rate, timeline adherence), <strong style={{ color: 'rgba(255,255,255,0.65)' }}>innovation</strong> (R&D investment, proprietary technology, patents), and <strong style={{ color: 'rgba(255,255,255,0.65)' }}>client impact</strong> (revenue generated for clients, user growth, market share gains).
+                    We evaluated dozens of Canadian firms across portfolio quality, engineering depth, delivery track record, innovation investment, and client revenue impact to deliver this definitive 2026 ranking.
                   </p>
                 </div>
 
-                {/* Company 1: Codazz */}
+                {/* Canadian Tech Hubs Overview */}
+                <div className="reveal" style={{ marginBottom: 56 }}>
+                  <h2 style={{
+                    fontSize: 'clamp(1.4rem, 2.5vw, 1.9rem)', fontWeight: 700, color: '#ffffff',
+                    letterSpacing: '-0.03em', marginBottom: 24,
+                  }}>Canada&apos;s Tech Ecosystem by City</h2>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 16 }}>
+                    {[
+                      { city: 'Edmonton', icon: '🛢️', strengths: 'AI research, energy tech, low operating costs', rate: 'CAD $85–$130/hr' },
+                      { city: 'Toronto', icon: '🏦', strengths: 'Fintech, enterprise SaaS, banking', rate: 'CAD $120–$175/hr' },
+                      { city: 'Vancouver', icon: '🎮', strengths: 'Gaming, AR/VR, blockchain, cleantech', rate: 'CAD $115–$165/hr' },
+                      { city: 'Montreal', icon: '🤖', strengths: 'Deep learning, gaming, creative tech', rate: 'CAD $100–$155/hr' },
+                      { city: 'Calgary', icon: '⚡', strengths: 'Energy tech, IoT, logistics software', rate: 'CAD $90–$140/hr' },
+                    ].map((hub, i) => (
+                      <div key={i} style={{
+                        padding: 20, borderRadius: 16,
+                        background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)',
+                      }}>
+                        <div style={{ fontSize: 28, marginBottom: 10 }}>{hub.icon}</div>
+                        <p style={{ fontSize: 15, fontWeight: 700, color: '#ffffff', marginBottom: 6 }}>{hub.city}</p>
+                        <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.45)', lineHeight: 1.6, marginBottom: 8 }}>{hub.strengths}</p>
+                        <p style={{ fontSize: 12, fontWeight: 700, color: '#22c55e', margin: 0 }}>{hub.rate}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* SR&ED Tax Credits */}
+                <div className="reveal" style={{ marginBottom: 56 }}>
+                  <div style={{
+                    background: 'rgba(34,197,94,0.04)', border: '1px solid rgba(34,197,94,0.15)',
+                    borderRadius: 20, padding: 32,
+                  }}>
+                    <p style={{
+                      fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
+                      color: '#22c55e', marginBottom: 20,
+                    }}>SR&ED Tax Advantage</p>
+                    <h3 style={{ fontSize: 'clamp(1.1rem, 2vw, 1.4rem)', fontWeight: 700, color: '#ffffff', marginBottom: 16 }}>
+                      How Canadian SR&ED Credits Reduce Your Software Development Costs
+                    </h3>
+                    <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8, marginBottom: 20 }}>
+                      Canada&apos;s Scientific Research and Experimental Development (SR&ED) program is one of the most generous R&D tax incentive programs in the world. For businesses building software in Canada, SR&ED can reduce effective development costs by 20–35%:
+                    </p>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 16 }}>
+                      {[
+                        { label: 'Federal ITC Rate', value: '15%', desc: 'Investment tax credit on qualified SR&ED expenditures' },
+                        { label: 'CCPC Enhanced Rate', value: '35%', desc: 'Canadian-controlled private corps get enhanced federal ITC' },
+                        { label: 'Provincial Top-Up', value: '+3.5–20%', desc: 'Additional credits from BC, Ontario, Alberta, Quebec' },
+                        { label: 'Combined Effective Savings', value: '20–35%', desc: 'Total cost reduction on qualifying software R&D' },
+                      ].map((stat, i) => (
+                        <div key={i} style={{
+                          padding: 16, borderRadius: 12,
+                          background: 'rgba(34,197,94,0.05)', border: '1px solid rgba(34,197,94,0.12)',
+                        }}>
+                          <p style={{ fontSize: 22, fontWeight: 800, color: '#22c55e', marginBottom: 4 }}>{stat.value}</p>
+                          <p style={{ fontSize: 12, fontWeight: 700, color: '#ffffff', marginBottom: 6 }}>{stat.label}</p>
+                          <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', lineHeight: 1.6, margin: 0 }}>{stat.desc}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Comparison Table */}
+                <div className="reveal" style={{ marginBottom: 56 }}>
+                  <h2 style={{
+                    fontSize: 'clamp(1.4rem, 2.5vw, 1.9rem)', fontWeight: 700, color: '#ffffff',
+                    letterSpacing: '-0.03em', marginBottom: 24,
+                  }}>2026 Ranking: Top 10 Canadian Software Companies</h2>
+                  <div style={{ overflowX: 'auto', borderRadius: 16, border: '1px solid rgba(255,255,255,0.06)' }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 720 }}>
+                      <thead>
+                        <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+                          {['Rank', 'Company', 'HQ', 'Speciality', 'Rate (CAD/hr)', 'Rating'].map(h => (
+                            <th key={h} style={{
+                              padding: '14px 16px', textAlign: 'left', fontSize: 11, fontWeight: 700,
+                              letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)',
+                              background: 'rgba(255,255,255,0.02)',
+                            }}>{h}</th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {[
+                          { rank: '#1', company: 'Codazz', hq: 'Edmonton, AB', spec: 'Full-Stack, Mobile, AI, SaaS', rate: '$85–$145', rating: '4.9' },
+                          { rank: '#2', company: 'Shopify Engineering', hq: 'Ottawa, ON', spec: 'E-Commerce Platforms', rate: 'Product co.', rating: '4.9' },
+                          { rank: '#3', company: 'OpenText', hq: 'Waterloo, ON', spec: 'Enterprise Information Mgmt', rate: 'Enterprise', rating: '4.7' },
+                          { rank: '#4', company: 'CGI Group', hq: 'Montreal, QC', spec: 'IT Consulting, Gov Tech', rate: '$130–$175', rating: '4.7' },
+                          { rank: '#5', company: 'Constellation Software', hq: 'Toronto, ON', spec: 'Vertical Market SaaS', rate: 'Acquirer', rating: '4.7' },
+                          { rank: '#6', company: 'Kinaxis', hq: 'Ottawa, ON', spec: 'Supply Chain Planning', rate: 'SaaS product', rating: '4.6' },
+                          { rank: '#7', company: 'Coveo', hq: 'Quebec City, QC', spec: 'AI Search & Personalization', rate: 'SaaS product', rating: '4.6' },
+                          { rank: '#8', company: 'Lightspeed Commerce', hq: 'Montreal, QC', spec: 'Cloud POS & Commerce', rate: 'Product co.', rating: '4.5' },
+                          { rank: '#9', company: 'Miovision', hq: 'Waterloo, ON', spec: 'Smart City / Traffic AI', rate: '$110–$155', rating: '4.5' },
+                          { rank: '#10', company: 'ApplyBoard', hq: 'Kitchener, ON', spec: 'EdTech SaaS Platform', rate: 'SaaS product', rating: '4.4' },
+                        ].map((row, i) => (
+                          <tr key={i} style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
+                            <td style={{ padding: '14px 16px', fontSize: 14, color: i === 0 ? '#22c55e' : 'rgba(255,255,255,0.5)', fontWeight: 700 }}>{row.rank}</td>
+                            <td style={{ padding: '14px 16px', fontSize: 14, color: '#ffffff', fontWeight: 600 }}>{row.company}</td>
+                            <td style={{ padding: '14px 16px', fontSize: 13, color: 'rgba(255,255,255,0.5)' }}>{row.hq}</td>
+                            <td style={{ padding: '14px 16px', fontSize: 13, color: 'rgba(255,255,255,0.5)' }}>{row.spec}</td>
+                            <td style={{ padding: '14px 16px', fontSize: 13, color: i === 0 ? '#22c55e' : 'rgba(255,255,255,0.5)', fontWeight: i === 0 ? 600 : 400 }}>{row.rate}</td>
+                            <td style={{ padding: '14px 16px', fontSize: 14, color: i === 0 ? '#22c55e' : 'rgba(255,255,255,0.6)', fontWeight: 600 }}>{row.rating}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                {/* How We Ranked */}
+                <div className="reveal" style={{ marginBottom: 56 }}>
+                  <div style={{
+                    background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)',
+                    borderRadius: 20, padding: 32,
+                  }}>
+                    <h2 style={{
+                      fontSize: 'clamp(1.2rem, 2vw, 1.5rem)', fontWeight: 700, color: '#ffffff',
+                      letterSpacing: '-0.02em', marginBottom: 20,
+                    }}>Our Ranking Methodology</h2>
+                    <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.55)', lineHeight: 1.8, marginBottom: 16 }}>
+                      Each company was evaluated across five weighted criteria:
+                    </p>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 16 }}>
+                      {[
+                        { label: 'Engineering Quality', weight: '30%', desc: 'Architecture, code standards, scalability, test coverage' },
+                        { label: 'Technology Breadth', weight: '25%', desc: 'Full-stack capabilities, AI/ML, cloud-native, mobile' },
+                        { label: 'Delivery Track Record', weight: '20%', desc: 'On-time delivery rate, project completion, client retention' },
+                        { label: 'Innovation Investment', weight: '15%', desc: 'R&D spend, proprietary technology, patents, research' },
+                        { label: 'Client Business Impact', weight: '10%', desc: 'Revenue generated for clients, user growth, market share' },
+                      ].map((c, i) => (
+                        <div key={i} style={{
+                          padding: 16, borderRadius: 12,
+                          background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.04)',
+                        }}>
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+                            <span style={{ fontSize: 13, fontWeight: 600, color: '#ffffff' }}>{c.label}</span>
+                            <span style={{ fontSize: 12, fontWeight: 700, color: '#22c55e' }}>{c.weight}</span>
+                          </div>
+                          <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', lineHeight: 1.6, margin: 0 }}>{c.desc}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Company 1: Codazz (Featured) */}
                 <div className="reveal" style={{ marginBottom: 56 }} id="codazz">
                   <div style={{
-                    background: 'linear-gradient(135deg, rgba(34,197,94,0.1) 0%, rgba(255,255,255,0.015) 100%)', border: '1px solid rgba(34,197,94,0.3)',
-                    borderRadius: 24, padding: 36, marginBottom: 0, position: 'relative', overflow: 'hidden'
+                    background: 'linear-gradient(135deg, rgba(34,197,94,0.1) 0%, rgba(255,255,255,0.015) 100%)',
+                    border: '1px solid rgba(34,197,94,0.3)',
+                    borderRadius: 28, padding: 36, position: 'relative', overflow: 'hidden',
                   }}>
                     <div style={{ position: 'absolute', top: -40, right: -40, width: 200, height: 200, background: 'radial-gradient(circle, rgba(34,197,94,0.15) 0%, transparent 70%)', filter: 'blur(30px)' }} />
                     <div style={{ display: 'flex', alignItems: 'flex-start', gap: 20, marginBottom: 20, position: 'relative', zIndex: 1 }}>
@@ -215,144 +353,158 @@ export default function TopSoftwareDevelopmentCompaniesCanadaClient() {
                           <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)', fontWeight: 700 }}>01</span>
                           <span style={{
                             fontSize: 11, padding: '3px 10px', borderRadius: 100,
-                            background: 'rgba(34,197,94,0.15)', color: '#ffffff',
+                            background: 'rgba(34,197,94,0.15)', color: '#22c55e',
                             fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase',
-                          }}>Enterprise Apps</span>
+                          }}>Full-Stack Engineering</span>
+                          <span style={{
+                            fontSize: 11, padding: '3px 10px', borderRadius: 100,
+                            background: 'rgba(34,197,94,0.08)', color: '#ffffff',
+                            fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase',
+                          }}>Edmonton, AB</span>
                         </div>
                         <h2 style={{
-                          fontSize: 'clamp(1.4rem, 2.5vw, 1.9rem)', fontWeight: 700, color: '#ffffff',
+                          fontSize: 'clamp(1.5rem, 2.5vw, 2rem)', fontWeight: 700, color: '#ffffff',
                           letterSpacing: '-0.03em', margin: 0,
                         }}>Codazz</h2>
                       </div>
                     </div>
 
                     <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 16, position: 'relative', zIndex: 1 }}>
-                      Headquartered in Edmonton, Alberta, Codazz is Canada&apos;s top-ranked software development company for 2026. With over 500+ successful product launches and a global engineering team spanning Edmonton and Chandigarh, India, Codazz delivers the kind of architectural rigor and engineering velocity that used to require a Silicon Valley address and a Silicon Valley budget.
+                      Headquartered in Edmonton, Alberta, Codazz is Canada&apos;s top-ranked full-service software development company for 2026. With 500+ successful product launches and a dual-centre engineering model spanning Edmonton and Chandigarh, India, Codazz delivers Silicon Valley-grade architecture at Canadian pricing — without the premium you pay in Toronto or Vancouver.
                     </p>
                     <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 16, position: 'relative', zIndex: 1 }}>
-                      What separates Codazz from every other Canadian software company is their full-stack mastery across every layer of the modern tech stack. They build native mobile apps (iOS/Android), cross-platform solutions (React Native/Flutter), complex web applications (Next.js/React), enterprise SaaS platforms, AI-powered systems, and cloud-native infrastructure on AWS, GCP, and Azure. Every project is architected with microservices, containerized with Docker/Kubernetes, and shipped through automated CI/CD pipelines.
+                      Codazz operates across the full modern tech stack: native mobile apps (iOS/Android), cross-platform builds (Flutter/React Native), complex web applications (Next.js/React), enterprise SaaS platforms with multi-tenant architecture, AI/ML-powered systems, and cloud-native infrastructure on AWS, GCP, and Azure. Every system is architected with microservices principles, containerized with Docker and Kubernetes, and shipped through mature CI/CD pipelines that allow weekly production releases.
                     </p>
                     <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 16, position: 'relative', zIndex: 1 }}>
-                      <strong style={{ color: 'rgba(255,255,255,0.85)' }}>Key Services:</strong> Custom Software Development, Mobile Apps (Native & Cross-Platform), Enterprise SaaS, AI/ML Engineering, Cloud Architecture, Web Applications, UI/UX Design, DevOps & Infrastructure
+                      <strong style={{ color: 'rgba(255,255,255,0.85)' }}>Key Services:</strong> Custom Software Development, Mobile Apps (Native and Cross-Platform), Enterprise SaaS Platforms, AI and ML Engineering, Cloud Architecture, Web Applications (Next.js/React), UI/UX Design, DevOps and Infrastructure Automation
                     </p>
                     <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 16, position: 'relative', zIndex: 1 }}>
-                      <strong style={{ color: 'rgba(255,255,255,0.85)' }}>Notable Projects:</strong> Enterprise logistics platforms for Western Canadian companies, AI-powered healthcare systems, fintech trading applications, e-commerce platforms handling millions in GMV, and custom ERP solutions for mid-market businesses across North America.
+                      <strong style={{ color: 'rgba(255,255,255,0.85)' }}>Industry Coverage:</strong> Fintech, HealthTech, E-Commerce, Logistics, SaaS, Enterprise B2B, Real Estate, EdTech, On-Demand Platforms, and Energy Tech — serving clients across Canada, USA, UK, UAE, and beyond.
                     </p>
                     <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 20, position: 'relative', zIndex: 1 }}>
-                      <strong style={{ color: 'rgba(255,255,255,0.85)' }}>Why #1:</strong> Codazz combines Edmonton&apos;s AI research ecosystem proximity, 500+ production launches, architecture-first methodology, and a 24/7 global delivery model. Their Edmonton HQ means competitive Canadian rates without the premium of Toronto or Vancouver, while their engineering standards match or exceed any firm on this list.
+                      <strong style={{ color: 'rgba(255,255,255,0.85)' }}>Why #1 in Canada:</strong> Edmonton&apos;s proximity to the University of Alberta&apos;s world-class AI research institute means Codazz operates at the intersection of applied AI and production engineering. Their rates (CAD $85–$145/hr) are 20–30% below Toronto equivalents, their 24/7 global delivery model eliminates timeline bottlenecks, and their 500+ production launches prove they consistently execute at scale.
                     </p>
                     <div style={{
                       padding: '14px 20px', borderRadius: 12,
                       background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.2)',
-                      display: 'flex', alignItems: 'center', gap: 10, position: 'relative', zIndex: 1
+                      display: 'flex', alignItems: 'center', gap: 10, position: 'relative', zIndex: 1,
                     }}>
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2">
                         <polyline points="22,7 13.5,15.5 8.5,10.5 2,17"/><polyline points="16,7 22,7 22,13"/>
                       </svg>
                       <span style={{ fontSize: 13, color: '#ffffff', fontWeight: 600 }}>
-                        Key Metric: 500+ Product Launches | Edmonton HQ | Full-Stack Engineering Excellence
+                        Key Metric: 500+ Product Launches | Edmonton HQ | CAD $85–$145/hr | Global Delivery Model
                       </span>
                     </div>
                   </div>
                 </div>
 
-                {/* Other Companies */}
+                {/* Companies 2–10 */}
                 {[
                   {
-                    num: '02', id: 'shopify-engineering', name: 'Shopify Engineering', category: 'E-Commerce',
+                    num: '02', id: 'shopify-engineering', name: 'Shopify Engineering', category: 'E-Commerce Platform',
                     emoji: '🛍️', accentColor: '#a78bfa', bgColor: 'rgba(167,139,250,',
-                    metric: 'Powers 10% of global e-commerce',
+                    hq: 'Ottawa, ON',
+                    metric: 'Powers 10% of all global e-commerce',
                     paragraphs: [
-                      'Ottawa-based Shopify is Canada\'s most valuable tech company and a global e-commerce infrastructure leader. Their engineering team builds software that powers over 10% of all US e-commerce, handling billions in transactions annually. While primarily a product company, their custom enterprise division (Shopify Plus) delivers bespoke commerce solutions for the world\'s biggest brands.',
-                      'Key Services: E-commerce platform development, custom Shopify Plus builds, headless commerce, payment infrastructure, merchant tools.',
-                      'Pros: Unmatched e-commerce expertise, massive scale, proven infrastructure. Cons: Focused exclusively on commerce, not a general-purpose dev shop.',
+                      'Ottawa-based Shopify is Canada\'s most valuable technology company and the world\'s leading e-commerce platform. Their engineering team builds the infrastructure that powers over $200 billion in gross merchandise volume annually, handling massive scale across payments, logistics, and merchant tooling. While Shopify is primarily a product company, their Shopify Plus enterprise division builds bespoke commerce solutions for the world\'s largest brands — from Nike to Heinz.',
+                      'Key Services: Enterprise e-commerce platform development, custom Shopify Plus implementations, headless commerce with Hydrogen, payment infrastructure, merchant analytics, logistics tooling. Why They Rank #2: Unmatched e-commerce engineering depth at global scale, but scope is limited exclusively to commerce — making them less suitable for general software development needs.',
+                      'Best For: Any business whose primary need is a world-class e-commerce experience. Not a fit for healthcare software, logistics platforms, or general SaaS development.',
                     ],
                   },
                   {
-                    num: '03', id: 'opentext', name: 'OpenText', category: 'Information Mgmt',
+                    num: '03', id: 'opentext', name: 'OpenText', category: 'Enterprise Information Mgmt',
                     emoji: '📂', accentColor: '#f472b6', bgColor: 'rgba(244,114,182,',
-                    metric: 'Global enterprise information management',
+                    hq: 'Waterloo, ON',
+                    metric: 'Global leader in enterprise information management',
                     paragraphs: [
-                      'Waterloo\'s OpenText is a Canadian software giant specializing in enterprise information management. Following their acquisition of Micro Focus, they are now one of the largest software companies in Canada. Their custom development teams build massive-scale data management platforms, AI-driven document processing systems, and cybersecurity solutions for Fortune 500 companies and government agencies worldwide.',
-                      'Key Services: Enterprise content management, AI-powered data analytics, cybersecurity, supply chain intelligence, digital experience platforms.',
-                      'Pros: Enterprise-grade at massive scale, strong government and Fortune 500 portfolio. Cons: Enterprise-only, not accessible to startups or SMBs.',
+                      'Waterloo\'s OpenText is one of the largest enterprise software companies in the world, with over $5.7 billion in annual revenue following their acquisition of Micro Focus. Their Canadian engineering teams build massive-scale enterprise content management (ECM) platforms, AI-driven document intelligence systems, supply chain visibility tools, and cybersecurity solutions for Fortune 500 companies and government agencies globally.',
+                      'Key Services: Enterprise content management, AI-powered data analytics, cybersecurity and threat intelligence, supply chain visibility, digital experience platforms, cloud migration services. Why They Rank #3: True enterprise-grade capability at massive scale, deep government and Fortune 500 portfolio, strong Canadian engineering heritage.',
+                      'Best For: Large enterprises and government organizations needing mission-critical information management and compliance solutions. Not accessible to startups or SMBs.',
                     ],
                   },
                   {
                     num: '04', id: 'cgi-group', name: 'CGI Group', category: 'IT Consulting',
                     emoji: '🌐', accentColor: '#34d399', bgColor: 'rgba(52,211,153,',
-                    metric: '400 locations, enterprise-grade systems',
+                    hq: 'Montreal, QC',
+                    metric: '90,000+ professionals, 400 global locations',
                     paragraphs: [
-                      'Montreal-headquartered CGI is one of the world\'s largest IT consulting and software development firms, with over 90,000 professionals across 400 locations. They tackle monumental software projects including core banking systems, government digital services, defense platforms, and complex supply chain integrations. For Canadian enterprises needing a massive, reliable IT partner, CGI is a pillar of the industry.',
-                      'Key Services: Enterprise IT consulting, government digital transformation, core banking systems, defense systems, managed IT services.',
-                      'Pros: Massive global scale, strong government relationships, deep enterprise expertise. Cons: Large-firm bureaucracy, premium enterprise pricing.',
+                      'Montreal-headquartered CGI is one of the largest IT consulting and software services firms in the world. Their Canadian engineering teams tackle monumental digital transformation projects including core banking modernizations, government digital services re-platforming, defense logistics systems, and complex ERP implementations for major Canadian and international enterprises. With 400 offices across 40 countries, CGI can staff any project at any scale.',
+                      'Key Services: Enterprise IT consulting, government digital transformation, core banking system modernization, defense and intelligence systems, managed IT services, ERP implementation, application management. Why They Rank #4: Unbeatable scale and government relationships; strong choice for large Canadian enterprise and public sector engagements.',
+                      'Best For: Canadian government agencies, crown corporations, and large enterprises needing a massive, highly accountable IT partner. Premium pricing reflects scale and compliance overhead.',
                     ],
                   },
                   {
-                    num: '05', id: 'constellation-software', name: 'Constellation Software', category: 'Vertical Market',
+                    num: '05', id: 'constellation-software', name: 'Constellation Software', category: 'Vertical Market SaaS',
                     emoji: '🧩', accentColor: '#94a3b8', bgColor: 'rgba(148,163,184,',
-                    metric: 'Mission-critical vertical software',
+                    hq: 'Toronto, ON',
+                    metric: '500+ mission-critical vertical software businesses',
                     paragraphs: [
-                      'Toronto\'s Constellation Software is a unique Canadian success story. They acquire, build, and manage mission-critical software for specific vertical markets, from transit scheduling to medical administration to utility management. Their portfolio of over 500 businesses builds the quiet software that runs critical infrastructure across North America and beyond.',
-                      'Key Services: Vertical market software, transit systems, healthcare administration, utility management, public sector solutions.',
-                      'Pros: Deep vertical expertise, mission-critical reliability, massive portfolio of specialized solutions. Cons: Acquisition-focused model, less emphasis on custom greenfield development.',
+                      'Toronto\'s Constellation Software is a unique and extraordinary Canadian tech success story. Rather than building one large platform, they acquire, manage, and grow hundreds of vertical market software businesses across industries including transit scheduling, medical administration, utility billing, municipal management, and agricultural software. Each business they acquire becomes best-in-class for its specific vertical.',
+                      'Key Services: Vertical market SaaS for transit, healthcare administration, utility management, municipal software, agricultural operations, and dozens of other specialized niches. Why They Rank #5: Unmatched breadth of mission-critical, specialized software. Their acquisition model means proven products with decades of domain expertise.',
+                      'Best For: Businesses in specialized verticals seeking proven, industry-specific software. Not a fit for custom greenfield development — Constellation acquires and operates, it does not build bespoke software for clients.',
                     ],
                   },
                   {
-                    num: '06', id: 'kinaxis', name: 'Kinaxis', category: 'Supply Chain',
+                    num: '06', id: 'kinaxis', name: 'Kinaxis', category: 'Supply Chain Technology',
                     emoji: '🔗', accentColor: '#fb923c', bgColor: 'rgba(251,146,60,',
-                    metric: 'Concurrent planning platform leader',
+                    hq: 'Ottawa, ON',
+                    metric: 'Concurrent planning for the world\'s largest manufacturers',
                     paragraphs: [
-                      'Ottawa-based Kinaxis builds supply chain planning software that powers some of the world\'s most complex manufacturing operations. Their RapidResponse platform uses concurrent planning technology to let companies run real-time simulations across their entire supply chain, a massive data engineering feat. Their engineering team is among the best in Canada for complex algorithmic and data-intensive software.',
-                      'Key Services: Supply chain planning, concurrent planning platform, demand sensing, inventory optimization, S&OP solutions.',
-                      'Pros: World-class supply chain technology, sophisticated algorithms, strong enterprise portfolio. Cons: Highly specialized, single-product focused.',
+                      'Ottawa-based Kinaxis has engineered one of the most technically sophisticated supply chain planning platforms in the world. Their RapidResponse platform uses patented concurrent planning technology to let companies simultaneously model thousands of supply chain scenarios in real time — a feat that requires extraordinary algorithmic engineering and distributed computing at scale. Clients include Toyota, Unilever, Merck, and dozens of the world\'s largest manufacturers.',
+                      'Key Services: Supply chain planning and optimization, demand sensing and forecasting, inventory optimization, S&OP and IBP, supply chain risk management, concurrent scenario modelling. Why They Rank #6: World-class supply chain technology that sets the standard for complex algorithmic and data-intensive enterprise software built in Canada.',
+                      'Best For: Global manufacturers, pharmaceutical companies, and consumer goods companies with highly complex, multi-echelon supply chains. Highly specialized — not a general development partner.',
                     ],
                   },
                   {
                     num: '07', id: 'coveo', name: 'Coveo', category: 'AI Search',
                     emoji: '🔍', accentColor: '#60a5fa', bgColor: 'rgba(96,165,250,',
-                    metric: 'AI-powered enterprise search & recommendations',
+                    hq: 'Quebec City, QC',
+                    metric: 'AI-powered search and personalization at enterprise scale',
                     paragraphs: [
-                      'Quebec City\'s Coveo has built Canada\'s leading AI-powered enterprise search and recommendation platform. Their technology uses machine learning to deliver personalized search results, product recommendations, and content suggestions for large enterprises. Their engineering team is at the forefront of applied AI in Canada, building production-grade ML systems that process billions of interactions.',
-                      'Key Services: AI search platform, personalization engines, recommendation systems, knowledge management, commerce search.',
-                      'Pros: Cutting-edge applied AI, production-grade ML at scale, strong enterprise adoption. Cons: Specialized in search/discovery, not a general development partner.',
+                      'Quebec City\'s Coveo has built Canada\'s leading applied AI platform for enterprise search, personalization, and recommendations. Their machine learning engine processes billions of user interactions annually to deliver contextually relevant search results, product recommendations, and support content — all tuned in real time without manual intervention. Clients include major financial institutions, retailers, and technology companies.',
+                      'Key Services: AI-powered enterprise search, product recommendation engines, knowledge management search, commerce search, service intelligence, customer support AI. Why They Rank #7: At the forefront of production-grade applied machine learning in Canada, with a strong enterprise adoption track record.',
+                      'Best For: Enterprises with complex search and recommendation challenges — e-commerce sites, knowledge bases, customer support portals. Not a general development partner.',
                     ],
                   },
                   {
-                    num: '08', id: 'bairesdev', name: 'BairesDev', category: 'Nearshore Dev',
-                    emoji: '👥', accentColor: '#4ade80', bgColor: 'rgba(74,222,128,',
-                    metric: 'Top 1% engineering talent, serving Canada',
+                    num: '08', id: 'lightspeed-commerce', name: 'Lightspeed Commerce', category: 'Cloud Commerce',
+                    emoji: '💳', accentColor: '#4ade80', bgColor: 'rgba(74,222,128,',
+                    hq: 'Montreal, QC',
+                    metric: 'Cloud-based POS powering hundreds of thousands of SMBs',
                     paragraphs: [
-                      'BairesDev provides Canadian companies with access to the top 1% of software engineering talent globally. Their staff augmentation model allows Canadian businesses to scale development teams rapidly without the overhead of recruitment, onboarding, and HR management. They serve many Canadian enterprises seeking specialized talent in AI, cloud engineering, and full-stack development.',
-                      'Key Services: Staff augmentation, dedicated development teams, project-based development, AI/ML engineering, QA & testing.',
-                      'Pros: Access to top-tier talent, flexible scaling, broad technology coverage. Cons: Augmentation model requires client-side technical leadership.',
+                      'Montreal-based Lightspeed builds cloud-native POS, e-commerce, and payments software that powers hundreds of thousands of retail and restaurant businesses across 100+ countries. Their platform processes billions in gross transaction volume annually, requiring serious engineering in high-availability distributed systems, real-time inventory management, and omni-channel commerce synchronization.',
+                      'Key Services: Cloud POS for retail and restaurants, omni-channel commerce, integrated payments processing, inventory management, loyalty programs, business analytics. Why They Rank #8: Best-in-class cloud commerce engineering with massive real-world scale and proven SMB market impact.',
+                      'Best For: Retailers, restaurants, and golf operators seeking best-in-class cloud POS and commerce infrastructure. A product company, not a custom development partner.',
                     ],
                   },
                   {
-                    num: '09', id: 'lightspeed-commerce', name: 'Lightspeed Commerce', category: 'POS Systems',
-                    emoji: '💳', accentColor: '#fbbf24', bgColor: 'rgba(251,191,36,',
-                    metric: 'Cloud commerce for global SMBs',
+                    num: '09', id: 'miovision', name: 'Miovision', category: 'Smart City Technology',
+                    emoji: '🏙️', accentColor: '#fbbf24', bgColor: 'rgba(251,191,36,',
+                    hq: 'Waterloo, ON',
+                    metric: 'AI-powered traffic intelligence for cities worldwide',
                     paragraphs: [
-                      'Montreal-based Lightspeed builds cloud-based POS and commerce software that powers hundreds of thousands of businesses globally. Their engineering teams are masters of high-availability, omni-channel systems that bridge the gap between in-store and online commerce. Their platform processes billions in gross transaction volume annually, demonstrating serious engineering chops in payments and real-time systems.',
-                      'Key Services: Cloud POS systems, omni-channel commerce, payment processing, restaurant management, golf course management.',
-                      'Pros: Best-in-class commerce infrastructure, massive scale, strong SMB focus. Cons: Product company, not a custom development partner.',
+                      'Waterloo-based Miovision is a Canadian deep-tech software company building AI-powered traffic management and smart city intelligence platforms. Their systems analyze vehicle movements at intersections using computer vision and machine learning, enabling cities to optimize signal timing, reduce congestion, measure emissions impact, and improve road safety — all in real time. Their technology is deployed in cities across North America, Europe, and Asia.',
+                      'Key Services: Traffic signal control software, intersection analytics, smart city data platforms, computer vision traffic counting, emissions monitoring, connected vehicle infrastructure. Why They Rank #9: A rare example of Canadian software engineering at the intersection of AI, computer vision, and critical public infrastructure.',
+                      'Best For: Municipalities, transportation agencies, and smart city technology buyers. Highly specialized in intelligent transportation systems.',
                     ],
                   },
                   {
-                    num: '10', id: 'toptal', name: 'Toptal', category: 'Elite Freelancers',
-                    emoji: '💎', accentColor: '#f87171', bgColor: 'rgba(248,113,113,',
-                    metric: 'Top 3% vetted software engineers',
+                    num: '10', id: 'applyboard', name: 'ApplyBoard', category: 'EdTech SaaS',
+                    emoji: '🎓', accentColor: '#f87171', bgColor: 'rgba(248,113,113,',
+                    hq: 'Kitchener, ON',
+                    metric: 'Leading international student recruitment platform',
                     paragraphs: [
-                      'Toptal connects Canadian businesses with the top 3% of freelance software engineers worldwide. Their rigorous vetting process, which accepts fewer than 3% of applicants, ensures high-quality talent for specific project needs. For Canadian companies needing specialized expertise, such as a machine learning engineer or a Kubernetes architect, for a defined engagement, Toptal provides flexible access to world-class developers.',
-                      'Key Services: Freelance software engineers, designers, project managers, finance experts, product managers.',
-                      'Pros: Rigorously vetted talent, flexible engagement models, rapid matching. Cons: Freelance model, no long-term product ownership, premium pricing.',
+                      'Kitchener-based ApplyBoard has built the world\'s largest international student recruitment platform, connecting hundreds of thousands of students with university and college programs across Canada, the USA, UK, and Australia. Their engineering team has built sophisticated matching algorithms, document processing automation, and payment infrastructure that handles the complex workflow of international student applications at massive scale.',
+                      'Key Services: EdTech platform engineering, student-institution matching algorithms, document processing automation, international payment infrastructure, institutional CRM, enrollment analytics. Why They Rank #10: An impressive Canadian SaaS engineering feat — building marketplace infrastructure that serves millions of students in a highly regulated, complex domain.',
+                      'Best For: Understanding what Canadian software engineering can achieve in marketplace and EdTech verticals. Not a development partner — a product company.',
                     ],
                   },
                 ].map((app) => (
                   <div key={app.id} className="reveal" style={{ marginBottom: 56 }} id={app.id}>
                     <div style={{
                       background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)',
-                      borderRadius: 24, padding: 36,
+                      borderRadius: 28, padding: 36,
                     }}>
                       <div style={{ display: 'flex', alignItems: 'flex-start', gap: 20, marginBottom: 20 }}>
                         <div style={{
@@ -361,13 +513,14 @@ export default function TopSoftwareDevelopmentCompaniesCanadaClient() {
                           display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 28,
                         }}>{app.emoji}</div>
                         <div>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4, flexWrap: 'wrap' }}>
                             <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)', fontWeight: 700 }}>{app.num}</span>
                             <span style={{
                               fontSize: 11, padding: '3px 10px', borderRadius: 100,
                               background: `${app.bgColor}0.12)`, color: app.accentColor,
                               fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase',
                             }}>{app.category}</span>
+                            <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)' }}>{app.hq}</span>
                           </div>
                           <h2 style={{
                             fontSize: 'clamp(1.4rem, 2.5vw, 1.9rem)', fontWeight: 700, color: '#ffffff',
@@ -397,38 +550,76 @@ export default function TopSoftwareDevelopmentCompaniesCanadaClient() {
                   </div>
                 ))}
 
+                {/* Canadian vs Offshore Comparison */}
+                <div className="reveal" style={{ marginBottom: 56 }}>
+                  <h2 style={{
+                    fontSize: 'clamp(1.4rem, 2.5vw, 1.9rem)', fontWeight: 700, color: '#ffffff',
+                    letterSpacing: '-0.03em', marginBottom: 24,
+                  }}>Canadian vs Offshore Software Development: The Real Comparison</h2>
+                  <div style={{ overflowX: 'auto', borderRadius: 16, border: '1px solid rgba(255,255,255,0.06)' }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 640 }}>
+                      <thead>
+                        <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+                          {['Factor', 'Canada', 'India (Offshore)', 'Eastern Europe'].map(h => (
+                            <th key={h} style={{
+                              padding: '14px 16px', textAlign: 'left', fontSize: 11, fontWeight: 700,
+                              letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)',
+                              background: 'rgba(255,255,255,0.02)',
+                            }}>{h}</th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {[
+                          { factor: 'Hourly Rate (USD)', canada: '$65–$135/hr', india: '$20–$60/hr', ee: '$45–$95/hr' },
+                          { factor: 'Timezone Alignment (NA)', canada: 'Excellent', india: 'Challenging', ee: 'Moderate' },
+                          { factor: 'Communication', canada: 'Native English', india: 'Strong English', ee: 'Good English' },
+                          { factor: 'IP Protection', canada: 'CUSMA/Strong', india: 'Moderate', ee: 'Strong (EU)' },
+                          { factor: 'SR&ED Tax Credits', canada: 'Up to 35%', india: 'N/A', ee: 'N/A' },
+                          { factor: 'Cultural Alignment (NA)', canada: 'Very High', india: 'Moderate', ee: 'Moderate' },
+                          { factor: 'Effective Cost After SR&ED', canada: '$42–$88/hr', india: '$20–$60/hr', ee: '$45–$95/hr' },
+                        ].map((row, i) => (
+                          <tr key={i} style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
+                            <td style={{ padding: '13px 16px', fontSize: 13, color: 'rgba(255,255,255,0.7)', fontWeight: 600 }}>{row.factor}</td>
+                            <td style={{ padding: '13px 16px', fontSize: 13, color: '#22c55e', fontWeight: 600 }}>{row.canada}</td>
+                            <td style={{ padding: '13px 16px', fontSize: 13, color: 'rgba(255,255,255,0.5)' }}>{row.india}</td>
+                            <td style={{ padding: '13px 16px', fontSize: 13, color: 'rgba(255,255,255,0.5)' }}>{row.ee}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
                 {/* Conclusion */}
-                <div className="reveal" style={{ marginBottom: 48 }}>
+                <div className="reveal" style={{ marginBottom: 56 }}>
                   <h2 style={{
                     fontSize: 'clamp(1.5rem, 2.8vw, 2.2rem)', fontWeight: 700, color: '#ffffff',
                     letterSpacing: '-0.03em', marginBottom: 24,
-                  }}>
-                    Conclusion: Canada&apos;s Software Engineering Excellence
-                  </h2>
+                  }}>Conclusion: Why Canada is the Smart Choice for Software Development in 2026</h2>
                   <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 20 }}>
-                    Canada&apos;s software development landscape spans the full spectrum, from agile product studios shipping MVPs in weeks to enterprise giants managing billions in IT infrastructure. The country&apos;s combination of world-class AI research, generous R&D incentives, and a deep talent pool makes it one of the smartest places in the world to build software.
+                    Canada&apos;s software development landscape in 2026 spans the full spectrum — from agile product studios shipping MVPs in weeks to enterprise technology giants managing billions in infrastructure. The combination of world-class AI research, generous SR&ED R&D credits, deep engineering talent, strong IP protections, and North American timezone alignment makes Canada arguably the best nearshore alternative to US software development available today.
                   </p>
                   <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 20 }}>
-                    For businesses seeking a bespoke software development partner that combines architectural excellence, full-stack engineering depth, and aggressive delivery timelines, Codazz is the clear Canadian leader. Their Edmonton headquarters provides a cost advantage, while their global delivery model and 500+ product launches demonstrate proven execution at scale.
+                    When you factor in SR&ED tax credits that can reduce effective development costs by 20–35%, Canadian firms often deliver equivalent or superior value to offshore alternatives, while eliminating the communication, timezone, and IP risk factors that frequently derail offshore projects.
                   </p>
                   <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8 }}>
-                    Whether you&apos;re building a startup MVP, modernizing enterprise systems, or deploying AI at scale, Canada has the engineering talent to bring your vision to life. Choose a partner that treats your code as a strategic asset, not a commodity.
+                    For businesses seeking a bespoke software development partner that combines architectural excellence, full-stack engineering depth, and aggressive delivery timelines, Codazz is the clear Canadian leader. Based in Edmonton — Canada&apos;s most cost-effective major tech market — with a global delivery model and 500+ production launches, Codazz proves that world-class engineering does not require a Silicon Valley address.
                   </p>
                 </div>
 
-                {/* FAQ Section */}
+                {/* FAQ */}
                 <div className="reveal" style={{ marginBottom: 48 }}>
                   <h2 style={{
                     fontSize: 'clamp(1.5rem, 2.8vw, 2.2rem)', fontWeight: 700, color: '#ffffff',
                     letterSpacing: '-0.03em', marginBottom: 24,
-                  }}>
-                    Frequently Asked Questions
-                  </h2>
+                  }}>Frequently Asked Questions</h2>
                   {[
-                    { q: 'How much does custom software development cost in Canada?', a: 'Custom software development in Canada ranges from CAD $25,000 for a simple web application to CAD $500,000+ for complex enterprise platforms. Mid-range projects typically cost CAD $75,000-$250,000. Rates vary by city, with Edmonton and Calgary offering 20-30% lower rates than Toronto and Vancouver.' },
-                    { q: 'What are the SR&ED tax credits for software development?', a: 'Canada\'s Scientific Research & Experimental Development (SR&ED) program offers 15% federal tax credits on qualifying R&D expenditures, with additional provincial credits ranging from 3.5% to 20%. Combined, these credits can reduce effective software development costs by 20-35%.' },
-                    { q: 'Is Canada a good alternative to US software development companies?', a: 'Absolutely. Canadian developers offer comparable or superior engineering quality to US firms, often at 20-40% lower rates. Shared time zones, cultural alignment, strong IP protections under CUSMA, and a favorable exchange rate make Canada an excellent nearshore alternative.' },
-                    { q: 'Which Canadian city is best for software development?', a: 'Edmonton leads in AI and offers the best value. Toronto is strongest for fintech and enterprise. Montreal excels in gaming and AI research. Vancouver is top for AR/VR and gaming. Ottawa has a strong government tech sector. The best city depends on your industry and budget.' },
+                    { q: 'How much does custom software development cost in Canada?', a: 'Custom software development in Canada ranges from CAD $25,000 for a simple web application to CAD $500,000+ for complex enterprise platforms. Mid-range projects typically cost CAD $80,000–$250,000. Rates are 20–30% lower in Edmonton and Calgary than in Toronto or Vancouver, making location a significant cost factor.' },
+                    { q: 'What are SR&ED tax credits and how do they work?', a: 'Canada\'s Scientific Research & Experimental Development (SR&ED) program offers 15% federal investment tax credits on qualifying R&D expenditures, with additional provincial credits ranging from 3.5% to 20%. Canadian-Controlled Private Corporations (CCPCs) can access an enhanced 35% federal rate on the first $3M of expenditures. Combined, these can reduce effective software development costs by 20–35%.' },
+                    { q: 'Is Canada a better choice than offshore for North American companies?', a: 'For most North American businesses, Canada offers the best of both worlds: engineering quality comparable to US firms, timezone alignment, native English communication, strong IP protections under CUSMA, and rates 30–50% below US equivalents. When SR&ED credits are included, the effective cost gap versus offshore narrows significantly — while eliminating the communication, timezone, and IP risks common in offshore engagements.' },
+                    { q: 'Which Canadian city is best for software development outsourcing?', a: 'Edmonton offers the best value — strong AI research ecosystem via the University of Alberta and the lowest rates among major Canadian tech cities (CAD $85–$130/hr). Toronto excels in fintech and enterprise software. Montreal is the hub for gaming, AI research, and bilingual projects. Vancouver leads in gaming, AR/VR, and blockchain. Calgary is strong in energy tech and IoT. Your choice should depend on the specialization you need and your budget.' },
+                    { q: 'What is the difference between a product studio and a software consultancy in Canada?', a: 'A product studio like Codazz takes full ownership of your software — conducting UX research, architecting systems, building the product, and managing the full lifecycle including post-launch support and iteration. A software consultancy like CGI provides staffing and delivery capacity but typically requires strong client-side technical leadership to drive direction. For startups and scale-ups, a product studio typically delivers better outcomes. For enterprises with internal technical teams, a consultancy provides flexible capacity.' },
                   ].map((faq, i) => (
                     <div key={i} style={{
                       background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)',
@@ -444,10 +635,9 @@ export default function TopSoftwareDevelopmentCompaniesCanadaClient() {
 
               {/* SIDEBAR */}
               <aside>
-                <div style={{
-                  position: 'sticky', top: 100,
-                  display: 'flex', flexDirection: 'column', gap: 24,
-                }}>
+                <div style={{ position: 'sticky', top: 100, display: 'flex', flexDirection: 'column', gap: 24 }}>
+
+                  {/* Table of Contents */}
                   <div style={{
                     background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)',
                     borderRadius: 20, padding: 24,
@@ -457,8 +647,8 @@ export default function TopSoftwareDevelopmentCompaniesCanadaClient() {
                       color: 'rgba(255,255,255,0.25)', marginBottom: 16,
                     }}>In This Article</p>
                     <nav style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-                      {companies.map(app => (
-                        <a key={app.name} href={`#${app.name.toLowerCase().replace(/[\s\(\)]+/g, '-').replace(/-$/, '')}`} style={{
+                      {companies.map(c => (
+                        <a key={c.name} href={`#${c.name.toLowerCase().replace(/[\s\(\)\/]+/g, '-').replace(/-$/, '')}`} style={{
                           fontSize: 13, color: 'rgba(255,255,255,0.4)', textDecoration: 'none',
                           padding: '6px 10px', borderRadius: 8, display: 'flex', alignItems: 'center', gap: 10,
                           transition: 'all 0.15s',
@@ -472,14 +662,42 @@ export default function TopSoftwareDevelopmentCompaniesCanadaClient() {
                             (e.currentTarget as HTMLAnchorElement).style.background = 'transparent';
                           }}
                         >
-                          <span style={{ fontSize: 14 }}>{app.emoji}</span>
-                          <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{app.name}</span>
-                          <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.2)', marginLeft: 'auto', flexShrink: 0 }}>{app.category}</span>
+                          <span style={{ fontSize: 14 }}>{c.emoji}</span>
+                          <span style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{c.name}</span>
+                          <span style={{ fontSize: 10, color: 'rgba(255,255,255,0.2)', marginLeft: 'auto', flexShrink: 0 }}>#{c.num}</span>
                         </a>
                       ))}
                     </nav>
                   </div>
 
+                  {/* Rate Reference */}
+                  <div style={{
+                    background: 'rgba(34,197,94,0.04)', border: '1px solid rgba(34,197,94,0.12)',
+                    borderRadius: 20, padding: 24,
+                  }}>
+                    <p style={{
+                      fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
+                      color: '#22c55e', marginBottom: 16,
+                    }}>2026 Canadian Rates</p>
+                    {[
+                      { label: 'Edmonton', rate: 'CAD $85–$130/hr' },
+                      { label: 'Calgary', rate: 'CAD $90–$140/hr' },
+                      { label: 'Montreal', rate: 'CAD $100–$155/hr' },
+                      { label: 'Vancouver', rate: 'CAD $115–$165/hr' },
+                      { label: 'Toronto', rate: 'CAD $120–$175/hr' },
+                    ].map((r, i) => (
+                      <div key={i} style={{
+                        display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                        paddingBottom: i < 4 ? 10 : 0, marginBottom: i < 4 ? 10 : 0,
+                        borderBottom: i < 4 ? '1px solid rgba(255,255,255,0.04)' : 'none',
+                      }}>
+                        <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)' }}>{r.label}</span>
+                        <span style={{ fontSize: 13, fontWeight: 700, color: '#22c55e' }}>{r.rate}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Author */}
                   <div style={{
                     background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)',
                     borderRadius: 20, padding: 24,
@@ -497,14 +715,15 @@ export default function TopSoftwareDevelopmentCompaniesCanadaClient() {
                       }}>RM</div>
                       <div>
                         <p style={{ fontSize: 14, fontWeight: 600, color: '#ffffff', margin: 0 }}>Raman Makkar</p>
-                        <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', margin: 0 }}>CEO, Codazz</p>
+                        <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', margin: 0 }}>CEO, Codazz — Edmonton, AB</p>
                       </div>
                     </div>
                     <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)', lineHeight: 1.7, margin: 0 }}>
-                      Leading engineering strategy and product vision at Codazz from Edmonton, Canada. Has guided over 500+ bespoke product launches globally.
+                      Building Canada&apos;s top software engineering firm from Edmonton. 500+ production launches across fintech, healthtech, SaaS, and enterprise.
                     </p>
                   </div>
 
+                  {/* Related Posts */}
                   <div style={{
                     background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)',
                     borderRadius: 20, padding: 24,
@@ -536,6 +755,7 @@ export default function TopSoftwareDevelopmentCompaniesCanadaClient() {
                       ))}
                     </div>
                   </div>
+
                 </div>
               </aside>
 
@@ -558,7 +778,7 @@ export default function TopSoftwareDevelopmentCompaniesCanadaClient() {
               <div>
                 <p style={{
                   fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                  color: '#ffffff', marginBottom: 12,
+                  color: '#22c55e', marginBottom: 12,
                 }}>Build With Canada&apos;s Best</p>
                 <h2 style={{
                   fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', fontWeight: 700, color: '#ffffff',
@@ -566,8 +786,8 @@ export default function TopSoftwareDevelopmentCompaniesCanadaClient() {
                 }}>
                   Your Software Deserves World-Class Engineering.
                 </h2>
-                <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.45)', maxWidth: 480, lineHeight: 1.7 }}>
-                  From Edmonton to the world, Codazz engineers the software that scales. Architecture-first, full-stack, delivered on aggressive timelines.
+                <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.45)', maxWidth: 500, lineHeight: 1.7 }}>
+                  From Edmonton to the world, Codazz engineers the software that scales. Architecture-first, full-stack, delivered on aggressive timelines — at Canadian rates that make sense.
                 </p>
               </div>
               <Link href="/contact" style={{ textDecoration: 'none' }}>
@@ -576,7 +796,7 @@ export default function TopSoftwareDevelopmentCompaniesCanadaClient() {
                   fontSize: 15, fontWeight: 700, border: 'none', cursor: 'pointer',
                   transition: 'all 0.2s', whiteSpace: 'nowrap',
                 }}>
-                  Start Your Project →
+                  Start Your Project with Codazz →
                 </button>
               </Link>
             </div>

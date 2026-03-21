@@ -251,21 +251,7 @@ function hoverCard(e: React.MouseEvent<HTMLDivElement>, enter: boolean) {
 export default function DigitalMarketingPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  const heroRef = useReveal() as React.RefObject<HTMLElement>;
-  const s1 = useReveal() as React.RefObject<HTMLElement>;
-  const s2 = useReveal() as React.RefObject<HTMLElement>;
-  const s3 = useReveal() as React.RefObject<HTMLElement>;
-  const s4 = useReveal() as React.RefObject<HTMLElement>;
-  const s5 = useReveal() as React.RefObject<HTMLElement>;
-  const s6 = useReveal() as React.RefObject<HTMLElement>;
-  const s7 = useReveal() as React.RefObject<HTMLElement>;
-  const s8 = useReveal() as React.RefObject<HTMLElement>;
-  const s9 = useReveal() as React.RefObject<HTMLElement>;
-  const s10 = useReveal() as React.RefObject<HTMLElement>;
-  const s11 = useReveal() as React.RefObject<HTMLElement>;
-  const s12 = useReveal() as React.RefObject<HTMLElement>;
-  const s13 = useReveal() as React.RefObject<HTMLElement>;
-  const s14 = useReveal() as React.RefObject<HTMLElement>;
+  const pageRef = useReveal() as React.RefObject<HTMLElement>;
 
   return (
     <>
@@ -279,7 +265,7 @@ export default function DigitalMarketingPage() {
         .reveal-d5 { transition-delay: 0.5s; }
       `}</style>
       <Navbar />
-      <main style={{ background: '#000000', color: '#ffffff', paddingTop: 80 }}>
+      <main ref={pageRef} style={{ background: '#000000', color: '#ffffff', paddingTop: 80 }}>
         <div className="cb-container">
           <Breadcrumb items={[
             { label: 'Home', href: '/' },
@@ -291,7 +277,7 @@ export default function DigitalMarketingPage() {
         {/* ════════════════════════════════════════════════════════════
             1. HERO — H1 + stats + CTAs + lead form
         ════════════════════════════════════════════════════════════ */}
-        <section ref={heroRef} className="section-padding" style={{ position: 'relative', overflow: 'hidden', minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
+        <section className="section-padding" style={{ position: 'relative', overflow: 'hidden', minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
           <HeroBackground variant="center" />
           <div className="cb-container" style={{ position: 'relative', zIndex: 1 }}>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 480px), 1fr))', gap: 'clamp(40px, 6vw, 80px)', alignItems: 'center' }}>
@@ -335,7 +321,7 @@ export default function DigitalMarketingPage() {
         {/* ════════════════════════════════════════════════════════════
             2. AWARDS / TRUST BADGES
         ════════════════════════════════════════════════════════════ */}
-        <section ref={s1} style={{ ...sectionBorder, padding: 'clamp(24px, 4vw, 48px) 0' }}>
+        <section style={{ ...sectionBorder, padding: 'clamp(24px, 4vw, 48px) 0' }}>
           <div className="cb-container">
             <p className="reveal" style={{ textAlign: 'center', fontSize: 12, color: 'rgba(255,255,255,0.35)', textTransform: 'uppercase', letterSpacing: '0.1em', fontWeight: 600, marginBottom: 16 }}>
               Trusted by 150+ Brands Worldwide
@@ -349,7 +335,7 @@ export default function DigitalMarketingPage() {
         {/* ════════════════════════════════════════════════════════════
             3. MARKETING SERVICES GRID — 4 cards linking to sub-pages
         ════════════════════════════════════════════════════════════ */}
-        <section ref={s2} className="section-padding" style={sectionBorder}>
+        <section className="section-padding" style={sectionBorder}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 16 }}>
               <span style={labelStyle}>Our Services</span>
@@ -385,7 +371,7 @@ export default function DigitalMarketingPage() {
         {/* ════════════════════════════════════════════════════════════
             4. RESULTS — 4 big metrics
         ════════════════════════════════════════════════════════════ */}
-        <section ref={s3} className="section-padding" style={sectionBorder}>
+        <section className="section-padding" style={sectionBorder}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 16 }}>
               <span style={labelStyle}>Proven Results</span>
@@ -409,7 +395,7 @@ export default function DigitalMarketingPage() {
         {/* ════════════════════════════════════════════════════════════
             5. SEO DEEP DIVE
         ════════════════════════════════════════════════════════════ */}
-        <section ref={s4} className="section-padding" style={sectionBorder}>
+        <section className="section-padding" style={sectionBorder}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 16 }}>
               <span style={labelStyle}>SEO Services</span>
@@ -445,7 +431,7 @@ export default function DigitalMarketingPage() {
         {/* ════════════════════════════════════════════════════════════
             6. PPC MANAGEMENT
         ════════════════════════════════════════════════════════════ */}
-        <section ref={s5} className="section-padding" style={sectionBorder}>
+        <section className="section-padding" style={sectionBorder}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 16 }}>
               <span style={labelStyle}>PPC Management</span>
@@ -487,7 +473,7 @@ export default function DigitalMarketingPage() {
         {/* ════════════════════════════════════════════════════════════
             7. CONTENT STRATEGY
         ════════════════════════════════════════════════════════════ */}
-        <section ref={s6} className="section-padding" style={sectionBorder}>
+        <section className="section-padding" style={sectionBorder}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 16 }}>
               <span style={labelStyle}>Content Strategy</span>
@@ -518,7 +504,7 @@ export default function DigitalMarketingPage() {
         {/* ════════════════════════════════════════════════════════════
             8. ANALYTICS & REPORTING
         ════════════════════════════════════════════════════════════ */}
-        <section ref={s7} className="section-padding" style={sectionBorder}>
+        <section className="section-padding" style={sectionBorder}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 16 }}>
               <span style={labelStyle}>Analytics & Reporting</span>
@@ -547,7 +533,7 @@ export default function DigitalMarketingPage() {
         {/* ════════════════════════════════════════════════════════════
             9. CASE STUDIES — 3 with before/after metrics
         ════════════════════════════════════════════════════════════ */}
-        <section ref={s8} className="section-padding" style={sectionBorder}>
+        <section className="section-padding" style={sectionBorder}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 16 }}>
               <span style={labelStyle}>Case Studies</span>
@@ -587,7 +573,7 @@ export default function DigitalMarketingPage() {
         {/* ════════════════════════════════════════════════════════════
             10. MARKETING TECH STACK
         ════════════════════════════════════════════════════════════ */}
-        <section ref={s9} className="section-padding" style={sectionBorder}>
+        <section className="section-padding" style={sectionBorder}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 16 }}>
               <span style={labelStyle}>Tech Stack</span>
@@ -614,7 +600,7 @@ export default function DigitalMarketingPage() {
         {/* ════════════════════════════════════════════════════════════
             11. PROCESS — 6 steps
         ════════════════════════════════════════════════════════════ */}
-        <section ref={s10} className="section-padding" style={sectionBorder}>
+        <section className="section-padding" style={sectionBorder}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 16 }}>
               <span style={labelStyle}>Our Process</span>
@@ -641,7 +627,7 @@ export default function DigitalMarketingPage() {
         {/* ════════════════════════════════════════════════════════════
             12. TESTIMONIALS — 4 cards
         ════════════════════════════════════════════════════════════ */}
-        <section ref={s11} className="section-padding" style={sectionBorder}>
+        <section className="section-padding" style={sectionBorder}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 16 }}>
               <span style={labelStyle}>Testimonials</span>
@@ -677,7 +663,7 @@ export default function DigitalMarketingPage() {
         {/* ════════════════════════════════════════════════════════════
             13. FAQ — 8 questions
         ════════════════════════════════════════════════════════════ */}
-        <section ref={s12} className="section-padding" style={sectionBorder}>
+        <section className="section-padding" style={sectionBorder}>
           <div className="cb-container" style={{ maxWidth: 780 }}>
             <div className="reveal" style={{ marginBottom: 16 }}>
               <span style={labelStyle}>FAQ</span>
@@ -718,7 +704,7 @@ export default function DigitalMarketingPage() {
         {/* ════════════════════════════════════════════════════════════
             14. CTA — Lead form with "Get Free Marketing Audit"
         ════════════════════════════════════════════════════════════ */}
-        <section ref={s13} className="section-padding">
+        <section className="section-padding">
           <div className="cb-container">
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 440px), 1fr))', gap: 'clamp(40px, 6vw, 80px)', alignItems: 'center' }}>
               {/* Left — CTA copy */}

@@ -3,6 +3,7 @@ import { Analytics } from "@vercel/analytics/react";
 import CookieConsent from "@/components/CookieConsent";
 import ClarityAnalytics from "@/components/ClarityAnalytics";
 import NavigationHelper from "@/components/NavigationHelper";
+import ScrollProgress from "@/components/ScrollProgress";
 
 import { poppins } from "@/lib/fonts";
 import "./globals.css";
@@ -162,6 +163,28 @@ const organizationSchema = {
     ratingValue: "4.9",
     reviewCount: "527",
   },
+  areaServed: ["CA", "US", "GB", "AE", "AU", "SG"],
+  serviceType: [
+    "Mobile App Development",
+    "Web Development",
+    "AI Development",
+    "SaaS Development",
+    "UI/UX Design",
+  ],
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  url: "https://codazz.com",
+  name: "Codazz",
+  description:
+    "Custom software development company headquartered in Edmonton, Canada. We build mobile apps, web applications, AI solutions, and SaaS products.",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: "https://codazz.com/blog?q={search_term_string}",
+    "query-input": "required name=search_term_string",
+  },
 };
 
 export default function RootLayout({
@@ -194,6 +217,7 @@ gtag('config', 'G-LLHNY6HD88');`,
         />
       </head>
       <body className={poppins.className}>
+        <ScrollProgress />
         <a href="#main-content" className="sr-only-focusable">Skip to main content</a>
         {/* Google Tag Manager (noscript) */}
         <noscript>
@@ -208,6 +232,12 @@ gtag('config', 'G-LLHNY6HD88');`,
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(organizationSchema),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteSchema),
           }}
         />
         {children}

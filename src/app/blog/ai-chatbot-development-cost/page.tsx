@@ -1,10 +1,10 @@
 import { Metadata } from 'next';
 import PageClient from './PageClient';
 
-const TITLE = 'How Much Does AI Chatbot Development Cost in 2026?';
-const DESCRIPTION = 'Complete guide to AI chatbot development costs in 2026 — from simple rule-based bots ($5K-15K) to enterprise AI assistants ($80K-250K+). Real pricing, timelines, and cost factors.';
+const TITLE = 'AI Chatbot Development Cost in 2026: Complete Price Guide';
+const DESCRIPTION = 'Complete breakdown of AI chatbot development costs in 2026 — rule-based vs NLP vs LLM chatbots, GPT-4 vs open-source pricing, monthly API costs, custom vs platform, cost tiers from $5K to $200K+, ROI calculation, and maintenance.';
 const SLUG = 'ai-chatbot-development-cost';
-const DATE = '2026-03-19';
+const DATE = '2026-03-20';
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -15,6 +15,14 @@ export const metadata: Metadata = {
     type: 'article',
     publishedTime: DATE,
     url: `https://codazz.com/blog/${SLUG}`,
+    images: [
+      {
+        url: `https://codazz.com/blog_images/${SLUG}.jpg`,
+        width: 1200,
+        height: 630,
+        alt: 'AI chatbot development cost guide 2026',
+      },
+    ],
   },
   alternates: {
     canonical: `https://codazz.com/blog/${SLUG}`,

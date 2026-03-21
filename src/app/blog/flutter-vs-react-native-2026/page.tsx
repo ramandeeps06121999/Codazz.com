@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     url: `https://codazz.com/blog/${SLUG}`,
     images: [
       {
-        url: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&h=630&fit=crop',
+        url: 'https://codazz.com/blog_images/flutter-vs-react-native-2026.jpg',
         width: 1200,
         height: 630,
         alt: 'Developer coding with multiple screens showing code',
@@ -51,7 +51,7 @@ const jsonLd = {
       url: 'https://codazz.com/logo.png',
     },
   },
-  image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&h=630&fit=crop',
+  image: 'https://codazz.com/blog_images/flutter-vs-react-native-2026.jpg',
   url: `https://codazz.com/blog/${SLUG}`,
   mainEntityOfPage: `https://codazz.com/blog/${SLUG}`,
 };

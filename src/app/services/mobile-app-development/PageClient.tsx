@@ -378,23 +378,7 @@ export default function MobileAppDevelopmentPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   // Section refs
-  const heroRef = useReveal() as React.RefObject<HTMLElement>;
-  const awardsRef = useReveal() as React.RefObject<HTMLElement>;
-  const subServRef = useReveal() as React.RefObject<HTMLElement>;
-  const benefitsRef = useReveal() as React.RefObject<HTMLElement>;
-  const logosRef = useReveal() as React.RefObject<HTMLElement>;
-  const statsRef = useReveal() as React.RefObject<HTMLElement>;
-  const casesRef = useReveal() as React.RefObject<HTMLElement>;
-  const advTechRef = useReveal() as React.RefObject<HTMLElement>;
-  const processRef = useReveal() as React.RefObject<HTMLElement>;
-  const whyRef = useReveal() as React.RefObject<HTMLElement>;
-  const complianceRef = useReveal() as React.RefObject<HTMLElement>;
-  const techRef = useReveal() as React.RefObject<HTMLElement>;
-  const marketRef = useReveal() as React.RefObject<HTMLElement>;
-  const testimonialsRef = useReveal() as React.RefObject<HTMLElement>;
-  const faqRef = useReveal() as React.RefObject<HTMLElement>;
-  const blogsRef = useReveal() as React.RefObject<HTMLElement>;
-  const ctaRef = useReveal() as React.RefObject<HTMLElement>;
+  const pageRef = useReveal() as React.RefObject<HTMLElement>;
 
   // Shared styles
   const sectionLabel: React.CSSProperties = {
@@ -459,7 +443,7 @@ export default function MobileAppDevelopmentPage() {
   return (
     <>
       <Navbar />
-      <main style={{ background: '#000000', color: '#ffffff', paddingTop: 80 }}>
+      <main ref={pageRef} style={{ background: '#000000', color: '#ffffff', paddingTop: 80 }}>
         {/* Breadcrumb */}
         <div className="cb-container">
           <Breadcrumb items={[
@@ -474,7 +458,7 @@ export default function MobileAppDevelopmentPage() {
             1. HERO
         ═══════════════════════════════════════ */}
         <section
-          ref={heroRef}
+
           className="section-padding"
           style={{ position: 'relative', overflow: 'hidden', minHeight: '90vh', display: 'flex', alignItems: 'center' }}
         >
@@ -588,7 +572,7 @@ export default function MobileAppDevelopmentPage() {
         {/* ═══════════════════════════════════════
             2. AWARDS MARQUEE
         ═══════════════════════════════════════ */}
-        <section ref={awardsRef} style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', overflow: 'hidden', padding: '20px 0' }}>
+        <section style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', overflow: 'hidden', padding: '20px 0' }}>
           <div className="awards-marquee-track" style={{ display: 'flex', width: 'max-content' }}>
             {[...awards, ...awards, ...awards].map((award, i) => (
               <div
@@ -618,7 +602,7 @@ export default function MobileAppDevelopmentPage() {
         {/* ═══════════════════════════════════════
             3. SUB-SERVICES GRID
         ═══════════════════════════════════════ */}
-        <section ref={subServRef} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 64 }}>
               <div style={sectionLabel}>Our Services</div>
@@ -676,7 +660,7 @@ export default function MobileAppDevelopmentPage() {
         {/* ═══════════════════════════════════════
             4. BENEFITS SECTION
         ═══════════════════════════════════════ */}
-        <section ref={benefitsRef} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>
               <div style={sectionLabel}>Why Mobile App Development?</div>
@@ -708,7 +692,7 @@ export default function MobileAppDevelopmentPage() {
         {/* ═══════════════════════════════════════
             5. CLIENT LOGOS MARQUEE
         ═══════════════════════════════════════ */}
-        <section ref={logosRef} style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', padding: '48px 0', overflow: 'hidden' }}>
+        <section style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', padding: '48px 0', overflow: 'hidden' }}>
           <div className="cb-container" style={{ textAlign: 'center', marginBottom: 32 }}>
             <div className="reveal" style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.2)' }}>
               Trusted by Teams Building With
@@ -745,7 +729,7 @@ export default function MobileAppDevelopmentPage() {
         {/* ═══════════════════════════════════════
             6. STATS SECTION
         ═══════════════════════════════════════ */}
-        <section ref={statsRef} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>
               <div style={sectionLabel}>By the Numbers</div>
@@ -783,7 +767,7 @@ export default function MobileAppDevelopmentPage() {
         {/* ═══════════════════════════════════════
             7. CASE STUDIES
         ═══════════════════════════════════════ */}
-        <section ref={casesRef} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div className="reveal" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 64, gap: 40, flexWrap: 'wrap' }}>
               <div>
@@ -849,7 +833,7 @@ export default function MobileAppDevelopmentPage() {
         {/* ═══════════════════════════════════════
             8. ADVANCED TECHNOLOGIES
         ═══════════════════════════════════════ */}
-        <section ref={advTechRef} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>
               <div style={sectionLabel}>Advanced Technologies</div>
@@ -885,7 +869,7 @@ export default function MobileAppDevelopmentPage() {
         {/* ═══════════════════════════════════════
             9. DEVELOPMENT PROCESS
         ═══════════════════════════════════════ */}
-        <section ref={processRef} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 80 }}>
               <div style={sectionLabel}>Our Process</div>
@@ -967,7 +951,7 @@ export default function MobileAppDevelopmentPage() {
         {/* ═══════════════════════════════════════
             10. WHY CHOOSE CODAZZ
         ═══════════════════════════════════════ */}
-        <section ref={whyRef} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>
               <div style={sectionLabel}>Why Codazz</div>
@@ -1004,7 +988,7 @@ export default function MobileAppDevelopmentPage() {
         {/* ═══════════════════════════════════════
             11. COMPLIANCE & SECURITY
         ═══════════════════════════════════════ */}
-        <section ref={complianceRef} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>
               <div style={sectionLabel}>Compliance & Security</div>
@@ -1049,7 +1033,7 @@ export default function MobileAppDevelopmentPage() {
         {/* ═══════════════════════════════════════
             12. TECH STACK GRID
         ═══════════════════════════════════════ */}
-        <section ref={techRef} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div className="reveal" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 64, gap: 40, flexWrap: 'wrap' }}>
               <div>
@@ -1099,7 +1083,7 @@ export default function MobileAppDevelopmentPage() {
         {/* ═══════════════════════════════════════
             13. MARKET INTELLIGENCE
         ═══════════════════════════════════════ */}
-        <section ref={marketRef} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>
               <div style={sectionLabel}>Market Intelligence</div>
@@ -1141,7 +1125,7 @@ export default function MobileAppDevelopmentPage() {
         {/* ═══════════════════════════════════════
             14. TESTIMONIALS
         ═══════════════════════════════════════ */}
-        <section ref={testimonialsRef} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>
               <div style={sectionLabel}>Client Testimonials</div>
@@ -1187,7 +1171,7 @@ export default function MobileAppDevelopmentPage() {
         {/* ═══════════════════════════════════════
             15. FAQ SECTION
         ═══════════════════════════════════════ */}
-        <section ref={faqRef} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container" style={{ maxWidth: 860 }}>
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>
               <div style={sectionLabel}>Frequently Asked Questions</div>
@@ -1251,7 +1235,7 @@ export default function MobileAppDevelopmentPage() {
         {/* ═══════════════════════════════════════
             16. RELATED BLOGS
         ═══════════════════════════════════════ */}
-        <section ref={blogsRef} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div className="reveal" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 64, gap: 40, flexWrap: 'wrap' }}>
               <div>
@@ -1302,7 +1286,7 @@ export default function MobileAppDevelopmentPage() {
         {/* ═══════════════════════════════════════
             17. CTA WITH FORM
         ═══════════════════════════════════════ */}
-        <section ref={ctaRef} className="section-padding" style={{ position: 'relative', overflow: 'hidden' }}>
+        <section className="section-padding" style={{ position: 'relative', overflow: 'hidden' }}>
           {/* Background glow */}
           <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: 900, height: 600, background: 'radial-gradient(ellipse,rgba(34,197,94,0.09) 0%,transparent 65%)', filter: 'blur(70px)', pointerEvents: 'none' }} />
 

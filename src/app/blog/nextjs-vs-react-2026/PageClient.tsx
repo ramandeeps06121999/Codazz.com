@@ -76,7 +76,7 @@ export default function NextjsVsReactClient() {
         <div className="cb-container" style={{ paddingTop: 100 }}>
           <div className="reveal" style={{ marginBottom: 40 }}>
             <Image
-              src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&h=675&fit=crop"
+              src="/blog_images/nextjs-vs-react-2026.jpg"
               alt="Code editor showing JavaScript and React code"
               width={1200}
               height={675}
@@ -89,9 +89,6 @@ export default function NextjsVsReactClient() {
                 borderRadius: 'clamp(16px, 3vw, 24px)',
               }}
             />
-            <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', marginTop: 8, textAlign: 'center' }}>
-              Photo by <a href="https://unsplash.com/@bfrsa" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Ben Griffiths</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-            </p>
           </div>
         </div>
 
@@ -272,7 +269,7 @@ export default function NextjsVsReactClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=500&fit=crop"
+                    src="/blog_images/nextjs-vs-react-2026.jpg"
                     alt="Server infrastructure and network architecture"
                     width={800}
                     height={500}
@@ -283,9 +280,6 @@ export default function NextjsVsReactClient() {
                       marginBottom: 16,
                     }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@tvick" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Taylor Vick</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <p className="reveal">
@@ -389,7 +383,7 @@ export default function NextjsVsReactClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop"
+                    src="/blog_images/nextjs-vs-react-2026.jpg"
                     alt="Performance metrics dashboard with charts and analytics"
                     width={800}
                     height={500}
@@ -400,9 +394,6 @@ export default function NextjsVsReactClient() {
                       marginBottom: 16,
                     }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@lukechesser" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Luke Chesser</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <p className="reveal">
@@ -463,7 +454,7 @@ export default function NextjsVsReactClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=500&fit=crop"
+                    src="/blog_images/nextjs-vs-react-2026.jpg"
                     alt="Developer workspace with multiple monitors"
                     width={800}
                     height={500}
@@ -474,9 +465,6 @@ export default function NextjsVsReactClient() {
                       marginBottom: 16,
                     }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@cgower" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Christopher Gower</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <div className="reveal" style={{
@@ -597,7 +585,7 @@ export default function NextjsVsReactClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&h=500&fit=crop"
+                    src="/blog_images/nextjs-vs-react-2026.jpg"
                     alt="Team collaborating on technology decisions"
                     width={800}
                     height={500}
@@ -608,9 +596,6 @@ export default function NextjsVsReactClient() {
                       marginBottom: 16,
                     }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@clyders" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Clyde RS</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <p className="reveal" style={{ fontSize: 18, color: '#ffffff', fontWeight: 500 }}>

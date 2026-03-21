@@ -1,10 +1,10 @@
 import { Metadata } from 'next';
 import PageClient from './PageClient';
 
-const TITLE = 'How Much Does Ecommerce App Development Cost in 2026?';
-const DESCRIPTION = 'Complete guide to ecommerce app development costs in 2026 — from simple stores ($15K-40K) to enterprise marketplaces ($150K-500K+). Real pricing, features, and timelines.';
+const TITLE = 'Ecommerce App Development Cost 2026: Build vs Platform vs Custom';
+const DESCRIPTION = 'Complete guide to ecommerce app development costs in 2026 — Shopify vs WooCommerce vs custom builds, mobile commerce, payment gateway integration, inventory management, B2B vs B2C costs, and tiers from $15K to $500K+.';
 const SLUG = 'ecommerce-app-development-cost';
-const DATE = '2026-03-19';
+const DATE = '2026-03-20';
 
 export const metadata: Metadata = {
   title: TITLE,

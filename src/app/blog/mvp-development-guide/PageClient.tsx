@@ -136,7 +136,7 @@ export default function MVPDevelopmentGuideClient() {
         <div className="cb-container" style={{ paddingTop: 100 }}>
           <div className="reveal" style={{ marginBottom: 40 }}>
             <Image
-              src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&h=675&fit=crop"
+              src="/blog_images/mvp-development-guide.jpg"
               alt="Startup team working on product launch"
               width={1200}
               height={675}
@@ -149,9 +149,6 @@ export default function MVPDevelopmentGuideClient() {
                 borderRadius: 'clamp(16px, 3vw, 24px)',
               }}
             />
-            <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', marginTop: 8, textAlign: 'center' }}>
-              Photo by <a href="https://unsplash.com/@marvelous" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Marvin Meyer</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-            </p>
           </div>
         </div>
 
@@ -326,7 +323,7 @@ export default function MVPDevelopmentGuideClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1531498860502-7c67cf02f657?w=800&h=500&fit=crop"
+                    src="/blog_images/mvp-development-guide.jpg"
                     alt="Product development and prototype design"
                     width={800}
                     height={500}
@@ -337,9 +334,6 @@ export default function MVPDevelopmentGuideClient() {
                       marginBottom: 16,
                     }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@headwayio" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Headway</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <h3 className="reveal" style={{ fontSize: 20, fontWeight: 600, color: '#ff6b6b', marginTop: 32, marginBottom: 16 }}>
@@ -407,7 +401,7 @@ export default function MVPDevelopmentGuideClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=800&h=500&fit=crop"
+                    src="/blog_images/mvp-development-guide.jpg"
                     alt="Timeline planning and schedule"
                     width={800}
                     height={500}
@@ -418,9 +412,6 @@ export default function MVPDevelopmentGuideClient() {
                       marginBottom: 16,
                     }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@esteejanssens" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Est&eacute;e Janssens</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <div className="reveal" style={{
@@ -554,7 +545,7 @@ export default function MVPDevelopmentGuideClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=500&fit=crop"
+                    src="/blog_images/mvp-development-guide.jpg"
                     alt="Budget planning and cost breakdown"
                     width={800}
                     height={500}
@@ -565,9 +556,6 @@ export default function MVPDevelopmentGuideClient() {
                       marginBottom: 16,
                     }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@homajob" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Scott Graham</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <div className="reveal" style={tableWrapStyle}>
@@ -705,7 +693,7 @@ export default function MVPDevelopmentGuideClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=500&fit=crop"
+                    src="/blog_images/mvp-development-guide.jpg"
                     alt="Mobile app success and launch"
                     width={800}
                     height={500}
@@ -716,9 +704,6 @@ export default function MVPDevelopmentGuideClient() {
                       marginBottom: 16,
                     }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@mr_fresh" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Yura Fresh</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <div className="reveal" style={{
@@ -826,7 +811,7 @@ export default function MVPDevelopmentGuideClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1621252179027-94459d27d3ee?w=800&h=500&fit=crop"
+                    src="/blog_images/mvp-development-guide.jpg"
                     alt="Warning signs and caution for pitfalls"
                     width={800}
                     height={500}
@@ -837,9 +822,6 @@ export default function MVPDevelopmentGuideClient() {
                       marginBottom: 16,
                     }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@mojahidmottakin" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Mojahid Mottakin</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <div className="reveal" style={{ margin: '24px 0' }}>
@@ -886,7 +868,7 @@ export default function MVPDevelopmentGuideClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop"
+                    src="/blog_images/mvp-development-guide.jpg"
                     alt="Growth chart and success metrics"
                     width={800}
                     height={500}
@@ -897,9 +879,6 @@ export default function MVPDevelopmentGuideClient() {
                       marginBottom: 16,
                     }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@kmuza" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Carlos Muza</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <div className="reveal" style={{

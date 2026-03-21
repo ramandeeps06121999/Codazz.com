@@ -118,15 +118,39 @@ export default function Hero() {
 
         {/* LEFT — copy */}
         <div>
-          {/* Badge */}
-          <div className="h-badge hero-badge-pill">
-            <div className="pulse-glow-dot" style={{ width: 7, height: 7, borderRadius: '50%', background: '#22c55e', boxShadow: '0 0 10px rgba(34,197,94,0.6)', animation: 'pulseGlow 2s ease-in-out infinite' }} />
+          {/* Badge — Trusted */}
+          <div className="h-badge" style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: 10,
+            background: 'rgba(34,197,94,0.08)',
+            border: '1px solid rgba(34,197,94,0.18)',
+            borderRadius: 100,
+            padding: '8px 20px 8px 14px',
+            marginBottom: 20,
+            backdropFilter: 'blur(12px)',
+          }}>
+            <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#22c55e', boxShadow: '0 0 10px rgba(34,197,94,0.6)', animation: 'pulseGlow 2s ease-in-out infinite', flexShrink: 0 }} />
+            <span style={{ fontSize: 'clamp(10px, 2.5vw, 12px)', fontWeight: 600, color: 'rgba(255,255,255,0.85)', letterSpacing: '0.06em' }}>Trusted by 500+ companies worldwide</span>
+          </div>
+
+          {/* Badge — Available */}
+          <div className="hero-badge-pill" style={{ marginBottom: 0, marginLeft: 8, display: 'inline-flex' }}>
+            <div style={{ width: 7, height: 7, borderRadius: '50%', background: '#22c55e', boxShadow: '0 0 10px rgba(34,197,94,0.6)', animation: 'pulseGlow 2s ease-in-out infinite' }} />
             <span style={{ fontSize: 'clamp(10px, 2.5vw, 11px)', fontWeight: 700, color: '#ffffff', letterSpacing: '0.12em', textTransform: 'uppercase' }}>Available for New Projects</span>
           </div>
 
           {/* Headline */}
           <h1 className="h-h1 hero-title">
-            <span>We Build</span><br />
+            <span style={{
+              display: 'inline-block',
+              background: 'linear-gradient(90deg, #22c55e, #14b8a6, #22c55e)',
+              backgroundSize: '200% 100%',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              animation: 'heroGradientShift 4s ease-in-out infinite',
+            }}>We Build</span><br />
             <span style={{
               display: 'inline-block',
               background: 'var(--gradient-text)',
@@ -159,12 +183,58 @@ export default function Hero() {
             </Link>
           </div>
 
-          {/* Stats */}
-          <div className="h-stats hero-stats-grid">
-            {[['500+', 'Projects'], ['150+', 'Clients'], ['99%', 'Satisfaction'], ['8wk', 'MVP']].map(([val, label]) => (
-              <div key={label}>
-                <div style={{ fontSize: 'clamp(1.6rem, 2.5vw, 2.2rem)', fontWeight: 700, letterSpacing: '-0.04em', lineHeight: 1, background: 'var(--gradient-text)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>{val}</div>
-                <div style={{ fontSize: 'clamp(10px, 2vw, 11px)', fontWeight: 700, color: 'rgba(255,255,255,0.25)', textTransform: 'uppercase', letterSpacing: '0.12em', marginTop: 6 }}>{label}</div>
+          {/* Stats strip */}
+          <div className="h-stats" style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 0,
+            flexWrap: 'wrap',
+            background: 'rgba(255,255,255,0.03)',
+            border: '1px solid rgba(255,255,255,0.06)',
+            borderRadius: 12,
+            padding: 'clamp(12px, 2vw, 16px) 0',
+          }}>
+            {[
+              ['500+', 'Projects'],
+              ['100+', 'Engineers'],
+              ['24', 'Countries'],
+              ['4.9', 'Clutch'],
+            ].map(([val, label], i) => (
+              <div key={label} style={{
+                flex: 1,
+                textAlign: 'center',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: 4,
+                position: 'relative',
+                padding: '4px 0',
+                minWidth: 80,
+              }}>
+                {i > 0 && (
+                  <div className="hero-stat-sep" style={{
+                    position: 'absolute',
+                    left: 0,
+                    top: '15%',
+                    height: '70%',
+                    width: 1,
+                    background: 'rgba(255,255,255,0.08)',
+                  }} />
+                )}
+                <div style={{
+                  fontSize: 'clamp(1.3rem, 2.5vw, 1.8rem)',
+                  fontWeight: 700,
+                  letterSpacing: '-0.03em',
+                  lineHeight: 1,
+                  color: '#ffffff',
+                }}>{val}</div>
+                <div style={{
+                  fontSize: 'clamp(9px, 1.8vw, 11px)',
+                  fontWeight: 600,
+                  color: 'rgba(255,255,255,0.35)',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.1em',
+                }}>{label}</div>
               </div>
             ))}
           </div>
@@ -227,9 +297,34 @@ export default function Hero() {
         </div>
       </div>
 
+      {/* Scroll indicator */}
+      <div style={{
+        position: 'absolute',
+        bottom: 'clamp(20px, 4vw, 40px)',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: 6,
+        zIndex: 2,
+        opacity: 0.5,
+      }}>
+        <span style={{ fontSize: 10, fontWeight: 600, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.15em', textTransform: 'uppercase' }}>Scroll</span>
+        <svg
+          width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="rgba(255,255,255,0.4)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+          style={{ animation: 'heroScrollBounce 2s ease-in-out infinite' }}
+        >
+          <path d="M6 9l6 6 6-6" />
+        </svg>
+      </div>
+
       <style>{`
         @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
         @keyframes pulseGlow { 0%,100%{box-shadow:0 0 10px rgba(34,197,94,0.6)} 50%{box-shadow:0 0 18px rgba(34,197,94,0.9)} }
+        @keyframes heroGradientShift { 0%{background-position:0% 50%} 50%{background-position:100% 50%} 100%{background-position:0% 50%} }
+        @keyframes heroScrollBounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(8px)} }
         @media(max-width:1024px){ .hero-container { grid-template-columns: 1fr !important; } .h-code-panel { margin-top: 40px; } }
         @media(max-width:768px){ .hero-globe-bg { display: none !important; } }
       `}</style>

@@ -1,10 +1,10 @@
 import { Metadata } from 'next';
 import PageClient from './PageClient';
 
-const TITLE = 'Top 10 Software Development Companies in the USA (2026)';
-const DESCRIPTION = 'Ranking the best software development companies in the USA for 2026';
+const TITLE = 'Top Software Development Companies in USA 2026';
+const DESCRIPTION = 'A comprehensive ranking of the top software development companies in the USA for 2026 — covering NYC, San Francisco, Austin, and Boston tech hubs. Evaluation criteria, nearshore vs offshore analysis, and Codazz featured at #1.';
 const SLUG = 'top-software-development-companies-usa';
-const DATE = '2026-03-14';
+const DATE = '2026-03-20';
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -27,7 +27,7 @@ const jsonLd = {
   headline: TITLE,
   description: DESCRIPTION,
   datePublished: DATE,
-  dateModified: '2026-03-15',
+  dateModified: DATE,
   author: {
     '@type': 'Person',
     name: 'Raman Makkar',

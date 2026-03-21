@@ -74,7 +74,7 @@ export default function ChooseSoftwareCompanyClient() {
         <div className="cb-container" style={{ paddingTop: 100 }}>
           <div className="reveal" style={{ marginBottom: 40 }}>
             <Image
-              src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1200&h=675&fit=crop"
+              src="/blog_images/choose-software-development-company.jpg"
               alt="Business decision making and choosing partner"
               width={1200}
               height={675}
@@ -87,9 +87,6 @@ export default function ChooseSoftwareCompanyClient() {
                 borderRadius: 'clamp(16px, 3vw, 24px)',
               }}
             />
-            <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', marginTop: 8, textAlign: 'center' }}>
-              Photo by <a href="https://unsplash.com/@clyders" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Clyde RS</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-            </p>
           </div>
         </div>
 
@@ -229,7 +226,7 @@ export default function ChooseSoftwareCompanyClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=500&fit=crop"
+                    src="/blog_images/choose-software-development-company.jpg"
                     alt="Evaluation criteria and assessment framework"
                     width={800}
                     height={500}
@@ -240,9 +237,6 @@ export default function ChooseSoftwareCompanyClient() {
                       marginBottom: 16,
                     }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@campaign_creators" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Campaign Creators</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <h3 className="reveal" style={{ fontSize: 20, fontWeight: 600, color: '#b4fd83', marginTop: 32, marginBottom: 16 }}>
@@ -285,7 +279,7 @@ export default function ChooseSoftwareCompanyClient() {
                 </h3>
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=500&fit=crop"
+                    src="/blog_images/choose-software-development-company.jpg"
                     alt="Team communication and collaboration"
                     width={800}
                     height={500}
@@ -296,9 +290,6 @@ export default function ChooseSoftwareCompanyClient() {
                       marginBottom: 16,
                     }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@marvelous" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Marvin Meyer</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
                 <div className="reveal" style={{ margin: '24px 0' }}>
                   <p style={{ marginBottom: 12 }}><strong style={{ color: '#ffffff' }}>Communication Structure to Demand:</strong></p>
@@ -315,7 +306,7 @@ export default function ChooseSoftwareCompanyClient() {
                 </h3>
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=800&h=500&fit=crop"
+                    src="/blog_images/choose-software-development-company.jpg"
                     alt="Agile development and scrum process"
                     width={800}
                     height={500}
@@ -326,9 +317,6 @@ export default function ChooseSoftwareCompanyClient() {
                       marginBottom: 16,
                     }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@martenbjork" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Marten Newhall</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
                 <div className="reveal" style={{ margin: '24px 0' }}>
                   <p style={{ marginBottom: 12 }}><strong style={{ color: '#ffffff' }}>Green Flags in Process:</strong></p>
@@ -362,7 +350,7 @@ export default function ChooseSoftwareCompanyClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1542626991-cbc4e32524cc?w=800&h=500&fit=crop"
+                    src="/blog_images/choose-software-development-company.jpg"
                     alt="Score rating and evaluation scorecard"
                     width={800}
                     height={500}
@@ -373,9 +361,6 @@ export default function ChooseSoftwareCompanyClient() {
                       marginBottom: 16,
                     }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@isaacmsmith" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Isaac Smith</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <div className="reveal" style={{ 
@@ -462,7 +447,7 @@ export default function ChooseSoftwareCompanyClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=800&h=500&fit=crop"
+                    src="/blog_images/choose-software-development-company.jpg"
                     alt="Process steps and workflow"
                     width={800}
                     height={500}
@@ -473,9 +458,6 @@ export default function ChooseSoftwareCompanyClient() {
                       marginBottom: 16,
                     }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@esteejanssens" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Estée Janssens</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <div className="reveal" style={{ 
@@ -507,7 +489,7 @@ export default function ChooseSoftwareCompanyClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=800&h=500&fit=crop"
+                    src="/blog_images/choose-software-development-company.jpg"
                     alt="Pricing cost comparison and budget"
                     width={800}
                     height={500}
@@ -518,9 +500,6 @@ export default function ChooseSoftwareCompanyClient() {
                       marginBottom: 16,
                     }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@mathieustern" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Mathieu Stern</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <div className="reveal" style={{ 

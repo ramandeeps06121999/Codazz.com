@@ -76,7 +76,7 @@ export default function WebDevelopmentTrendsClient() {
         <div className="cb-container" style={{ paddingTop: 100 }}>
           <div className="reveal" style={{ marginBottom: 40 }}>
             <Image
-              src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&h=675&fit=crop"
+              src="/blog_images/web-development-trends-2026.jpg"
               alt="Web development coding and programming"
               width={1200}
               height={675}
@@ -89,9 +89,6 @@ export default function WebDevelopmentTrendsClient() {
                 borderRadius: 'clamp(16px, 3vw, 24px)',
               }}
             />
-            <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', marginTop: 8, textAlign: 'center' }}>
-              Photo by <a href="https://unsplash.com/@cgower" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Christopher Gower</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-            </p>
           </div>
         </div>
 
@@ -222,7 +219,7 @@ export default function WebDevelopmentTrendsClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=500&fit=crop"
+                    src="/blog_images/web-development-trends-2026.jpg"
                     alt="AI coding assistant and programming help"
                     width={800}
                     height={500}
@@ -233,9 +230,6 @@ export default function WebDevelopmentTrendsClient() {
                       marginBottom: 16,
                     }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@googledeepmind" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Google DeepMind</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <h3 className="reveal" style={{ fontSize: 20, fontWeight: 600, color: '#ffffff', marginTop: 32, marginBottom: 16 }}>
@@ -294,7 +288,7 @@ export default function WebDevelopmentTrendsClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop"
+                    src="/blog_images/web-development-trends-2026.jpg"
                     alt="Web performance and speed optimization"
                     width={800}
                     height={500}
@@ -305,9 +299,6 @@ export default function WebDevelopmentTrendsClient() {
                       marginBottom: 16,
                     }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@lukechesser" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Luke Chesser</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <p className="reveal">
@@ -359,7 +350,7 @@ export default function WebDevelopmentTrendsClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=500&fit=crop"
+                    src="/blog_images/web-development-trends-2026.jpg"
                     alt="Cloud computing and global network"
                     width={800}
                     height={500}
@@ -370,9 +361,6 @@ export default function WebDevelopmentTrendsClient() {
                       marginBottom: 16,
                     }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@nasa" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>NASA</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <p className="reveal">
@@ -420,7 +408,7 @@ export default function WebDevelopmentTrendsClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=800&h=500&fit=crop"
+                    src="/blog_images/web-development-trends-2026.jpg"
                     alt="Web frameworks and technology stack"
                     width={800}
                     height={500}
@@ -431,9 +419,6 @@ export default function WebDevelopmentTrendsClient() {
                       marginBottom: 16,
                     }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@emilep" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Emile Perron</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <p className="reveal">
@@ -485,7 +470,7 @@ export default function WebDevelopmentTrendsClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&h=500&fit=crop"
+                    src="/blog_images/web-development-trends-2026.jpg"
                     alt="Personalization and custom user experience"
                     width={800}
                     height={500}
@@ -496,9 +481,6 @@ export default function WebDevelopmentTrendsClient() {
                       marginBottom: 16,
                     }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@aidanmh" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Aidan Hancock</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <p className="reveal">
@@ -550,7 +532,7 @@ export default function WebDevelopmentTrendsClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=500&fit=crop"
+                    src="/blog_images/web-development-trends-2026.jpg"
                     alt="Cybersecurity protection and lock"
                     width={800}
                     height={500}
@@ -561,9 +543,6 @@ export default function WebDevelopmentTrendsClient() {
                       marginBottom: 16,
                     }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@flyd2069" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>FlyD</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <p className="reveal">
@@ -618,7 +597,7 @@ export default function WebDevelopmentTrendsClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&h=500&fit=crop"
+                    src="/blog_images/web-development-trends-2026.jpg"
                     alt="Technology choice and decision making"
                     width={800}
                     height={500}
@@ -629,9 +608,6 @@ export default function WebDevelopmentTrendsClient() {
                       marginBottom: 16,
                     }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@clyders" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Clyde RS</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <h3 className="reveal" style={{ fontSize: 20, fontWeight: 600, color: '#ffffff', marginTop: 32, marginBottom: 16 }}>

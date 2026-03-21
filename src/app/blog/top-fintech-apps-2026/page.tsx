@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     url: `https://codazz.com/blog/${SLUG}`,
     images: [
       {
-        url: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&h=630&fit=crop',
+        url: 'https://codazz.com/blog_images/top-fintech-apps-2026.jpg',
         width: 1200,
         height: 630,
         alt: 'Top fintech apps and digital finance platforms in 2026',
@@ -51,7 +51,7 @@ const jsonLd = {
       url: 'https://codazz.com/logo.png',
     },
   },
-  image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=1200&h=630&fit=crop',
+  image: 'https://codazz.com/blog_images/top-fintech-apps-2026.jpg',
   url: `https://codazz.com/blog/${SLUG}`,
   mainEntityOfPage: `https://codazz.com/blog/${SLUG}`,
 };

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { spaceGrotesk } from '@/lib/fonts';
 
 // ── Mega menu data ──────────────────────────────────────────────────
@@ -48,7 +49,10 @@ const serviceCategories = [
     ),
     href: '/services/ai-ml',
     links: [
-      { label: 'LLM Integration', href: '/services/ai-ml/llm-integration' },
+      { label: 'AI Agent Development', href: '/services/ai-agent-development' },
+      { label: 'LLM Integration', href: '/services/llm-integration' },
+      { label: 'Generative AI', href: '/services/generative-ai' },
+      { label: 'RAG Development', href: '/services/rag-development' },
       { label: 'AI Automation', href: '/services/ai-ml/ai-automation' },
       { label: 'Computer Vision', href: '/services/ai-ml/computer-vision' },
       { label: 'Predictive Analytics', href: '/services/ai-ml/predictive-analytics' },
@@ -200,6 +204,70 @@ const serviceCategories = [
       { label: 'Analytics & Dashboards', href: '/services/saas-development/analytics-dashboards' },
     ],
   },
+  {
+    title: 'QA & Testing',
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M9 11l3 3L22 4" /><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+      </svg>
+    ),
+    href: '/services/qa-testing',
+    links: [
+      { label: 'Manual QA Testing', href: '/services/qa-testing/manual-qa-testing' },
+      { label: 'Test Automation', href: '/services/qa-testing/test-automation' },
+      { label: 'Performance Testing', href: '/services/qa-testing/performance-testing' },
+      { label: 'Security Testing', href: '/services/qa-testing/security-testing' },
+      { label: 'Mobile App QA', href: '/services/qa-testing/mobile-app-qa' },
+    ],
+  },
+  {
+    title: 'Cybersecurity',
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+      </svg>
+    ),
+    href: '/services/cybersecurity',
+    links: [
+      { label: 'Penetration Testing', href: '/services/cybersecurity/penetration-testing' },
+      { label: 'Security Audits', href: '/services/cybersecurity/security-audits' },
+      { label: 'Compliance & GDPR', href: '/services/cybersecurity/compliance-gdpr' },
+      { label: 'Zero Trust Architecture', href: '/services/cybersecurity/zero-trust-architecture' },
+      { label: 'Incident Response', href: '/services/cybersecurity/incident-response' },
+    ],
+  },
+  {
+    title: 'IoT Development',
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="3" /><path d="M6.343 17.657a8 8 0 1 1 11.314 0" /><path d="M3.515 20.485a12 12 0 1 1 16.97 0" />
+      </svg>
+    ),
+    href: '/services/iot-development',
+    links: [
+      { label: 'IoT App Development', href: '/services/iot-development/iot-app-development' },
+      { label: 'Embedded Systems', href: '/services/iot-development/embedded-systems' },
+      { label: 'Smart Device Integration', href: '/services/iot-development/smart-device-integration' },
+      { label: 'IoT Cloud Platforms', href: '/services/iot-development/iot-cloud-platforms' },
+      { label: 'Industrial IoT', href: '/services/iot-development/industrial-iot' },
+    ],
+  },
+  {
+    title: 'Legacy Modernization',
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <polyline points="23 4 23 10 17 10" /><polyline points="1 20 1 14 7 14" /><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" />
+      </svg>
+    ),
+    href: '/services/legacy-modernization',
+    links: [
+      { label: 'Code Refactoring', href: '/services/legacy-modernization/code-refactoring' },
+      { label: 'Cloud Migration', href: '/services/legacy-modernization/cloud-migration' },
+      { label: 'Microservices Migration', href: '/services/legacy-modernization/microservices-migration' },
+      { label: 'API Modernization', href: '/services/legacy-modernization/api-modernization' },
+      { label: 'Database Modernization', href: '/services/legacy-modernization/database-modernization' },
+    ],
+  },
 ];
 
 const solutionLinks = [
@@ -235,9 +303,10 @@ export default function Navbar() {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
@@ -271,6 +340,33 @@ export default function Navbar() {
     if (closeTimer.current) clearTimeout(closeTimer.current);
   };
 
+  const isActive = (href: string) => {
+    if (href === '/') return pathname === '/';
+    return pathname.startsWith(href);
+  };
+
+  const isMenuActive = (menu: string) => {
+    const prefixMap: Record<string, string> = {
+      services: '/services',
+      solutions: '/solutions',
+      industries: '/industries',
+      company: '/about',
+    };
+    return pathname.startsWith(prefixMap[menu] || '');
+  };
+
+  const activeDotStyle: React.CSSProperties = {
+    position: 'absolute',
+    bottom: 2,
+    left: '50%',
+    transform: 'translateX(-50%)',
+    width: 4,
+    height: 4,
+    borderRadius: '50%',
+    background: '#22c55e',
+    boxShadow: '0 0 6px #22c55e',
+  };
+
   return (
     <>
       <nav className={`nav-standard ${scrolled ? 'scrolled' : ''} ${activeMenu ? 'menu-active' : ''}`}>
@@ -278,7 +374,7 @@ export default function Navbar() {
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
 
             {/* Logo */}
-            <Link href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', flexShrink: 0, position: 'relative', zIndex: 2 }}>
+            <Link href="/" className="nav-logo-link" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', flexShrink: 0, position: 'relative', zIndex: 2 }}>
               <span className={`${spaceGrotesk.className} nav-logo-text`}>
                 codazz
               </span>
@@ -291,6 +387,7 @@ export default function Navbar() {
               <div onMouseEnter={() => openMenu('services')} onMouseLeave={closeMenu} style={{ position: 'relative' }}>
                 <button
                   className={`nav-link-btn ${activeMenu === 'services' ? 'active' : ''}`}
+                  style={{ position: 'relative' }}
                   aria-expanded={activeMenu === 'services'}
                   aria-label="Services menu"
                   onKeyDown={(e) => {
@@ -303,6 +400,7 @@ export default function Navbar() {
                 >
                   Services
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ transition: '0.3s', transform: activeMenu === 'services' ? 'rotate(180deg)' : 'none' }}><path d="M6 9l6 6 6-6" /></svg>
+                  {isMenuActive('services') && <span style={activeDotStyle} />}
                 </button>
               </div>
 
@@ -310,6 +408,7 @@ export default function Navbar() {
               <div onMouseEnter={() => openMenu('solutions')} onMouseLeave={closeMenu} style={{ position: 'relative' }}>
                 <button
                   className={`nav-link-btn ${activeMenu === 'solutions' ? 'active' : ''}`}
+                  style={{ position: 'relative' }}
                   aria-expanded={activeMenu === 'solutions'}
                   aria-label="Solutions menu"
                   onKeyDown={(e) => {
@@ -322,6 +421,7 @@ export default function Navbar() {
                 >
                   Solutions
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ transition: '0.3s', transform: activeMenu === 'solutions' ? 'rotate(180deg)' : 'none' }}><path d="M6 9l6 6 6-6" /></svg>
+                  {isMenuActive('solutions') && <span style={activeDotStyle} />}
                 </button>
               </div>
 
@@ -329,6 +429,7 @@ export default function Navbar() {
               <div onMouseEnter={() => openMenu('industries')} onMouseLeave={closeMenu} style={{ position: 'relative' }}>
                 <button
                   className={`nav-link-btn ${activeMenu === 'industries' ? 'active' : ''}`}
+                  style={{ position: 'relative' }}
                   aria-expanded={activeMenu === 'industries'}
                   aria-label="Industries menu"
                   onKeyDown={(e) => {
@@ -341,6 +442,7 @@ export default function Navbar() {
                 >
                   Industries
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ transition: '0.3s', transform: activeMenu === 'industries' ? 'rotate(180deg)' : 'none' }}><path d="M6 9l6 6 6-6" /></svg>
+                  {isMenuActive('industries') && <span style={activeDotStyle} />}
                 </button>
               </div>
 
@@ -348,6 +450,7 @@ export default function Navbar() {
               <div onMouseEnter={() => openMenu('company')} onMouseLeave={closeMenu} style={{ position: 'relative' }}>
                 <button
                   className={`nav-link-btn ${activeMenu === 'company' ? 'active' : ''}`}
+                  style={{ position: 'relative' }}
                   aria-expanded={activeMenu === 'company'}
                   aria-label="Company menu"
                   onKeyDown={(e) => {
@@ -360,11 +463,15 @@ export default function Navbar() {
                 >
                   Company
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ transition: '0.3s', transform: activeMenu === 'company' ? 'rotate(180deg)' : 'none' }}><path d="M6 9l6 6 6-6" /></svg>
+                  {isMenuActive('company') && <span style={activeDotStyle} />}
                 </button>
               </div>
 
               {[{ label: 'Portfolio', href: '/portfolio' }, { label: 'Blog', href: '/blog' }].map(item => (
-                <Link key={item.label} href={item.href} className="nav-link-btn" style={{ textDecoration: 'none' }}>{item.label}</Link>
+                <Link key={item.label} href={item.href} className="nav-link-btn" style={{ textDecoration: 'none', position: 'relative' as const }}>
+                  {item.label}
+                  {isActive(item.href) && <span style={activeDotStyle} />}
+                </Link>
               ))}
             </div>
 
@@ -600,6 +707,7 @@ export default function Navbar() {
         style={{
           opacity: menuOpen ? 1 : 0,
           visibility: menuOpen ? 'visible' : 'hidden',
+          transform: menuOpen ? 'translateX(0)' : 'translateX(100%)',
         }}
       >
         <div style={{ display: 'flex', flexDirection: 'column', gap: 0, marginBottom: 32 }}>

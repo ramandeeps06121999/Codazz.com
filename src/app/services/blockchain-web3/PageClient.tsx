@@ -674,26 +674,12 @@ const checkSvg = (
 // ─── PAGE COMPONENT ──────────────────────────────────────────────────────────────
 
 export default function BlockchainWeb3Page() {
-  const heroRef = useReveal() as React.RefObject<HTMLElement>;
-  const trustRef = useReveal() as React.RefObject<HTMLElement>;
-  const servicesRef = useReveal() as React.RefObject<HTMLElement>;
-  const platformsRef = useReveal() as React.RefObject<HTMLElement>;
-  const useCasesRef = useReveal() as React.RefObject<HTMLElement>;
-  const securityRef = useReveal() as React.RefObject<HTMLElement>;
-  const techRef = useReveal() as React.RefObject<HTMLElement>;
-  const processRef = useReveal() as React.RefObject<HTMLElement>;
-  const caseStudiesRef = useReveal() as React.RefObject<HTMLElement>;
-  const whyRef = useReveal() as React.RefObject<HTMLElement>;
-  const complianceRef = useReveal() as React.RefObject<HTMLElement>;
-  const marketRef = useReveal() as React.RefObject<HTMLElement>;
-  const testimonialsRef = useReveal() as React.RefObject<HTMLElement>;
-  const faqRef = useReveal() as React.RefObject<HTMLElement>;
-  const ctaRef = useReveal() as React.RefObject<HTMLElement>;
+  const pageRef = useReveal() as React.RefObject<HTMLElement>;
 
   return (
     <>
       <Navbar />
-      <main style={{ background: '#000000', color: '#ffffff', paddingTop: 80 }}>
+      <main ref={pageRef} style={{ background: '#000000', color: '#ffffff', paddingTop: 80 }}>
         <div className="cb-container">
           <Breadcrumb items={[
             { label: 'Home', href: '/' },
@@ -705,7 +691,7 @@ export default function BlockchainWeb3Page() {
         {/* ═══════════════════════════════════════════════════════════════════════
             SECTION 1 — HERO
         ═══════════════════════════════════════════════════════════════════════ */}
-        <section ref={heroRef} className="section-padding" style={{ position: 'relative', overflow: 'hidden', minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
+        <section className="section-padding" style={{ position: 'relative', overflow: 'hidden', minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
           <HeroBackground variant="wide" />
           <div className="cb-container" style={{ position: 'relative', zIndex: 1 }}>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 480px), 1fr))', gap: 'clamp(40px, 5vw, 80px)', alignItems: 'center' }}>
@@ -752,7 +738,7 @@ export default function BlockchainWeb3Page() {
         {/* ═══════════════════════════════════════════════════════════════════════
             SECTION 2 — TRUST BADGES
         ═══════════════════════════════════════════════════════════════════════ */}
-        <section ref={trustRef} style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+        <section style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container reveal" style={{ padding: '32px 0', textAlign: 'center' }}>
             <p style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.25)', marginBottom: 16 }}>Trusted By Leading Web3 Teams</p>
             <TrustBadges compact />
@@ -762,7 +748,7 @@ export default function BlockchainWeb3Page() {
         {/* ═══════════════════════════════════════════════════════════════════════
             SECTION 3 — BLOCKCHAIN SERVICES GRID
         ═══════════════════════════════════════════════════════════════════════ */}
-        <section ref={servicesRef} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 64 }}>
               <div style={sectionLabel}>Our Blockchain Services</div>
@@ -796,7 +782,7 @@ export default function BlockchainWeb3Page() {
         {/* ═══════════════════════════════════════════════════════════════════════
             SECTION 4 — BLOCKCHAIN PLATFORMS
         ═══════════════════════════════════════════════════════════════════════ */}
-        <section ref={platformsRef} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 64 }}>
               <div style={sectionLabel}>Platforms We Build On</div>
@@ -833,7 +819,7 @@ export default function BlockchainWeb3Page() {
         {/* ═══════════════════════════════════════════════════════════════════════
             SECTION 5 — USE CASES
         ═══════════════════════════════════════════════════════════════════════ */}
-        <section ref={useCasesRef} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 64, textAlign: 'center', maxWidth: 700, margin: '0 auto 64px' }}>
               <div style={sectionLabel}>Use Cases</div>
@@ -859,7 +845,7 @@ export default function BlockchainWeb3Page() {
         {/* ═══════════════════════════════════════════════════════════════════════
             SECTION 6 — SECURITY
         ═══════════════════════════════════════════════════════════════════════ */}
-        <section ref={securityRef} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', position: 'relative', overflow: 'hidden' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', position: 'relative', overflow: 'hidden' }}>
           <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: 800, height: 600, background: 'radial-gradient(ellipse,rgba(34,197,94,0.06) 0%,transparent 65%)', filter: 'blur(80px)', pointerEvents: 'none' }} />
           <div className="cb-container" style={{ position: 'relative', zIndex: 1 }}>
             <div className="reveal" style={{ marginBottom: 64, textAlign: 'center', maxWidth: 700, margin: '0 auto 64px' }}>
@@ -886,7 +872,7 @@ export default function BlockchainWeb3Page() {
         {/* ═══════════════════════════════════════════════════════════════════════
             SECTION 7 — TECH STACK
         ═══════════════════════════════════════════════════════════════════════ */}
-        <section ref={techRef} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div className="reveal" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 64, gap: 40, flexWrap: 'wrap' }}>
               <div>
@@ -920,7 +906,7 @@ export default function BlockchainWeb3Page() {
         {/* ═══════════════════════════════════════════════════════════════════════
             SECTION 8 — PROCESS
         ═══════════════════════════════════════════════════════════════════════ */}
-        <section ref={processRef} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 80 }}>
               <div style={sectionLabel}>Our Process</div>
@@ -962,7 +948,7 @@ export default function BlockchainWeb3Page() {
         {/* ═══════════════════════════════════════════════════════════════════════
             SECTION 9 — CASE STUDIES
         ═══════════════════════════════════════════════════════════════════════ */}
-        <section ref={caseStudiesRef} id="case-studies" className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section id="case-studies" className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 64 }}>
               <div style={sectionLabel}>Case Studies</div>
@@ -1004,7 +990,7 @@ export default function BlockchainWeb3Page() {
         {/* ═══════════════════════════════════════════════════════════════════════
             WHY CHOOSE CODAZZ
         ═══════════════════════════════════════════════════════════════════════ */}
-        <section ref={whyRef} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', position: 'relative', overflow: 'hidden' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', position: 'relative', overflow: 'hidden' }}>
           <div style={{ position: 'absolute', top: '50%', right: '-10%', width: 600, height: 600, background: 'radial-gradient(circle,rgba(34,197,94,0.06) 0%,transparent 65%)', filter: 'blur(80px)', pointerEvents: 'none' }} />
           <div className="cb-container" style={{ position: 'relative', zIndex: 1 }}>
             <div className="reveal" style={{ marginBottom: 64 }}>
@@ -1034,7 +1020,7 @@ export default function BlockchainWeb3Page() {
         {/* ═══════════════════════════════════════════════════════════════════════
             SECTION 10 — COMPLIANCE
         ═══════════════════════════════════════════════════════════════════════ */}
-        <section ref={complianceRef} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 64, textAlign: 'center', maxWidth: 700, margin: '0 auto 64px' }}>
               <div style={sectionLabel}>Regulatory Compliance</div>
@@ -1060,7 +1046,7 @@ export default function BlockchainWeb3Page() {
         {/* ═══════════════════════════════════════════════════════════════════════
             SECTION 11 — MARKET STATS
         ═══════════════════════════════════════════════════════════════════════ */}
-        <section ref={marketRef} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', position: 'relative', overflow: 'hidden' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', position: 'relative', overflow: 'hidden' }}>
           <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: 900, height: 500, background: 'radial-gradient(ellipse,rgba(34,197,94,0.05) 0%,transparent 65%)', filter: 'blur(80px)', pointerEvents: 'none' }} />
           <div className="cb-container" style={{ position: 'relative', zIndex: 1 }}>
             <div className="reveal" style={{ marginBottom: 64, textAlign: 'center' }}>
@@ -1104,7 +1090,7 @@ export default function BlockchainWeb3Page() {
         {/* ═══════════════════════════════════════════════════════════════════════
             SECTION 12 — TESTIMONIALS
         ═══════════════════════════════════════════════════════════════════════ */}
-        <section ref={testimonialsRef} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 64, textAlign: 'center' }}>
               <div style={sectionLabel}>Client Testimonials</div>
@@ -1187,7 +1173,7 @@ export default function BlockchainWeb3Page() {
         {/* ═══════════════════════════════════════════════════════════════════════
             SECTION 13 — FAQ
         ═══════════════════════════════════════════════════════════════════════ */}
-        <section ref={faqRef} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container" style={{ maxWidth: 800, margin: '0 auto' }}>
             <div className="reveal" style={{ marginBottom: 48, textAlign: 'center' }}>
               <div style={sectionLabel}>FAQ</div>
@@ -1204,7 +1190,7 @@ export default function BlockchainWeb3Page() {
         {/* ═══════════════════════════════════════════════════════════════════════
             SECTION 14 — BOTTOM CTA + LEAD FORM
         ═══════════════════════════════════════════════════════════════════════ */}
-        <section ref={ctaRef} className="section-padding" style={{ position: 'relative', overflow: 'hidden' }}>
+        <section className="section-padding" style={{ position: 'relative', overflow: 'hidden' }}>
           <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: 900, height: 600, background: 'radial-gradient(ellipse,rgba(34,197,94,0.1) 0%,transparent 65%)', filter: 'blur(80px)', pointerEvents: 'none' }} />
           <div className="cb-container" style={{ position: 'relative', zIndex: 1 }}>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 420px), 1fr))', gap: 'clamp(40px, 5vw, 80px)', alignItems: 'center' }}>

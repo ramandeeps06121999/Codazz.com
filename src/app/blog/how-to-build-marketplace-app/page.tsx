@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     url: `https://codazz.com/blog/${SLUG}`,
     images: [
       {
-        url: 'https://images.unsplash.com/photo-1556761175-4b46a572b786?w=1200&h=630&fit=crop',
+        url: 'https://codazz.com/blog_images/how-to-build-marketplace-app.jpg',
         width: 1200,
         height: 630,
         alt: 'Marketplace platform development and e-commerce',
@@ -51,7 +51,7 @@ const jsonLd = {
       url: 'https://codazz.com/logo.png',
     },
   },
-  image: 'https://images.unsplash.com/photo-1556761175-4b46a572b786?w=1200&h=630&fit=crop',
+  image: 'https://codazz.com/blog_images/how-to-build-marketplace-app.jpg',
   url: `https://codazz.com/blog/${SLUG}`,
   mainEntityOfPage: `https://codazz.com/blog/${SLUG}`,
 };

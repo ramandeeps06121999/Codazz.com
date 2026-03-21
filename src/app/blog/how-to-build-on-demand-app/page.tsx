@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     url: `https://codazz.com/blog/${SLUG}`,
     images: [
       {
-        url: 'https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?w=1200&h=630&fit=crop',
+        url: 'https://codazz.com/blog_images/how-to-build-on-demand-app.jpg',
         width: 1200,
         height: 630,
         alt: 'On-demand service app development and real-time technology',
@@ -51,7 +51,7 @@ const jsonLd = {
       url: 'https://codazz.com/logo.png',
     },
   },
-  image: 'https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?w=1200&h=630&fit=crop',
+  image: 'https://codazz.com/blog_images/how-to-build-on-demand-app.jpg',
   url: `https://codazz.com/blog/${SLUG}`,
   mainEntityOfPage: `https://codazz.com/blog/${SLUG}`,
 };

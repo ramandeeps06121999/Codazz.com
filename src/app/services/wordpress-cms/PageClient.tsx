@@ -61,12 +61,7 @@ const faqs = [
 
 export default function WordPressCMSPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const s1 = useReveal() as React.RefObject<HTMLElement>;
-  const s2 = useReveal() as React.RefObject<HTMLElement>;
-  const s3 = useReveal() as React.RefObject<HTMLElement>;
-  const s4 = useReveal() as React.RefObject<HTMLElement>;
-  const heroRef = useReveal() as React.RefObject<HTMLElement>;
-  const s5 = useReveal() as React.RefObject<HTMLElement>;
+  const pageRef = useReveal() as React.RefObject<HTMLElement>;
 
   return (
     <>
@@ -79,7 +74,7 @@ export default function WordPressCMSPage() {
         .reveal-d4 { transition-delay: 0.4s; }
       `}</style>
       <Navbar />
-      <main style={{ background: '#000000', color: '#ffffff', paddingTop: 80 }}>
+      <main ref={pageRef} style={{ background: '#000000', color: '#ffffff', paddingTop: 80 }}>
         <div className="cb-container">
           <Breadcrumb items={[
             { label: 'Home', href: '/' },
@@ -89,7 +84,7 @@ export default function WordPressCMSPage() {
         </div>
 
         {/* HERO */}
-        <section ref={heroRef} className="section-padding" style={{ position: 'relative', overflow: 'hidden', minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
+        <section className="section-padding" style={{ position: 'relative', overflow: 'hidden', minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
           <HeroBackground variant="center" />
           <div className="cb-container" style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: 860, margin: '0 auto' }}>
             <div className="reveal" style={{ display: 'inline-block', border: '1px solid rgba(34,197,94,0.4)', borderRadius: 999, padding: '6px 20px', fontSize: 13, color: '#ffffff', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>
@@ -125,7 +120,7 @@ export default function WordPressCMSPage() {
         </section>
 
         {/* STATS */}
-        <section ref={s1} style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(140px, 100%), 1fr))' }}>
               {stats.map((s, i) => (
@@ -139,7 +134,7 @@ export default function WordPressCMSPage() {
         </section>
 
         {/* SERVICES */}
-        <section ref={s2} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 16 }}>
               <span style={{ fontSize: 11, fontWeight: 700, color: '#ffffff', letterSpacing: '0.12em', textTransform: 'uppercase' }}>What We Build</span>
@@ -163,7 +158,7 @@ export default function WordPressCMSPage() {
         </section>
 
         {/* PROCESS */}
-        <section ref={s3} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 16 }}>
               <span style={{ fontSize: 11, fontWeight: 700, color: '#ffffff', letterSpacing: '0.12em', textTransform: 'uppercase' }}>How We Build</span>
@@ -185,7 +180,7 @@ export default function WordPressCMSPage() {
         </section>
 
         {/* RESULTS */}
-        <section ref={s4} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 16 }}>
               <span style={{ fontSize: 11, fontWeight: 700, color: '#ffffff', letterSpacing: '0.12em', textTransform: 'uppercase' }}>Results</span>
@@ -204,7 +199,7 @@ export default function WordPressCMSPage() {
         </section>
 
         {/* FAQ */}
-        <section ref={s5} className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container" style={{ maxWidth: 760 }}>
             <div className="reveal" style={{ marginBottom: 16 }}>
               <span style={{ fontSize: 11, fontWeight: 700, color: '#ffffff', letterSpacing: '0.12em', textTransform: 'uppercase' }}>FAQ</span>

@@ -1,14 +1,13 @@
 'use client';
 import { useRef, useEffect } from 'react';
-import { IconShieldLock, IconHeartbeat, IconShoppingCart, IconTruck, IconBook, IconBuildingSkyscraper } from '@tabler/icons-react';
 
 const industries = [
-  { name: 'FinTech', desc: 'Secure payment systems, trading platforms and compliance tools for modern finance.', Icon: IconShieldLock },
-  { name: 'Healthcare', desc: 'HIPAA-compliant telehealth apps, EHR systems and patient-first digital portals.', Icon: IconHeartbeat },
-  { name: 'E-Commerce', desc: 'Headless commerce platforms and high-scale multi-vendor retail ecosystems.', Icon: IconShoppingCart },
-  { name: 'Logistics', desc: 'Smart fleet tracking, route optimisation and automated warehouse management.', Icon: IconTruck },
-  { name: 'Education', desc: 'Adaptive LMS platforms, e-learning tools and AI-powered digital certifications.', Icon: IconBook },
-  { name: 'Enterprise', desc: 'Complex ERP systems, BI dashboards and enterprise workflow automation.', Icon: IconBuildingSkyscraper },
+  { name: 'FinTech', emoji: '🏦', desc: 'Secure payment systems, trading platforms and compliance tools for modern finance.', projects: '45+ Projects' },
+  { name: 'Healthcare', emoji: '🩺', desc: 'HIPAA-compliant telehealth apps, EHR systems and patient-first digital portals.', projects: '60+ Projects' },
+  { name: 'E-Commerce', emoji: '🛒', desc: 'Headless commerce platforms and high-scale multi-vendor retail ecosystems.', projects: '80+ Projects' },
+  { name: 'Logistics', emoji: '🚚', desc: 'Smart fleet tracking, route optimisation and automated warehouse management.', projects: '35+ Projects' },
+  { name: 'Education', emoji: '📚', desc: 'Adaptive LMS platforms, e-learning tools and AI-powered digital certifications.', projects: '50+ Projects' },
+  { name: 'Enterprise', emoji: '🏢', desc: 'Complex ERP systems, BI dashboards and enterprise workflow automation.', projects: '70+ Projects' },
 ];
 
 export default function IndustriesSection() {
@@ -40,20 +39,87 @@ export default function IndustriesSection() {
         <div className="industries-grid">
           {industries.map((ind, i) => (
             <div key={ind.name} className={`reveal reveal-d${Math.min(i + 1, 6)}`}
-              style={{ padding: 'clamp(20px, 4vw, 48px)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 'clamp(20px, 5vw, 36px)', display: 'flex', flexDirection: 'column', gap: 'clamp(16px, 3vw, 24px)', transition: 'all 0.4s ease', cursor: 'default' }}
-              onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(34,197,94,0.2)'; e.currentTarget.style.background = 'rgba(255,255,255,0.03)'; e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 24px 60px rgba(34,197,94,0.12)'; const learnMore = e.currentTarget.querySelector('.learn-more') as HTMLElement; if (learnMore) learnMore.style.color = '#22c55e'; }}
-              onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)'; e.currentTarget.style.background = 'transparent'; e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; const learnMore = e.currentTarget.querySelector('.learn-more') as HTMLElement; if (learnMore) learnMore.style.color = 'rgba(34,197,94,0.5)'; }}
+              style={{
+                position: 'relative',
+                padding: 'clamp(24px, 4vw, 40px)',
+                border: '1px solid rgba(255,255,255,0.06)',
+                borderRadius: 28,
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 20,
+                transition: 'all 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                cursor: 'default',
+                overflow: 'hidden',
+                background: '#000',
+              }}
+              onMouseEnter={e => {
+                const card = e.currentTarget;
+                card.style.borderColor = 'rgba(34,197,94,0.35)';
+                card.style.transform = 'translateY(-8px)';
+                card.style.boxShadow = '0 0 30px rgba(34,197,94,0.15), 0 24px 60px rgba(34,197,94,0.12)';
+                const overlay = card.querySelector('.card-gradient-overlay') as HTMLElement;
+                if (overlay) overlay.style.opacity = '1';
+                const learnMore = card.querySelector('.learn-more') as HTMLElement;
+                if (learnMore) { learnMore.style.opacity = '1'; learnMore.style.transform = 'translateY(0)'; }
+              }}
+              onMouseLeave={e => {
+                const card = e.currentTarget;
+                card.style.borderColor = 'rgba(255,255,255,0.06)';
+                card.style.transform = '';
+                card.style.boxShadow = '';
+                const overlay = card.querySelector('.card-gradient-overlay') as HTMLElement;
+                if (overlay) overlay.style.opacity = '0';
+                const learnMore = card.querySelector('.learn-more') as HTMLElement;
+                if (learnMore) { learnMore.style.opacity = '0'; learnMore.style.transform = 'translateY(8px)'; }
+              }}
             >
-              <div style={{ width: 52, height: 52, borderRadius: 16, background: 'rgba(34,197,94,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <ind.Icon size={24} stroke={1.5} color="#22c55e" />
+              {/* Gradient overlay on hover */}
+              <div className="card-gradient-overlay" style={{
+                position: 'absolute', inset: 0, borderRadius: 28,
+                background: 'linear-gradient(180deg, transparent 40%, rgba(34,197,94,0.06) 100%)',
+                opacity: 0, transition: 'opacity 0.45s ease', pointerEvents: 'none',
+              }} />
+
+              {/* Icon circle */}
+              <div style={{
+                position: 'relative', zIndex: 1,
+                width: 56, height: 56, borderRadius: '50%',
+                background: 'linear-gradient(135deg, #22c55e, #16a34a)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                fontSize: 26, lineHeight: 1,
+                boxShadow: '0 4px 20px rgba(34,197,94,0.25)',
+              }}>
+                {ind.emoji}
               </div>
-              <div>
-                <h3 style={{ fontSize: 20, fontWeight: 600, color: '#ffffff', marginBottom: 10, letterSpacing: '-0.02em' }}>{ind.name}</h3>
+
+              {/* Text content */}
+              <div style={{ position: 'relative', zIndex: 1, flex: 1 }}>
+                <h3 style={{ fontSize: 20, fontWeight: 700, color: '#ffffff', marginBottom: 10, letterSpacing: '-0.02em' }}>{ind.name}</h3>
                 <p style={{ fontSize: 14, color: '#9ca3af', lineHeight: 1.7, margin: 0 }}>{ind.desc}</p>
               </div>
-              <div className="learn-more" style={{ marginTop: 'auto', display: 'flex', alignItems: 'center', gap: 6, color: 'rgba(34,197,94,0.5)', fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', transition: 'color 0.3s ease' }}>
+
+              {/* Projects tag */}
+              <div style={{
+                position: 'relative', zIndex: 1,
+                display: 'inline-flex', alignItems: 'center', gap: 6,
+                alignSelf: 'flex-start',
+                padding: '6px 14px', borderRadius: 100,
+                background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.15)',
+                fontSize: 12, fontWeight: 600, color: '#22c55e', letterSpacing: '0.02em',
+              }}>
+                {ind.projects}
+              </div>
+
+              {/* Learn More — fades in on hover */}
+              <div className="learn-more" style={{
+                position: 'relative', zIndex: 1,
+                marginTop: 'auto', display: 'flex', alignItems: 'center', gap: 6,
+                color: '#22c55e', fontSize: 12, fontWeight: 700, letterSpacing: '0.08em',
+                opacity: 0, transform: 'translateY(8px)',
+                transition: 'opacity 0.35s ease, transform 0.35s ease',
+              }}>
                 LEARN MORE
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
               </div>
             </div>
           ))}

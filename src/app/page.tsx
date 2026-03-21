@@ -6,7 +6,7 @@ import ServicesSection from '@/components/ServicesSection';
 import LatestWork from '@/components/LatestWork';
 import ProcessSection from '@/components/ProcessSection';
 import FeaturedAwards from '@/components/FeaturedAwards';
-// import TechStack from '@/components/TechStack';
+import TechStackSection from '@/components/TechStackSection';
 
 import GlobalPresence from '@/components/GlobalPresence';
 import PortfolioShowcase from '@/components/PortfolioShowcase';
@@ -22,9 +22,65 @@ import Footer from '@/components/Footer';
 import MarketStats from '@/components/MarketStats';
 import SolutionsPreview from '@/components/SolutionsPreview';
 import ComplianceBadges from '@/components/ComplianceBadges';
+import WhyChooseUs from '@/components/WhyChooseUs';
 
 import ScrollUI from '@/components/ScrollUI';
 import StickyCTA from '@/components/StickyCTA';
+
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Codazz',
+  url: 'https://codazz.com',
+  logo: 'https://codazz.com/logo.png',
+  description:
+    'Custom software development company headquartered in Edmonton, Canada with development center in Chandigarh, India. We build mobile apps, web applications, AI solutions, and SaaS products.',
+  foundingDate: '2018',
+  numberOfEmployees: { '@type': 'QuantitativeValue', value: 100 },
+  address: [
+    {
+      '@type': 'PostalAddress',
+      streetAddress: 'Edmonton',
+      addressLocality: 'Edmonton',
+      addressRegion: 'Alberta',
+      addressCountry: 'CA',
+    },
+    {
+      '@type': 'PostalAddress',
+      addressLocality: 'Chandigarh',
+      addressCountry: 'IN',
+    },
+  ],
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'customer service',
+    url: 'https://codazz.com/contact',
+  },
+  sameAs: [
+    'https://www.linkedin.com/company/codazz',
+    'https://twitter.com/codazz',
+  ],
+  areaServed: ['CA', 'US', 'GB', 'AE', 'AU', 'SG'],
+  serviceType: [
+    'Mobile App Development',
+    'Web Development',
+    'AI Development',
+    'SaaS Development',
+    'UI/UX Design',
+  ],
+};
+
+const websiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  url: 'https://codazz.com',
+  name: 'Codazz',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: 'https://codazz.com/blog?q={search_term_string}',
+    'query-input': 'required name=search_term_string',
+  },
+};
 
 const faqJsonLd = {
   '@context': 'https://schema.org',
@@ -102,6 +158,14 @@ export default function Home() {
     <>
       <script
         type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <Navbar />
@@ -117,7 +181,7 @@ export default function Home() {
         <ShowcaseMarquee />
         <div style={{ height: 1, background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.06) 50%, transparent)', margin: '0 auto', maxWidth: '80%' }} />
         <ProcessSection />
-        {/* <TechStack /> */}
+        <TechStackSection />
         <PortfolioSection />
         <div style={{ height: 1, background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.06) 50%, transparent)', margin: '0 auto', maxWidth: '80%' }} />
         <MarketStats />
@@ -125,6 +189,7 @@ export default function Home() {
         <AdvancedLabs />
         <SolutionsPreview />
         <PortfolioShowcase category="" />
+        <WhyChooseUs />
         <ComplianceBadges />
         <InsightsSection />
         <FAQSection />

@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
 import PageClient from './PageClient';
 
-const TITLE = 'Microservices vs Monolith in 2026: Architecture Decision Guide';
-const DESCRIPTION = 'Complete guide to choosing between microservices and monolith architecture in 2026. Covers cost comparison, migration strategies, when each is appropriate, and real-world decision frameworks.';
+const TITLE = 'Microservices vs Monolith Architecture in 2026: When to Use Each';
+const DESCRIPTION = 'Complete guide to microservices vs monolith architecture in 2026. Compare pros/cons, migration strategies (strangler fig), service mesh (Istio, Linkerd), event-driven architecture (Kafka), distributed tracing, and cost analysis to make the right architecture decision.';
 const SLUG = 'microservices-vs-monolith-2026';
 const DATE = '2026-03-20';
 

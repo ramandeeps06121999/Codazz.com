@@ -1,10 +1,10 @@
 import { Metadata } from 'next';
 import PageClient from './PageClient';
 
-const TITLE = 'How Much Does Blockchain Development Cost in 2026?';
-const DESCRIPTION = 'Complete guide to blockchain development costs in 2026 — from smart contracts ($10K-50K) to full blockchain platforms ($200K-1M+). Real pricing, security audits, and timelines.';
+const TITLE = 'Blockchain Development Cost in 2026: Smart Contracts, DeFi & NFT';
+const DESCRIPTION = 'Complete guide to blockchain development costs in 2026 — smart contract audit costs, DeFi protocol development ($100K–$2M), NFT marketplace costs, Ethereum vs Polygon vs Solana gas fees, developer rates, and ongoing maintenance budgets.';
 const SLUG = 'blockchain-development-cost';
-const DATE = '2026-03-19';
+const DATE = '2026-03-20';
 
 export const metadata: Metadata = {
   title: TITLE,

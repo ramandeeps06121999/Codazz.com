@@ -128,7 +128,7 @@ export default function FlutterVsReactNativeClient() {
         <div className="cb-container" style={{ paddingTop: 100 }}>
           <div className="reveal" style={{ marginBottom: 40 }}>
             <Image
-              src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&h=675&fit=crop"
+              src="/blog_images/flutter-vs-react-native-2026.jpg"
               alt="Developer coding on laptop with code on screen"
               width={1200}
               height={675}
@@ -141,9 +141,6 @@ export default function FlutterVsReactNativeClient() {
                 borderRadius: 'clamp(16px, 3vw, 24px)',
               }}
             />
-            <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', marginTop: 8, textAlign: 'center' }}>
-              Photo by <a href="https://unsplash.com/@ilyapavlov" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Ilya Pavlov</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-            </p>
           </div>
         </div>
 
@@ -366,7 +363,7 @@ export default function FlutterVsReactNativeClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=500&fit=crop"
+                    src="/blog_images/flutter-vs-react-native-2026.jpg"
                     alt="System architecture and technology infrastructure"
                     width={800}
                     height={500}
@@ -377,9 +374,6 @@ export default function FlutterVsReactNativeClient() {
                       marginBottom: 16,
                     }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@tvick" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Taylor Vick</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <h3 className="reveal" style={{ fontSize: 20, fontWeight: 600, color: flutterColor, marginTop: 32, marginBottom: 16 }}>
@@ -428,7 +422,7 @@ export default function FlutterVsReactNativeClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop"
+                    src="/blog_images/flutter-vs-react-native-2026.jpg"
                     alt="Performance dashboard with analytics and metrics"
                     width={800}
                     height={500}
@@ -439,9 +433,6 @@ export default function FlutterVsReactNativeClient() {
                       marginBottom: 16,
                     }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@lukechesser" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Luke Chesser</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <p className="reveal">
@@ -523,7 +514,7 @@ export default function FlutterVsReactNativeClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1542744094-3a31f272c490?w=800&h=500&fit=crop"
+                    src="/blog_images/flutter-vs-react-native-2026.jpg"
                     alt="Mobile app UI design and interface mockups"
                     width={800}
                     height={500}
@@ -534,9 +525,6 @@ export default function FlutterVsReactNativeClient() {
                       marginBottom: 16,
                     }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@kellysikkema" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Kelly Sikkema</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <div className="reveal" style={{
@@ -578,7 +566,7 @@ export default function FlutterVsReactNativeClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=500&fit=crop"
+                    src="/blog_images/flutter-vs-react-native-2026.jpg"
                     alt="Developer workspace with multiple monitors coding"
                     width={800}
                     height={500}
@@ -589,9 +577,6 @@ export default function FlutterVsReactNativeClient() {
                       marginBottom: 16,
                     }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@cgower" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Christopher Gower</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <h3 className="reveal" style={{ fontSize: 20, fontWeight: 600, color: '#ffffff', marginTop: 32, marginBottom: 16 }}>
@@ -638,7 +623,7 @@ export default function FlutterVsReactNativeClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=500&fit=crop"
+                    src="/blog_images/flutter-vs-react-native-2026.jpg"
                     alt="Technology network and connected ecosystem"
                     width={800}
                     height={500}
@@ -649,9 +634,6 @@ export default function FlutterVsReactNativeClient() {
                       marginBottom: 16,
                     }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@nasa" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>NASA</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <div className="reveal" style={{
@@ -833,7 +815,7 @@ export default function FlutterVsReactNativeClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800&h=500&fit=crop"
+                    src="/blog_images/flutter-vs-react-native-2026.jpg"
                     alt="Mobile phones showcasing different app interfaces"
                     width={800}
                     height={500}
@@ -844,9 +826,6 @@ export default function FlutterVsReactNativeClient() {
                       marginBottom: 16,
                     }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@rob_hampson" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Rob Hampson</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <div className="reveal" style={{
@@ -963,7 +942,7 @@ export default function FlutterVsReactNativeClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&h=500&fit=crop"
+                    src="/blog_images/flutter-vs-react-native-2026.jpg"
                     alt="Decision making and choice crossroads"
                     width={800}
                     height={500}
@@ -974,9 +953,6 @@ export default function FlutterVsReactNativeClient() {
                       marginBottom: 16,
                     }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@clyders" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Clyde RS</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <p className="reveal" style={{ fontSize: 18, color: '#ffffff', fontWeight: 500, marginBottom: 24 }}>

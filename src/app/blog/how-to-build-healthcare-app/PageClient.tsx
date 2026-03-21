@@ -78,7 +78,7 @@ export default function HowToBuildHealthcareAppClient() {
         <div className="cb-container" style={{ paddingTop: 100 }}>
           <div className="reveal" style={{ marginBottom: 40 }}>
             <Image
-              src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&h=675&fit=crop"
+              src="/blog_images/how-to-build-healthcare-app.jpg"
               alt="Healthcare technology and medical app development"
               width={1200}
               height={675}
@@ -91,9 +91,6 @@ export default function HowToBuildHealthcareAppClient() {
                 borderRadius: 'clamp(16px, 3vw, 24px)',
               }}
             />
-            <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', marginTop: 8, textAlign: 'center' }}>
-              Photo by <a href="https://unsplash.com/@nci" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>National Cancer Institute</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-            </p>
           </div>
         </div>
 
@@ -216,15 +213,12 @@ export default function HowToBuildHealthcareAppClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1530497610245-94d3c16cda28?w=800&h=500&fit=crop"
+                    src="/blog_images/how-to-build-healthcare-app.jpg"
                     alt="Modern healthcare technology and digital health"
                     width={800}
                     height={500}
                     style={{ width: '100%', height: 'auto', borderRadius: 12, marginBottom: 16 }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@nci" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>National Cancer Institute</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <div className="reveal" style={{
@@ -323,15 +317,12 @@ export default function HowToBuildHealthcareAppClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1551076805-e1869033e561?w=800&h=500&fit=crop"
+                    src="/blog_images/how-to-build-healthcare-app.jpg"
                     alt="Medical professional using technology"
                     width={800}
                     height={500}
                     style={{ width: '100%', height: 'auto', borderRadius: 12, marginBottom: 16 }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@olgatuteisheva" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Olga Tutunaru</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 {[
@@ -417,15 +408,12 @@ export default function HowToBuildHealthcareAppClient() {
 
                 <div className="reveal" style={{ marginBottom: 32 }}>
                   <Image
-                    src="https://images.unsplash.com/photo-1633265486064-086b219458ec?w=800&h=500&fit=crop"
+                    src="/blog_images/how-to-build-healthcare-app.jpg"
                     alt="Data security and HIPAA compliance"
                     width={800}
                     height={500}
                     style={{ width: '100%', height: 'auto', borderRadius: 12, marginBottom: 16 }}
                   />
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)', textAlign: 'center' }}>
-                    Photo by <a href="https://unsplash.com/@flyd" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>FlyD</a> on <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(255,255,255,0.5)' }}>Unsplash</a>
-                  </p>
                 </div>
 
                 <div className="reveal" style={{

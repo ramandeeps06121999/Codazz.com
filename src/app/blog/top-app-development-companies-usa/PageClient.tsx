@@ -59,7 +59,7 @@ export default function TopAppDevelopmentCompaniesUSAClient() {
         <div className="cb-container" style={{ paddingTop: 100 }}>
           <div className="reveal" style={{ marginBottom: 40 }}>
             <img
-              src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1200&h=675&fit=crop"
+              src="/blog_images/top-app-development-companies-usa.jpg"
               alt="Top app development companies in USA 2026"
               style={{
                 width: '100%',

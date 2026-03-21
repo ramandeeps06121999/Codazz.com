@@ -481,25 +481,12 @@ function FAQItem({ q, a }: { q: string; a: string }) {
    ═══════════════════════════════════════════════════════════════════════════════ */
 
 export default function CloudDevOpsPage() {
-  const heroRef = useReveal() as React.RefObject<HTMLElement>;
-  const awardsRef = useReveal() as React.RefObject<HTMLElement>;
-  const servicesRef = useReveal() as React.RefObject<HTMLElement>;
-  const platformsRef = useReveal() as React.RefObject<HTMLElement>;
-  const pipelineRef = useReveal() as React.RefObject<HTMLElement>;
-  const iacRef = useReveal() as React.RefObject<HTMLElement>;
-  const monitorRef = useReveal() as React.RefObject<HTMLElement>;
-  const securityRef = useReveal() as React.RefObject<HTMLElement>;
-  const casesRef = useReveal() as React.RefObject<HTMLElement>;
-  const complianceRef = useReveal() as React.RefObject<HTMLElement>;
-  const costRef = useReveal() as React.RefObject<HTMLElement>;
-  const testimonialRef = useReveal() as React.RefObject<HTMLElement>;
-  const faqRef = useReveal() as React.RefObject<HTMLElement>;
-  const ctaRef = useReveal() as React.RefObject<HTMLElement>;
+  const pageRef = useReveal() as React.RefObject<HTMLElement>;
 
   return (
     <>
       <Navbar />
-      <main style={{ background: '#000000', color: '#ffffff', paddingTop: 80 }}>
+      <main ref={pageRef} style={{ background: '#000000', color: '#ffffff', paddingTop: 80 }}>
         <div className="cb-container">
           <Breadcrumb
             items={[
@@ -514,7 +501,6 @@ export default function CloudDevOpsPage() {
             1. HERO — Cloud & DevOps Services
         ═══════════════════════════════════════ */}
         <section
-          ref={heroRef}
           className="section-padding"
           style={{ position: 'relative', overflow: 'hidden', minHeight: '90vh', display: 'flex', alignItems: 'center' }}
         >
@@ -653,7 +639,7 @@ export default function CloudDevOpsPage() {
         {/* ═══════════════════════════════════════
             2. AWARDS & TRUST BADGES
         ═══════════════════════════════════════ */}
-        <section ref={awardsRef} style={{ ...sectionBorder, padding: 'clamp(40px, 5vw, 60px) 0' }}>
+        <section style={{ ...sectionBorder, padding: 'clamp(40px, 5vw, 60px) 0' }}>
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 24 }}>
               <p style={{ ...labelStyle, marginBottom: 16, textAlign: 'center' }}>Trusted & Certified</p>
@@ -689,7 +675,7 @@ export default function CloudDevOpsPage() {
         {/* ═══════════════════════════════════════
             3. CLOUD SERVICES GRID
         ═══════════════════════════════════════ */}
-        <section ref={servicesRef} className="section-padding" style={sectionBorder}>
+        <section className="section-padding" style={sectionBorder}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 64 }}>
               <div style={labelStyle}>Our Cloud & DevOps Services</div>
@@ -804,7 +790,7 @@ export default function CloudDevOpsPage() {
         {/* ═══════════════════════════════════════
             4. CLOUD PLATFORMS
         ═══════════════════════════════════════ */}
-        <section ref={platformsRef} className="section-padding" style={sectionBorder}>
+        <section className="section-padding" style={sectionBorder}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 64 }}>
               <div style={labelStyle}>Cloud Platforms</div>
@@ -909,7 +895,7 @@ export default function CloudDevOpsPage() {
         {/* ═══════════════════════════════════════
             5. DEVOPS PIPELINE
         ═══════════════════════════════════════ */}
-        <section ref={pipelineRef} className="section-padding" style={sectionBorder}>
+        <section className="section-padding" style={sectionBorder}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 64, textAlign: 'center' }}>
               <div style={{ ...labelStyle, textAlign: 'center' }}>DevOps Pipeline</div>
@@ -1002,7 +988,7 @@ export default function CloudDevOpsPage() {
         {/* ═══════════════════════════════════════
             6. INFRASTRUCTURE — IaC Tools
         ═══════════════════════════════════════ */}
-        <section ref={iacRef} className="section-padding" style={sectionBorder}>
+        <section className="section-padding" style={sectionBorder}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 64 }}>
               <div style={labelStyle}>Infrastructure as Code</div>
@@ -1084,7 +1070,7 @@ export default function CloudDevOpsPage() {
         {/* ═══════════════════════════════════════
             7. MONITORING & OBSERVABILITY
         ═══════════════════════════════════════ */}
-        <section ref={monitorRef} className="section-padding" style={sectionBorder}>
+        <section className="section-padding" style={sectionBorder}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 64 }}>
               <div style={labelStyle}>Monitoring & Observability</div>
@@ -1165,7 +1151,7 @@ export default function CloudDevOpsPage() {
         {/* ═══════════════════════════════════════
             8. SECURITY — DevSecOps
         ═══════════════════════════════════════ */}
-        <section ref={securityRef} className="section-padding" style={sectionBorder}>
+        <section className="section-padding" style={sectionBorder}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 64 }}>
               <div style={labelStyle}>DevSecOps</div>
@@ -1258,7 +1244,7 @@ export default function CloudDevOpsPage() {
         {/* ═══════════════════════════════════════
             9. CASE STUDIES
         ═══════════════════════════════════════ */}
-        <section ref={casesRef} id="case-studies" className="section-padding" style={sectionBorder}>
+        <section id="case-studies" className="section-padding" style={sectionBorder}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 64 }}>
               <div style={labelStyle}>Case Studies</div>
@@ -1408,7 +1394,7 @@ export default function CloudDevOpsPage() {
         {/* ═══════════════════════════════════════
             10. COMPLIANCE
         ═══════════════════════════════════════ */}
-        <section ref={complianceRef} className="section-padding" style={sectionBorder}>
+        <section className="section-padding" style={sectionBorder}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 64 }}>
               <div style={labelStyle}>Compliance & Certifications</div>
@@ -1498,7 +1484,7 @@ export default function CloudDevOpsPage() {
         {/* ═══════════════════════════════════════
             11. COST OPTIMIZATION
         ═══════════════════════════════════════ */}
-        <section ref={costRef} className="section-padding" style={sectionBorder}>
+        <section className="section-padding" style={sectionBorder}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 64 }}>
               <div style={labelStyle}>Cloud Cost Optimization</div>
@@ -1650,7 +1636,7 @@ export default function CloudDevOpsPage() {
         {/* ═══════════════════════════════════════
             12. TESTIMONIALS
         ═══════════════════════════════════════ */}
-        <section ref={testimonialRef} className="section-padding" style={sectionBorder}>
+        <section className="section-padding" style={sectionBorder}>
           <div className="cb-container">
             <div className="reveal" style={{ marginBottom: 64, textAlign: 'center' }}>
               <div style={{ ...labelStyle, textAlign: 'center' }}>Client Testimonials</div>
@@ -1751,7 +1737,7 @@ export default function CloudDevOpsPage() {
         {/* ═══════════════════════════════════════
             13. FAQ
         ═══════════════════════════════════════ */}
-        <section ref={faqRef} className="section-padding" style={sectionBorder}>
+        <section className="section-padding" style={sectionBorder}>
           <div className="cb-container">
             <div
               style={{
@@ -1807,7 +1793,6 @@ export default function CloudDevOpsPage() {
             14. BOTTOM CTA — Lead Capture Form
         ═══════════════════════════════════════ */}
         <section
-          ref={ctaRef}
           className="section-padding"
           style={{ position: 'relative', overflow: 'hidden' }}
         >

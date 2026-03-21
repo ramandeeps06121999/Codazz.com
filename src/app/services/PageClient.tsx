@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import HeroBackground from '@/components/HeroBackground';
+import Breadcrumb from '@/components/Breadcrumb';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -18,348 +19,466 @@ function useReveal() {
   return ref;
 }
 
-const cardBase: React.CSSProperties = {
-  border: '1px solid rgba(255,255,255,0.06)',
-  borderRadius: 24,
-  background: 'rgba(255,255,255,0.015)',
-  padding: 'clamp(1.25rem, 3vw, 2rem)',
-  transition: 'border-color 0.3s, background 0.3s, transform 0.3s, box-shadow 0.3s',
-  display: 'flex',
-  flexDirection: 'column',
-  height: '100%',
-};
-
-const cardHover: React.CSSProperties = {
-  borderColor: 'rgba(34,197,94,0.2)',
-  background: 'rgba(34,197,94,0.03)',
-  transform: 'translateY(-4px)',
-  boxShadow: '0 24px 60px rgba(255,255,255,0.06)',
-};
-
-function Card({ children, style }: { children: React.ReactNode; style?: React.CSSProperties }) {
+/* ── Service card with hover lift + green border glow ── */
+function ServiceCard({ service }: { service: ServiceItem }) {
   const [hovered, setHovered] = useState(false);
+  const base: React.CSSProperties = {
+    border: '1px solid rgba(255,255,255,0.06)',
+    borderRadius: 20,
+    background: 'rgba(255,255,255,0.02)',
+    padding: 'clamp(1.25rem, 3vw, 1.75rem)',
+    transition: 'border-color 0.35s, background 0.35s, transform 0.35s, box-shadow 0.35s',
+    display: 'flex',
+    flexDirection: 'column' as const,
+    height: '100%',
+    textDecoration: 'none',
+    color: 'inherit',
+  };
+  const hover: React.CSSProperties = {
+    borderColor: 'rgba(34,197,94,0.35)',
+    background: 'rgba(34,197,94,0.04)',
+    transform: 'translateY(-6px)',
+    boxShadow: '0 0 30px rgba(34,197,94,0.08), 0 20px 50px rgba(0,0,0,0.3)',
+  };
   return (
-    <div
-      style={{ ...cardBase, ...(hovered ? cardHover : {}), ...style }}
+    <Link
+      href={service.href}
+      style={{ ...base, ...(hovered ? hover : {}), textDecoration: 'none' }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      {children}
-    </div>
+      {/* Icon */}
+      <div style={{
+        width: 52, height: 52, borderRadius: 14,
+        background: 'rgba(34,197,94,0.08)',
+        border: '1px solid rgba(34,197,94,0.12)',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        marginBottom: '1rem', flexShrink: 0,
+        fontSize: 24,
+      }}>
+        {service.icon}
+      </div>
+
+      {/* Title */}
+      <h3 style={{
+        fontWeight: 700,
+        fontSize: 'clamp(1rem, 2vw, 1.15rem)',
+        marginBottom: '0.5rem',
+        lineHeight: 1.3,
+        color: '#ffffff',
+      }}>
+        {service.title}
+      </h3>
+
+      {/* Short description */}
+      <p style={{
+        color: 'rgba(255,255,255,0.5)',
+        fontSize: 'clamp(0.82rem, 1.5vw, 0.9rem)',
+        lineHeight: 1.6,
+        marginBottom: '1rem',
+        flexGrow: 1,
+      }}>
+        {service.description}
+      </p>
+
+      {/* Sub-services count tag */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 'auto' }}>
+        <span style={{
+          fontSize: 11, fontWeight: 600,
+          color: '#22c55e',
+          background: 'rgba(34,197,94,0.08)',
+          border: '1px solid rgba(34,197,94,0.15)',
+          borderRadius: 999,
+          padding: '4px 12px',
+          letterSpacing: '0.03em',
+        }}>
+          {service.subCount} sub-services
+        </span>
+        <span style={{
+          fontSize: '0.85rem', fontWeight: 600,
+          color: hovered ? '#22c55e' : 'rgba(255,255,255,0.4)',
+          transition: 'color 0.3s',
+        }}>
+          Learn More &rarr;
+        </span>
+      </div>
+    </Link>
   );
 }
 
-interface ServiceCategory {
+/* ── Service data ── */
+interface ServiceItem {
   title: string;
   href: string;
-  initial: string;
-  color: string;
+  icon: string;
   description: string;
-  subServices: { name: string; href: string }[];
+  subCount: number;
 }
 
-const services: ServiceCategory[] = [
+const services: ServiceItem[] = [
   {
     title: 'Mobile App Development',
     href: '/services/mobile-app-development',
-    initial: 'M',
-    color: '#ffffff',
-    description: 'Native and cross-platform mobile apps built for performance, scale, and exceptional user experience. We\'ve launched apps with over 1M downloads on both iOS and Android. From MVP to enterprise rollout, we handle the full lifecycle — design, development, testing, deployment, and App Store optimization.',
-    subServices: [
-      { name: 'iOS App Development', href: '/services/mobile-app-development/ios-app-development' },
-      { name: 'Android App Development', href: '/services/mobile-app-development/android-app-development' },
-      { name: 'Flutter Development', href: '/services/mobile-app-development/flutter-development' },
-      { name: 'React Native Apps', href: '/services/mobile-app-development/react-native-apps' },
-      { name: 'Cross-Platform Apps', href: '/services/mobile-app-development/cross-platform-apps' },
-    ],
+    icon: '\u{1F4F1}',
+    description: 'Native and cross-platform apps for iOS and Android built for scale.',
+    subCount: 5,
   },
   {
     title: 'Web Development',
     href: '/services/web-development',
-    initial: 'W',
-    color: '#3b82f6',
-    description: 'Modern web applications, SaaS platforms, and enterprise portals powered by cutting-edge frameworks. Our team specializes in Next.js, React, and Node.js to build fast, SEO-friendly applications that handle millions of users. We\'ve migrated legacy platforms to headless architectures, delivering up to 3x revenue growth for e-commerce clients.',
-    subServices: [
-      { name: 'Next.js Development', href: '/services/web-development/nextjs-development' },
-      { name: 'SaaS Platforms', href: '/services/web-development/saas-platforms' },
-      { name: 'E-Commerce Systems', href: '/services/web-development/ecommerce-systems' },
-      { name: 'API & Backend', href: '/services/web-development/api-backend' },
-      { name: 'Enterprise Portals', href: '/services/web-development/enterprise-portals' },
-    ],
+    icon: '\u{1F310}',
+    description: 'Modern web apps, SaaS platforms, and enterprise portals with Next.js and React.',
+    subCount: 5,
   },
   {
     title: 'AI & Machine Learning',
     href: '/services/ai-ml',
-    initial: 'A',
-    color: '#8b5cf6',
-    description: 'Intelligent automation, LLM integration, and predictive analytics to transform your business operations. We build production-ready AI systems — from RAG-powered chatbots and document processing to computer vision and real-time trading engines processing 50K+ daily transactions. Every model is tested, monitored, and built to scale.',
-    subServices: [
-      { name: 'LLM Integration', href: '/services/ai-ml/llm-integration' },
-      { name: 'AI Automation', href: '/services/ai-ml/ai-automation' },
-      { name: 'Computer Vision', href: '/services/ai-ml/computer-vision' },
-      { name: 'Predictive Analytics', href: '/services/ai-ml/predictive-analytics' },
-      { name: 'AI Chatbots', href: '/services/ai-ml/ai-chatbots' },
-    ],
+    icon: '\u{1F9E0}',
+    description: 'Intelligent automation, predictive analytics, and production-ready AI systems.',
+    subCount: 5,
+  },
+  {
+    title: 'AI Agent Development',
+    href: '/services/ai-agent-development',
+    icon: '\u{1F916}',
+    description: 'Autonomous AI agents that reason, plan, and execute complex workflows.',
+    subCount: 5,
+  },
+  {
+    title: 'LLM Integration',
+    href: '/services/llm-integration',
+    icon: '\u{1F4AC}',
+    description: 'Integrate GPT, Claude, and open-source LLMs into your products securely.',
+    subCount: 5,
+  },
+  {
+    title: 'Generative AI',
+    href: '/services/generative-ai',
+    icon: '\u{2728}',
+    description: 'Custom generative AI solutions for content, code, images, and data.',
+    subCount: 5,
   },
   {
     title: 'Blockchain & Web3',
     href: '/services/blockchain-web3',
-    initial: 'B',
-    color: '#f59e0b',
-    description: 'Decentralized applications, smart contracts, and DeFi solutions for the next generation of the web. We develop on Ethereum, Polygon, Solana, and Arbitrum with rigorous security audits. Our NFT marketplace has facilitated over $2.4M in trading volume.',
-    subServices: [
-      { name: 'Smart Contracts', href: '/services/blockchain-web3/smart-contracts' },
-      { name: 'DeFi Protocols', href: '/services/blockchain-web3/defi-protocols' },
-      { name: 'NFT Platforms', href: '/services/blockchain-web3/nft-platforms' },
-      { name: 'Crypto Wallets', href: '/services/blockchain-web3/crypto-wallets' },
-      { name: 'Web3 dApps', href: '/services/blockchain-web3/web3-dapps' },
-    ],
+    icon: '\u{26D3}\u{FE0F}',
+    description: 'Smart contracts, DeFi protocols, and decentralized applications.',
+    subCount: 5,
   },
   {
     title: 'Product Design',
     href: '/services/product-design',
-    initial: 'P',
-    color: '#ec4899',
-    description: 'User-centered design strategy, prototyping, and design systems that drive engagement and conversions. Our design team works hand-in-hand with engineering to ensure pixel-perfect implementation. We build reusable design systems that scale across your product suite.',
-    subServices: [
-      { name: 'UI/UX Strategy', href: '/services/product-design/ui-ux-strategy' },
-      { name: 'Wireframing', href: '/services/product-design/wireframing' },
-      { name: 'Prototyping', href: '/services/product-design/prototyping' },
-      { name: 'Design Systems', href: '/services/product-design/design-systems' },
-      { name: 'Brand Identity', href: '/services/product-design/brand-identity' },
-    ],
+    icon: '\u{1F3A8}',
+    description: 'User-centered UI/UX design, prototyping, and scalable design systems.',
+    subCount: 5,
   },
   {
     title: 'Cloud & DevOps',
     href: '/services/cloud-devops',
-    initial: 'C',
-    color: '#06b6d4',
-    description: 'Scalable cloud architecture, CI/CD pipelines, and infrastructure automation for reliable deployments. As an AWS Advanced Tier Partner, we architect multi-region, fault-tolerant systems that achieve 99.99% uptime. From containerization to Infrastructure as Code, we make your deployments predictable and repeatable.',
-    subServices: [
-      { name: 'AWS Architecture', href: '/services/cloud-devops/aws-architecture' },
-      { name: 'Kubernetes & Docker', href: '/services/cloud-devops/kubernetes-docker' },
-      { name: 'CI/CD Pipelines', href: '/services/cloud-devops/ci-cd-pipelines' },
-      { name: 'Infrastructure as Code', href: '/services/cloud-devops/infrastructure-as-code' },
-      { name: 'Performance & Scaling', href: '/services/cloud-devops/performance-scaling' },
-    ],
-  },
-  {
-    title: 'AR & VR Development',
-    href: '/services/ar-vr',
-    initial: 'R',
-    color: '#10b981',
-    description: 'Immersive augmented and virtual reality experiences for mobile, web, and enterprise applications. We build spatial computing experiences for Apple Vision Pro, industrial training simulations, and WebXR applications that run directly in the browser.',
-    subServices: [
-      { name: 'Mobile AR', href: '/services/ar-vr/mobile-ar' },
-      { name: 'VR Applications', href: '/services/ar-vr/vr-applications' },
-      { name: 'WebXR Experiences', href: '/services/ar-vr/webxr-experiences' },
-      { name: 'Apple Vision Pro', href: '/services/ar-vr/apple-vision-pro' },
-      { name: 'Industrial AR', href: '/services/ar-vr/industrial-ar' },
-    ],
-  },
-  {
-    title: 'Game Development',
-    href: '/services/game-development',
-    initial: 'G',
-    color: '#ef4444',
-    description: 'Engaging mobile games, Unity and Unreal Engine titles, and multiplayer experiences with LiveOps. From hyper-casual games to complex multiplayer backends, we handle game logic, real-time networking, matchmaking, and post-launch analytics.',
-    subServices: [
-      { name: 'Mobile Games', href: '/services/game-development/mobile-games' },
-      { name: 'Unity Development', href: '/services/game-development/unity-development' },
-      { name: 'Unreal Engine', href: '/services/game-development/unreal-engine' },
-      { name: 'Hyper-Casual Games', href: '/services/game-development/hyper-casual-games' },
-      { name: 'Multiplayer & LiveOps', href: '/services/game-development/multiplayer-liveops' },
-    ],
-  },
-  {
-    title: 'Digital Marketing',
-    href: '/services/digital-marketing',
-    initial: 'D',
-    color: '#f97316',
-    description: 'Data-driven SEO, PPC, social media, and content marketing strategies to grow your online presence. We combine technical SEO expertise with performance marketing to deliver measurable ROI. Our clients have seen up to 5x lead generation improvements through integrated campaigns.',
-    subServices: [
-      { name: 'SEO Services', href: '/services/digital-marketing/seo-services' },
-      { name: 'Google Ads (PPC)', href: '/services/digital-marketing/google-ads-ppc' },
-      { name: 'Social Media Marketing', href: '/services/digital-marketing/social-media-marketing' },
-      { name: 'Content Marketing', href: '/services/digital-marketing/content-marketing' },
-      { name: 'Performance Analytics', href: '/services/digital-marketing/performance-analytics' },
-    ],
-  },
-  {
-    title: 'Branding & Identity',
-    href: '/services/branding',
-    initial: 'B',
-    color: '#a855f7',
-    description: 'Comprehensive brand strategy, visual identity, guidelines, and motion branding that set you apart. We create cohesive brand systems from logo and typography to motion graphics and video, ensuring your brand is consistent across every touchpoint.',
-    subServices: [
-      { name: 'Brand Strategy', href: '/services/branding/brand-strategy' },
-      { name: 'Logo & Visual Identity', href: '/services/branding/logo-visual-identity' },
-      { name: 'Brand Guidelines', href: '/services/branding/brand-guidelines' },
-      { name: 'Rebranding', href: '/services/branding/rebranding' },
-      { name: 'Motion & Video Branding', href: '/services/branding/motion-video-branding' },
-    ],
-  },
-  {
-    title: 'WordPress & CMS',
-    href: '/services/wordpress-cms',
-    initial: 'W',
-    color: '#0ea5e9',
-    description: 'Custom WordPress themes, headless CMS setups, WooCommerce stores, and site speed optimization. We build on WordPress, Strapi, Sanity, and Contentful — choosing the right CMS for your content workflow and scaling needs.',
-    subServices: [
-      { name: 'Custom WordPress Themes', href: '/services/wordpress-cms/custom-wordpress-themes' },
-      { name: 'WooCommerce Stores', href: '/services/wordpress-cms/woocommerce-stores' },
-      { name: 'Headless WordPress', href: '/services/wordpress-cms/headless-wordpress' },
-      { name: 'Strapi / Sanity CMS', href: '/services/wordpress-cms/strapi-sanity-cms' },
-      { name: 'Site Speed Optimization', href: '/services/wordpress-cms/site-speed-optimisation' },
-    ],
+    icon: '\u{2601}\u{FE0F}',
+    description: 'Cloud architecture, CI/CD pipelines, and infrastructure automation on AWS.',
+    subCount: 5,
   },
   {
     title: 'SaaS Development',
     href: '/services/saas-development',
-    initial: 'S',
-    color: '#14b8a6',
-    description: 'End-to-end SaaS product development — from MVP to multi-tenant architecture, billing, and analytics. We\'ve built SaaS platforms serving 10K+ businesses with Stripe billing, SSO authentication, role-based access, and real-time analytics dashboards.',
-    subServices: [
-      { name: 'SaaS MVP Development', href: '/services/saas-development/saas-mvp-development' },
-      { name: 'Multi-Tenant Architecture', href: '/services/saas-development/multi-tenant-architecture' },
-      { name: 'Billing & Subscriptions', href: '/services/saas-development/billing-subscriptions' },
-      { name: 'Auth & SSO', href: '/services/saas-development/auth-sso' },
-      { name: 'Analytics & Dashboards', href: '/services/saas-development/analytics-dashboards' },
-    ],
+    icon: '\u{1F680}',
+    description: 'End-to-end SaaS products with multi-tenant architecture and billing.',
+    subCount: 5,
+  },
+  {
+    title: 'QA & Testing',
+    href: '/services/qa-testing',
+    icon: '\u{1F50D}',
+    description: 'Automated testing, performance testing, and quality assurance at scale.',
+    subCount: 5,
+  },
+  {
+    title: 'Cybersecurity',
+    href: '/services/cybersecurity',
+    icon: '\u{1F6E1}\u{FE0F}',
+    description: 'Security audits, penetration testing, and compliance-ready architectures.',
+    subCount: 5,
+  },
+  {
+    title: 'IoT Development',
+    href: '/services/iot-development',
+    icon: '\u{1F4E1}',
+    description: 'Connected device ecosystems, firmware, and real-time IoT dashboards.',
+    subCount: 5,
+  },
+  {
+    title: 'AR & VR Development',
+    href: '/services/ar-vr',
+    icon: '\u{1F97D}',
+    description: 'Immersive AR/VR experiences for mobile, web, and Apple Vision Pro.',
+    subCount: 5,
+  },
+  {
+    title: 'Game Development',
+    href: '/services/game-development',
+    icon: '\u{1F3AE}',
+    description: 'Mobile games, Unity and Unreal Engine titles with multiplayer backends.',
+    subCount: 5,
+  },
+  {
+    title: 'Digital Marketing',
+    href: '/services/digital-marketing',
+    icon: '\u{1F4C8}',
+    description: 'Data-driven SEO, PPC, social media, and content marketing strategies.',
+    subCount: 5,
+  },
+  {
+    title: 'Branding & Identity',
+    href: '/services/branding',
+    icon: '\u{1F48E}',
+    description: 'Brand strategy, visual identity, guidelines, and motion branding.',
+    subCount: 5,
+  },
+  {
+    title: 'WordPress & CMS',
+    href: '/services/wordpress-cms',
+    icon: '\u{1F4DD}',
+    description: 'Custom themes, headless CMS, WooCommerce, and site speed optimization.',
+    subCount: 5,
+  },
+  {
+    title: 'RAG Development',
+    href: '/services/rag-development',
+    icon: '\u{1F4DA}',
+    description: 'Retrieval-augmented generation systems for enterprise knowledge bases.',
+    subCount: 5,
   },
 ];
 
+/* ── Process steps ── */
+const steps = [
+  { num: '01', label: 'Discover', desc: 'Research & strategy' },
+  { num: '02', label: 'Design', desc: 'UX & architecture' },
+  { num: '03', label: 'Develop', desc: 'Agile sprints' },
+  { num: '04', label: 'Deploy', desc: 'Launch & support' },
+];
+
 export default function ServicesIndexPage() {
-  const heroRef = useRef<HTMLElement>(null);
-  const s1 = useReveal() as React.RefObject<HTMLElement>;
-  const s2 = useReveal() as React.RefObject<HTMLElement>;
-  const s3 = useReveal() as React.RefObject<HTMLElement>;
+  const mainRef = useReveal() as React.RefObject<HTMLElement>;
 
   useEffect(() => {
-    heroRef.current?.querySelectorAll('.reveal').forEach(n => setTimeout(() => n.classList.add('visible'), 100));
-  }, []);
+    mainRef.current?.querySelectorAll('.reveal').forEach((n, i) =>
+      setTimeout(() => n.classList.add('visible'), 80 + i * 40)
+    );
+  }, [mainRef]);
 
   return (
     <>
       <Navbar />
-      <main style={{ background: '#000000', color: '#ffffff', paddingTop: 80 }}>
+      <main ref={mainRef} style={{ background: '#000000', color: '#ffffff', paddingTop: 80 }}>
 
-        {/* HERO */}
-        <section ref={heroRef} className="section-padding" style={{ position: 'relative', overflow: 'hidden', minHeight: '70vh', display: 'flex', alignItems: 'center' }}>
+        {/* ── HERO ── */}
+        <section className="section-padding" style={{ position: 'relative', overflow: 'hidden', minHeight: '55vh', display: 'flex', alignItems: 'center' }}>
           <HeroBackground variant="center" />
-          <div className="cb-container" style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: 860, margin: '0 auto' }}>
-            <div className="reveal" style={{ display: 'inline-block', border: '1px solid rgba(34,197,94,0.4)', borderRadius: 999, padding: '6px 20px', fontSize: 13, color: '#ffffff', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>
-              What We Do
-            </div>
-            <h1 className="reveal" style={{ fontSize: 'clamp(2.6rem, 6vw, 5rem)', fontWeight: 800, lineHeight: 1.1, marginBottom: '1.5rem', letterSpacing: '-0.02em' }}>
-              Our <span style={{ color: '#ffffff' }}>Services</span>
-            </h1>
-            <p className="reveal" style={{ fontSize: 'clamp(1rem, 2vw, 1.2rem)', color: 'rgba(255,255,255,0.7)', marginBottom: '2.5rem', lineHeight: 1.7, maxWidth: 640, margin: '0 auto 2.5rem' }}>
-              From mobile apps and AI to blockchain and branding, we deliver end-to-end digital solutions that help startups and enterprises build, launch, and scale.
-            </p>
-            <p className="reveal" style={{ fontSize: 'clamp(0.9rem, 1.8vw, 1.05rem)', color: 'rgba(255,255,255,0.5)', marginBottom: '2.5rem', lineHeight: 1.7, maxWidth: 640, margin: '0 auto 2.5rem' }}>
-              We&apos;ve shipped 500+ products across fintech, healthcare, e-commerce, logistics, and enterprise. Every engagement starts with a deep discovery phase so we understand your business before writing a line of code. Fixed-price contracts, weekly progress demos, and a dedicated project manager on every build.
-            </p>
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 'clamp(1rem, 2vw, 1.5rem)', maxWidth: 600, margin: '0 auto' }}>
-              {[['12', 'Service Categories'], ['60+', 'Specializations'], ['500+', 'Projects Delivered']].map(([val, label]) => (
-                <div key={label} style={{ textAlign: 'center' }}>
-                  <div style={{ fontSize: 'clamp(1.2rem, 3vw, 1.6rem)', fontWeight: 800, color: '#ffffff' }}>{val}</div>
-                  <div style={{ fontSize: 'clamp(0.65rem, 1.5vw, 0.8rem)', color: 'rgba(255,255,255,0.25)', marginTop: 4, letterSpacing: '0.05em' }}>{label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* SERVICE GRID */}
-        <section ref={s1} className="section-padding">
-          <div className="cb-container">
-            <div className="reveal" style={{ textAlign: 'center', marginBottom: 'clamp(2rem, 4vw, 3rem)' }}>
-              <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '1rem' }}>Everything You Need to Build & Grow</h2>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: 'clamp(0.95rem, 2vw, 1.1rem)' }}>Explore our full range of services — each backed by deep domain expertise.</p>
-            </div>
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 350px), 1fr))', gap: 'clamp(1rem, 2vw, 1.5rem)' }}>
-              {services.map(service => (
-                <Card key={service.href}>
-                  {/* Icon area */}
-                  <div style={{ width: 52, height: 52, borderRadius: 14, background: `${service.color}15`, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem', flexShrink: 0 }}>
-                    <span style={{ fontSize: 22, fontWeight: 800, color: service.color }}>{service.initial}</span>
-                  </div>
-
-                  {/* Title */}
-                  <Link href={service.href} style={{ textDecoration: 'none', color: 'inherit' }}>
-                    <h3 style={{ fontWeight: 700, fontSize: 'clamp(1.05rem, 2vw, 1.25rem)', marginBottom: '0.5rem', lineHeight: 1.3 }}>{service.title}</h3>
-                  </Link>
-
-                  {/* Description */}
-                  <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: 'clamp(0.85rem, 1.5vw, 0.95rem)', lineHeight: 1.65, marginBottom: '1rem' }}>{service.description}</p>
-
-                  {/* Sub-services */}
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px 10px', marginBottom: '1.25rem', flexGrow: 1 }}>
-                    {service.subServices.map(sub => (
-                      <Link
-                        key={sub.href}
-                        href={sub.href}
-                        style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.35)', textDecoration: 'none', transition: 'color 0.2s', lineHeight: 1.6 }}
-                        onMouseEnter={e => (e.currentTarget.style.color = '#22c55e')}
-                        onMouseLeave={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.35)')}
-                      >
-                        {sub.name}
-                      </Link>
-                    ))}
-                  </div>
-
-                  {/* Learn More */}
-                  <Link href={service.href} style={{ color: '#ffffff', fontSize: '0.9rem', fontWeight: 600, textDecoration: 'none', marginTop: 'auto' }}>
-                    Learn More &rarr;
-                  </Link>
-                </Card>
-              ))}
+          <div className="cb-container" style={{ position: 'relative', zIndex: 1, width: '100%' }}>
+            <Breadcrumb items={[{ label: 'Home', href: '/' }, { label: 'Services' }]} />
+            <div style={{ textAlign: 'center', maxWidth: 780, margin: '3rem auto 0' }}>
+              <div className="reveal" style={{
+                display: 'inline-block',
+                border: '1px solid rgba(34,197,94,0.4)',
+                borderRadius: 999,
+                padding: '6px 20px',
+                fontSize: 13,
+                color: 'rgba(255,255,255,0.8)',
+                marginBottom: '1.5rem',
+                letterSpacing: '0.05em',
+              }}>
+                What We Build
+              </div>
+              <h1 className="reveal" style={{
+                fontSize: 'clamp(2.4rem, 6vw, 4.5rem)',
+                fontWeight: 800,
+                lineHeight: 1.08,
+                marginBottom: '1.25rem',
+                letterSpacing: '-0.025em',
+              }}>
+                Our Services
+              </h1>
+              <p className="reveal" style={{
+                fontSize: 'clamp(1rem, 2vw, 1.2rem)',
+                color: 'rgba(255,255,255,0.6)',
+                lineHeight: 1.7,
+                maxWidth: 600,
+                margin: '0 auto',
+              }}>
+                End-to-end software development services for startups to enterprises
+              </p>
             </div>
           </div>
         </section>
 
-        {/* HOW WE WORK */}
-        <section ref={s2} className="section-padding" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+        {/* ── SERVICE CARDS GRID ── */}
+        <section className="section-padding" style={{ borderTop: '1px solid rgba(255,255,255,0.04)' }}>
           <div className="cb-container">
-            <div className="reveal" style={{ textAlign: 'center', marginBottom: 'clamp(2rem, 4vw, 3rem)' }}>
-              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.25)', display: 'block', marginBottom: 16 }}>Our Process</span>
-              <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '1rem' }}>How Every Project Works</h2>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: 'clamp(0.95rem, 2vw, 1.1rem)', maxWidth: 640, margin: '0 auto' }}>A proven process refined over 500+ projects. No surprises, no scope creep, no missed deadlines.</p>
-            </div>
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))', gap: 'clamp(1rem, 2vw, 1.5rem)' }}>
-              {[
-                { step: '01', title: 'Discovery & Strategy', desc: 'We learn your business, users, and goals. Stakeholder interviews, competitor analysis, and technical feasibility — all before writing a single line of code.', duration: 'Week 1-2' },
-                { step: '02', title: 'Design & Architecture', desc: 'Wireframes, UI design, and system architecture reviewed and approved by you. We define the data model, API contracts, and infrastructure plan.', duration: 'Week 2-3' },
-                { step: '03', title: 'Build & Iterate', desc: 'Agile sprints with weekly demos. You see working software every week and can adjust priorities in real time. CI/CD pipeline from day one.', duration: 'Week 3-7' },
-                { step: '04', title: 'Test & Launch', desc: 'QA testing, performance optimization, security audit, and deployment. We handle staging, production setup, and post-launch monitoring.', duration: 'Week 7-8' },
-              ].map(item => (
-                <div key={item.step} style={{ background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 24, padding: 'clamp(1.25rem, 3vw, 2rem)' }}>
-                  <div style={{ fontSize: 32, fontWeight: 800, color: 'rgba(34,197,94,0.3)', marginBottom: 12, letterSpacing: '-0.04em' }}>{item.step}</div>
-                  <h3 style={{ fontSize: 'clamp(1rem, 2vw, 1.15rem)', fontWeight: 700, color: '#ffffff', marginBottom: 8 }}>{item.title}</h3>
-                  <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.45)', lineHeight: 1.7, marginBottom: 12 }}>{item.desc}</p>
-                  <span style={{ fontSize: 11, fontWeight: 700, color: '#22c55e', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{item.duration}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section ref={s3} className="section-padding">
-          <div className="cb-container">
-            <div className="reveal" style={{ textAlign: 'center', maxWidth: 700, margin: '0 auto' }}>
-              <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 800, lineHeight: 1.15, marginBottom: '1.5rem' }}>
-                Ready to <span style={{ color: '#ffffff' }}>Start?</span>
+            <div className="reveal" style={{ textAlign: 'center', marginBottom: 'clamp(2rem, 4vw, 3.5rem)' }}>
+              <h2 style={{
+                fontSize: 'clamp(1.6rem, 4vw, 2.6rem)',
+                fontWeight: 800,
+                marginBottom: '0.75rem',
+                letterSpacing: '-0.02em',
+              }}>
+                Everything You Need to Build &amp; Grow
               </h2>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: 'clamp(0.95rem, 2vw, 1.15rem)', marginBottom: '2.5rem', lineHeight: 1.7 }}>
-                Tell us about your project and we will match you with the right team, technology, and timeline.
+              <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: 'clamp(0.9rem, 2vw, 1.05rem)' }}>
+                {services.length} service categories, each backed by deep domain expertise.
+              </p>
+            </div>
+            <div className="reveal" style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 300px), 1fr))',
+              gap: 'clamp(0.75rem, 2vw, 1.25rem)',
+            }}>
+              {services.map(service => (
+                <ServiceCard key={service.href} service={service} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── PROCESS STRIP ── */}
+        <section className="section-padding" style={{ borderTop: '1px solid rgba(255,255,255,0.04)' }}>
+          <div className="cb-container">
+            <div className="reveal" style={{ textAlign: 'center', marginBottom: 'clamp(1.5rem, 3vw, 2.5rem)' }}>
+              <span style={{
+                fontSize: 11, fontWeight: 700, letterSpacing: '0.12em',
+                textTransform: 'uppercase', color: 'rgba(255,255,255,0.25)',
+                display: 'block', marginBottom: 12,
+              }}>Our Process</span>
+              <h2 style={{ fontSize: 'clamp(1.6rem, 4vw, 2.6rem)', fontWeight: 800, letterSpacing: '-0.02em' }}>
+                How Every Project Works
+              </h2>
+            </div>
+            <div className="reveal" style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(4, 1fr)',
+              gap: 0,
+              maxWidth: 900,
+              margin: '0 auto',
+              position: 'relative',
+            }}>
+              {steps.map((step, i) => (
+                <div key={step.num} style={{
+                  textAlign: 'center',
+                  padding: 'clamp(1rem, 2vw, 1.5rem)',
+                  position: 'relative',
+                }}>
+                  {/* Connector line */}
+                  {i < steps.length - 1 && (
+                    <div style={{
+                      position: 'absolute',
+                      top: 28,
+                      right: 0,
+                      width: '50%',
+                      height: 1,
+                      background: 'rgba(34,197,94,0.2)',
+                    }} />
+                  )}
+                  {i > 0 && (
+                    <div style={{
+                      position: 'absolute',
+                      top: 28,
+                      left: 0,
+                      width: '50%',
+                      height: 1,
+                      background: 'rgba(34,197,94,0.2)',
+                    }} />
+                  )}
+                  {/* Step circle */}
+                  <div style={{
+                    width: 44, height: 44, borderRadius: '50%',
+                    background: 'rgba(34,197,94,0.1)',
+                    border: '2px solid rgba(34,197,94,0.3)',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    margin: '0 auto 12px',
+                    fontSize: 14, fontWeight: 800, color: '#22c55e',
+                    position: 'relative', zIndex: 1,
+                  }}>
+                    {step.num}
+                  </div>
+                  <div style={{ fontSize: 'clamp(0.95rem, 2vw, 1.1rem)', fontWeight: 700, color: '#ffffff', marginBottom: 4 }}>
+                    {step.label}
+                  </div>
+                  <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)' }}>
+                    {step.desc}
+                  </div>
+                  {/* Arrow between steps */}
+                  {i < steps.length - 1 && (
+                    <div style={{
+                      position: 'absolute',
+                      top: 22,
+                      right: -6,
+                      fontSize: 16,
+                      color: 'rgba(34,197,94,0.4)',
+                      zIndex: 2,
+                    }}>
+                      &rarr;
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+            {/* Mobile fallback: stack vertically */}
+            <style>{`
+              @media (max-width: 600px) {
+                .cb-container > .reveal > div[style*="grid-template-columns: repeat(4"] {
+                  grid-template-columns: 1fr 1fr !important;
+                }
+              }
+            `}</style>
+          </div>
+        </section>
+
+        {/* ── CTA ── */}
+        <section className="section-padding" style={{ borderTop: '1px solid rgba(255,255,255,0.04)' }}>
+          <div className="cb-container">
+            <div className="reveal" style={{
+              textAlign: 'center',
+              maxWidth: 640,
+              margin: '0 auto',
+              padding: 'clamp(2rem, 5vw, 4rem) 0',
+            }}>
+              <h2 style={{
+                fontSize: 'clamp(1.8rem, 5vw, 3rem)',
+                fontWeight: 800,
+                lineHeight: 1.15,
+                marginBottom: '1rem',
+                letterSpacing: '-0.02em',
+              }}>
+                Need a custom solution?
+              </h2>
+              <p style={{
+                color: 'rgba(255,255,255,0.6)',
+                fontSize: 'clamp(1rem, 2vw, 1.15rem)',
+                marginBottom: '2rem',
+                lineHeight: 1.7,
+              }}>
+                Let&apos;s talk.
               </p>
               <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                <Link href="/contact" style={{ background: '#22c55e', color: '#000', padding: 'clamp(12px, 2vw, 16px) clamp(24px, 4vw, 36px)', borderRadius: 999, fontWeight: 700, fontSize: 'clamp(0.9rem, 2vw, 1rem)', textDecoration: 'none', display: 'inline-block' }}>
+                <Link href="/contact" style={{
+                  background: '#22c55e', color: '#000',
+                  padding: 'clamp(12px, 2vw, 16px) clamp(28px, 4vw, 40px)',
+                  borderRadius: 999, fontWeight: 700,
+                  fontSize: 'clamp(0.9rem, 2vw, 1rem)',
+                  textDecoration: 'none', display: 'inline-block',
+                  transition: 'transform 0.2s, box-shadow 0.2s',
+                }}>
                   Get a Free Quote
                 </Link>
-                <Link href="/case-studies" style={{ border: '1px solid rgba(255,255,255,0.1)', color: '#ffffff', padding: 'clamp(12px, 2vw, 16px) clamp(24px, 4vw, 36px)', borderRadius: 999, fontWeight: 600, fontSize: 'clamp(0.9rem, 2vw, 1rem)', textDecoration: 'none', display: 'inline-block' }}>
+                <Link href="/case-studies" style={{
+                  border: '1px solid rgba(255,255,255,0.12)', color: '#ffffff',
+                  padding: 'clamp(12px, 2vw, 16px) clamp(28px, 4vw, 40px)',
+                  borderRadius: 999, fontWeight: 600,
+                  fontSize: 'clamp(0.9rem, 2vw, 1rem)',
+                  textDecoration: 'none', display: 'inline-block',
+                  transition: 'border-color 0.2s',
+                }}>
                   View Case Studies
                 </Link>
               </div>

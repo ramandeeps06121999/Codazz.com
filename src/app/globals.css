@@ -902,17 +902,29 @@ textarea:focus-visible {
 }
 
 .nav-standard.scrolled, .nav-standard.menu-active {
-  background: rgba(0,0,0,0.95);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  background: rgba(0,0,0,0.72);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   border-bottom: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.3);
   padding: 14px 0 !important;
 }
 
 .nav-standard:not(.scrolled):not(.menu-active) {
   background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   border-bottom: 1px solid transparent;
   padding: 20px 0 !important;
+}
+
+.nav-logo-link {
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.nav-logo-link:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 12px rgba(34,197,94,0.4));
 }
 
 .nav-logo-text {
@@ -951,10 +963,11 @@ textarea:focus-visible {
   top: 100%;
   left: 0;
   right: 0;
-  background: rgba(10,10,10,0.97);
-  backdrop-filter: blur(24px);
+  background: rgba(10,10,10,0.92);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   border-bottom: 1px solid rgba(255,255,255,0.08);
-  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s;
 }
 
 .mega-menu-service-card {
@@ -987,11 +1000,13 @@ textarea:focus-visible {
 .nav-mobile-overlay {
   position: fixed;
   inset: 0;
-  background: #000000;
+  background: rgba(0,0,0,0.97);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   z-index: 999;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
   padding: clamp(80px, 15vw, 100px) clamp(16px, 4vw, 24px) 60px;
-  transition: opacity 0.4s ease, visibility 0.4s ease;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s ease, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }

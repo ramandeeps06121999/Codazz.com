@@ -632,23 +632,7 @@ function cardHoverOut(e: React.MouseEvent<HTMLDivElement>) {
 
 export default function SaaSDevelopmentPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const heroRef = useReveal() as React.RefObject<HTMLElement>;
-  const s1 = useReveal() as React.RefObject<HTMLElement>;
-  const s2 = useReveal() as React.RefObject<HTMLElement>;
-  const s3 = useReveal() as React.RefObject<HTMLElement>;
-  const s4 = useReveal() as React.RefObject<HTMLElement>;
-  const s5 = useReveal() as React.RefObject<HTMLElement>;
-  const s6 = useReveal() as React.RefObject<HTMLElement>;
-  const s7 = useReveal() as React.RefObject<HTMLElement>;
-  const s8 = useReveal() as React.RefObject<HTMLElement>;
-  const s9 = useReveal() as React.RefObject<HTMLElement>;
-  const s10 = useReveal() as React.RefObject<HTMLElement>;
-  const s11 = useReveal() as React.RefObject<HTMLElement>;
-  const s12 = useReveal() as React.RefObject<HTMLElement>;
-  const s13 = useReveal() as React.RefObject<HTMLElement>;
-  const s14 = useReveal() as React.RefObject<HTMLElement>;
-  const s15 = useReveal() as React.RefObject<HTMLElement>;
-  const s16 = useReveal() as React.RefObject<HTMLElement>;
+  const pageRef = useReveal() as React.RefObject<HTMLElement>;
 
   return (
     <>
@@ -666,7 +650,7 @@ export default function SaaSDevelopmentPage() {
         .testimonial-card-hover:hover { border-color: rgba(34,197,94,0.2) !important; background: rgba(34,197,94,0.03) !important; transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.3); }
       `}</style>
       <Navbar />
-      <main style={{ background: '#000000', color: '#ffffff', paddingTop: 80 }}>
+      <main ref={pageRef} style={{ background: '#000000', color: '#ffffff', paddingTop: 80 }}>
         <div className="cb-container">
           <Breadcrumb items={[
             { label: 'Home', href: '/' },
@@ -678,7 +662,7 @@ export default function SaaSDevelopmentPage() {
         {/* ══════════════════════════════════════════════════════════════
             SECTION 1 — HERO
         ══════════════════════════════════════════════════════════════ */}
-        <section ref={heroRef} style={{ position: 'relative', overflow: 'hidden', minHeight: '92vh', display: 'flex', alignItems: 'center', ...sectionPad }}>
+        <section style={{ position: 'relative', overflow: 'hidden', minHeight: '92vh', display: 'flex', alignItems: 'center', ...sectionPad }}>
           <HeroBackground variant="wide" />
           <div className="cb-container" style={{ position: 'relative', zIndex: 1 }}>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 480px), 1fr))', gap: 'clamp(40px, 6vw, 80px)', alignItems: 'center' }}>
@@ -729,7 +713,7 @@ export default function SaaSDevelopmentPage() {
         {/* ══════════════════════════════════════════════════════════════
             SECTION 2 — AWARDS STRIP / TRUST BADGES
         ══════════════════════════════════════════════════════════════ */}
-        <section ref={s1} style={{ ...sectionBorder, padding: 'clamp(24px, 4vw, 40px) 0' }}>
+        <section style={{ ...sectionBorder, padding: 'clamp(24px, 4vw, 40px) 0' }}>
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center' }}>
               <p style={{ fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.2)', letterSpacing: '0.15em', textTransform: 'uppercase', marginBottom: 16 }}>
@@ -743,7 +727,7 @@ export default function SaaSDevelopmentPage() {
         {/* ══════════════════════════════════════════════════════════════
             SECTION 3 — SAAS SERVICES GRID
         ══════════════════════════════════════════════════════════════ */}
-        <section ref={s2} style={{ ...sectionPad, ...sectionBorder }}>
+        <section style={{ ...sectionPad, ...sectionBorder }}>
           <div className="cb-container">
             <div className="reveal" style={labelStyle}>What We Build</div>
             <h2 className="reveal reveal-d1" style={h2Style}>SaaS Development Services</h2>
@@ -773,7 +757,7 @@ export default function SaaSDevelopmentPage() {
         {/* ══════════════════════════════════════════════════════════════
             SECTION 4 — SAAS METRICS THAT MATTER
         ══════════════════════════════════════════════════════════════ */}
-        <section ref={s3} style={{ ...sectionPad, ...sectionBorder }}>
+        <section style={{ ...sectionPad, ...sectionBorder }}>
           <div className="cb-container">
             <div className="reveal" style={labelStyle}>SaaS Metrics That Matter</div>
             <h2 className="reveal reveal-d1" style={h2Style}>We Build SaaS Products That Move the Needle</h2>
@@ -800,7 +784,7 @@ export default function SaaSDevelopmentPage() {
         {/* ══════════════════════════════════════════════════════════════
             SECTION 5 — CLIENT LOGOS MARQUEE
         ══════════════════════════════════════════════════════════════ */}
-        <section ref={s4} style={{ padding: 'clamp(40px, 6vw, 80px) 0', ...sectionBorder, overflow: 'hidden', position: 'relative' }}>
+        <section style={{ padding: 'clamp(40px, 6vw, 80px) 0', ...sectionBorder, overflow: 'hidden', position: 'relative' }}>
           {/* Edge fades */}
           <div aria-hidden="true" style={{ position: 'absolute', top: 0, left: 0, width: 'clamp(60px, 15vw, 200px)', height: '100%', background: 'linear-gradient(to right, #000000, transparent)', zIndex: 2, pointerEvents: 'none' }} />
           <div aria-hidden="true" style={{ position: 'absolute', top: 0, right: 0, width: 'clamp(60px, 15vw, 200px)', height: '100%', background: 'linear-gradient(to left, #000000, transparent)', zIndex: 2, pointerEvents: 'none' }} />
@@ -832,7 +816,7 @@ export default function SaaSDevelopmentPage() {
         {/* ══════════════════════════════════════════════════════════════
             SECTION 6 — CASE STUDIES
         ══════════════════════════════════════════════════════════════ */}
-        <section ref={s5} style={{ ...sectionPad, ...sectionBorder }}>
+        <section style={{ ...sectionPad, ...sectionBorder }}>
           <div className="cb-container">
             <div className="reveal" style={labelStyle}>Case Studies</div>
             <h2 className="reveal reveal-d1" style={h2Style}>SaaS Products We Have Built</h2>
@@ -873,7 +857,7 @@ export default function SaaSDevelopmentPage() {
         {/* ══════════════════════════════════════════════════════════════
             SECTION 7 — SAAS TECH STACK
         ══════════════════════════════════════════════════════════════ */}
-        <section ref={s6} style={{ ...sectionPad, ...sectionBorder }}>
+        <section style={{ ...sectionPad, ...sectionBorder }}>
           <div className="cb-container">
             <div className="reveal" style={labelStyle}>Technology</div>
             <h2 className="reveal reveal-d1" style={h2Style}>Our SaaS Tech Stack</h2>
@@ -902,7 +886,7 @@ export default function SaaSDevelopmentPage() {
         {/* ══════════════════════════════════════════════════════════════
             SECTION 8 — DEVELOPMENT PROCESS
         ══════════════════════════════════════════════════════════════ */}
-        <section ref={s7} style={{ ...sectionPad, ...sectionBorder }}>
+        <section style={{ ...sectionPad, ...sectionBorder }}>
           <div className="cb-container">
             <div className="reveal" style={labelStyle}>How We Build</div>
             <h2 className="reveal reveal-d1" style={h2Style}>SaaS Development Process</h2>
@@ -929,7 +913,7 @@ export default function SaaSDevelopmentPage() {
         {/* ══════════════════════════════════════════════════════════════
             SECTION 9 — SAAS ARCHITECTURE PATTERNS
         ══════════════════════════════════════════════════════════════ */}
-        <section ref={s8} style={{ ...sectionPad, ...sectionBorder }}>
+        <section style={{ ...sectionPad, ...sectionBorder }}>
           <div className="cb-container">
             <div className="reveal" style={labelStyle}>Architecture</div>
             <h2 className="reveal reveal-d1" style={h2Style}>SaaS Architecture We Build</h2>
@@ -961,7 +945,7 @@ export default function SaaSDevelopmentPage() {
         {/* ══════════════════════════════════════════════════════════════
             SECTION 9B — SAAS PRICING MODELS
         ══════════════════════════════════════════════════════════════ */}
-        <section ref={s15} style={{ ...sectionPad, ...sectionBorder }}>
+        <section style={{ ...sectionPad, ...sectionBorder }}>
           <div className="cb-container">
             <div className="reveal" style={labelStyle}>Billing Architecture</div>
             <h2 className="reveal reveal-d1" style={h2Style}>SaaS Pricing Models We Implement</h2>
@@ -999,7 +983,7 @@ export default function SaaSDevelopmentPage() {
         {/* ══════════════════════════════════════════════════════════════
             SECTION 9C — RESULTS & IMPACT
         ══════════════════════════════════════════════════════════════ */}
-        <section ref={s16} style={{ ...sectionPad, ...sectionBorder }}>
+        <section style={{ ...sectionPad, ...sectionBorder }}>
           <div className="cb-container">
             <div className="reveal" style={{ ...labelStyle, textAlign: 'center' }}>Results & Impact</div>
             <h2 className="reveal reveal-d1" style={{ ...h2Style, textAlign: 'center', maxWidth: 600, margin: '0 auto 16px' }}>The Numbers Behind Our SaaS Products</h2>
@@ -1030,7 +1014,7 @@ export default function SaaSDevelopmentPage() {
         {/* ══════════════════════════════════════════════════════════════
             SECTION 10 — WHY CODAZZ FOR SAAS
         ══════════════════════════════════════════════════════════════ */}
-        <section ref={s9} style={{ ...sectionPad, ...sectionBorder }}>
+        <section style={{ ...sectionPad, ...sectionBorder }}>
           <div className="cb-container">
             <div className="reveal" style={labelStyle}>Why Codazz</div>
             <h2 className="reveal reveal-d1" style={h2Style}>Why Companies Choose Codazz for SaaS Development</h2>
@@ -1060,7 +1044,7 @@ export default function SaaSDevelopmentPage() {
         {/* ══════════════════════════════════════════════════════════════
             SECTION 11 — COMPLIANCE
         ══════════════════════════════════════════════════════════════ */}
-        <section ref={s10} style={{ ...sectionPad, ...sectionBorder }}>
+        <section style={{ ...sectionPad, ...sectionBorder }}>
           <div className="cb-container">
             <div className="reveal" style={{ ...labelStyle, textAlign: 'center' }}>Compliance & Security</div>
             <h2 className="reveal reveal-d1" style={{ ...h2Style, textAlign: 'center', maxWidth: 600, margin: '0 auto 16px' }}>Enterprise-Grade Compliance Built In</h2>
@@ -1113,7 +1097,7 @@ export default function SaaSDevelopmentPage() {
         {/* ══════════════════════════════════════════════════════════════
             SECTION 12 — TESTIMONIALS
         ══════════════════════════════════════════════════════════════ */}
-        <section ref={s11} style={{ ...sectionPad, ...sectionBorder }}>
+        <section style={{ ...sectionPad, ...sectionBorder }}>
           <div className="cb-container">
             <div className="reveal" style={{ ...labelStyle, textAlign: 'center' }}>Testimonials</div>
             <h2 className="reveal reveal-d1" style={{ ...h2Style, textAlign: 'center', margin: '0 auto 56px' }}>What Our SaaS Clients Say</h2>
@@ -1149,7 +1133,7 @@ export default function SaaSDevelopmentPage() {
         {/* ══════════════════════════════════════════════════════════════
             SECTION 13 — FAQ
         ══════════════════════════════════════════════════════════════ */}
-        <section ref={s12} style={{ ...sectionPad, ...sectionBorder }}>
+        <section style={{ ...sectionPad, ...sectionBorder }}>
           <div className="cb-container" style={{ maxWidth: 800, margin: '0 auto' }}>
             <div className="reveal" style={{ ...labelStyle, textAlign: 'center' }}>FAQ</div>
             <h2 className="reveal reveal-d1" style={{ ...h2Style, textAlign: 'center', margin: '0 auto 48px' }}>Frequently Asked Questions About SaaS Development</h2>
@@ -1202,7 +1186,7 @@ export default function SaaSDevelopmentPage() {
         {/* ══════════════════════════════════════════════════════════════
             SECTION 14 — CTA WITH FORM
         ══════════════════════════════════════════════════════════════ */}
-        <section ref={s13} style={{ ...sectionPad, position: 'relative', overflow: 'hidden' }}>
+        <section style={{ ...sectionPad, position: 'relative', overflow: 'hidden' }}>
           <HeroBackground variant="center" />
           <div className="cb-container" style={{ position: 'relative', zIndex: 1 }}>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 400px), 1fr))', gap: 'clamp(40px, 6vw, 80px)', alignItems: 'center' }}>
@@ -1245,7 +1229,7 @@ export default function SaaSDevelopmentPage() {
         </section>
 
         {/* Industries strip */}
-        <section ref={s14} style={{ padding: 'clamp(40px, 6vw, 60px) 0', ...sectionBorder }}>
+        <section style={{ padding: 'clamp(40px, 6vw, 60px) 0', ...sectionBorder }}>
           <div className="cb-container" style={{ textAlign: 'center' }}>
             <p className="reveal" style={{ fontSize: 13, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)', marginBottom: 24 }}>Industries We Serve</p>
             <div className="reveal reveal-d1" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 12 }}>

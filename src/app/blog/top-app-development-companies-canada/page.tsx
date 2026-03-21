@@ -4,7 +4,7 @@ import PageClient from './PageClient';
 const TITLE = 'Top 10 App Development Companies in Canada (2026)';
 const DESCRIPTION = 'Ranking the best mobile app development companies in Canada for 2026 — from Edmonton powerhouses to Toronto studios building world-class iOS and Android apps.';
 const SLUG = 'top-app-development-companies-canada';
-const DATE = '2026-03-19';
+const DATE = '2026-03-20';
 
 export const metadata: Metadata = {
   title: TITLE,

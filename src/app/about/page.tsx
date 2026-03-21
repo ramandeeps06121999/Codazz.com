@@ -3,10 +3,10 @@ import PageClient from './PageClient';
 
 export const metadata: Metadata = {
   title: 'About Us | Codazz',
-  description: 'Codazz is a global software development company with offices across 24 countries worldwide. 500+ projects delivered, 150+ engineers, serving clients worldwide. Meet our team today.',
+  description: 'Codazz is a global software development company with offices across 24 countries worldwide. 500+ projects delivered, 100+ engineers, serving clients worldwide. Meet our team today.',
   openGraph: {
     title: 'About Us | Codazz',
-    description: 'Codazz is a global software development company with offices across 24 countries worldwide. 500+ projects delivered, 150+ engineers, serving clients worldwide.',
+    description: 'Codazz is a global software development company with offices across 24 countries worldwide. 500+ projects delivered, 100+ engineers, serving clients worldwide.',
     url: 'https://codazz.com/about',
     type: 'website',
   },
@@ -21,7 +21,7 @@ const jsonLd0 = {
   "@type": "AboutPage",
   "name": "About Codazz",
   "url": "https://codazz.com/about",
-  "description": "Codazz is a global software development company with 150+ engineers across 24 countries. 500+ projects delivered.",
+  "description": "Codazz is a global software development company with 100+ engineers across 24 countries. 500+ projects delivered.",
   "mainEntity": {
     "@type": "Organization",
     "name": "Codazz",

@@ -4,6 +4,7 @@ import { useRef, useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
+import Image from 'next/image';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -573,10 +574,27 @@ const categoryColors: Record<string, string> = {
   Marketing: '#f59e0b',
 };
 
+function getBlogImageSrc(slug: string) {
+  return `/blog_images/${slug}.jpg`;
+}
+
 export default function BlogPage() {
   const pageRef = useReveal();
   const [activeCategory, setActiveCategory] = useState('All');
-  const categories = ['All', 'Engineering', 'AI/ML', 'Mobile', 'Business', 'Digital Marketing', 'Guide', 'Marketing'];
+  const [searchQuery, setSearchQuery] = useState('');
+  const [visibleCount, setVisibleCount] = useState(12);
+  const categories = ['All', 'Mobile', 'AI/ML', 'Engineering', 'Business', 'Guide', 'Marketing', 'Digital Marketing'];
+
+  const featuredPost = posts[0];
+
+  const filteredPosts = posts.filter(p => {
+    const matchesCategory = activeCategory === 'All' || p.category === activeCategory;
+    const matchesSearch = searchQuery === '' || p.title.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
+
+  const visiblePosts = filteredPosts.slice(0, visibleCount);
+  const hasMore = filteredPosts.length > visibleCount;
 
   return (
     <>
@@ -584,7 +602,7 @@ export default function BlogPage() {
       <main ref={pageRef as React.RefObject<HTMLElement>} style={{ background: '#000000', minHeight: '100vh' }}>
 
         {/* -- HERO -- */}
-        <section style={{ padding: '160px 0 80px', position: 'relative', overflow: 'hidden' }}>
+        <section style={{ padding: '160px 0 60px', position: 'relative', overflow: 'hidden' }}>
           {/* Background glow */}
           <div style={{
             position: 'absolute', top: -200, left: '50%', transform: 'translateX(-50%)',
@@ -593,52 +611,90 @@ export default function BlogPage() {
             pointerEvents: 'none',
           }} />
           <div className="cb-container">
-            <div className="reveal" style={{ marginBottom: 24 }}>
+            <div className="reveal" style={{ marginBottom: 20 }}>
               <span style={{
                 fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                color: '#ffffff',
+                color: '#22c55e',
               }}>
                 Codazz Journal
               </span>
             </div>
             <h1 className="reveal reveal-d1" style={{
               fontSize: 'clamp(3rem, 6vw, 5.5rem)', fontWeight: 700, color: '#ffffff',
-              lineHeight: 1.05, letterSpacing: '-0.04em', marginBottom: 24, maxWidth: 800,
+              lineHeight: 1.05, letterSpacing: '-0.04em', marginBottom: 20, maxWidth: 800,
             }}>
-              Insights &<br />Perspectives
+              Our Blog
             </h1>
             <p className="reveal reveal-d2" style={{
-              fontSize: 18, color: 'rgba(255,255,255,0.45)', lineHeight: 1.7,
-              maxWidth: 620, marginBottom: 48,
+              fontSize: 18, color: 'rgba(255,255,255,0.5)', lineHeight: 1.7,
+              maxWidth: 620, marginBottom: 12,
             }}>
-              Your software development blog for AI development guides, app development cost breakdowns, cloud architecture deep dives, and practical engineering insights from a team that ships production code every day.
+              70+ articles on software development, AI, and tech trends
+            </p>
+            <p className="reveal reveal-d2" style={{
+              fontSize: 15, color: 'rgba(255,255,255,0.35)', lineHeight: 1.7,
+              maxWidth: 620, marginBottom: 40,
+            }}>
+              Practical guides, real cost breakdowns, and engineering insights from a team that ships production code every day.
             </p>
 
             {/* Search bar */}
-            <div className="reveal reveal-d3" style={{ marginBottom: 40, maxWidth: 520 }}>
+            <div className="reveal reveal-d3" style={{ marginBottom: 28, maxWidth: 520 }}>
               <div style={{
                 display: 'flex', alignItems: 'center', gap: 12,
-                background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)',
-                borderRadius: 100, padding: '12px 20px',
+                background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)',
+                borderRadius: 100, padding: '14px 24px',
+                transition: 'border-color 0.2s',
               }}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" strokeWidth="2">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="2">
                   <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
                 </svg>
-                <span style={{ fontSize: 14, color: 'rgba(255,255,255,0.2)' }}>Search articles...</span>
+                <input
+                  type="text"
+                  placeholder="Search articles by title..."
+                  value={searchQuery}
+                  onChange={e => { setSearchQuery(e.target.value); setVisibleCount(12); }}
+                  style={{
+                    background: 'transparent', border: 'none', outline: 'none',
+                    fontSize: 15, color: '#ffffff', width: '100%',
+                    fontFamily: 'inherit',
+                  }}
+                />
+                {searchQuery && (
+                  <button
+                    onClick={() => setSearchQuery('')}
+                    style={{
+                      background: 'rgba(255,255,255,0.1)', border: 'none', borderRadius: '50%',
+                      width: 24, height: 24, display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      cursor: 'pointer', flexShrink: 0,
+                    }}
+                  >
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" strokeWidth="2.5">
+                      <path d="M18 6 6 18M6 6l12 12"/>
+                    </svg>
+                  </button>
+                )}
               </div>
             </div>
 
             {/* Category filter pills */}
-            <div className="reveal reveal-d4" style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+            <div className="reveal reveal-d4" style={{
+              display: 'flex', gap: 8, flexWrap: 'nowrap',
+              overflowX: 'auto', paddingBottom: 8,
+              WebkitOverflowScrolling: 'touch',
+              msOverflowStyle: 'none',
+              scrollbarWidth: 'none',
+            }}>
               {categories.map(cat => (
                 <button
                   key={cat}
-                  onClick={() => setActiveCategory(cat)}
+                  onClick={() => { setActiveCategory(cat); setVisibleCount(12); }}
                   style={{
-                    padding: '8px 20px', borderRadius: 100, fontSize: 13, fontWeight: 500,
+                    padding: '10px 22px', borderRadius: 100, fontSize: 13, fontWeight: 600,
                     cursor: 'pointer', border: 'none', transition: 'all 0.2s',
-                    background: activeCategory === cat ? '#22c55e' : 'rgba(255,255,255,0.03)',
-                    color: activeCategory === cat ? '#ffffff' : 'rgba(255,255,255,0.45)',
+                    background: activeCategory === cat ? '#22c55e' : 'rgba(255,255,255,0.04)',
+                    color: activeCategory === cat ? '#000000' : 'rgba(255,255,255,0.5)',
+                    whiteSpace: 'nowrap', flexShrink: 0,
                   }}
                 >
                   {cat}
@@ -648,114 +704,140 @@ export default function BlogPage() {
           </div>
         </section>
 
-        {/* -- INTRO / VALUE PROPOSITION -- */}
-        <section style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-          <div className="cb-container" style={{ paddingTop: 64, paddingBottom: 64 }}>
-            <div className="reveal" style={{
-              background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)',
-              borderRadius: 24, padding: 'clamp(24px, 4vw, 40px)',
-              borderLeft: '3px solid #22c55e',
-            }}>
-              <p style={{
-                fontSize: 16, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8, margin: 0,
-              }}>
-                Expert insights on software development, AI, cloud architecture, and building digital products — written by engineers who ship production code every day. Practical guides, real cost breakdowns, and lessons learned from 500+ projects. Whether you are a startup founder estimating your MVP budget, a CTO evaluating development partners, or an engineer exploring AI integration patterns, our app development cost guides and AI development tutorials are built to help you make better decisions, faster.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* -- FEATURED POST -- */}
-        <section style={{ paddingBottom: 80, borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-          <div className="cb-container" style={{ paddingTop: 80 }}>
+        {/* -- FEATURED POST (first/newest post as hero card) -- */}
+        <section style={{ paddingBottom: 60, borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+          <div className="cb-container" style={{ paddingTop: 60 }}>
             <p className="reveal" style={{
               fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-              color: 'rgba(255,255,255,0.25)', marginBottom: 32,
+              color: 'rgba(255,255,255,0.25)', marginBottom: 24,
             }}>
               Featured Article
             </p>
-            <Link href="/blog/top-10-unicorn-apps-2026" style={{ textDecoration: 'none', display: 'block' }}>
+            <Link href={`/blog/${featuredPost.slug}`} style={{ textDecoration: 'none', display: 'block' }}>
               <div
                 className="reveal"
                 style={{
                   background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)',
-                  borderRadius: 28, padding: 48, display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fit, minmax(min(300px, 100%), 1fr))', gap: 48, alignItems: 'center',
-                  borderLeft: '3px solid #22c55e',
+                  borderRadius: 28, overflow: 'hidden',
+                  display: 'grid',
+                  gridTemplateColumns: '1fr 1fr',
                   transition: 'all 0.3s cubic-bezier(0.16,1,0.3,1)',
                   cursor: 'pointer',
                 }}
                 onMouseEnter={e => {
-                  (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(34,197,94,0.35)';
-                  (e.currentTarget as HTMLDivElement).style.background = 'rgba(34,197,94,0.03)';
+                  (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(34,197,94,0.3)';
+                  (e.currentTarget as HTMLDivElement).style.boxShadow = '0 0 60px rgba(34,197,94,0.08)';
                   (e.currentTarget as HTMLDivElement).style.transform = 'translateY(-4px)';
                 }}
                 onMouseLeave={e => {
                   (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(255,255,255,0.06)';
-                  (e.currentTarget as HTMLDivElement).style.borderLeftColor = '#22c55e';
-                  (e.currentTarget as HTMLDivElement).style.background = 'rgba(255,255,255,0.015)';
+                  (e.currentTarget as HTMLDivElement).style.boxShadow = 'none';
                   (e.currentTarget as HTMLDivElement).style.transform = 'translateY(0)';
                 }}
               >
-                <div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
+                {/* Image side */}
+                <div style={{
+                  position: 'relative', minHeight: 340,
+                  background: 'rgba(255,255,255,0.02)',
+                }}>
+                  <Image
+                    src={getBlogImageSrc(featuredPost.slug)}
+                    alt={featuredPost.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    style={{ objectFit: 'cover' }}
+                    priority
+                  />
+                  {/* Gradient overlay */}
+                  <div style={{
+                    position: 'absolute', inset: 0,
+                    background: 'linear-gradient(90deg, transparent 60%, rgba(0,0,0,0.4) 100%)',
+                  }} />
+                </div>
+                {/* Content side */}
+                <div style={{ padding: 'clamp(28px, 4vw, 48px)', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20, flexWrap: 'wrap' }}>
                     <span style={{
                       fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase',
-                      background: 'rgba(17,24,39,0.12)', color: '#ffffff',
-                      padding: '4px 12px', borderRadius: 100,
-                    }}>Business</span>
-                    <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.25)' }}>March 2026</span>
-                    <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.25)' }}>·</span>
-                    <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.25)' }}>8 min read</span>
+                      background: `${categoryColors[featuredPost.category] || '#22c55e'}20`,
+                      color: categoryColors[featuredPost.category] || '#22c55e',
+                      padding: '5px 14px', borderRadius: 100,
+                    }}>{featuredPost.category}</span>
+                    <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.3)' }}>{featuredPost.date}</span>
+                    <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.2)' }}>·</span>
+                    <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.3)' }}>{featuredPost.readTime}</span>
                   </div>
                   <h2 style={{
-                    fontSize: 'clamp(1.6rem, 3vw, 2.4rem)', fontWeight: 700, color: '#ffffff',
-                    letterSpacing: '-0.03em', lineHeight: 1.15, marginBottom: 16,
+                    fontSize: 'clamp(1.5rem, 2.5vw, 2.2rem)', fontWeight: 700, color: '#ffffff',
+                    letterSpacing: '-0.03em', lineHeight: 1.2, marginBottom: 16,
                   }}>
-                    Top 10 Unicorn Apps of 2026
+                    {featuredPost.title}
                   </h2>
                   <p style={{
                     fontSize: 16, color: 'rgba(255,255,255,0.45)', lineHeight: 1.7,
-                    maxWidth: 620, marginBottom: 28,
+                    marginBottom: 28, maxWidth: 520,
                   }}>
-                    The mobile apps that achieved billion-dollar valuations in 2026 share one thing in common: they were built different from the start. We analyzed each one to extract the engineering and product decisions that made the difference.
+                    {featuredPost.excerpt}
                   </p>
                   <span style={{
                     display: 'inline-flex', alignItems: 'center', gap: 8,
-                    fontSize: 14, fontWeight: 600, color: '#ffffff',
+                    fontSize: 14, fontWeight: 600, color: '#22c55e',
                   }}>
-                    Read Article
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                      <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
+                    Read More &rarr;
                   </span>
-                </div>
-                <div style={{
-                  width: 200, height: 200, borderRadius: 20, flexShrink: 0, maxWidth: '100%',
-                  background: 'linear-gradient(135deg, rgba(17,24,39,0.12) 0%, rgba(34,197,94,0.04) 100%)',
-                  border: '1px solid rgba(34,197,94,0.15)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                }}>
-                  <span style={{ fontSize: 64 }}>🦄</span>
                 </div>
               </div>
             </Link>
+            {/* Responsive: stack on mobile */}
+            <style>{`
+              @media (max-width: 768px) {
+                .cb-container > a > div[style*="grid-template-columns"] {
+                  grid-template-columns: 1fr !important;
+                }
+              }
+            `}</style>
           </div>
         </section>
 
         {/* -- POSTS GRID -- */}
         <section className="section-padding" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-          <div className="cb-container" style={{ paddingTop: 80 }}>
-            <p className="reveal" style={{
-              fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-              color: 'rgba(255,255,255,0.25)', marginBottom: 40,
-            }}>
-              Latest Articles
-            </p>
+          <div className="cb-container" style={{ paddingTop: 60 }}>
             <div style={{
-              display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(320px, 100%), 1fr))', gap: 20,
+              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+              marginBottom: 40,
             }}>
-              {posts.filter(p => activeCategory === 'All' || p.category === activeCategory).map((post, i) => {
+              <p className="reveal" style={{
+                fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
+                color: 'rgba(255,255,255,0.25)', margin: 0,
+              }}>
+                {searchQuery ? `Search Results` : 'Latest Articles'}
+              </p>
+              <p className="reveal" style={{
+                fontSize: 13, color: 'rgba(255,255,255,0.3)', margin: 0,
+              }}>
+                {filteredPosts.length} article{filteredPosts.length !== 1 ? 's' : ''}
+              </p>
+            </div>
+
+            {filteredPosts.length === 0 && (
+              <div className="reveal" style={{
+                textAlign: 'center', padding: '80px 20px',
+                background: 'rgba(255,255,255,0.015)', borderRadius: 28,
+                border: '1px solid rgba(255,255,255,0.06)',
+              }}>
+                <p style={{ fontSize: 18, color: 'rgba(255,255,255,0.4)', marginBottom: 8 }}>
+                  No articles found
+                </p>
+                <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.25)' }}>
+                  Try a different search term or category
+                </p>
+              </div>
+            )}
+
+            <div style={{
+              display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(340px, 100%), 1fr))', gap: 24,
+            }}>
+              {visiblePosts.map((post) => {
                 const accentColor = categoryColors[post.category] || '#22c55e';
                 return (
                   <Link key={post.slug} href={`/blog/${post.slug}`} style={{ textDecoration: 'none' }}>
@@ -763,93 +845,132 @@ export default function BlogPage() {
                       className="reveal reveal-d1"
                       style={{
                         background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)',
-                        borderRadius: 24, padding: 'clamp(20px, 4vw, 32px)', height: '100%',
+                        borderRadius: 28, padding: 0, height: '100%',
                         transition: 'all 0.3s cubic-bezier(0.16,1,0.3,1)',
-                        display: 'flex', flexDirection: 'column', gap: 0,
-                        cursor: 'pointer',
+                        display: 'flex', flexDirection: 'column',
+                        cursor: 'pointer', overflow: 'hidden',
                       }}
                       onMouseEnter={e => {
-                        (e.currentTarget as HTMLElement).style.borderColor = 'rgba(34,197,94,0.2)';
-                        (e.currentTarget as HTMLElement).style.background = 'rgba(34,197,94,0.03)';
-                        (e.currentTarget as HTMLElement).style.transform = 'translateY(-4px)';
+                        (e.currentTarget as HTMLElement).style.borderColor = `${accentColor}40`;
+                        (e.currentTarget as HTMLElement).style.boxShadow = `0 8px 40px ${accentColor}10`;
+                        (e.currentTarget as HTMLElement).style.transform = 'translateY(-6px)';
                       }}
                       onMouseLeave={e => {
                         (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.06)';
-                        (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.015)';
+                        (e.currentTarget as HTMLElement).style.boxShadow = 'none';
                         (e.currentTarget as HTMLElement).style.transform = 'translateY(0)';
                       }}
                     >
-                      {/* Category badge */}
-                      <div style={{ marginBottom: 20 }}>
-                        <span style={{
-                          fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase',
-                          background: `${accentColor}15`, color: accentColor,
-                          padding: '4px 12px', borderRadius: 100,
-                        }}>
-                          {post.category}
-                        </span>
-                      </div>
-
-                      {/* Title */}
-                      <h3 style={{
-                        fontSize: 18, fontWeight: 700, color: '#ffffff',
-                        letterSpacing: '-0.02em', lineHeight: 1.25, marginBottom: 12,
-                      }}>
-                        {post.title}
-                      </h3>
-
-                      {/* Excerpt */}
-                      <p style={{
-                        fontSize: 14, color: 'rgba(255,255,255,0.45)', lineHeight: 1.7,
-                        marginBottom: 28, flexGrow: 1,
-                      }}>
-                        {post.excerpt}
-                      </p>
-
-                      {/* Footer */}
+                      {/* Card image */}
                       <div style={{
-                        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                        marginTop: 'auto', paddingTop: 20,
-                        borderTop: '1px solid rgba(255,255,255,0.03)',
+                        position: 'relative',
+                        aspectRatio: '16 / 9',
+                        overflow: 'hidden',
+                        background: 'rgba(255,255,255,0.02)',
+                        flexShrink: 0,
                       }}>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                          {/* Author avatar */}
-                          <div style={{
-                            width: 30, height: 30, borderRadius: '50%',
-                            background: 'rgba(17,24,39,0.12)', border: '1px solid rgba(34,197,94,0.2)',
-                            display: 'flex', alignItems: 'center', justifyContent: 'center',
-                            fontSize: 11, fontWeight: 700, color: '#ffffff',
-                          }}>
-                            {post.author}
-                          </div>
-                          <div>
-                            <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', margin: 0 }}>{post.date}</p>
-                          </div>
-                        </div>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" strokeWidth="2">
-                            <circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/>
-                          </svg>
-                          <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)' }}>{post.readTime}</span>
-                        </div>
+                        <Image
+                          src={getBlogImageSrc(post.slug)}
+                          alt={post.title}
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          style={{ objectFit: 'cover' }}
+                        />
                       </div>
 
-                      <div style={{ marginTop: 16 }}>
-                        <span style={{
-                          fontSize: 13, fontWeight: 600, color: '#ffffff',
-                          display: 'inline-flex', alignItems: 'center', gap: 6,
+                      {/* Card body */}
+                      <div style={{
+                        padding: 'clamp(20px, 3vw, 28px)',
+                        display: 'flex', flexDirection: 'column', flexGrow: 1,
+                      }}>
+                        {/* Category badge */}
+                        <div style={{ marginBottom: 16 }}>
+                          <span style={{
+                            fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase',
+                            background: `${accentColor}18`, color: accentColor,
+                            padding: '5px 14px', borderRadius: 100,
+                            display: 'inline-block',
+                          }}>
+                            {post.category}
+                          </span>
+                        </div>
+
+                        {/* Title */}
+                        <h3 style={{
+                          fontSize: 18, fontWeight: 700, color: '#ffffff',
+                          letterSpacing: '-0.02em', lineHeight: 1.3, marginBottom: 10,
                         }}>
-                          Read More
-                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                            <path d="M5 12h14M12 5l7 7-7 7"/>
-                          </svg>
-                        </span>
+                          {post.title}
+                        </h3>
+
+                        {/* Excerpt - clamped to 2 lines */}
+                        <p style={{
+                          fontSize: 14, color: 'rgba(255,255,255,0.4)', lineHeight: 1.6,
+                          marginBottom: 20, flexGrow: 1,
+                          display: '-webkit-box',
+                          WebkitLineClamp: 2,
+                          WebkitBoxOrient: 'vertical',
+                          overflow: 'hidden',
+                        }}>
+                          {post.excerpt}
+                        </p>
+
+                        {/* Footer */}
+                        <div style={{
+                          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                          paddingTop: 16,
+                          borderTop: '1px solid rgba(255,255,255,0.04)',
+                        }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                            <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)' }}>{post.date}</span>
+                            <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.15)' }}>·</span>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
+                              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" strokeWidth="2">
+                                <circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/>
+                              </svg>
+                              <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)' }}>{post.readTime}</span>
+                            </div>
+                          </div>
+                          <span style={{
+                            fontSize: 13, fontWeight: 600, color: '#22c55e',
+                            display: 'inline-flex', alignItems: 'center', gap: 4,
+                          }}>
+                            Read More &rarr;
+                          </span>
+                        </div>
                       </div>
                     </article>
                   </Link>
                 );
               })}
             </div>
+
+            {/* Load More button */}
+            {hasMore && (
+              <div className="reveal" style={{ textAlign: 'center', marginTop: 48 }}>
+                <button
+                  onClick={() => setVisibleCount(prev => prev + 12)}
+                  style={{
+                    padding: '16px 48px', borderRadius: 100,
+                    background: 'transparent',
+                    border: '1px solid rgba(34,197,94,0.3)',
+                    color: '#22c55e', fontSize: 15, fontWeight: 600,
+                    cursor: 'pointer', transition: 'all 0.2s',
+                    letterSpacing: '-0.01em',
+                  }}
+                  onMouseEnter={e => {
+                    (e.currentTarget as HTMLElement).style.background = 'rgba(34,197,94,0.08)';
+                    (e.currentTarget as HTMLElement).style.borderColor = '#22c55e';
+                  }}
+                  onMouseLeave={e => {
+                    (e.currentTarget as HTMLElement).style.background = 'transparent';
+                    (e.currentTarget as HTMLElement).style.borderColor = 'rgba(34,197,94,0.3)';
+                  }}
+                >
+                  Load More Articles ({filteredPosts.length - visibleCount} remaining)
+                </button>
+              </div>
+            )}
           </div>
         </section>
 
