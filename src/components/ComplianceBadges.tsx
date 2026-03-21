@@ -374,6 +374,47 @@ export default function ComplianceBadges() {
         {/* Divider */}
         <div className="reveal reveal-d2" style={dividerLineStyle} />
 
+        {/* Security Marquee Strip */}
+        <div className="reveal" style={{ position: 'relative', overflow: 'hidden', margin: '0 -24px clamp(32px,5vw,48px)', padding: '14px 0', borderTop: '1px solid rgba(255,255,255,0.05)', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+          <div style={{ position: 'absolute', top: 0, left: 0, width: 100, height: '100%', background: 'linear-gradient(to right, #000000, transparent)', zIndex: 2, pointerEvents: 'none' }} />
+          <div style={{ position: 'absolute', top: 0, right: 0, width: 100, height: '100%', background: 'linear-gradient(to left, #000000, transparent)', zIndex: 2, pointerEvents: 'none' }} />
+          <div style={{ display: 'flex', gap: 48, width: 'max-content', animation: 'security-marquee 30s linear infinite' }}>
+            {[
+              { icon: '🔒', label: 'GDPR Compliant' },
+              { icon: '🏥', label: 'HIPAA Certified' },
+              { icon: '✅', label: 'SOC 2 Type II' },
+              { icon: '💳', label: 'PCI DSS Level 1' },
+              { icon: '📋', label: 'ISO 27001' },
+              { icon: '🔐', label: 'AES-256 Encryption' },
+              { icon: '🕵️', label: 'Penetration Tested' },
+              { icon: '🏛️', label: 'CCPA Compliant' },
+              { icon: '🛡️', label: 'Zero-Trust Architecture' },
+              { icon: '🔑', label: 'MFA Enforced' },
+              { icon: '☁️', label: 'AWS Security Hub' },
+              { icon: '📡', label: '99.99% Uptime SLA' },
+              { icon: '🔒', label: 'GDPR Compliant' },
+              { icon: '🏥', label: 'HIPAA Certified' },
+              { icon: '✅', label: 'SOC 2 Type II' },
+              { icon: '💳', label: 'PCI DSS Level 1' },
+              { icon: '📋', label: 'ISO 27001' },
+              { icon: '🔐', label: 'AES-256 Encryption' },
+              { icon: '🕵️', label: 'Penetration Tested' },
+              { icon: '🏛️', label: 'CCPA Compliant' },
+              { icon: '🛡️', label: 'Zero-Trust Architecture' },
+              { icon: '🔑', label: 'MFA Enforced' },
+              { icon: '☁️', label: 'AWS Security Hub' },
+              { icon: '📡', label: '99.99% Uptime SLA' },
+            ].map((item, i) => (
+              <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8, whiteSpace: 'nowrap', flexShrink: 0 }}>
+                <span style={{ fontSize: 14 }}>{item.icon}</span>
+                <span style={{ fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{item.label}</span>
+                <span style={{ color: 'rgba(34,197,94,0.3)', fontSize: 8, marginLeft: 12 }}>◆</span>
+              </div>
+            ))}
+          </div>
+          <style>{`@keyframes security-marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }`}</style>
+        </div>
+
         {/* Badges Grid */}
         <div className="cb-premium-grid" style={gridStyle}>
           {badges.map((badge, i) => (
