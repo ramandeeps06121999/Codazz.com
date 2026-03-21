@@ -169,15 +169,42 @@ function MarqueeStyles() {
 }
 
 function LeadCaptureForm({ cityName }: { cityName: string }) {
-  const [email, setEmail] = useState('');
+  const [formData, setFormData] = useState({ name: '', email: '', phone: '', project: '' });
+  const [submitted, setSubmitted] = useState(false);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (formData.name && formData.email && formData.phone && formData.project) {
+      setSubmitted(true);
+      setTimeout(() => { setFormData({ name: '', email: '', phone: '', project: '' }); setSubmitted(false); }, 3000);
+    }
+  };
+  const inputStyle = { padding: '12px 16px', borderRadius: 12, border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(255,255,255,0.05)', color: '#ffffff', fontSize: 14, fontFamily: 'inherit', width: '100%', boxSizing: 'border-box' as const };
   return (
     <div style={{ padding: '40px 32px', borderRadius: 24, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.015)' }}>
-      <h3 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', marginBottom: 20 }}>Free Consultation</h3>
-      <form onSubmit={e => { e.preventDefault(); alert('Thanks! We\'ll contact you soon.'); setEmail(''); }} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-        <input type="email" placeholder="Your email" value={email} onChange={e => setEmail(e.target.value)} required style={{ padding: '12px 16px', borderRadius: 12, border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(255,255,255,0.05)', color: '#ffffff', fontSize: 14 }} />
-        <button type="submit" style={{ padding: '12px 24px', borderRadius: 12, background: '#22c55e', color: '#000', border: 'none', fontWeight: 700, cursor: 'pointer' }}>Let's Talk</button>
-      </form>
-      <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.3)', marginTop: 14 }}>Response within 24 hours.</p>
+      <h3 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', margin: '0 0 8px' }}>Free Project Estimate</h3>
+      <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', margin: '0 0 24px' }}>Get a Quote in 24 Hours</p>
+      {submitted ? (
+        <div style={{ padding: '20px', borderRadius: 12, background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.2)', textAlign: 'center' }}>
+          <div style={{ fontSize: 28, marginBottom: 12 }}>✓</div>
+          <p style={{ fontSize: 14, color: '#22c55e', fontWeight: 600, margin: 0 }}>Thank you! We'll contact you within 24 hours.</p>
+        </div>
+      ) : (
+        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+          <input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleChange} required style={inputStyle} />
+          <input type="email" name="email" placeholder="Work Email" value={formData.email} onChange={handleChange} required style={inputStyle} />
+          <input type="tel" name="phone" placeholder="Phone Number" value={formData.phone} onChange={handleChange} required style={inputStyle} />
+          <textarea name="project" placeholder="Tell us about your project..." value={formData.project} onChange={handleChange} required style={{ ...inputStyle, minHeight: 100, resize: 'none' }} />
+          <button type="submit" style={{ padding: '14px 24px', borderRadius: 12, background: '#22c55e', color: '#000', border: 'none', fontWeight: 700, cursor: 'pointer', fontSize: 14, transition: 'all 0.3s' }}
+            onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 8px 20px rgba(34,197,94,0.3)'; }}
+            onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}>
+            Get Free Quote
+          </button>
+        </form>
+      )}
+      <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.3)', marginTop: 14 }}>Your data is protected • NDA available</p>
     </div>
   );
 }
@@ -322,11 +349,11 @@ export default function PageClient({ city }: { city: CityData }) {
             <h3 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', margin: '0 0 24px' }}>Who Needs Software Development Services in {city.name}?</h3>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 20 }}>
               {[
-                { icon: '🚀', title: 'Startups & MVPs', desc: 'Build your first product or scale from idea to Series A funding round' },
+                { icon: '🚀', title: 'Startups & MVPs', desc: city.name === 'Toronto' ? "Launch your startup in Canada's startup capital. Scale from idea to Series A at MaRS Discovery District pace." : 'Build your first product or scale from idea to Series A funding round' },
                 { icon: '🏢', title: 'Growing SMBs', desc: 'Automate operations, compete with larger players, enter new markets' },
                 { icon: '🔄', title: 'Enterprises', desc: 'Modernize legacy systems, integrate APIs, improve customer experience' },
-                { icon: '💰', title: 'Financial Services', desc: 'Build fintech platforms, payment systems, trading interfaces on Wall Street' },
-                { icon: '🏥', title: 'Healthcare Orgs', desc: 'Launch telemedicine platforms, patient management, HIPAA-compliant systems' },
+                { icon: '💰', title: 'Financial Services', desc: city.name === 'Toronto' ? 'Build OSFI-compliant fintech platforms, trading systems, and payment solutions for Bay Street and beyond' : 'Build fintech platforms, payment systems, trading interfaces on Wall Street' },
+                { icon: '🏥', title: 'Healthcare Orgs', desc: city.name === 'Toronto' ? 'Launch PHIPA-compliant telemedicine and patient management systems serving Ontario Health' : 'Launch telemedicine platforms, patient management, HIPAA-compliant systems' },
                 { icon: '🛒', title: 'E-Commerce', desc: 'Build marketplaces, shopping apps, inventory systems, payment integration' },
               ].map((item, i) => (
                 <div key={i} style={{ padding: '16px', borderRadius: 14, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
@@ -359,10 +386,18 @@ export default function PageClient({ city }: { city: CityData }) {
           <div className="reveal" style={{ padding: '32px', borderRadius: 20, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.015)' }}>
             <h3 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', margin: '0 0 16px' }}>Why Software Development Matters for Your {city.name} Business</h3>
             <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, margin: '0 0 16px' }}>
-              Software development is an investment in your company's future. Whether you're in FinTech on Wall Street, Healthcare in the Medical District, E-Commerce, or any industry in {city.name}, custom software gives you competitive advantage, reduces operational cost, improves customer satisfaction, and enables rapid scaling.
+              {city.name === 'Toronto' ?
+                "Software development is the foundation of competitive advantage in Toronto's thriving tech ecosystem. Whether you're building fintech on King West, scaling AI research into products, launching healthcare solutions for Ontario, or growing your e-commerce empire, custom software gives you the tools to dominate your market, reduce operational costs by 30-40%, improve customer satisfaction, and scale rapidly."
+                :
+                `Software development is an investment in your company's future. Whether you're in FinTech on Wall Street, Healthcare in the Medical District, E-Commerce, or any industry in ${city.name}, custom software gives you competitive advantage, reduces operational cost, improves customer satisfaction, and enables rapid scaling.`
+              }
             </p>
             <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, margin: 0 }}>
-              The right development partner makes all the difference. Codazz brings 500+ projects of experience, proven expertise in {city.name}'s unique market, and a commitment to delivering working software on time and budget. Our developers average 8+ years of professional experience and understand your industry challenges.
+              {city.name === 'Toronto' ?
+                "Codazz is trusted by leading Toronto fintech platforms, healthcare systems, AI startups, and enterprises. We bring 500+ projects of experience, deep expertise in OSFI compliance and Ontario Health integration, proven track record with Canadian startups and institutions, and developers who average 8+ years of experience. We understand Toronto's unique business landscape, regulatory environment, and growth velocity. Partner with us to build software that scales with your ambition."
+                :
+                `The right development partner makes all the difference. Codazz brings 500+ projects of experience, proven expertise in ${city.name}'s unique market, and a commitment to delivering working software on time and budget. Our developers average 8+ years of professional experience and understand your industry challenges.`
+              }
             </p>
           </div>
         </section>
