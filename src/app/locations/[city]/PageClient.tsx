@@ -284,6 +284,32 @@ export default function PageClient({ city }: { city: CityData }) {
           </div>
         </section>
 
+        {/* TRUSTED BY LEADERS */}
+        <section style={{ padding: 'clamp(60px, 8vw, 100px) 0', borderTop: '1px solid rgba(255,255,255,0.05)', maxWidth: 1280, margin: '0 auto', width: '100%', paddingLeft: 'max(2vw, 24px)', paddingRight: 'max(2vw, 24px)' }}>
+          <div className="reveal" style={{ textAlign: 'center', marginBottom: 50 }}>
+            <p style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.25)', margin: 0 }}>Trusted by Industry Leaders</p>
+          </div>
+          <div style={{ position: 'relative', overflow: 'hidden', maskImage: 'linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%)', WebkitMaskImage: 'linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%)' }}>
+            <div style={{ display: 'flex', gap: 60, justifyContent: 'space-around', flexWrap: 'wrap', alignItems: 'center' }}>
+              {['Google', 'Microsoft', 'Amazon', 'Meta', 'Apple', 'Netflix', 'Shopify', 'Stripe', 'Figma', 'Notion'].map((company, i) => (
+                <div key={company} className={`reveal reveal-d${(i % 4) + 1}`} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 24px', borderRadius: 14, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', minWidth: 160, justifyContent: 'center', transition: 'all 0.3s' }}
+                  onMouseEnter={e => { const t = e.currentTarget as HTMLElement; t.style.borderColor = 'rgba(34,197,94,0.2)'; t.style.background = 'rgba(34,197,94,0.04)'; }}
+                  onMouseLeave={e => { const t = e.currentTarget as HTMLElement; t.style.borderColor = 'rgba(255,255,255,0.08)'; t.style.background = 'rgba(255,255,255,0.03)'; }}>
+                  <div style={{ width: 36, height: 36, borderRadius: 8, background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 16, fontWeight: 800, color: '#22c55e' }}>
+                    {company.charAt(0)}
+                  </div>
+                  <span style={{ fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,0.65)', whiteSpace: 'nowrap' }}>{company}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="reveal" style={{ textAlign: 'center', marginTop: 50 }}>
+            <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)', margin: 0, lineHeight: 1.6 }}>
+              Trusted by startups, scaleups, and enterprises building next-generation software in {city.name} and globally.
+            </p>
+          </div>
+        </section>
+
         {/* TRUST */}
         <section style={{ borderTop: '1px solid rgba(255,255,255,0.05)', padding: 'clamp(40px, 6vw, 80px) 0', maxWidth: 1280, margin: '0 auto', width: '100%', paddingLeft: 'max(2vw, 24px)', paddingRight: 'max(2vw, 24px)' }}>
           <div className="reveal" style={{ textAlign: 'center' }}>
@@ -476,7 +502,7 @@ export default function PageClient({ city }: { city: CityData }) {
                 style={{ padding: '32px', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 20, background: 'rgba(255,255,255,0.015)', position: 'relative' }}>
                 <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: 'linear-gradient(90deg, #22c55e, transparent)' }} />
                 <div style={{ fontSize: 32, marginBottom: 16 }}>{item.icon}</div>
-                <h3 style={{ fontSize: 17, fontWeight: 700, color: '#ffffff', marginBottom: 12, margin: 0, marginBottom: 12 }}>{item.title}</h3>
+                <h3 style={{ fontSize: 17, fontWeight: 700, color: '#ffffff', marginBottom: 12, margin: 0 }}>{item.title}</h3>
                 <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, margin: 0 }}>{item.desc}</p>
               </div>
             ))}
@@ -504,7 +530,7 @@ export default function PageClient({ city }: { city: CityData }) {
                   <div style={{ fontSize: 24 }}>🚀</div>
                   <div style={{ fontSize: 11, fontWeight: 700, color: '#22c55e', textTransform: 'uppercase', letterSpacing: '0.08em' }}>{project.category}</div>
                 </div>
-                <h3 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', marginBottom: 12, margin: 0, marginBottom: 12 }}>{project.name}</h3>
+                <h3 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', marginBottom: 12, margin: 0 }}>{project.name}</h3>
                 <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', lineHeight: 1.7, marginBottom: 20, flexGrow: 1 }}>{project.desc}</p>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12, paddingTop: 20, borderTop: '1px solid rgba(255,255,255,0.05)' }}>
                   {project.metrics.map(m => (
@@ -614,7 +640,7 @@ export default function PageClient({ city }: { city: CityData }) {
               <div key={reason.num} className={`reveal reveal-d${(i % 3) + 1}`}
                 style={{ padding: '28px 32px', borderLeft: '3px solid rgba(34,197,94,0.4)', borderTop: '1px solid rgba(255,255,255,0.06)', borderRight: '1px solid rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)', borderRadius: 16, background: 'rgba(255,255,255,0.015)' }}>
                 <div style={{ fontSize: 12, fontWeight: 800, color: '#22c55e', marginBottom: 12, letterSpacing: '0.08em' }}>{reason.num}</div>
-                <h3 style={{ fontSize: 16, fontWeight: 700, color: '#ffffff', marginBottom: 12, margin: 0, marginBottom: 12 }}>{reason.title}</h3>
+                <h3 style={{ fontSize: 16, fontWeight: 700, color: '#ffffff', marginBottom: 12, margin: 0 }}>{reason.title}</h3>
                 <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.65)', lineHeight: 1.7, margin: 0 }}>{reason.desc}</p>
               </div>
             ))}
