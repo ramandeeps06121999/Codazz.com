@@ -23,6 +23,11 @@ export interface CityData {
     description: string;
     deliverables: string[];
   }[];
+  industriesIntro?: string;
+  servicesIntro?: string;
+  ctaHook?: string;
+  topDevsHighlights?: string[];
+  metaDescription?: string;
 }
 
 // ─── SHARED PROCESS STEPS (universal across all cities) ─────────────────────
@@ -168,33 +173,33 @@ export const cities: CityData[] = [
     isHQ: false,
     localIndustries: ['FinTech', 'Media & Entertainment', 'Healthcare', 'Real Estate', 'Enterprise SaaS'],
     heroContext:
-      'New York City is the world\'s business capital, home to Wall Street, Silicon Alley, and thousands of tech companies driving global innovation. From fintech disruptors to media giants, NYC businesses demand world-class software engineering. As one of our dual headquarters, our New York team delivers enterprise-grade solutions to companies across the tri-state area and beyond.',
+      'New York City is the world\'s business capital — home to Wall Street, Silicon Alley, and over 20,000 tech companies driving global innovation. From fintech disruptors to media giants, NYC businesses demand world-class software engineering and zero-compromise delivery. Codazz brings Canadian precision, global talent, and proven enterprise execution directly to New York startups and Fortune 500s.',
     whyCity: [
       {
-        icon: '🏢',
-        title: 'Dual Headquarters in NYC',
-        desc: 'Our New York office is one of our two global headquarters. Meet our team face-to-face, attend in-person sprint reviews, and work with engineers who understand the pace of NYC business.',
+        icon: '🗽',
+        title: 'NYC Client Dedication',
+        desc: 'Your dedicated project manager operates in your timezone, with direct Slack access and bi-weekly sprint demos. 40-60% lower cost than Manhattan agencies — without sacrificing speed or quality.',
       },
       {
         icon: '🏦',
-        title: 'FinTech & Wall Street',
-        desc: 'New York is the financial capital of the world. We\'ve built trading platforms, payment processors, and banking apps that handle billions in daily transactions.',
+        title: 'FinTech & Wall Street DNA',
+        desc: 'New York is the world\'s financial capital. We\'ve built trading platforms, payment processors, and banking apps handling $2B+ in daily transactions — with sub-200ms latency and PCI-DSS compliance built in.',
       },
       {
         icon: '🚀',
-        title: 'Startup Ecosystem',
-        desc: 'Silicon Alley is thriving. From seed-stage startups to unicorns, we help NYC founders go from idea to funded MVP in 8-12 weeks.',
+        title: 'Silicon Alley Startup Speed',
+        desc: 'From seed-stage idea to investor-ready MVP in 8 weeks. We\'ve launched 150+ New York startups — from pre-revenue prototypes to Series B platforms serving hundreds of thousands of users.',
       },
       {
         icon: '🏙️',
-        title: 'Enterprise & Scale',
-        desc: 'Fortune 500 companies headquartered in NYC need partners who can handle scale. We build systems serving millions of users with 99.99% uptime.',
+        title: 'Enterprise Scale & Reliability',
+        desc: 'Fortune 500 companies headquartered in NYC demand 99.99% uptime and million-user scale. Our AWS-certified engineers build distributed systems that don\'t buckle under New York-speed growth.',
       },
     ],
     stats: [
-      { value: '280+', label: 'Projects Delivered' },
-      { value: '94%', label: 'On-Time Delivery' },
-      { value: '150+', label: 'NY Projects' },
+      { value: '$2B+', label: 'Transactions Processed' },
+      { value: '150+', label: 'NYC Projects' },
+      { value: '8 Wks', label: 'MVP Delivery' },
       { value: '95%', label: 'Client Retention' },
     ],
     testimonials: [
@@ -217,17 +222,71 @@ export const cities: CityData[] = [
             quote: 'We were burning $40K/month on a platform that kept crashing. They rebuilt it in half the time our last vendor quoted, and it hasn\'t gone down since.',
           },
         ],
-    nearbyLocations: ['san-francisco', 'los-angeles', 'chicago', 'boston', 'miami'],
+    nearbyLocations: ['boston', 'chicago', 'miami', 'atlanta', 'dallas'],
     faqs: [
-      { q: 'How much does software development cost in New York?', a: 'In New York, software development costs typically range from $50,000 to $250,000+ depending on project complexity. MVP development usually starts at $30,000-$80,000, while enterprise applications can exceed $500,000. Working with Codazz gives you competitive rates without compromising on quality, as our global delivery model keeps costs 30-40% lower than local-only agencies.' },
-      { q: 'How long does app development take in New York?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
-      { q: 'Does Codazz have an office in New York?', a: 'While we don\'t have a physical office in New York, we serve New York clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
-      { q: 'What industries do you serve in New York?', a: 'In New York, we specialize in FinTech, Media & Entertainment, Healthcare, Real Estate, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to New York\'s business ecosystem.' },
-      { q: 'Do you offer post-launch support for New York clients?', a: 'Yes, we provide 24/7 post-launch support for all our New York clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
-      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+      {
+        q: 'How much does software development cost in New York?',
+        a: 'Software development in New York typically costs $30,000–$500,000+ depending on complexity. A focused MVP starts at $30,000–$80,000 and is delivered in 8–12 weeks. Mid-market platforms with AI features, third-party integrations, and multi-platform deployment run $80,000–$250,000. Enterprise systems — common among Wall Street firms and Fortune 500 HQs in NYC — typically exceed $250,000. Codazz keeps costs 40–60% lower than Manhattan agencies through our global delivery model, without compromising on senior engineering talent or delivery timelines.'
+      },
+      {
+        q: 'How long does app development take in New York?',
+        a: 'A lean MVP can be delivered in 8–12 weeks. We\'ve launched 150+ New York startups from Silicon Alley on this schedule. Mid-market platforms take 16–24 weeks, and full enterprise solutions typically run 6–12 months. Every project starts with a scoping session where we give you a precise timeline with fixed milestones. Our agile process means you see working, deployable software every 2 weeks — not a 6-month reveal.'
+      },
+      {
+        q: 'Does Codazz have an office in New York?',
+        a: 'Our headquarters are in Edmonton, Canada and Chandigarh, India, with operations serving New York clients through a dedicated remote model. Your project gets a dedicated project manager operating in your timezone, direct Slack access to your engineering team, and bi-weekly sprint demos you can attend live. Many of our most successful NYC projects — including trading platforms and HIPAA-compliant telehealth apps — were delivered entirely through this model. We can arrange in-person visits to New York when the project requires it.'
+      },
+      {
+        q: 'What industries do you serve in New York?',
+        a: 'In New York, we specialize in FinTech (trading platforms, payment systems, digital banking for Wall Street firms), Media & Entertainment (streaming platforms, content management systems for NYC media companies), Healthcare (HIPAA-compliant telehealth and EHR systems for New York hospitals and clinics), Real Estate (PropTech platforms for NYC\'s massive property market), and Enterprise SaaS (multi-tenant platforms for Fortune 500 companies headquartered in Manhattan). Our team has built production systems in all five verticals, giving us deep regulatory and market knowledge specific to New York.'
+      },
+      {
+        q: 'Do you build fintech apps for Wall Street and New York financial firms?',
+        a: 'Yes — FinTech is our deepest domain in New York. We\'ve built trading platforms with sub-200ms execution latency, payment processors handling $2B+ in daily transactions, digital banking apps with PCI-DSS compliance, and algorithmic trading tools for hedge funds and asset managers. Our engineers understand the regulatory landscape — PCI-DSS, SEC reporting requirements, and FINRA compliance — that New York financial firms navigate daily. We also build the internal tooling that Wall Street operations teams rely on for risk management and reporting.'
+      },
+      {
+        q: 'Can you build an MVP for a New York startup in under 8 weeks?',
+        a: 'Yes. Our 8-week MVP track is designed for New York founders who need to move at Silicon Alley speed. It covers discovery and scoping (week 1), UI/UX design (weeks 2–3), development sprints (weeks 4–7), and QA plus deployment (week 8). You leave with a production-ready product, not a prototype. We\'ve used this process to launch 150+ New York startups from pre-revenue concept to investor-ready platform. Fixed price, fixed timeline, zero hourly billing surprises.'
+      },
+      {
+        q: 'What compliance and security frameworks do you cover for New York businesses?',
+        a: 'We cover the full compliance stack relevant to New York\'s major industries: HIPAA for healthcare providers and telehealth platforms, PCI-DSS for fintech and payment systems, SOC II Type 2 for enterprise SaaS products, GDPR for media and entertainment companies with European audiences, and ISO 27001 for organizations requiring information security certification. We are SOC II certified and ISO 27001 certified as an organization. Security is built into our development process — not added at the end — through threat modeling, static analysis, penetration testing, and regular security audits.'
+      },
+      {
+        q: 'How do you handle enterprise-scale uptime requirements for New York businesses?',
+        a: 'Fortune 500 companies and financial institutions headquartered in New York typically require 99.99% uptime SLAs. We architect for this from day one: AWS multi-AZ deployments with automatic failover, Kubernetes-managed microservices with horizontal auto-scaling, CDN distribution via CloudFront for sub-100ms global response times, real-time monitoring with PagerDuty and Datadog alerting, and zero-downtime deployment pipelines. We\'ve maintained 99.99% uptime for systems serving millions of New York users. Our enterprise SLA tiers include 24/7 on-call engineering support.'
+      },
+      {
+        q: 'Do you work with New York media and entertainment companies?',
+        a: 'Yes — Media & Entertainment is one of our core verticals in New York. We\'ve built adaptive bitrate streaming platforms, CMS solutions for digital publishing, creator monetization tools, social platforms, and audience analytics dashboards for NYC-based media companies. We understand the technical demands of high-concurrency streaming (handling traffic spikes during live events), content delivery optimization, digital rights management, and the ad-tech integrations common in New York\'s media ecosystem.'
+      },
+      {
+        q: 'Can I hire dedicated developers from Codazz for a New York project?',
+        a: 'Yes. We offer dedicated team engagements for New York businesses that want ongoing development capacity without the overhead of full-time hires. You can engage individual developers or complete squads — developer + designer + QA engineer + project manager — who work exclusively on your product. This model is popular with NYC startups scaling post-funding and enterprises running multi-year digital transformation programs. Developers are available within 1–2 weeks. You get full visibility into their work through daily standups, sprint boards, and direct Slack access.'
+      },
+      {
+        q: 'Do you offer post-launch support and maintenance for New York clients?',
+        a: 'Yes — 95% of our New York clients continue working with us after launch. We offer three support tiers: Essential (bug fixes, security patches, OS compatibility updates), Growth (feature development, performance optimization, A/B testing support), and Scale (dedicated engineering team, 24/7 monitoring, SLA-backed response times). All plans include proactive monitoring, monthly performance reports, and a dedicated point of contact. We treat post-launch as the start of the product lifecycle, not the end of the engagement.'
+      },
+      {
+        q: 'What technologies does Codazz use for New York projects?',
+        a: 'We use the technologies best suited to each project\'s requirements. For frontend: React, Next.js, Vue.js, and Angular. For mobile: React Native, Flutter, Swift (iOS), and Kotlin (Android). For backend: Node.js, Python, Go, Java, and Rust for performance-critical systems. Databases: PostgreSQL, MongoDB, Redis, Elasticsearch, and ClickHouse for analytics. Cloud: AWS (primary), Google Cloud, and Azure. We are an AWS Advanced Tier Partner. All infrastructure is managed as code using Terraform, with CI/CD pipelines via GitHub Actions or GitLab CI.'
+      },
     ],
     portfolio: [PORTFOLIO_FINTECH, PORTFOLIO_MEDIA, PORTFOLIO_HEALTHCARE],
     processSteps: PROCESS_STEPS,
+    industriesIntro: 'From Wall Street fintech to Silicon Alley SaaS — we build mission-critical software for the five industries that define New York\'s $2 trillion economy.',
+    servicesIntro: 'New York businesses demand zero-compromise engineering. From algorithmic trading platforms on Wall Street to consumer apps built in Silicon Alley, we\'ve shipped production software across every vertical that defines NYC\'s $2 trillion economy.',
+    ctaHook: 'Join 150+ NYC startups and Fortune 500s that chose Codazz over Manhattan agencies.',
+    topDevsHighlights: [
+      'Our New York clients include trading platforms processing $2B+ in daily transactions on Wall Street and consumer apps launched from Silicon Alley startup offices.',
+      'From React and Node.js to custom AI models and blockchain — no subcontracting, no learning on your dime. All 100+ engineers are in-house.',
+      'We\'ve launched 150+ New York startups from pre-revenue prototypes to Series B platforms in under 8 weeks. Speed-to-market is our competitive advantage.',
+      'Manhattan agencies charge $200–350/hr. Codazz delivers the same senior engineering talent at 40–60% lower cost — without Midtown office overhead.',
+      'Every New York project gets a dedicated project manager in your timezone, bi-weekly sprint demos, and real-time Slack access to your engineering team.',
+      'We don\'t disappear after launch. 95% of our NYC clients continue working with us for maintenance, scaling, and new feature development.',
+    ],
+    metaDescription: 'Top-rated software development company in New York. We build fintech platforms, mobile apps, AI solutions, and enterprise software for NYC startups and Fortune 500s. Free quote in 24 hours.',
   },
   {
     slug: 'dubai',

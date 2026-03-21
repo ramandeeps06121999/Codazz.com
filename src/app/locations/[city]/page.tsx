@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { cities, getCityBySlug } from '@/data/cities';
+import { cities, getCityBySlug, CityData } from '@/data/cities';
 import { countries, getCountryBySlug, getCitiesForCountry } from '@/data/countries';
 import PageClient from './PageClient';
 import CountryPageClient from './CountryPageClient';
@@ -41,7 +41,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return {
     title: `Software Development Company in ${data.name} | Codazz`,
-    description: `Codazz delivers custom software development, mobile apps, AI solutions, and web development in ${locationLabel}. ${data.isHQ ? 'Headquartered in Edmonton & Chandigarh with offices in New York & Dubai.' : ''} Get a free quote today.`,
+    description: (data as CityData & { metaDescription?: string }).metaDescription ||
+      `Codazz delivers custom software development, mobile apps, AI solutions, and web development in ${data.name}, ${data.state}. Expert team, 500+ projects delivered, free quote in 24 hours.`,
     openGraph: {
       title: `Software Development Company in ${data.name} | Codazz`,
       description: `Codazz delivers custom software development, mobile apps, AI solutions, and web development in ${locationLabel}.`,
@@ -100,22 +101,13 @@ export default async function CityPage({ params }: PageProps) {
     ],
   };
 
-  const defaultFaqs = [
-    { q: `How much does software development cost in ${data.name}?`, a: `Software development costs in ${data.name} typically range from $15,000 for a simple MVP to $250,000+ for enterprise platforms. Codazz offers fixed-price proposals within 24 hours — contact us for a free estimate.` },
-    { q: `How long does app development take in ${data.name}?`, a: `Most projects take 8-16 weeks for MVP delivery. Complex enterprise solutions may take 4-6 months. Our agile process includes weekly demos so you see progress from week one.` },
-    { q: `Does Codazz have an office in ${data.name}?`, a: `Codazz is headquartered in Edmonton, Canada and Chandigarh, India with offices in New York and Dubai. We serve clients in ${data.name} through our distributed team with timezone-aligned communication.` },
-    { q: `What industries do you serve in ${data.name}?`, a: `In ${data.name}, we specialize in ${data.localIndustries.join(', ')}. Our team has deep domain expertise across ${data.localIndustries.length}+ verticals.` },
-    { q: `Do you offer post-launch support?`, a: `Yes, we provide 24/7 post-launch support, monitoring, and maintenance. Every project includes 30 days of free bug-fix support after launch, with optional ongoing SLA plans.` },
-    { q: `What is your development process?`, a: `We follow an agile, milestone-based process: Discovery & Planning → UX/UI Design → Development → Testing & QA → Launch & Support. You get weekly sprint demos and a dedicated project manager.` },
-  ];
-
-  const cityFaqs = (data as unknown as Record<string, unknown>).faqs as { q: string; a: string }[] | undefined;
-  const faqs = cityFaqs || defaultFaqs;
-
   const faqPageSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: faqs.map(faq => ({
+    mainEntity: (data.faqs && data.faqs.length > 0 ? data.faqs : [
+      { q: `How much does app development cost in ${data.name}?`, a: `App development in ${data.name} typically starts at $25,000 for an MVP and scales to $250,000+ for enterprise platforms.` },
+      { q: `Does Codazz have an office in ${data.name}?`, a: `We serve ${data.name} clients through our global delivery model with headquarters in Edmonton, Canada and Chandigarh, India.` },
+    ]).map(faq => ({
       '@type': 'Question',
       name: faq.q,
       acceptedAnswer: {
@@ -125,11 +117,42 @@ export default async function CityPage({ params }: PageProps) {
     })),
   };
 
+  const localBusinessJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ProfessionalService',
+    name: `Codazz — Software Development Company in ${data.name}`,
+    description: (data as CityData & { metaDescription?: string }).metaDescription || `Custom software development company serving ${data.name} businesses with mobile apps, web applications, AI solutions, and SaaS products.`,
+    url: `https://codazz.com/locations/${data.slug}`,
+    telephone: '+1-403-604-8692',
+    email: 'hello@codazz.com',
+    areaServed: {
+      '@type': 'City',
+      name: data.name,
+    },
+    serviceType: [
+      'Mobile App Development',
+      'Web Development',
+      'AI Development',
+      'SaaS Development',
+      'UI/UX Design',
+    ],
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      ratingCount: '127',
+      bestRating: '5',
+    },
+  };
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageSchema) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+      />
       <PageClient city={data} />
     </>
   );

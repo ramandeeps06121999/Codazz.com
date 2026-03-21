@@ -1033,7 +1033,7 @@ export default function PageClient({ city }: { city: CityData }) {
   }, []);
 
   const locationLabel = city.country === 'UAE' ? `${city.name}, UAE` : `${city.name}, ${city.state}`;
-  const faqs = generateFAQs(city.name, locationLabel);
+  const faqs = (city.faqs && city.faqs.length > 0) ? city.faqs : generateFAQs(city.name, locationLabel);
   const topDevReasons = getTopDevReasons(city.name);
   const relatedCities = getRelatedCities(city);
 
@@ -1239,26 +1239,32 @@ export default function PageClient({ city }: { city: CityData }) {
           </div>
           {/* Industry cards grid — SEO-friendly, crawlable, clickable */}
           <div className="cb-container">
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 200px), 1fr))', gap: 14 }}>
+            {(city as CityData & { industriesIntro?: string }).industriesIntro && (
+              <p className="reveal" style={{ ...bodyText, textAlign: 'center', maxWidth: 700, margin: '0 auto 40px', color: 'rgba(255,255,255,0.6)', fontSize: 16 }}>
+                {(city as CityData & { industriesIntro?: string }).industriesIntro}
+              </p>
+            )}
+            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 280px), 1fr))', gap: 16 }}>
               {industryCards.map((ind, i) => (
                 <Link
                   key={ind.name}
                   href={`/industries/${ind.name.toLowerCase().replace(/[\s&]+/g, '-')}`}
                   className={`reveal reveal-d${(i % 4) + 1}`}
                   style={{
-                    display: 'flex', alignItems: 'center', gap: 12,
-                    padding: '18px 20px', borderRadius: 16,
+                    display: 'flex', flexDirection: 'column',
+                    padding: '28px 24px', borderRadius: 20,
                     border: '1px solid rgba(255,255,255,0.06)',
                     background: 'rgba(255,255,255,0.015)',
                     textDecoration: 'none',
                     transition: 'border-color 0.3s, background 0.3s, transform 0.3s, box-shadow 0.3s',
+                    gap: 14,
                   }}
                   onMouseEnter={e => {
                     const t = e.currentTarget as HTMLElement;
                     t.style.borderColor = 'rgba(34,197,94,0.25)';
-                    t.style.background = 'rgba(34,197,94,0.05)';
+                    t.style.background = 'rgba(34,197,94,0.04)';
                     t.style.transform = 'translateY(-3px)';
-                    t.style.boxShadow = '0 12px 32px rgba(34,197,94,0.1)';
+                    t.style.boxShadow = '0 16px 40px rgba(34,197,94,0.08)';
                   }}
                   onMouseLeave={e => {
                     const t = e.currentTarget as HTMLElement;
@@ -1268,8 +1274,21 @@ export default function PageClient({ city }: { city: CityData }) {
                     t.style.boxShadow = '';
                   }}
                 >
-                  <span style={{ fontSize: 22, flexShrink: 0 }}>{ind.icon}</span>
-                  <span style={{ fontSize: 13, fontWeight: 600, color: '#ffffff', letterSpacing: '-0.01em', lineHeight: 1.3 }}>{ind.name}</span>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                    <div style={{
+                      width: 48, height: 48, borderRadius: 14, flexShrink: 0,
+                      background: 'rgba(34,197,94,0.06)', border: '1px solid rgba(34,197,94,0.12)',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22,
+                    }}>
+                      {ind.icon}
+                    </div>
+                    <h3 style={{ fontSize: 15, fontWeight: 700, color: '#ffffff', margin: 0, letterSpacing: '-0.01em', lineHeight: 1.2 }}>{ind.name}</h3>
+                  </div>
+                  <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', lineHeight: 1.65, margin: 0 }}>{ind.desc}</p>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 'auto', paddingTop: 4 }}>
+                    <span style={{ fontSize: 12, fontWeight: 600, color: '#22c55e', letterSpacing: '0.02em' }}>Explore solutions</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+                  </div>
                 </Link>
               ))}
             </div>
@@ -1295,12 +1314,18 @@ export default function PageClient({ city }: { city: CityData }) {
                 <div
                   key={item.title}
                   className={`reveal reveal-d${i + 1}`}
-                  style={{ ...cardStyle, padding: '40px 36px' }}
+                  style={{ ...cardStyle, padding: '40px 36px', position: 'relative', overflow: 'hidden' }}
                   onMouseEnter={e => hoverCard(e, true)}
                   onMouseLeave={e => hoverCard(e, false)}
                 >
-                  <div style={{ fontSize: 40, marginBottom: 24 }}>{item.icon}</div>
-                  <h3 style={{ fontSize: 20, fontWeight: 600, color: '#ffffff', marginBottom: 14, letterSpacing: '-0.02em' }}>{item.title}</h3>
+                  {/* Top accent bar */}
+                  <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: 'linear-gradient(90deg, #22c55e, transparent)' }} />
+                  {/* Step number */}
+                  <div style={{ fontSize: 11, fontWeight: 800, color: '#22c55e', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 20 }}>
+                    0{i + 1}
+                  </div>
+                  <div style={{ fontSize: 44, marginBottom: 20 }}>{item.icon}</div>
+                  <h3 style={{ fontSize: 21, fontWeight: 600, color: '#ffffff', marginBottom: 16, letterSpacing: '-0.02em', lineHeight: 1.2 }}>{item.title}</h3>
                   <p style={{ ...bodyText, margin: 0, lineHeight: 1.8 }}>{item.desc}</p>
                 </div>
               ))}
@@ -1313,6 +1338,27 @@ export default function PageClient({ city }: { city: CityData }) {
         ════════════════════════════════════════════════════════════════════ */}
         <section ref={portfolioRef} style={{ ...sectionPad, ...sectionBorder }}>
           <div className="cb-container">
+            {/* Stats bar */}
+            <div className="reveal" style={{
+              display: 'flex', justifyContent: 'center', gap: 0,
+              marginBottom: 56, flexWrap: 'wrap',
+              border: '1px solid rgba(255,255,255,0.06)', borderRadius: 20, overflow: 'hidden',
+            }}>
+              {[
+                { value: '500+', label: 'Projects Delivered' },
+                { value: '4.9★', label: 'Clutch Rating' },
+                { value: '$2B+', label: 'Transactions Processed' },
+                { value: '99.99%', label: 'Uptime SLA' },
+              ].map((stat, i) => (
+                <div key={stat.label} style={{
+                  padding: '20px 32px', textAlign: 'center', flex: 1, minWidth: 140,
+                  borderRight: i < 3 ? '1px solid rgba(255,255,255,0.06)' : 'none',
+                }}>
+                  <div style={{ fontSize: 'clamp(1.4rem,2.5vw,2rem)', fontWeight: 700, color: '#22c55e', letterSpacing: '-0.03em' }}>{stat.value}</div>
+                  <div style={{ fontSize: 11, fontWeight: 600, color: 'rgba(255,255,255,0.3)', textTransform: 'uppercase', letterSpacing: '0.08em', marginTop: 4 }}>{stat.label}</div>
+                </div>
+              ))}
+            </div>
             <div style={{ textAlign: 'center', marginBottom: 56 }}>
               <div className="reveal" style={subLabel}>Our Work</div>
               <h2 className="reveal" style={heading2}>
@@ -1491,7 +1537,7 @@ export default function PageClient({ city }: { city: CityData }) {
                 What We Build in <span style={{ color: '#ffffff' }}>{city.name}</span>
               </h2>
               <p className="reveal" style={{ ...bodyText, maxWidth: 640, margin: '16px auto 0', color: 'rgba(255,255,255,0.7)' }}>
-                Full-spectrum software development tailored to {city.name}&apos;s business landscape. Click each service to explore our specialized capabilities.
+                {(city as CityData & { servicesIntro?: string }).servicesIntro || `Full-spectrum software development tailored to ${city.name}'s business landscape. Click each service to explore our specialized capabilities.`}
               </p>
             </div>
 
@@ -1579,97 +1625,78 @@ export default function PageClient({ city }: { city: CityData }) {
               </p>
             </div>
 
-            {/* Timeline */}
-            {(() => {
-              const useCitySteps = city.processSteps && city.processSteps.length > 0;
-              const stepsToRender = useCitySteps ? city.processSteps : processSteps;
-              const defaultIcons = ['🔍', '📐', '🎨', '⚙️', '🚀'];
-
-              return (
-                <div className="loc-process-timeline" style={{ display: 'grid', gridTemplateColumns: `repeat(${stepsToRender.length}, 1fr)`, gap: 20, position: 'relative' }}>
-                  {/* Connector line — desktop only */}
-                  <div style={{
-                    position: 'absolute',
-                    top: 44,
-                    left: '10%',
-                    right: '10%',
-                    height: 2,
-                    background: 'linear-gradient(90deg, rgba(34,197,94,0.3), rgba(34,197,94,0.1))',
-                    zIndex: 0,
-                  }} />
-
-                  {stepsToRender.map((step, i) => (
-                    <div
-                      key={i}
-                      className={`reveal reveal-d${i + 1}`}
-                      style={{
-                        position: 'relative',
-                        zIndex: 1,
-                        textAlign: 'center',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
+            {/* Vertical Timeline */}
+            <div style={{ position: 'relative', maxWidth: 860, margin: '0 auto' }}>
+              {/* Vertical connector line */}
+              <div style={{
+                position: 'absolute', left: 39, top: 20, bottom: 20,
+                width: 2, background: 'linear-gradient(180deg, #22c55e 0%, rgba(34,197,94,0.1) 100%)',
+                zIndex: 0,
+              }} />
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+                {(city.processSteps || processSteps).map((step, i) => (
+                  <div
+                    key={i}
+                    className={`reveal reveal-d${(i % 3) + 1}`}
+                    style={{
+                      display: 'flex', gap: 28, alignItems: 'flex-start',
+                      position: 'relative', zIndex: 1,
+                    }}
+                  >
+                    {/* Step circle */}
+                    <div style={{
+                      width: 80, height: 80, borderRadius: '50%', flexShrink: 0,
+                      background: i === 0 ? '#22c55e' : 'rgba(255,255,255,0.03)',
+                      border: `2px solid ${i === 0 ? '#22c55e' : 'rgba(34,197,94,0.25)'}`,
+                      display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+                      transition: 'all 0.3s',
+                    }}>
+                      <div style={{ fontSize: 22 }}>{'icon' in step ? (step as { icon: string }).icon : ['🔍','📐','🎨','⚙️','🚀'][i]}</div>
+                      <div style={{ fontSize: 10, fontWeight: 800, color: i === 0 ? '#000' : '#22c55e', marginTop: 2, letterSpacing: '0.05em' }}>0{i + 1}</div>
+                    </div>
+                    {/* Content */}
+                    <div style={{
+                      flex: 1, padding: '24px 28px', borderRadius: 24,
+                      border: '1px solid rgba(255,255,255,0.06)',
+                      background: 'rgba(255,255,255,0.015)',
+                      transition: 'border-color 0.3s, background 0.3s',
+                    }}
+                      onMouseEnter={e => {
+                        (e.currentTarget as HTMLElement).style.borderColor = 'rgba(34,197,94,0.2)';
+                        (e.currentTarget as HTMLElement).style.background = 'rgba(34,197,94,0.02)';
+                      }}
+                      onMouseLeave={e => {
+                        (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.06)';
+                        (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.015)';
                       }}
                     >
-                      {/* Step circle */}
-                      <div style={{
-                        width: 72,
-                        height: 72,
-                        borderRadius: '50%',
-                        border: '2px solid rgba(34,197,94,0.2)',
-                        background: 'rgba(34,197,94,0.06)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        fontSize: 32,
-                        marginBottom: 20,
-                      }}>
-                        {useCitySteps ? defaultIcons[i % defaultIcons.length] : (step as typeof processSteps[number]).icon}
+                      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10, flexWrap: 'wrap', gap: 8 }}>
+                        <h3 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', margin: 0, letterSpacing: '-0.02em' }}>{step.title}</h3>
+                        {'duration' in step && (
+                          <span style={{
+                            fontSize: 11, fontWeight: 700, color: '#22c55e',
+                            padding: '4px 12px', borderRadius: 100,
+                            background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.15)',
+                            letterSpacing: '0.04em', textTransform: 'uppercase',
+                          }}>{(step as { duration: string }).duration}</span>
+                        )}
                       </div>
-
-                      {/* Step number */}
-                      <div style={{ fontSize: 11, fontWeight: 700, color: '#22c55e', letterSpacing: '0.1em', marginBottom: 8 }}>
-                        STEP {i + 1}
-                      </div>
-
-                      <h3 style={{ fontSize: 'clamp(15px, 2vw, 18px)', fontWeight: 600, color: '#ffffff', marginBottom: 12, letterSpacing: '-0.01em' }}>
-                        {step.title}
-                      </h3>
-
-                      <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, marginBottom: 16 }}>
-                        {step.description}
-                      </p>
-
-                      {/* Duration badge — only for hardcoded steps */}
-                      {'duration' in step && (
-                        <div style={{
-                          fontSize: 11,
-                          fontWeight: 600,
-                          color: 'rgba(255,255,255,0.3)',
-                          padding: '6px 14px',
-                          borderRadius: 100,
-                          border: '1px solid rgba(255,255,255,0.06)',
-                          background: 'rgba(255,255,255,0.02)',
-                          marginBottom: 16,
-                        }}>
-                          {(step as typeof processSteps[number]).duration}
-                        </div>
-                      )}
-
-                      {/* Deliverables */}
-                      <div style={{ textAlign: 'left', width: '100%' }}>
-                        {step.deliverables.map(d => (
-                          <div key={d} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 6 }}>
-                            <div style={{ width: 4, height: 4, borderRadius: '50%', background: '#22c55e', flexShrink: 0 }} />
-                            <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)' }}>{d}</span>
-                          </div>
+                      <p style={{ ...bodyText, margin: '0 0 16px', fontSize: 14 }}>{step.description}</p>
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+                        {step.deliverables.map((d: string, j: number) => (
+                          <span key={j} style={{
+                            fontSize: 12, fontWeight: 600, color: 'rgba(255,255,255,0.5)',
+                            padding: '5px 12px', borderRadius: 8,
+                            background: 'rgba(255,255,255,0.04)',
+                            border: '1px solid rgba(255,255,255,0.06)',
+                          }}>✓ {d}</span>
                         ))}
                       </div>
                     </div>
-                  ))}
-                </div>
-              );
-            })()}
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </section>
 
@@ -1763,51 +1790,55 @@ export default function PageClient({ city }: { city: CityData }) {
           <div className="cb-container">
             <div style={{ textAlign: 'center', marginBottom: 56 }}>
               <div className="reveal" style={subLabel}>Why We&apos;re #1</div>
-              <h2 className="reveal" style={heading2}>
-                Top Software Development Company in {city.name}
+              <h2 className="reveal" style={{ ...heading2, marginBottom: 16 }}>
+                Top Software Development<br /><span style={{ color: 'rgba(255,255,255,0.4)' }}>Company in {city.name}</span>
               </h2>
               <p className="reveal" style={{ ...bodyText, maxWidth: 680, margin: '16px auto 0', color: 'rgba(255,255,255,0.7)' }}>
                 Codazz is consistently ranked among the top software development companies in {city.name} by Clutch, GoodFirms, and Manifest. Here&apos;s why businesses choose us over the competition.
               </p>
             </div>
 
-            <div style={{ maxWidth: 800, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 16 }}>
-              {topDevReasons.map((reason, i) => (
-                <div
-                  key={reason.number}
-                  className={`reveal reveal-d${(i % 4) + 1}`}
-                  style={{
-                    display: 'flex',
-                    gap: 24,
-                    padding: '32px 36px',
-                    borderRadius: 24,
-                    border: '1px solid rgba(255,255,255,0.06)',
-                    background: 'rgba(255,255,255,0.015)',
-                    transition: 'border-color 0.3s, background 0.3s, transform 0.3s',
-                    alignItems: 'flex-start',
-                  }}
-                  onMouseEnter={e => hoverCard(e, true)}
-                  onMouseLeave={e => hoverCard(e, false)}
-                >
-                  <div style={{
-                    fontSize: 'clamp(1.5rem, 3vw, 2.5rem)',
-                    fontWeight: 800,
-                    color: 'rgba(34,197,94,0.2)',
-                    letterSpacing: '-0.04em',
-                    lineHeight: 1,
-                    flexShrink: 0,
-                    minWidth: 48,
-                  }}>
-                    {reason.number}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 400px), 1fr))', gap: 16 }}>
+              {topDevReasons.map((reason, i) => {
+                const highlights = (city as CityData & { topDevsHighlights?: string[] }).topDevsHighlights;
+                return (
+                  <div
+                    key={reason.number}
+                    className={`reveal reveal-d${(i % 3) + 1}`}
+                    style={{
+                      padding: '28px 32px',
+                      borderTop: '1px solid rgba(255,255,255,0.06)',
+                      borderRight: '1px solid rgba(255,255,255,0.06)',
+                      borderBottom: '1px solid rgba(255,255,255,0.06)',
+                      borderLeft: '3px solid rgba(34,197,94,0.4)',
+                      borderRadius: 20,
+                      background: 'rgba(255,255,255,0.015)',
+                      transition: 'border-color 0.3s, background 0.3s, transform 0.3s',
+                    }}
+                    onMouseEnter={e => {
+                      const t = e.currentTarget as HTMLElement;
+                      t.style.borderColor = 'rgba(34,197,94,0.2)';
+                      t.style.background = 'rgba(34,197,94,0.03)';
+                      t.style.transform = 'translateY(-3px)';
+                    }}
+                    onMouseLeave={e => {
+                      const t = e.currentTarget as HTMLElement;
+                      t.style.borderColor = 'rgba(255,255,255,0.06)';
+                      t.style.background = 'rgba(255,255,255,0.015)';
+                      t.style.transform = '';
+                    }}
+                  >
+                    <div style={{ fontSize: 11, fontWeight: 800, color: '#22c55e', letterSpacing: '0.12em', marginBottom: 10 }}>{reason.number}</div>
+                    <h3 style={{ fontSize: 17, fontWeight: 700, color: '#ffffff', marginBottom: 10, letterSpacing: '-0.02em', lineHeight: 1.2 }}>{reason.title}</h3>
+                    <p style={{ ...bodyText, margin: 0, fontSize: 14, lineHeight: 1.75 }}>
+                      {reason.desc}
+                      {highlights?.[i] && (
+                        <span style={{ color: 'rgba(255,255,255,0.85)' }}> {highlights[i]}</span>
+                      )}
+                    </p>
                   </div>
-                  <div>
-                    <h3 style={{ fontSize: 18, fontWeight: 600, color: '#ffffff', marginBottom: 8, letterSpacing: '-0.01em' }}>
-                      {reason.title}
-                    </h3>
-                    <p style={{ ...bodyText, margin: 0, fontSize: 14 }}>{reason.desc}</p>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </section>
@@ -1915,6 +1946,17 @@ export default function PageClient({ city }: { city: CityData }) {
             <h2 className="reveal" style={{ ...heading2, marginBottom: 20, fontSize: 'clamp(2rem, 4vw, 3.5rem)' }}>
               Ready to Build Something Great in <span style={{ color: '#ffffff' }}>{city.name}</span>?
             </h2>
+            {(city as CityData & { ctaHook?: string }).ctaHook && (
+              <p className="reveal" style={{
+                fontSize: 'clamp(1rem, 2vw, 1.2rem)',
+                color: '#22c55e',
+                fontWeight: 600,
+                margin: '0 0 20px',
+                letterSpacing: '-0.01em',
+              }}>
+                {(city as CityData & { ctaHook?: string }).ctaHook}
+              </p>
+            )}
             <p className="reveal" style={{ ...bodyText, marginBottom: 40, color: 'rgba(255,255,255,0.7)', maxWidth: 560, margin: '0 auto 40px' }}>
               Whether you need a mobile app, a web platform, or an AI-powered solution, our team is ready to bring your vision to life. Get a free consultation and project estimate within 24 hours.
             </p>
@@ -1950,7 +1992,7 @@ export default function PageClient({ city }: { city: CityData }) {
             <div className="reveal" style={{ display: 'flex', gap: 32, justifyContent: 'center', flexWrap: 'wrap' }}>
               {[
                 { icon: '✉️', text: 'hello@codazz.com' },
-                { icon: '📞', text: '+1 (825) 365-4567' },
+                { icon: '📞', text: '+1 (403) 604-8692' },
                 { icon: '⏰', text: 'Response within 24 hours' },
               ].map(item => (
                 <div key={item.text} style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
