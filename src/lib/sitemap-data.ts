@@ -6,6 +6,7 @@ export const serviceSlugs = [
   'wordpress-cms', 'game-development', 'branding', 'saas-development',
   'ai-agent-development', 'cybersecurity', 'generative-ai', 'iot-development',
   'legacy-modernization', 'llm-integration', 'qa-testing', 'rag-development',
+  'flutter-development',
 ];
 
 export const subServices: Record<string, string[]> = {
@@ -46,7 +47,7 @@ export const blogSlugs = [
   'education-app-development-guide', 'enterprise-software-development-guide',
   'fitness-app-development-guide', 'flutter-vs-react-native-2026',
   'food-delivery-app-cost', 'food-delivery-app-development-guide', 'healthcare-app-trends-2026',
-  'how-much-does-app-development-cost-2026', 'how-to-build-fintech-app', 'how-to-build-healthcare-app',
+  'how-much-does-app-development-cost-2026', 'how-to-build-ai-chatbot-business', 'how-to-build-fintech-app', 'how-to-build-healthcare-app',
   'how-to-build-marketplace-app', 'how-to-build-on-demand-app', 'in-house-vs-outsourcing-development',
   'iot-app-development-guide', 'logistics-app-development-guide', 'microservices-vs-monolith-2026',
   'mobile-app-development-cost-breakdown', 'mobile-app-marketing-strategy', 'mvp-development-guide',
@@ -69,12 +70,26 @@ export const blogSlugs = [
   'top-software-development-companies-canada', 'top-software-development-companies-usa',
   'mobile-game-development-guide', 'video-streaming-app-development',
   'taxi-booking-app-development', 'travel-app-development-guide',
+  'app-monetization-strategies-2026',
+  'grocery-delivery-app-development', 'telemedicine-app-development', 'fantasy-sports-app-development',
   'uber-like-app-development-guide', 'web-app-development-cost-2026',
   'web-development-companies-san-francisco', 'web-development-trends-2026',
   'web3-development-guide-2026', 'website-cost-usa',
   'wearable-app-development-guide', 'ar-app-development-guide',
   'offshore-vs-nearshore-development', 'agile-vs-waterfall-software-development',
   'how-to-find-cto-startup', 'product-roadmap-guide-2026',
+  'app-security-best-practices-2026', 'gdpr-compliance-app-development',
+  'lms-development-guide', 'hr-tech-app-development',
+  'api-rate-limiting-guide', 'app-development-companies-toronto',
+  'crypto-wallet-development-guide', 'load-testing-guide-2026',
+  'mobile-app-testing-guide', 'multi-tenant-architecture-guide',
+  'nft-marketplace-development-guide', 'proptech-trends-2026',
+  'rental-property-app-development', 'saas-pricing-strategies-2026',
+  'software-development-companies-edmonton', 'staff-augmentation-guide-2026',
+  'subscription-billing-guide-2026', 'technical-interview-guide-2026',
+  'fintech-app-development-guide', 'healthcare-app-development-guide',
+  'app-development-cost-canada', 'app-development-cost-australia',
+  'how-to-hire-remote-developers',
 ];
 
 export const landingPageSlugs = [

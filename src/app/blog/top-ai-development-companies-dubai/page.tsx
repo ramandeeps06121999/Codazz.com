@@ -1,10 +1,10 @@
 import { Metadata } from 'next';
 import PageClient from './PageClient';
 
-const TITLE = 'Top 10 AI Development Companies in Dubai (2026)';
-const DESCRIPTION = 'Ranking the best AI and machine learning development companies in Dubai for 2026 — from generative AI specialists to enterprise ML platforms.';
+const TITLE = 'Top AI Development Companies in Dubai & UAE (2026)';
+const DESCRIPTION = 'Ranking the best AI and machine learning development companies in Dubai and the UAE for 2026 — from generative AI specialists to sovereign AI platform builders.';
 const SLUG = 'top-ai-development-companies-dubai';
-const DATE = '2026-03-19';
+const DATE = '2026-03-20';
 
 export const metadata: Metadata = {
   title: TITLE,

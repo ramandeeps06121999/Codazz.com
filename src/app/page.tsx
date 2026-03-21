@@ -9,7 +9,6 @@ import FeaturedAwards from '@/components/FeaturedAwards';
 import TechStackSection from '@/components/TechStackSection';
 
 import GlobalPresence from '@/components/GlobalPresence';
-import PortfolioShowcase from '@/components/PortfolioShowcase';
 import PortfolioSection from '@/components/PortfolioSection';
 import IndustriesSection from '@/components/IndustriesSection';
 import ShowcaseMarquee from '@/components/ShowcaseMarquee';
@@ -188,14 +187,13 @@ export default function Home() {
         <IndustriesSection />
         <AdvancedLabs />
         <SolutionsPreview />
-        <PortfolioShowcase category="" />
         <WhyChooseUs />
+        <TestimonialsSection />
         <ComplianceBadges />
         <InsightsSection />
+        <GlobalPresence />
         <FAQSection />
         <Contact />
-        <TestimonialsSection />
-        <GlobalPresence />
         <FeaturedAwards />
       </main>
       <Footer />

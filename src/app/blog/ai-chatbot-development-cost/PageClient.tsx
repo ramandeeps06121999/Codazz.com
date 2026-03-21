@@ -394,8 +394,14 @@ export default function AiChatbotCostClient() {
             <h2 className="reveal" style={{ fontSize: 32, fontWeight: 800, color: '#fff', marginBottom: 16 }}>
               📈 ROI Calculation: Is an AI Chatbot Worth It?
             </h2>
-            <p className="reveal" style={{ color: '#bbb', lineHeight: 1.8, marginBottom: 28 }}>
+            <p className="reveal" style={{ color: '#bbb', lineHeight: 1.8, marginBottom: 16 }}>
               Before you approve a chatbot budget, calculate the real return. Here is a framework used by our clients at Codazz.
+            </p>
+            <p className="reveal" style={{ color: '#bbb', lineHeight: 1.8, marginBottom: 16 }}>
+              The most common mistake is only counting support cost savings. AI chatbots also drive revenue through 24/7 lead qualification, faster response times that improve conversion, and upsell conversations during support interactions.
+            </p>
+            <p className="reveal" style={{ color: '#bbb', lineHeight: 1.8, marginBottom: 28 }}>
+              A complete ROI model captures all four value levers: cost reduction, revenue increase, customer experience improvement (CSAT, NPS), and data intelligence from conversation analytics. Use the framework below as a starting point and adjust the assumptions for your business context.
             </p>
             <div className="reveal" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 28, padding: 32 }}>
               <h3 style={{ color: '#22c55e', fontSize: 18, fontWeight: 700, marginBottom: 20 }}>ROI Formula for AI Chatbots</h3>
@@ -433,8 +439,11 @@ export default function AiChatbotCostClient() {
             <h2 className="reveal" style={{ fontSize: 32, fontWeight: 800, color: '#fff', marginBottom: 16 }}>
               🔧 Maintenance & Ongoing Costs
             </h2>
-            <p className="reveal" style={{ color: '#bbb', lineHeight: 1.8, marginBottom: 24 }}>
+            <p className="reveal" style={{ color: '#bbb', lineHeight: 1.8, marginBottom: 12 }}>
               Building your chatbot is just the beginning. Plan for these recurring costs to keep it performing well.
+            </p>
+            <p className="reveal" style={{ color: '#bbb', lineHeight: 1.8, marginBottom: 24 }}>
+              Unlike traditional software, AI chatbots require continuous improvement — the LLM landscape evolves rapidly, user expectations increase, and your business knowledge changes. Treat maintenance as an investment in sustained ROI, not a sunk cost.
             </p>
             <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 20 }}>
               {[
@@ -571,8 +580,11 @@ export default function AiChatbotCostClient() {
             <h2 className="reveal" style={{ fontSize: 32, fontWeight: 800, color: '#fff', marginBottom: 16 }}>
               ⚠️ Hidden Costs Most Chatbot Budgets Miss
             </h2>
-            <p className="reveal" style={{ color: '#bbb', lineHeight: 1.8, marginBottom: 24 }}>
+            <p className="reveal" style={{ color: '#bbb', lineHeight: 1.8, marginBottom: 16 }}>
               These costs are real and significant but are frequently excluded from initial vendor quotes. Budget for them upfront to avoid mid-project surprises.
+            </p>
+            <p className="reveal" style={{ color: '#bbb', lineHeight: 1.8, marginBottom: 24 }}>
+              In our experience, hidden costs add 25–40% on top of the quoted development figure. For a $60,000 chatbot project, plan for $75,000–$85,000 total all-in cost including these items. We always surface these in our initial project scoping so clients have an accurate budget from day one.
             </p>
             <div className="reveal" style={{ display: 'grid', gap: 16 }}>
               {[

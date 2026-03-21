@@ -579,8 +579,11 @@ export default function HowToBuildAiChatbotClient() {
             <h2 className="reveal" style={{ fontSize: 32, fontWeight: 800, color: '#fff', marginBottom: 16 }}>
               📊 Chatbot KPIs: What to Measure and Why
             </h2>
-            <p className="reveal" style={{ color: '#bbb', lineHeight: 1.8, marginBottom: 24 }}>
+            <p className="reveal" style={{ color: '#bbb', lineHeight: 1.8, marginBottom: 16 }}>
               Measuring the right metrics determines whether you iterate correctly or waste budget on the wrong improvements. These are the KPIs that matter in production.
+            </p>
+            <p className="reveal" style={{ color: '#bbb', lineHeight: 1.8, marginBottom: 24 }}>
+              Set up your analytics dashboard before launch — not after. Retroactive analytics setup causes data gaps and makes it impossible to benchmark launch performance. We build analytics dashboards as a core deliverable, not an add-on, in every chatbot project.
             </p>
             <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 20 }}>
               {[

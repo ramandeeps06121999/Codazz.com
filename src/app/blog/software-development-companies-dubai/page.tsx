@@ -2,9 +2,9 @@ import { Metadata } from 'next';
 import PageClient from './PageClient';
 
 const TITLE = 'Top Software Development Companies in Dubai (2026)';
-const DESCRIPTION = 'Ranking the best software development companies in Dubai for 2026. Enterprise software, SaaS, AI, and custom development — find the right tech partner for your Gulf business.';
+const DESCRIPTION = 'Ranking the best software development companies in Dubai for 2026. Enterprise software, SaaS, AI, fintech, logistics, and hospitality tech — find the right partner for your Gulf business.';
 const SLUG = 'software-development-companies-dubai';
-const DATE = '2026-03-19';
+const DATE = '2026-03-20';
 
 export const metadata: Metadata = {
   title: TITLE,
