@@ -49,6 +49,52 @@ export default function ServicesSection() {
           </div>
         </div>
 
+        {/* Marquee strip */}
+        <div className="reveal" style={{ position: 'relative', overflow: 'hidden', marginBottom: 'clamp(32px, 5vw, 64px)' }}>
+          {/* Fade masks */}
+          <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 80, background: 'linear-gradient(to right, #000000, transparent)', zIndex: 2, pointerEvents: 'none' }} />
+          <div style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 80, background: 'linear-gradient(to left, #000000, transparent)', zIndex: 2, pointerEvents: 'none' }} />
+          <style>{`
+            @keyframes services-marquee {
+              0% { transform: translateX(0); }
+              100% { transform: translateX(-50%); }
+            }
+          `}</style>
+          <div style={{ display: 'flex', gap: 12, width: 'max-content', animation: 'services-marquee 30s linear infinite' }}>
+            {[
+              { icon: '📱', label: 'Mobile Apps' },
+              { icon: '🌐', label: 'Web Development' },
+              { icon: '🤖', label: 'AI / ML' },
+              { icon: '☁️', label: 'Cloud & DevOps' },
+              { icon: '🎨', label: 'UI/UX Design' },
+              { icon: '🔗', label: 'API Development' },
+              { icon: '⛓️', label: 'Blockchain' },
+              { icon: '🔒', label: 'Cybersecurity' },
+              { icon: '📊', label: 'Data Engineering' },
+              { icon: '🥽', label: 'AR / VR' },
+              { icon: '🏗️', label: 'SaaS Development' },
+              { icon: '🚀', label: 'MVP Launch' },
+              { icon: '📱', label: 'Mobile Apps' },
+              { icon: '🌐', label: 'Web Development' },
+              { icon: '🤖', label: 'AI / ML' },
+              { icon: '☁️', label: 'Cloud & DevOps' },
+              { icon: '🎨', label: 'UI/UX Design' },
+              { icon: '🔗', label: 'API Development' },
+              { icon: '⛓️', label: 'Blockchain' },
+              { icon: '🔒', label: 'Cybersecurity' },
+              { icon: '📊', label: 'Data Engineering' },
+              { icon: '🥽', label: 'AR / VR' },
+              { icon: '🏗️', label: 'SaaS Development' },
+              { icon: '🚀', label: 'MVP Launch' },
+            ].map((item, i) => (
+              <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '8px 18px', borderRadius: 100, border: '1px solid rgba(34,197,94,0.15)', background: 'rgba(34,197,94,0.05)', whiteSpace: 'nowrap', flexShrink: 0 }}>
+                <span style={{ fontSize: 14 }}>{item.icon}</span>
+                <span style={{ fontSize: 12, fontWeight: 600, color: 'rgba(255,255,255,0.7)', letterSpacing: '0.04em', textTransform: 'uppercase' }}>{item.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Large cards */}
         <div className="services-large-grid" style={{ marginBottom: 20 }}>
           {large.map((s, i) => (

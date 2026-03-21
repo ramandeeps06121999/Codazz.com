@@ -7,6 +7,7 @@ import Breadcrumb from '@/components/Breadcrumb';
 import TrustBadges from '@/components/TrustBadges';
 import HeroBackground from '@/components/HeroBackground';
 import ServiceHeroForm from '@/components/ServiceHeroForm';
+import GlobalPresence from '@/components/GlobalPresence';
 
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -846,21 +847,76 @@ export default function MobileAppDevelopmentPage() {
               </p>
             </div>
 
-            <div className="reveal reveal-d1" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 20 }}>
-              {advancedTech.map((t, i) => (
-                <div
-                  key={t.title}
-                  className={`reveal-d${i + 1}`}
-                  style={{ ...cardBase, padding: '40px 32px' }}
-                  onMouseEnter={cardHoverIn}
-                  onMouseLeave={cardHoverOut}
-                >
-                  <div style={greenAccentLine} />
-                  <div style={{ fontSize: 32, marginBottom: 20 }}>{t.icon}</div>
-                  <h3 style={{ fontSize: 20, fontWeight: 600, color: '#ffffff', letterSpacing: '-0.02em', marginBottom: 14 }}>{t.title}</h3>
-                  <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.55)', lineHeight: 1.75, margin: 0 }}>{t.desc}</p>
-                </div>
-              ))}
+            {/* Marquee row 1: LTR */}
+            <style>{`
+              @keyframes feat-marquee-ltr { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+              @keyframes feat-marquee-rtl { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+            `}</style>
+            <div style={{ position: 'relative', overflow: 'hidden', marginBottom: 16 }}>
+              {/* Fade masks */}
+              <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 120, background: 'linear-gradient(to right, #000000 0%, transparent 100%)', zIndex: 2, pointerEvents: 'none' }} />
+              <div style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 120, background: 'linear-gradient(to left, #000000 0%, transparent 100%)', zIndex: 2, pointerEvents: 'none' }} />
+              <div style={{ display: 'flex', gap: 16, animation: 'feat-marquee-ltr 35s linear infinite', width: 'max-content' }}>
+                {[
+                  { icon: '🤖', title: 'AI/ML Integration', desc: 'Predictive analytics, NLP chatbots, and on-device ML with CoreML & ML Kit.' },
+                  { icon: '📡', title: 'IoT Integration', desc: 'Connect apps to smart devices via Bluetooth LE, MQTT, and custom IoT protocols.' },
+                  { icon: '☁️', title: 'Cloud Native', desc: 'Serverless & microservice backends on AWS, GCP, Azure with 99.99% uptime.' },
+                  { icon: '🔗', title: 'Blockchain / Web3', desc: 'Smart contracts, crypto wallets, NFT marketplaces on Ethereum & Solana.' },
+                  { icon: '📊', title: 'Big Data Analytics', desc: 'Real-time dashboards and streaming pipelines processing millions of events/sec.' },
+                  { icon: '🥽', title: 'AR/VR Experiences', desc: 'Immersive AR/VR with ARKit, ARCore, and Unity for spatial computing.' },
+                  { icon: '🤖', title: 'AI/ML Integration', desc: 'Predictive analytics, NLP chatbots, and on-device ML with CoreML & ML Kit.' },
+                  { icon: '📡', title: 'IoT Integration', desc: 'Connect apps to smart devices via Bluetooth LE, MQTT, and custom IoT protocols.' },
+                  { icon: '☁️', title: 'Cloud Native', desc: 'Serverless & microservice backends on AWS, GCP, Azure with 99.99% uptime.' },
+                  { icon: '🔗', title: 'Blockchain / Web3', desc: 'Smart contracts, crypto wallets, NFT marketplaces on Ethereum & Solana.' },
+                  { icon: '📊', title: 'Big Data Analytics', desc: 'Real-time dashboards and streaming pipelines processing millions of events/sec.' },
+                  { icon: '🥽', title: 'AR/VR Experiences', desc: 'Immersive AR/VR with ARKit, ARCore, and Unity for spatial computing.' },
+                ].map((item, i) => (
+                  <div key={i} style={{
+                    padding: '20px 24px', borderRadius: 16, flexShrink: 0, width: 220,
+                    border: '1px solid rgba(255,255,255,0.07)',
+                    background: 'rgba(255,255,255,0.02)',
+                    display: 'flex', flexDirection: 'column', gap: 10,
+                  }}>
+                    <span style={{ fontSize: 24 }}>{item.icon}</span>
+                    <div style={{ fontSize: 13, fontWeight: 600, color: '#ffffff', letterSpacing: '-0.01em' }}>{item.title}</div>
+                    <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.45)', lineHeight: 1.6 }}>{item.desc}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Marquee row 2: RTL */}
+            <div style={{ position: 'relative', overflow: 'hidden' }}>
+              {/* Fade masks */}
+              <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 120, background: 'linear-gradient(to right, #000000 0%, transparent 100%)', zIndex: 2, pointerEvents: 'none' }} />
+              <div style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 120, background: 'linear-gradient(to left, #000000 0%, transparent 100%)', zIndex: 2, pointerEvents: 'none' }} />
+              <div style={{ display: 'flex', gap: 16, animation: 'feat-marquee-rtl 40s linear infinite', width: 'max-content' }}>
+                {[
+                  { icon: '🔄', title: 'Real-Time Sync', desc: 'WebSocket and Firebase-powered live data sync across all user devices.' },
+                  { icon: '📴', title: 'Offline Mode', desc: 'Full offline-first architecture with local storage and background sync.' },
+                  { icon: '🔔', title: 'Push Notifications', desc: 'Personalized, segmented push via FCM & APNs with rich media support.' },
+                  { icon: '🪪', title: 'Biometric Auth', desc: 'Face ID, Touch ID, and fingerprint login with secure enclave storage.' },
+                  { icon: '🔗', title: 'Deep Linking', desc: 'Universal and app links for seamless web-to-app navigation flows.' },
+                  { icon: '💳', title: 'In-App Purchases', desc: 'StoreKit 2 & Google Play Billing with subscription management & analytics.' },
+                  { icon: '🔄', title: 'Real-Time Sync', desc: 'WebSocket and Firebase-powered live data sync across all user devices.' },
+                  { icon: '📴', title: 'Offline Mode', desc: 'Full offline-first architecture with local storage and background sync.' },
+                  { icon: '🔔', title: 'Push Notifications', desc: 'Personalized, segmented push via FCM & APNs with rich media support.' },
+                  { icon: '🪪', title: 'Biometric Auth', desc: 'Face ID, Touch ID, and fingerprint login with secure enclave storage.' },
+                  { icon: '🔗', title: 'Deep Linking', desc: 'Universal and app links for seamless web-to-app navigation flows.' },
+                  { icon: '💳', title: 'In-App Purchases', desc: 'StoreKit 2 & Google Play Billing with subscription management & analytics.' },
+                ].map((item, i) => (
+                  <div key={i} style={{
+                    padding: '20px 24px', borderRadius: 16, flexShrink: 0, width: 220,
+                    border: '1px solid rgba(255,255,255,0.07)',
+                    background: 'rgba(255,255,255,0.02)',
+                    display: 'flex', flexDirection: 'column', gap: 10,
+                  }}>
+                    <span style={{ fontSize: 24 }}>{item.icon}</span>
+                    <div style={{ fontSize: 13, fontWeight: 600, color: '#ffffff', letterSpacing: '-0.01em' }}>{item.title}</div>
+                    <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.45)', lineHeight: 1.6 }}>{item.desc}</div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -881,6 +937,48 @@ export default function MobileAppDevelopmentPage() {
                 A battle-tested six-step process refined over 500+ projects. Every step is transparent,
                 collaborative, and designed to minimize risk while maximizing quality.
               </p>
+            </div>
+
+            {/* Process pill marquee strip */}
+            <style>{`
+              @keyframes proc-marquee-ltr { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+            `}</style>
+            <div style={{ position: 'relative', overflow: 'hidden', marginBottom: 48 }}>
+              <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 80, background: 'linear-gradient(to right, #000000 0%, transparent 100%)', zIndex: 2, pointerEvents: 'none' }} />
+              <div style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 80, background: 'linear-gradient(to left, #000000 0%, transparent 100%)', zIndex: 2, pointerEvents: 'none' }} />
+              <div style={{ display: 'flex', gap: 12, animation: 'proc-marquee-ltr 20s linear infinite', width: 'max-content', alignItems: 'center' }}>
+                {[
+                  { num: '01', label: 'Discovery' },
+                  { num: '02', label: 'Design' },
+                  { num: '03', label: 'Development' },
+                  { num: '04', label: 'QA Testing' },
+                  { num: '05', label: 'Launch' },
+                  { num: '06', label: 'Support' },
+                  { num: '01', label: 'Discovery' },
+                  { num: '02', label: 'Design' },
+                  { num: '03', label: 'Development' },
+                  { num: '04', label: 'QA Testing' },
+                  { num: '05', label: 'Launch' },
+                  { num: '06', label: 'Support' },
+                ].map((step, i) => (
+                  <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
+                    <div style={{
+                      display: 'inline-flex', alignItems: 'center', gap: 8,
+                      padding: '8px 16px', borderRadius: 100,
+                      border: '1px solid rgba(34,197,94,0.2)',
+                      background: 'rgba(34,197,94,0.04)',
+                    }}>
+                      <span style={{ fontSize: 10, fontWeight: 800, color: '#22c55e', letterSpacing: '0.05em' }}>{step.num}</span>
+                      <span style={{ fontSize: 12, fontWeight: 600, color: 'rgba(255,255,255,0.7)', letterSpacing: '-0.01em' }}>{step.label}</span>
+                    </div>
+                    {i % 6 < 5 && (
+                      <svg width="16" height="10" viewBox="0 0 16 10" fill="none" style={{ flexShrink: 0 }}>
+                        <path d="M1 5h14M10 1l4 4-4 4" stroke="rgba(34,197,94,0.35)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    )}
+                  </div>
+                ))}
+              </div>
             </div>
 
             <div style={{ position: 'relative' }}>
@@ -1233,7 +1331,12 @@ export default function MobileAppDevelopmentPage() {
 
 
         {/* ═══════════════════════════════════════
-            16. RELATED BLOGS
+            16. GLOBAL PRESENCE
+        ═══════════════════════════════════════ */}
+        <GlobalPresence />
+
+        {/* ═══════════════════════════════════════
+            17. RELATED BLOGS
         ═══════════════════════════════════════ */}
         <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">

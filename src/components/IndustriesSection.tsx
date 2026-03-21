@@ -36,6 +36,91 @@ export default function IndustriesSection() {
           </div>
         </div>
 
+        {/* ── Marquee strip ── */}
+        <div style={{ position: 'relative', overflow: 'hidden', margin: '0 -24px clamp(32px,5vw,56px)' }}>
+          {/* Left fade mask */}
+          <div style={{
+            position: 'absolute', left: 0, top: 0, bottom: 0, width: 100, zIndex: 2,
+            background: 'linear-gradient(to right, #000000, transparent)',
+            pointerEvents: 'none',
+          }} />
+          {/* Right fade mask */}
+          <div style={{
+            position: 'absolute', right: 0, top: 0, bottom: 0, width: 100, zIndex: 2,
+            background: 'linear-gradient(to left, #000000, transparent)',
+            pointerEvents: 'none',
+          }} />
+
+          <style>{`
+            @keyframes industries-marquee-rtl {
+              from { transform: translateX(0); }
+              to   { transform: translateX(-50%); }
+            }
+          `}</style>
+
+          <div style={{
+            display: 'flex', alignItems: 'center', gap: 12,
+            animation: 'industries-marquee-rtl 40s linear infinite',
+            width: 'max-content',
+          }}>
+            {[
+              { icon: '🏥', label: 'HealthTech' },
+              { icon: '💰', label: 'FinTech' },
+              { icon: '🛒', label: 'E-Commerce' },
+              { icon: '📚', label: 'EdTech' },
+              { icon: '🏠', label: 'Real Estate' },
+              { icon: '🚚', label: 'Logistics' },
+              { icon: '🤖', label: 'AI / ML' },
+              { icon: '⛓️', label: 'Blockchain' },
+              { icon: '🎮', label: 'Gaming' },
+              { icon: '🏗️', label: 'SaaS' },
+              { icon: '🌱', label: 'GreenTech' },
+              { icon: '🏭', label: 'Manufacturing' },
+              { icon: '✈️', label: 'Travel & Tourism' },
+              { icon: '🎵', label: 'Media & Entertainment' },
+              { icon: '⚖️', label: 'LegalTech' },
+              { icon: '🏥', label: 'InsurTech' },
+              { icon: '🌾', label: 'AgriTech' },
+              { icon: '🏛️', label: 'GovTech' },
+              { icon: '🏋️', label: 'FitTech' },
+              { icon: '🔒', label: 'CyberSecurity' },
+              // — duplicate for seamless loop —
+              { icon: '🏥', label: 'HealthTech' },
+              { icon: '💰', label: 'FinTech' },
+              { icon: '🛒', label: 'E-Commerce' },
+              { icon: '📚', label: 'EdTech' },
+              { icon: '🏠', label: 'Real Estate' },
+              { icon: '🚚', label: 'Logistics' },
+              { icon: '🤖', label: 'AI / ML' },
+              { icon: '⛓️', label: 'Blockchain' },
+              { icon: '🎮', label: 'Gaming' },
+              { icon: '🏗️', label: 'SaaS' },
+              { icon: '🌱', label: 'GreenTech' },
+              { icon: '🏭', label: 'Manufacturing' },
+              { icon: '✈️', label: 'Travel & Tourism' },
+              { icon: '🎵', label: 'Media & Entertainment' },
+              { icon: '⚖️', label: 'LegalTech' },
+              { icon: '🏥', label: 'InsurTech' },
+              { icon: '🌾', label: 'AgriTech' },
+              { icon: '🏛️', label: 'GovTech' },
+              { icon: '🏋️', label: 'FitTech' },
+              { icon: '🔒', label: 'CyberSecurity' },
+            ].map((tag, i) => (
+              <div key={i} style={{
+                display: 'flex', alignItems: 'center', gap: 8,
+                padding: '8px 16px', borderRadius: 100,
+                border: '1px solid rgba(255,255,255,0.07)',
+                background: 'rgba(255,255,255,0.02)',
+                whiteSpace: 'nowrap', flexShrink: 0,
+              }}>
+                <span style={{ fontSize: 14 }}>{tag.icon}</span>
+                <span style={{ fontSize: 11, fontWeight: 600, color: 'rgba(255,255,255,0.55)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>{tag.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        {/* ── End marquee ── */}
+
         <div className="industries-grid">
           {industries.map((ind, i) => (
             <div key={ind.name} className={`reveal reveal-d${Math.min(i + 1, 6)}`}

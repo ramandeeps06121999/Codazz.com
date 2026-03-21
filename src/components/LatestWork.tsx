@@ -595,6 +595,71 @@ export default function LatestWork() {
           </div>
         </motion.div>
 
+        {/* Category marquee */}
+        <div
+          style={{
+            overflow: 'hidden',
+            marginBottom: 'clamp(28px, 4vw, 44px)',
+            maskImage: 'linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%)',
+            WebkitMaskImage: 'linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%)',
+          }}
+        >
+          <div
+            style={{
+              display: 'flex',
+              gap: 0,
+              animation: 'latest-work-marquee 25s linear infinite',
+              width: 'max-content',
+            }}
+          >
+            {[0, 1].map((copy) => (
+              <div
+                key={copy}
+                style={{
+                  display: 'flex',
+                  gap: 0,
+                  alignItems: 'center',
+                  flexShrink: 0,
+                }}
+              >
+                {[
+                  '📱 Mobile Apps',
+                  '🌐 Web Platforms',
+                  '🤖 AI Products',
+                  '💰 FinTech',
+                  '🏥 HealthTech',
+                  '🛒 E-Commerce',
+                  '📚 EdTech',
+                  '🚚 Logistics',
+                  '🏠 Real Estate',
+                  '🎮 Gaming',
+                ].map((tag) => (
+                  <span
+                    key={tag}
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      padding: '8px 20px',
+                      marginRight: 12,
+                      borderRadius: 100,
+                      fontSize: 13,
+                      fontWeight: 600,
+                      color: 'rgba(255,255,255,0.55)',
+                      background: 'rgba(255,255,255,0.04)',
+                      border: '1px solid rgba(255,255,255,0.07)',
+                      whiteSpace: 'nowrap',
+                      letterSpacing: '0.01em',
+                    }}
+                  >
+                    {tag}
+                  </span>
+                ))}
+                <span style={{ display: 'inline-block', width: 32, flexShrink: 0 }} />
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Carousel */}
         <motion.div
           ref={scrollRef}
@@ -703,6 +768,10 @@ export default function LatestWork() {
       <style jsx>{`
         .hide-scrollbar::-webkit-scrollbar {
           display: none;
+        }
+        @keyframes latest-work-marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
         }
         @media (max-width: 768px) {
           .desktop-nav {

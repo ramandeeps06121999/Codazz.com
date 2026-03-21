@@ -353,6 +353,8 @@ export default function PageClient() {
         .pricing-card:hover { border-color: rgba(34,197,94,0.5) !important; transform: translateY(-6px); }
         .faq-btn { cursor: pointer; background: transparent; border: none; width: 100%; text-align: left; }
         .step-num { background: linear-gradient(135deg,#22c55e,#16a34a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        @keyframes feat-ltr { 0%{ transform: translateX(0) } 100%{ transform: translateX(-50%) } }
+        @keyframes feat-rtl { 0%{ transform: translateX(-50%) } 100%{ transform: translateX(0) } }
       `}</style>
 
       <Navbar />
@@ -535,6 +537,44 @@ export default function PageClient() {
                       }}>{c}</span>
                     ))}
                   </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── 4b. FEATURES MARQUEE ─────────────────────────────────────────── */}
+        <section style={{ padding: '80px 0', overflow: 'hidden' }}>
+          <div style={{ textAlign: 'center', marginBottom: 48 }}>
+            <p style={{ color: '#22c55e', fontSize: 13, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', margin: '0 0 12px' }}>
+              Key Features
+            </p>
+            <h2 style={{ fontSize: 'clamp(26px, 4vw, 42px)', fontWeight: 800, margin: 0, letterSpacing: '-0.02em' }}>
+              Everything You Need, Built In
+            </h2>
+          </div>
+          {/* Row 1 — left-to-right */}
+          <div style={{ position: 'relative', overflow: 'hidden', marginBottom: 16 }}>
+            <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 120, background: 'linear-gradient(to right, #000, transparent)', zIndex: 2, pointerEvents: 'none' }} />
+            <div style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 120, background: 'linear-gradient(to left, #000, transparent)', zIndex: 2, pointerEvents: 'none' }} />
+            <div style={{ display: 'flex', gap: 12, animation: 'feat-ltr 35s linear infinite', width: 'max-content' }}>
+              {['⚡ Near-Native Performance', '🔄 Hot Reload', '📱 iOS & Android', '🧩 Reusable Components', '🔗 Native Modules', '🎨 Custom Animations',
+                '⚡ Near-Native Performance', '🔄 Hot Reload', '📱 iOS & Android', '🧩 Reusable Components', '🔗 Native Modules', '🎨 Custom Animations'].map((item, i) => (
+                <div key={i} style={{ width: 200, padding: '16px 20px', borderRadius: 12, border: '1px solid rgba(255,255,255,0.07)', background: 'rgba(255,255,255,0.025)', flexShrink: 0, fontSize: 14, fontWeight: 600, color: 'rgba(255,255,255,0.85)', whiteSpace: 'nowrap' }}>
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
+          {/* Row 2 — right-to-left */}
+          <div style={{ position: 'relative', overflow: 'hidden' }}>
+            <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 120, background: 'linear-gradient(to right, #000, transparent)', zIndex: 2, pointerEvents: 'none' }} />
+            <div style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 120, background: 'linear-gradient(to left, #000, transparent)', zIndex: 2, pointerEvents: 'none' }} />
+            <div style={{ display: 'flex', gap: 12, animation: 'feat-rtl 40s linear infinite', width: 'max-content' }}>
+              {['📊 Hermes Engine', '🔒 Secure Storage', '📍 Maps & Location', '💳 Payment Integration', '🔔 Push Notifications', '🌐 Offline First',
+                '📊 Hermes Engine', '🔒 Secure Storage', '📍 Maps & Location', '💳 Payment Integration', '🔔 Push Notifications', '🌐 Offline First'].map((item, i) => (
+                <div key={i} style={{ width: 200, padding: '16px 20px', borderRadius: 12, border: '1px solid rgba(255,255,255,0.07)', background: 'rgba(255,255,255,0.025)', flexShrink: 0, fontSize: 14, fontWeight: 600, color: 'rgba(255,255,255,0.85)', whiteSpace: 'nowrap' }}>
+                  {item}
                 </div>
               ))}
             </div>

@@ -8,6 +8,7 @@ import TrustBadges from '@/components/TrustBadges';
 import type { CityData } from '@/data/cities';
 import { cities } from '@/data/cities';
 import TestimonialMarquee from '@/components/TestimonialMarquee';
+import GlobalPresence from '@/components/GlobalPresence';
 
 // ─── REVEAL HOOK ─────────────────────────────────────────────────────────────
 
@@ -1236,25 +1237,64 @@ export default function PageClient({ city }: { city: CityData }) {
               </p>
             </div>
           </div>
-          {/* Horizontal scroll pill strip */}
-          <div className="reveal" style={{ position: 'relative' }}>
-            {/* Left fade */}
-            <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 60, background: 'linear-gradient(90deg, #000 0%, transparent 100%)', zIndex: 2, pointerEvents: 'none' }} />
-            {/* Right fade */}
-            <div style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 60, background: 'linear-gradient(270deg, #000 0%, transparent 100%)', zIndex: 2, pointerEvents: 'none' }} />
-            <div
-              className="loc-carousel-wrap"
-              style={{
-                display: 'flex',
-                gap: 12,
-                overflowX: 'auto',
-                scrollSnapType: 'x mandatory',
-                padding: '8px 40px',
-                msOverflowStyle: 'none',
-                scrollbarWidth: 'none',
-              }}
-            >
-              {industryCards.map((ind) => (
+          {/* Auto-scrolling marquee — Row 1 LTR, Row 2 RTL */}
+          {(() => {
+            const extraIndustries = [
+              { name: 'FinTech', icon: '💳' }, { name: 'HealthTech', icon: '🏥' }, { name: 'EdTech', icon: '📚' },
+              { name: 'E-Commerce', icon: '🛒' }, { name: 'Logistics', icon: '🚚' }, { name: 'Real Estate', icon: '🏠' },
+              { name: 'Hospitality', icon: '🏨' }, { name: 'Legal Tech', icon: '⚖️' }, { name: 'Insurance', icon: '🛡️' },
+              { name: 'PropTech', icon: '🏗️' }, { name: 'AgriTech', icon: '🌾' }, { name: 'CleanTech', icon: '♻️' },
+              { name: 'Government', icon: '🏛️' }, { name: 'Retail', icon: '🏪' }, { name: 'Manufacturing', icon: '🏭' },
+              { name: 'Media & Entertainment', icon: '🎬' }, { name: 'Travel & Tourism', icon: '✈️' }, { name: 'Sports Tech', icon: '⚽' },
+            ];
+            const allInds = [...industryCards.map(i => ({ name: i.name, icon: i.icon })), ...extraIndustries.filter(e => !industryCards.find(i => i.name === e.name))];
+            const duped = [...allInds, ...allInds];
+            const mid = Math.ceil(duped.length / 2);
+            const row1 = duped.slice(0, mid);
+            const row2 = [...duped.slice(mid), ...duped.slice(0, mid)];
+            return (
+              <div className="reveal" style={{ position: 'relative' }}>
+                <style>{`
+                  @keyframes ind-ltr { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+                  @keyframes ind-rtl { 0%{transform:translateX(-50%)} 100%{transform:translateX(0)} }
+                `}</style>
+                <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 80, background: 'linear-gradient(90deg,#000,transparent)', zIndex: 2, pointerEvents: 'none' }} />
+                <div style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 80, background: 'linear-gradient(270deg,#000,transparent)', zIndex: 2, pointerEvents: 'none' }} />
+                {/* Row 1 */}
+                <div style={{ overflow: 'hidden', marginBottom: 10 }}>
+                  <div style={{ display: 'flex', gap: 10, width: 'max-content', animation: 'ind-ltr 40s linear infinite' }}>
+                    {row1.map((ind, i) => (
+                      <Link key={`ind1-${i}`} href={`/industries/${ind.name.toLowerCase().replace(/[\s&]+/g, '-')}`}
+                        style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: 8, padding: '12px 22px', borderRadius: 100, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.015)', textDecoration: 'none', whiteSpace: 'nowrap', transition: 'border-color 0.3s,background 0.3s,transform 0.3s' }}
+                        onMouseEnter={e => { const t = e.currentTarget as HTMLElement; t.style.borderColor='rgba(34,197,94,0.25)'; t.style.background='rgba(34,197,94,0.05)'; t.style.transform='translateY(-2px)'; }}
+                        onMouseLeave={e => { const t = e.currentTarget as HTMLElement; t.style.borderColor='rgba(255,255,255,0.06)'; t.style.background='rgba(255,255,255,0.015)'; t.style.transform=''; }}
+                      >
+                        <span style={{ fontSize: 18 }}>{ind.icon}</span>
+                        <span style={{ fontSize: 13, fontWeight: 600, color: '#ffffff' }}>{ind.name}</span>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+                {/* Row 2 */}
+                <div style={{ overflow: 'hidden' }}>
+                  <div style={{ display: 'flex', gap: 10, width: 'max-content', animation: 'ind-rtl 45s linear infinite' }}>
+                    {row2.map((ind, i) => (
+                      <Link key={`ind2-${i}`} href={`/industries/${ind.name.toLowerCase().replace(/[\s&]+/g, '-')}`}
+                        style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: 8, padding: '12px 22px', borderRadius: 100, border: '1px solid rgba(34,197,94,0.08)', background: 'rgba(34,197,94,0.03)', textDecoration: 'none', whiteSpace: 'nowrap', transition: 'border-color 0.3s,background 0.3s,transform 0.3s' }}
+                        onMouseEnter={e => { const t = e.currentTarget as HTMLElement; t.style.borderColor='rgba(34,197,94,0.3)'; t.style.background='rgba(34,197,94,0.08)'; t.style.transform='translateY(-2px)'; }}
+                        onMouseLeave={e => { const t = e.currentTarget as HTMLElement; t.style.borderColor='rgba(34,197,94,0.08)'; t.style.background='rgba(34,197,94,0.03)'; t.style.transform=''; }}
+                      >
+                        <span style={{ fontSize: 18 }}>{ind.icon}</span>
+                        <span style={{ fontSize: 13, fontWeight: 600, color: 'rgba(34,197,94,0.8)' }}>{ind.name}</span>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            );
+          })()}
+          {/* legacy map anchor — keep for TS (unused) */}
+          {false && industryCards.map((ind) => (
                 <Link
                   key={ind.name}
                   href={`/industries/${ind.name.toLowerCase().replace(/[\s&]+/g, '-')}`}
@@ -1287,8 +1327,6 @@ export default function PageClient({ city }: { city: CityData }) {
                   <span style={{ fontSize: 14, fontWeight: 600, color: '#ffffff', letterSpacing: '-0.01em' }}>{ind.name}</span>
                 </Link>
               ))}
-            </div>
-          </div>
         </section>
 
         {/* ════════════════════════════════════════════════════════════════════
@@ -1510,6 +1548,53 @@ export default function PageClient({ city }: { city: CityData }) {
               </p>
             </div>
 
+            {/* Scrolling service marquee strip */}
+            <div className="reveal" style={{ position: 'relative', overflow: 'hidden', marginBottom: 48 }}>
+              <style>{`
+                @keyframes city-svc-marquee {
+                  0% { transform: translateX(0); }
+                  100% { transform: translateX(-50%); }
+                }
+              `}</style>
+              {/* Left fade mask */}
+              <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 80, background: 'linear-gradient(90deg, #000 0%, transparent 100%)', zIndex: 2, pointerEvents: 'none' }} />
+              {/* Right fade mask */}
+              <div style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 80, background: 'linear-gradient(270deg, #000 0%, transparent 100%)', zIndex: 2, pointerEvents: 'none' }} />
+              <div style={{ display: 'flex', gap: 12, width: 'max-content', animation: 'city-svc-marquee 32s linear infinite' }}>
+                {[
+                  { label: 'Mobile Apps', icon: '📱' },
+                  { label: 'Web Development', icon: '🌐' },
+                  { label: 'AI / ML', icon: '🤖' },
+                  { label: 'Cloud & DevOps', icon: '☁️' },
+                  { label: 'UI/UX Design', icon: '🎨' },
+                  { label: 'API Development', icon: '🔗' },
+                  { label: 'Blockchain', icon: '⛓️' },
+                  { label: 'Data Engineering', icon: '📊' },
+                  { label: 'AR / VR', icon: '🥽' },
+                  { label: 'SaaS Development', icon: '🏗️' },
+                  { label: 'Cybersecurity', icon: '🔒' },
+                  { label: 'MVP Launch', icon: '🚀' },
+                  { label: 'Mobile Apps', icon: '📱' },
+                  { label: 'Web Development', icon: '🌐' },
+                  { label: 'AI / ML', icon: '🤖' },
+                  { label: 'Cloud & DevOps', icon: '☁️' },
+                  { label: 'UI/UX Design', icon: '🎨' },
+                  { label: 'API Development', icon: '🔗' },
+                  { label: 'Blockchain', icon: '⛓️' },
+                  { label: 'Data Engineering', icon: '📊' },
+                  { label: 'AR / VR', icon: '🥽' },
+                  { label: 'SaaS Development', icon: '🏗️' },
+                  { label: 'Cybersecurity', icon: '🔒' },
+                  { label: 'MVP Launch', icon: '🚀' },
+                ].map((item, i) => (
+                  <div key={i} style={{ padding: '8px 18px', borderRadius: 100, border: '1px solid rgba(34,197,94,0.15)', background: 'rgba(34,197,94,0.05)', display: 'flex', alignItems: 'center', gap: 8, whiteSpace: 'nowrap', flexShrink: 0 }}>
+                    <span style={{ fontSize: 16 }}>{item.icon}</span>
+                    <span style={{ fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,0.75)' }}>{item.label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
             <div className="reveal" style={{ maxWidth: 900, margin: '0 auto' }}>
               <ServiceAccordion services={servicesBreakdown} cityName={city.name} />
             </div>
@@ -1712,25 +1797,44 @@ export default function PageClient({ city }: { city: CityData }) {
             10. STATS SECTION — Big numbers
         ════════════════════════════════════════════════════════════════════ */}
         <section ref={statsRef} style={{ ...sectionPad, ...sectionBorder, position: 'relative', overflow: 'hidden' }}>
-          {/* Background glow */}
-          <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: 1200, height: 600, background: 'radial-gradient(ellipse, rgba(34,197,94,0.04) 0%, transparent 70%)', pointerEvents: 'none' }} />
+          {/* Large background text */}
+          <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', fontSize: 'clamp(100px, 20vw, 220px)', fontWeight: 900, color: 'rgba(255,255,255,0.015)', letterSpacing: '-0.05em', whiteSpace: 'nowrap', pointerEvents: 'none', userSelect: 'none', lineHeight: 1 }}>CODAZZ</div>
+          {/* Green glow */}
+          <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: 800, height: 400, background: 'radial-gradient(ellipse, rgba(34,197,94,0.07) 0%, transparent 70%)', pointerEvents: 'none' }} />
 
           <div className="cb-container" style={{ position: 'relative', zIndex: 1 }}>
-            <div style={{ textAlign: 'center', marginBottom: 48 }}>
-              <div className="reveal" style={subLabel}>By The Numbers</div>
-              <h2 className="reveal" style={heading2}>
+            <div style={{ textAlign: 'center', marginBottom: 56 }}>
+              <div className="reveal" style={{ ...subLabel, color: '#22c55e' }}>By The Numbers</div>
+              <h2 className="reveal" style={{ ...heading2, fontSize: 'clamp(2.5rem, 5vw, 4rem)' }}>
                 Codazz in Numbers
               </h2>
+              <p className="reveal" style={{ ...bodyText, maxWidth: 520, margin: '16px auto 0', color: 'rgba(255,255,255,0.5)' }}>
+                Trusted by startups and Fortune 500 companies across {city.name} and 24 countries worldwide.
+              </p>
             </div>
-            <div className="reveal loc-stats-row" style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 16, maxWidth: 1000, margin: '0 auto' }}>
+
+            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 1, maxWidth: 1000, margin: '0 auto', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 24, overflow: 'hidden' }}>
               {[
-                { value: '500+', label: 'Projects Delivered' },
-                { value: '100+', label: 'Engineers' },
-                { value: '24', label: 'Countries Served' },
-                { value: '99%', label: 'Client Satisfaction' },
-                { value: '8-Week', label: 'MVP Delivery' },
-              ].map(stat => (
-                <AnimatedStat key={stat.label} value={stat.value} label={stat.label} />
+                { value: '500+', label: 'Projects Delivered', icon: '🚀' },
+                { value: '100+', label: 'Engineers', icon: '👨‍💻' },
+                { value: '24', label: 'Countries Served', icon: '🌍' },
+                { value: '99%', label: 'Client Satisfaction', icon: '⭐' },
+                { value: '8-Week', label: 'MVP Delivery', icon: '⚡' },
+              ].map((stat, i) => (
+                <div key={stat.label} style={{
+                  padding: 'clamp(24px, 4vw, 40px) clamp(16px, 3vw, 28px)',
+                  textAlign: 'center',
+                  background: i % 2 === 0 ? 'rgba(255,255,255,0.015)' : 'rgba(255,255,255,0.008)',
+                  borderRight: i < 4 ? '1px solid rgba(255,255,255,0.05)' : 'none',
+                  transition: 'background 0.3s',
+                }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(34,197,94,0.05)'; }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = i % 2 === 0 ? 'rgba(255,255,255,0.015)' : 'rgba(255,255,255,0.008)'; }}
+                >
+                  <div style={{ fontSize: 24, marginBottom: 8 }}>{stat.icon}</div>
+                  <div style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, color: '#22c55e', letterSpacing: '-0.04em', lineHeight: 1, marginBottom: 8 }}>{stat.value}</div>
+                  <div style={{ fontSize: 12, fontWeight: 600, color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>{stat.label}</div>
+                </div>
               ))}
             </div>
           </div>
@@ -1829,7 +1933,12 @@ export default function PageClient({ city }: { city: CityData }) {
         </section>
 
         {/* ════════════════════════════════════════════════════════════════════
-            14. RELATED LOCATIONS
+            14. GLOBAL PRESENCE
+        ════════════════════════════════════════════════════════════════════ */}
+        <GlobalPresence />
+
+        {/* ════════════════════════════════════════════════════════════════════
+            15. RELATED LOCATIONS
         ════════════════════════════════════════════════════════════════════ */}
         <section ref={relatedRef} style={{ ...sectionPad, ...sectionBorder, overflow: 'hidden' }}>
           <div className="cb-container">

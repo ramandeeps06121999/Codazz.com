@@ -475,6 +475,8 @@ export default function WebDevelopmentPage() {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
         }
+        @keyframes feat-ltr { 0%{ transform: translateX(0) } 100%{ transform: translateX(-50%) } }
+        @keyframes feat-rtl { 0%{ transform: translateX(-50%) } 100%{ transform: translateX(0) } }
         .logos-track {
           display: flex;
           gap: 48px;
@@ -771,6 +773,44 @@ export default function WebDevelopmentPage() {
                 View All Case Studies
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
               </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            6b. FEATURES MARQUEE
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+        <section style={{ padding: '80px 0', overflow: 'hidden', ...sectionBorder }}>
+          <div style={{ textAlign: 'center', marginBottom: 48 }}>
+            <span style={tagStyle}>Key Features</span>
+            <h2 style={{ ...headingStyle, marginTop: 12 }}>
+              Built for Performance & Scale
+            </h2>
+          </div>
+          {/* Row 1 — left-to-right */}
+          <div style={{ position: 'relative', overflow: 'hidden', marginBottom: 16 }}>
+            <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 120, background: 'linear-gradient(to right, #000, transparent)', zIndex: 2, pointerEvents: 'none' }} />
+            <div style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 120, background: 'linear-gradient(to left, #000, transparent)', zIndex: 2, pointerEvents: 'none' }} />
+            <div style={{ display: 'flex', gap: 12, animation: 'feat-ltr 35s linear infinite', width: 'max-content' }}>
+              {['⚡ Sub-second Load', '📱 Mobile First', '🔒 WAF Security', '🌐 Global CDN', '🎨 Pixel-perfect UI', '📊 Core Web Vitals',
+                '⚡ Sub-second Load', '📱 Mobile First', '🔒 WAF Security', '🌐 Global CDN', '🎨 Pixel-perfect UI', '📊 Core Web Vitals'].map((item, i) => (
+                <div key={i} style={{ width: 200, padding: '16px 20px', borderRadius: 12, border: '1px solid rgba(255,255,255,0.07)', background: 'rgba(255,255,255,0.025)', flexShrink: 0, fontSize: 14, fontWeight: 600, color: 'rgba(255,255,255,0.85)', whiteSpace: 'nowrap' }}>
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
+          {/* Row 2 — right-to-left */}
+          <div style={{ position: 'relative', overflow: 'hidden' }}>
+            <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 120, background: 'linear-gradient(to right, #000, transparent)', zIndex: 2, pointerEvents: 'none' }} />
+            <div style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 120, background: 'linear-gradient(to left, #000, transparent)', zIndex: 2, pointerEvents: 'none' }} />
+            <div style={{ display: 'flex', gap: 12, animation: 'feat-rtl 40s linear infinite', width: 'max-content' }}>
+              {['🔗 API-first Design', '🤖 AI Integration', '🛒 E-Commerce Ready', '🧩 Micro-frontend', '🔄 CI/CD Pipeline', '♿ WCAG Accessible',
+                '🔗 API-first Design', '🤖 AI Integration', '🛒 E-Commerce Ready', '🧩 Micro-frontend', '🔄 CI/CD Pipeline', '♿ WCAG Accessible'].map((item, i) => (
+                <div key={i} style={{ width: 200, padding: '16px 20px', borderRadius: 12, border: '1px solid rgba(255,255,255,0.07)', background: 'rgba(255,255,255,0.025)', flexShrink: 0, fontSize: 14, fontWeight: 600, color: 'rgba(255,255,255,0.85)', whiteSpace: 'nowrap' }}>
+                  {item}
+                </div>
+              ))}
             </div>
           </div>
         </section>

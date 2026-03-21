@@ -291,8 +291,18 @@ export default function FintechPageClient() {
 
         {/* ── WHAT WE BUILD ── */}
         <section className="section-padding" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+          <style>{`
+            @keyframes fintech-features-ltr {
+              0% { transform: translateX(0); }
+              100% { transform: translateX(-50%); }
+            }
+            @keyframes fintech-features-rtl {
+              0% { transform: translateX(-50%); }
+              100% { transform: translateX(0); }
+            }
+          `}</style>
           <div className="cb-container">
-            <div className="reveal" style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
+            <div className="reveal" style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
               <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.9rem)', fontWeight: 800, marginBottom: '1rem', letterSpacing: '-0.02em' }}>
                 What We Build for Fintech
               </h2>
@@ -300,6 +310,57 @@ export default function FintechPageClient() {
                 End-to-end fintech engineering — from regulatory architecture to consumer-facing interfaces.
               </p>
             </div>
+
+            {/* ── FEATURES TWO-ROW MARQUEE ── */}
+            <div style={{ position: 'relative', overflow: 'hidden', marginBottom: '3.5rem', display: 'flex', flexDirection: 'column', gap: 10 }}>
+              {/* Left fade */}
+              <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 80, background: 'linear-gradient(to right, #000000, transparent)', zIndex: 2, pointerEvents: 'none' }} />
+              {/* Right fade */}
+              <div style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 80, background: 'linear-gradient(to left, #000000, transparent)', zIndex: 2, pointerEvents: 'none' }} />
+
+              {/* Row 1 — LTR */}
+              <div style={{ display: 'flex', gap: 10, animation: 'fintech-features-ltr 30s linear infinite', width: 'max-content' }}>
+                {[
+                  'AI Fraud Detection', 'KYC Verification', 'PCI DSS Compliance',
+                  'Multi-currency Support', 'Real-time Payments', 'Open Banking API',
+                  // Duplicate
+                  'AI Fraud Detection', 'KYC Verification', 'PCI DSS Compliance',
+                  'Multi-currency Support', 'Real-time Payments', 'Open Banking API',
+                ].map((label, i) => (
+                  <div key={i} style={{
+                    display: 'flex', alignItems: 'center', gap: 8, padding: '9px 18px',
+                    borderRadius: 100, flexShrink: 0, whiteSpace: 'nowrap',
+                    border: '1px solid rgba(34,197,94,0.15)',
+                    background: 'rgba(34,197,94,0.04)',
+                  }}>
+                    <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#22c55e', flexShrink: 0 }} />
+                    <span style={{ fontSize: 12, fontWeight: 600, color: 'rgba(255,255,255,0.75)', letterSpacing: '0.03em' }}>{label}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Row 2 — RTL */}
+              <div style={{ display: 'flex', gap: 10, animation: 'fintech-features-rtl 30s linear infinite', width: 'max-content' }}>
+                {[
+                  'DeFi Integration', 'GDPR Compliance', 'Biometric Auth',
+                  'Blockchain Ledger', 'Smart Contracts', 'Risk Analytics',
+                  // Duplicate
+                  'DeFi Integration', 'GDPR Compliance', 'Biometric Auth',
+                  'Blockchain Ledger', 'Smart Contracts', 'Risk Analytics',
+                ].map((label, i) => (
+                  <div key={i} style={{
+                    display: 'flex', alignItems: 'center', gap: 8, padding: '9px 18px',
+                    borderRadius: 100, flexShrink: 0, whiteSpace: 'nowrap',
+                    border: '1px solid rgba(34,197,94,0.12)',
+                    background: 'rgba(34,197,94,0.025)',
+                  }}>
+                    <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'rgba(34,197,94,0.6)', flexShrink: 0 }} />
+                    <span style={{ fontSize: 12, fontWeight: 600, color: 'rgba(255,255,255,0.6)', letterSpacing: '0.03em' }}>{label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
             <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 320px), 1fr))', gap: '1.5rem' }}>
               {SERVICES.map(s => (
                 <Card key={s.title}>
@@ -376,8 +437,14 @@ export default function FintechPageClient() {
 
         {/* ── PROCESS ── */}
         <section className="section-padding" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+          <style>{`
+            @keyframes fintech-process-marquee {
+              0% { transform: translateX(0); }
+              100% { transform: translateX(-50%); }
+            }
+          `}</style>
           <div className="cb-container">
-            <div className="reveal" style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
+            <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
               <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.9rem)', fontWeight: 800, marginBottom: '1rem', letterSpacing: '-0.02em' }}>
                 Our Fintech Development Process
               </h2>
@@ -385,6 +452,42 @@ export default function FintechPageClient() {
                 A structured, compliance-first process designed for regulated financial products.
               </p>
             </div>
+
+            {/* ── PROCESS MARQUEE STRIP ── */}
+            <div style={{ position: 'relative', overflow: 'hidden', marginBottom: '3rem' }}>
+              {/* Left fade mask */}
+              <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 80, background: 'linear-gradient(to right, #000000, transparent)', zIndex: 2, pointerEvents: 'none' }} />
+              {/* Right fade mask */}
+              <div style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 80, background: 'linear-gradient(to left, #000000, transparent)', zIndex: 2, pointerEvents: 'none' }} />
+              <div style={{ display: 'flex', gap: 12, animation: 'fintech-process-marquee 25s linear infinite', width: 'max-content' }}>
+                {[
+                  { num: '01', label: 'Discovery & Compliance Audit' },
+                  { num: '02', label: 'Architecture Design' },
+                  { num: '03', label: 'Agile Development' },
+                  { num: '04', label: 'Security Testing' },
+                  { num: '05', label: 'Regulatory Review' },
+                  { num: '06', label: 'Launch & Monitoring' },
+                  // Duplicate for seamless loop
+                  { num: '01', label: 'Discovery & Compliance Audit' },
+                  { num: '02', label: 'Architecture Design' },
+                  { num: '03', label: 'Agile Development' },
+                  { num: '04', label: 'Security Testing' },
+                  { num: '05', label: 'Regulatory Review' },
+                  { num: '06', label: 'Launch & Monitoring' },
+                ].map((step, i) => (
+                  <div key={i} style={{
+                    display: 'flex', alignItems: 'center', gap: 10, padding: '10px 20px',
+                    borderRadius: 100, flexShrink: 0, whiteSpace: 'nowrap',
+                    border: '1px solid rgba(34,197,94,0.15)',
+                    background: 'rgba(34,197,94,0.04)',
+                  }}>
+                    <span style={{ fontSize: 11, fontWeight: 800, color: '#22c55e', letterSpacing: '0.08em' }}>{step.num}</span>
+                    <span style={{ fontSize: 12, fontWeight: 600, color: 'rgba(255,255,255,0.7)', letterSpacing: '0.03em' }}>{step.label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
             <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 300px), 1fr))', gap: '1.5rem' }}>
               {PROCESS.map(p => (
                 <div key={p.step} style={{ border: '1px solid rgba(255,255,255,0.06)', borderRadius: 28, padding: '2rem', background: 'rgba(255,255,255,0.015)' }}>

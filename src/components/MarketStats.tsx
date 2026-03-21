@@ -1,14 +1,60 @@
 'use client';
 
-import { useRef, useEffect, useState, useCallback } from 'react';
+import { useRef, useEffect, useState } from 'react';
 
-const stats = [
-  { value: 500, suffix: '+', label: 'Projects Delivered', icon: '\u{1F680}' },
-  { value: 150, suffix: '+', label: 'Clients Worldwide', icon: '\u{1F30D}' },
-  { value: 98, suffix: '%', label: 'Client Retention Rate', icon: '\u{1F91D}' },
-  { value: 50, suffix: 'M+', label: 'Users on Our Platforms', icon: '\u{1F4C8}' },
+/* ─── Company stats (animated counters) ───────────────────────────── */
+const primaryStats = [
+  {
+    value: 500,
+    suffix: '+',
+    label: 'Projects Delivered',
+    context: 'Across web, mobile & AI',
+    icon: '🚀',
+  },
+  {
+    value: 150,
+    suffix: '+',
+    label: 'Clients Worldwide',
+    context: 'From startups to enterprises',
+    icon: '🌍',
+  },
+  {
+    value: 98,
+    suffix: '%',
+    label: 'Client Retention Rate',
+    context: 'Partners who stay long-term',
+    icon: '🤝',
+  },
+  {
+    value: 50,
+    suffix: 'M+',
+    label: 'Users on Our Platforms',
+    context: 'Real users, real impact',
+    icon: '📈',
+  },
 ];
 
+/* ─── Market stats (bottom row) ───────────────────────────────────── */
+const marketStats = [
+  { value: '$522B', label: 'App Market by 2027', context: 'Global mobile economy' },
+  { value: '230B', label: 'Downloads per Year', context: 'Consumer app installs' },
+  { value: '13.4%', label: 'CAGR Growth Rate', context: 'Fastest growing tech sector' },
+  { value: '6.3B', label: 'Smartphone Users', context: 'Addressable global audience' },
+];
+
+/* ─── Marquee items ────────────────────────────────────────────────── */
+const marqueeItems = [
+  '📱 $522B Mobile App Market by 2027',
+  '🚀 230B App Downloads/Year',
+  '💰 $935B App Revenue by 2026',
+  '📈 13.4% CAGR Growth',
+  '🤖 AI in 75% of Apps by 2026',
+  '🌐 6.3B Smartphone Users',
+  '☁️ 90% Apps Use Cloud',
+  '🔒 Cybersecurity Top Priority',
+];
+
+/* ─── Animated counter ─────────────────────────────────────────────── */
 function AnimatedCounter({
   value,
   suffix,
@@ -23,15 +69,13 @@ function AnimatedCounter({
 
   useEffect(() => {
     if (!trigger) return;
-
     const duration = 2000;
     let start: number | null = null;
 
-    function step(timestamp: number) {
-      if (start === null) start = timestamp;
-      const elapsed = timestamp - start;
+    function step(ts: number) {
+      if (start === null) start = ts;
+      const elapsed = ts - start;
       const progress = Math.min(elapsed / duration, 1);
-      // ease-out cubic
       const eased = 1 - Math.pow(1 - progress, 3);
       setDisplay(Math.floor(eased * value));
       if (progress < 1) {
@@ -55,10 +99,12 @@ function AnimatedCounter({
   );
 }
 
+/* ─── Main component ───────────────────────────────────────────────── */
 export default function MarketStats() {
   const sectionRef = useRef<HTMLElement>(null);
   const [triggered, setTriggered] = useState(false);
 
+  /* Trigger counters when section enters viewport */
   useEffect(() => {
     const el = sectionRef.current;
     if (!el) return;
@@ -69,12 +115,13 @@ export default function MarketStats() {
           io.disconnect();
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.15 }
     );
     io.observe(el);
     return () => io.disconnect();
   }, []);
 
+  /* Scroll-reveal for .reveal elements */
   useEffect(() => {
     const el = sectionRef.current;
     if (!el) return;
@@ -83,187 +130,265 @@ export default function MarketStats() {
         entries.forEach((e) => {
           if (e.isIntersecting) e.target.classList.add('visible');
         }),
-      { threshold: 0.1 }
+      { threshold: 0.08 }
     );
     el.querySelectorAll('.reveal').forEach((node) => io.observe(node));
     return () => io.disconnect();
   }, []);
 
-  const sectionStyle: React.CSSProperties = {
-    background: '#000000',
-    borderTop: '1px solid rgba(255,255,255,0.06)',
-    position: 'relative',
-    overflow: 'hidden',
-  };
-
-  const bgGlowStyle: React.CSSProperties = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%,-50%)',
-    width: 900,
-    height: 600,
-    background:
-      'radial-gradient(ellipse, rgba(34,197,94,0.04) 0%, transparent 65%)',
-    pointerEvents: 'none',
-  };
-
-  const headerSubStyle: React.CSSProperties = {
-    fontSize: 11,
-    fontWeight: 700,
-    letterSpacing: '0.12em',
-    textTransform: 'uppercase',
-    color: 'rgba(255,255,255,0.25)',
-    marginBottom: 20,
-  };
-
-  const headerH2Style: React.CSSProperties = {
-    fontSize: 'clamp(2rem, 4vw, 3.5rem)',
-    fontWeight: 500,
-    color: '#ffffff',
-    letterSpacing: '-0.04em',
-    lineHeight: 1.1,
-    margin: '0 auto',
-    maxWidth: 600,
-  };
-
-  const gridStyle: React.CSSProperties = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(4, 1fr)',
-    gap: 'clamp(16px, 2.5vw, 24px)',
-    maxWidth: 1100,
-    margin: '0 auto',
-  };
-
-  const cardBase: React.CSSProperties = {
-    position: 'relative',
-    textAlign: 'center',
-    padding: 'clamp(36px, 5vw, 52px) 24px clamp(32px, 4vw, 44px)',
-    border: '1px solid rgba(255,255,255,0.07)',
-    borderRadius: 28,
-    background: 'rgba(255,255,255,0.02)',
-    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-    overflow: 'hidden',
-    cursor: 'default',
-  };
-
-  const accentLineStyle: React.CSSProperties = {
-    position: 'absolute',
-    top: 0,
-    left: '50%',
-    transform: 'translateX(-50%)',
-    width: '60%',
-    height: 2,
-    background: 'linear-gradient(90deg, transparent, #22c55e, transparent)',
-    borderRadius: 2,
-  };
-
-  const iconStyle: React.CSSProperties = {
-    fontSize: 'clamp(1.6rem, 3vw, 2rem)',
-    marginBottom: 16,
-    display: 'block',
-    filter: 'grayscale(0.3)',
-  };
-
-  const numberStyle: React.CSSProperties = {
-    fontSize: 'clamp(2.5rem, 5vw, 3.8rem)',
-    fontWeight: 600,
-    color: '#ffffff',
-    letterSpacing: '-0.04em',
-    lineHeight: 1,
-  };
-
-  const labelStyle: React.CSSProperties = {
-    fontSize: 13,
-    fontWeight: 600,
-    color: 'rgba(255,255,255,0.35)',
-    letterSpacing: '0.04em',
-    marginTop: 14,
-    textTransform: 'uppercase',
-  };
-
   return (
     <>
       <style>{`
-        @media (max-width: 1024px) {
-          .ms-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        /* ── Keyframes ── */
+        @keyframes market-marquee {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
         }
-        @media (max-width: 600px) {
-          .ms-grid { grid-template-columns: 1fr !important; }
+
+        /* ── Marquee strip ── */
+        .ms-marquee-track {
+          display: flex;
+          width: max-content;
+          animation: market-marquee 30s linear infinite;
+          will-change: transform;
+        }
+        .ms-marquee-track:hover {
+          animation-play-state: paused;
+        }
+        .ms-marquee-wrap {
+          position: relative;
+          overflow: hidden;
+          mask-image: linear-gradient(
+            90deg,
+            transparent 0%,
+            #000 8%,
+            #000 92%,
+            transparent 100%
+          );
+          -webkit-mask-image: linear-gradient(
+            90deg,
+            transparent 0%,
+            #000 8%,
+            #000 92%,
+            transparent 100%
+          );
+        }
+
+        /* ── Primary stat cards (border-bottom only) ── */
+        .ms-primary-card {
+          position: relative;
+          text-align: center;
+          padding: clamp(32px,5vw,52px) clamp(16px,3vw,32px) clamp(28px,4vw,44px);
+          border-bottom: 1px solid rgba(255,255,255,0.10);
+          transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+          cursor: default;
+        }
+        .ms-primary-card:not(:last-child) {
+          border-right: 1px solid rgba(255,255,255,0.06);
+        }
+        .ms-primary-card:hover .ms-num {
+          text-shadow: 0 0 24px rgba(34,197,94,0.55), 0 0 60px rgba(34,197,94,0.25);
+        }
+        .ms-primary-card:hover {
+          background: rgba(34,197,94,0.03);
+        }
+
+        /* ── Market stat cards (dark bordered) ── */
+        .ms-market-card {
+          padding: clamp(24px,3.5vw,36px) clamp(20px,3vw,32px);
+          border: 1px solid rgba(255,255,255,0.08);
+          border-radius: 20px;
+          background: rgba(255,255,255,0.015);
+          transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+          cursor: default;
+        }
+        .ms-market-card:hover {
+          border-color: rgba(34,197,94,0.22);
+          background: rgba(34,197,94,0.035);
+          transform: translateY(-4px);
+        }
+
+        /* ── Responsive grids ── */
+        @media (max-width: 900px) {
+          .ms-primary-grid { grid-template-columns: repeat(2,1fr) !important; }
+          .ms-primary-card:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.06) !important; }
+          .ms-primary-card:nth-child(even) { border-right: none !important; }
+        }
+        @media (max-width: 540px) {
+          .ms-primary-grid { grid-template-columns: 1fr !important; }
+          .ms-primary-card { border-right: none !important; }
+          .ms-market-grid  { grid-template-columns: repeat(2,1fr) !important; }
         }
       `}</style>
 
       <section
         ref={sectionRef}
         className="section-padding"
-        style={sectionStyle}
+        style={{
+          background: '#000000',
+          borderTop: '1px solid rgba(255,255,255,0.06)',
+          position: 'relative',
+          overflow: 'hidden',
+        }}
       >
-        <div style={bgGlowStyle} />
-
+        {/* Ambient glow */}
         <div
-          className="cb-container"
-          style={{ position: 'relative', zIndex: 1 }}
-        >
-          {/* Header */}
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            top: '40%',
+            left: '50%',
+            transform: 'translate(-50%,-50%)',
+            width: 1000,
+            height: 700,
+            background:
+              'radial-gradient(ellipse, rgba(34,197,94,0.05) 0%, transparent 65%)',
+            pointerEvents: 'none',
+          }}
+        />
+
+        <div className="cb-container" style={{ position: 'relative', zIndex: 1 }}>
+
+          {/* ── Section header ───────────────────────────────────────── */}
           <div
             className="reveal"
-            style={{
-              textAlign: 'center',
-              marginBottom: 'clamp(40px, 6vw, 72px)',
-            }}
+            style={{ textAlign: 'center', marginBottom: 'clamp(32px,5vw,56px)' }}
           >
-            <div style={headerSubStyle}>By the Numbers</div>
-            <h2 style={headerH2Style}>
-              Trusted by{' '}
+            {/* Pill label */}
+            <div
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 8,
+                padding: '6px 16px',
+                border: '1px solid rgba(34,197,94,0.3)',
+                borderRadius: 999,
+                background: 'rgba(34,197,94,0.07)',
+                marginBottom: 24,
+              }}
+            >
               <span
                 style={{
-                  background: 'linear-gradient(135deg, #22c55e, #4ade80)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
+                  width: 6,
+                  height: 6,
+                  borderRadius: '50%',
+                  background: '#22c55e',
+                  display: 'inline-block',
+                }}
+              />
+              <span
+                style={{
+                  fontSize: 11,
+                  fontWeight: 700,
+                  letterSpacing: '0.14em',
+                  textTransform: 'uppercase',
+                  color: '#22c55e',
                 }}
               >
-                500+
-              </span>{' '}
-              Businesses
+                Market Intelligence
+              </span>
+            </div>
+
+            {/* Headline */}
+            <h2
+              style={{
+                fontSize: 'clamp(2rem, 4.5vw, 3.75rem)',
+                fontWeight: 500,
+                letterSpacing: '-0.04em',
+                lineHeight: 1.1,
+                margin: '0 auto',
+                maxWidth: 640,
+                color: '#ffffff',
+              }}
+            >
+              The Mobile App Market
               <br />
-              <span style={{ color: 'rgba(255,255,255,0.2)' }}>Worldwide.</span>
+              <span style={{ color: 'rgba(255,255,255,0.18)' }}>Is Exploding.</span>
             </h2>
           </div>
 
-          {/* Stats Grid */}
-          <div className="ms-grid" style={gridStyle}>
-            {stats.map((stat, i) => (
+          {/* ── Marquee strip ─────────────────────────────────────────── */}
+          <div
+            className="reveal ms-marquee-wrap"
+            style={{ marginBottom: 'clamp(40px,6vw,72px)' }}
+          >
+            <div className="ms-marquee-track">
+              {/* Render twice for seamless loop */}
+              {[...marqueeItems, ...marqueeItems].map((item, i) => (
+                <span
+                  key={i}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    whiteSpace: 'nowrap',
+                    padding: '10px 0',
+                  }}
+                >
+                  <span
+                    style={{
+                      fontSize: 13,
+                      fontWeight: 600,
+                      color: 'rgba(255,255,255,0.65)',
+                      letterSpacing: '0.01em',
+                    }}
+                  >
+                    {item}
+                  </span>
+                  <span
+                    style={{
+                      display: 'inline-block',
+                      width: 4,
+                      height: 4,
+                      borderRadius: '50%',
+                      background: '#22c55e',
+                      margin: '0 28px',
+                      flexShrink: 0,
+                    }}
+                  />
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* ── Primary stats — 4 columns, border-bottom style ────────── */}
+          <div
+            className="ms-primary-grid reveal"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(4, 1fr)',
+              borderTop: '1px solid rgba(255,255,255,0.06)',
+              marginBottom: 'clamp(40px,6vw,64px)',
+            }}
+          >
+            {primaryStats.map((stat, i) => (
               <div
                 key={stat.label}
-                className={`reveal reveal-d${i + 1}`}
-                style={cardBase}
-                onMouseEnter={(e) => {
-                  const el = e.currentTarget;
-                  el.style.borderColor = 'rgba(34,197,94,0.25)';
-                  el.style.background = 'rgba(34,197,94,0.04)';
-                  el.style.transform = 'translateY(-6px)';
-                  el.style.boxShadow =
-                    '0 0 30px rgba(34,197,94,0.08), 0 8px 32px rgba(0,0,0,0.3)';
-                }}
-                onMouseLeave={(e) => {
-                  const el = e.currentTarget;
-                  el.style.borderColor = 'rgba(255,255,255,0.07)';
-                  el.style.background = 'rgba(255,255,255,0.02)';
-                  el.style.transform = '';
-                  el.style.boxShadow = '';
-                }}
+                className={`ms-primary-card reveal reveal-d${i + 1}`}
               >
-                {/* Green accent line */}
-                <div style={accentLineStyle} />
-
                 {/* Icon */}
-                <span style={iconStyle} aria-hidden="true">
+                <div
+                  style={{
+                    fontSize: 'clamp(1.4rem,2.5vw,1.8rem)',
+                    marginBottom: 16,
+                    filter: 'grayscale(0.2)',
+                  }}
+                  aria-hidden="true"
+                >
                   {stat.icon}
-                </span>
+                </div>
 
                 {/* Animated number */}
-                <div style={numberStyle}>
+                <div
+                  className="ms-num"
+                  style={{
+                    fontSize: 'clamp(2.5rem,5vw,4rem)',
+                    fontWeight: 800,
+                    color: '#22c55e',
+                    letterSpacing: '-0.04em',
+                    lineHeight: 1,
+                    transition: 'text-shadow 0.35s ease',
+                  }}
+                >
                   <AnimatedCounter
                     value={stat.value}
                     suffix={stat.suffix}
@@ -272,10 +397,101 @@ export default function MarketStats() {
                 </div>
 
                 {/* Label */}
-                <div style={labelStyle}>{stat.label}</div>
+                <div
+                  style={{
+                    fontSize: 12,
+                    fontWeight: 700,
+                    color: 'rgba(255,255,255,0.5)',
+                    letterSpacing: '0.07em',
+                    textTransform: 'uppercase',
+                    marginTop: 12,
+                  }}
+                >
+                  {stat.label}
+                </div>
+
+                {/* Context */}
+                <div
+                  style={{
+                    fontSize: 12,
+                    color: 'rgba(255,255,255,0.25)',
+                    marginTop: 6,
+                    letterSpacing: '0.01em',
+                  }}
+                >
+                  {stat.context}
+                </div>
               </div>
             ))}
           </div>
+
+          {/* ── Market stats — dark bordered cards (bottom row) ─────────── */}
+          <div
+            className="ms-market-grid reveal"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(4, 1fr)',
+              gap: 'clamp(12px,2vw,20px)',
+            }}
+          >
+            {marketStats.map((stat, i) => (
+              <div
+                key={stat.label}
+                className={`ms-market-card reveal reveal-d${i + 1}`}
+              >
+                {/* Value */}
+                <div
+                  style={{
+                    fontSize: 'clamp(1.6rem,3vw,2.25rem)',
+                    fontWeight: 800,
+                    color: '#ffffff',
+                    letterSpacing: '-0.03em',
+                    lineHeight: 1,
+                    marginBottom: 10,
+                  }}
+                >
+                  {stat.value}
+                </div>
+
+                {/* Label */}
+                <div
+                  style={{
+                    fontSize: 13,
+                    fontWeight: 600,
+                    color: 'rgba(255,255,255,0.55)',
+                    letterSpacing: '0.02em',
+                    marginBottom: 6,
+                  }}
+                >
+                  {stat.label}
+                </div>
+
+                {/* Context */}
+                <div
+                  style={{
+                    fontSize: 11,
+                    color: 'rgba(255,255,255,0.25)',
+                    letterSpacing: '0.01em',
+                  }}
+                >
+                  {stat.context}
+                </div>
+
+                {/* Bottom accent line */}
+                <div
+                  style={{
+                    marginTop: 16,
+                    height: 2,
+                    borderRadius: 2,
+                    background:
+                      'linear-gradient(90deg, #22c55e 0%, rgba(34,197,94,0.1) 100%)',
+                    width: '40%',
+                  }}
+                />
+              </div>
+            ))}
+          </div>
+
         </div>
       </section>
     </>

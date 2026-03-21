@@ -30,15 +30,15 @@ const tocSections = [
   { id: 'ip-nda', label: 'IP & NDA Considerations', emoji: '📝' },
   { id: 'managing-blended', label: 'Managing Blended Teams', emoji: '👥' },
   { id: 'best-companies', label: 'Best Staff Aug Companies', emoji: '🏆' },
-  { id: 'roi-calculator', label: 'ROI Calculator', emoji: '📊' },
+  { id: 'roi-calculator', label: 'ROI & Cost Savings', emoji: '📊' },
   { id: 'codazz-offering', label: 'Codazz Staff Aug', emoji: '🚀' },
   { id: 'faq', label: 'FAQ', emoji: '❓' },
 ];
 
 const relatedPosts = [
   { slug: 'how-to-hire-remote-developers', title: 'How to Hire Remote Developers in 2026', category: 'Hiring', readTime: '18 min' },
-  { slug: 'in-house-vs-outsourcing-development', title: 'In-House vs Outsourcing Development 2026', category: 'Business', readTime: '20 min' },
-  { slug: 'how-much-does-app-development-cost-2026', title: 'How Much Does App Development Cost in 2026?', category: 'Business', readTime: '12 min' },
+  { slug: 'technical-interview-guide-2026', title: 'Technical Interview Guide 2026', category: 'Hiring', readTime: '15 min' },
+  { slug: 'how-much-does-app-development-cost-2026', title: 'App Development Cost in 2026', category: 'Business', readTime: '12 min' },
 ];
 
 const tableWrapStyle: React.CSSProperties = {
@@ -118,8 +118,8 @@ export default function StaffAugmentationGuideClient() {
               <span className="reveal reveal-d1" style={{
                 fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
                 background: 'rgba(34,197,94,0.12)', color: accentColor, padding: '5px 14px', borderRadius: 100,
-              }}>Business</span>
-              <span className="reveal reveal-d1" style={{ fontSize: 13, color: 'rgba(255,255,255,0.25)' }}>March 20, 2026</span>
+              }}>Hiring</span>
+              <span className="reveal reveal-d1" style={{ fontSize: 13, color: 'rgba(255,255,255,0.25)' }}>March 21, 2026</span>
               <span style={{ color: 'rgba(255,255,255,0.4)', margin: '0 8px' }}>&middot;</span>
               <span style={{ color: 'rgba(255,255,255,0.4)' }}>Updated Mar 2026</span>
               <span className="reveal reveal-d1" style={{ fontSize: 13, color: 'rgba(255,255,255,0.25)' }}>&middot;</span>
@@ -127,7 +127,7 @@ export default function StaffAugmentationGuideClient() {
                 fontSize: 13, color: 'rgba(255,255,255,0.25)', display: 'inline-flex', alignItems: 'center', gap: 6,
               }}>
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
-                18 min read
+                20 min read
               </span>
             </div>
 
@@ -135,14 +135,14 @@ export default function StaffAugmentationGuideClient() {
               fontSize: 'clamp(2.4rem, 5vw, 4rem)', fontWeight: 800, color: '#ffffff',
               letterSpacing: '-0.04em', lineHeight: 1.1, marginBottom: 24, maxWidth: 900,
             }}>
-              Staff Augmentation Guide 2026: Scale Your Dev Team Fast
+              Staff Augmentation Guide 2026: How to Scale Your Dev Team Fast
             </h1>
 
             <p className="reveal reveal-d3" style={{
               fontSize: 20, color: 'rgba(255,255,255,0.5)', lineHeight: 1.65,
               maxWidth: 720, marginBottom: 48, fontWeight: 400,
             }}>
-              When to use staff augmentation vs outsourcing vs managed teams, how to run a skill gap analysis, what it costs by country, and how to manage a blended team without losing your mind.
+              When to use staff augmentation vs outsourcing, how to find and vet engineers, what contracts you need, real rate benchmarks across four regions, and how to make blended teams ship on time.
             </p>
 
             {/* Author + Share */}
@@ -191,13 +191,13 @@ export default function StaffAugmentationGuideClient() {
                 {/* Intro */}
                 <div className="reveal" style={{ marginBottom: 48 }}>
                   <p style={{ fontSize: 20, color: '#ffffff', fontWeight: 500, marginBottom: 24 }}>
-                    Your product roadmap just expanded. Your team does not have the bandwidth. You need senior React engineers in 3 weeks, not 3 months. This is the exact scenario staff augmentation was built for.
+                    You have a sprint that needs three more engineers, a product deadline that cannot move, and a hiring pipeline that takes four months. What do you do? In 2026, the answer for hundreds of fast-growing startups and scale-ups is staff augmentation — and it is the fastest way to extend your development capacity without rebuilding your hiring process from scratch.
                   </p>
                   <p>
-                    <strong style={{ color: '#ffffff' }}>Staff augmentation lets you add pre-vetted external engineers directly to your existing team</strong> — they work under your processes, in your tools, following your tech standards. Unlike outsourcing, you control the day-to-day work. Unlike full-time hiring, you can scale back when the sprint is done.
+                    <strong style={{ color: '#ffffff' }}>This guide is written for founders, CTOs, and VP Engineerings who need to scale their development team quickly, intelligently, and with full control over quality, IP, and cost.</strong>
                   </p>
                   <p>
-                    But staff augmentation is often misunderstood, misapplied, and mismanaged. This guide tells you when it works, when it does not, what it costs, and how to run a blended team without creating a two-tier culture that destroys morale.
+                    At Codazz, we have provided augmented engineering staff to startups and scale-ups from Edmonton to London to Singapore. We have seen every mistake made in this process — and every pattern that works. Here is what we know.
                   </p>
                 </div>
 
@@ -212,19 +212,19 @@ export default function StaffAugmentationGuideClient() {
                   </h2>
                   <ul style={{ paddingLeft: 20, margin: 0 }}>
                     <li style={{ marginBottom: 12, color: 'rgba(255,255,255,0.85)' }}>
-                      <strong style={{ color: '#ffffff' }}>Staff aug is not outsourcing</strong> — augmented engineers join your team, follow your processes, and report to your leads. Outsourcing delegates the entire workflow to an external partner.
+                      <strong style={{ color: '#ffffff' }}>Staff aug is not outsourcing</strong> — augmented engineers work inside your team, under your management, following your processes. Outsourcing hands the work to an external team entirely.
                     </li>
                     <li style={{ marginBottom: 12, color: 'rgba(255,255,255,0.85)' }}>
-                      <strong style={{ color: '#ffffff' }}>Best use case: filling a specific, time-bounded skill gap</strong> — you have a team and a clear process but are missing a skill (e.g., senior DevOps for a migration, ML engineer for a feature).
+                      <strong style={{ color: '#ffffff' }}>India senior engineers cost $25–$55/hr vs $100–$180/hr in the US</strong> — with equivalent or better output quality when properly onboarded and managed.
                     </li>
                     <li style={{ marginBottom: 12, color: 'rgba(255,255,255,0.85)' }}>
-                      <strong style={{ color: '#ffffff' }}>Rates range from $25/hr (India) to $150/hr (US senior specialist)</strong> — the sweet spot for quality plus value is $35-$65/hr for senior engineers from India or Eastern Europe.
+                      <strong style={{ color: '#ffffff' }}>You need an IP assignment clause — not just an NDA</strong> — before any augmented engineer writes a single line of code for your product.
                     </li>
                     <li style={{ marginBottom: 12, color: 'rgba(255,255,255,0.85)' }}>
-                      <strong style={{ color: '#ffffff' }}>IP and NDA must be explicit before day one</strong> — augmented staff are often contractors. Without signed IP assignment agreements, the code they write may not legally belong to you.
+                      <strong style={{ color: '#ffffff' }}>Staff aug works best when you have a strong technical lead internally</strong> — augmented engineers need direction, code review, and integration into your engineering culture. Without a tech lead, managed outsourcing is a better fit.
                     </li>
                     <li style={{ color: 'rgba(255,255,255,0.85)' }}>
-                      <strong style={{ color: '#ffffff' }}>Two-tier culture kills blended teams</strong> — the number-one failure mode is treating augmented staff as second-class citizens. Include them in standups, retros, and Slack the same as permanent staff.
+                      <strong style={{ color: '#ffffff' }}>4 hours of daily time zone overlap is the minimum viable async setup</strong> — India-to-EST overlap (shifted schedule) and LATAM-to-EST are the two highest-value time zone pairings for North American companies.
                     </li>
                   </ul>
                 </div>
@@ -234,68 +234,72 @@ export default function StaffAugmentationGuideClient() {
                   fontSize: 'clamp(1.6rem, 3vw, 2rem)', fontWeight: 700, color: '#ffffff',
                   marginTop: 64, marginBottom: 12, letterSpacing: '-0.02em',
                 }}>What Is Staff Augmentation?</h2>
-                <p className="reveal" style={{ marginBottom: 24 }}>
-                  Staff augmentation is a hiring model where you bring in external developers who work as part of your internal team. They use your tools, follow your processes, attend your standups, and report to your engineering leads — but they are employed or contracted by a third-party agency.
-                </p>
-                <p className="reveal" style={{ marginBottom: 32 }}>
-                  Think of it like a skilled trade contractor working on your construction project. They have their own employer (the agency), they bring specialized skills, and they leave when the work is done. But while they are on site, they follow your foreman, use your blueprints, and work alongside your full-time crew.
+                <p className="reveal" style={{ marginBottom: 24, color: 'rgba(255,255,255,0.5)' }}>
+                  Staff augmentation is a hiring model where you bring in external engineers who work as an extension of your in-house team — under your direction, following your processes, and integrated directly into your sprint cycles.
                 </p>
 
-                <div className="reveal" style={{
-                  background: 'rgba(255,255,255,0.03)', borderRadius: 28, padding: 24, marginBottom: 40,
-                  border: '1px solid rgba(255,255,255,0.06)',
-                }}>
-                  <h3 style={{ fontSize: 17, fontWeight: 700, color: '#ffffff', marginBottom: 16 }}>Three Varieties of Staff Augmentation</h3>
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 16 }}>
-                    {[
-                      { type: 'Commodity Augmentation', desc: 'Adding junior/mid developers for bandwidth. The augmented engineers execute against defined tickets with supervision from your leads.', color: '#61dafb' },
-                      { type: 'Skill-Based Augmentation', desc: 'Bringing in a specialist your team lacks — a machine learning engineer, a blockchain developer, a principal architect. High expertise, short engagement.', color: accentColor },
-                      { type: 'Dedicated Augmentation', desc: 'Long-term augmented engineers who become effectively full-time for 1-2 years. They have deep product knowledge but retain the flexibility of a contractor model.', color: '#ffc864' },
-                    ].map((item) => (
-                      <div key={item.type} style={{ background: 'rgba(0,0,0,0.3)', borderRadius: 16, padding: 20 }}>
-                        <h4 style={{ fontSize: 15, fontWeight: 700, color: item.color, margin: '0 0 8px' }}>{item.type}</h4>
-                        <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.7)', margin: 0, lineHeight: 1.6 }}>{item.desc}</p>
-                      </div>
-                    ))}
-                  </div>
+                <div className="reveal" style={{ marginBottom: 32 }}>
+                  <p style={{ marginBottom: 20 }}>
+                    Unlike outsourcing, where you hand a project to an external team and wait for deliverables, augmented engineers are embedded in your workflow. They attend your standups, commit to your GitHub repositories, work in your Jira boards, and report to your tech lead. The difference is operational, not contractual.
+                  </p>
+                  <p style={{ marginBottom: 20 }}>
+                    Staff augmentation became the default scaling model for fast-moving product teams because it solves a specific problem: <strong style={{ color: '#ffffff' }}>you need engineering capacity faster than traditional hiring allows</strong>, but you do not want to hand over product control to an external vendor.
+                  </p>
+                  <p>
+                    The model has been normalized by the rise of remote-first engineering culture. In 2026, an augmented engineer in Chandigarh who attends your Zoom standup and submits PRs to your GitHub is, operationally, indistinguishable from a remote hire in Austin. The only difference is the contracting structure and the speed at which you can scale up or down.
+                  </p>
+                </div>
+
+                <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 16, marginBottom: 40 }}>
+                  {[
+                    { label: 'Average time to first commit', value: '3–7 days', color: accentColor },
+                    { label: 'Cost vs hiring in-house', value: '55–70% less', color: '#61dafb' },
+                    { label: 'Contract notice period', value: '2–4 weeks', color: '#ffc864' },
+                    { label: 'Typical engagement length', value: '3–18 months', color: '#a78bfa' },
+                  ].map((stat) => (
+                    <div key={stat.label} style={{ background: 'rgba(255,255,255,0.03)', borderRadius: 16, padding: 20, border: '1px solid rgba(255,255,255,0.06)', textAlign: 'center' }}>
+                      <p style={{ fontSize: 28, fontWeight: 800, color: stat.color, margin: '0 0 6px' }}>{stat.value}</p>
+                      <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', margin: 0, lineHeight: 1.4 }}>{stat.label}</p>
+                    </div>
+                  ))}
                 </div>
 
                 {/* STAFF AUG VS OUTSOURCING */}
                 <h2 id="staff-aug-vs-outsourcing" className="reveal" style={{
                   fontSize: 'clamp(1.6rem, 3vw, 2rem)', fontWeight: 700, color: '#ffffff',
                   marginTop: 64, marginBottom: 12, letterSpacing: '-0.02em',
-                }}>Staff Augmentation vs Outsourcing vs Managed Teams</h2>
+                }}>Staff Aug vs Outsourcing vs Managed Services</h2>
                 <p className="reveal" style={{ marginBottom: 24, color: 'rgba(255,255,255,0.5)' }}>
-                  These three models are often confused. They have very different risk profiles, cost structures, and control levels.
+                  These three models are often confused — and choosing the wrong one for your situation is a $100K+ mistake. Here is the breakdown.
                 </p>
 
                 <div className="reveal" style={tableWrapStyle}>
-                  <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 620 }}>
+                  <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 640 }}>
                     <thead>
                       <tr style={headBorder}>
-                        <th style={thStyle}>Dimension</th>
-                        <th style={{ ...thStyle, color: accentColor }}>Staff Augmentation</th>
-                        <th style={{ ...thStyle, color: '#61dafb' }}>Outsourcing</th>
-                        <th style={{ ...thStyle, color: '#ffc864' }}>Managed Team</th>
+                        <th style={{ ...thStyle, width: '22%' }}>Factor</th>
+                        <th style={{ ...thStyle, width: '26%', color: accentColor }}>Staff Augmentation</th>
+                        <th style={{ ...thStyle, width: '26%', color: '#61dafb' }}>Project Outsourcing</th>
+                        <th style={{ ...thStyle, width: '26%', color: '#ffc864' }}>Managed Services</th>
                       </tr>
                     </thead>
                     <tbody>
                       {([
-                        ['Management', 'You manage them', 'Vendor manages', 'Shared management'],
-                        ['Process', 'Your process', 'Vendor process', 'Agreed hybrid process'],
-                        ['Control', 'High — direct', 'Low — indirect', 'Medium — oversight'],
-                        ['Speed to start', '1-3 weeks', '1-4 weeks', '2-4 weeks'],
-                        ['Flexibility', 'Medium (notice periods)', 'Low (project scope)', 'High (elastic team)'],
-                        ['Knowledge retention', 'Leaves with contractor', 'Stays with vendor', 'Shared knowledge base'],
-                        ['Cost', '$35-$150/hr', '$30-$100/hr (all-in)', '$40-$120/hr (managed)'],
-                        ['Best for', 'Skill gaps, bandwidth', 'Full project delivery', 'Ongoing product development'],
-                        ['IP risk', 'Contractor-level (manage via contract)', 'Vendor-level (manage via contract)', 'Lower — structured agreements'],
+                        ['Who manages the work?', 'Your internal team lead', 'The vendor PM', 'The vendor (with your input)'],
+                        ['Control over engineers?', 'High — direct day-to-day', 'Low — via vendor PM', 'Medium — defined SLAs'],
+                        ['Integration with your team?', 'Full — embedded in sprints', 'None — separate team', 'Partial — structured touchpoints'],
+                        ['Speed to start?', '3–7 days', '2–4 weeks', '1–2 weeks'],
+                        ['Best for?', 'Scaling a known stack fast', 'Defined, scoped projects', 'Long-term product support'],
+                        ['Flexibility to scale?', 'High — add/remove devs', 'Low — fixed project scope', 'Medium — contract-bound'],
+                        ['Typical contract length?', 'Month-to-month or 3–12mo', 'Fixed project duration', '6–24 month retainer'],
+                        ['IP ownership?', 'Yours (with IP agreement)', 'Negotiated per project', 'Yours (defined in MSA)'],
+                        ['Cost model?', 'Hourly or monthly per dev', 'Fixed bid or T&M', 'Monthly retainer'],
                       ] as string[][]).map((row, i) => (
                         <tr key={i} style={rowBorder}>
                           <td style={{ ...tdStyle, color: '#ffffff', fontWeight: 600 }}>{row[0]}</td>
-                          <td style={{ ...tdStyle, color: 'rgba(255,255,255,0.8)' }}>{row[1]}</td>
-                          <td style={{ ...tdStyle, color: 'rgba(255,255,255,0.8)' }}>{row[2]}</td>
-                          <td style={{ ...tdStyle, color: 'rgba(255,255,255,0.8)' }}>{row[3]}</td>
+                          <td style={{ ...tdStyle, color: 'rgba(255,255,255,0.75)' }}>{row[1]}</td>
+                          <td style={{ ...tdStyle, color: 'rgba(255,255,255,0.65)' }}>{row[2]}</td>
+                          <td style={{ ...tdStyle, color: 'rgba(255,255,255,0.65)' }}>{row[3]}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -303,79 +307,103 @@ export default function StaffAugmentationGuideClient() {
                 </div>
 
                 <CodazzCallout>
-                  Most of our clients start with staff augmentation for a specific skill gap (e.g., DevOps for a cloud migration), then transition to a managed team model for ongoing product development. Staff aug is a great first step when you want to test working with an external team before committing to a broader engagement.
+                  The right model depends on whether you have a technical lead who can direct external engineers. If you do: staff aug gives you the most control and lowest cost. If you do not have a CTO or senior tech lead: managed services or a full outsourced team is safer — you are paying for the PM and architecture layer you do not have in-house.
                 </CodazzCallout>
 
                 {/* WHEN TO USE */}
                 <h2 id="when-to-use" className="reveal" style={{
                   fontSize: 'clamp(1.6rem, 3vw, 2rem)', fontWeight: 700, color: '#ffffff',
                   marginTop: 64, marginBottom: 12, letterSpacing: '-0.02em',
-                }}>When to Use Staff Augmentation (and When Not To)</h2>
+                }}>When to Use Staff Augmentation</h2>
+                <p className="reveal" style={{ marginBottom: 32, color: 'rgba(255,255,255,0.5)' }}>
+                  Staff augmentation is not always the right tool. Here are the six scenarios where it outperforms every alternative — and three where it will fail you.
+                </p>
+
+                <div className="reveal" style={{ marginBottom: 32 }}>
+                  <h3 style={{ fontSize: 19, fontWeight: 700, color: accentColor, marginBottom: 16 }}>Use Staff Aug When:</h3>
+                  {[
+                    { title: 'Sprint capacity gap with a firm deadline', detail: 'A product milestone is locked in, your current team cannot deliver in time, and traditional hiring takes 3 months. Augmented engineers can be integrated into your sprint within a week and contributing real features within two.' },
+                    { title: 'Specialized skill for a limited window', detail: 'You need a React Native expert for a mobile port, a Solidity developer for a smart contract feature, or a data engineer to build a pipeline — but only for 3 months. Hiring full-time for a finite skill requirement is economically wasteful. Staff aug solves this precisely.' },
+                    { title: 'Scaling after a funding round', detail: 'Post-Series A or Series B, you have capital to deploy but cannot hire 8 engineers in 6 weeks. Staff aug lets you deploy that headcount in 2–3 weeks while your permanent hiring pipeline runs in parallel.' },
+                    { title: 'Parallel workstreams that overwhelm your core team', detail: 'You need to run feature development, a migration project, and infrastructure improvements simultaneously. Your team can own two of three. Augmented engineers run the third with minimal oversight.' },
+                    { title: 'Testing a new technology or market before committing', detail: 'You want to validate whether a Flutter rewrite is worth doing. Bring in an augmented Flutter specialist for 6 weeks to build a proof of concept — without permanently changing your hiring profile.' },
+                    { title: 'Bridge hiring while permanent roles fill', detail: 'You have accepted an offer from a senior engineer who has a 3-month notice period. Staff aug covers the gap so the team does not stall.' },
+                  ].map((item, i) => (
+                    <div key={i} style={{ display: 'flex', gap: 16, marginBottom: 20 }}>
+                      <div style={{ width: 24, height: 24, borderRadius: '50%', background: 'rgba(34,197,94,0.15)', border: '1px solid rgba(34,197,94,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 3, fontSize: 12, color: accentColor, fontWeight: 700 }}>✓</div>
+                      <div>
+                        <p style={{ fontSize: 16, fontWeight: 600, color: '#ffffff', margin: '0 0 6px' }}>{item.title}</p>
+                        <p style={{ margin: 0, fontSize: 14, color: 'rgba(255,255,255,0.65)', lineHeight: 1.6 }}>{item.detail}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
 
                 <div className="reveal" style={{ marginBottom: 40 }}>
-                  <h3 style={{ fontSize: 19, fontWeight: 700, color: accentColor, marginBottom: 16 }}>Use Staff Aug When:</h3>
-                  <ul style={{ paddingLeft: 20, margin: 0, marginBottom: 32 }}>
-                    {[
-                      'You have a specific, identified skill gap your current team lacks (e.g., you need a senior data engineer but your team is all full-stack).',
-                      'You have a time-bounded need — a product launch, a migration, a compliance deadline — after which the requirement diminishes.',
-                      'You have existing senior engineers who can onboard, manage, and review the augmented resource effectively.',
-                      'Your codebase, processes, and documentation are mature enough that a new engineer can get productive in 1-2 weeks.',
-                      'You want to evaluate a specific engineer or team before committing to a full outsourcing engagement.',
-                      'You are in a regulatory environment that requires engineers to follow your internal security and compliance processes.',
-                    ].map((item, i) => (
-                      <li key={i} style={{ marginBottom: 10, color: 'rgba(255,255,255,0.8)', lineHeight: 1.65 }}>{item}</li>
-                    ))}
-                  </ul>
-
-                  <h3 style={{ fontSize: 19, fontWeight: 700, color: '#ef4444', marginBottom: 16 }}>Do NOT Use Staff Aug When:</h3>
-                  <ul style={{ paddingLeft: 20, margin: 0 }}>
-                    {[
-                      'You need someone to run the work independently — augmented staff need direction. They will not architect your product or manage your roadmap.',
-                      'You have no technical lead to manage them — without oversight, augmented engineers produce inconsistent, unmaintainable code.',
-                      'Your codebase is undocumented chaos — onboarding will take 6-8 weeks and the engineer will leave confused.',
-                      'You need permanent institutional knowledge — augmented staff leave, taking everything they know with them.',
-                      'You want to solve a management or culture problem with headcount — adding bodies to a dysfunctional team makes things worse.',
-                    ].map((item, i) => (
-                      <li key={i} style={{ marginBottom: 10, color: 'rgba(255,255,255,0.8)', lineHeight: 1.65 }}>{item}</li>
-                    ))}
-                  </ul>
+                  <h3 style={{ fontSize: 19, fontWeight: 700, color: '#ef4444', marginBottom: 16 }}>Do Not Use Staff Aug When:</h3>
+                  {[
+                    { title: 'You have no internal technical leadership', detail: 'Augmented engineers need someone to define architecture, review PRs, and resolve ambiguous requirements. Without a tech lead, output quality degrades rapidly. Choose managed services instead.' },
+                    { title: 'The work requires deep, multi-year institutional knowledge', detail: 'Core system rewrites, long-term platform architecture decisions, and product strategy work requires engineers who have lived in your codebase. This is full-time hire territory.' },
+                    { title: 'Your codebase has no documentation or tests', detail: 'An undocumented, untested codebase with significant technical debt will cost more to augment than to fix. Augmented engineers onboarding into technical chaos create more problems than they solve. Fix your codebase first.' },
+                  ].map((item, i) => (
+                    <div key={i} style={{ display: 'flex', gap: 16, marginBottom: 20 }}>
+                      <div style={{ width: 24, height: 24, borderRadius: '50%', background: 'rgba(239,68,68,0.15)', border: '1px solid rgba(239,68,68,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: 3, fontSize: 12, color: '#ef4444', fontWeight: 700 }}>✗</div>
+                      <div>
+                        <p style={{ fontSize: 16, fontWeight: 600, color: '#ffffff', margin: '0 0 6px' }}>{item.title}</p>
+                        <p style={{ margin: 0, fontSize: 14, color: 'rgba(255,255,255,0.65)', lineHeight: 1.6 }}>{item.detail}</p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
 
                 {/* SKILL GAP ANALYSIS */}
                 <h2 id="skill-gap-analysis" className="reveal" style={{
                   fontSize: 'clamp(1.6rem, 3vw, 2rem)', fontWeight: 700, color: '#ffffff',
                   marginTop: 64, marginBottom: 12, letterSpacing: '-0.02em',
-                }}>Skill Gap Analysis: Finding What You Actually Need</h2>
+                }}>Skill Gap Analysis: Defining What You Actually Need</h2>
                 <p className="reveal" style={{ marginBottom: 24, color: 'rgba(255,255,255,0.5)' }}>
-                  Before you post a job or call an agency, do a structured skill gap analysis. Most teams skip this and end up hiring the wrong person for the wrong role.
+                  The most expensive mistake in staff augmentation is not vetting engineers poorly — it is hiring the wrong type of engineer in the first place. Run this analysis before you talk to any provider.
                 </p>
 
-                <div className="reveal" style={{ marginBottom: 40 }}>
+                <div className="reveal" style={{ marginBottom: 32 }}>
                   {[
                     {
-                      step: '1. Map Current Capabilities',
-                      details: 'List every engineer on your team. For each, rate their skills in the areas relevant to your roadmap (1-5 scale). Be honest. A senior engineer who has never built a distributed system is not a senior for that use case.',
+                      step: 'Step 1',
+                      title: 'Map your next 90 days of engineering work',
+                      color: accentColor,
+                      detail: 'List every major feature, technical project, and infrastructure task your team needs to deliver in the next quarter. Group them by skill domain: frontend, backend, mobile, DevOps, data, QA. This surfaces exactly where the capacity gaps live.',
                     },
                     {
-                      step: '2. Map Roadmap Requirements',
-                      details: 'For the next 90 days, what technical capabilities are required? Break it down by project: mobile feature X needs React Native expert, infrastructure project Y needs Kubernetes experience, data project Z needs dbt and BigQuery knowledge.',
+                      step: 'Step 2',
+                      title: 'Assess your current team capacity honestly',
+                      color: '#61dafb',
+                      detail: 'How many story points does your current team ship per sprint? How many would these 90-day projects require? The delta is your augmentation target. Be realistic about technical debt overhead — most teams lose 20–30% of sprint capacity to maintenance and unplanned bugs.',
                     },
                     {
-                      step: '3. Identify the Delta',
-                      details: 'Where is your capability map weakest against your roadmap requirements? Rank gaps by: (a) impact on roadmap velocity if unfilled, (b) difficulty to develop internally in the timeline, (c) availability of external talent in that skill.',
+                      step: 'Step 3',
+                      title: 'Identify the specific tech stack requirements',
+                      color: '#ffc864',
+                      detail: 'Do not request "a backend developer." Request "a Node.js engineer with PostgreSQL experience, specifically comfortable with TypeORM and multi-tenant data isolation patterns." The more specific the role definition, the faster the match and the better the output.',
                     },
                     {
-                      step: '4. Define the Role Precisely',
-                      details: 'Do not write a generic senior developer job description. Write a role description tied to specific deliverables: Senior DevOps engineer to migrate three monolith services to Kubernetes on AWS, 3-month engagement, must have production EKS experience. Specificity attracts the right candidates and repels the wrong ones.',
+                      step: 'Step 4',
+                      title: 'Define the seniority level honestly',
+                      color: '#a78bfa',
+                      detail: 'Senior engineers are 3–4x more expensive than juniors but require 5–10x less management overhead. If you need someone who can own a module end-to-end with minimal direction, hire senior. If you have a strong tech lead who can mentor, mid-level augmentation is significantly more cost-effective.',
                     },
                     {
-                      step: '5. Set a Success Definition',
-                      details: 'Before the engagement starts, define what success looks like at 30 days, 60 days, and project completion. This aligns the augmented engineer and gives you an objective basis for evaluation.',
+                      step: 'Step 5',
+                      title: 'Define engagement duration and exit criteria',
+                      color: '#fb923c',
+                      detail: 'Is this a 3-month sprint push or an ongoing 12-month team extension? The answer changes the contracting model, the onboarding investment required, and which provider to use. Define the exit condition upfront — what does "success" look like, and when does this engagement naturally end or convert to a permanent hire?',
                     },
                   ].map((item, i) => (
-                    <div key={i} className="reveal" style={{ marginBottom: 24, paddingLeft: 24, borderLeft: `3px solid ${accentColor}` }}>
-                      <h3 style={{ fontSize: 17, fontWeight: 700, color: accentColor, marginBottom: 8 }}>{item.step}</h3>
-                      <p style={{ margin: 0, color: 'rgba(255,255,255,0.75)', lineHeight: 1.7 }}>{item.details}</p>
+                    <div key={i} className="reveal" style={{ marginBottom: 28, paddingLeft: 24, borderLeft: `3px solid ${item.color}` }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 8 }}>
+                        <span style={{ fontSize: 11, fontWeight: 700, color: item.color, letterSpacing: '0.1em', textTransform: 'uppercase' }}>{item.step}</span>
+                        <h3 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', margin: 0 }}>{item.title}</h3>
+                      </div>
+                      <p style={{ margin: 0, color: 'rgba(255,255,255,0.7)', fontSize: 15, lineHeight: 1.65 }}>{item.detail}</p>
                     </div>
                   ))}
                 </div>
@@ -386,80 +414,107 @@ export default function StaffAugmentationGuideClient() {
                   marginTop: 64, marginBottom: 12, letterSpacing: '-0.02em',
                 }}>Staff Augmentation Rates by Country (2026)</h2>
                 <p className="reveal" style={{ marginBottom: 24, color: 'rgba(255,255,255,0.5)' }}>
-                  Rates vary by seniority, technology stack, and engagement type. These are market rates for senior engineers (5+ years) placed through staff augmentation firms.
+                  Hourly rates for senior engineers (5+ years experience) sourced through staff augmentation providers. These are all-in rates including the provider margin — direct freelancer rates are typically 15–25% lower but require more management overhead on your side.
                 </p>
 
                 <div className="reveal" style={tableWrapStyle}>
-                  <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 580 }}>
+                  <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 600 }}>
                     <thead>
                       <tr style={headBorder}>
-                        <th style={thStyle}>Country / Region</th>
-                        <th style={thStyle}>Rate Range (Senior)</th>
-                        <th style={thStyle}>EST Overlap</th>
-                        <th style={thStyle}>Best Skill Sets</th>
+                        <th style={thStyle}>Region</th>
+                        <th style={thStyle}>Senior Dev (Hourly)</th>
+                        <th style={thStyle}>Mid-Level (Hourly)</th>
+                        <th style={thStyle}>Savings vs US</th>
+                        <th style={thStyle}>Time Zone Fit (EST)</th>
                       </tr>
                     </thead>
                     <tbody>
                       {([
-                        ['USA', '$100-$150/hr', 'Full overlap', 'All stacks — full-stack, AI/ML, cloud'],
-                        ['Canada', '$75-$120/hr', 'Full overlap', 'Full-stack, mobile, cloud'],
-                        ['UK / Germany', '$70-$120/hr', 'Partial (afternoon EST)', 'Enterprise, fintech, data'],
-                        ['Poland / Romania', '$40-$75/hr', 'Late afternoon EST', 'Full-stack, DevOps, React'],
-                        ['Ukraine', '$35-$70/hr', 'Late afternoon EST', 'Backend, AI, data engineering'],
-                        ['Colombia / Argentina', '$35-$65/hr', 'Full EST overlap', 'Full-stack, React Native, Node'],
-                        ['Mexico', '$40-$70/hr', 'Full EST overlap (CST)', 'Full-stack, mobile, iOS'],
-                        ['India', '$25-$55/hr', '4-6hr overlap (shifted)', 'Full-stack, backend, mobile, AI/ML, QA'],
-                        ['Philippines', '$20-$40/hr', 'Evening EST', 'QA, support dev, WordPress, mobile'],
+                        ['USA (SF / NY)', '$130–$200/hr', '$90–$130/hr', 'Baseline', 'Same'],
+                        ['Canada', '$85–$130/hr', '$60–$90/hr', '−30%', 'Same / ±3hr'],
+                        ['Western Europe', '$80–$130/hr', '$55–$85/hr', '−35%', 'EST +5–6hr'],
+                        ['Eastern Europe', '$45–$80/hr', '$30–$55/hr', '−55%', 'EST +6–7hr'],
+                        ['Latin America', '$35–$65/hr', '$25–$45/hr', '−60%', 'EST ±1–2hr'],
+                        ['India', '$28–$58/hr', '$18–$35/hr', '−68%', 'EST +9:30hr (shiftable)'],
+                        ['Philippines', '$22–$42/hr', '$15–$28/hr', '−75%', 'EST +12hr'],
+                        ['Pakistan', '$20–$38/hr', '$14–$26/hr', '−78%', 'EST +9hr'],
                       ] as string[][]).map((row, i) => (
                         <tr key={i} style={rowBorder}>
                           <td style={{ ...tdStyle, color: '#ffffff', fontWeight: 600 }}>{row[0]}</td>
-                          <td style={{ ...tdStyle, color: accentColor, fontWeight: 600 }}>{row[1]}</td>
+                          <td style={{ ...tdStyle, color: accentColor }}>{row[1]}</td>
                           <td style={{ ...tdStyle, color: 'rgba(255,255,255,0.7)' }}>{row[2]}</td>
-                          <td style={{ ...tdStyle, color: 'rgba(255,255,255,0.65)', fontSize: 13 }}>{row[3]}</td>
+                          <td style={{ ...tdStyle, color: i === 0 ? 'rgba(255,255,255,0.4)' : accentColor }}>{row[3]}</td>
+                          <td style={{ ...tdStyle, color: 'rgba(255,255,255,0.6)' }}>{row[4]}</td>
                         </tr>
                       ))}
                     </tbody>
                   </table>
                 </div>
 
-                <div className="reveal" style={{
-                  background: 'rgba(255,255,255,0.03)', borderRadius: 28, padding: 24, marginBottom: 32,
-                  border: '1px solid rgba(255,255,255,0.06)',
-                }}>
-                  <h3 style={{ fontSize: 16, fontWeight: 700, color: '#ffffff', marginBottom: 16 }}>What These Rates Include vs. What They Do Not</h3>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
-                    <div>
-                      <p style={{ fontSize: 13, fontWeight: 700, color: accentColor, marginBottom: 8, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Included</p>
-                      <ul style={{ paddingLeft: 16, margin: 0, fontSize: 14 }}>
-                        {['Engineer salary/compensation', 'Agency margin (15-30%)', 'HR administration', 'Benefits (local law compliance)', 'Basic equipment'].map(item => <li key={item} style={{ marginBottom: 8, color: 'rgba(255,255,255,0.7)' }}>{item}</li>)}
-                      </ul>
-                    </div>
-                    <div>
-                      <p style={{ fontSize: 13, fontWeight: 700, color: '#ef4444', marginBottom: 8, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Not Included</p>
-                      <ul style={{ paddingLeft: 16, margin: 0, fontSize: 14 }}>
-                        {['Project management (your cost)', 'Code review time (your senior devs)', 'Onboarding time (first 2-3 weeks)', 'Tool licenses (Jira, GitHub, etc.)', 'Rework from poor quality'].map(item => <li key={item} style={{ marginBottom: 8, color: 'rgba(255,255,255,0.7)' }}>{item}</li>)}
-                      </ul>
-                    </div>
-                  </div>
+                <CodazzCallout>
+                  India remains the highest-value augmentation region for North American companies in 2026. The $28–$58/hr range for senior engineers represents a 65–70% cost reduction compared to US rates — and the talent pool is the largest in the world. The time zone is solvable: our Chandigarh engineers shift to 8am–2pm EST overlap daily, giving clients 5–6 real-time hours every business day.
+                </CodazzCallout>
+
+                <div className="reveal" style={{ marginBottom: 40 }}>
+                  <h3 style={{ fontSize: 19, fontWeight: 700, color: '#ffffff', marginBottom: 16 }}>What Drives the Cost Difference?</h3>
+                  <p style={{ marginBottom: 16 }}>Rate gaps between regions are driven by three compounding factors:</p>
+                  <ul style={{ paddingLeft: 20, margin: 0 }}>
+                    <li style={{ marginBottom: 12 }}><strong style={{ color: '#ffffff' }}>Cost of living differentials:</strong> A senior engineer in Chandigarh earning $45,000 USD annually has equivalent purchasing power to a US engineer earning $120,000+. Both are well-compensated in their local markets.</li>
+                    <li style={{ marginBottom: 12 }}><strong style={{ color: '#ffffff' }}>Supply of engineers:</strong> India produces 1.5M+ engineering graduates per year vs ~180,000 in the US. Higher supply compresses wages without necessarily reducing quality — India's best engineers are world-class.</li>
+                    <li style={{ marginBottom: 12 }}><strong style={{ color: '#ffffff' }}>Provider margin and overhead:</strong> Staff augmentation providers in India operate at lower overhead (office costs, HR, benefits) than US or Canadian providers, passing savings downstream. When you hire through Codazz, you are not paying Silicon Valley office rent and benefit packages.</li>
+                  </ul>
                 </div>
 
-                {/* ONBOARDING AUGMENTED */}
+                {/* ONBOARDING AUGMENTED STAFF */}
                 <h2 id="onboarding-augmented" className="reveal" style={{
                   fontSize: 'clamp(1.6rem, 3vw, 2rem)', fontWeight: 700, color: '#ffffff',
                   marginTop: 64, marginBottom: 12, letterSpacing: '-0.02em',
-                }}>Onboarding Augmented Staff: Speed Without Chaos</h2>
+                }}>Onboarding Augmented Staff: The First 30 Days</h2>
                 <p className="reveal" style={{ marginBottom: 24, color: 'rgba(255,255,255,0.5)' }}>
-                  The first two weeks determine whether an augmented engineer delivers value or becomes a management burden. Invest in onboarding upfront and it pays back 10x.
+                  The number one reason staff augmentation engagements underperform is poor onboarding. Most companies expect augmented engineers to hit the ground running — but even the best engineers need context. Here is the 30-day protocol that works.
                 </p>
 
                 <div className="reveal" style={{ marginBottom: 40 }}>
                   {[
-                    { title: 'Pre-boarding (before day 1)', items: ['All accounts provisioned: GitHub, Jira, Slack, staging env, VPN if required.', 'Access to codebase, architecture docs, and your team handbook or onboarding guide.', 'Signed contracts: IP assignment, NDA, SOW — all fully executed before they write a line of code.', 'Brief intro sent to the existing team so they are expected and welcomed.'] },
-                    { title: 'Week 1: Orientation', items: ['30-minute kickoff with tech lead: project context, tech standards, coding conventions, definition of done.', 'Architecture walkthrough (Loom or live): how the system is structured, where the landmines are.', 'First ticket: small, real, and well-specified. Not a tutorial, not documentation cleanup.', 'Daily check-in (15 min) in the first week to surface confusion before it becomes delay.'] },
-                    { title: 'Week 2: First Independent Contribution', items: ['Assign a mid-complexity ticket with clear acceptance criteria. They should own it end-to-end.', 'Pair programming session with a senior team member on their first PR review.', 'Begin participating in standups and sprint ceremonies the same as any team member.', 'Evaluate: communication quality, code quality, ability to ask good questions.'] },
+                    {
+                      phase: 'Day 1: Access & Context Dump',
+                      items: [
+                        'All access provisioned before day one: GitHub org, Jira/Linear, Slack, staging environment, AWS/GCP read access, design files. Nothing ruins momentum like waiting three days for access.',
+                        'Record a 20-30 minute Loom video walking through the codebase architecture: what does it do, how is it structured, what are the major subsystems, and where are the landmines.',
+                        'Share a written technical onboarding doc: repository structure, how to run the project locally, how tests work, how PRs are reviewed, and coding conventions.',
+                        'Assign their first task immediately on day one — a real but low-risk issue. Do not make them wait for a proper orientation week.',
+                      ],
+                    },
+                    {
+                      phase: 'Days 2–7: First Contribution',
+                      items: [
+                        'The goal is a merged PR within the first week. It signals integration into the team and gives you an early read on code quality, communication style, and initiative.',
+                        'Assign an onboarding buddy — a senior engineer on your team who is explicitly responsible for answering questions without judgment this week.',
+                        'Review their first PR with detailed, specific, constructive feedback. This sets the quality standard for everything that follows. Be thorough — this review shapes all future work.',
+                        'Schedule a 30-minute architecture call mid-week: have them explain how the system works in their own words. Gaps in understanding surface here, not six weeks later.',
+                      ],
+                    },
+                    {
+                      phase: 'Days 8–21: Sprint Integration',
+                      items: [
+                        'They should now be fully integrated into your sprint cycle: attending standups, picking up sprint tickets, submitting PRs under normal review process.',
+                        'Evaluate async communication quality. Are their blockers surfaced proactively? Are their PR descriptions clear? Do they update ticket statuses without being asked?',
+                        'Weekly 1-on-1 with the tech lead to identify friction points — tools they are struggling with, parts of the codebase that need better documentation, communication patterns that need adjustment.',
+                        'Observe their code review participation. Great engineers ask questions on others\' PRs. It signals curiosity, learning velocity, and team integration.',
+                      ],
+                    },
+                    {
+                      phase: 'Days 22–30: Evaluation Checkpoint',
+                      items: [
+                        'Formal 30-day review: code quality, communication quality, sprint contribution rate (story points delivered vs planned), cultural fit.',
+                        'Share honest feedback both directions. What is the engineer finding friction in? What can your team do better to support them?',
+                        'Decide: extend the engagement, adjust the scope, or end it. The 30-day mark is the right moment — not 90 days in when you have sunk significant cost into someone who is not working out.',
+                        'If extending: introduce them to the full team and any stakeholders they will interact with. Video calls build rapport that Slack cannot replicate.',
+                      ],
+                    },
                   ].map((phase, i) => (
-                    <div key={i} style={{ marginBottom: 28, paddingLeft: 24, borderLeft: `3px solid ${accentColor}` }}>
-                      <h3 style={{ fontSize: 17, fontWeight: 700, color: '#ffffff', marginBottom: 12 }}>{phase.title}</h3>
+                    <div key={i} style={{ marginBottom: 32 }}>
+                      <h3 style={{ fontSize: 17, fontWeight: 700, color: accentColor, marginBottom: 12 }}>{phase.phase}</h3>
                       <ul style={{ paddingLeft: 20, margin: 0 }}>
                         {phase.items.map((item, j) => (
                           <li key={j} style={{ marginBottom: 10, color: 'rgba(255,255,255,0.75)', lineHeight: 1.65 }}>{item}</li>
@@ -473,225 +528,303 @@ export default function StaffAugmentationGuideClient() {
                 <h2 id="ip-nda" className="reveal" style={{
                   fontSize: 'clamp(1.6rem, 3vw, 2rem)', fontWeight: 700, color: '#ffffff',
                   marginTop: 64, marginBottom: 12, letterSpacing: '-0.02em',
-                }}>IP & NDA Considerations for Augmented Staff</h2>
+                }}>IP & NDA Considerations for Staff Augmentation</h2>
                 <p className="reveal" style={{ marginBottom: 24, color: 'rgba(255,255,255,0.5)' }}>
-                  IP ownership with augmented staff is more complex than with full-time employees. Most employment law does not automatically assign contractor work product to the client company. You need explicit contracts.
+                  Legal infrastructure is not optional. Every augmented engineer who touches your codebase must sign these documents before writing a single line. A startup-ending IP dispute is always avoidable — and always caused by someone not getting this right at the start.
                 </p>
 
-                <div className="reveal" style={{ marginBottom: 40 }}>
-                  {[
-                    { issue: 'Who owns the code?', risk: 'High', solution: 'Require an IP assignment agreement signed by the individual engineer (not just the agency). The agreement should state that all work product created during the engagement is automatically and irrevocably assigned to your company.' },
-                    { issue: 'Can they share your code with future clients?', risk: 'High', solution: 'NDA covering all technical information, product strategy, customer data, and business information. Should survive termination by at least 2-3 years. Include the agency in the NDA, not just the individual engineer.' },
-                    { issue: 'Can they use your code in their portfolio?', risk: 'Medium', solution: 'Explicit prohibition on using your code, product screenshots, or client name in their portfolio without written consent. Many engineers do this by default unless you forbid it.' },
-                    { issue: 'Pre-existing IP contamination', risk: 'Medium', solution: 'Require the engineer to disclose any pre-existing code, libraries, or tools they plan to use in your project. If they import their own previously written utilities, those may remain their IP embedded in your product.' },
-                    { issue: 'Open source license violations', risk: 'Low-Medium', solution: 'Require engineers to disclose all third-party dependencies and their licenses. Some open source licenses (GPL) have copyleft implications that could affect your proprietary codebase. Run license scans on every PR.' },
-                  ].map((item, i) => (
-                    <div key={i} className="reveal" style={{
-                      background: 'rgba(255,255,255,0.03)', borderRadius: 28, padding: 20, marginBottom: 12,
-                      border: `1px solid ${item.risk === 'High' ? 'rgba(239,68,68,0.2)' : 'rgba(255,255,255,0.06)'}`,
-                    }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 10 }}>
-                        <h3 style={{ fontSize: 16, fontWeight: 700, color: '#ffffff', margin: 0 }}>{item.issue}</h3>
-                        <span style={{
-                          fontSize: 10, fontWeight: 700, padding: '2px 8px', borderRadius: 100, letterSpacing: '0.1em',
-                          background: item.risk === 'High' ? 'rgba(239,68,68,0.15)' : item.risk === 'Medium' ? 'rgba(251,191,36,0.15)' : 'rgba(34,197,94,0.15)',
-                          color: item.risk === 'High' ? '#ef4444' : item.risk === 'Medium' ? '#fbbf24' : accentColor,
-                        }}>RISK: {item.risk.toUpperCase()}</span>
-                      </div>
-                      <p style={{ margin: 0, fontSize: 14, color: 'rgba(255,255,255,0.7)', lineHeight: 1.65 }}><strong style={{ color: accentColor }}>Solution:</strong> {item.solution}</p>
+                {[
+                  {
+                    title: 'IP Assignment Agreement',
+                    critical: true,
+                    details: 'This is the single most important document. It explicitly assigns all code, designs, documentation, and work product created during the engagement to your company. Without this, the engineer may retain rights to everything they build — even if they wrote it on your computer using your time. NDA alone is not sufficient. Every augmented engineer must sign this before they access your codebase. If you hire through a staff augmentation agency, ensure the agency-to-engineer contract includes this clause, and that the agency-to-client contract passes those rights through to you.',
+                  },
+                  {
+                    title: 'Non-Disclosure Agreement (NDA)',
+                    critical: true,
+                    details: 'Covers your trade secrets, product roadmap, customer data, pricing, proprietary methodologies, and any business information shared during the engagement. Should be mutual (both parties protect each other\'s confidential information) and should specify a survival period of 2–5 years post-engagement. Require signing before any discovery call where you share product details, architecture diagrams, or business strategy.',
+                  },
+                  {
+                    title: 'Non-Solicitation Clause',
+                    critical: false,
+                    details: 'Prevents augmented engineers from poaching your employees or clients during and for 12 months after the engagement. Particularly important for senior engineers who have client and team relationships. A non-solicitation clause is enforceable in most jurisdictions (unlike full non-competes, which are restricted in many countries). Include this in the master services agreement with the augmentation provider.',
+                  },
+                  {
+                    title: 'Non-Compete (Know the Limits)',
+                    critical: false,
+                    details: 'Non-compete agreements preventing engineers from working for competitors are notoriously difficult to enforce internationally — particularly in India, Germany, and California. Focus on non-solicitation and IP assignment instead, which are far more enforceable and provide the actual protection you need. A narrow, time-limited non-compete (6 months, specific competitors) is enforceable in many jurisdictions; a broad one is not worth the paper it is on.',
+                  },
+                  {
+                    title: 'Data Processing Agreement',
+                    critical: false,
+                    details: 'Required if augmented engineers handle personal data of your users. GDPR (EU), PIPEDA (Canada), CCPA (California), and similar regulations require documented data processing agreements with anyone who processes personal data on your behalf. Specifies how data is handled, stored, protected, and deleted. Your legal counsel should draft this — standard templates are available for most jurisdictions.',
+                  },
+                ].map((item, i) => (
+                  <div key={i} className="reveal" style={{
+                    background: 'rgba(255,255,255,0.03)', borderRadius: 28, padding: 24, marginBottom: 16,
+                    border: `1px solid ${item.critical ? 'rgba(34,197,94,0.2)' : 'rgba(255,255,255,0.06)'}`,
+                  }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 10 }}>
+                      <h3 style={{ fontSize: 17, fontWeight: 700, color: '#ffffff', margin: 0 }}>{item.title}</h3>
+                      {item.critical && (
+                        <span style={{ fontSize: 10, fontWeight: 700, color: accentColor, background: 'rgba(34,197,94,0.12)', padding: '2px 8px', borderRadius: 100, letterSpacing: '0.1em' }}>REQUIRED</span>
+                      )}
                     </div>
-                  ))}
-                </div>
+                    <p style={{ margin: 0, fontSize: 14, color: 'rgba(255,255,255,0.7)', lineHeight: 1.65 }}>{item.details}</p>
+                  </div>
+                ))}
 
                 {/* MANAGING BLENDED TEAMS */}
                 <h2 id="managing-blended" className="reveal" style={{
                   fontSize: 'clamp(1.6rem, 3vw, 2rem)', fontWeight: 700, color: '#ffffff',
                   marginTop: 64, marginBottom: 12, letterSpacing: '-0.02em',
-                }}>Managing Blended Teams: Full-Time + Augmented</h2>
+                }}>Managing Blended Teams: In-House + Augmented</h2>
                 <p className="reveal" style={{ marginBottom: 24, color: 'rgba(255,255,255,0.5)' }}>
-                  The most dangerous failure mode of staff augmentation is not poor code quality. It is the two-tier culture that emerges when augmented staff feel like second-class citizens and disengage.
+                  A blended team — part in-house, part augmented — is the most common structure in 2026. Done well, it outperforms either model alone. Done poorly, it creates a two-tier culture that destroys both productivity and morale.
                 </p>
 
-                <div className="reveal" style={{ marginBottom: 40 }}>
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 24 }}>
-                    {[
-                      {
-                        title: 'Include, Do Not Isolate',
-                        items: ['Same Slack channels as permanent staff.', 'Invited to all sprint ceremonies: planning, review, retro.', 'Introduced by name in team updates and announcements.', 'Access to the full codebase (within security scope), not just their assigned module.'],
-                      },
-                      {
-                        title: 'Clear Ownership, Not Just Tasks',
-                        items: ['Assign a module or feature area, not just isolated tickets.', 'Give them decision-making authority within their scope.', 'Let them write the architecture docs for their work.', 'Invite them to technical design discussions that affect their area.'],
-                      },
-                      {
-                        title: 'Feedback Loops That Work',
-                        items: ['Weekly 1-on-1 with their direct tech lead (not just the agency account manager).', 'Include them in performance feedback cycles.', 'Escalate concerns to the agency fast — do not let problems fester for weeks.', '30/60/90 day checkpoints with explicit success criteria.'],
-                      },
-                    ].map((sec) => (
-                      <div key={sec.title} style={{ background: 'rgba(255,255,255,0.03)', borderRadius: 28, padding: 20, border: '1px solid rgba(255,255,255,0.06)' }}>
-                        <h3 style={{ fontSize: 16, fontWeight: 700, color: accentColor, marginBottom: 12 }}>{sec.title}</h3>
-                        <ul style={{ paddingLeft: 16, margin: 0 }}>
-                          {sec.items.map((item, i) => <li key={i} style={{ marginBottom: 8, fontSize: 14, color: 'rgba(255,255,255,0.75)', lineHeight: 1.6 }}>{item}</li>)}
-                        </ul>
-                      </div>
-                    ))}
-                  </div>
+                <div className="reveal" style={{ marginBottom: 32 }}>
+                  <h3 style={{ fontSize: 19, fontWeight: 700, color: '#ffffff', marginBottom: 16 }}>The Golden Rules of Blended Team Management</h3>
+                  <ul style={{ paddingLeft: 20, margin: 0 }}>
+                    <li style={{ marginBottom: 12 }}><strong style={{ color: '#ffffff' }}>One team, one process:</strong> Augmented engineers follow the same sprint ceremonies, PR review process, and quality standards as in-house engineers. No separate workflow, no "augmented team Slack channel." Integration is total.</li>
+                    <li style={{ marginBottom: 12 }}><strong style={{ color: '#ffffff' }}>Assign ownership, not tasks:</strong> Give augmented engineers ownership of a module, feature area, or service — not a task list. Ownership creates accountability and initiative. A task list creates order-takers.</li>
+                    <li style={{ marginBottom: 12 }}><strong style={{ color: '#ffffff' }}>Code review is bidirectional:</strong> In-house engineers review augmented engineers' PRs, and vice versa. This is the fastest way to level-set quality standards and prevents the "us vs them" dynamic that kills blended teams.</li>
+                    <li style={{ marginBottom: 12 }}><strong style={{ color: '#ffffff' }}>Weekly sync with the augmentation provider:</strong> Beyond daily standups, a brief weekly call with your Codazz or agency point-of-contact surfaces team health issues, contract concerns, and performance feedback before they become problems.</li>
+                    <li style={{ marginBottom: 12 }}><strong style={{ color: '#ffffff' }}>Never treat augmented engineers as temporary labour:</strong> The moment augmented staff feel like disposable contractors, communication degrades, initiative disappears, and quality drops. Treat them as team members — because they are.</li>
+                  </ul>
                 </div>
 
-                {/* BEST COMPANIES */}
+                <div className="reveal" style={tableWrapStyle}>
+                  <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 500 }}>
+                    <thead>
+                      <tr style={headBorder}>
+                        <th style={thStyle}>Tool / Category</th>
+                        <th style={thStyle}>Recommended</th>
+                        <th style={thStyle}>Purpose</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {([
+                        ['Async Communication', 'Slack + Loom', 'Daily updates, screen recordings, async unblocking'],
+                        ['Sprint Management', 'Linear or Jira', 'Unified backlog for in-house and augmented devs'],
+                        ['Documentation', 'Notion', 'Architecture, ADRs, onboarding guides'],
+                        ['Code Review', 'GitHub PRs', 'All code reviewed regardless of origin'],
+                        ['Time Tracking', 'Harvest or Toggl', 'Contractor billing, capacity planning'],
+                        ['Video Calls', 'Google Meet / Zoom', 'Standup, planning, 1-on-1s, team socials'],
+                        ['Design Handoff', 'Figma', 'Dev-ready specs, shared design system'],
+                        ['Monitoring', 'Sentry + Datadog', 'Shared visibility into production health'],
+                      ] as string[][]).map((row, i) => (
+                        <tr key={i} style={rowBorder}>
+                          <td style={{ ...tdStyle, color: '#ffffff', fontWeight: 600 }}>{row[0]}</td>
+                          <td style={{ ...tdStyle, color: accentColor }}>{row[1]}</td>
+                          <td style={{ ...tdStyle, color: 'rgba(255,255,255,0.7)' }}>{row[2]}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+
+                <div className="reveal" style={{ marginBottom: 40 }}>
+                  <h3 style={{ fontSize: 19, fontWeight: 700, color: '#ffffff', marginBottom: 16 }}>Time Zone Management for Blended Teams</h3>
+                  <p style={{ marginBottom: 16 }}>The most sustainable blended team structure pairs North American in-house leads with India or LATAM augmented engineers on a 4–6 hour daily overlap schedule:</p>
+                  <ul style={{ paddingLeft: 20, margin: 0 }}>
+                    <li style={{ marginBottom: 10 }}><strong style={{ color: '#ffffff' }}>8:00–9:00 AM EST:</strong> Async standup in Slack (written). Augmented engineers post updates, flag blockers before their overlap window opens.</li>
+                    <li style={{ marginBottom: 10 }}><strong style={{ color: '#ffffff' }}>9:00 AM–2:00 PM EST:</strong> Live collaboration window. Code reviews, architecture discussions, pairing sessions, and real-time unblocking happen here.</li>
+                    <li style={{ marginBottom: 10 }}><strong style={{ color: '#ffffff' }}>2:00–5:00 PM EST:</strong> Augmented engineers in deep work mode. In-house team continues. No meetings, maximum focus time for both sides.</li>
+                    <li style={{ marginBottom: 10 }}><strong style={{ color: '#ffffff' }}>End of day:</strong> Augmented engineers leave async updates in ticket comments and Loom videos for anything requiring context. In-house team reviews overnight.</li>
+                  </ul>
+                </div>
+
+                {/* BEST STAFF AUG COMPANIES */}
                 <h2 id="best-companies" className="reveal" style={{
                   fontSize: 'clamp(1.6rem, 3vw, 2rem)', fontWeight: 700, color: '#ffffff',
                   marginTop: 64, marginBottom: 12, letterSpacing: '-0.02em',
-                }}>Best Staff Augmentation Companies (2026)</h2>
+                }}>Best Staff Augmentation Companies for Tech in 2026</h2>
                 <p className="reveal" style={{ marginBottom: 24, color: 'rgba(255,255,255,0.5)' }}>
-                  Not all staff aug firms are equal. These are the vendors most commonly used by our network, ranked by specialization.
+                  Not all staff augmentation providers are equal. Here are the tier-one options across different needs and regions — with honest assessments of what each does well and where they fall short.
                 </p>
 
                 {[
-                  { name: 'Codazz', region: 'India (Chandigarh) + Canada (Edmonton)', specialty: 'Full-stack, mobile, AI/ML, cloud DevOps', rateRange: '$35-$75/hr', notes: 'Our own staff augmentation service. Pre-vetted senior engineers, signed IP assignment and NDA, dedicated resources, 3-7 day deployment, free replacement guarantee within 2 weeks.' },
-                  { name: 'Toptal', region: 'Global', specialty: 'Senior specialists across all stacks', rateRange: '$80-$200/hr', notes: 'Claims top 3% of applicants. Gold standard for senior specialist augmentation. High cost but fastest time-to-productive senior engineer.' },
-                  { name: 'Turing', region: 'Latin America, India', specialty: 'Full-stack, ML, data engineering', rateRange: '$45-$100/hr', notes: 'AI-powered matching. Strong Latin American talent pool for US timezone alignment. Good for React, Python, Node, and ML engineers.' },
-                  { name: 'Andela', region: 'Africa', specialty: 'Full-stack, backend, mobile', rateRange: '$35-$75/hr', notes: 'African tech talent marketplace. Strong engineers from Nigeria, Kenya, Egypt. Increasingly popular with US companies wanting emerging market talent.' },
-                  { name: 'EPAM Systems', region: 'Eastern Europe', specialty: 'Enterprise, .NET, Java, SAP', rateRange: '$60-$120/hr', notes: 'Large Eastern European firm. Best for enterprise-grade augmentation, especially .NET, Java, and legacy system expertise. Formal engagement model.' },
-                ].map((company, i) => (
+                  {
+                    name: 'Toptal',
+                    bestFor: 'Senior specialists, US-aligned',
+                    rate: '$80–$200/hr',
+                    timeToHire: '1–2 weeks',
+                    pros: 'Rigorous pre-vetting (top 3% claim), strong English communication, good for US companies needing senior specialists quickly. Well-established with strong quality reputation.',
+                    cons: 'Most expensive option. Limited flexibility on engagement structure. Better for individual specialists than team-scale augmentation.',
+                  },
+                  {
+                    name: 'Turing.com',
+                    bestFor: 'AI-matched, US overlap',
+                    rate: '$45–$100/hr',
+                    timeToHire: '1–3 weeks',
+                    pros: 'Strong AI-based matching reduces time-to-hire. Good Latin America and India coverage. US business hours overlap focus. Solid for React, Node.js, Python roles.',
+                    cons: 'Match quality is inconsistent for highly specialized roles. Less suitable for niche stacks or senior architecture work.',
+                  },
+                  {
+                    name: 'Arc.dev',
+                    bestFor: 'Pre-vetted senior remote engineers',
+                    rate: '$60–$150/hr',
+                    timeToHire: '1–2 weeks',
+                    pros: 'Strong senior developer pool. Good vetting process. Covers a wide range of modern stacks. Better rates than Toptal for comparable quality.',
+                    cons: 'Smaller talent pool than Upwork or Toptal. Less suitable for team-scale augmentation — better for individual specialist placement.',
+                  },
+                  {
+                    name: 'Upwork',
+                    bestFor: 'Short-term, well-defined tasks',
+                    rate: '$15–$80/hr',
+                    timeToHire: '3–7 days',
+                    pros: 'Largest talent marketplace globally. Fastest time to engagement for well-defined tasks. Suitable for short-term, scoped work with clear deliverables.',
+                    cons: 'Extremely variable quality. You carry all the vetting overhead. Not appropriate for long-term team augmentation or senior engineering roles.',
+                  },
+                  {
+                    name: 'Codazz',
+                    bestFor: 'Managed teams, India-based, startups & scale-ups',
+                    rate: '$30–$65/hr',
+                    timeToHire: '3–7 days',
+                    pros: 'Pre-vetted senior engineers from Chandigarh. Full IP assignment, NDA, and quality guarantees included. Managed augmentation with optional project management layer. 2-week free replacement SLA. Direct client relationships, no intermediary PM layer.',
+                    cons: 'India-based, so time zone requires scheduling adjustment (we mitigate this with EST-shifted hours). Best for companies willing to invest in a 30-day onboarding process.',
+                  },
+                ].map((co, i) => (
                   <div key={i} className="reveal" style={{
                     background: 'rgba(255,255,255,0.03)', borderRadius: 28, padding: 24, marginBottom: 16,
-                    border: `1px solid ${company.name === 'Codazz' ? 'rgba(34,197,94,0.3)' : 'rgba(255,255,255,0.06)'}`,
+                    border: `1px solid ${co.name === 'Codazz' ? 'rgba(34,197,94,0.25)' : 'rgba(255,255,255,0.06)'}`,
                   }}>
-                    <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12, marginBottom: 10 }}>
+                    <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', flexWrap: 'wrap', gap: 12, marginBottom: 12 }}>
                       <div>
-                        <h3 style={{ fontSize: 18, fontWeight: 700, color: company.name === 'Codazz' ? accentColor : '#ffffff', margin: '0 0 4px' }}>{company.name}</h3>
-                        <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)' }}>{company.region} &middot; {company.specialty}</span>
+                        <h3 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', margin: '0 0 4px' }}>{co.name}</h3>
+                        <span style={{ fontSize: 12, color: accentColor, fontWeight: 600 }}>{co.bestFor}</span>
                       </div>
-                      <span style={{ fontSize: 15, fontWeight: 700, color: accentColor }}>{company.rateRange}</span>
+                      <div style={{ textAlign: 'right' }}>
+                        <p style={{ fontSize: 14, color: '#ffffff', margin: '0 0 2px', fontWeight: 600 }}>{co.rate}</p>
+                        <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', margin: 0 }}>{co.timeToHire} to first engineer</p>
+                      </div>
                     </div>
-                    <p style={{ margin: 0, fontSize: 14, color: 'rgba(255,255,255,0.7)', lineHeight: 1.6 }}>{company.notes}</p>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+                      <div>
+                        <p style={{ fontSize: 11, fontWeight: 700, color: accentColor, marginBottom: 4, letterSpacing: '0.08em' }}>STRENGTHS</p>
+                        <p style={{ margin: 0, fontSize: 13, color: 'rgba(255,255,255,0.65)', lineHeight: 1.6 }}>{co.pros}</p>
+                      </div>
+                      <div>
+                        <p style={{ fontSize: 11, fontWeight: 700, color: '#ef4444', marginBottom: 4, letterSpacing: '0.08em' }}>LIMITATIONS</p>
+                        <p style={{ margin: 0, fontSize: 13, color: 'rgba(255,255,255,0.65)', lineHeight: 1.6 }}>{co.cons}</p>
+                      </div>
+                    </div>
                   </div>
                 ))}
 
-                {/* ROI Calculator */}
+                {/* ROI CALCULATOR */}
                 <h2 id="roi-calculator" className="reveal" style={{
                   fontSize: 'clamp(1.6rem, 3vw, 2rem)', fontWeight: 700, color: '#ffffff',
                   marginTop: 64, marginBottom: 12, letterSpacing: '-0.02em',
-                }}>Staff Augmentation ROI Calculator</h2>
+                }}>ROI & Cost Savings: The Real Math</h2>
                 <p className="reveal" style={{ marginBottom: 24, color: 'rgba(255,255,255,0.5)' }}>
-                  Is staff augmentation actually cheaper than hiring? Use this framework to calculate your real ROI before committing.
+                  Staff augmentation advocates always lead with the rate comparison. Here is the fully-loaded cost analysis — including management overhead, onboarding time, and opportunity cost — that gives you the real ROI number.
                 </p>
 
-                <div className="reveal" style={{ background: 'rgba(255,255,255,0.03)', borderRadius: 28, padding: 32, marginBottom: 32, border: '1px solid rgba(34,197,94,0.2)' }}>
-                  <h3 style={{ fontSize: 18, fontWeight: 700, color: '#22c55e', marginBottom: 16 }}>The ROI Formula</h3>
-                  <div style={{ background: 'rgba(0,0,0,0.4)', borderRadius: 12, padding: 24, fontFamily: 'monospace', fontSize: 15, color: '#22c55e', marginBottom: 24, lineHeight: 1.8 }}>
-                    ROI = (Fully-Loaded FTE Cost − Staff Aug Cost + Productivity Savings) ÷ Staff Aug Cost × 100
-                  </div>
-                  <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 14, marginBottom: 0 }}>
-                    <strong style={{ color: '#fff' }}>Fully-Loaded FTE Cost</strong> includes: base salary + benefits (20-30%) + payroll taxes + recruiting fees (15-25% of salary) + onboarding time (1-3 months at reduced productivity) + hardware + office space.
-                  </p>
-                </div>
-
-                <div className="reveal" style={{ background: 'rgba(255,255,255,0.03)', borderRadius: 28, padding: 32, marginBottom: 32, border: '1px solid rgba(255,255,255,0.06)' }}>
-                  <h3 style={{ fontSize: 18, fontWeight: 700, color: '#fff', marginBottom: 20 }}>Worked Example: Senior React Developer</h3>
-                  <div style={{ overflowX: 'auto' }}>
-                    <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 15 }}>
-                      <thead>
-                        <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
-                          <th style={{ textAlign: 'left', padding: '10px 12px', color: '#fff', fontWeight: 700 }}>Cost Component</th>
-                          <th style={{ textAlign: 'right', padding: '10px 12px', color: '#fff', fontWeight: 700 }}>FTE (US Hire)</th>
-                          <th style={{ textAlign: 'right', padding: '10px 12px', color: '#22c55e', fontWeight: 700 }}>Staff Aug (India)</th>
+                <div className="reveal" style={tableWrapStyle}>
+                  <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 580 }}>
+                    <thead>
+                      <tr style={headBorder}>
+                        <th style={{ ...thStyle, width: '28%' }}>Cost Category</th>
+                        <th style={{ ...thStyle, width: '24%', color: '#61dafb' }}>US Full-Time Hire</th>
+                        <th style={{ ...thStyle, width: '24%', color: '#ffc864' }}>Direct Freelancer</th>
+                        <th style={{ ...thStyle, width: '24%', color: accentColor }}>Staff Aug (Codazz)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {([
+                        ['Base Compensation (annual)', '$130K–$180K salary', '$80K–$160K (annualized)', '$58K–$120K (annualized)'],
+                        ['Benefits / Taxes (employer)', '$28K–$45K/yr', '$0', 'Included'],
+                        ['Recruiting Cost (one-time)', '$20K–$40K', '$5K–$15K', '$0'],
+                        ['Management Overhead (PM time)', '$20K–$35K/yr', '$15K–$25K/yr', '$5K–$10K/yr'],
+                        ['Onboarding Time to Productivity', '2–4 months', '3–6 weeks', '1–2 weeks'],
+                        ['Flexibility to Scale', 'Low (notice + HR)', 'Medium', 'High (monthly flex)'],
+                        ['IP / Legal Risk', 'Low (employment)', 'Medium', 'Low (guaranteed)'],
+                        ['Total Annual Cost (Year 1)', '$198K–$300K', '$100K–$200K', '$63K–$130K'],
+                      ] as string[][]).map((row, i) => (
+                        <tr key={i} style={{ ...rowBorder, background: i === 7 ? 'rgba(34,197,94,0.05)' : 'transparent' }}>
+                          <td style={{ ...tdStyle, color: i === 7 ? '#ffffff' : 'rgba(255,255,255,0.8)', fontWeight: i === 7 ? 700 : 500 }}>{row[0]}</td>
+                          <td style={{ ...tdStyle, color: i === 7 ? '#61dafb' : 'rgba(255,255,255,0.65)', fontWeight: i === 7 ? 700 : 400 }}>{row[1]}</td>
+                          <td style={{ ...tdStyle, color: i === 7 ? '#ffc864' : 'rgba(255,255,255,0.65)', fontWeight: i === 7 ? 700 : 400 }}>{row[2]}</td>
+                          <td style={{ ...tdStyle, color: i === 7 ? accentColor : 'rgba(255,255,255,0.75)', fontWeight: i === 7 ? 700 : 400 }}>{row[3]}</td>
                         </tr>
-                      </thead>
-                      <tbody>
-                        {[
-                          ['Base Salary / Billing', '$130,000/yr', '$52,000/yr ($50/hr)'],
-                          ['Benefits & Payroll Tax (28%)', '$36,400', '—'],
-                          ['Recruiting Fee (20%)', '$26,000 one-time', '—'],
-                          ['Onboarding (2 months lost productivity)', '$21,667', '$8,667'],
-                          ['Hardware & Tools', '$4,000', '—'],
-                          ['Total Year 1 Cost', '$218,067', '$60,667'],
-                          ['Total Year 2+ Cost', '$170,400', '$52,000'],
-                        ].map(([component, fte, aug], i) => (
-                          <tr key={i} style={{ borderBottom: '1px solid rgba(255,255,255,0.04)', background: i % 2 === 0 ? 'transparent' : 'rgba(255,255,255,0.01)' }}>
-                            <td style={{ padding: '10px 12px', color: 'rgba(255,255,255,0.7)' }}>{component}</td>
-                            <td style={{ padding: '10px 12px', color: 'rgba(255,255,255,0.6)', textAlign: 'right' }}>{fte}</td>
-                            <td style={{ padding: '10px 12px', color: '#22c55e', textAlign: 'right', fontWeight: 600 }}>{aug}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                  <div style={{ marginTop: 20, padding: '16px 20px', background: 'rgba(34,197,94,0.08)', borderRadius: 12, borderLeft: '3px solid #22c55e' }}>
-                    <p style={{ margin: 0, color: '#22c55e', fontWeight: 700, fontSize: 15 }}>
-                      Year 1 ROI: (218,067 − 60,667) ÷ 60,667 × 100 = <strong>259% ROI</strong>
-                    </p>
-                    <p style={{ margin: '4px 0 0', color: 'rgba(255,255,255,0.5)', fontSize: 13 }}>
-                      Even factoring in 20% productivity discount for remote coordination, staff aug delivers 2-3× cost advantage in Year 1 vs a US FTE hire.
-                    </p>
-                  </div>
+                      ))}
+                    </tbody>
+                  </table>
                 </div>
 
-                <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 16, marginBottom: 48 }}>
-                  {[
-                    { label: 'Break-even point vs FTE', value: '~3 months', note: 'After recruiting fees and onboarding amortize' },
-                    { label: 'Avg Year 1 savings', value: '55–70%', note: 'vs equivalent US or Canadian FTE hire' },
-                    { label: 'Productivity ramp time', value: '2–4 weeks', note: 'For senior augmented engineer vs 2-3 months for FTE' },
-                  ].map((stat, i) => (
-                    <div key={i} style={{ background: 'rgba(255,255,255,0.03)', borderRadius: 16, padding: 20, border: '1px solid rgba(255,255,255,0.06)', textAlign: 'center' }}>
-                      <div style={{ fontSize: 28, fontWeight: 900, color: '#22c55e', marginBottom: 6 }}>{stat.value}</div>
-                      <div style={{ fontSize: 14, fontWeight: 600, color: '#fff', marginBottom: 4 }}>{stat.label}</div>
-                      <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)' }}>{stat.note}</div>
-                    </div>
-                  ))}
-                </div>
+                <CodazzCallout>
+                  A company that augments three senior engineers through Codazz instead of hiring three US engineers in-house saves approximately $400K–$600K annually — enough to fund another product sprint, a marketing push, or six months of runway extension. For seed-stage and Series A companies, that delta is often the difference between surviving and not.
+                </CodazzCallout>
 
-                {/* Codazz Staff Aug Offering */}
-                <h2 id="codazz-offering" className="reveal" style={{
-                  fontSize: 'clamp(1.6rem, 3vw, 2rem)', fontWeight: 700, color: '#ffffff',
-                  marginTop: 64, marginBottom: 12, letterSpacing: '-0.02em',
-                }}>Staff Augmentation with Codazz</h2>
-                <p className="reveal" style={{ marginBottom: 32, color: 'rgba(255,255,255,0.5)' }}>
-                  We&apos;ve been augmenting product teams since 2018. Here is exactly how our engagement model works.
-                </p>
+                {/* CODAZZ OFFERING */}
+                <div id="codazz-offering" className="reveal" style={{
+                  background: 'linear-gradient(135deg, rgba(34,197,94,0.1) 0%, rgba(8,50,30,0.3) 100%)',
+                  borderRadius: 28, padding: 'clamp(24px, 4vw, 40px)', marginTop: 64,
+                  border: '1px solid rgba(34,197,94,0.2)',
+                }}>
+                  <h2 style={{ fontSize: 'clamp(1.4rem, 2.5vw, 1.8rem)', fontWeight: 700, color: '#ffffff', marginBottom: 16 }}>
+                    Codazz Staff Augmentation: How It Works
+                  </h2>
+                  <p style={{ color: 'rgba(255,255,255,0.7)', marginBottom: 24, lineHeight: 1.7, maxWidth: 640 }}>
+                    We provide senior software engineers from our pre-vetted Chandigarh team who integrate directly into your sprint cycles, follow your processes, and are held to the same quality bar as your in-house engineers. Every engagement includes IP assignment, NDA, and a 2-week free replacement guarantee if the fit is not right.
+                  </p>
 
-                <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 20, marginBottom: 32 }}>
-                  {[
-                    { icon: '⚡', title: '2-Week Start', desc: 'After a 1-hour skill-fit call, we deploy matched engineers within 10 business days. No 3-month procurement cycles.' },
-                    { icon: '🎯', title: 'Skill-Matched', desc: 'We match by specific tech stack, seniority level, and domain (fintech, healthtech, SaaS) — not just "full-stack developer".' },
-                    { icon: '📋', title: 'IP Fully Assigned', desc: 'Every engineer signs an IP assignment agreement before day one. All code written is 100% owned by your company.' },
-                    { icon: '🔄', title: 'Free Replacement', desc: 'If the engineer is not a fit within 2 weeks, we replace at no extra cost. No questions, no friction.' },
-                    { icon: '📊', title: 'Daily Standups', desc: 'Our engineers attend your daily standups, use your Jira/Linear, and communicate in your Slack. Fully integrated, not a vendor silo.' },
-                    { icon: '🛡️', title: 'NDA & Security', desc: 'All engineers sign your NDA and undergo background verification. Secure dev environments, VPN access on request.' },
-                  ].map((item, i) => (
-                    <div key={i} className="reveal card-hover" style={{
-                      background: 'rgba(255,255,255,0.03)', borderRadius: 20, padding: 24,
-                      border: '1px solid rgba(255,255,255,0.07)',
-                    }}>
-                      <div style={{ fontSize: 28, marginBottom: 12 }}>{item.icon}</div>
-                      <h3 style={{ fontSize: 16, fontWeight: 700, color: '#fff', marginBottom: 8 }}>{item.title}</h3>
-                      <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', margin: 0, lineHeight: 1.6 }}>{item.desc}</p>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="reveal" style={{ background: 'rgba(255,255,255,0.03)', borderRadius: 28, padding: 28, marginBottom: 48, border: '1px solid rgba(34,197,94,0.15)' }}>
-                  <h3 style={{ fontSize: 16, fontWeight: 700, color: '#22c55e', marginBottom: 16 }}>Our Augmentation Stack</h3>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
-                    {['React / Next.js', 'React Native', 'Flutter', 'Node.js', 'Python / Django', 'Go', 'TypeScript', 'AWS / GCP / Azure', 'Kubernetes', 'PostgreSQL', 'Solidity / Web3', 'LLM / AI/ML', 'iOS (Swift)', 'Android (Kotlin)', 'DevOps / CI/CD'].map((skill, i) => (
-                      <span key={i} style={{ background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.2)', color: '#22c55e', padding: '6px 14px', borderRadius: 20, fontSize: 13, fontWeight: 600 }}>
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                  <div style={{ marginTop: 20, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 12 }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: 16, marginBottom: 28 }}>
                     {[
-                      { label: 'Rate Range', value: '$35–$75/hr' },
-                      { label: 'Minimum Engagement', value: '3 months' },
-                      { label: 'Team Size', value: '1–15 engineers' },
-                      { label: 'Time Zones', value: 'IST / EST / PST overlap' },
-                    ].map((item, i) => (
-                      <div key={i} style={{ padding: '10px 14px', background: 'rgba(0,0,0,0.2)', borderRadius: 10 }}>
-                        <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 4 }}>{item.label}</div>
-                        <div style={{ fontSize: 15, color: '#fff', fontWeight: 700 }}>{item.value}</div>
+                      { value: '3–7 days', label: 'Time to First Engineer' },
+                      { value: '$30–$65/hr', label: 'All-In Rate (Senior)' },
+                      { value: '100%', label: 'IP Assignment' },
+                      { value: '2 weeks', label: 'Free Replacement SLA' },
+                    ].map((stat) => (
+                      <div key={stat.value} style={{ textAlign: 'center', background: 'rgba(0,0,0,0.3)', borderRadius: 16, padding: 16 }}>
+                        <p style={{ fontSize: 26, fontWeight: 800, color: accentColor, margin: 0 }}>{stat.value}</p>
+                        <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)', margin: '4px 0 0' }}>{stat.label}</p>
                       </div>
                     ))}
+                  </div>
+
+                  <div style={{ marginBottom: 28 }}>
+                    <h3 style={{ fontSize: 16, fontWeight: 700, color: '#ffffff', marginBottom: 12 }}>What you get with every Codazz augmentation engagement:</h3>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 8 }}>
+                      {[
+                        'Pre-vetted senior engineers (our 4-stage process)',
+                        'Signed IP assignment and NDA before day one',
+                        'EST-aligned schedule (8am–2pm overlap daily)',
+                        'Dedicated Codazz account manager',
+                        'Weekly provider-side check-ins on team health',
+                        '2-week free replacement if fit is not right',
+                        'Monthly performance reporting',
+                        'Flexible month-to-month or fixed-term contracts',
+                      ].map((feature, i) => (
+                        <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
+                          <span style={{ color: accentColor, fontWeight: 700, flexShrink: 0 }}>✓</span>
+                          <span style={{ color: 'rgba(255,255,255,0.75)', fontSize: 14 }}>{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+                    <Link href="/contact" style={{
+                      display: 'inline-flex', alignItems: 'center', gap: 8,
+                      background: accentColor, color: '#000000',
+                      padding: '14px 28px', borderRadius: 8,
+                      fontWeight: 700, fontSize: 15, textDecoration: 'none', transition: 'transform 0.2s',
+                    }}>
+                      Get a Free Consultation
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </Link>
+                    <Link href="/dedicated-development-team" style={{
+                      display: 'inline-flex', alignItems: 'center', gap: 8,
+                      background: 'rgba(255,255,255,0.08)', color: '#ffffff',
+                      padding: '14px 28px', borderRadius: 8,
+                      fontWeight: 600, fontSize: 15, textDecoration: 'none',
+                      border: '1px solid rgba(255,255,255,0.12)',
+                    }}>
+                      Explore Dedicated Team Model
+                    </Link>
                   </div>
                 </div>
 
@@ -702,11 +835,34 @@ export default function StaffAugmentationGuideClient() {
                 }}>Frequently Asked Questions</h2>
 
                 {[
-                  { q: 'What is the difference between staff augmentation and outsourcing?', a: 'Staff augmentation adds external engineers directly to your team, under your management, using your processes. You direct their daily work just like full-time employees. Outsourcing delegates an entire project or function to an external vendor who manages the team, sets the process, and delivers results. The key distinction is control: staff aug gives you direct control, outsourcing gives the vendor operational control.' },
-                  { q: 'How long do staff augmentation engagements typically last?', a: 'Short-term augmentation (project-specific): 2-6 months. Medium-term (ongoing capacity): 6-18 months. Long-term dedicated augmentation: 18 months to 3+ years. The longer the engagement, the more cost-effective it becomes as onboarding costs amortize and the engineer builds product knowledge. Most agencies offer monthly rolling contracts with 30-day notice periods.' },
-                  { q: 'How do I manage quality when the engineer is technically employed by an agency?', a: 'Quality management falls on you in staff augmentation. The agency places the engineer; your tech lead manages their output. Use the same quality gates you use for full-time staff: PR reviews, code coverage requirements, architecture review for major features. If quality is consistently poor after clear feedback and a performance improvement plan, escalate to the agency to replace the engineer.' },
-                  { q: 'Can augmented staff become full-time employees?', a: 'Yes, but most agencies have a conversion clause in their contract requiring you to pay a placement fee (typically 10-20% of first-year salary) if you hire their engineer directly. Read the contract carefully. If you anticipate wanting to convert, negotiate a conversion fee cap or elimination upfront before signing.' },
-                  { q: 'Is staff augmentation right for a startup with no senior engineers?', a: 'Usually not as a primary model. Staff augmentation requires internal senior engineers to manage, review, and integrate the augmented resource effectively. A startup with no tech lead should consider a managed team or outsourcing model where the vendor provides both the engineers and the technical leadership. Staff aug added to a leaderless team often creates more chaos than it solves.' },
+                  {
+                    q: 'What is the difference between staff augmentation and outsourcing?',
+                    a: 'In staff augmentation, engineers work inside your team — under your management, following your processes, integrated into your sprints. You direct the work. In outsourcing, you hand a project to an external vendor who manages their own team and delivers results. The key distinction is control: staff aug gives you full control over the engineering process; outsourcing trades control for less management overhead. Staff aug works best when you have strong internal technical leadership. Outsourcing works better when you do not.',
+                  },
+                  {
+                    q: 'How quickly can I get augmented engineers started?',
+                    a: 'Through a managed provider like Codazz, typically 3–7 business days from initial brief to first engineer onboarded. This includes matching, contract signing, access provisioning, and first standup. Platforms like Toptal or Arc.dev take 1–2 weeks due to their matching process. Direct freelancer hiring via LinkedIn or Upwork can take 2–4 weeks for senior engineers. The fastest path is always a pre-vetted managed provider — you skip the vetting process because it has already been done.',
+                  },
+                  {
+                    q: 'Do I own the code written by augmented engineers?',
+                    a: 'Only if you have a signed IP assignment agreement. An NDA alone does not transfer intellectual property — it only protects confidentiality. The IP assignment clause must explicitly state that all code, designs, and work product created during the engagement are assigned to your company. When hiring through Codazz, this is included in every engagement contract. If you hire freelancers directly, ensure your contract includes this clause before the first line of code is written.',
+                  },
+                  {
+                    q: 'How do I manage performance of augmented engineers?',
+                    a: 'The same way you manage in-house engineers — with output-based metrics, regular 1-on-1s, and a clear quality standard established by your first PR review. Concrete metrics: story points delivered per sprint vs planned, PR merge rate, bug density in their code, code review participation rate. The biggest mistake is managing by hours tracked rather than output delivered. A great augmented engineer working 6 focused hours outperforms a mediocre one clocking 10 hours. Use sprint retrospectives to surface blockers and friction points early.',
+                  },
+                  {
+                    q: 'Can augmented engineers work in our tech stack?',
+                    a: 'Yes — the defining characteristic of staff augmentation is that the engineers adapt to your stack, not the other way around. When you brief a provider like Codazz, you specify your stack in detail: "React 18, Next.js 14, TypeScript, PostgreSQL, AWS ECS, GitHub Actions." We match engineers who have production experience in exactly that stack. The specificity of your brief directly determines match quality. A vague brief ("we need a React developer") produces a much lower-quality match than a specific one.',
+                  },
+                  {
+                    q: 'What happens if an augmented engineer is not performing?',
+                    a: 'Address it immediately — do not wait 60 days hoping it improves. A direct feedback conversation (specific code quality issues, communication patterns, sprint contribution gaps) should happen within the first 30 days if issues surface. If performance does not improve after two weeks of clear feedback, request a replacement from your provider. Good staff augmentation providers (including Codazz) offer a 2-week free replacement guarantee. The sooner you act, the less time and money is wasted — and the faster you find the right fit.',
+                  },
+                  {
+                    q: 'Is staff augmentation suitable for startups?',
+                    a: 'Yes — in fact, it is often the optimal model for seed to Series B startups. You get senior engineering capacity without the overhead of full-time employment (benefits, payroll taxes, recruiting cost), and you can scale up or down as funding and roadmap evolve. The caveat is that you need at least one strong internal technical lead — a CTO or principal engineer — to direct the augmented engineers and maintain architectural coherence. Without that internal leadership, managed outsourcing is a safer choice.',
+                  },
                 ].map((faq, i) => (
                   <div key={i} className="reveal" style={{
                     background: 'rgba(255,255,255,0.03)', borderRadius: 28, padding: 24, marginBottom: 16,
@@ -724,10 +880,10 @@ export default function StaffAugmentationGuideClient() {
                   border: '1px solid rgba(34,197,94,0.2)',
                 }}>
                   <h3 style={{ fontSize: 24, fontWeight: 700, color: '#ffffff', marginBottom: 16 }}>
-                    Ready to Augment Your Dev Team?
+                    Ready to Scale Your Dev Team?
                   </h3>
-                  <p style={{ color: 'rgba(255,255,255,0.7)', marginBottom: 24, maxWidth: 540, marginLeft: 'auto', marginRight: 'auto' }}>
-                    Tell us the skill gap. We will match you with a pre-vetted senior engineer from our Chandigarh team within 3-7 days. IP assigned, NDA signed, quality guaranteed.
+                  <p style={{ color: 'rgba(255,255,255,0.7)', marginBottom: 24, maxWidth: 560, marginLeft: 'auto', marginRight: 'auto' }}>
+                    Tell us what you need to build and when you need it. We will match you with pre-vetted senior engineers from our Chandigarh team — in 3 to 7 business days, with full IP protection and a 2-week free replacement guarantee.
                   </p>
                   <Link href="/contact" style={{
                     display: 'inline-flex', alignItems: 'center', gap: 8,
@@ -735,7 +891,7 @@ export default function StaffAugmentationGuideClient() {
                     padding: '14px 28px', borderRadius: 8,
                     fontWeight: 600, textDecoration: 'none', transition: 'transform 0.2s',
                   }}>
-                    Get Staff Augmentation Quote
+                    Start Staff Augmentation
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                   </Link>
                 </div>

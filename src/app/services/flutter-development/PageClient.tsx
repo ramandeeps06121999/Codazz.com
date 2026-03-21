@@ -377,6 +377,18 @@ export default function FlutterDevelopmentPage() {
 
   return (
     <>
+      <style>{`
+        @keyframes marqueeScroll {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-33.333%); }
+        }
+        .awards-marquee-track {
+          animation: marqueeScroll 30s linear infinite;
+        }
+        .awards-marquee-track:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
       <Navbar />
       <main ref={pageRef} style={{ background: '#000000', color: '#ffffff', paddingTop: 80 }}>
 

@@ -8,13 +8,13 @@ const awards = [
     name: 'Clutch Top Generative AI',
     year: '2026',
     src: '/awards/Clutch-Top-GenerativeAI-Company2026.png',
-    type: 'img',
+    type: 'clutch',
   },
   {
     name: 'Top App Development',
     year: '2024',
     src: '/awards/top_clutch.co_app_development.webp',
-    type: 'img',
+    type: 'clutch',
   },
   {
     name: 'Webby Honoree',
@@ -90,12 +90,18 @@ function AwardCard({ award }: { award: typeof awards[number] }) {
       }}
     >
       <div style={{ width: 44, height: 44, display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', flexShrink: 0 }}>
-        <Image
-          src={award.src}
-          alt={award.name}
-          fill
-          style={{ objectFit: 'contain', filter: award.type === 'svg' ? 'brightness(0) invert(0.5)' : 'invert(1) brightness(1.2)' }}
-        />
+        {award.type === 'clutch' ? (
+          <div style={{ width: 44, height: 44, display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'rgba(255,82,51,0.1)', borderRadius: 8, border: '1px solid rgba(255,82,51,0.25)' }}>
+            <span style={{ fontSize: 13, fontWeight: 900, color: '#FF5233', letterSpacing: '-0.03em', fontStyle: 'italic' }}>c.</span>
+          </div>
+        ) : (
+          <Image
+            src={award.src}
+            alt={award.name}
+            fill
+            style={{ objectFit: 'contain', filter: award.type === 'svg' ? 'brightness(0) invert(0.5)' : 'brightness(0) invert(1) opacity(0.8)' }}
+          />
+        )}
       </div>
       <div>
         <div style={{ fontSize: 13, fontWeight: 600, color: '#ffffff', letterSpacing: '-0.01em', lineHeight: 1.3 }}>{award.name}</div>

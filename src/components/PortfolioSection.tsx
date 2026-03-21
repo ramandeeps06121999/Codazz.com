@@ -91,7 +91,40 @@ export default function PortfolioSection() {
           </div>
           <div className="portfolio-tabs">
             {projects.map((pr, i) => (
-              <button key={pr.category} onClick={() => setActive(i)} style={{ padding: '12px 28px', borderRadius: 100, cursor: 'pointer', fontSize: 13, fontWeight: 600, border: active === i ? '1px solid rgba(34,197,94,0.3)' : '1px solid rgba(255,255,255,0.08)', background: active === i ? 'rgba(34,197,94,0.1)' : 'transparent', color: active === i ? '#22c55e' : '#ffffff', transition: '0.3s', fontFamily: 'inherit' }}>{pr.category}</button>
+              <button
+                key={pr.category}
+                onClick={() => setActive(i)}
+                style={{
+                  padding: '12px 28px',
+                  borderRadius: 100,
+                  cursor: 'pointer',
+                  fontSize: 13,
+                  fontWeight: 600,
+                  border: active === i ? '1px solid rgba(34,197,94,0.4)' : '1px solid rgba(255,255,255,0.08)',
+                  background: active === i ? 'rgba(34,197,94,0.12)' : 'transparent',
+                  color: active === i ? '#22c55e' : 'rgba(255,255,255,0.6)',
+                  transition: 'all 0.25s ease',
+                  fontFamily: 'inherit',
+                  boxShadow: active === i ? '0 0 16px rgba(34,197,94,0.15)' : 'none',
+                  transform: active === i ? 'translateY(-1px)' : 'none',
+                }}
+                onMouseEnter={e => {
+                  if (active !== i) {
+                    (e.currentTarget as HTMLButtonElement).style.color = '#ffffff';
+                    (e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(255,255,255,0.18)';
+                    (e.currentTarget as HTMLButtonElement).style.background = 'rgba(255,255,255,0.04)';
+                  }
+                }}
+                onMouseLeave={e => {
+                  if (active !== i) {
+                    (e.currentTarget as HTMLButtonElement).style.color = 'rgba(255,255,255,0.6)';
+                    (e.currentTarget as HTMLButtonElement).style.borderColor = 'rgba(255,255,255,0.08)';
+                    (e.currentTarget as HTMLButtonElement).style.background = 'transparent';
+                  }
+                }}
+              >
+                {pr.category}
+              </button>
             ))}
           </div>
         </div>
@@ -144,6 +177,47 @@ export default function PortfolioSection() {
               <span style={{ fontSize: 13, fontWeight: 700, color: '#fff' }}>{p.metrics[0].value} {p.metrics[0].label}</span>
             </div>
           </div>
+        </div>
+
+        {/* View all link */}
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: 'clamp(32px, 5vw, 56px)' }}>
+          <a
+            href="/portfolio"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 10,
+              fontSize: 15,
+              fontWeight: 600,
+              color: 'rgba(255,255,255,0.7)',
+              textDecoration: 'none',
+              padding: '14px 32px',
+              borderRadius: 100,
+              border: '1px solid rgba(255,255,255,0.1)',
+              background: 'rgba(255,255,255,0.03)',
+              transition: 'all 0.25s ease',
+              fontFamily: 'inherit',
+            }}
+            onMouseEnter={e => {
+              const el = e.currentTarget as HTMLAnchorElement;
+              el.style.color = '#22c55e';
+              el.style.borderColor = 'rgba(34,197,94,0.35)';
+              el.style.background = 'rgba(34,197,94,0.08)';
+              el.style.boxShadow = '0 0 20px rgba(34,197,94,0.12)';
+            }}
+            onMouseLeave={e => {
+              const el = e.currentTarget as HTMLAnchorElement;
+              el.style.color = 'rgba(255,255,255,0.7)';
+              el.style.borderColor = 'rgba(255,255,255,0.1)';
+              el.style.background = 'rgba(255,255,255,0.03)';
+              el.style.boxShadow = 'none';
+            }}
+          >
+            View All 200+ Projects
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </a>
         </div>
       </div>
     </section>

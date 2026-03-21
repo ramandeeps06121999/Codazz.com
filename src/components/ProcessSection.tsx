@@ -94,6 +94,47 @@ export default function ProcessSection() {
           </p>
         </div>
 
+        {/* Marquee strip */}
+        {(() => {
+          const marqueeItems = [
+            { icon: '✅', label: 'Agile Methodology' },
+            { icon: '📋', label: 'Fixed-Price Quotes' },
+            { icon: '🔄', label: '2-Week Sprints' },
+            { icon: '📊', label: 'Weekly Reports' },
+            { icon: '🎯', label: '8-Week MVP' },
+            { icon: '🔒', label: 'NDA Day 1' },
+            { icon: '✅', label: 'IP Ownership' },
+            { icon: '🚀', label: 'Post-Launch Support' },
+            { icon: '📱', label: 'iOS & Android' },
+            { icon: '☁️', label: 'Cloud Deployment' },
+            { icon: '🧪', label: 'QA Included' },
+            { icon: '💬', label: 'Daily Standups' },
+          ];
+          const allItems = [...marqueeItems, ...marqueeItems];
+          return (
+            <div style={{ position: 'relative', overflow: 'hidden', marginBottom: 'clamp(32px,5vw,52px)' }}>
+              {/* Left fade */}
+              <div aria-hidden="true" style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 80, background: 'linear-gradient(to right, #000000, transparent)', zIndex: 2, pointerEvents: 'none' }} />
+              {/* Right fade */}
+              <div aria-hidden="true" style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 80, background: 'linear-gradient(to left, #000000, transparent)', zIndex: 2, pointerEvents: 'none' }} />
+              <style>{`
+                @keyframes process-strip-marquee {
+                  from { transform: translateX(0); }
+                  to { transform: translateX(-50%); }
+                }
+              `}</style>
+              <div style={{ display: 'flex', animation: 'process-strip-marquee 28s linear infinite' }}>
+                {allItems.map((item, i) => (
+                  <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '8px 18px', borderRadius: 100, flexShrink: 0, whiteSpace: 'nowrap', border: '1px solid rgba(255,255,255,0.07)', background: 'rgba(255,255,255,0.02)', marginRight: 10 }}>
+                    <span style={{ fontSize: 13 }}>{item.icon}</span>
+                    <span style={{ fontSize: 11, fontWeight: 600, color: 'rgba(255,255,255,0.6)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>{item.label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        })()}
+
         {/* Steps with left connecting line */}
         <div style={{ position: 'relative' }}>
           {/* Vertical connecting line - hidden on mobile via CSS */}

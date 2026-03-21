@@ -1,5 +1,4 @@
 'use client';
-
 import { useRef, useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -7,670 +6,798 @@ import Link from 'next/link';
 import HeroBackground from '@/components/HeroBackground';
 
 function useReveal() {
-  const ref = useRef<HTMLElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    const io = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-      { threshold: 0.08 }
+    const el = ref.current;
+    if (!el) return;
+    const items = el.querySelectorAll<HTMLElement>('.reveal');
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            (e.target as HTMLElement).style.opacity = '1';
+            (e.target as HTMLElement).style.transform = 'translateY(0)';
+          }
+        });
+      },
+      { threshold: 0.1 }
     );
-    ref.current?.querySelectorAll('.reveal').forEach(el => io.observe(el));
-    return () => io.disconnect();
+    items.forEach((item) => {
+      item.style.opacity = '0';
+      item.style.transform = 'translateY(24px)';
+      item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      obs.observe(item);
+    });
+    return () => obs.disconnect();
   }, []);
   return ref;
 }
 
-const tocItems = [
-  { id: 'pricing-growth-lever', label: 'Pricing as a Growth Lever', emoji: '📈' },
-  { id: 'pricing-models', label: 'SaaS Pricing Models', emoji: '🗂️' },
-  { id: 'value-based-pricing', label: 'Value-Based Pricing', emoji: '💎' },
-  { id: 'usage-based-pricing', label: 'Usage-Based Pricing', emoji: '⚡' },
-  { id: 'freemium-strategy', label: 'Freemium Strategy', emoji: '🆓' },
-  { id: 'packaging-tiers', label: 'Packaging & Tiers', emoji: '📦' },
-  { id: 'price-anchoring', label: 'Price Anchoring & Psychology', emoji: '🧠' },
-  { id: 'pricing-page-design', label: 'Pricing Page Design', emoji: '🎨' },
-  { id: 'raising-prices', label: 'When & How to Raise Prices', emoji: '🚀' },
-  { id: 'international-pricing', label: 'International Pricing (PPP)', emoji: '🌍' },
-  { id: 'faq', label: 'FAQ', emoji: '❓' },
+const tocSections = [
+  { id: 'pricing-as-lever', label: 'Pricing as a Growth Lever' },
+  { id: 'seven-models', label: '7 SaaS Pricing Models' },
+  { id: 'value-metric', label: 'Value Metric Selection' },
+  { id: 'usage-based', label: 'Usage-Based Pricing Deep Dive' },
+  { id: 'freemium', label: 'Freemium Strategy' },
+  { id: 'packaging-tiers', label: 'Packaging & Tier Design' },
+  { id: 'pricing-psychology', label: 'Pricing Psychology' },
+  { id: 'pricing-page', label: 'Pricing Pages That Convert' },
+  { id: 'raising-prices', label: 'How to Raise Prices' },
+  { id: 'competitor-analysis', label: 'Competitor Pricing Analysis' },
+  { id: 'ab-testing', label: 'A/B Testing Pricing' },
+  { id: 'revenue-metrics', label: 'Revenue Metrics (MRR, ARPU, Churn)' },
+  { id: 'faq', label: 'FAQ' },
 ];
 
 const relatedPosts = [
-  { slug: 'subscription-billing-guide-2026', title: 'Subscription Billing Guide 2026', category: 'SaaS', readTime: '14 min' },
-  { slug: 'staff-augmentation-guide-2026', title: 'Staff Augmentation Guide 2026', category: 'Growth', readTime: '13 min' },
-  { slug: 'multi-tenant-architecture-guide', title: 'Multi-Tenant Architecture Guide', category: 'Engineering', readTime: '15 min' },
+  { title: 'Subscription Billing Guide 2026', href: '/blog/subscription-billing-guide-2026' },
+  { title: 'Multi-Tenant Architecture Guide', href: '/blog/multi-tenant-architecture-guide' },
+  { title: 'How to Build an AI Chatbot for Your Business', href: '/blog/how-to-build-ai-chatbot-business' },
+  { title: 'Technical Interview Guide 2026', href: '/blog/technical-interview-guide-2026' },
 ];
 
-export default function SaasPricingStrategiesClient() {
+const G = '#22c55e';
+
+export default function PageClient() {
   const pageRef = useReveal();
-  const [activeSection, setActiveSection] = useState('pricing-growth-lever');
+  const [activeSection, setActiveSection] = useState('pricing-as-lever');
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = tocItems.map(t => document.getElementById(t.id)).filter(Boolean);
-      let current = tocItems[0].id;
-      for (const section of sections) {
-        if (section && section.getBoundingClientRect().top <= 120) {
-          current = section.id;
+      const scrollY = window.scrollY + 140;
+      for (const sec of [...tocSections].reverse()) {
+        const el = document.getElementById(sec.id);
+        if (el && el.offsetTop <= scrollY) {
+          setActiveSection(sec.id);
+          break;
         }
       }
-      setActiveSection(current);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const faqs = [
-    {
-      q: 'Should I show pricing on my website?',
-      a: 'Yes — for most SaaS products, especially those targeting SMB or self-serve buyers. Hiding pricing creates friction and signals a lack of transparency, which erodes trust. Buyers expect to see pricing before booking a demo. The exception is enterprise software where deals are highly customized — in that case, show a "starting from" figure or a clear "Contact us for enterprise pricing" with a reason (e.g. custom SLAs, SSO, compliance). Studies show that companies with visible pricing see 20–30% higher trial conversion rates because prospects arrive pre-qualified and intent-matched.',
-    },
-    {
-      q: 'How often should I review SaaS pricing?',
-      a: 'At minimum, conduct a structured pricing review every 12 months. Additionally, trigger ad-hoc reviews when you launch a major new feature, enter a new market segment, see a meaningful shift in competitive landscape, or notice win/loss patterns changing. Quarterly micro-reviews of conversion data and churn by plan are healthy. Most early-stage SaaS companies underprice for 12–24 months because they set prices before they truly understand their value metric and customer willingness-to-pay. Build pricing review into your annual planning cycle as a first-class initiative.',
-    },
-    {
-      q: 'What is the best pricing model for a new SaaS product?',
-      a: 'For early-stage SaaS, a simple flat-rate or per-seat model is best — it is easy to explain, easy to sell, and easy to invoice. Resist the urge to over-engineer pricing before you have product-market fit. Once you have 50–100 paying customers, you can analyze usage data to identify your true value metric and consider moving to usage-based or hybrid pricing. The goal in the early stage is to remove barriers to purchase and learn what customers value. Complexity can come later once you have conviction in your value metric.',
-    },
-    {
-      q: 'How do I know if my SaaS is underpriced?',
-      a: 'Key signals of underpricing: (1) Your close rate on sales calls is above 60% — buyers have no price objection, which means you left money on the table. (2) Customers say "this is a steal" or express surprise at how affordable you are. (3) Churn is high despite good NPS — often underpriced products attract budget-conscious customers who churn when they find a cheaper alternative. (4) Your competitors charge significantly more for similar value. (5) Customer LTV is too low to support a healthy sales motion. Run a Van Westendorp Price Sensitivity survey with 50+ customers to find the acceptable price range ceiling.',
-    },
-    {
-      q: 'What is the difference between freemium and a free trial?',
-      a: 'A free trial is time-limited access to the full product (typically 7–30 days), after which the user must convert or lose access. Freemium is a permanently free tier with limited features or usage, where the user can stay free indefinitely but upgrades for more capability. Free trials create urgency and work well when your product\'s value is demonstrated quickly (within hours or days). Freemium works when your product has a strong network effect or when free users generate value for paying users (e.g. Dropbox referrals, Figma viewers). The danger of freemium is building a large free user base with poor conversion — benchmark 2–5% for B2B, 1–3% for B2C.',
-    },
-  ];
-
   return (
-    <main ref={pageRef} style={{ background: '#000000', color: '#fff', minHeight: '100vh', fontFamily: 'system-ui, sans-serif' }}>
+    <div ref={pageRef} style={{ background: '#000', minHeight: '100vh', color: '#fff' }}>
       <Navbar />
 
       {/* Hero */}
-      <section style={{ position: 'relative', padding: '120px 24px 80px', textAlign: 'center', overflow: 'hidden' }}>
+      <section style={{ position: 'relative', overflow: 'hidden', paddingTop: 120, paddingBottom: 80, textAlign: 'center' }}>
         <HeroBackground />
-        <div style={{ position: 'relative', zIndex: 1, maxWidth: 820, margin: '0 auto' }}>
-          <div className="reveal" style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 24 }}>
-            <span style={{ background: 'rgba(34,197,94,0.15)', border: '1px solid rgba(34,197,94,0.3)', color: '#22c55e', padding: '6px 16px', borderRadius: 100, fontSize: 13, fontWeight: 600 }}>SaaS Growth</span>
-            <span style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', color: '#aaa', padding: '6px 16px', borderRadius: 100, fontSize: 13 }}>March 21, 2026</span>
-            <span style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.12)', color: '#aaa', padding: '6px 16px', borderRadius: 100, fontSize: 13 }}>20 min read</span>
+        <div style={{ position: 'relative', zIndex: 2, maxWidth: 860, margin: '0 auto', padding: '0 24px' }}>
+          <div className="reveal" style={{ marginBottom: 16 }}>
+            <span style={{ background: 'rgba(34,197,94,0.12)', color: G, border: `1px solid rgba(34,197,94,0.3)`, borderRadius: 999, padding: '6px 18px', fontSize: 13, fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase' }}>
+              Growth Strategy · 2026
+            </span>
           </div>
-          <h1 className="reveal" style={{ fontSize: 'clamp(28px,5vw,52px)', fontWeight: 800, lineHeight: 1.15, marginBottom: 20, letterSpacing: '-0.02em' }}>
-            SaaS Pricing Strategies 2026:<br />
-            <span style={{ color: '#22c55e' }}>How to Price Your Software Product</span>
+          <h1 className="reveal" style={{ fontSize: 'clamp(2rem,5vw,3.4rem)', fontWeight: 800, lineHeight: 1.15, marginBottom: 20 }}>
+            SaaS Pricing Strategies 2026:{' '}
+            <span style={{ color: G }}>Models, Psychology & Optimization</span>
           </h1>
-          <p className="reveal" style={{ fontSize: 18, color: '#bbb', lineHeight: 1.7, marginBottom: 32 }}>
-            Value-based pricing, usage-based models, freemium benchmarks, packaging psychology, international pricing (PPP), and when to raise prices — everything founders and product leaders need to unlock pricing as their most powerful growth lever in 2026.
+          <p className="reveal" style={{ fontSize: 18, color: 'rgba(255,255,255,0.65)', maxWidth: 680, margin: '0 auto 32px', lineHeight: 1.7 }}>
+            A complete guide to SaaS pricing — covering 7 pricing models, value metric selection, freemium strategy, pricing psychology, A/B testing, raising prices without churn, and the revenue metrics that actually matter.
           </p>
-          <div className="reveal" style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link href="/contact" style={{ background: '#22c55e', color: '#000', padding: '14px 32px', borderRadius: 100, fontWeight: 700, textDecoration: 'none', fontSize: 15 }}>Get a Free Product Strategy Session</Link>
-            <a href="#pricing-growth-lever" style={{ background: 'rgba(255,255,255,0.08)', color: '#fff', padding: '14px 32px', borderRadius: 100, fontWeight: 600, textDecoration: 'none', fontSize: 15 }}>Read the Guide</a>
+          <div className="reveal" style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap', fontSize: 14, color: 'rgba(255,255,255,0.45)' }}>
+            <span>March 2026</span>
+            <span>·</span>
+            <span>24 min read</span>
+            <span>·</span>
+            <span>Codazz Growth</span>
           </div>
         </div>
       </section>
 
-      {/* Main content + Sidebar */}
-      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '60px 24px', display: 'grid', gridTemplateColumns: '1fr 260px', gap: 48, alignItems: 'start' }}>
+      {/* Main Layout */}
+      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px 80px', display: 'grid', gridTemplateColumns: '1fr 280px', gap: 48, alignItems: 'start' }}>
 
         {/* Article Body */}
         <article>
 
-          {/* Section 1 */}
-          <section id="pricing-growth-lever" style={{ marginBottom: 72 }}>
-            <h2 className="reveal" style={{ fontSize: 32, fontWeight: 800, color: '#fff', marginBottom: 16 }}>
-              📈 Why Pricing Is Your Most Powerful Growth Lever
+          {/* ── Section 1: Pricing as a Growth Lever ── */}
+          <section id="pricing-as-lever" style={{ marginBottom: 72 }}>
+            <h2 className="reveal" style={{ fontSize: 32, fontWeight: 700, marginBottom: 16, color: '#fff' }}>
+              Pricing Is Your Most Powerful Growth Lever
             </h2>
-            <p className="reveal" style={{ color: '#bbb', lineHeight: 1.8, marginBottom: 24 }}>
-              A famous McKinsey study found that a 1% improvement in pricing leads to an 11% increase in operating profit — far outpacing equivalent improvements in variable cost (7.8%), volume (3.3%), or fixed cost (2.3%). Yet most SaaS founders spend their early years obsessing over acquisition while leaving pricing as an afterthought. That is a costly mistake.
+            <p className="reveal" style={{ color: 'rgba(255,255,255,0.72)', lineHeight: 1.8, marginBottom: 16 }}>
+              Most SaaS founders spend 90% of their time on product and marketing, and 10 minutes on pricing. This is backwards. McKinsey research shows that a 1% improvement in price realization — capturing value you are already delivering — produces a 11% improvement in operating profit. The same study found a 1% improvement in variable cost produces only a 7.8% improvement. Pricing is the highest-leverage activity in your entire business.
             </p>
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 20, marginBottom: 28 }}>
+            <p className="reveal" style={{ color: 'rgba(255,255,255,0.72)', lineHeight: 1.8, marginBottom: 24 }}>
+              The reason founders underinvest in pricing is that it feels uncomfortable and risky. What if you price too high and lose deals? What if customers complain? The data tells a different story: the most common pricing mistake in SaaS is pricing too low. When you undercharge, you leave money on the table, attract price-sensitive customers with high churn, and signal lower quality to enterprise buyers who equate price with reliability. Intentional pricing — based on value, not cost or competition — is what separates companies that plateau at $1M ARR from those that reach $10M and beyond.
+            </p>
+
+            {/* Stat Cards */}
+            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 20, marginBottom: 32 }}>
               {[
-                { lever: 'Pricing', impact: '+11%', color: '#22c55e', desc: 'Profit impact of a 1% improvement' },
-                { lever: 'Variable Cost', impact: '+7.8%', color: '#60a5fa', desc: 'Profit impact of a 1% improvement' },
-                { lever: 'Volume / Acquisition', impact: '+3.3%', color: '#fbbf24', desc: 'Profit impact of a 1% improvement' },
-                { lever: 'Fixed Cost', impact: '+2.3%', color: '#f87171', desc: 'Profit impact of a 1% improvement' },
-              ].map((item, i) => (
-                <div key={i} style={{ background: 'rgba(255,255,255,0.04)', border: `1px solid ${item.color}33`, borderRadius: 20, padding: 24, textAlign: 'center' }}>
-                  <div style={{ fontSize: 32, fontWeight: 800, color: item.color, marginBottom: 8 }}>{item.impact}</div>
-                  <div style={{ color: '#fff', fontWeight: 700, fontSize: 15, marginBottom: 6 }}>{item.lever}</div>
-                  <div style={{ color: '#888', fontSize: 12 }}>{item.desc}</div>
+                { stat: '11%', label: 'profit improvement from just 1% better price realization (McKinsey)', highlight: true },
+                { stat: '87%', label: 'of SaaS companies say they have not done rigorous pricing research in the past year' },
+                { stat: '30%', label: 'of SaaS companies change their pricing annually — those who do grow 17% faster' },
+                { stat: '3×', label: 'higher LTV for customers acquired at value-based pricing vs cost-plus pricing' },
+              ].map((card) => (
+                <div key={card.stat} style={{ background: card.highlight ? 'rgba(34,197,94,0.08)' : 'rgba(255,255,255,0.04)', border: `1px solid ${card.highlight ? 'rgba(34,197,94,0.25)' : 'rgba(255,255,255,0.08)'}`, borderRadius: 12, padding: 24 }}>
+                  <div style={{ fontSize: 32, fontWeight: 800, color: G, marginBottom: 8 }}>{card.stat}</div>
+                  <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)', lineHeight: 1.6 }}>{card.label}</div>
                 </div>
               ))}
             </div>
-            <p className="reveal" style={{ color: '#bbb', lineHeight: 1.8, marginBottom: 24 }}>
-              Compared to acquisition (which requires more ad spend, more salespeople, or more content), pricing optimization has near-zero marginal cost. You are simply extracting more value from existing demand. And unlike retention improvements — which help once customers are already in — better pricing works at the very first touchpoint: the moment a prospect decides whether to buy.
+
+            <div className="reveal" style={{ background: 'rgba(34,197,94,0.06)', border: '1px solid rgba(34,197,94,0.2)', borderRadius: 12, padding: 20 }}>
+              <p style={{ color: 'rgba(255,255,255,0.8)', lineHeight: 1.7, margin: 0, fontSize: 14 }}>
+                <strong style={{ color: G }}>The three levers of SaaS revenue:</strong> You can grow MRR by (1) acquiring more customers, (2) retaining existing customers longer, or (3) charging more per customer. Most companies pour budget into lever 1 (customer acquisition) while neglecting lever 3 (pricing and expansion revenue). A 20% price increase with identical churn produces 20% more revenue from zero additional marketing spend. This guide is about lever 3.
+              </p>
+            </div>
+          </section>
+
+          {/* ── Section 2: 7 SaaS Pricing Models ── */}
+          <section id="seven-models" style={{ marginBottom: 72 }}>
+            <h2 className="reveal" style={{ fontSize: 32, fontWeight: 700, marginBottom: 16, color: '#fff' }}>
+              The 7 SaaS Pricing Models
+            </h2>
+            <p className="reveal" style={{ color: 'rgba(255,255,255,0.72)', lineHeight: 1.8, marginBottom: 24 }}>
+              There is no universally correct SaaS pricing model. The best model for your product depends on your value metric, customer segment, sales motion, and competitive dynamics. Here are the seven primary models with their mechanics, strengths, weaknesses, and real-world examples.
             </p>
-            <div className="reveal" style={{ background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.2)', borderRadius: 20, padding: 24 }}>
-              <h3 style={{ color: '#22c55e', fontWeight: 700, fontSize: 16, marginBottom: 12 }}>The Three Pricing Levers — Ranked by ROI</h3>
+
+            <div className="reveal" style={{ display: 'grid', gap: 20, marginBottom: 16 }}>
               {[
-                { rank: '1st', lever: 'Pricing optimization', roi: 'Highest — immediate impact on margin, zero CAC' },
-                { rank: '2nd', lever: 'Retention / churn reduction', roi: 'High — compounding benefit, but takes 6–12 months to show' },
-                { rank: '3rd', lever: 'Acquisition growth', roi: 'High volume potential but most expensive and slowest to build' },
-              ].map((item, i) => (
-                <div key={i} style={{ display: 'flex', gap: 16, marginBottom: 10, alignItems: 'flex-start' }}>
-                  <span style={{ background: 'rgba(34,197,94,0.2)', color: '#22c55e', fontWeight: 800, fontSize: 11, padding: '3px 8px', borderRadius: 100, flexShrink: 0 }}>{item.rank}</span>
-                  <div>
-                    <span style={{ color: '#fff', fontWeight: 600, fontSize: 14 }}>{item.lever}: </span>
-                    <span style={{ color: '#aaa', fontSize: 14 }}>{item.roi}</span>
+                {
+                  model: '1. Flat-Rate (Single Price)',
+                  example: 'Basecamp ($99/month unlimited users)',
+                  desc: 'One price, one plan, all features. Simple to sell, simple to understand. Customer knows exactly what they pay forever. Works when your product has extremely broad appeal and the value is the same regardless of usage.',
+                  pros: ['Easiest to sell — no plan comparison confusion', 'Zero billing complexity', 'Viral because anyone in the company can use it'],
+                  cons: ['Leaves value on the table from power users', 'Hard to upsell', 'One lost customer is high impact'],
+                  verdict: 'Rare in 2026. Only works for products with genuinely undifferentiated value across all customers.',
+                  highlight: false,
+                },
+                {
+                  model: '2. Per-User (Per-Seat)',
+                  example: 'Slack ($7.25/user/mo), Notion ($16/user/mo)',
+                  desc: 'Price scales with the number of users (seats). Revenue grows naturally as customers grow their team. Sales has a clear upsell lever: "add more seats." Aligns cost with organizational size.',
+                  pros: ['Revenue grows automatically with customer growth', 'Easy to sell to procurement ("$X per person")', 'Natural upsell motion via seat expansion'],
+                  cons: ['Incentivizes customers to share accounts / limit licenses', 'Churn risk when teams downsize', 'Not aligned with value for low-usage seats'],
+                  verdict: 'Best for collaboration tools, project management, CRM, HR software. Dominant model for B2B SaaS.',
+                  highlight: false,
+                },
+                {
+                  model: '3. Usage-Based (Consumption)',
+                  example: 'Twilio (per SMS/call), AWS (per GB/compute hour)',
+                  desc: 'Customers pay for what they consume. Aligns cost perfectly with value received. Lower barrier to start (free to try, pay as you grow). Unpredictable revenue but extremely sticky — switching costs are enormous once usage is embedded.',
+                  pros: ['Lowest barrier to adoption', 'Revenue scales with customer success', 'Extremely high retention once embedded'],
+                  cons: ['Revenue is unpredictable and lumpy', 'Harder to forecast and budget for customers', 'Requires usage metering infrastructure'],
+                  verdict: 'Best for API businesses, infrastructure, AI APIs, communication platforms. Fastest growing model.',
+                  highlight: true,
+                },
+                {
+                  model: '4. Per-Feature (Feature Gating)',
+                  example: 'Intercom (base + add-ons), HubSpot (individual hubs)',
+                  desc: 'Core product at a base price, with premium features sold as add-ons or unlocked at higher tiers. Value is tied to specific capabilities rather than usage or seats. Works when features have different buyers or distinct value propositions.',
+                  pros: ['Monetizes power users who value advanced features', 'Gives budget-constrained buyers an entry point', 'Feature launches become revenue events'],
+                  cons: ['Complex for customers to navigate', 'Risk of feature wars with competitors', 'Harder to communicate value holistically'],
+                  verdict: 'Works for products with clearly distinct buyer personas (e.g., marketing, sales, support teams).',
+                  highlight: false,
+                },
+                {
+                  model: '5. Freemium',
+                  example: 'Notion, Slack, Dropbox, Linear',
+                  desc: 'Free tier with genuine value; paid plans unlock more capacity, features, or collaboration. The free tier is a product-led growth engine — users adopt without a sales call, then hit a natural upgrade trigger. Requires a product that is genuinely useful for free but creates clear pain points that paid solves.',
+                  pros: ['Massive top-of-funnel', 'Self-serve conversion with no sales touch', 'Viral loops from free users sharing the product'],
+                  cons: ['Expensive to support free users at scale', 'Conversion rates of 2-5% are common — high infrastructure cost', 'Free tier can reduce urgency to convert'],
+                  verdict: 'Only works if (a) free tier has inherent viral loops and (b) paid upgrade triggers are crystal clear.',
+                  highlight: false,
+                },
+                {
+                  model: '6. Tiered (Good-Better-Best)',
+                  example: 'Most SaaS products: Starter / Pro / Enterprise',
+                  desc: 'Multiple plans at different price points with increasing features, limits, or usage. The most common SaaS pricing structure. Designed to capture multiple buyer segments with different willingness-to-pay. The middle tier is typically where most revenue originates — with most customers choosing the "safer" middle option.',
+                  pros: ['Captures wide range of willingness-to-pay', 'Clear upgrade path built into product', 'Each tier anchors perception of the others'],
+                  cons: ['Too many tiers create analysis paralysis', 'Feature allocation across tiers is hard to get right', 'Risk of customers under-buying for their actual use case'],
+                  verdict: 'The most versatile model. Works for almost any SaaS product. Key is getting tier design right.',
+                  highlight: false,
+                },
+                {
+                  model: '7. Hybrid (Mixed Models)',
+                  example: 'Stripe (% of revenue + fixed), Snowflake (storage + compute)',
+                  desc: 'Combines two or more pricing dimensions. Most mature SaaS pricing eventually evolves into hybrid — a per-seat base plus usage overage, or a flat platform fee plus consumption billing. Captures maximum revenue by aligning multiple value dimensions simultaneously.',
+                  pros: ['Highest revenue capture across customer segments', 'Protects floor revenue (base fee) while scaling with usage', 'Harder for competitors to undercut on single dimension'],
+                  cons: ['Most complex to communicate and explain', 'Billing system must handle multiple charge types', 'Harder to A/B test'],
+                  verdict: 'Best for mature products with multiple clearly distinct value dimensions. Start simple, evolve to hybrid.',
+                  highlight: false,
+                },
+              ].map((m) => (
+                <div key={m.model} className="reveal" style={{ background: m.highlight ? 'rgba(34,197,94,0.06)' : 'rgba(255,255,255,0.03)', border: `1px solid ${m.highlight ? 'rgba(34,197,94,0.25)' : 'rgba(255,255,255,0.08)'}`, borderRadius: 12, padding: 24 }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8, marginBottom: 8 }}>
+                    <div style={{ fontWeight: 700, color: m.highlight ? G : '#fff', fontSize: 17 }}>{m.model}</div>
+                    <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', fontStyle: 'italic' }}>{m.example}</div>
+                  </div>
+                  <p style={{ color: 'rgba(255,255,255,0.68)', fontSize: 14, lineHeight: 1.7, marginBottom: 14 }}>{m.desc}</p>
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 12 }}>
+                    <div>
+                      <div style={{ fontSize: 11, fontWeight: 700, color: G, marginBottom: 6, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Strengths</div>
+                      <ul style={{ paddingLeft: 16, margin: 0 }}>
+                        {m.pros.map((p) => <li key={p} style={{ color: 'rgba(255,255,255,0.6)', fontSize: 13, lineHeight: 1.7 }}>{p}</li>)}
+                      </ul>
+                    </div>
+                    <div>
+                      <div style={{ fontSize: 11, fontWeight: 700, color: '#f87171', marginBottom: 6, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Weaknesses</div>
+                      <ul style={{ paddingLeft: 16, margin: 0 }}>
+                        {m.cons.map((c) => <li key={c} style={{ color: 'rgba(255,255,255,0.6)', fontSize: 13, lineHeight: 1.7 }}>{c}</li>)}
+                      </ul>
+                    </div>
+                  </div>
+                  <div style={{ background: 'rgba(34,197,94,0.08)', borderRadius: 8, padding: '10px 14px', fontSize: 13, color: 'rgba(255,255,255,0.7)' }}>
+                    <strong style={{ color: G }}>Verdict: </strong>{m.verdict}
                   </div>
                 </div>
               ))}
             </div>
           </section>
 
-          {/* Section 2 */}
-          <section id="pricing-models" style={{ marginBottom: 72 }}>
-            <h2 className="reveal" style={{ fontSize: 32, fontWeight: 800, color: '#fff', marginBottom: 16 }}>
-              🗂️ SaaS Pricing Models: The Full Comparison
+          {/* ── Section 3: Value Metric ── */}
+          <section id="value-metric" style={{ marginBottom: 72 }}>
+            <h2 className="reveal" style={{ fontSize: 32, fontWeight: 700, marginBottom: 16, color: '#fff' }}>
+              Value Metric Selection: The Most Important Pricing Decision
             </h2>
-            <p className="reveal" style={{ color: '#bbb', lineHeight: 1.8, marginBottom: 24 }}>
-              There is no universally best SaaS pricing model. The right choice depends on your value metric, your customer segment, your go-to-market motion, and your competitive landscape. Here is every major model with real-world examples and trade-offs.
+            <p className="reveal" style={{ color: 'rgba(255,255,255,0.72)', lineHeight: 1.8, marginBottom: 16 }}>
+              Your value metric is what you charge for — the unit of pricing that scales with the value your customers receive. Choosing the wrong value metric is the root cause of most SaaS pricing failures. A misaligned value metric creates a constant tension where customers feel they are overpaying for what they get, or you are leaving massive revenue on the table from your best customers.
             </p>
+            <p className="reveal" style={{ color: 'rgba(255,255,255,0.72)', lineHeight: 1.8, marginBottom: 24 }}>
+              The ideal value metric has three properties: it scales naturally with customer success, it is easy for customers to understand and predict, and it correlates with your cost to serve. Finding this metric often requires talking to 20–30 customers and asking: "When you get more value from our product, what measurably increases?"
+            </p>
+
+            <h3 className="reveal" style={{ fontSize: 20, fontWeight: 700, color: '#fff', marginBottom: 16 }}>Value Metric Examples by Product Category</h3>
             <div className="reveal" style={{ overflowX: 'auto', marginBottom: 28 }}>
-              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14, minWidth: 600 }}>
                 <thead>
-                  <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.15)' }}>
-                    {['Model', 'Example', 'Best For', 'Pro', 'Con'].map((h, i) => (
-                      <th key={i} style={{ padding: '12px 16px', textAlign: 'left', color: '#22c55e', fontWeight: 700, whiteSpace: 'nowrap' }}>{h}</th>
+                  <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.12)' }}>
+                    {['Product Type', 'Good Value Metric', 'Bad Value Metric', 'Why Bad'].map((h) => (
+                      <th key={h} style={{ padding: '12px 16px', textAlign: 'left', color: G, fontWeight: 700 }}>{h}</th>
                     ))}
                   </tr>
                 </thead>
                 <tbody>
                   {[
-                    { model: 'Flat-Rate', example: 'Basecamp ($99/mo)', bestFor: 'Simple products, small teams', pro: 'Easy to sell, predictable MRR', con: 'Leaves money on table with power users' },
-                    { model: 'Per-Seat', example: 'Slack, Notion', bestFor: 'Collaboration tools, team software', pro: 'Scales with customer growth', con: 'Seat minimization behavior (sharing logins)' },
-                    { model: 'Usage-Based', example: 'AWS, Stripe, Twilio', bestFor: 'Infrastructure, API, transactional', pro: 'Aligns cost with value delivered', con: 'Unpredictable MRR, harder to forecast' },
-                    { model: 'Freemium', example: 'Notion, Linear, Figma', bestFor: 'PLG, viral/network products', pro: 'Massive top-of-funnel, word-of-mouth', con: 'Low conversion rates, high support cost' },
-                    { model: 'Tiered', example: 'HubSpot, Mailchimp', bestFor: 'Multi-segment products', pro: 'Captures multiple WTP levels', con: 'Complex to design, tier cannibalization risk' },
-                    { model: 'Hybrid', example: 'Figma (per-seat + free viewers)', bestFor: 'Products with mixed usage patterns', pro: 'Maximum revenue capture', con: 'Complex to communicate and invoice' },
+                    { product: 'Email marketing tool', good: 'Subscribers or emails sent', bad: 'Users / seats', why: 'Teams typically have 1-2 marketers. Per-seat doesn\'t scale with value.' },
+                    { product: 'Analytics platform', good: 'Monthly tracked events or MTUs', bad: 'Number of reports', why: 'Reports are a feature. Events actually correlate with product usage depth.' },
+                    { product: 'CRM', good: 'Contacts or records managed', bad: 'Admin users only', why: 'More contacts = more sales = more value. Admin count is a poor proxy.' },
+                    { product: 'AI writing assistant', good: 'Words generated or AI credits', bad: 'Active editors', why: 'A solo user generating 100K words/month is worth far more than 10 users generating 1K.' },
+                    { product: 'Scheduling / booking', good: 'Appointments booked per month', bad: 'Calendar connections', why: 'Value is in booked business, not connected calendars.' },
+                    { product: 'Ecommerce platform', good: 'GMV % or monthly orders', bad: 'Products listed', why: 'Revenue tied to merchant\'s success aligns incentives. Product count doesn\'t.' },
                   ].map((row, i) => (
-                    <tr key={i} style={{ borderBottom: '1px solid rgba(255,255,255,0.06)', background: i % 2 === 0 ? 'rgba(255,255,255,0.02)' : 'transparent' }}>
-                      <td style={{ padding: '14px 16px', color: '#22c55e', fontWeight: 700 }}>{row.model}</td>
-                      <td style={{ padding: '14px 16px', color: '#bbb', fontStyle: 'italic' }}>{row.example}</td>
-                      <td style={{ padding: '14px 16px', color: '#bbb' }}>{row.bestFor}</td>
-                      <td style={{ padding: '14px 16px', color: '#4ade80', fontSize: 12 }}>{row.pro}</td>
-                      <td style={{ padding: '14px 16px', color: '#f87171', fontSize: 12 }}>{row.con}</td>
+                    <tr key={row.product} style={{ borderBottom: '1px solid rgba(255,255,255,0.07)', background: i % 2 === 0 ? 'rgba(255,255,255,0.02)' : 'transparent' }}>
+                      <td style={{ padding: '11px 16px', fontWeight: 600, color: '#fff', fontSize: 13 }}>{row.product}</td>
+                      <td style={{ padding: '11px 16px', color: G, fontSize: 13, fontWeight: 600 }}>{row.good}</td>
+                      <td style={{ padding: '11px 16px', color: '#f87171', fontSize: 13 }}>{row.bad}</td>
+                      <td style={{ padding: '11px 16px', color: 'rgba(255,255,255,0.55)', fontSize: 13, lineHeight: 1.5 }}>{row.why}</td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
-            <div className="reveal" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 20, padding: 24 }}>
-              <h3 style={{ color: '#fff', fontWeight: 700, fontSize: 16, marginBottom: 12 }}>How to Choose Your Pricing Model</h3>
+
+            <h3 className="reveal" style={{ fontSize: 20, fontWeight: 700, color: '#fff', marginBottom: 12 }}>The Value Metric Test</h3>
+            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 16, marginBottom: 16 }}>
               {[
-                'Identify your value metric — what unit of value do customers consume? (seats, API calls, data volume, revenue processed)',
-                'Match billing to that metric — the closer your price is to the value delivered, the more willingness-to-pay you capture',
-                'Consider your sales motion — high-touch enterprise needs simple, quotable pricing; self-serve needs online checkout-friendly models',
-                'Start simpler than you think — flat-rate or per-seat is almost always the right early-stage choice',
-                'Evolve with data — once you have 100+ customers, usage data will reveal the natural value metric to price on',
-              ].map((tip, i) => (
-                <div key={i} style={{ color: '#bbb', fontSize: 14, marginBottom: 8, display: 'flex', gap: 10 }}>
-                  <span style={{ color: '#22c55e', flexShrink: 0 }}>→</span> {tip}
+                { test: 'Scales with value', question: 'When a customer gets dramatically more value from your product, does this metric increase proportionally?', pass: 'If yes, it aligns incentives. You earn more when customers succeed.' },
+                { test: 'Customer predictability', question: 'Can customers predict and control their bill? Do they understand what causes the metric to go up?', pass: 'Unpredictable bills cause churn. Customers must feel in control of what they pay.' },
+                { test: 'Easy to explain', question: 'Can you explain the pricing in one sentence to a non-technical buyer?', pass: '"$0.01 per email sent" passes. "$0.004 per unique send event per domain" fails.' },
+                { test: 'Tracks your costs', question: 'Does higher usage of this metric meaningfully increase your infrastructure or operational costs?', pass: 'Aligning price with cost ensures healthy margins at all customer sizes.' },
+              ].map((t) => (
+                <div key={t.test} style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 10, padding: 16 }}>
+                  <div style={{ fontWeight: 700, color: G, marginBottom: 6, fontSize: 14 }}>{t.test}</div>
+                  <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.65)', lineHeight: 1.6, marginBottom: 8, fontStyle: 'italic' }}>"{t.question}"</div>
+                  <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.55)', lineHeight: 1.5 }}>{t.pass}</div>
                 </div>
               ))}
             </div>
           </section>
 
-          {/* Section 3 */}
-          <section id="value-based-pricing" style={{ marginBottom: 72 }}>
-            <h2 className="reveal" style={{ fontSize: 32, fontWeight: 800, color: '#fff', marginBottom: 16 }}>
-              💎 Value-Based Pricing: The Gold Standard
+          {/* ── Section 4: Usage-Based Deep Dive ── */}
+          <section id="usage-based" style={{ marginBottom: 72 }}>
+            <h2 className="reveal" style={{ fontSize: 32, fontWeight: 700, marginBottom: 16, color: '#fff' }}>
+              Usage-Based Pricing Deep Dive
             </h2>
-            <p className="reveal" style={{ color: '#bbb', lineHeight: 1.8, marginBottom: 24 }}>
-              Value-based pricing sets prices based on the economic value your software delivers to customers — not your costs, not competitor pricing. It is the highest-revenue pricing approach, but it requires real customer research. Most SaaS companies skip this work and leave 20–60% of revenue on the table.
+            <p className="reveal" style={{ color: 'rgba(255,255,255,0.72)', lineHeight: 1.8, marginBottom: 16 }}>
+              Usage-based pricing (UBP) is the fastest-growing pricing model in SaaS, driven by the explosion of AI APIs, developer tools, and infrastructure services. OpenAI, Anthropic, Twilio, Stripe, Snowflake, Cloudflare, and AWS all use it. In 2026, 55% of developer-facing SaaS companies have adopted some form of usage-based billing, up from 27% in 2020.
             </p>
-            <div className="reveal" style={{ display: 'grid', gap: 20, marginBottom: 28 }}>
-              {[
-                {
-                  step: 'Step 1: Identify Your Value Metric',
-                  desc: 'Your value metric is the unit that best captures the value your product delivers. For CRM software, it might be contacts managed or deals closed. For analytics, it is events tracked. For HR software, it is employees managed. The right value metric grows with customer success — as they get more value, they pay more.',
-                  example: 'HubSpot charges per marketing contacts, not per user — because more contacts = more marketing value.',
-                },
-                {
-                  step: 'Step 2: Willingness-to-Pay Research',
-                  desc: 'Survey 30–50 customers (and lost deals) asking: "At what price would you consider this product too expensive? At what price would you question the quality? What price seems expensive but acceptable?" Map the responses. The overlap between "acceptable" and "not too cheap" is your pricing sweet spot.',
-                  example: 'Spend 2 hours/week for a month on pricing conversations. The ROI of getting this right is enormous.',
-                },
-                {
-                  step: 'Step 3: Conjoint Analysis',
-                  desc: 'Conjoint analysis asks customers to choose between bundles of features at different prices, revealing the relative value they assign to each feature. Tools like Conjointly, Qualtrics, or even a simple MaxDiff survey reveal which features command a price premium and which are expected for free.',
-                  example: 'A team at Intercom used conjoint analysis to discover that "Custom Bot Workflows" justified a $200/mo price increase that customers readily accepted.',
-                },
-                {
-                  step: 'Step 4: Van Westendorp Price Sensitivity Meter',
-                  desc: 'A four-question survey that plots the "Acceptable Price Range" for your product: Too Cheap / Cheap But Acceptable / Expensive But Worth It / Too Expensive. The intersection of "too cheap" and "too expensive" curves gives you the Optimal Price Point (OPP) and Indifference Price Point (IPP).',
-                  example: 'Run this survey with 50+ respondents using a free tool like Typeform before any pricing change.',
-                },
-              ].map((item, i) => (
-                <div key={i} style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 20, padding: 28 }}>
-                  <h3 style={{ color: '#22c55e', fontWeight: 700, fontSize: 16, marginBottom: 10 }}>{item.step}</h3>
-                  <p style={{ color: '#bbb', fontSize: 14, lineHeight: 1.7, marginBottom: 10 }}>{item.desc}</p>
-                  <div style={{ background: 'rgba(34,197,94,0.06)', borderLeft: '3px solid #22c55e', padding: '10px 14px', borderRadius: '0 8px 8px 0' }}>
-                    <span style={{ color: '#888', fontSize: 12 }}>Example: </span>
-                    <span style={{ color: '#aaa', fontSize: 12 }}>{item.example}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
+            <p className="reveal" style={{ color: 'rgba(255,255,255,0.72)', lineHeight: 1.8, marginBottom: 24 }}>
+              The appeal is clear: customers start free or low, pay only for what they use, and their spend grows automatically as they get more value. For vendors, retention is extraordinarily high because the product becomes deeply embedded in the customer's technical infrastructure. Switching costs are enormous. The downside is revenue unpredictability and the need for robust usage metering infrastructure.
+            </p>
 
-          {/* Section 4 */}
-          <section id="usage-based-pricing" style={{ marginBottom: 72 }}>
-            <h2 className="reveal" style={{ fontSize: 32, fontWeight: 800, color: '#fff', marginBottom: 16 }}>
-              ⚡ Usage-Based / Consumption Pricing
-            </h2>
-            <p className="reveal" style={{ color: '#bbb', lineHeight: 1.8, marginBottom: 24 }}>
-              Usage-based pricing (UBP) — also called consumption pricing — charges customers based on how much of your product they actually use. It is the dominant model for infrastructure and API-first companies, and it is spreading fast to SaaS broadly. The core insight: customers love paying only for what they use, and growth is automatic as their usage scales.
-            </p>
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 20, marginBottom: 28 }}>
+            <h3 className="reveal" style={{ fontSize: 20, fontWeight: 700, color: '#fff', marginBottom: 16 }}>Usage-Based Model Variants</h3>
+            <div className="reveal" style={{ display: 'grid', gap: 14, marginBottom: 28 }}>
               {[
-                { company: 'Stripe', metric: 'Per transaction (2.9% + $0.30)', growth: 'Revenue grows automatically as merchants process more payments — no upsell motion needed.' },
-                { company: 'Vercel', metric: 'Per build, per GB bandwidth', growth: 'As teams ship more and traffic grows, spend grows. Viral growth via developer word-of-mouth.' },
-                { company: 'Twilio', metric: 'Per SMS, per call minute', growth: 'Developers embed Twilio — as their apps scale, usage and revenue scale automatically.' },
-                { company: 'AWS', metric: 'Per compute hour, per GB stored', growth: 'The original consumption model. Growth flywheel: more customers → more usage → lower unit economics.' },
-              ].map((ex, i) => (
-                <div key={i} style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 20, padding: 24 }}>
-                  <div style={{ fontWeight: 800, color: '#22c55e', fontSize: 17, marginBottom: 8 }}>{ex.company}</div>
-                  <div style={{ color: '#aaa', fontSize: 12, marginBottom: 10, fontStyle: 'italic' }}>{ex.metric}</div>
-                  <p style={{ color: '#bbb', fontSize: 13, lineHeight: 1.6, margin: 0 }}>{ex.growth}</p>
-                </div>
-              ))}
-            </div>
-            <div className="reveal" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 28, padding: 28, marginBottom: 20 }}>
-              <h3 style={{ color: '#22c55e', fontWeight: 700, fontSize: 17, marginBottom: 16 }}>The Hybrid Floor + Overage Model</h3>
-              <p style={{ color: '#bbb', fontSize: 14, lineHeight: 1.7, marginBottom: 16 }}>
-                Pure usage-based pricing creates MRR unpredictability. Most mature companies evolve to a hybrid: a committed monthly minimum (the "floor") that gives you predictable revenue, plus overage charges above the included usage. This gives customers budget certainty and gives you revenue predictability.
-              </p>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
-                <div style={{ background: 'rgba(34,197,94,0.06)', borderRadius: 16, padding: 20 }}>
-                  <div style={{ color: '#22c55e', fontWeight: 700, fontSize: 14, marginBottom: 8 }}>Floor (Committed)</div>
-                  <div style={{ color: '#bbb', fontSize: 13 }}>$500/mo includes 50,000 API calls. Customer always pays this regardless of usage. Predictable MRR for you.</div>
-                </div>
-                <div style={{ background: 'rgba(34,197,94,0.06)', borderRadius: 16, padding: 20 }}>
-                  <div style={{ color: '#22c55e', fontWeight: 700, fontSize: 14, marginBottom: 8 }}>Overage (Consumption)</div>
-                  <div style={{ color: '#bbb', fontSize: 13 }}>$0.008 per additional API call above 50K. Expands revenue automatically as customers grow. No upsell friction.</div>
-                </div>
-              </div>
-            </div>
-            <div className="reveal" style={{ background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.2)', borderRadius: 20, padding: 24 }}>
-              <p style={{ color: '#bbb', lineHeight: 1.7, margin: 0 }}>
-                <strong style={{ color: '#22c55e' }}>The growth flywheel:</strong> Usage-based pricing attracts customers with no upfront commitment risk, which increases trial-to-paid conversion. As customers succeed and grow, revenue grows without any sales motion. Your best customers self-expand — this is the most capital-efficient growth loop in SaaS.
-              </p>
-            </div>
-          </section>
-
-          {/* Section 5 */}
-          <section id="freemium-strategy" style={{ marginBottom: 72 }}>
-            <h2 className="reveal" style={{ fontSize: 32, fontWeight: 800, color: '#fff', marginBottom: 16 }}>
-              🆓 Freemium Strategy: Benchmarks & Design
-            </h2>
-            <p className="reveal" style={{ color: '#bbb', lineHeight: 1.8, marginBottom: 24 }}>
-              Freemium is widely misunderstood. It is not a pricing model — it is a distribution strategy. The free tier is a top-of-funnel acquisition mechanism, not a revenue mechanism. Done right, it creates a massive user base that converts at low rates to generate significant revenue. Done wrong, it creates a support-heavy free tier that subsidizes non-paying users indefinitely.
-            </p>
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 20, marginBottom: 28 }}>
-              {[
-                { stat: '2–5%', label: 'B2B freemium conversion benchmark', note: 'Anything above 4% is excellent' },
-                { stat: '1–3%', label: 'B2C freemium conversion benchmark', note: 'Consumer products convert lower but at massive scale' },
-                { stat: '~4%', label: 'Dropbox free-to-paid conversion rate', note: 'Their referral program was the real growth driver' },
-                { stat: '~26%', label: 'Slack free workspace to paid conversion', note: 'High because team dynamics create natural upgrade pressure' },
-              ].map((s, i) => (
-                <div key={i} style={{ background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.2)', borderRadius: 20, padding: 24, textAlign: 'center' }}>
-                  <div style={{ color: '#22c55e', fontSize: 28, fontWeight: 800, marginBottom: 6 }}>{s.stat}</div>
-                  <div style={{ color: '#fff', fontWeight: 600, fontSize: 13, marginBottom: 6 }}>{s.label}</div>
-                  <div style={{ color: '#888', fontSize: 11 }}>{s.note}</div>
-                </div>
-              ))}
-            </div>
-            <div className="reveal" style={{ display: 'grid', gap: 20, marginBottom: 24 }}>
-              {[
-                {
-                  type: 'Feature-Gated Freemium',
-                  desc: 'Free users get full access to core features but are blocked from advanced/premium features. Works when the upgrade path is obvious — users naturally encounter the gate during normal use.',
-                  example: 'Linear (free plan has basic issue tracking, paid unlocks analytics and automations). Notion (free for personal, paid for team collaboration features).',
-                  best: 'Products where advanced features are clearly differentiated from core use',
-                },
-                {
-                  type: 'Usage-Capped Freemium',
-                  desc: 'Free users get access to all features but are limited by a usage threshold (seats, storage, API calls, actions/month). When they hit the cap, they must upgrade. Creates a natural "aha moment" aligned with growth.',
-                  example: 'Dropbox (2GB free storage), Mailchimp (2,000 subscribers free), HubSpot (free CRM with contact limits).',
-                  best: 'Products where usage scales with business growth — caps naturally align with when companies can afford to pay',
-                },
-              ].map((item, i) => (
-                <div key={i} style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 20, padding: 28 }}>
-                  <div style={{ fontWeight: 700, color: '#22c55e', fontSize: 16, marginBottom: 10 }}>{item.type}</div>
-                  <p style={{ color: '#bbb', fontSize: 14, lineHeight: 1.7, marginBottom: 10 }}>{item.desc}</p>
-                  <div style={{ color: '#888', fontSize: 13, marginBottom: 8 }}><strong style={{ color: '#aaa' }}>Examples:</strong> {item.example}</div>
-                  <div style={{ color: '#888', fontSize: 13 }}><strong style={{ color: '#aaa' }}>Best for:</strong> {item.best}</div>
-                </div>
-              ))}
-            </div>
-            <div className="reveal" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 20, padding: 24 }}>
-              <h3 style={{ color: '#fff', fontWeight: 700, fontSize: 16, marginBottom: 12 }}>The Freemium Trap — and How to Avoid It</h3>
-              {[
-                'Do not make the free tier too generous — free users should experience value but always feel the upgrade pull',
-                'Design the upgrade moment into the product journey, not as an afterthought wall',
-                'Track "activation rate" (free users who reach their first value moment) as your leading indicator of conversion potential',
-                'Free users cost money to support — build automated onboarding and self-serve help docs before scaling free tier',
-                'Set a hard rule: if your free-to-paid conversion drops below 2% for 2 consecutive quarters, redesign the free tier gates',
-              ].map((tip, i) => (
-                <div key={i} style={{ color: '#bbb', fontSize: 14, marginBottom: 8, display: 'flex', gap: 10 }}>
-                  <span style={{ color: '#22c55e', flexShrink: 0 }}>→</span> {tip}
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* Section 6 */}
-          <section id="packaging-tiers" style={{ marginBottom: 72 }}>
-            <h2 className="reveal" style={{ fontSize: 32, fontWeight: 800, color: '#fff', marginBottom: 16 }}>
-              📦 Packaging & Tiers: Good-Better-Best Design
-            </h2>
-            <p className="reveal" style={{ color: '#bbb', lineHeight: 1.8, marginBottom: 24 }}>
-              Most SaaS products use a three-tier "Good-Better-Best" packaging structure. When designed well, it captures revenue across multiple customer segments and guides buyers to the tier that matches their willingness-to-pay without requiring a sales conversation for most deals.
-            </p>
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 20, marginBottom: 28 }}>
-              {[
-                { tier: 'Starter / Good', purpose: 'Captures budget-sensitive customers and small teams. Should include enough to deliver core value but not so much that it cannibalizes the middle tier.', target: 'Solo users, early-stage startups', highlight: false },
-                { tier: 'Pro / Better', purpose: 'Your primary revenue driver. Most buyers will land here. Design it to feel like the clear "right choice" — the value density should be obviously superior to Starter.', target: 'Growing teams, SMB', highlight: true },
-                { tier: 'Business / Best', purpose: 'Serves two purposes: it makes Pro look affordable by comparison (anchoring), and it captures larger customers who need team features like SSO, admin controls, and priority support.', target: 'Mid-market, larger teams', highlight: false },
-              ].map((tier, i) => (
-                <div key={i} style={{ background: tier.highlight ? 'rgba(34,197,94,0.08)' : 'rgba(255,255,255,0.04)', border: tier.highlight ? '1px solid rgba(34,197,94,0.3)' : '1px solid rgba(255,255,255,0.08)', borderRadius: 20, padding: 24, position: 'relative' }}>
-                  {tier.highlight && <div style={{ position: 'absolute', top: -12, left: '50%', transform: 'translateX(-50%)', background: '#22c55e', color: '#000', fontSize: 10, fontWeight: 700, padding: '3px 12px', borderRadius: 100 }}>MOST POPULAR</div>}
-                  <div style={{ fontWeight: 800, color: tier.highlight ? '#22c55e' : '#fff', fontSize: 17, marginBottom: 12 }}>{tier.tier}</div>
-                  <p style={{ color: '#bbb', fontSize: 13, lineHeight: 1.6, marginBottom: 12 }}>{tier.purpose}</p>
-                  <div style={{ color: '#aaa', fontSize: 12 }}>Target: {tier.target}</div>
-                </div>
-              ))}
-            </div>
-            <div className="reveal" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 20, padding: 24, marginBottom: 20 }}>
-              <h3 style={{ color: '#fff', fontWeight: 700, fontSize: 16, marginBottom: 12 }}>Feature Bucketing Principles</h3>
-              {[
-                'Put features that scale with business size (more users, more data, more automations) in higher tiers — not arbitrary feature unlocks',
-                'Security, compliance, and admin features (SSO, audit logs, SAML) belong in Business/Enterprise tiers — these are table stakes for larger orgs',
-                'Prioritize: most-used features in Starter, collaboration features in Pro, governance/security features in Business',
-                'Never put a feature in a higher tier just to justify the price difference — customers notice feature padding and it erodes trust',
-                'Run feature prioritization surveys with current customers at each tier to validate your packaging assumptions',
-              ].map((tip, i) => (
-                <div key={i} style={{ color: '#bbb', fontSize: 14, marginBottom: 8, display: 'flex', gap: 10 }}>
-                  <span style={{ color: '#22c55e', flexShrink: 0 }}>✓</span> {tip}
-                </div>
-              ))}
-            </div>
-            <div className="reveal" style={{ background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.2)', borderRadius: 20, padding: 24 }}>
-              <h3 style={{ color: '#22c55e', fontWeight: 700, fontSize: 16, marginBottom: 10 }}>Annual vs Monthly Discount</h3>
-              <p style={{ color: '#bbb', fontSize: 14, lineHeight: 1.7, marginBottom: 16 }}>
-                Offering annual billing at a 10–20% discount is standard SaaS practice. The optimal discount depends on your churn rate: if monthly churn is above 5%, a 20% annual discount may still be net-positive because you lock in 12 months of revenue. Below 2% monthly churn, 10–15% annual discount is sufficient incentive.
-              </p>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: 12 }}>
-                {[
-                  { discount: '10%', signal: 'Low churn, strong retention', when: 'Monthly churn below 2%' },
-                  { discount: '15%', signal: 'Standard for most SaaS', when: 'Monthly churn 2–4%' },
-                  { discount: '20%', signal: 'Aggressive annual push', when: 'Monthly churn above 4%, or competitive market' },
-                ].map((item, i) => (
-                  <div key={i} style={{ background: 'rgba(255,255,255,0.04)', borderRadius: 12, padding: 16, textAlign: 'center' }}>
-                    <div style={{ color: '#22c55e', fontWeight: 800, fontSize: 22, marginBottom: 4 }}>{item.discount}</div>
-                    <div style={{ color: '#fff', fontSize: 12, fontWeight: 600, marginBottom: 4 }}>{item.signal}</div>
-                    <div style={{ color: '#888', fontSize: 11 }}>{item.when}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          {/* Section 7 */}
-          <section id="price-anchoring" style={{ marginBottom: 72 }}>
-            <h2 className="reveal" style={{ fontSize: 32, fontWeight: 800, color: '#fff', marginBottom: 16 }}>
-              🧠 Price Anchoring & Psychology
-            </h2>
-            <p className="reveal" style={{ color: '#bbb', lineHeight: 1.8, marginBottom: 24 }}>
-              Pricing is not purely rational. Decades of behavioral economics research show that the way you present prices is as important as the prices themselves. Understanding these psychological mechanisms lets you design pricing that feels fairer, more compelling, and higher-value — without changing the actual numbers.
-            </p>
-            <div className="reveal" style={{ display: 'grid', gap: 20, marginBottom: 28 }}>
-              {[
-                {
-                  principle: 'Anchoring with the Enterprise Tier',
-                  desc: 'Placing a high-priced Enterprise tier first (or most visibly) anchors the entire pricing page. When buyers see "$2,000/mo Enterprise" before they see "$99/mo Pro", the Pro plan feels dramatically more affordable. Research shows anchoring can shift perceived value of the middle tier by 20–40%.',
-                  apply: 'Put your highest-priced plan on the left or make it most prominent on the page layout.',
-                },
-                {
-                  principle: 'Charm Pricing ($99 vs $100)',
-                  desc: 'Prices ending in 9 consistently outperform round numbers by 10–15% in conversion studies. The effect is strongest at psychological thresholds: $99 vs $100, $499 vs $500, $999 vs $1,000. The brain processes the first digit first, so $99 feels much closer to $90 than to $100.',
-                  apply: 'Use $49, $99, $199, $499 for tier pricing. Avoid $50, $100, $200 round numbers.',
-                },
-                {
-                  principle: 'Loss Aversion Framing',
-                  desc: 'People feel losses more acutely than equivalent gains (Kahneman and Tversky). Instead of "save $240/year with annual billing", frame it as "avoid losing 2 months of access by paying monthly." Feature removal messaging ("You will lose access to X on March 31") drives upgrades better than feature addition messaging.',
-                  apply: 'Use loss framing in upgrade prompts, trial expiry notices, and plan comparison tables.',
-                },
-                {
-                  principle: 'Payment Frequency Bias',
-                  desc: 'Showing per-day or per-user-per-month breakdowns makes prices feel smaller. "$3.30/day" feels less than "$99/month" even though they are the same. For per-seat pricing, always show per-seat-per-month rather than total team cost — a $15/user/mo plan for a 20-person team sounds better than "$300/month".',
-                  apply: 'Display prices as "per user/month" and add "billed annually" in smaller text beneath.',
-                },
-                {
-                  principle: 'Social Proof at the Pricing Decision',
-                  desc: 'Adding "2,400 teams chose this plan" or "Most popular among growth-stage startups" to your recommended tier creates social validation at the exact moment of purchase anxiety. This is distinct from homepage testimonials — pricing page social proof is specifically targeted at reducing commitment fear.',
-                  apply: 'Add customer logos, usage stats, and "most popular" badges to your middle/recommended tier.',
-                },
-              ].map((item, i) => (
-                <div key={i} style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 20, padding: 24 }}>
-                  <div style={{ fontWeight: 700, color: '#22c55e', fontSize: 16, marginBottom: 10 }}>{item.principle}</div>
-                  <p style={{ color: '#bbb', fontSize: 14, lineHeight: 1.7, marginBottom: 10 }}>{item.desc}</p>
-                  <div style={{ background: 'rgba(34,197,94,0.06)', borderLeft: '3px solid #22c55e', padding: '8px 12px', borderRadius: '0 8px 8px 0' }}>
-                    <span style={{ color: '#22c55e', fontSize: 12, fontWeight: 600 }}>Apply: </span>
-                    <span style={{ color: '#aaa', fontSize: 12 }}>{item.apply}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* Section 8 */}
-          <section id="pricing-page-design" style={{ marginBottom: 72 }}>
-            <h2 className="reveal" style={{ fontSize: 32, fontWeight: 800, color: '#fff', marginBottom: 16 }}>
-              🎨 Pricing Page Design: What Actually Converts
-            </h2>
-            <p className="reveal" style={{ color: '#bbb', lineHeight: 1.8, marginBottom: 24 }}>
-              Your pricing page is often the highest-intent page on your website — prospects who land here are seriously evaluating your product. A well-designed pricing page removes friction, answers objections, and guides buyers to the right plan. A poor one drives them to competitors.
-            </p>
-            <div className="reveal" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 28, padding: 28, marginBottom: 24 }}>
-              <h3 style={{ color: '#22c55e', fontWeight: 700, fontSize: 17, marginBottom: 16 }}>3-Column vs 4-Column Pricing Layout</h3>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20 }}>
-                <div style={{ background: 'rgba(34,197,94,0.06)', border: '1px solid rgba(34,197,94,0.2)', borderRadius: 16, padding: 20 }}>
-                  <div style={{ fontWeight: 700, color: '#22c55e', fontSize: 15, marginBottom: 8 }}>3-Column (Recommended)</div>
-                  <div style={{ color: '#bbb', fontSize: 13, lineHeight: 1.6 }}>Starter / Pro / Enterprise. Clean, scannable, clear choice. The middle "Pro" plan anchors buying decisions. Works for 90% of SaaS products. Reduces decision paralysis.</div>
-                </div>
-                <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 16, padding: 20 }}>
-                  <div style={{ fontWeight: 700, color: '#fff', fontSize: 15, marginBottom: 8 }}>4-Column (Use Carefully)</div>
-                  <div style={{ color: '#bbb', fontSize: 13, lineHeight: 1.6 }}>Adds a second paid tier for complex products with genuinely distinct segments. Risk of choice paralysis. Only warranted when you serve 4 meaningfully different customer types.</div>
-                </div>
-              </div>
-            </div>
-            <div className="reveal" style={{ display: 'grid', gap: 16, marginBottom: 24 }}>
-              {[
-                { element: 'Monthly / Annual Toggle', desc: 'Place prominently above pricing cards. Default to annual billing if your conversion data supports it (typically 15–25% of self-serve buyers prefer monthly). Show the savings amount explicitly: "Save $240/year".' },
-                { element: 'Feature Comparison Table', desc: 'Below the pricing cards, include a full feature comparison table. Buyers who scroll to this section are seriously evaluating — give them every detail they need. Group features by category (Core, Collaboration, Security, Support).' },
-                { element: 'FAQ on the Pricing Page', desc: 'Address the top 5 pricing objections directly on the page: Can I change plans? Is there a setup fee? What happens when I cancel? Do you offer refunds? Is there a free trial? These questions are real buyer blockers — answering them reduces support tickets and increases conversion.' },
-                { element: 'Social Proof by Plan', desc: 'Show logos of recognizable companies on each tier. "Used by 5,000+ teams" on Starter, "Trusted by Series A–B startups" on Pro, "Preferred by Fortune 500" on Enterprise. Segment social proof creates emotional resonance at the right tier.' },
-                { element: 'Clear CTA Differentiation', desc: '"Start Free Trial" for self-serve tiers vs "Talk to Sales" or "Request Demo" for Enterprise. Make the CTAs visually distinct — primary green CTA for the recommended tier, secondary outlined CTA for others.' },
-              ].map((item, i) => (
-                <div key={i} style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 16, padding: 20, display: 'flex', gap: 16 }}>
-                  <div style={{ flexShrink: 0, width: 4, background: '#22c55e', borderRadius: 4 }} />
-                  <div>
-                    <div style={{ fontWeight: 700, color: '#fff', fontSize: 14, marginBottom: 6 }}>{item.element}</div>
-                    <p style={{ color: '#bbb', fontSize: 13, lineHeight: 1.6, margin: 0 }}>{item.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* Section 9 */}
-          <section id="raising-prices" style={{ marginBottom: 72 }}>
-            <h2 className="reveal" style={{ fontSize: 32, fontWeight: 800, color: '#fff', marginBottom: 16 }}>
-              🚀 When & How to Raise Prices
-            </h2>
-            <p className="reveal" style={{ color: '#bbb', lineHeight: 1.8, marginBottom: 24 }}>
-              Almost every SaaS company raises prices eventually, and almost every founder fears it more than necessary. Studies show that well-executed price increases cause less than 5% incremental churn — far less than founders expect. The key is the execution: transparency, timing, and grandfathering decisions.
-            </p>
-            <div className="reveal" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 28, padding: 28, marginBottom: 24 }}>
-              <h3 style={{ color: '#22c55e', fontWeight: 700, fontSize: 17, marginBottom: 16 }}>Superhuman Case Study: $30 to $25 (Price Decrease as Strategy)</h3>
-              <p style={{ color: '#bbb', fontSize: 14, lineHeight: 1.7, marginBottom: 12 }}>
-                Superhuman famously launched at $30/month and later reduced to $25/month — a rare price decrease in SaaS. Their insight: at $30, pricing was a top objection that slowed word-of-mouth. Reducing to $25 (still premium, still a strong signal of quality) removed the friction and accelerated referrals. The result: faster growth that more than offset the per-user revenue reduction.
-              </p>
-              <p style={{ color: '#bbb', fontSize: 14, lineHeight: 1.7 }}>
-                The lesson: right-sizing your price matters more than maximizing it. A price that creates friction at the adoption stage costs you more in growth velocity than you gain in per-unit margin.
-              </p>
-            </div>
-            <div className="reveal" style={{ display: 'grid', gap: 20, marginBottom: 24 }}>
-              {[
-                {
-                  approach: 'Grandfathering Existing Customers',
-                  desc: 'Lock existing customers at their current rate permanently (or for 12–24 months). This is the most common approach and generates the highest goodwill. Churn impact is near-zero. You earn incremental revenue only from new customers. Best for small customer bases or high-NPS products where loyalty matters.',
-                  tradeoff: 'Leaves revenue on table from existing base; creates two-tier system that complicates billing',
-                },
-                {
-                  approach: 'Phased Migration',
-                  desc: 'Give existing customers 90–180 days notice before their price increases. Offer to lock in current pricing for 12 months annual commitment. Transparent communication: "We are investing heavily in X and Y, which required us to adjust our pricing." Most customers who have already embedded your product will stay.',
-                  tradeoff: 'Expect 3–7% incremental churn among price-sensitive customers; budget for some friction in customer success',
-                },
-                {
-                  approach: 'New Packaging Only',
-                  desc: 'Introduce new higher-priced plans for new features while keeping legacy plans available. Existing customers stay on old plans; new customers see new pricing. Over time, new customers dominate the mix. This approach is lowest-risk but slowest to capture revenue upside.',
-                  tradeoff: 'Billing complexity increases; legacy plans create long-term support burden',
-                },
-              ].map((item, i) => (
-                <div key={i} style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 20, padding: 24 }}>
-                  <div style={{ fontWeight: 700, color: '#22c55e', fontSize: 16, marginBottom: 10 }}>{item.approach}</div>
-                  <p style={{ color: '#bbb', fontSize: 14, lineHeight: 1.7, marginBottom: 10 }}>{item.desc}</p>
-                  <div style={{ color: '#888', fontSize: 13 }}><strong style={{ color: '#aaa' }}>Trade-off:</strong> {item.tradeoff}</div>
-                </div>
-              ))}
-            </div>
-            <div className="reveal" style={{ background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.2)', borderRadius: 20, padding: 24 }}>
-              <h3 style={{ color: '#22c55e', fontWeight: 700, fontSize: 16, marginBottom: 12 }}>Price Increase Announcement Checklist</h3>
-              {[
-                'Give 60–90 days notice minimum — never spring pricing changes on customers',
-                'Lead with value: "We have shipped X new features in the past 12 months including A, B, and C"',
-                'Be direct about the change: "As of [date], our pricing will move from $X to $Y"',
-                'Offer a lock-in window: "Lock in your current rate by upgrading to annual billing before [date]"',
-                'Provide a clear FAQ: who is affected, when it takes effect, what options they have',
-                'Follow up with an in-app notification 30 days before and 7 days before the change',
-              ].map((tip, i) => (
-                <div key={i} style={{ color: '#bbb', fontSize: 14, marginBottom: 8, display: 'flex', gap: 10 }}>
-                  <span style={{ color: '#22c55e', flexShrink: 0 }}>→</span> {tip}
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* Section 10 */}
-          <section id="international-pricing" style={{ marginBottom: 72 }}>
-            <h2 className="reveal" style={{ fontSize: 32, fontWeight: 800, color: '#fff', marginBottom: 16 }}>
-              🌍 International Pricing & Purchasing Power Parity
-            </h2>
-            <p className="reveal" style={{ color: '#bbb', lineHeight: 1.8, marginBottom: 24 }}>
-              If you sell globally at US pricing, you are systematically excluding massive markets where $99/month is 2–5x the local equivalent. Purchasing Power Parity (PPP) pricing — charging different prices in different countries based on local purchasing power — is one of the highest-ROI growth levers for SaaS companies with global ambitions.
-            </p>
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 20, marginBottom: 28 }}>
-              {[
-                { region: 'USA / Canada', ppp: '1.0x (baseline)', example: '$99/month', signal: 'Full US pricing' },
-                { region: 'UK / Australia', ppp: '0.85–0.95x', example: '£79 / A$129/month', signal: 'Slight currency adjustment' },
-                { region: 'India', ppp: '0.2–0.3x', example: '~₹1,500–2,000/month', signal: 'PPP adjustment: 5–6x cheaper' },
-                { region: 'Brazil', ppp: '0.3–0.4x', example: '~R$150–200/month', signal: 'PPP adjustment: 2.5–3x cheaper' },
-                { region: 'Eastern Europe', ppp: '0.4–0.6x', example: '~€40–60/month', signal: 'PPP adjustment: 1.5–2.5x cheaper' },
-                { region: 'Southeast Asia', ppp: '0.25–0.4x', example: '~$25–40/month USD equiv.', signal: 'PPP adjustment: 2.5–4x cheaper' },
-              ].map((region, i) => (
-                <div key={i} style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 20, padding: 20 }}>
-                  <div style={{ fontWeight: 700, color: '#fff', fontSize: 14, marginBottom: 6 }}>{region.region}</div>
-                  <div style={{ color: '#22c55e', fontWeight: 700, fontSize: 13, marginBottom: 4 }}>{region.example}</div>
-                  <div style={{ color: '#888', fontSize: 11, marginBottom: 4 }}>PPP Index: {region.ppp}</div>
-                  <div style={{ color: '#666', fontSize: 11 }}>{region.signal}</div>
-                </div>
-              ))}
-            </div>
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 24 }}>
-              {[
-                {
-                  tool: 'Paddle',
-                  desc: 'Built-in PPP pricing with automatic currency conversion. Handles VAT/GST globally. Merchant of Record means Paddle handles all tax compliance. Best for SaaS founders who want hands-off global billing. Fee: 5% + $0.50 per transaction.',
-                  pros: ['Automatic PPP support', 'Built-in VAT/GST compliance', 'Merchant of Record (no tax headache)', 'Checkout localization'],
-                },
-                {
-                  tool: 'Stripe',
-                  desc: 'Market-leading payment infrastructure with excellent developer experience. Multi-currency support but PPP pricing must be manually configured. Requires separate tax compliance setup (TaxJar, Avalara). Best for developer-first teams who want maximum flexibility.',
-                  pros: ['Best-in-class developer experience', 'Stripe Tax for automated compliance', 'Radar fraud protection', 'Flexible pricing models'],
-                },
-              ].map((tool, i) => (
-                <div key={i} style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 20, padding: 24 }}>
-                  <div style={{ fontWeight: 800, color: '#22c55e', fontSize: 18, marginBottom: 10 }}>{tool.tool}</div>
-                  <p style={{ color: '#bbb', fontSize: 13, lineHeight: 1.6, marginBottom: 12 }}>{tool.desc}</p>
-                  {tool.pros.map((pro, j) => (
-                    <div key={j} style={{ color: '#bbb', fontSize: 12, marginBottom: 6, display: 'flex', gap: 8 }}>
-                      <span style={{ color: '#22c55e', flexShrink: 0 }}>✓</span> {pro}
+                { variant: 'Pure Pay-As-You-Go', example: 'AWS Lambda, Twilio SMS', desc: 'No base fee. Pay only when you use. Zero commitment. Perfect for irregular usage patterns and developer trials. Downside: no predictable revenue floor, harder to support with dedicated CSMs.', risk: 'Low revenue floor' },
+                { variant: 'Commitment + Overage', example: 'Snowflake, Datadog', desc: 'Monthly or annual commitment for a usage allowance (credits), with overage pricing for usage beyond the committed amount. Provides revenue predictability for the vendor while giving customers a lower per-unit rate for committed volume.', risk: 'Overage surprise' },
+                { variant: 'Tiered + Usage', example: 'Stripe, SendGrid', desc: 'Flat monthly fee per tier that includes a usage allowance. Usage above the tier limit triggers per-unit overage charges. Provides customers with predictable baseline cost and a clear upgrade trigger when they regularly exceed their tier.', risk: 'Tier design complexity' },
+                { variant: 'Credit System', example: 'OpenAI API, Midjourney', desc: 'Customers purchase credits upfront that convert to usage. Works well for AI products where cost per operation varies. Creates working capital benefit (cash received before service delivered). Credits can expire to create urgency.', risk: 'Credits UX confusion' },
+              ].map((v) => (
+                <div key={v.variant} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 10, padding: 18 }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, marginBottom: 8, flexWrap: 'wrap' }}>
+                    <div style={{ fontWeight: 700, color: G, fontSize: 14 }}>{v.variant}</div>
+                    <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+                      <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)', fontStyle: 'italic' }}>{v.example}</span>
+                      <span style={{ fontSize: 11, background: 'rgba(234,179,8,0.1)', border: '1px solid rgba(234,179,8,0.25)', borderRadius: 4, padding: '2px 8px', color: '#fbbf24', fontWeight: 600 }}>Risk: {v.risk}</span>
                     </div>
-                  ))}
+                  </div>
+                  <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 13, lineHeight: 1.7, margin: 0 }}>{v.desc}</p>
                 </div>
               ))}
             </div>
-            <div className="reveal" style={{ background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.2)', borderRadius: 20, padding: 24 }}>
-              <p style={{ color: '#bbb', lineHeight: 1.7, margin: 0 }}>
-                <strong style={{ color: '#22c55e' }}>The business case for PPP:</strong> A developer in India cannot afford $99/month but will happily pay $20/month. At $20, you capture a customer who would otherwise pirate or ignore your product. Over 12 months, that is $240 in revenue you would not otherwise have. At scale, markets like India, Brazil, and Southeast Asia represent hundreds of millions of potential customers who are priced out by US-centric pricing.
+
+            <h3 className="reveal" style={{ fontSize: 20, fontWeight: 700, color: '#fff', marginBottom: 12 }}>Solving the Revenue Predictability Problem</h3>
+            <p className="reveal" style={{ color: 'rgba(255,255,255,0.72)', lineHeight: 1.8, marginBottom: 16 }}>
+              Pure usage-based pricing creates "lumpy" revenue that is hard to forecast. Three strategies companies use to add predictability without sacrificing the UBP benefits:
+            </p>
+            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 14, marginBottom: 16 }}>
+              {[
+                { strategy: 'Annual Committed Contracts', desc: 'Offer 20–30% discount for annual usage commitment. Customer signs a $X commitment, use it as credits. Lock-in + predictability. Used by Snowflake, Databricks.' },
+                { strategy: 'Minimum Monthly Spend', desc: 'Set a minimum charge floor (e.g., "minimum $50/month"). Protects revenue from zero-usage months while maintaining UBP alignment.' },
+                { strategy: 'Platform Fee + Usage', desc: 'Charge a small platform/access fee ($10–$50/month) that is always billed, plus usage on top. The fee covers your base costs and provides a revenue floor.' },
+              ].map((s) => (
+                <div key={s.strategy} style={{ background: 'rgba(34,197,94,0.06)', border: '1px solid rgba(34,197,94,0.15)', borderRadius: 10, padding: 16 }}>
+                  <div style={{ fontWeight: 700, color: G, marginBottom: 6, fontSize: 14 }}>{s.strategy}</div>
+                  <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)', lineHeight: 1.6 }}>{s.desc}</div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* ── Section 5: Freemium ── */}
+          <section id="freemium" style={{ marginBottom: 72 }}>
+            <h2 className="reveal" style={{ fontSize: 32, fontWeight: 700, marginBottom: 16, color: '#fff' }}>
+              Freemium Strategy: When It Works and When It Kills You
+            </h2>
+            <p className="reveal" style={{ color: 'rgba(255,255,255,0.72)', lineHeight: 1.8, marginBottom: 16 }}>
+              Freemium is not a pricing model — it is a customer acquisition strategy. You are spending money (infrastructure, support) to acquire users for free, betting that a percentage will convert to paid. The math only works if your conversion rate and LTV of paid users is high enough to justify the cost of free users. For most B2B SaaS, it does not work. For the select products where it does, it creates an extraordinary growth engine.
+            </p>
+
+            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 28 }}>
+              <div style={{ background: 'rgba(34,197,94,0.06)', border: '1px solid rgba(34,197,94,0.2)', borderRadius: 12, padding: 20 }}>
+                <div style={{ fontWeight: 700, color: G, marginBottom: 12, fontSize: 15 }}>Freemium Works When...</div>
+                <ul style={{ paddingLeft: 18, margin: 0, color: 'rgba(255,255,255,0.65)', fontSize: 14, lineHeight: 1.9 }}>
+                  <li>Free users create viral loops (sharing, collaboration, embeds)</li>
+                  <li>Free → paid upgrade trigger is natural and obvious</li>
+                  <li>Marginal cost of a free user is low (&lt;$1/month)</li>
+                  <li>Product is self-explanatory (no onboarding cost)</li>
+                  <li>Free tier is useful but clearly limited (not free forever)</li>
+                  <li>B2C or PLG B2B with short sales cycle</li>
+                </ul>
+              </div>
+              <div style={{ background: 'rgba(239,68,68,0.06)', border: '1px solid rgba(239,68,68,0.2)', borderRadius: 12, padding: 20 }}>
+                <div style={{ fontWeight: 700, color: '#f87171', marginBottom: 12, fontSize: 15 }}>Freemium Fails When...</div>
+                <ul style={{ paddingLeft: 18, margin: 0, color: 'rgba(255,255,255,0.65)', fontSize: 14, lineHeight: 1.9 }}>
+                  <li>High infrastructure cost per user (AI, video, data-heavy apps)</li>
+                  <li>Product requires onboarding / training to deliver value</li>
+                  <li>No natural viral loop — users don't share or invite others</li>
+                  <li>Enterprise buyers won't trial free (procurement process)</li>
+                  <li>Free tier cannibalizes paid — "free forever" customers</li>
+                  <li>Conversion rate &lt;1% makes unit economics negative</li>
+                </ul>
+              </div>
+            </div>
+
+            <h3 className="reveal" style={{ fontSize: 20, fontWeight: 700, color: '#fff', marginBottom: 12 }}>Designing the Freemium Upgrade Trigger</h3>
+            <p className="reveal" style={{ color: 'rgba(255,255,255,0.72)', lineHeight: 1.8, marginBottom: 16 }}>
+              The upgrade trigger is the moment a free user hits a natural constraint that requires them to pay. This must be designed deliberately — not as an arbitrary wall, but as a genuine moment where the free tier limitation is painful because the user is getting real value. The best triggers are usage-based (storage full, limit reached) not time-based (30-day trial expired).
+            </p>
+            <div className="reveal" style={{ display: 'grid', gap: 12, marginBottom: 16 }}>
+              {[
+                { product: 'Notion', trigger: 'Block storage limit', why: 'Heavy users accumulate content organically — the limit hits exactly when users are most engaged' },
+                { product: 'Slack', trigger: '10,000 message history limit', why: 'Teams hit the limit once they use Slack seriously for work — losing history is immediately painful' },
+                { product: 'Dropbox', trigger: '2GB storage limit', why: 'Photos and documents fill it naturally — users experience the constraint right when they rely on sync' },
+                { product: 'Linear', trigger: 'Issue and member limits', why: 'Teams grow into paid naturally as projects scale — no arbitrary features withheld' },
+              ].map((t) => (
+                <div key={t.product} style={{ display: 'flex', gap: 16, alignItems: 'flex-start', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 8, padding: 14 }}>
+                  <div style={{ minWidth: 80, fontWeight: 700, color: G, fontSize: 14 }}>{t.product}</div>
+                  <div style={{ minWidth: 200, fontWeight: 600, color: '#fff', fontSize: 13 }}>{t.trigger}</div>
+                  <div style={{ color: 'rgba(255,255,255,0.55)', fontSize: 13, lineHeight: 1.6 }}>{t.why}</div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* ── Section 6: Packaging & Tier Design ── */}
+          <section id="packaging-tiers" style={{ marginBottom: 72 }}>
+            <h2 className="reveal" style={{ fontSize: 32, fontWeight: 700, marginBottom: 16, color: '#fff' }}>
+              Packaging & Tier Design
+            </h2>
+            <p className="reveal" style={{ color: 'rgba(255,255,255,0.72)', lineHeight: 1.8, marginBottom: 16 }}>
+              Tier design — which features go in which plan at what price — is where most SaaS companies leave the most money on the table. The default approach is "dump everything in Pro and sell it cheap." The optimal approach is a deliberate segmentation that matches each tier to a specific buyer persona with a specific budget and value expectation.
+            </p>
+            <p className="reveal" style={{ color: 'rgba(255,255,255,0.72)', lineHeight: 1.8, marginBottom: 24 }}>
+              The classic good-better-best structure (Starter / Pro / Enterprise or Hobby / Growth / Enterprise) works because it lets you optimize for three different goals simultaneously: volume of customers (Starter), average revenue per customer (Pro), and maximum contract value (Enterprise).
+            </p>
+
+            <h3 className="reveal" style={{ fontSize: 20, fontWeight: 700, color: '#fff', marginBottom: 16 }}>Tier Allocation Framework</h3>
+            <div className="reveal" style={{ overflowX: 'auto', marginBottom: 28 }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14, minWidth: 640 }}>
+                <thead>
+                  <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.12)' }}>
+                    {['Tier', 'Target Persona', 'Price Signal', 'What to Include', 'What to Exclude'].map((h) => (
+                      <th key={h} style={{ padding: '12px 14px', textAlign: 'left', color: G, fontWeight: 700 }}>{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    { tier: 'Starter / Free', persona: 'Individual, side project, evaluator', signal: 'Entry / free trial', include: 'Core value, enough to get hooked', exclude: 'Team features, integrations, support, API' },
+                    { tier: 'Pro / Growth', persona: 'Small team, growing startup, serious user', signal: 'Mid-market value', include: 'Collaboration, integrations, priority support, higher limits', exclude: 'SSO, audit logs, dedicated CSM, SLA' },
+                    { tier: 'Business / Scale', persona: 'Mid-market team (20–200 users)', signal: 'Premium', include: 'Advanced analytics, admin controls, API access, phone support', exclude: 'Custom contracts, private cloud, SLA guarantees' },
+                    { tier: 'Enterprise', persona: 'Large org, compliance requirements', signal: 'Custom / call us', include: 'SSO/SAML, SOC2, audit logs, dedicated CSM, SLA, private cloud, custom contracts', exclude: 'N/A — everything available' },
+                  ].map((row, i) => (
+                    <tr key={row.tier} style={{ borderBottom: '1px solid rgba(255,255,255,0.07)', background: i % 2 === 0 ? 'rgba(255,255,255,0.02)' : 'transparent' }}>
+                      <td style={{ padding: '11px 14px', fontWeight: 700, color: G, whiteSpace: 'nowrap' }}>{row.tier}</td>
+                      <td style={{ padding: '11px 14px', color: 'rgba(255,255,255,0.75)', fontSize: 13 }}>{row.persona}</td>
+                      <td style={{ padding: '11px 14px', color: 'rgba(255,255,255,0.6)', fontSize: 13, whiteSpace: 'nowrap' }}>{row.signal}</td>
+                      <td style={{ padding: '11px 14px', color: 'rgba(255,255,255,0.7)', fontSize: 13 }}>{row.include}</td>
+                      <td style={{ padding: '11px 14px', color: 'rgba(255,255,255,0.5)', fontSize: 13 }}>{row.exclude}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <div className="reveal" style={{ background: 'rgba(34,197,94,0.06)', border: '1px solid rgba(34,197,94,0.2)', borderRadius: 12, padding: 20, marginBottom: 16 }}>
+              <p style={{ color: 'rgba(255,255,255,0.8)', lineHeight: 1.7, margin: 0, fontSize: 14 }}>
+                <strong style={{ color: G }}>The power user trap:</strong> A common mistake is putting your most-used features in the free tier to drive adoption, then gatekeeping less-used features in Pro. This often results in free users who love the product but never hit a compelling upgrade trigger. Identify which features create "aha moments" for your highest-paying customers, and make those features the primary upgrade trigger — not an afterthought in Pro.
               </p>
             </div>
           </section>
 
-          {/* Why Codazz */}
-          <section style={{ marginBottom: 72 }}>
-            <h2 className="reveal" style={{ fontSize: 32, fontWeight: 800, color: '#fff', marginBottom: 16 }}>
-              🏆 Build Your SaaS with Codazz
+          {/* ── Section 7: Pricing Psychology ── */}
+          <section id="pricing-psychology" style={{ marginBottom: 72 }}>
+            <h2 className="reveal" style={{ fontSize: 32, fontWeight: 700, marginBottom: 16, color: '#fff' }}>
+              Pricing Psychology: Anchoring, Decoys & Framing
             </h2>
-            <p className="reveal" style={{ color: '#bbb', lineHeight: 1.8, marginBottom: 28 }}>
-              At Codazz, we build SaaS products from Edmonton, Canada and Chandigarh, India — and pricing strategy is baked into our product development process. We help founders get from idea to paying customers with the technical infrastructure, billing integrations, and growth foundations that scale.
+            <p className="reveal" style={{ color: 'rgba(255,255,255,0.72)', lineHeight: 1.8, marginBottom: 24 }}>
+              Buyers do not evaluate price in a vacuum. They evaluate relative to reference points: your other plans, competitor prices, and their perception of value. Pricing psychology is the discipline of designing those reference points intentionally. Used ethically, these techniques help customers find the right plan — they are not manipulation but rather clarity.
             </p>
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 20, marginBottom: 32 }}>
+
+            <div className="reveal" style={{ display: 'grid', gap: 20, marginBottom: 28 }}>
               {[
-                { icon: '💳', title: 'Billing Infrastructure', desc: 'Stripe and Paddle integrations with metered billing, plan tiers, usage-based pricing, annual/monthly toggle, and dunning automation.' },
-                { icon: '🌍', title: 'Global Payments & PPP', desc: 'Multi-currency checkout, VAT/GST compliance, and purchasing power parity pricing implementation for global SaaS launches.' },
-                { icon: '📊', title: 'Pricing Analytics', desc: 'Revenue dashboards, cohort analysis, plan conversion tracking, and churn attribution so you always know which tier is performing.' },
-                { icon: '🚀', title: 'PLG Product Development', desc: 'Freemium onboarding flows, in-app upgrade gates, feature flag systems, and activation tracking built to drive plan conversions.' },
-                { icon: '🔒', title: 'Enterprise Tier Engineering', desc: 'SSO (SAML/OIDC), audit logs, role-based permissions, and compliance tooling for the features that justify enterprise pricing.' },
-                { icon: '🤝', title: 'Pricing Strategy Sessions', desc: 'Free strategy calls for early-stage founders to review your current pricing model, identify value metric gaps, and explore pricing tests.' },
-              ].map((item, i) => (
-                <div key={i} style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 20, padding: 24 }}>
-                  <div style={{ fontSize: 28, marginBottom: 10 }}>{item.icon}</div>
-                  <div style={{ fontWeight: 700, color: '#fff', fontSize: 15, marginBottom: 8 }}>{item.title}</div>
-                  <p style={{ color: '#aaa', fontSize: 13, lineHeight: 1.6, margin: 0 }}>{item.desc}</p>
+                {
+                  technique: 'Price Anchoring',
+                  desc: 'The first price a buyer sees becomes the psychological anchor. Everything else is evaluated relative to it. On pricing pages, list the highest tier first (or most prominently) so that the Pro tier appears reasonable by comparison.',
+                  example: 'Show Enterprise at $999/month before Pro at $299/month. $299 feels like a bargain relative to $999 — even though it is your target plan.',
+                  impact: 'High',
+                },
+                {
+                  technique: 'Decoy Pricing',
+                  desc: 'Add a third option that makes your preferred option look obviously superior in value. The decoy is priced close to the expensive option but offers far less value, making the mid-tier look like a bargain.',
+                  example: 'Basic: $29/mo (3 users), Pro: $99/mo (unlimited users), Business: $109/mo (unlimited users + one feature). Almost everyone picks Pro — Business is the decoy.',
+                  impact: 'High',
+                },
+                {
+                  technique: 'Charm Pricing',
+                  desc: 'Prices ending in 9 (e.g., $49, $99, $299) psychologically feel lower than round numbers because buyers process the left digit first. $99 feels closer to $90 than $100 in fast cognitive processing.',
+                  example: '$49/month outperforms $50/month. $499/month outperforms $500/month. The effect is stronger at lower price points and for consumer-adjacent SMB buyers.',
+                  impact: 'Medium',
+                },
+                {
+                  technique: 'Annual vs Monthly Framing',
+                  desc: 'Show annual pricing as a monthly equivalent ("$49/month, billed annually") rather than the lump sum ($588/year). The monthly equivalent feels smaller and more comparable to other monthly subscriptions.',
+                  example: 'Show "Save 20%" or "Get 2 months free" rather than the total dollar savings. Percentage discounts anchor against perceived full value better than dollar amounts.',
+                  impact: 'High',
+                },
+                {
+                  technique: 'Per-User Framing',
+                  desc: 'For per-seat plans, break down the price per user rather than total team price. "Only $8/user/month" sounds far more approachable to a budget holder than "$80/month for 10 users."',
+                  example: 'Even when total price is identical, "$8/user/month" converts better than "$80/month" for teams of 10 because buyers mentally compare per-user cost to coffee, not monthly SaaS budget.',
+                  impact: 'Medium',
+                },
+                {
+                  technique: 'Loss Aversion Framing',
+                  desc: 'People feel losses more acutely than equivalent gains. Frame upgrades in terms of what customers lose by not upgrading, not just what they gain. "Without Pro, you are missing 40% of your leads" > "Upgrade to Pro to capture 40% more leads."',
+                  example: 'Trial-ending emails: "Your free trial expires in 3 days — you\'ll lose your data, integrations, and team settings" converts better than "Upgrade to keep your Pro features."',
+                  impact: 'High',
+                },
+              ].map((t) => (
+                <div key={t.technique} className="reveal" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 12, padding: 20 }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12, marginBottom: 10 }}>
+                    <div style={{ fontWeight: 700, color: '#fff', fontSize: 16 }}>{t.technique}</div>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: t.impact === 'High' ? G : '#fbbf24', border: `1px solid ${t.impact === 'High' ? 'rgba(34,197,94,0.3)' : 'rgba(251,191,36,0.3)'}`, borderRadius: 4, padding: '2px 8px', whiteSpace: 'nowrap' }}>Impact: {t.impact}</div>
+                  </div>
+                  <p style={{ color: 'rgba(255,255,255,0.68)', fontSize: 14, lineHeight: 1.7, marginBottom: 10 }}>{t.desc}</p>
+                  <div style={{ background: 'rgba(34,197,94,0.08)', borderRadius: 8, padding: '10px 14px', fontSize: 13, color: 'rgba(255,255,255,0.65)', lineHeight: 1.6 }}>
+                    <strong style={{ color: G }}>Example: </strong>{t.example}
+                  </div>
                 </div>
               ))}
             </div>
-            <div className="reveal" style={{ background: 'linear-gradient(135deg, rgba(34,197,94,0.15), rgba(34,197,94,0.05))', border: '1px solid rgba(34,197,94,0.3)', borderRadius: 28, padding: 36, textAlign: 'center' }}>
-              <h3 style={{ fontSize: 24, fontWeight: 800, color: '#fff', marginBottom: 12 }}>Ready to Get Your Pricing Right?</h3>
-              <p style={{ color: '#bbb', marginBottom: 24, lineHeight: 1.7 }}>Book a free product strategy session. We will review your current pricing model, identify your value metric, and help you build the billing infrastructure to support your growth strategy.</p>
-              <Link href="/contact" style={{ background: '#22c55e', color: '#000', padding: '14px 36px', borderRadius: 100, fontWeight: 700, textDecoration: 'none', fontSize: 16, display: 'inline-block' }}>
-                Get a Free Product Strategy Session
-              </Link>
+          </section>
+
+          {/* ── Section 8: Pricing Pages ── */}
+          <section id="pricing-page" style={{ marginBottom: 72 }}>
+            <h2 className="reveal" style={{ fontSize: 32, fontWeight: 700, marginBottom: 16, color: '#fff' }}>
+              Pricing Pages That Convert
+            </h2>
+            <p className="reveal" style={{ color: 'rgba(255,255,255,0.72)', lineHeight: 1.8, marginBottom: 24 }}>
+              Your pricing page is often the highest-intent page on your website — visitors who reach it are actively evaluating whether to buy. A well-designed pricing page resolves objections, highlights the right plan for each segment, and makes the decision feel easy. Here are the elements that consistently improve pricing page conversion.
+            </p>
+
+            <div className="reveal" style={{ display: 'grid', gap: 12, marginBottom: 28 }}>
+              {[
+                { element: 'Annual / Monthly Toggle', desc: 'Default to annual pricing (better for LTV and cash flow). Show the monthly equivalent with a clear "Save X%" badge. Allow toggling to see monthly — buyers who want monthly pay more, which is correct.' },
+                { element: 'Highlight the Recommended Plan', desc: 'Use a "Most Popular" or "Recommended" badge on your Pro/Growth tier. This serves as social proof and a decision shortcut. Most buyers will choose the highlighted option if the value is clear.' },
+                { element: 'Feature Comparison Table', desc: 'Below the plan cards, include a full feature comparison table. Buyers doing serious evaluation will use it. Make sure checkmarks and X marks are scannable — don\'t use vague language like "limited" or "advanced."' },
+                { element: 'FAQ on the Pricing Page', desc: 'Answer the 5–7 most common objections directly on the page: "Can I switch plans later?", "What happens if I exceed my limit?", "Do you offer refunds?", "Is there a free trial?". Pre-resolving objections removes friction from the decision.' },
+                { element: 'Social Proof Near the CTA', desc: 'Customer logos, a short testimonial about ROI, or a review badge (G2, Capterra) placed near the "Get Started" CTA. The moment of decision is when buyers most need confidence. Proximity of proof to CTA matters.' },
+                { element: 'Enterprise CTA Clarity', desc: '"Contact Sales" must have clear expectation-setting: "Get a custom quote for 100+ users" or "We\'ll respond within 24 hours." Vague CTAs like "Talk to us" have dramatically lower click-through than specific, expectation-setting copy.' },
+                { element: 'Currency and Localization', desc: 'Show pricing in local currency for key markets (GBP, EUR, CAD, AUD) detected via geo-IP. Buyers are far more likely to convert when they see familiar currency rather than a USD price they need to mentally convert.' },
+              ].map((e) => (
+                <div key={e.element} style={{ display: 'flex', gap: 16, alignItems: 'flex-start', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 10, padding: 16 }}>
+                  <div style={{ minWidth: 8, height: 8, background: G, borderRadius: '50%', marginTop: 6, flexShrink: 0 }} />
+                  <div>
+                    <div style={{ fontWeight: 700, color: G, marginBottom: 4, fontSize: 14 }}>{e.element}</div>
+                    <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: 13, lineHeight: 1.7 }}>{e.desc}</div>
+                  </div>
+                </div>
+              ))}
             </div>
           </section>
 
-          {/* FAQ */}
-          <section id="faq" style={{ marginBottom: 72 }}>
-            <h2 className="reveal" style={{ fontSize: 32, fontWeight: 800, color: '#fff', marginBottom: 28 }}>
-              ❓ Frequently Asked Questions
+          {/* ── Section 9: Raising Prices ── */}
+          <section id="raising-prices" style={{ marginBottom: 72 }}>
+            <h2 className="reveal" style={{ fontSize: 32, fontWeight: 700, marginBottom: 16, color: '#fff' }}>
+              When & How to Raise Prices Without Killing Churn
             </h2>
-            <div>
-              {faqs.map((faq, i) => (
-                <div key={i} className="reveal" style={{ border: '1px solid rgba(255,255,255,0.1)', borderRadius: 20, marginBottom: 12, overflow: 'hidden' }}>
+            <p className="reveal" style={{ color: 'rgba(255,255,255,0.72)', lineHeight: 1.8, marginBottom: 16 }}>
+              Most SaaS founders are terrified of raising prices. The fear is rational — price increases can trigger churn and customer backlash. But the data shows that well-executed price increases produce 80–90% net revenue retention even when 5–10% of customers churn. Because price elasticity for good SaaS products is much lower than founders assume.
+            </p>
+            <p className="reveal" style={{ color: 'rgba(255,255,255,0.72)', lineHeight: 1.8, marginBottom: 24 }}>
+              The right time to raise prices is when your product has demonstrably improved since you last set prices, when your Net Promoter Score (NPS) is above 40, and when new customers are converting without significant price objection. These signals tell you there is latent willingness-to-pay you are not capturing.
+            </p>
+
+            <h3 className="reveal" style={{ fontSize: 20, fontWeight: 700, color: '#fff', marginBottom: 16 }}>The Price Increase Playbook</h3>
+            <div className="reveal" style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 28 }}>
+              {[
+                { step: '1', phase: 'Test on New Customers First', desc: 'Before touching existing customers, raise prices for new signups only. Run for 30–60 days. Measure conversion rate change and cancellation at checkout. If conversion holds within 5%, the new price is validated.' },
+                { step: '2', phase: 'Grandfather Existing Customers (Temporarily)', desc: 'Keep existing customers on old pricing for 6–12 months after new customer pricing launches. This creates urgency (they\'ll switch to the new price eventually) and reduces churn from the announcement.' },
+                { step: '3', phase: 'Communicate Value, Not Apology', desc: 'Frame the increase around what has improved: "We\'ve shipped 47 major features this year — our price now reflects this." Do not apologize for raising prices. Apologetic emails signal doubt and invite negotiation.' },
+                { step: '4', phase: 'Give Advance Notice (60–90 Days)', desc: 'Notify customers 60–90 days before the price change takes effect for their account. Give them a chance to lock in current pricing by upgrading to annual. Many will — boosting cash collection and extending commitments.' },
+                { step: '5', phase: 'Offer Annual Lock-in as a Bridge', desc: 'Email: "Lock in your current monthly price for 12 months by upgrading to annual now." Customers who were going to churn at the new price often take this instead — giving you 12 months to continue delivering value.' },
+                { step: '6', phase: 'Measure Carefully for 90 Days Post-Change', desc: 'Track churn rate, contraction MRR, and NPS weekly for 90 days. Identify customer segments most affected. Have retention scripts ready for customers who reach out to cancel.' },
+              ].map((s) => (
+                <div key={s.step} style={{ display: 'flex', gap: 16, alignItems: 'flex-start', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 10, padding: 16 }}>
+                  <div style={{ minWidth: 32, height: 32, background: 'rgba(34,197,94,0.15)', border: '1px solid rgba(34,197,94,0.3)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, color: G, fontSize: 13, flexShrink: 0 }}>{s.step}</div>
+                  <div>
+                    <div style={{ fontWeight: 700, color: '#fff', marginBottom: 4, fontSize: 14 }}>{s.phase}</div>
+                    <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: 13, lineHeight: 1.7 }}>{s.desc}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* ── Section 10: Competitor Pricing Analysis ── */}
+          <section id="competitor-analysis" style={{ marginBottom: 72 }}>
+            <h2 className="reveal" style={{ fontSize: 32, fontWeight: 700, marginBottom: 16, color: '#fff' }}>
+              Competitor Pricing Analysis
+            </h2>
+            <p className="reveal" style={{ color: 'rgba(255,255,255,0.72)', lineHeight: 1.8, marginBottom: 16 }}>
+              Understanding how competitors price — not just what they charge, but how they structure tiers, what they gate, and what they emphasize — is an essential input to pricing strategy. But a critical warning: do not price relative to competitors. Price relative to the value you deliver. Competitor pricing is a data point, not a benchmark.
+            </p>
+
+            <h3 className="reveal" style={{ fontSize: 20, fontWeight: 700, color: '#fff', marginBottom: 12 }}>How to Run a Competitor Pricing Audit</h3>
+            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 14, marginBottom: 24 }}>
+              {[
+                { step: 'Collect Pricing Data', desc: 'Document every competitor\'s public pricing page. Screenshot it monthly — prices change. Note tier names, prices (monthly and annual), key features per tier, and any "contact sales" thresholds.' },
+                { step: 'Sign Up for Free Trials', desc: 'Actually use competitor products. Note onboarding flows, upgrade prompts, and in-product pricing nudges. The in-app experience often reveals pricing strategy more clearly than the marketing page.' },
+                { step: 'Track via G2 / Capterra Reviews', desc: 'Read competitor reviews specifically for pricing mentions: "expensive for what you get", "fair price for the value", "hidden fees". These surface real customer willingness-to-pay signals.' },
+                { step: 'Monitor for Changes', desc: 'Set up a monitoring alert (Visualping, Distill.io) on competitor pricing pages. When competitors raise or restructure pricing, it is a signal that the market can bear higher prices — and an opportunity to follow.' },
+                { step: 'Analyze Positioning', desc: 'Is each competitor positioning on price (cheaper), features (more complete), or segment (enterprise-only)? Find the gap. If all competitors charge per seat for SMB, consider per-usage as a differentiator.' },
+                { step: 'Ask Customers Directly', desc: 'In your onboarding and cancellation flows: "What other tools did you evaluate?" and "Why did you choose us over [competitor]?" Price comparisons in these answers reveal your competitive position accurately.' },
+              ].map((s) => (
+                <div key={s.step} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 10, padding: 16 }}>
+                  <div style={{ fontWeight: 700, color: G, marginBottom: 6, fontSize: 14 }}>{s.step}</div>
+                  <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.55)', lineHeight: 1.6 }}>{s.desc}</div>
+                </div>
+              ))}
+            </div>
+
+            <div className="reveal" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: 20 }}>
+              <p style={{ color: 'rgba(255,255,255,0.8)', lineHeight: 1.7, margin: 0, fontSize: 14 }}>
+                <strong style={{ color: '#fff' }}>The Van Westendorp Price Sensitivity Meter:</strong> The gold standard for pricing research is surveying your own customers with four questions: (1) At what price is this too cheap to trust? (2) At what price is this a bargain? (3) At what price is it getting expensive but still worth it? (4) At what price is it too expensive? The overlap of acceptable prices across all four responses reveals your optimal price band — based entirely on customer perception, not competitor benchmarks.
+              </p>
+            </div>
+          </section>
+
+          {/* ── Section 11: A/B Testing Pricing ── */}
+          <section id="ab-testing" style={{ marginBottom: 72 }}>
+            <h2 className="reveal" style={{ fontSize: 32, fontWeight: 700, marginBottom: 16, color: '#fff' }}>
+              A/B Testing Pricing
+            </h2>
+            <p className="reveal" style={{ color: 'rgba(255,255,255,0.72)', lineHeight: 1.8, marginBottom: 16 }}>
+              Pricing A/B tests are more complex than typical product experiments because (1) the audience must be large enough for statistical significance, (2) tests run long enough to see full billing cycle effects, and (3) you must handle fairness if some customers pay more than others for the same product. Done correctly, pricing experiments can unlock 20–50% revenue improvements.
+            </p>
+
+            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 24 }}>
+              <div style={{ background: 'rgba(34,197,94,0.06)', border: '1px solid rgba(34,197,94,0.2)', borderRadius: 12, padding: 20 }}>
+                <div style={{ fontWeight: 700, color: G, marginBottom: 12 }}>What You Can Test</div>
+                <ul style={{ paddingLeft: 18, margin: 0, color: 'rgba(255,255,255,0.65)', fontSize: 14, lineHeight: 1.9 }}>
+                  <li>Price point ($49 vs $59 vs $79/month)</li>
+                  <li>Annual vs monthly default display</li>
+                  <li>Plan names and tier count (2 vs 3 vs 4 tiers)</li>
+                  <li>Feature allocation per tier</li>
+                  <li>Trial length (7-day vs 14-day vs no trial)</li>
+                  <li>Pricing page layout and CTA copy</li>
+                  <li>Currency display and localization</li>
+                </ul>
+              </div>
+              <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 12, padding: 20 }}>
+                <div style={{ fontWeight: 700, color: '#fff', marginBottom: 12 }}>Key Metrics to Measure</div>
+                <ul style={{ paddingLeft: 18, margin: 0, color: 'rgba(255,255,255,0.65)', fontSize: 14, lineHeight: 1.9 }}>
+                  <li>Trial → paid conversion rate</li>
+                  <li>Plan mix (% choosing each tier)</li>
+                  <li>Average revenue per new customer (ARPU)</li>
+                  <li>30-day and 90-day churn rate</li>
+                  <li>Annual vs monthly plan split</li>
+                  <li>Revenue per visitor to pricing page</li>
+                  <li>LTV:CAC ratio (longer-term)</li>
+                </ul>
+              </div>
+            </div>
+
+            <h3 className="reveal" style={{ fontSize: 20, fontWeight: 700, color: '#fff', marginBottom: 12 }}>Testing Infrastructure Without Upsetting Customers</h3>
+            <div className="reveal" style={{ display: 'grid', gap: 12, marginBottom: 16 }}>
+              {[
+                { approach: 'New Customer Only Testing', desc: 'Never show different prices to existing customers. Route test variations only to new signup flows. Segment by first-touch attribution to avoid leaking test conditions.' },
+                { approach: 'Geo-Segmented Tests', desc: 'Test different price points in comparable markets (e.g., US Southwest vs US Northeast) rather than randomly splitting the same market. Reduces support burden from customers comparing notes.' },
+                { approach: 'Sequential Testing (Before/After)', desc: 'For small user bases, change price for all new users for 30 days, then change back, and compare cohorts. Less statistically rigorous but practical when volume is insufficient for true A/B.' },
+                { approach: 'Feature Packaging Tests', desc: 'Test which features belong in which tier without changing price. "Does moving SSO from Enterprise to Business increase Business conversion by enough to offset the lost Enterprise upgrades?" Pure packaging experiments have no fairness issues.' },
+              ].map((a) => (
+                <div key={a.approach} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 8, padding: 14, display: 'flex', gap: 14 }}>
+                  <div style={{ fontWeight: 700, color: G, minWidth: 200, fontSize: 13 }}>{a.approach}</div>
+                  <div style={{ color: 'rgba(255,255,255,0.6)', fontSize: 13, lineHeight: 1.6 }}>{a.desc}</div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* ── Section 12: Revenue Metrics ── */}
+          <section id="revenue-metrics" style={{ marginBottom: 72 }}>
+            <h2 className="reveal" style={{ fontSize: 32, fontWeight: 700, marginBottom: 16, color: '#fff' }}>
+              Revenue Metrics: MRR, ARPU, Churn & Beyond
+            </h2>
+            <p className="reveal" style={{ color: 'rgba(255,255,255,0.72)', lineHeight: 1.8, marginBottom: 24 }}>
+              Pricing strategy without measurement is guessing. These are the metrics that tell you whether your pricing is working — what to track, what healthy benchmarks look like, and what the metrics tell you about what to fix.
+            </p>
+
+            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 16, marginBottom: 28 }}>
+              {[
+                {
+                  metric: 'MRR (Monthly Recurring Revenue)',
+                  formula: 'Σ(active subscriptions × monthly price)',
+                  benchmark: 'Doubles annually = strong growth',
+                  what: 'The single most-tracked SaaS health metric. Break down into New MRR, Expansion MRR, Contraction MRR, and Churned MRR to understand what is driving changes.',
+                  action: 'If new MRR is strong but expansion MRR is near zero, your product has low value growth — investigate usage patterns and upgrade triggers.',
+                },
+                {
+                  metric: 'ARPU (Average Revenue Per User)',
+                  formula: 'MRR ÷ Total active paying accounts',
+                  benchmark: 'SMB SaaS: $50–$500/mo. Mid-market: $500–$5K/mo. Enterprise: $5K+/mo',
+                  what: 'Measures whether you are moving upmarket. Increasing ARPU without increasing customer count means you are selling better or raising prices effectively.',
+                  action: 'Declining ARPU with growing customer count = downmarket drift. Flat ARPU = no pricing power. Rising ARPU = you are doing it right.',
+                },
+                {
+                  metric: 'Net Revenue Retention (NRR)',
+                  formula: '(Starting MRR + Expansion − Contraction − Churn) ÷ Starting MRR × 100',
+                  benchmark: 'World-class: >130%. Good: >110%. Adequate: >100%. Bad: <100%',
+                  what: 'NRR >100% means your existing customer base grows without any new customer acquisition. This is the "compounding" effect in SaaS — the metric that separates great companies from struggling ones.',
+                  action: 'NRR <100% means you are in a leaky bucket. Every new customer partially replaces a lost one. Fix retention before scaling acquisition.',
+                },
+                {
+                  metric: 'Logo Churn vs Revenue Churn',
+                  formula: 'Logo churn: customers lost ÷ starting customers. Revenue churn: MRR lost ÷ starting MRR',
+                  benchmark: 'Logo churn: <5% annually (SMB), <2% (enterprise). Revenue churn: <7% annually',
+                  what: 'These diverge significantly in usage-based pricing. Logo churn tracks loss of accounts. Revenue churn tracks loss of revenue. A customer expanding from $1K to $10K offsets two churned $500 customers in revenue churn but not logo churn.',
+                  action: 'High logo churn + low revenue churn = losing many small customers while retaining big ones. Evaluate whether small customers are worth acquiring.',
+                },
+                {
+                  metric: 'Expansion MRR Rate',
+                  formula: 'Expansion MRR ÷ Starting MRR × 100',
+                  benchmark: '15–30% of new MRR from expansion = healthy land-and-expand',
+                  what: 'Revenue from existing customers upgrading plans, adding seats, or exceeding usage limits. The most efficient revenue — zero CAC. High expansion MRR is the leading indicator of NRR >110%.',
+                  action: 'Low expansion MRR often means missing in-product upsell triggers. Add usage-based nudges: "You\'ve used 90% of your storage limit — upgrade to Pro."',
+                },
+                {
+                  metric: 'Payback Period',
+                  formula: 'CAC ÷ (ARPU × gross margin %)',
+                  benchmark: 'VC-backed: 12–18 months. Bootstrapped: 6–12 months. Enterprise: 24 months acceptable',
+                  what: 'How long it takes to recover customer acquisition cost from gross profit. Shorter payback = more capital-efficient growth. Raise prices → higher ARPU → shorter payback period.',
+                  action: 'Payback >24 months with no clear path to improvement is a pricing or cost structure problem that needs to be fixed before scaling acquisition spend.',
+                },
+              ].map((m) => (
+                <div key={m.metric} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 12, padding: 18 }}>
+                  <div style={{ fontWeight: 700, color: G, marginBottom: 8, fontSize: 14 }}>{m.metric}</div>
+                  <div style={{ background: 'rgba(0,0,0,0.3)', borderRadius: 6, padding: '8px 12px', marginBottom: 8, fontFamily: 'monospace', fontSize: 12, color: 'rgba(255,255,255,0.75)' }}>{m.formula}</div>
+                  <div style={{ fontSize: 12, color: G, marginBottom: 8, lineHeight: 1.5 }}>Benchmark: {m.benchmark}</div>
+                  <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.55)', lineHeight: 1.6, marginBottom: 8 }}>{m.what}</div>
+                  <div style={{ background: 'rgba(34,197,94,0.06)', borderRadius: 6, padding: '8px 10px', fontSize: 12, color: 'rgba(255,255,255,0.6)', lineHeight: 1.5 }}>
+                    <strong style={{ color: G }}>Action: </strong>{m.action}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <h3 className="reveal" style={{ fontSize: 20, fontWeight: 700, color: '#fff', marginBottom: 12 }}>Analytics Tools for SaaS Pricing Intelligence</h3>
+            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 12, marginBottom: 16 }}>
+              {[
+                { tool: 'ChartMogul', desc: 'Native Stripe integration. Real-time MRR, NRR, cohort LTV, churn analysis. Best-in-class SaaS metrics dashboard. Free up to $10K MRR.' },
+                { tool: 'Baremetrics', desc: 'Real-time Stripe metrics with benchmarking against comparable SaaS companies. Built-in cancellation flow insights. $129/mo+.' },
+                { tool: 'Profitwell (Paddle)', desc: 'Free for Stripe users. Excellent churn analysis, dunning, and pricing optimization (Paddle Pricing). Integrated with Paddle billing.' },
+                { tool: 'Maxio (SaaSOptics)', desc: 'Mid-market revenue management. Handles complex billing, rev recognition, and cohort analysis. Integrates with Salesforce CPQ.' },
+              ].map((t) => (
+                <div key={t.tool} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 10, padding: 14 }}>
+                  <div style={{ fontWeight: 700, color: '#fff', marginBottom: 6, fontSize: 14 }}>{t.tool}</div>
+                  <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.55)', lineHeight: 1.6 }}>{t.desc}</div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* ── Section 13: FAQ ── */}
+          <section id="faq" style={{ marginBottom: 72 }}>
+            <h2 className="reveal" style={{ fontSize: 32, fontWeight: 700, marginBottom: 24, color: '#fff' }}>
+              Frequently Asked Questions
+            </h2>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+              {[
+                {
+                  q: 'How do I know if my SaaS is priced too low?',
+                  a: 'Four signals you are underpriced: (1) Customers sign up and upgrade without any price objection — most deals close at list price without negotiation. (2) Your churn rate is disproportionately high for small customers who were easy to acquire cheaply. (3) Customer success team struggles to support the volume of free or entry-tier customers profitably. (4) You ran a modest price test (+20%) and conversion barely moved. If any of these apply, you are almost certainly underpriced. The easiest test: raise price for new signups by 20% for 30 days and measure conversion. If it holds within 5%, raise the price permanently.',
+                },
+                {
+                  q: 'Should I charge more for annual plans? How much of a discount?',
+                  a: 'Yes — offer annual plans at a meaningful discount to incentivize the commitment. The standard range is 15–25% off the monthly equivalent (translates to "get 2 months free" at ~16% discount). Avoid discounting less than 15% — it\'s not compelling enough to shift behavior. Avoid more than 30% — it signals your monthly price is inflated. Set your monthly price first based on willingness-to-pay, then derive the annual price as a discount from that. Never do the reverse (set annual price then inflate monthly). Default your pricing page to show annual pricing — it reduces cognitive load and increases plan commitment.',
+                },
+                {
+                  q: 'What is the best pricing model for an AI SaaS product?',
+                  a: 'In 2026, the dominant model for AI products is usage-based billing tied to a meaningful unit: tokens generated, images created, API calls, documents processed. This aligns your revenue with customer value and your compute costs simultaneously. Common structures: (1) Credit system — buy $50, $200, $500 credit packs that convert to AI operations. (2) Tiered + usage — a monthly plan that includes X AI operations with overage pricing. (3) Per-output pricing — $0.10 per document, $0.002 per AI message. Avoid per-seat pricing for AI — a single power user generating 100K tokens is worth far more than 10 users generating 1K each, and per-seat doesn\'t capture that.',
+                },
+                {
+                  q: 'How do I handle enterprise pricing without a published price?',
+                  a: 'Enterprise pricing (Contact Sales / Custom Quote) makes sense when deal complexity, required customization, or compliance requirements make a fixed price impractical. Best practices: (1) Set an internal price floor and typical range before sales calls begin — never negotiate below the floor without escalation. (2) Price based on the buyer\'s ROI, not your cost. Enterprise buyers expect to pay for demonstrated value. (3) Use annual contracts with multi-year discounts (e.g., 10% discount for 2-year commitment, 20% for 3-year). (4) Include professional services, dedicated CSM, and SLA guarantees as line items — they are real costs and real value. (5) Publish a "starting from $X/month for 50+ users" threshold so enterprise buyers know roughly what to expect before booking a call.',
+                },
+                {
+                  q: 'Can I offer a lifetime deal (LTD) to grow quickly?',
+                  a: 'Lifetime deals (AppSumo, Product Hunt) can generate fast cash and initial user base, but they carry serious risks: (1) LTD customers are often the most demanding support users and least likely to convert to additional spending. (2) You permanently lose the recurring revenue stream from these customers. (3) LTD customers often dilute your ARPU and NRR metrics, making it harder to raise venture funding. (4) If your product improves significantly, LTD customers get all new features for free — a growing liability. If you do an LTD, cap it at a realistic user count (500–1,000 licenses), set a time limit, and ensure the deal price covers your infrastructure cost per customer over a reasonable period (3–5 years minimum).',
+                },
+                {
+                  q: 'What pricing should I charge for a new SaaS with no customers?',
+                  a: 'Without customers or usage data, start by talking to 20+ people in your target market who have the problem you solve. Do not show them a pricing page — ask the four Van Westendorp questions: at what price is it too cheap to trust? A bargain? Getting expensive? Too expensive? This defines your price band. Then look at competitors (but do not price relative to them — price relative to your target positioning). Start at the high end of your discovered range — it is easier to lower prices than raise them. For a completely new product with no traction, charging $0 for beta users is reasonable; transitioning to paid at $X/month when you have 20–30 active users gives you real willingness-to-pay data.',
+                },
+              ].map((faq, i) => (
+                <div key={i} className="reveal" style={{ background: 'rgba(255,255,255,0.03)', border: `1px solid ${openFaq === i ? 'rgba(34,197,94,0.35)' : 'rgba(255,255,255,0.08)'}`, borderRadius: 12, overflow: 'hidden', transition: 'border-color 0.2s' }}>
                   <button
                     onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                    style={{ width: '100%', background: openFaq === i ? 'rgba(34,197,94,0.08)' : 'rgba(255,255,255,0.03)', border: 'none', padding: '20px 24px', textAlign: 'left', cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 16 }}
+                    style={{ width: '100%', textAlign: 'left', padding: '18px 20px', background: 'transparent', border: 'none', cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12 }}
                   >
-                    <span style={{ color: '#fff', fontWeight: 600, fontSize: 15, lineHeight: 1.4 }}>{faq.q}</span>
-                    <span style={{ color: '#22c55e', fontSize: 22, fontWeight: 300, flexShrink: 0, transform: openFaq === i ? 'rotate(45deg)' : 'none', transition: 'transform 0.2s' }}>+</span>
+                    <span style={{ fontWeight: 700, color: '#fff', fontSize: 15, lineHeight: 1.4 }}>Q: {faq.q}</span>
+                    <span style={{ color: G, fontSize: 20, lineHeight: 1, flexShrink: 0, marginTop: 2 }}>{openFaq === i ? '−' : '+'}</span>
                   </button>
                   {openFaq === i && (
-                    <div style={{ padding: '0 24px 20px', background: 'rgba(34,197,94,0.05)' }}>
-                      <p style={{ color: '#bbb', lineHeight: 1.7, margin: 0, fontSize: 14 }}>{faq.a}</p>
+                    <div style={{ padding: '0 20px 18px', color: 'rgba(255,255,255,0.7)', lineHeight: 1.75, fontSize: 14 }}>
+                      {faq.a}
                     </div>
                   )}
                 </div>
@@ -678,62 +805,59 @@ export default function SaasPricingStrategiesClient() {
             </div>
           </section>
 
+          {/* CTA */}
+          <div className="reveal" style={{ background: 'linear-gradient(135deg, rgba(34,197,94,0.12), rgba(34,197,94,0.04))', border: '1px solid rgba(34,197,94,0.25)', borderRadius: 16, padding: 40, textAlign: 'center', marginBottom: 48 }}>
+            <h3 style={{ fontSize: 26, fontWeight: 700, color: '#fff', marginBottom: 12 }}>
+              Need Help Building or Optimizing Your SaaS?
+            </h3>
+            <p style={{ color: 'rgba(255,255,255,0.65)', marginBottom: 28, lineHeight: 1.7, maxWidth: 520, margin: '0 auto 28px' }}>
+              Codazz builds SaaS products from product architecture to billing implementation. Whether you are starting from scratch or scaling an existing platform, book a free technical discovery call.
+            </p>
+            <Link href="/contact" style={{ display: 'inline-block', background: G, color: '#000', fontWeight: 700, padding: '14px 32px', borderRadius: 8, textDecoration: 'none', fontSize: 16 }}>
+              Book a Free Discovery Call
+            </Link>
+          </div>
+
           {/* Related Posts */}
-          <section style={{ marginBottom: 48 }}>
-            <h2 className="reveal" style={{ fontSize: 24, fontWeight: 700, color: '#fff', marginBottom: 20 }}>Related Articles</h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 20 }}>
-              {relatedPosts.map((post, i) => (
-                <Link key={i} href={`/blog/${post.slug}`} style={{ textDecoration: 'none' }}>
-                  <div className="reveal" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 20, padding: 24 }}>
-                    <span style={{ background: 'rgba(34,197,94,0.12)', color: '#22c55e', padding: '3px 10px', borderRadius: 100, fontSize: 11, fontWeight: 600 }}>{post.category}</span>
-                    <div style={{ color: '#fff', fontWeight: 600, fontSize: 15, marginTop: 12, marginBottom: 8, lineHeight: 1.4 }}>{post.title}</div>
-                    <div style={{ color: '#666', fontSize: 12 }}>{post.readTime}</div>
-                  </div>
+          <div className="reveal">
+            <h3 style={{ fontSize: 20, fontWeight: 700, color: '#fff', marginBottom: 16 }}>Related Articles</h3>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 12 }}>
+              {relatedPosts.map((post) => (
+                <Link key={post.href} href={post.href} style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 10, padding: 16, textDecoration: 'none', color: 'rgba(255,255,255,0.75)', fontSize: 14, lineHeight: 1.5, display: 'block', transition: 'border-color 0.2s' }}
+                  onMouseEnter={(e) => (e.currentTarget.style.borderColor = 'rgba(34,197,94,0.4)')}
+                  onMouseLeave={(e) => (e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)')}>
+                  {post.title}
                 </Link>
               ))}
             </div>
-          </section>
-
+          </div>
         </article>
 
-        {/* Sticky Sidebar */}
-        <aside style={{ position: 'sticky', top: 100, alignSelf: 'start' }}>
-          {/* TOC */}
-          <div style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 20, padding: 24, marginBottom: 24 }}>
-            <div style={{ color: '#22c55e', fontWeight: 700, fontSize: 12, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 16 }}>Table of Contents</div>
-            {tocItems.map(item => (
-              <a key={item.id} href={`#${item.id}`} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '8px 10px', borderRadius: 10, textDecoration: 'none', marginBottom: 2, background: activeSection === item.id ? 'rgba(34,197,94,0.12)' : 'transparent', transition: 'background 0.2s' }}>
-                <span style={{ fontSize: 14 }}>{item.emoji}</span>
-                <span style={{ color: activeSection === item.id ? '#22c55e' : '#aaa', fontSize: 13, fontWeight: activeSection === item.id ? 600 : 400, lineHeight: 1.3 }}>{item.label}</span>
-              </a>
-            ))}
+        {/* Sidebar TOC */}
+        <aside style={{ position: 'sticky', top: 100 }}>
+          <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 12, padding: 24 }}>
+            <div style={{ fontWeight: 700, color: '#fff', marginBottom: 16, fontSize: 14, textTransform: 'uppercase', letterSpacing: '0.08em' }}>Table of Contents</div>
+            <nav style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+              {tocSections.map((sec) => (
+                <a key={sec.id} href={`#${sec.id}`} style={{ color: activeSection === sec.id ? G : 'rgba(255,255,255,0.5)', fontSize: 13, textDecoration: 'none', padding: '6px 10px', borderRadius: 6, background: activeSection === sec.id ? 'rgba(34,197,94,0.08)' : 'transparent', borderLeft: `2px solid ${activeSection === sec.id ? G : 'transparent'}`, transition: 'all 0.2s', lineHeight: 1.5 }}>
+                  {sec.label}
+                </a>
+              ))}
+            </nav>
           </div>
 
-          {/* Author Card */}
-          <div style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 20, padding: 24, marginBottom: 24 }}>
-            <div style={{ display: 'flex', gap: 12, alignItems: 'center', marginBottom: 12 }}>
-              <div style={{ width: 44, height: 44, borderRadius: '50%', background: 'linear-gradient(135deg, #22c55e, #16a34a)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, fontSize: 16, color: '#000', flexShrink: 0 }}>R</div>
-              <div>
-                <div style={{ color: '#fff', fontWeight: 700, fontSize: 14 }}>Raman Makkar</div>
-                <div style={{ color: '#888', fontSize: 12 }}>Founder, Codazz</div>
-              </div>
-            </div>
-            <p style={{ color: '#aaa', fontSize: 13, lineHeight: 1.6, margin: 0 }}>Raman has helped 30+ SaaS founders build and price their products. Codazz is headquartered in Edmonton, Canada with a product studio in Chandigarh, India.</p>
-          </div>
-
-          {/* CTA Card */}
-          <div style={{ background: 'linear-gradient(135deg, rgba(34,197,94,0.15), rgba(34,197,94,0.05))', border: '1px solid rgba(34,197,94,0.3)', borderRadius: 28, padding: 24, textAlign: 'center' }}>
-            <div style={{ fontSize: 28, marginBottom: 12 }}>💡</div>
-            <div style={{ color: '#fff', fontWeight: 700, fontSize: 15, marginBottom: 8 }}>Get Pricing Advice</div>
-            <p style={{ color: '#bbb', fontSize: 13, lineHeight: 1.5, marginBottom: 16 }}>Free 30-min strategy call for SaaS founders evaluating their pricing model.</p>
-            <Link href="/contact" style={{ background: '#22c55e', color: '#000', padding: '10px 20px', borderRadius: 100, fontWeight: 700, textDecoration: 'none', fontSize: 13, display: 'inline-block' }}>
-              Book Free Call
+          <div style={{ marginTop: 20, background: 'rgba(34,197,94,0.06)', border: '1px solid rgba(34,197,94,0.2)', borderRadius: 12, padding: 20 }}>
+            <div style={{ fontWeight: 700, color: G, marginBottom: 8, fontSize: 14 }}>Building a SaaS?</div>
+            <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 13, lineHeight: 1.6, marginBottom: 14 }}>We build SaaS products — billing, multi-tenancy, pricing page implementation, and growth engineering.</p>
+            <Link href="/contact" style={{ display: 'block', background: G, color: '#000', fontWeight: 700, padding: '10px 16px', borderRadius: 8, textDecoration: 'none', fontSize: 13, textAlign: 'center' }}>
+              Get a Free Consultation
             </Link>
           </div>
         </aside>
+
       </div>
 
       <Footer />
-    </main>
+    </div>
   );
 }

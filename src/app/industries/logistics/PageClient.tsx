@@ -320,6 +320,17 @@ export default function LogisticsPage() {
               <h2 style={{ fontSize: 'clamp(1.9rem, 4vw, 2.9rem)', fontWeight: 800, marginBottom: '1rem', letterSpacing: '-0.02em' }}>Every Link in the Chain</h2>
               <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '1.1rem', maxWidth: 580, margin: '0 auto' }}>From depot to doorstep — fleet, warehouse, last-mile, and everything connecting them.</p>
             </div>
+
+            {/* ─── LOGISTICS MARQUEE ─── */}
+            <div style={{ position: 'relative', overflow: 'hidden', marginBottom: '3rem', maskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)' }}>
+              <style>{`@keyframes logistics-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }`}</style>
+              <div style={{ display: 'flex', gap: '12px', width: 'max-content', animation: 'logistics-marquee 32s linear infinite' }}>
+                {['📍 Real-time Tracking','🚛 Fleet Management','📋 Route Optimization','🏭 Warehouse Management','📱 Driver App','📊 Supply Chain Analytics','🔗 ERP Integration','🌐 Multi-carrier Support','📦 Last-Mile Delivery','⏱️ ETA Prediction','🔒 Cargo Security','🤖 AI Dispatching','📍 Real-time Tracking','🚛 Fleet Management','📋 Route Optimization','🏭 Warehouse Management','📱 Driver App','📊 Supply Chain Analytics','🔗 ERP Integration','🌐 Multi-carrier Support','📦 Last-Mile Delivery','⏱️ ETA Prediction','🔒 Cargo Security','🤖 AI Dispatching'].map((item, i) => (
+                  <span key={i} style={{ padding: '8px 16px', borderRadius: 100, border: '1px solid rgba(255,255,255,0.08)', background: 'rgba(255,255,255,0.02)', display: 'flex', gap: 8, whiteSpace: 'nowrap', color: 'rgba(255,255,255,0.7)', fontSize: '0.875rem' }}>{item}</span>
+                ))}
+              </div>
+            </div>
+
             <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 340px), 1fr))', gap: '1.5rem' }}>
               {WHAT_WE_BUILD.map(s => (
                 <Card key={s.title}>

@@ -1,868 +1,1034 @@
 'use client';
-
 import { useRef, useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
 import HeroBackground from '@/components/HeroBackground';
-import Image from 'next/image';
 
 function useReveal() {
-  const ref = useRef<HTMLElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    const io = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-      { threshold: 0.08 }
+    const el = ref.current;
+    if (!el) return;
+    const items = el.querySelectorAll<HTMLElement>('[data-reveal]');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            (entry.target as HTMLElement).style.opacity = '1';
+            (entry.target as HTMLElement).style.transform = 'translateY(0)';
+          }
+        });
+      },
+      { threshold: 0.1 }
     );
-    ref.current?.querySelectorAll('.reveal').forEach(el => io.observe(el));
-    return () => io.disconnect();
+    items.forEach((item) => {
+      item.style.opacity = '0';
+      item.style.transform = 'translateY(24px)';
+      item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(item);
+    });
+    return () => observer.disconnect();
   }, []);
   return ref;
 }
 
 const tocSections = [
-  { id: 'test-types', label: 'Types of Performance Tests', emoji: '📊' },
-  { id: 'tool-comparison', label: 'k6 vs JMeter vs Locust vs Artillery', emoji: '⚖️' },
-  { id: 'k6-scripts', label: 'Writing k6 Scripts', emoji: '✍️' },
-  { id: 'key-metrics', label: 'Key Metrics: Throughput & Latency', emoji: '📈' },
-  { id: 'bottlenecks', label: 'Finding Bottlenecks', emoji: '🔍' },
-  { id: 'cicd-integration', label: 'CI/CD Integration', emoji: '🔄' },
-  { id: 'cloud-load-testing', label: 'Cloud Load Testing', emoji: '☁️' },
-  { id: 'faq', label: 'FAQ', emoji: '❓' },
+  { id: 'what-is-load-testing', label: 'What is Load Testing?' },
+  { id: 'test-types', label: 'Types of Performance Tests' },
+  { id: 'tool-comparison', label: 'Tool Comparison: k6, JMeter, Locust, Artillery, Gatling' },
+  { id: 'key-metrics', label: 'Key Metrics & SLOs' },
+  { id: 'writing-tests', label: 'Writing Load Test Scripts' },
+  { id: 'test-scenarios', label: 'Test Scenarios & Strategies' },
+  { id: 'cicd-integration', label: 'CI/CD Integration' },
+  { id: 'results-interpretation', label: 'Interpreting Results' },
+  { id: 'case-study', label: 'Case Study' },
+  { id: 'faq', label: 'FAQ' },
 ];
 
 const relatedPosts = [
-  { slug: 'aws-architecture-guide-2026', title: 'AWS Architecture Best Practices 2026', category: 'Cloud', readTime: '22 min' },
-  { slug: 'microservices-vs-monolith-2026', title: 'Microservices vs Monolith 2026', category: 'Architecture', readTime: '18 min' },
-  { slug: 'cicd-pipeline-guide-2026', title: 'CI/CD Pipeline Guide 2026', category: 'DevOps', readTime: '19 min' },
+  { title: 'API Rate Limiting & Authentication Best Practices 2026', href: '/blog/api-rate-limiting-guide' },
+  { title: 'Multi-Tenant Architecture Guide', href: '/blog/multi-tenant-architecture-guide' },
+  { title: 'Mobile App Testing Guide 2026', href: '/blog/mobile-app-testing-guide' },
+  { title: 'CI/CD Pipeline Guide 2026', href: '/blog/cicd-pipeline-guide-2026' },
 ];
 
-export default function LoadTestingGuide2026Client() {
-  const pageRef = useReveal();
-  const [copied, setCopied] = useState(false);
-  const [activeSection, setActiveSection] = useState('');
+const G = '#22c55e';
 
-  const handleCopy = () => {
-    if (typeof window !== 'undefined') {
-      navigator.clipboard.writeText(window.location.href);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    }
-  };
+export default function PageClient() {
+  const pageRef = useReveal();
+  const [activeSection, setActiveSection] = useState('what-is-load-testing');
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = tocSections.map(s => document.getElementById(s.id));
-      const scrollPos = window.scrollY + 200;
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = sections[i];
-        if (section && section.offsetTop <= scrollPos) {
-          setActiveSection(tocSections[i].id);
-          break;
-        }
-      }
+      const offsets = tocSections.map(({ id }) => {
+        const el = document.getElementById(id);
+        if (!el) return { id, top: Infinity };
+        return { id, top: Math.abs(el.getBoundingClientRect().top - 120) };
+      });
+      const closest = offsets.reduce((a, b) => (a.top < b.top ? a : b));
+      setActiveSection(closest.id);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const scrollTo = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  const faqItems = [
+    {
+      q: 'How much load should I simulate in my tests?',
+      a: 'Start with your current peak traffic and multiply by 2–3x as a realistic stress target. Check your analytics for the highest concurrent users you have ever seen, then simulate 150–200% of that. For new products, use industry benchmarks: e-commerce apps typically see 5–10x traffic spikes during sales events; SaaS dashboards see 2–3x spikes Monday mornings. Work backwards from your SLO — if your p99 must stay under 500ms at 1,000 concurrent users, that is your acceptance threshold.',
+    },
+    {
+      q: 'What is the difference between p95 and p99 latency?',
+      a: 'p95 latency means 95% of all requests completed faster than that value — 5% were slower. p99 means 99% were faster — 1% were slower. p99 is more revealing because it exposes tail latency that real users experience but averages hide. A system with 50ms average latency can easily have a 2,000ms p99, meaning 1 in 100 users waits 40x longer than average. Always measure p95, p99, and p99.9 for user-facing endpoints. Set SLO thresholds on p99, not average.',
+    },
+    {
+      q: 'Should I run load tests against production or a staging environment?',
+      a: 'Both, but for different purposes. Staging tests validate new releases before deployment and can run continuously in CI/CD without risk. Production tests (often called production load testing or shadowing) reveal issues that only appear at real scale with real data distribution, real cache hit rates, and real downstream dependencies. For production, use read-only or write-to-test-user patterns, run during low-traffic windows, and have rollback procedures ready. Never run destructive load tests (deleting data, sending real emails) against production.',
+    },
+    {
+      q: 'How do I prevent load tests from sending real emails or charging real cards?',
+      a: 'Use test mode credentials for payment processors (Stripe test keys, PayPal sandbox). Route email to a test inbox (Mailtrap, SendGrid sandbox mode) by checking an environment variable. Intercept SMS via a stub service or Twilio test numbers. For databases, seed a separate set of test user IDs that your application treats as non-billable. Gate all side effects behind a feature flag or environment check: if (process.env.LOAD_TEST_MODE) return mockPaymentSuccess();',
+    },
+    {
+      q: 'What is a good p99 latency target for a web API?',
+      a: 'For interactive web APIs (user-facing endpoints), aim for p99 under 500ms. For critical checkout or payment flows, target p99 under 200ms. Background or batch endpoints can tolerate p99 up to 2–5 seconds. These are starting points — your actual SLOs should be based on user research and business requirements. Google\'s research shows that 53% of mobile users abandon sites that take longer than 3 seconds to load; Amazon found each 100ms of added latency cost 1% in revenue.',
+    },
+  ];
+
   return (
     <>
-      <Navbar />
-      <main ref={pageRef as React.RefObject<HTMLElement>} style={{ background: '#000000', minHeight: '100vh' }}>
+      <style>{`
+        html { scroll-behavior: smooth; }
+        .toc-link { transition: color 0.2s, border-left-color 0.2s; }
+        .toc-link:hover { color: ${G}; }
+        .faq-btn { transition: background 0.2s; }
+        .faq-btn:hover { background: rgba(34,197,94,0.08); }
+        .data-table td, .data-table th { padding: 10px 14px; border: 1px solid rgba(255,255,255,0.08); }
+        .data-table th { background: rgba(34,197,94,0.1); color: ${G}; font-weight: 600; }
+        .data-table tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+        code { background: rgba(34,197,94,0.1); color: ${G}; padding: 2px 6px; border-radius: 4px; font-family: 'Fira Mono', monospace; font-size: 0.85em; }
+        pre { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px; padding: 20px; overflow-x: auto; font-family: 'Fira Mono', monospace; font-size: 0.82em; line-height: 1.7; color: #e2e8f0; }
+        pre .kw { color: #93c5fd; }
+        pre .str { color: #86efac; }
+        pre .cm { color: #6b7280; }
+        pre .fn { color: #fbbf24; }
+        @media (max-width: 1024px) { .sidebar { display: none !important; } }
+      `}</style>
+      <div style={{ background: '#000', color: '#fff', minHeight: '100vh', fontFamily: 'Inter, sans-serif' }}>
+        <HeroBackground />
+        <Navbar />
+        <main ref={pageRef}>
 
-        {/* ── FEATURED IMAGE ── */}
-        <div className="cb-container" style={{ paddingTop: 100 }}>
-          <div className="reveal" style={{ marginBottom: 40 }}>
-            <Image
-              src="/blog_images/load-testing-guide-2026.jpg"
-              alt="Load testing guide 2026 with k6 JMeter performance testing best practices"
-              width={1200}
-              height={675}
-              priority
-              style={{
-                width: '100%',
-                height: 'auto',
-                maxHeight: '500px',
-                objectFit: 'cover',
-                borderRadius: 'clamp(16px, 3vw, 28px)',
-              }}
-            />
-          </div>
-        </div>
-
-        {/* ── ARTICLE HERO ── */}
-        <section style={{ padding: 'clamp(40px, 8vw, 80px) 0 clamp(32px, 5vw, 64px)', position: 'relative', overflow: 'hidden' }}>
-          <HeroBackground variant="left" />
-          <div className="cb-container">
-            <div className="reveal" style={{ marginBottom: 24 }}>
-              <Link href="/blog" style={{
-                fontSize: 13, color: 'rgba(255,255,255,0.4)', textDecoration: 'none',
-                display: 'inline-flex', alignItems: 'center', gap: 8, transition: 'color 0.2s',
-              }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M19 12H5M12 19l-7-7 7-7"/>
-                </svg>
-                All Articles
-              </Link>
+          {/* ── HERO ── */}
+          <section style={{ paddingTop: '120px', paddingBottom: '60px', textAlign: 'center', maxWidth: '860px', margin: '0 auto', padding: '120px 24px 60px' }}>
+            <div data-reveal style={{ display: 'inline-block', background: 'rgba(34,197,94,0.12)', border: '1px solid rgba(34,197,94,0.3)', borderRadius: '20px', padding: '6px 18px', fontSize: '0.82rem', color: G, marginBottom: '20px', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
+              Performance Engineering · March 2026
             </div>
-
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24, flexWrap: 'wrap' }}>
-              <span className="reveal reveal-d1" style={{
-                fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                background: 'rgba(34,197,94,0.12)', color: '#22c55e',
-                padding: '5px 14px', borderRadius: 100,
-              }}>Performance Testing</span>
-              <span className="reveal reveal-d1" style={{ fontSize: 13, color: 'rgba(255,255,255,0.25)' }}>March 20, 2026</span>
-              <span style={{ color: 'rgba(255,255,255,0.4)', margin: '0 8px' }}>&middot;</span>
-              <span style={{ color: 'rgba(255,255,255,0.4)' }}>Updated Mar 2026</span>
-              <span className="reveal reveal-d1" style={{ fontSize: 13, color: 'rgba(255,255,255,0.25)' }}>&middot;</span>
-              <span className="reveal reveal-d1" style={{
-                fontSize: 13, color: 'rgba(255,255,255,0.25)',
-                display: 'inline-flex', alignItems: 'center', gap: 6,
-              }}>
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/>
-                </svg>
-                20 min read
-              </span>
-            </div>
-
-            <h1 className="reveal reveal-d2" style={{
-              fontSize: 'clamp(2.4rem, 5vw, 4rem)', fontWeight: 800, color: '#ffffff',
-              letterSpacing: '-0.04em', lineHeight: 1.1, marginBottom: 24, maxWidth: 900,
-            }}>
-              Load Testing Guide 2026: k6, JMeter &amp; Performance Testing Best Practices
+            <h1 data-reveal style={{ fontSize: 'clamp(2rem, 5vw, 3.2rem)', fontWeight: 800, lineHeight: 1.15, marginBottom: '20px', letterSpacing: '-0.02em' }}>
+              Load Testing Guide 2026:<br />
+              <span style={{ color: G }}>Tools, Techniques &amp; Best Practices</span>
             </h1>
-
-            <p className="reveal reveal-d3" style={{
-              fontSize: 20, color: 'rgba(255,255,255,0.5)', lineHeight: 1.65,
-              maxWidth: 720, marginBottom: 48, fontWeight: 400,
-            }}>
-              A complete guide to performance testing in 2026. Covers every test type (load, stress, spike, soak, volume), compares k6 vs JMeter vs Locust vs Artillery, teaches you to write real k6 scripts, interpret p95 latency, find database and API bottlenecks, integrate into CI/CD, and scale with cloud platforms.
+            <p data-reveal style={{ fontSize: '1.15rem', color: 'rgba(255,255,255,0.65)', maxWidth: '680px', margin: '0 auto 32px', lineHeight: 1.7 }}>
+              A complete production playbook covering every type of performance test, tool comparisons (k6, JMeter, Locust, Artillery, Gatling), key metrics, CI/CD integration, results interpretation, and a real-world case study.
             </p>
-
-            {/* Author + Share row */}
-            <div className="reveal reveal-d4" style={{
-              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-              flexWrap: 'wrap', gap: 24, paddingTop: 32,
-              borderTop: '1px solid rgba(255,255,255,0.05)',
-            }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-                <div style={{
-                  width: 48, height: 48, borderRadius: '50%',
-                  background: 'rgba(34,197,94,0.12)', border: '1px solid rgba(34,197,94,0.25)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: 15, fontWeight: 700, color: '#22c55e',
-                }}>RM</div>
-                <div>
-                  <p style={{ fontSize: 15, fontWeight: 600, color: '#ffffff', margin: 0 }}>Raman Makkar</p>
-                  <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)', margin: 0 }}>CEO, Codazz</p>
-                </div>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.25)', marginRight: 4 }}>Share:</span>
-                <button onClick={handleCopy} style={{
-                  width: 36, height: 36, borderRadius: '50%',
-                  background: copied ? 'rgba(34,197,94,0.15)' : 'rgba(255,255,255,0.06)',
-                  border: '1px solid rgba(255,255,255,0.08)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  cursor: 'pointer', transition: 'all 0.2s',
-                  color: copied ? '#22c55e' : 'rgba(255,255,255,0.6)',
-                }}>
-                  {copied ? '✓' : <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>}
-                </button>
-              </div>
+            <div data-reveal style={{ display: 'flex', gap: '24px', justifyContent: 'center', flexWrap: 'wrap', color: 'rgba(255,255,255,0.45)', fontSize: '0.88rem' }}>
+              <span>20 min read</span>
+              <span>·</span>
+              <span>Updated March 21, 2026</span>
+              <span>·</span>
+              <span>By Codazz Engineering</span>
             </div>
-          </div>
-        </section>
+          </section>
 
-        {/* ── CONTENT GRID ── */}
-        <section style={{ padding: 'clamp(40px, 6vw, 80px) 0' }}>
-          <div className="cb-container">
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 320px', gap: 'clamp(40px, 6vw, 80px)' }}>
+          {/* ── LAYOUT: ARTICLE + SIDEBAR ── */}
+          <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 24px 80px', display: 'grid', gridTemplateColumns: '1fr 320px', gap: '48px', alignItems: 'start' }}>
 
-              {/* ── MAIN ARTICLE ── */}
-              <article style={{ color: 'rgba(255,255,255,0.75)', fontSize: 17, lineHeight: 1.75 }}>
+            {/* ── ARTICLE ── */}
+            <article style={{ minWidth: 0 }}>
 
-                {/* Intro */}
-                <div className="reveal" style={{ marginBottom: 48 }}>
-                  <p style={{ fontSize: 20, color: '#ffffff', fontWeight: 500, marginBottom: 24 }}>
-                    Your app passed unit tests, integration tests, and a manual QA pass. Then you launched — and the database fell over at 500 concurrent users. Load testing is the discipline that prevents this exact scenario, and in 2026 the tools have never been better.
-                  </p>
-                  <p>
-                    The difference between a system that survives a viral moment and one that collapses is nearly always discovered (or not discovered) during pre-production performance testing. Netflix, Shopify, and Stripe all run thousands of load tests per week. Most startups run zero until something breaks in production.
-                  </p>
-                  <p style={{ fontSize: 18, color: '#22c55e', fontWeight: 600, margin: '24px 0' }}>
-                    At Codazz, we embed load testing into every production launch — this guide shares exactly how we do it.
-                  </p>
-                </div>
+              {/* ── SECTION 1: WHAT IS LOAD TESTING ── */}
+              <section id="what-is-load-testing" style={{ marginBottom: '64px' }}>
+                <h2 data-reveal style={{ fontSize: '1.9rem', fontWeight: 700, marginBottom: '16px', color: '#fff' }}>
+                  What is Load Testing?
+                </h2>
+                <p data-reveal style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: '16px' }}>
+                  Load testing is the practice of simulating real-world traffic on a software system to understand how it behaves under expected and peak conditions. Unlike functional testing — which checks whether features work correctly — load testing answers the question: <strong style={{ color: '#fff' }}>how many users can this system handle before it falls over?</strong>
+                </p>
+                <p data-reveal style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: '28px' }}>
+                  In 2025, high-profile outages cost companies an average of <strong style={{ color: '#fff' }}>$5,600 per minute</strong> in lost revenue and damage to customer trust. Most of those outages were preventable — teams that ran systematic load tests before major launches and deployments caught the bottlenecks weeks before real users did. Load testing is not a luxury reserved for FAANG companies; it is table stakes for any production system serving more than a few hundred users.
+                </p>
 
-                {/* Section: Test Types */}
-                <h2 id="test-types" className="reveal" style={{
-                  fontSize: 'clamp(1.6rem, 3vw, 2rem)', fontWeight: 700, color: '#ffffff',
-                  marginTop: 64, marginBottom: 24, letterSpacing: '-0.02em',
-                }}>Types of Performance Tests</h2>
-
-                <div className="reveal" style={{ marginBottom: 24 }}>
-                  <p>
-                    Performance testing is not a single test — it is a family of test types, each designed to answer a different question about your system. Using only load tests is like checking only blood pressure during a physical. Here are the five test types every team should know:
-                  </p>
-                </div>
-
-                <div className="reveal" style={{ display: 'grid', gap: 16, marginBottom: 40 }}>
+                <div data-reveal style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px', marginBottom: '32px' }}>
                   {[
-                    {
-                      type: 'Load Test',
-                      color: '#22c55e',
-                      question: 'Can the system handle expected peak traffic?',
-                      description: 'Ramp users up to your expected peak (e.g. 1,000 concurrent), hold for 20–30 minutes, then ramp down. Validates that SLAs are met under normal peak conditions.',
-                      metrics: ['p95 latency < 500ms', 'Error rate < 0.1%', 'Throughput meets target RPS'],
-                    },
-                    {
-                      type: 'Stress Test',
-                      color: '#f59e0b',
-                      question: 'Where does the system break?',
-                      description: 'Keep increasing load beyond expected peak until the system fails. Finds the breaking point, reveals which component fails first, and validates that failure is graceful (circuit breakers, queue overflow, not data corruption).',
-                      metrics: ['Breaking point VUs', 'Failure mode (graceful vs crash)', 'Recovery time after overload'],
-                    },
-                    {
-                      type: 'Spike Test',
-                      color: '#3b82f6',
-                      question: 'Can the system handle sudden traffic bursts?',
-                      description: 'Go from 100 to 5,000 users in 30 seconds, then back to 100. Simulates viral moments, flash sales, or DDoS patterns. Tests auto-scaling speed and connection pool resilience.',
-                      metrics: ['Time to scale out', 'Error rate during spike', 'Recovery speed post-spike'],
-                    },
-                    {
-                      type: 'Soak Test',
-                      color: '#8b5cf6',
-                      question: 'Does the system degrade over time?',
-                      description: 'Run moderate load (60–80% of peak) for 12–24 hours. Finds memory leaks, connection pool exhaustion, growing database query times, and disk fill-up issues that only appear over extended periods.',
-                      metrics: ['Memory growth over time', 'DB connection count drift', 'P95 latency trend over hours'],
-                    },
-                    {
-                      type: 'Volume Test',
-                      color: '#ec4899',
-                      question: 'Does the system degrade with large data sets?',
-                      description: 'Test with production-scale data volumes — millions of rows, large payloads, deep pagination. Reveals N+1 query problems, missing indexes, and full-table scans that do not appear with small test data.',
-                      metrics: ['Query time at 1M vs 10M rows', 'Payload size impact', 'Pagination performance'],
-                    },
+                    { label: 'Prevent Outages', desc: 'Catch breaking points before real users hit them during launches or traffic spikes.' },
+                    { label: 'Validate SLOs', desc: 'Confirm that p95/p99 latency and error rate targets hold at projected user volumes.' },
+                    { label: 'Size Infrastructure', desc: 'Determine exactly how many servers, pods, or DB connections you actually need.' },
+                    { label: 'Find Bottlenecks', desc: 'Expose slow database queries, N+1 problems, memory leaks, and connection pool exhaustion.' },
+                    { label: 'Benchmark Changes', desc: 'Compare performance before and after a refactor, upgrade, or infrastructure change.' },
+                    { label: 'Build Confidence', desc: 'Ship with certainty — your team and stakeholders know the system has been pressure-tested.' },
                   ].map((item, i) => (
-                    <div key={i} style={{
-                      background: 'rgba(255,255,255,0.03)', borderRadius: 16, padding: 24,
-                      border: `1px solid ${item.color}22`,
-                    }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
-                        <span style={{
-                          fontSize: 12, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase',
-                          color: item.color, background: `${item.color}15`, padding: '4px 12px', borderRadius: 100,
-                        }}>{item.type}</span>
-                      </div>
-                      <p style={{ color: '#ffffff', fontWeight: 600, fontSize: 16, margin: '0 0 8px' }}>{item.question}</p>
-                      <p style={{ fontSize: 14, margin: '0 0 16px', lineHeight: 1.7 }}>{item.description}</p>
-                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-                        {item.metrics.map((m, j) => (
-                          <span key={j} style={{
-                            fontSize: 12, color: item.color, background: `${item.color}10`,
-                            padding: '4px 10px', borderRadius: 8, fontFamily: 'monospace',
-                          }}>{m}</span>
-                        ))}
-                      </div>
+                    <div key={i} style={{ background: 'rgba(34,197,94,0.05)', border: '1px solid rgba(34,197,94,0.15)', borderRadius: '8px', padding: '16px' }}>
+                      <div style={{ fontWeight: 700, color: '#fff', marginBottom: '6px', fontSize: '0.9rem' }}>{item.label}</div>
+                      <p style={{ color: 'rgba(255,255,255,0.55)', lineHeight: 1.6, margin: 0, fontSize: '0.85rem' }}>{item.desc}</p>
                     </div>
                   ))}
                 </div>
 
-                {/* Section: Tool Comparison */}
-                <h2 id="tool-comparison" className="reveal" style={{
-                  fontSize: 'clamp(1.6rem, 3vw, 2rem)', fontWeight: 700, color: '#ffffff',
-                  marginTop: 64, marginBottom: 24, letterSpacing: '-0.02em',
-                }}>k6 vs JMeter vs Locust vs Artillery</h2>
-
-                <div className="reveal" style={{ marginBottom: 24 }}>
-                  <p>
-                    The load testing tool landscape in 2026 has four serious contenders. Each has distinct strengths. Here is an honest comparison so you can pick the right one for your stack, team, and use case:
+                <div data-reveal style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderLeft: `3px solid ${G}`, borderRadius: '8px', padding: '20px' }}>
+                  <div style={{ fontWeight: 700, color: G, marginBottom: '8px' }}>The Load Testing Mindset</div>
+                  <p style={{ color: 'rgba(255,255,255,0.65)', lineHeight: 1.7, margin: 0 }}>
+                    Think of load testing as a fire drill — you run it regularly, deliberately, in controlled conditions, so that when real fire comes (a viral post, a Product Hunt launch, a Black Friday sale), your team knows exactly what will break and at what threshold. The goal is not to pass a test; the goal is to learn where your system&apos;s limits are and decide whether those limits are acceptable.
                   </p>
                 </div>
+              </section>
 
-                <div className="reveal" style={{ marginBottom: 32 }}>
-                  <div style={{
-                    background: 'rgba(255,255,255,0.03)', borderRadius: 16, padding: 24,
-                    border: '1px solid rgba(255,255,255,0.08)', overflowX: 'auto',
-                  }}>
-                    <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 640 }}>
-                      <thead>
-                        <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
-                          <th style={{ textAlign: 'left', padding: '12px 10px', color: '#ffffff', fontSize: 14 }}>Tool</th>
-                          <th style={{ textAlign: 'left', padding: '12px 10px', color: '#22c55e', fontSize: 14 }}>Language</th>
-                          <th style={{ textAlign: 'left', padding: '12px 10px', color: '#ffffff', fontSize: 14 }}>Max VUs</th>
-                          <th style={{ textAlign: 'left', padding: '12px 10px', color: '#ffffff', fontSize: 14 }}>CI/CD</th>
-                          <th style={{ textAlign: 'left', padding: '12px 10px', color: '#ffffff', fontSize: 14 }}>Best For</th>
+              {/* ── SECTION 2: TEST TYPES ── */}
+              <section id="test-types" style={{ marginBottom: '64px' }}>
+                <h2 data-reveal style={{ fontSize: '1.9rem', fontWeight: 700, marginBottom: '16px' }}>
+                  Types of Performance Tests
+                </h2>
+                <p data-reveal style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: '28px' }}>
+                  &quot;Load test&quot; is often used as an umbrella term, but there are five distinct test types, each answering a different question. Running the wrong type gives you misleading confidence.
+                </p>
+
+                <div data-reveal style={{ display: 'grid', gap: '20px', marginBottom: '32px' }}>
+                  {[
+                    {
+                      type: 'Load Test',
+                      question: 'Does the system perform acceptably at expected peak load?',
+                      desc: 'The baseline test. Simulate your anticipated peak concurrent users and measure throughput, latency, and error rates. Typically runs at 1x–1.5x your observed peak traffic for 10–30 minutes to verify steady-state performance.',
+                      when: 'Before every major release. After infrastructure changes. After adding a new high-traffic feature.',
+                      shape: 'Ramp up → steady state at target load → ramp down',
+                    },
+                    {
+                      type: 'Stress Test',
+                      question: 'What is the breaking point, and how does the system fail?',
+                      desc: 'Push the system beyond its rated capacity — 2x, 5x, 10x normal load — until it degrades or fails. The goal is to find the breaking point AND observe the failure mode. Does it return errors gracefully? Queue and recover? Or deadlock and require a restart?',
+                      when: 'When establishing capacity limits for the first time. After significant architectural changes. Before signing SLA contracts.',
+                      shape: 'Ramp up aggressively until errors spike or latency becomes unacceptable',
+                    },
+                    {
+                      type: 'Spike Test',
+                      question: 'Can the system survive sudden traffic explosions?',
+                      desc: 'Instantaneously jump from baseline to 5–10x load with no ramp-up period. Tests whether auto-scaling kicks in fast enough, whether connection pools handle the sudden surge, and whether queues absorb the burst without cascading failures.',
+                      when: 'If you expect unpredictable spikes (viral social media, flash sales, sports events). After enabling auto-scaling to verify it actually works.',
+                      shape: 'Low baseline → instant spike to maximum → return to baseline',
+                    },
+                    {
+                      type: 'Soak / Endurance Test',
+                      question: 'Does the system remain stable over many hours or days?',
+                      desc: 'Run moderate load (50–70% of peak) for 4–24 hours or longer. Designed to catch memory leaks, connection pool exhaustion, disk space accumulation, cache poisoning, and other time-dependent degradation that short tests miss entirely.',
+                      when: 'Before first production launch. Monthly as a health check. Whenever you suspect a memory leak from production metrics.',
+                      shape: 'Steady moderate load for extended duration (4h, 8h, 24h)',
+                    },
+                    {
+                      type: 'Breakpoint Test',
+                      question: 'At exactly what load does each component become the bottleneck?',
+                      desc: 'Systematically increase load in small increments and measure which metric degrades first at each step. Produces a capacity curve showing throughput vs latency, letting you identify the precise inflection point. More controlled and data-rich than a basic stress test.',
+                      when: 'Capacity planning. Choosing between architectural options. Justifying infrastructure spend to stakeholders.',
+                      shape: 'Incremental steps: 10% → 20% → 30% → … of max, measuring at each plateau',
+                    },
+                  ].map((item, i) => (
+                    <div key={i} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '10px', padding: '22px' }}>
+                      <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', marginBottom: '10px' }}>
+                        <div style={{ fontWeight: 700, color: G, fontSize: '1.05rem' }}>{item.type}</div>
+                      </div>
+                      <div style={{ fontSize: '0.82rem', color: '#94a3b8', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '10px' }}>{item.question}</div>
+                      <p style={{ color: 'rgba(255,255,255,0.65)', lineHeight: 1.7, margin: '0 0 12px', fontSize: '0.92rem' }}>{item.desc}</p>
+                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+                        <div style={{ background: 'rgba(34,197,94,0.06)', borderRadius: '6px', padding: '10px 14px' }}>
+                          <div style={{ fontSize: '0.75rem', color: G, fontWeight: 600, marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Run When</div>
+                          <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.83rem', lineHeight: 1.5, margin: 0 }}>{item.when}</p>
+                        </div>
+                        <div style={{ background: 'rgba(255,255,255,0.03)', borderRadius: '6px', padding: '10px 14px' }}>
+                          <div style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: 600, marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Traffic Shape</div>
+                          <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.83rem', lineHeight: 1.5, margin: 0 }}>{item.shape}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              {/* ── SECTION 3: TOOL COMPARISON ── */}
+              <section id="tool-comparison" style={{ marginBottom: '64px' }}>
+                <h2 data-reveal style={{ fontSize: '1.9rem', fontWeight: 700, marginBottom: '16px' }}>
+                  Tool Comparison: k6, JMeter, Locust, Artillery, Gatling
+                </h2>
+                <p data-reveal style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: '28px' }}>
+                  Five tools dominate the load testing landscape in 2026. Each has a distinct philosophy, scripting model, and performance profile. Here is how they compare across the dimensions that matter most.
+                </p>
+
+                <div data-reveal style={{ overflowX: 'auto', marginBottom: '32px' }}>
+                  <table className="data-table" style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.85rem' }}>
+                    <thead>
+                      <tr>
+                        <th style={{ textAlign: 'left' }}>Tool</th>
+                        <th style={{ textAlign: 'left' }}>Language</th>
+                        <th style={{ textAlign: 'left' }}>Protocol Support</th>
+                        <th style={{ textAlign: 'left' }}>Max VUs (single node)</th>
+                        <th style={{ textAlign: 'left' }}>CI/CD Friendly</th>
+                        <th style={{ textAlign: 'left' }}>Cloud Execution</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><strong style={{ color: '#fff' }}>k6</strong></td>
+                        <td style={{ color: 'rgba(255,255,255,0.7)' }}>JavaScript / TypeScript</td>
+                        <td style={{ color: 'rgba(255,255,255,0.7)' }}>HTTP/1.1, HTTP/2, WebSocket, gRPC</td>
+                        <td style={{ color: 'rgba(255,255,255,0.7)' }}>50,000+</td>
+                        <td style={{ color: G }}>Excellent</td>
+                        <td style={{ color: 'rgba(255,255,255,0.7)' }}>k6 Cloud, Grafana</td>
+                      </tr>
+                      <tr>
+                        <td><strong style={{ color: '#fff' }}>JMeter</strong></td>
+                        <td style={{ color: 'rgba(255,255,255,0.7)' }}>GUI / Groovy / Java</td>
+                        <td style={{ color: 'rgba(255,255,255,0.7)' }}>HTTP, HTTPS, JDBC, FTP, SOAP, SMTP</td>
+                        <td style={{ color: 'rgba(255,255,255,0.7)' }}>5,000–10,000</td>
+                        <td style={{ color: 'rgba(255,255,255,0.7)' }}>Good (JMeter Maven Plugin)</td>
+                        <td style={{ color: 'rgba(255,255,255,0.7)' }}>BlazeMeter, Azure Load Testing</td>
+                      </tr>
+                      <tr>
+                        <td><strong style={{ color: '#fff' }}>Locust</strong></td>
+                        <td style={{ color: 'rgba(255,255,255,0.7)' }}>Python</td>
+                        <td style={{ color: 'rgba(255,255,255,0.7)' }}>HTTP, WebSocket (custom clients)</td>
+                        <td style={{ color: 'rgba(255,255,255,0.7)' }}>10,000+ (distributed)</td>
+                        <td style={{ color: 'rgba(255,255,255,0.7)' }}>Good</td>
+                        <td style={{ color: 'rgba(255,255,255,0.7)' }}>Self-hosted distributed mode</td>
+                      </tr>
+                      <tr>
+                        <td><strong style={{ color: '#fff' }}>Artillery</strong></td>
+                        <td style={{ color: 'rgba(255,255,255,0.7)' }}>YAML / JavaScript</td>
+                        <td style={{ color: 'rgba(255,255,255,0.7)' }}>HTTP, WebSocket, Socket.io, Kinesis</td>
+                        <td style={{ color: 'rgba(255,255,255,0.7)' }}>5,000–20,000</td>
+                        <td style={{ color: G }}>Excellent (npm package)</td>
+                        <td style={{ color: 'rgba(255,255,255,0.7)' }}>Artillery Cloud, AWS Lambda</td>
+                      </tr>
+                      <tr>
+                        <td><strong style={{ color: '#fff' }}>Gatling</strong></td>
+                        <td style={{ color: 'rgba(255,255,255,0.7)' }}>Scala / Java / Kotlin</td>
+                        <td style={{ color: 'rgba(255,255,255,0.7)' }}>HTTP/1.1, HTTP/2, WebSocket, JMS</td>
+                        <td style={{ color: 'rgba(255,255,255,0.7)' }}>30,000+</td>
+                        <td style={{ color: 'rgba(255,255,255,0.7)' }}>Good (Maven/Gradle plugin)</td>
+                        <td style={{ color: 'rgba(255,255,255,0.7)' }}>Gatling Enterprise</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div data-reveal style={{ display: 'grid', gap: '20px' }}>
+                  {[
+                    {
+                      name: 'k6',
+                      tagline: 'Best for modern JavaScript/TypeScript teams and CI/CD pipelines',
+                      pro: 'Extremely efficient — single k6 process can simulate 50,000+ virtual users with low CPU overhead. Scripts are plain JavaScript/TypeScript. First-class CI/CD output (JUnit XML, Prometheus, Datadog). Thresholds built-in — tests fail automatically when SLOs are breached. Free, open-source, backed by Grafana Labs.',
+                      con: 'No browser automation. Runs JS in a custom runtime — some Node.js APIs are unavailable. Distributed execution requires k6 Cloud (paid) or manual setup.',
+                      verdict: 'First choice for API load testing in 2026. If your team writes JavaScript, start here.',
+                    },
+                    {
+                      name: 'Apache JMeter',
+                      tagline: 'Best for enterprises with GUI requirements or legacy SOAP/JDBC testing',
+                      pro: 'Supports virtually every protocol out of the box. GUI makes it accessible to non-developers. Massive plugin ecosystem. Widely accepted in enterprise procurement processes. Excellent distributed testing with JMeter server nodes.',
+                      con: 'GUI-based workflow is clunky for code review and version control. Java heap memory limits VU count per node. XML-based test plans are difficult to maintain as code. Thread-per-VU model means higher resource consumption than k6 or Gatling.',
+                      verdict: 'Choose JMeter if you need JDBC/database testing, legacy protocol support, or your QA team requires a GUI. Avoid for greenfield HTTP API projects.',
+                    },
+                    {
+                      name: 'Locust',
+                      tagline: 'Best for Python teams who want full scripting flexibility',
+                      pro: 'Real Python — full access to the Python ecosystem for data manipulation, custom auth logic, complex test scenarios. Excellent distributed mode. Clean web UI for real-time monitoring. Easy to extend with custom clients.',
+                      con: 'GIL (Python\'s Global Interpreter Lock) limits per-process concurrency — requires many workers for large loads. Slower than k6 or Gatling for pure HTTP load generation. Less CI/CD tooling out of the box.',
+                      verdict: 'Excellent for Python teams and complex test scenarios requiring rich data manipulation or custom protocol clients.',
+                    },
+                    {
+                      name: 'Artillery',
+                      tagline: 'Best for teams wanting a YAML-first, config-driven approach',
+                      pro: 'YAML test definitions are readable by non-engineers. npm package — trivially added to any Node.js project. Built-in support for WebSocket and Socket.io. Serverless execution via AWS Lambda for massive distributed load without managing servers.',
+                      con: 'YAML can become verbose for complex scenarios. Less community content than k6 or JMeter. Cloud execution features require paid tier.',
+                      verdict: 'Great for teams that want simple, readable test definitions and serverless execution. Ideal for WebSocket and real-time API testing.',
+                    },
+                    {
+                      name: 'Gatling',
+                      tagline: 'Best for Java/Scala teams needing the highest single-node VU density',
+                      pro: 'Asynchronous Netty-based engine — highest VU-per-core ratio among JVM tools. Excellent HTML reports with detailed percentile charts. Strong HTTP/2 support. Type-safe DSL in Scala/Kotlin catches scripting errors at compile time.',
+                      con: 'Scala/Kotlin DSL has a learning curve. Slower to iterate than k6. Advanced features (distributed execution, CI dashboards) require Gatling Enterprise (paid).',
+                      verdict: 'Top choice for JVM teams and any scenario where you need maximum VU density on a small number of machines.',
+                    },
+                  ].map((item, i) => (
+                    <div key={i} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '10px', padding: '22px' }}>
+                      <div style={{ fontWeight: 700, color: G, fontSize: '1.05rem', marginBottom: '4px' }}>{item.name}</div>
+                      <div style={{ fontSize: '0.82rem', color: '#94a3b8', fontWeight: 600, marginBottom: '14px' }}>{item.tagline}</div>
+                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '12px' }}>
+                        <div>
+                          <div style={{ fontSize: '0.75rem', color: G, fontWeight: 600, marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Strengths</div>
+                          <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '0.87rem', lineHeight: 1.6, margin: 0 }}>{item.pro}</p>
+                        </div>
+                        <div>
+                          <div style={{ fontSize: '0.75rem', color: '#f87171', fontWeight: 600, marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Limitations</div>
+                          <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '0.87rem', lineHeight: 1.6, margin: 0 }}>{item.con}</p>
+                        </div>
+                      </div>
+                      <div style={{ background: 'rgba(34,197,94,0.06)', borderRadius: '6px', padding: '10px 14px', fontSize: '0.87rem' }}>
+                        <strong style={{ color: G }}>Verdict: </strong><span style={{ color: 'rgba(255,255,255,0.65)' }}>{item.verdict}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              {/* ── SECTION 4: KEY METRICS ── */}
+              <section id="key-metrics" style={{ marginBottom: '64px' }}>
+                <h2 data-reveal style={{ fontSize: '1.9rem', fontWeight: 700, marginBottom: '16px' }}>
+                  Key Metrics &amp; SLOs
+                </h2>
+                <p data-reveal style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: '28px' }}>
+                  Collecting data is not the hard part — knowing which numbers matter and what targets to set is. These are the seven metrics every load test should capture, plus industry-standard thresholds to guide your SLO definitions.
+                </p>
+
+                <div data-reveal style={{ overflowX: 'auto', marginBottom: '32px' }}>
+                  <table className="data-table" style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.87rem' }}>
+                    <thead>
+                      <tr>
+                        <th style={{ textAlign: 'left' }}>Metric</th>
+                        <th style={{ textAlign: 'left' }}>Definition</th>
+                        <th style={{ textAlign: 'left' }}>Good Threshold</th>
+                        <th style={{ textAlign: 'left' }}>Warning Sign</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {[
+                        ['RPS / TPS', 'Requests (or transactions) per second processed by the system', '≥ target throughput at peak load', 'RPS plateaus or drops while errors rise'],
+                        ['p50 Latency (Median)', '50th percentile response time — what the typical user experiences', '< 100ms for APIs, < 500ms for web pages', 'Above 200ms for simple read APIs'],
+                        ['p95 Latency', '95% of requests complete within this time', '< 300ms for APIs, < 1s for web pages', 'Above 1s for any user-facing endpoint'],
+                        ['p99 Latency', '99% of requests complete within this time — exposes tail latency', '< 500ms for APIs, < 2s for web pages', 'Above 2s for critical paths'],
+                        ['Error Rate', 'Percentage of requests returning 4xx/5xx responses', '< 0.1% under normal load, < 1% under peak', 'Any sustained error rate above 0.5%'],
+                        ['Throughput', 'Total data transferred per second (KB/s or MB/s)', 'Stable across test duration at target load', 'Degrading throughput with rising latency'],
+                        ['Virtual Users (VUs)', 'Concurrent simulated users making requests', 'Matches or exceeds your peak concurrency target', 'System instability before reaching VU target'],
+                      ].map(([metric, def, good, warn], i) => (
+                        <tr key={i}>
+                          <td><strong style={{ color: '#fff' }}>{metric}</strong></td>
+                          <td style={{ color: 'rgba(255,255,255,0.65)' }}>{def}</td>
+                          <td style={{ color: G, fontSize: '0.83rem' }}>{good}</td>
+                          <td style={{ color: '#f87171', fontSize: '0.83rem' }}>{warn}</td>
                         </tr>
-                      </thead>
-                      <tbody>
-                        {[
-                          ['k6', 'JavaScript/TypeScript', '50,000+', 'Native', 'Developers, API testing, CI/CD'],
-                          ['JMeter', 'Java (GUI + XML)', '~10,000', 'Plugin required', 'QA teams, legacy enterprises'],
-                          ['Locust', 'Python', '~20,000', 'Good (CLI-first)', 'Python teams, custom protocols'],
-                          ['Artillery', 'YAML + JavaScript', '~5,000', 'Excellent (serverless)', 'Serverless, quick YAML tests'],
-                        ].map(([tool, lang, vus, ci, bestFor], i) => (
-                          <tr key={i} style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                            <td style={{ padding: '12px 10px', color: '#22c55e', fontWeight: 700 }}>{tool}</td>
-                            <td style={{ padding: '12px 10px', fontFamily: 'monospace', fontSize: 13 }}>{lang}</td>
-                            <td style={{ padding: '12px 10px', textAlign: 'center' }}>{vus}</td>
-                            <td style={{ padding: '12px 10px', fontSize: 13 }}>{ci}</td>
-                            <td style={{ padding: '12px 10px', fontSize: 13 }}>{bestFor}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
+                      ))}
+                    </tbody>
+                  </table>
                 </div>
 
-                <div className="reveal" style={{
-                  background: 'rgba(34,197,94,0.06)', borderRadius: 16, padding: 24, marginBottom: 40,
-                  border: '1px solid rgba(34,197,94,0.15)',
-                }}>
-                  <h4 style={{ color: '#22c55e', marginBottom: 12, fontSize: 15, fontWeight: 700 }}>Our Recommendation</h4>
-                  <p style={{ margin: 0, fontSize: 15, lineHeight: 1.7 }}>
-                    <strong style={{ color: '#ffffff' }}>Start with k6.</strong> It uses JavaScript/TypeScript (no new language to learn for most teams), runs as a single binary with zero dependencies, generates detailed terminal output and HTML reports, has native Grafana Cloud integration, and runs inside GitHub Actions without any plugins. JMeter is still the enterprise choice where you need GUI-driven test creation or protocol diversity (JMS, LDAP, SMTP). Locust wins if your team is Python-first and you need complex custom behaviour. Artillery is excellent if you are already serverless-heavy and want YAML-first test definitions.
-                  </p>
+                <h3 data-reveal style={{ fontSize: '1.2rem', fontWeight: 700, color: G, marginBottom: '12px' }}>Setting SLOs From Load Test Data</h3>
+                <div data-reveal style={{ display: 'grid', gap: '16px', marginBottom: '24px' }}>
+                  {[
+                    {
+                      title: 'Define objectives before running tests',
+                      desc: 'Write down your SLO targets before you see any data. If you set targets after seeing results, you are rationalizing, not measuring. Example: "The checkout API must serve p99 latency under 400ms at 500 concurrent users with error rate below 0.1%."',
+                    },
+                    {
+                      title: 'Separate read and write endpoints',
+                      desc: 'GET /products and POST /orders have very different performance characteristics. Track them separately. Aggregating all endpoints into one average hides the endpoints that matter most — usually writes and search.',
+                    },
+                    {
+                      title: 'Measure at the 95th and 99th percentile, not average',
+                      desc: 'Average latency is meaningless for user experience. A p50 of 50ms with a p99 of 5,000ms means 1 in 100 users waits 5 seconds — completely unacceptable, but invisible in averages.',
+                    },
+                    {
+                      title: 'Use k6 thresholds to auto-fail CI builds',
+                      desc: 'Define thresholds in your k6 script so the test exits with a non-zero code when SLOs are breached. This gates deployments in CI/CD without requiring manual analysis of every run.',
+                    },
+                  ].map((item, i) => (
+                    <div key={i} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderLeft: `3px solid ${G}`, borderRadius: '8px', padding: '18px' }}>
+                      <div style={{ fontWeight: 700, color: '#fff', marginBottom: '6px' }}>{item.title}</div>
+                      <p style={{ color: 'rgba(255,255,255,0.65)', lineHeight: 1.7, margin: 0, fontSize: '0.9rem' }}>{item.desc}</p>
+                    </div>
+                  ))}
                 </div>
+              </section>
 
-                {/* Section: k6 Scripts */}
-                <h2 id="k6-scripts" className="reveal" style={{
-                  fontSize: 'clamp(1.6rem, 3vw, 2rem)', fontWeight: 700, color: '#ffffff',
-                  marginTop: 64, marginBottom: 24, letterSpacing: '-0.02em',
-                }}>Writing k6 Scripts</h2>
+              {/* ── SECTION 5: WRITING TESTS ── */}
+              <section id="writing-tests" style={{ marginBottom: '64px' }}>
+                <h2 data-reveal style={{ fontSize: '1.9rem', fontWeight: 700, marginBottom: '16px' }}>
+                  Writing Load Test Scripts
+                </h2>
+                <p data-reveal style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: '28px' }}>
+                  Below are production-ready script examples for k6, Artillery, and Locust — the three most commonly used tools in modern engineering teams.
+                </p>
 
-                <div className="reveal" style={{ marginBottom: 24 }}>
-                  <p>
-                    k6 tests are plain JavaScript files. A test has three parts: options (VU count, duration, thresholds), setup (optional data prep), and default function (the scenario each virtual user runs). Here is a complete, production-ready k6 script for API load testing:
-                  </p>
-                </div>
-
-                <div className="reveal" style={{ marginBottom: 32 }}>
-                  <h3 style={{ fontSize: 20, fontWeight: 600, color: '#ffffff', marginBottom: 16 }}>Complete k6 Load Test Script</h3>
-                  <div style={{
-                    background: '#0d1117', borderRadius: 16, padding: 24,
-                    border: '1px solid rgba(255,255,255,0.08)', fontFamily: 'monospace', fontSize: 13,
-                    overflowX: 'auto', color: 'rgba(255,255,255,0.85)',
-                  }}>
-                    <pre style={{ margin: 0, whiteSpace: 'pre-wrap' }}>{`// load-test.js — Production-ready k6 load test
+                <h3 data-reveal style={{ fontSize: '1.2rem', fontWeight: 700, color: G, marginBottom: '12px' }}>k6 — Load Test with Thresholds and Stages</h3>
+                <pre data-reveal><code>{`// k6 load test — e-commerce API
 import http from 'k6/http';
 import { check, sleep } from 'k6';
-import { Rate, Trend } from 'k6/metrics';
+import { Rate } from 'k6/metrics';
 
-// Custom metrics
-const errorRate = new Rate('error_rate');
-const authDuration = new Trend('auth_duration', true);
+const errorRate = new Rate('errors');
 
 export const options = {
   stages: [
     { duration: '2m', target: 100 },   // Ramp up to 100 VUs
-    { duration: '10m', target: 100 },  // Hold at 100 VUs (steady state)
-    { duration: '5m', target: 500 },   // Ramp up to peak
-    { duration: '10m', target: 500 },  // Hold at peak
-    { duration: '3m', target: 0 },     // Ramp down
+    { duration: '5m', target: 100 },   // Hold at 100 VUs (steady state)
+    { duration: '2m', target: 500 },   // Spike to 500 VUs
+    { duration: '5m', target: 500 },   // Hold at 500 VUs
+    { duration: '2m', target: 0 },     // Ramp down
   ],
   thresholds: {
-    http_req_duration: ['p(95)<500', 'p(99)<1500'],
+    http_req_duration: ['p(95)<300', 'p(99)<500'], // SLO thresholds
+    errors: ['rate<0.01'],                          // < 1% error rate
     http_req_failed: ['rate<0.01'],
-    error_rate: ['rate<0.01'],
-    auth_duration: ['p(95)<200'],
   },
 };
 
-const BASE_URL = __ENV.BASE_URL || 'https://api.example.com';
+const BASE_URL = 'https://api.yourapp.com';
 
 export function setup() {
+  // Authenticate and return shared token
   const res = http.post(\`\${BASE_URL}/auth/login\`, JSON.stringify({
     email: 'loadtest@example.com',
-    password: 'TestPassword123!',
+    password: __ENV.LOAD_TEST_PASSWORD,
   }), { headers: { 'Content-Type': 'application/json' } });
 
-  check(res, { 'setup: login success': r => r.status === 200 });
-  return { token: res.json('token') };
+  return { token: res.json('accessToken') };
 }
 
 export default function (data) {
   const headers = {
-    'Content-Type': 'application/json',
     'Authorization': \`Bearer \${data.token}\`,
+    'Content-Type': 'application/json',
   };
 
-  // Auth endpoint
-  const loginStart = Date.now();
-  const authRes = http.post(\`\${BASE_URL}/auth/refresh\`, null, { headers });
-  authDuration.add(Date.now() - loginStart);
-
-  const authOk = check(authRes, {
-    'auth: status 200': r => r.status === 200,
-    'auth: has token': r => r.json('token') !== undefined,
+  // Simulate user browsing products
+  const productRes = http.get(\`\${BASE_URL}/products?page=1&limit=20\`, { headers });
+  check(productRes, {
+    'products status 200': (r) => r.status === 200,
+    'products response time OK': (r) => r.timings.duration < 300,
   });
-  errorRate.add(!authOk);
+  errorRate.add(productRes.status !== 200);
+
   sleep(1);
 
-  // Products list
-  const listRes = http.get(\`\${BASE_URL}/products?page=1&limit=20\`, { headers });
-  const listOk = check(listRes, {
-    'products: status 200': r => r.status === 200,
-    'products: has items': r => r.json('items')?.length > 0,
-  });
-  errorRate.add(!listOk);
+  // View a specific product
+  const productId = productRes.json('data')[0]?.id ?? 'prod_001';
+  const detailRes = http.get(\`\${BASE_URL}/products/\${productId}\`, { headers });
+  check(detailRes, { 'product detail 200': (r) => r.status === 200 });
+
   sleep(2);
 
-  // Single product (randomised)
-  const productId = Math.floor(Math.random() * 1000) + 1;
-  const detailRes = http.get(\`\${BASE_URL}/products/\${productId}\`, { headers });
-  check(detailRes, {
-    'product detail: 200 or 404': r => [200, 404].includes(r.status),
-  });
+  // Add to cart
+  const cartRes = http.post(\`\${BASE_URL}/cart/items\`, JSON.stringify({
+    productId,
+    quantity: 1,
+  }), { headers });
+  check(cartRes, { 'add to cart 200': (r) => r.status === 200 });
+  errorRate.add(cartRes.status !== 200);
+
   sleep(1);
-}`}</pre>
-                  </div>
-                </div>
+}`}</code></pre>
 
-                <div className="reveal" style={{ marginBottom: 32 }}>
-                  <h3 style={{ fontSize: 20, fontWeight: 600, color: '#ffffff', marginBottom: 16 }}>Spike Test Configuration</h3>
-                  <div style={{
-                    background: '#0d1117', borderRadius: 16, padding: 24,
-                    border: '1px solid rgba(255,255,255,0.08)', fontFamily: 'monospace', fontSize: 13,
-                    overflowX: 'auto', color: 'rgba(255,255,255,0.85)',
-                  }}>
-                    <pre style={{ margin: 0, whiteSpace: 'pre-wrap' }}>{`// spike-test.js — Simulates a viral traffic burst
-export const options = {
-  stages: [
-    { duration: '1m', target: 50 },     // Normal baseline
-    { duration: '30s', target: 5000 },  // SPIKE: 100x in 30 seconds
-    { duration: '3m', target: 5000 },   // Hold the spike
-    { duration: '1m', target: 50 },     // Recover back to normal
-    { duration: '2m', target: 50 },     // Verify recovery (no degradation)
-  ],
-  thresholds: {
-    http_req_duration: ['p(95)<2000'],
-    http_req_failed: ['rate<0.05'],
-  },
-};`}</pre>
-                  </div>
-                </div>
+                <h3 data-reveal style={{ fontSize: '1.2rem', fontWeight: 700, color: G, marginBottom: '12px', marginTop: '32px' }}>Artillery — YAML-Based API Test</h3>
+                <pre data-reveal><code>{`# artillery.yml — API load test config
+config:
+  target: "https://api.yourapp.com"
+  phases:
+    - duration: 60     # seconds
+      arrivalRate: 10  # new users per second
+      name: Warm up
+    - duration: 300
+      arrivalRate: 50
+      name: Sustained load
+    - duration: 120
+      arrivalRate: 200
+      name: Peak spike
+  defaults:
+    headers:
+      Content-Type: "application/json"
+  variables:
+    token: "{{ $env.LOAD_TEST_TOKEN }}"
+  ensure:
+    p99: 500      # fail if p99 exceeds 500ms
+    maxErrorRate: 1  # fail if error rate > 1%
 
-                {/* Section: Key Metrics */}
-                <h2 id="key-metrics" className="reveal" style={{
-                  fontSize: 'clamp(1.6rem, 3vw, 2rem)', fontWeight: 700, color: '#ffffff',
-                  marginTop: 64, marginBottom: 24, letterSpacing: '-0.02em',
-                }}>Key Metrics: Throughput, p95 Latency &amp; Error Rate</h2>
+scenarios:
+  - name: Browse and add to cart
+    weight: 70  # 70% of traffic follows this scenario
+    flow:
+      - get:
+          url: "/products?page=1"
+          headers:
+            Authorization: "Bearer {{ token }}"
+          expect:
+            - statusCode: 200
+      - think: 2
+      - post:
+          url: "/cart/items"
+          headers:
+            Authorization: "Bearer {{ token }}"
+          json:
+            productId: "prod_001"
+            quantity: 1
+          expect:
+            - statusCode: 200
 
-                <div className="reveal" style={{ marginBottom: 24 }}>
-                  <p>
-                    A load test generates dozens of metrics. Most teams look at average response time and miss the real signal. Here are the metrics that actually matter and how to interpret them:
-                  </p>
-                </div>
+  - name: Search only
+    weight: 30
+    flow:
+      - get:
+          url: "/search?q=laptop"
+          headers:
+            Authorization: "Bearer {{ token }}"
+          expect:
+            - statusCode: 200`}</code></pre>
 
-                <div className="reveal" style={{ display: 'grid', gap: 16, marginBottom: 40 }}>
+                <h3 data-reveal style={{ fontSize: '1.2rem', fontWeight: 700, color: G, marginBottom: '12px', marginTop: '32px' }}>Locust — Python-Based Distributed Test</h3>
+                <pre data-reveal><code>{`# locustfile.py — distributed load test
+from locust import HttpUser, task, between, events
+import random
+import os
+
+class EcommerceUser(HttpUser):
+    wait_time = between(1, 3)  # Wait 1-3s between tasks
+    token = None
+
+    def on_start(self):
+        """Authenticate before running tasks"""
+        res = self.client.post("/auth/login", json={
+            "email": "loadtest@example.com",
+            "password": os.environ["LOAD_TEST_PASSWORD"],
+        })
+        self.token = res.json()["accessToken"]
+        self.client.headers.update({"Authorization": f"Bearer {self.token}"})
+
+    @task(5)
+    def browse_products(self):
+        """Most common action — weight 5"""
+        page = random.randint(1, 10)
+        with self.client.get(
+            f"/products?page={page}&limit=20",
+            name="/products [paginated]",
+            catch_response=True
+        ) as res:
+            if res.status_code != 200:
+                res.failure(f"Expected 200, got {res.status_code}")
+            elif res.elapsed.total_seconds() > 0.5:
+                res.failure(f"Too slow: {res.elapsed.total_seconds():.2f}s")
+
+    @task(3)
+    def search(self):
+        """Search — weight 3"""
+        terms = ["laptop", "phone", "headphones", "monitor"]
+        q = random.choice(terms)
+        self.client.get(f"/search?q={q}", name="/search")
+
+    @task(2)
+    def add_to_cart(self):
+        """Add to cart — weight 2"""
+        self.client.post("/cart/items", json={
+            "productId": f"prod_{random.randint(1, 100):03d}",
+            "quantity": random.randint(1, 3),
+        }, name="/cart/items [POST]")
+
+    @task(1)
+    def checkout(self):
+        """Checkout — weight 1 (least frequent)"""
+        self.client.post("/orders", json={
+            "paymentMethodId": "pm_test_visa",
+        }, name="/orders [POST]")`}</code></pre>
+              </section>
+
+              {/* ── SECTION 6: TEST SCENARIOS ── */}
+              <section id="test-scenarios" style={{ marginBottom: '64px' }}>
+                <h2 data-reveal style={{ fontSize: '1.9rem', fontWeight: 700, marginBottom: '16px' }}>
+                  Test Scenarios &amp; Strategies
+                </h2>
+                <p data-reveal style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: '28px' }}>
+                  A realistic test scenario is the difference between a load test that finds real problems and one that gives you false confidence. These strategies ensure your tests reflect actual user behavior.
+                </p>
+
+                <div data-reveal style={{ display: 'grid', gap: '20px', marginBottom: '32px' }}>
                   {[
                     {
-                      metric: 'Throughput (RPS)',
-                      color: '#22c55e',
-                      good: '> target RPS without errors',
-                      bad: 'RPS plateaus while latency rises',
-                      explain: 'Requests per second your system handles successfully. When RPS stops growing even as you add VUs, you have found your saturation point. This is your system ceiling — not a bug, just physics.',
+                      title: 'Use Real User Session Flows',
+                      desc: 'Record real user sessions from production using browser HAR files or API gateway logs and replay them. This captures the exact mix of endpoints, think times, and data patterns that real users exhibit — including the rare but expensive paths like checkout and search.',
+                      tip: 'k6 supports HAR file conversion via the k6-har-converter package. Artillery supports HAR replay natively.',
                     },
                     {
-                      metric: 'p95 Latency',
-                      color: '#3b82f6',
-                      good: '< 500ms for APIs, < 2s for pages',
-                      bad: '> 1s (API) or > 3s (pages)',
-                      explain: 'The response time that 95% of your requests complete within. Always use p95/p99 — never average. Average latency hides the long tail. If your average is 200ms but p99 is 8s, 1 in 100 users waits 8 seconds. That is a real UX problem.',
+                      title: 'Parameterize Test Data',
+                      desc: 'Never use the same user ID, product ID, or search query for every virtual user. Static test data creates artificially hot cache entries and completely distorts database query performance. Use CSV data files or generated data to ensure each VU uses unique, realistic inputs.',
+                      tip: 'Prepare a CSV with 10,000 rows of test user credentials, product IDs, and search terms. Feed each VU a unique row using SharedArray in k6.',
                     },
                     {
-                      metric: 'Error Rate',
-                      color: '#f59e0b',
-                      good: '< 0.1% at target load',
-                      bad: '> 1% (investigate immediately)',
-                      explain: 'The percentage of requests returning 5xx or connection errors. Under normal load, error rate should be near zero. Errors under load usually signal database connection pool exhaustion, memory pressure, or downstream service timeouts.',
+                      title: 'Model Realistic Traffic Distribution',
+                      desc: 'Not all users do the same thing. In most e-commerce apps, 60–70% of users just browse, 20–30% search, and only 5–10% complete a purchase. Model this distribution using scenario weights so your API endpoints receive realistic relative load.',
+                      tip: 'Use the scenarios object in k6 or the weight field in Artillery scenarios to control traffic distribution.',
                     },
                     {
-                      metric: 'Apdex Score',
-                      color: '#8b5cf6',
-                      good: '> 0.9 (excellent)',
-                      bad: '< 0.7 (unacceptable)',
-                      explain: 'Application Performance Index: a standard score from 0–1 based on your latency targets. Requests within T are "satisfied" (1.0), within 4T are "tolerating" (0.5), beyond are "frustrated" (0). Set T = your SLA threshold (usually 500ms for APIs).',
+                      title: 'Include Think Time',
+                      desc: 'Real users pause between actions — they read a product description, type a search query, or hesitate before clicking buy. Including sleep() calls between requests (1–5 seconds, varying randomly) dramatically changes the concurrency model and produces more realistic connection pool and session management behavior.',
+                      tip: 'Use between(1, 3) in Locust or sleep(Math.random() * 2 + 1) in k6 to vary think times.',
                     },
                     {
-                      metric: 'Virtual Users (VUs)',
-                      color: '#ec4899',
-                      good: 'Matches real concurrent user count',
-                      bad: 'Too high: saturates before real traffic would',
-                      explain: 'Each VU represents one concurrent user executing your scenario. 1,000 VUs does not equal 1,000 RPS. With 1s think time between requests, 1,000 VUs generates ~500 RPS. Model VU count based on your real concurrency, not total daily users.',
+                      title: 'Warm Up the System Before Measuring',
+                      desc: 'JIT compilation, cache warming, and connection pool establishment all happen during the first few minutes of a test. Treat the first 2–3 minutes as a warm-up period and exclude those data points from your SLO evaluation. k6 stages make this straightforward.',
+                      tip: 'In k6, define a startVUs stage before your primary measurement stage. In Grafana dashboards, use time range selection to exclude warm-up data.',
                     },
                   ].map((item, i) => (
-                    <div key={i} style={{
-                      background: 'rgba(255,255,255,0.03)', borderRadius: 16, padding: 24,
-                      border: `1px solid ${item.color}22`,
-                    }}>
-                      <h3 style={{ color: item.color, fontSize: 18, fontWeight: 700, margin: '0 0 12px' }}>{item.metric}</h3>
-                      <p style={{ fontSize: 14, margin: '0 0 12px', lineHeight: 1.7 }}>{item.explain}</p>
-                      <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-                        <span style={{ fontSize: 12, color: '#22c55e', background: 'rgba(34,197,94,0.1)', padding: '4px 10px', borderRadius: 8 }}>
-                          Good: {item.good}
-                        </span>
-                        <span style={{ fontSize: 12, color: '#ef4444', background: 'rgba(239,68,68,0.1)', padding: '4px 10px', borderRadius: 8 }}>
-                          Bad: {item.bad}
-                        </span>
+                    <div key={i} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '10px', padding: '20px' }}>
+                      <div style={{ fontWeight: 700, color: '#fff', fontSize: '1rem', marginBottom: '8px' }}>{item.title}</div>
+                      <p style={{ color: 'rgba(255,255,255,0.65)', lineHeight: 1.7, margin: '0 0 12px', fontSize: '0.92rem' }}>{item.desc}</p>
+                      <div style={{ background: 'rgba(34,197,94,0.06)', borderRadius: '6px', padding: '10px 14px', fontSize: '0.85rem' }}>
+                        <strong style={{ color: G }}>Pro tip: </strong><span style={{ color: 'rgba(255,255,255,0.55)' }}>{item.tip}</span>
                       </div>
                     </div>
                   ))}
                 </div>
+              </section>
 
-                {/* Section: Bottlenecks */}
-                <h2 id="bottlenecks" className="reveal" style={{
-                  fontSize: 'clamp(1.6rem, 3vw, 2rem)', fontWeight: 700, color: '#ffffff',
-                  marginTop: 64, marginBottom: 24, letterSpacing: '-0.02em',
-                }}>Finding Bottlenecks: DB vs API vs CDN</h2>
+              {/* ── SECTION 7: CI/CD INTEGRATION ── */}
+              <section id="cicd-integration" style={{ marginBottom: '64px' }}>
+                <h2 data-reveal style={{ fontSize: '1.9rem', fontWeight: 700, marginBottom: '16px' }}>
+                  CI/CD Integration
+                </h2>
+                <p data-reveal style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: '28px' }}>
+                  The highest-value change you can make to your load testing practice is running tests automatically in your deployment pipeline. A test that only runs manually before quarterly releases catches problems weeks too late.
+                </p>
 
-                <div className="reveal" style={{ marginBottom: 24 }}>
-                  <p>
-                    High latency under load has a root cause. The debugging workflow is systematic: start at the top of the stack and narrow down. Here is how to identify whether your bottleneck is the database, API server, CDN, or network layer.
-                  </p>
-                </div>
-
-                <div className="reveal" style={{ marginBottom: 32 }}>
-                  <div style={{ display: 'grid', gap: 12 }}>
-                    {[
-                      {
-                        step: '1',
-                        title: 'Check API server CPU and memory first',
-                        detail: 'If CPU > 80% under load, your bottleneck is compute. Scale horizontally (add instances) or profile the hot path to find O(n²) loops and synchronous blocking. If memory grows monotonically during a soak test, you have a memory leak.',
-                        color: '#22c55e',
-                      },
-                      {
-                        step: '2',
-                        title: 'Check database connection pool saturation',
-                        detail: 'If API CPU is fine but latency is high, look at your DB. Check pg_stat_activity (PostgreSQL) or SHOW PROCESSLIST (MySQL). If connection count is at max pool size, add pgBouncer or increase pool size. This is the #1 bottleneck we find in production systems.',
-                        color: '#f59e0b',
-                      },
-                      {
-                        step: '3',
-                        title: 'Check slow queries with EXPLAIN ANALYZE',
-                        detail: 'If DB connections are fine but DB response times are high, run EXPLAIN ANALYZE on your slowest queries. Sequential scans on large tables, N+1 query patterns, and missing indexes are the three most common culprits.',
-                        color: '#3b82f6',
-                      },
-                      {
-                        step: '4',
-                        title: 'Check external API and downstream service latency',
-                        detail: 'Add OpenTelemetry distributed tracing. If your API is waiting on a payment gateway or third-party service, add circuit breakers (fail fast when downstream is slow) and timeouts. Never let an upstream dependency take your service down.',
-                        color: '#8b5cf6',
-                      },
-                      {
-                        step: '5',
-                        title: 'Check CDN hit rate for static assets',
-                        detail: 'If static asset requests have high latency, check your CDN hit rate in CloudFront or Cloudflare. A hit rate below 80% means you are not caching effectively. Add cache-control headers and consider edge caching for API responses where possible.',
-                        color: '#ec4899',
-                      },
-                    ].map((item, i) => (
-                      <div key={i} style={{
-                        background: 'rgba(255,255,255,0.03)', padding: 20, borderRadius: 16,
-                        border: '1px solid rgba(255,255,255,0.06)',
-                        display: 'flex', gap: 20,
-                      }}>
-                        <div style={{
-                          fontSize: 24, fontWeight: 800, color: item.color,
-                          lineHeight: 1, minWidth: 36, flexShrink: 0,
-                        }}>{item.step}</div>
-                        <div>
-                          <h4 style={{ color: '#ffffff', marginBottom: 8, marginTop: 0, fontSize: 16 }}>{item.title}</h4>
-                          <p style={{ fontSize: 14, margin: 0, lineHeight: 1.7 }}>{item.detail}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Section: CI/CD Integration */}
-                <h2 id="cicd-integration" className="reveal" style={{
-                  fontSize: 'clamp(1.6rem, 3vw, 2rem)', fontWeight: 700, color: '#ffffff',
-                  marginTop: 64, marginBottom: 24, letterSpacing: '-0.02em',
-                }}>CI/CD Integration</h2>
-
-                <div className="reveal" style={{ marginBottom: 24 }}>
-                  <p>
-                    The best load tests are the ones that run automatically on every deployment. Here is how to integrate k6 into GitHub Actions so performance regressions are caught before they reach production:
-                  </p>
-                </div>
-
-                <div className="reveal" style={{ marginBottom: 32 }}>
-                  <h3 style={{ fontSize: 20, fontWeight: 600, color: '#ffffff', marginBottom: 16 }}>GitHub Actions: k6 in CI/CD Pipeline</h3>
-                  <div style={{
-                    background: '#0d1117', borderRadius: 16, padding: 24,
-                    border: '1px solid rgba(255,255,255,0.08)', fontFamily: 'monospace', fontSize: 13,
-                    overflowX: 'auto', color: 'rgba(255,255,255,0.85)',
-                  }}>
-                    <pre style={{ margin: 0, whiteSpace: 'pre-wrap' }}>{`# .github/workflows/load-test.yml
-name: Load Tests
+                <h3 data-reveal style={{ fontSize: '1.2rem', fontWeight: 700, color: G, marginBottom: '12px' }}>GitHub Actions — k6 Load Test on Every Pull Request</h3>
+                <pre data-reveal><code>{`# .github/workflows/load-test.yml
+name: Load Test
 
 on:
-  push:
-    branches: [main, staging]
   pull_request:
     branches: [main]
+  workflow_dispatch:
+    inputs:
+      target_rps:
+        description: 'Target requests per second'
+        default: '100'
 
 jobs:
   load-test:
     runs-on: ubuntu-latest
-    environment: staging
-
     steps:
       - uses: actions/checkout@v4
 
-      - name: Wait for deployment
-        run: sleep 30
+      - name: Start staging environment
+        run: |
+          docker compose -f docker-compose.staging.yml up -d
+          sleep 15  # Wait for services to be healthy
 
-      - name: Run k6 smoke test (every PR)
+      - name: Run k6 load test
         uses: grafana/k6-action@v0.3.1
         with:
-          filename: tests/smoke-test.js
+          filename: tests/load/smoke-test.js
+          flags: --env BASE_URL=http://localhost:3000
         env:
-          BASE_URL: \${{ secrets.STAGING_URL }}
+          LOAD_TEST_PASSWORD: \${{ secrets.LOAD_TEST_PASSWORD }}
 
-      - name: Run k6 load test (main branch only)
-        if: github.ref == 'refs/heads/main'
-        uses: grafana/k6-action@v0.3.1
-        with:
-          filename: tests/load-test.js
-          flags: --out cloud
-        env:
-          BASE_URL: \${{ secrets.STAGING_URL }}
-          K6_CLOUD_TOKEN: \${{ secrets.K6_CLOUD_TOKEN }}
-
-      - name: Upload HTML report
-        if: always()
+      - name: Upload results
         uses: actions/upload-artifact@v4
+        if: always()
         with:
-          name: k6-report
-          path: k6-report.html`}</pre>
-                  </div>
-                </div>
+          name: load-test-results
+          path: results/
 
-                <div className="reveal" style={{
-                  background: 'rgba(34,197,94,0.06)', borderRadius: 16, padding: 24, marginBottom: 40,
-                  border: '1px solid rgba(34,197,94,0.15)',
-                }}>
-                  <h4 style={{ color: '#22c55e', marginBottom: 12, fontSize: 15, fontWeight: 700 }}>CI/CD Load Testing Strategy</h4>
-                  <ul style={{ margin: 0, paddingLeft: 20, fontSize: 15, lineHeight: 1.8 }}>
-                    <li><strong style={{ color: '#ffffff' }}>Every PR:</strong> Smoke test (10 VUs, 1 minute) — catch hard crashes fast</li>
-                    <li><strong style={{ color: '#ffffff' }}>Every merge to main:</strong> Full load test (target peak VUs, 20 minutes)</li>
-                    <li><strong style={{ color: '#ffffff' }}>Nightly:</strong> Soak tests (8+ hours) to detect memory leaks</li>
-                    <li><strong style={{ color: '#ffffff' }}>Pre-release:</strong> Stress tests to find the new breaking point after each major feature</li>
-                  </ul>
-                </div>
+      - name: Comment PR with results
+        uses: actions/github-script@v7
+        if: always()
+        with:
+          script: |
+            const fs = require('fs');
+            const summary = fs.readFileSync('results/summary.json', 'utf8');
+            const data = JSON.parse(summary);
+            const p99 = data.metrics.http_req_duration.values['p(99)'].toFixed(0);
+            const errorRate = (data.metrics.http_req_failed.values.rate * 100).toFixed(2);
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: \`## Load Test Results\n- p99 latency: \${p99}ms\n- Error rate: \${errorRate}%\`,
+            });`}</code></pre>
 
-                {/* Section: Cloud Load Testing */}
-                <h2 id="cloud-load-testing" className="reveal" style={{
-                  fontSize: 'clamp(1.6rem, 3vw, 2rem)', fontWeight: 700, color: '#ffffff',
-                  marginTop: 64, marginBottom: 24, letterSpacing: '-0.02em',
-                }}>Cloud Load Testing: BlazeMeter &amp; k6 Cloud</h2>
-
-                <div className="reveal" style={{ marginBottom: 24 }}>
-                  <p>
-                    Running 10,000+ VUs from a single machine is impractical — you would be testing your CI machine&apos;s network card, not your server. Cloud load testing platforms distribute your test across multiple nodes in multiple regions, generating realistic global traffic patterns.
-                  </p>
-                </div>
-
-                <div className="reveal" style={{ display: 'grid', gap: 16, marginBottom: 40 }}>
+                <h3 data-reveal style={{ fontSize: '1.2rem', fontWeight: 700, color: G, marginBottom: '12px', marginTop: '32px' }}>Three-Tier Load Testing Strategy for CI/CD</h3>
+                <div data-reveal style={{ display: 'grid', gap: '16px' }}>
                   {[
                     {
-                      name: 'Grafana k6 Cloud',
-                      badge: 'Best for k6 users',
-                      badgeColor: '#22c55e',
-                      pricing: 'Free: 50 VU-hours/month. Pro: ~$49/month',
-                      highlights: [
-                        'Native k6 script execution in the cloud',
-                        'Multi-region load injection (20+ regions)',
-                        'Real-time dashboards in Grafana',
-                        'GitHub Actions: 1 flag (--out cloud)',
-                        'Baseline comparison to catch regressions',
-                      ],
-                      best: 'Teams already using k6 locally who want to scale to 100k+ VUs',
+                      tier: 'Smoke Test (every PR)',
+                      duration: '2–5 minutes',
+                      vus: '5–10 VUs',
+                      purpose: 'Verify the system does not crash under minimal load after every code change. Catches obvious regressions immediately. Fast enough to not slow down the PR review cycle.',
+                      threshold: 'p99 < 1000ms, error rate < 1%',
                     },
                     {
-                      name: 'BlazeMeter',
-                      badge: 'Best for JMeter teams',
-                      badgeColor: '#f59e0b',
-                      pricing: 'Free: 50 concurrent users. Plans from $99/month',
-                      highlights: [
-                        'Run JMeter scripts in cloud without local JMeter',
-                        'Supports k6, Gatling, Selenium, and more',
-                        'Enterprise reporting and SLA tracking',
-                        'CI/CD plugins for Jenkins, Azure DevOps, Bamboo',
-                        'APM integrations: Dynatrace, New Relic, Datadog',
-                      ],
-                      best: 'Enterprise QA teams migrating JMeter scripts to cloud',
+                      tier: 'Load Test (staging, before deploy)',
+                      duration: '15–30 minutes',
+                      vus: 'Expected peak concurrency',
+                      purpose: 'Validate SLO compliance at expected peak load before every production deployment. Should block deployment if thresholds are breached.',
+                      threshold: 'p95 < 300ms, p99 < 500ms, error rate < 0.1%',
                     },
                     {
-                      name: 'AWS Distributed Load Testing',
-                      badge: 'Best for AWS-native teams',
-                      badgeColor: '#3b82f6',
-                      pricing: 'Pay-as-you-go (~$0.01/VU-hour on Fargate)',
-                      highlights: [
-                        'Deploys Taurus/JMeter workers in your own AWS account',
-                        'No data leaves your environment (compliance-friendly)',
-                        'CloudFormation template for easy setup',
-                        'Integrates with CloudWatch for result analysis',
-                        'Scales to 500+ worker containers automatically',
-                      ],
-                      best: 'Teams with strict data residency requirements or existing AWS footprint',
+                      tier: 'Soak Test (weekly, overnight)',
+                      duration: '4–8 hours',
+                      vus: '50–70% of peak',
+                      purpose: 'Detect memory leaks, connection pool exhaustion, and other time-dependent degradation. Run on a schedule rather than blocking deployments. Alert on-call if thresholds are breached.',
+                      threshold: 'No error rate increase over time, no latency drift > 20%',
                     },
                   ].map((item, i) => (
-                    <div key={i} style={{
-                      background: 'rgba(255,255,255,0.03)', borderRadius: 16, padding: 24,
-                      border: `1px solid ${item.badgeColor}22`,
-                    }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12, flexWrap: 'wrap' }}>
-                        <h3 style={{ color: '#ffffff', fontSize: 18, fontWeight: 700, margin: 0 }}>{item.name}</h3>
-                        <span style={{
-                          fontSize: 11, fontWeight: 700, color: item.badgeColor,
-                          background: `${item.badgeColor}15`, padding: '3px 10px', borderRadius: 100,
-                          letterSpacing: '0.08em',
-                        }}>{item.badge}</span>
+                    <div key={i} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '10px', padding: '20px' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '8px', marginBottom: '10px' }}>
+                        <div style={{ fontWeight: 700, color: G, fontSize: '1rem' }}>{item.tier}</div>
+                        <div style={{ display: 'flex', gap: '12px' }}>
+                          <span style={{ fontSize: '0.8rem', color: '#94a3b8', background: 'rgba(255,255,255,0.05)', borderRadius: '4px', padding: '2px 8px' }}>{item.duration}</span>
+                          <span style={{ fontSize: '0.8rem', color: '#94a3b8', background: 'rgba(255,255,255,0.05)', borderRadius: '4px', padding: '2px 8px' }}>{item.vus}</span>
+                        </div>
                       </div>
-                      <p style={{ fontSize: 13, color: '#22c55e', margin: '0 0 12px', fontFamily: 'monospace' }}>{item.pricing}</p>
-                      <ul style={{ paddingLeft: 20, margin: '0 0 12px', fontSize: 14, lineHeight: 1.8 }}>
-                        {item.highlights.map((h, j) => <li key={j}>{h}</li>)}
-                      </ul>
-                      <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', margin: 0 }}>
-                        <strong style={{ color: 'rgba(255,255,255,0.7)' }}>Best for:</strong> {item.best}
-                      </p>
+                      <p style={{ color: 'rgba(255,255,255,0.65)', lineHeight: 1.7, margin: '0 0 10px', fontSize: '0.9rem' }}>{item.purpose}</p>
+                      <div style={{ fontSize: '0.83rem', color: G }}>Threshold: <span style={{ color: 'rgba(255,255,255,0.55)' }}>{item.threshold}</span></div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              {/* ── SECTION 8: RESULTS INTERPRETATION ── */}
+              <section id="results-interpretation" style={{ marginBottom: '64px' }}>
+                <h2 data-reveal style={{ fontSize: '1.9rem', fontWeight: 700, marginBottom: '16px' }}>
+                  Interpreting Results &amp; Finding Bottlenecks
+                </h2>
+                <p data-reveal style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: '28px' }}>
+                  Raw numbers from a load test are a starting point, not an answer. The skill is reading the patterns and correlating metrics to identify root causes. Here are the most common failure patterns and how to diagnose them.
+                </p>
+
+                <div data-reveal style={{ display: 'grid', gap: '20px', marginBottom: '32px' }}>
+                  {[
+                    {
+                      pattern: 'Latency increases linearly with VU count',
+                      meaning: 'You are hitting a sequential bottleneck — typically a database query without an index, a lock contention issue, or a single-threaded queue processor.',
+                      diagnose: 'EXPLAIN ANALYZE slow queries. Check lock wait times in your DB. Profile CPU usage per service — look for one process at 100%.',
+                      fix: 'Add missing indexes. Optimize the hot query. Move sequential processing to a worker pool.',
+                    },
+                    {
+                      pattern: 'Latency is fine but error rate spikes at high VU count',
+                      meaning: 'Resource exhaustion — connection pool depleted, file descriptors maxed out, or queue full. Requests are being rejected rather than just slowed.',
+                      diagnose: 'Check active DB connections vs pool size. Check open file descriptors (ulimit). Look for "connection refused" or "ECONNRESET" errors in logs.',
+                      fix: 'Increase connection pool size. Raise OS ulimits. Add retry logic with backoff. Implement connection queuing.',
+                    },
+                    {
+                      pattern: 'Latency spikes then recovers repeatedly (sawtooth pattern)',
+                      meaning: 'Garbage collection pauses, periodic background jobs, or cache invalidation events causing cyclical latency spikes.',
+                      diagnose: 'Correlate latency spikes with GC pause logs (JVM: -verbose:gc, Node.js: --expose-gc). Check cron job schedules. Monitor cache hit rate over time.',
+                      fix: 'Tune GC settings. Move background jobs to off-peak. Stagger cache invalidation.',
+                    },
+                    {
+                      pattern: 'Performance gradually degrades over time (soak test)',
+                      meaning: 'Memory leak, connection leak, or disk fill. Resources consumed but never released, causing eventual failure.',
+                      diagnose: 'Graph memory usage and heap size over time — should be flat, not steadily rising. Check open file descriptors and TCP connections over time. Monitor disk usage.',
+                      fix: 'Find and fix the leak. Common culprits: unclosed database connections, event listeners not removed, log rotation not configured.',
+                    },
+                    {
+                      pattern: 'Specific endpoints much slower than others at the same VU count',
+                      meaning: 'The slow endpoints are doing more work — complex joins, external API calls, heavy computation, or missing cache.',
+                      diagnose: 'Use distributed tracing (Jaeger, Tempo, Datadog APM) to break down latency by span. Which external call takes the longest? Which DB query is slowest?',
+                      fix: 'Cache expensive computations. Optimize the specific DB query. Parallelize independent external API calls. Move heavy computation to async queues.',
+                    },
+                  ].map((item, i) => (
+                    <div key={i} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '10px', padding: '20px' }}>
+                      <div style={{ fontWeight: 700, color: '#fff', marginBottom: '8px', fontSize: '0.97rem' }}>{item.pattern}</div>
+                      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '12px' }}>
+                        <div>
+                          <div style={{ fontSize: '0.75rem', color: '#94a3b8', fontWeight: 600, marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Meaning</div>
+                          <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.85rem', lineHeight: 1.6, margin: 0 }}>{item.meaning}</p>
+                        </div>
+                        <div>
+                          <div style={{ fontSize: '0.75rem', color: '#fbbf24', fontWeight: 600, marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>How to Diagnose</div>
+                          <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.85rem', lineHeight: 1.6, margin: 0 }}>{item.diagnose}</p>
+                        </div>
+                        <div>
+                          <div style={{ fontSize: '0.75rem', color: G, fontWeight: 600, marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Fix</div>
+                          <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.85rem', lineHeight: 1.6, margin: 0 }}>{item.fix}</p>
+                        </div>
+                      </div>
                     </div>
                   ))}
                 </div>
 
-                {/* FAQ */}
-                <h2 id="faq" className="reveal" style={{
-                  fontSize: 'clamp(1.6rem, 3vw, 2rem)', fontWeight: 700, color: '#ffffff',
-                  marginTop: 64, marginBottom: 24, letterSpacing: '-0.02em',
-                }}>Frequently Asked Questions</h2>
+                <h3 data-reveal style={{ fontSize: '1.2rem', fontWeight: 700, color: G, marginBottom: '12px' }}>k6 — Streaming Metrics to Grafana + Prometheus</h3>
+                <pre data-reveal><code>{`# Run k6 and push metrics to Prometheus remote write
+k6 run \\
+  --out experimental-prometheus-rw \\
+  --env K6_PROMETHEUS_RW_SERVER_URL=http://prometheus:9090/api/v1/write \\
+  --env K6_PROMETHEUS_RW_TREND_AS_NATIVE_HISTOGRAM=true \\
+  tests/load/checkout.js
 
-                {[
-                  {
-                    q: 'How many virtual users should I use in a load test?',
-                    a: 'Match your expected peak concurrent users, not your total daily users. If you have 50,000 daily active users and your average session is 10 minutes, your peak concurrency is roughly 350 concurrent users. Run your load test at 1× peak (baseline), 2× peak (stress), and 10× peak (spike). For brand new products, start with 100–500 VUs and observe which resources saturate first.',
-                  },
-                  {
-                    q: 'What is the difference between p95 and average response time?',
-                    a: 'Average response time hides outliers. If 95 requests complete in 100ms and 5 take 10 seconds, your average is ~595ms but p95 is 100ms and p99 is 10s. The 5 users who waited 10 seconds will bounce and never return. Always set SLA thresholds on p95 and p99, never average. A good target: p95 < 500ms, p99 < 2s under peak load.',
-                  },
-                  {
-                    q: 'Should I load test in production or staging?',
-                    a: 'Both, for different reasons. Staging first: catch bugs and obvious performance issues before they impact real users. Production occasionally: with careful safeguards (start with low VU counts, monitor in real-time, have a kill switch). Staging environments often have smaller instance sizes, so production load tests are the only way to validate real-world behaviour.',
-                  },
-                  {
-                    q: 'How do I load test WebSocket connections and real-time features?',
-                    a: 'k6 has native WebSocket support via the k6/ws module. Each VU maintains one persistent WebSocket connection, so 1,000 VUs equals 1,000 concurrent WebSocket connections. Watch your server file descriptor limit (ulimit -n) — the default 1,024 on Linux will be your bottleneck. Increase to 65,535+ for WebSocket load tests.',
-                  },
-                  {
-                    q: 'What is a good p95 latency target for APIs in 2026?',
-                    a: 'Industry benchmarks in 2026: read APIs (GET /products) should target p95 < 200ms; write APIs (POST /orders) p95 < 500ms; authentication endpoints p95 < 100ms; search with full-text p95 < 800ms; file upload/processing p95 < 5s. Amazon found that every 100ms of latency reduces conversion by 1% — use this to justify the engineering time for performance work.',
-                  },
-                ].map((faq, i) => (
-                  <div key={i} className="reveal" style={{
-                    background: 'rgba(255,255,255,0.03)', borderRadius: 16, padding: 24, marginBottom: 16,
-                    border: '1px solid rgba(255,255,255,0.06)',
-                  }}>
-                    <h3 style={{ fontSize: 17, fontWeight: 600, color: '#ffffff', marginTop: 0, marginBottom: 12 }}>{faq.q}</h3>
-                    <p style={{ fontSize: 15, margin: 0, color: 'rgba(255,255,255,0.7)', lineHeight: 1.7 }}>{faq.a}</p>
-                  </div>
-                ))}
+# Or output to InfluxDB for Grafana dashboards
+k6 run \\
+  --out influxdb=http://influxdb:8086/k6 \\
+  tests/load/checkout.js
 
-                {/* CTA */}
-                <div className="reveal" style={{
-                  background: 'linear-gradient(135deg, rgba(34,197,94,0.1) 0%, rgba(8,50,61,0.3) 100%)',
-                  borderRadius: 28, padding: 40, marginTop: 64, textAlign: 'center',
-                  border: '1px solid rgba(34,197,94,0.2)',
-                }}>
-                  <h3 style={{ fontSize: 26, fontWeight: 700, color: '#ffffff', marginBottom: 16 }}>
-                    Need Help Setting Up Load Testing for Your App?
-                  </h3>
-                  <p style={{ color: 'rgba(255,255,255,0.7)', marginBottom: 28, maxWidth: 520, marginLeft: 'auto', marginRight: 'auto', lineHeight: 1.65 }}>
-                    We&apos;ll design and implement a complete performance testing suite — load, stress, spike, and soak tests — integrated into your CI/CD pipeline with real-time dashboards.
-                  </p>
-                  <Link href="/contact" style={{
-                    display: 'inline-flex', alignItems: 'center', gap: 8,
-                    background: '#22c55e', color: '#000000',
-                    padding: '16px 32px', borderRadius: 12,
-                    fontWeight: 700, textDecoration: 'none', fontSize: 16,
-                    transition: 'transform 0.2s',
-                  }}>
-                    Get a Free Performance Audit
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M5 12h14M12 5l7 7-7 7"/>
-                    </svg>
+# Import the official k6 Grafana dashboard (ID: 2587)
+# It shows RPS, p50/p95/p99 latency, error rate, VU count in real-time`}</code></pre>
+              </section>
+
+              {/* ── SECTION 9: CASE STUDY ── */}
+              <section id="case-study" style={{ marginBottom: '64px' }}>
+                <h2 data-reveal style={{ fontSize: '1.9rem', fontWeight: 700, marginBottom: '16px' }}>
+                  Case Study: SaaS Platform Saves Black Friday
+                </h2>
+                <p data-reveal style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: '28px' }}>
+                  A B2C e-commerce SaaS serving 400+ merchant storefronts reached out to Codazz three weeks before Black Friday after their platform had gone down during the previous year&apos;s sale event. Here is what we found and fixed.
+                </p>
+
+                <div data-reveal style={{ display: 'grid', gap: '20px', marginBottom: '32px' }}>
+                  {[
+                    {
+                      phase: 'Baseline Assessment',
+                      findings: 'We ran a standard load test at 2x their estimated Black Friday peak (1,200 concurrent users). The checkout API hit p99 of 8,200ms at just 400 VUs — well before peak. The product search endpoint returned 502 errors at 600 VUs.',
+                      color: '#f87171',
+                    },
+                    {
+                      phase: 'Root Cause Analysis',
+                      findings: 'Distributed tracing revealed three issues: (1) The checkout endpoint ran 23 sequential database queries due to an N+1 ORM problem — each query added ~35ms. (2) Product search used a LIKE %query% pattern with no full-text index — full table scans at scale. (3) The Node.js API had a database connection pool of just 5 connections, shared across all 16 worker processes.',
+                      color: '#fbbf24',
+                    },
+                    {
+                      phase: 'Fixes Implemented',
+                      findings: 'We batched the 23 ORM queries into 3 optimized joins (checkout p99 dropped from 8,200ms to 180ms). Added PostgreSQL full-text search with GIN index (search p99 dropped from timeout to 45ms). Increased connection pool to 25 per process and added PgBouncer for connection multiplexing.',
+                      color: G,
+                    },
+                    {
+                      phase: 'Black Friday Results',
+                      findings: 'The platform handled 2,800 concurrent users at peak — 2.3x the previous year\'s traffic — with p99 latency of 210ms and 0.03% error rate. Zero downtime. The merchant reported a 340% increase in Black Friday GMV vs the prior year.',
+                      color: G,
+                    },
+                  ].map((item, i) => (
+                    <div key={i} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderLeft: `3px solid ${item.color}`, borderRadius: '8px', padding: '20px' }}>
+                      <div style={{ fontWeight: 700, color: item.color, marginBottom: '8px' }}>{item.phase}</div>
+                      <p style={{ color: 'rgba(255,255,255,0.65)', lineHeight: 1.7, margin: 0, fontSize: '0.92rem' }}>{item.findings}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <div data-reveal style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '16px' }}>
+                  {[
+                    { label: 'Checkout p99 latency', before: '8,200ms', after: '180ms' },
+                    { label: 'Search p99 latency', before: 'Timeout', after: '45ms' },
+                    { label: 'Peak concurrent users', before: '400 (crashing)', after: '2,800 (stable)' },
+                    { label: 'Error rate at peak', before: '~12%', after: '0.03%' },
+                  ].map((item, i) => (
+                    <div key={i} style={{ background: 'rgba(34,197,94,0.05)', border: '1px solid rgba(34,197,94,0.15)', borderRadius: '8px', padding: '16px', textAlign: 'center' }}>
+                      <div style={{ fontSize: '0.78rem', color: 'rgba(255,255,255,0.45)', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{item.label}</div>
+                      <div style={{ color: '#f87171', fontWeight: 700, fontSize: '1.1rem', marginBottom: '4px' }}>{item.before}</div>
+                      <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.4)', marginBottom: '4px' }}>→</div>
+                      <div style={{ color: G, fontWeight: 700, fontSize: '1.2rem' }}>{item.after}</div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              {/* ── FAQ ── */}
+              <section id="faq" style={{ marginBottom: '64px' }}>
+                <h2 data-reveal style={{ fontSize: '1.9rem', fontWeight: 700, marginBottom: '24px' }}>
+                  Frequently Asked Questions
+                </h2>
+                <div data-reveal style={{ display: 'grid', gap: '12px' }}>
+                  {faqItems.map((item, i) => (
+                    <div key={i} style={{ border: '1px solid rgba(255,255,255,0.08)', borderRadius: '10px', overflow: 'hidden' }}>
+                      <button
+                        className="faq-btn"
+                        onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                        style={{ width: '100%', textAlign: 'left', background: 'rgba(255,255,255,0.03)', border: 'none', padding: '18px 20px', cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '16px' }}
+                      >
+                        <span style={{ fontWeight: 600, color: '#fff', fontSize: '0.97rem', lineHeight: 1.4 }}>{item.q}</span>
+                        <span style={{ color: G, fontSize: '1.3rem', flexShrink: 0, transform: openFaq === i ? 'rotate(45deg)' : 'none', transition: 'transform 0.2s' }}>+</span>
+                      </button>
+                      {openFaq === i && (
+                        <div style={{ padding: '0 20px 18px', background: 'rgba(255,255,255,0.01)' }}>
+                          <p style={{ color: 'rgba(255,255,255,0.65)', lineHeight: 1.8, margin: 0, fontSize: '0.92rem' }}>{item.a}</p>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              {/* ── CTA ── */}
+              <section data-reveal style={{ background: 'rgba(34,197,94,0.07)', border: '1px solid rgba(34,197,94,0.2)', borderRadius: '16px', padding: '40px', textAlign: 'center' }}>
+                <h2 style={{ fontSize: '1.8rem', fontWeight: 700, marginBottom: '12px' }}>
+                  Need Help Load Testing Your Application?
+                </h2>
+                <p style={{ color: 'rgba(255,255,255,0.65)', lineHeight: 1.7, marginBottom: '28px', maxWidth: '560px', margin: '0 auto 28px' }}>
+                  Codazz engineers have run load tests for SaaS platforms, fintech APIs, and e-commerce sites — and fixed the bottlenecks that tests reveal. Let us pressure-test your system before your users do.
+                </p>
+                <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
+                  <Link href="/contact" style={{ display: 'inline-block', background: G, color: '#000', fontWeight: 700, padding: '14px 32px', borderRadius: '8px', textDecoration: 'none', fontSize: '0.97rem' }}>
+                    Book a Free Consultation
+                  </Link>
+                  <Link href="/services" style={{ display: 'inline-block', border: `1px solid ${G}`, color: G, fontWeight: 600, padding: '14px 32px', borderRadius: '8px', textDecoration: 'none', fontSize: '0.97rem' }}>
+                    View Our Services
                   </Link>
                 </div>
+              </section>
 
-              </article>
+            </article>
 
-              {/* ── SIDEBAR ── */}
-              <aside style={{ display: 'block' }}>
-                <div style={{ position: 'sticky', top: 100 }}>
+            {/* ── SIDEBAR ── */}
+            <aside className="sidebar" style={{ position: 'sticky', top: '100px' }}>
 
-                  <div className="reveal" style={{
-                    background: 'rgba(255,255,255,0.03)', borderRadius: 16, padding: 24,
-                    border: '1px solid rgba(255,255,255,0.06)', marginBottom: 24,
-                  }}>
-                    <h3 style={{ fontSize: 14, fontWeight: 700, color: '#ffffff', marginBottom: 16, letterSpacing: '0.05em', textTransform: 'uppercase' }}>
-                      Table of Contents
-                    </h3>
-                    <nav style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                      {tocSections.map((section) => (
-                        <a key={section.id} href={`#${section.id}`} style={{
-                          display: 'flex', alignItems: 'center', gap: 10,
-                          padding: '8px 0', fontSize: 14,
-                          color: activeSection === section.id ? '#22c55e' : 'rgba(255,255,255,0.6)',
-                          textDecoration: 'none', transition: 'color 0.2s',
-                          borderLeft: activeSection === section.id ? '2px solid #22c55e' : '2px solid transparent',
-                          paddingLeft: 12,
-                        }}>
-                          <span>{section.emoji}</span>
-                          <span>{section.label}</span>
-                        </a>
-                      ))}
-                    </nav>
-                  </div>
+              {/* TOC */}
+              <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', padding: '24px', marginBottom: '24px' }}>
+                <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.4)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '16px' }}>Table of Contents</div>
+                <nav style={{ display: 'grid', gap: '4px' }}>
+                  {tocSections.map(({ id, label }) => (
+                    <button
+                      key={id}
+                      className="toc-link"
+                      onClick={() => scrollTo(id)}
+                      style={{
+                        background: 'none',
+                        border: 'none',
+                        borderLeft: `2px solid ${activeSection === id ? G : 'rgba(255,255,255,0.1)'}`,
+                        padding: '6px 12px',
+                        textAlign: 'left',
+                        cursor: 'pointer',
+                        color: activeSection === id ? G : 'rgba(255,255,255,0.55)',
+                        fontSize: '0.85rem',
+                        lineHeight: 1.4,
+                        fontWeight: activeSection === id ? 600 : 400,
+                      }}
+                    >
+                      {label}
+                    </button>
+                  ))}
+                </nav>
+              </div>
 
-                  <div className="reveal" style={{
-                    background: 'rgba(255,255,255,0.03)', borderRadius: 16, padding: 24,
-                    border: '1px solid rgba(255,255,255,0.06)',
-                  }}>
-                    <h3 style={{ fontSize: 14, fontWeight: 700, color: '#ffffff', marginBottom: 16, letterSpacing: '0.05em', textTransform: 'uppercase' }}>
-                      Related Articles
-                    </h3>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-                      {relatedPosts.map((post) => (
-                        <Link key={post.slug} href={`/blog/${post.slug}`} style={{
-                          display: 'block', padding: 16,
-                          background: 'rgba(255,255,255,0.03)',
-                          borderRadius: 12, textDecoration: 'none',
-                          border: '1px solid rgba(255,255,255,0.06)',
-                          transition: 'all 0.2s',
-                        }}>
-                          <span style={{ fontSize: 11, color: '#22c55e', fontWeight: 600 }}>{post.category}</span>
-                          <h4 style={{ fontSize: 14, fontWeight: 600, color: '#ffffff', margin: '8px 0', lineHeight: 1.4 }}>{post.title}</h4>
-                          <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)' }}>{post.readTime} read</span>
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-
+              {/* Related Posts */}
+              <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', padding: '24px', marginBottom: '24px' }}>
+                <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.4)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '16px' }}>Related Articles</div>
+                <div style={{ display: 'grid', gap: '12px' }}>
+                  {relatedPosts.map((post, i) => (
+                    <Link key={i} href={post.href} style={{ textDecoration: 'none', display: 'block', padding: '10px', borderRadius: '8px', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)', transition: 'border-color 0.2s' }}>
+                      <div style={{ color: '#fff', fontSize: '0.88rem', fontWeight: 600, lineHeight: 1.4, marginBottom: '4px' }}>{post.title}</div>
+                    </Link>
+                  ))}
                 </div>
-              </aside>
+              </div>
 
-            </div>
+              {/* CTA Card */}
+              <div style={{ background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.2)', borderRadius: '12px', padding: '24px', textAlign: 'center' }}>
+                <div style={{ fontWeight: 700, color: '#fff', marginBottom: '8px', fontSize: '0.97rem' }}>Ready to Ship Faster?</div>
+                <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.85rem', lineHeight: 1.6, marginBottom: '16px' }}>Let Codazz build and load-test your next product.</p>
+                <Link href="/contact" style={{ display: 'block', background: G, color: '#000', fontWeight: 700, padding: '11px 20px', borderRadius: '8px', textDecoration: 'none', fontSize: '0.9rem' }}>
+                  Get a Free Quote
+                </Link>
+              </div>
+            </aside>
+
           </div>
-        </section>
-
+        </main>
         <Footer />
-      </main>
+      </div>
     </>
   );
 }

@@ -7,6 +7,7 @@ export const serviceSlugs = [
   'ai-agent-development', 'cybersecurity', 'generative-ai', 'iot-development',
   'legacy-modernization', 'llm-integration', 'qa-testing', 'rag-development',
   'flutter-development',
+  'nodejs-development',
 ];
 
 export const subServices: Record<string, string[]> = {

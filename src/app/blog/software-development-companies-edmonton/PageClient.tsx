@@ -19,949 +19,879 @@ function useReveal() {
   return ref;
 }
 
-const companies = [
-  { num: 1, name: 'Codazz', category: 'Mobile / AI / SaaS', emoji: '🍁', metric: 'Edmonton HQ | 500+ Apps | $85–$145 CAD/hr | Founded by Raman Makkar', accentColor: '#22c55e', bgColor: 'rgba(34,197,94,' },
-  { num: 2, name: 'Jobber', category: 'Field Service SaaS', emoji: '🔧', metric: 'Edmonton-grown | 250K+ service businesses | Acquired clients globally', accentColor: '#60a5fa', bgColor: 'rgba(96,165,250,' },
-  { num: 3, name: 'Benevity', category: 'Corporate Giving', emoji: '❤️', metric: 'Calgary HQ, Edmonton presence | $10B+ in donations processed', accentColor: '#f472b6', bgColor: 'rgba(244,114,182,' },
-  { num: 4, name: 'Trimble', category: 'AgriTech / Construction', emoji: '🌾', metric: 'Agriculture & construction technology | Edmonton operations', accentColor: '#fbbf24', bgColor: 'rgba(251,191,36,' },
-  { num: 5, name: 'ATB Financial Digital', category: 'Banking Tech', emoji: '🏦', metric: 'Alberta\'s bank | Digital banking platform for 800K+ Albertans', accentColor: '#34d399', bgColor: 'rgba(52,211,153,' },
-  { num: 6, name: 'Gov Alberta Digital Services', category: 'GovTech', emoji: '🏛️', metric: 'Province-wide digital transformation | Open-source delivery', accentColor: '#a78bfa', bgColor: 'rgba(167,139,250,' },
-  { num: 7, name: 'Stollery Digital Health', category: 'HealthTech', emoji: '🏥', metric: 'Pediatric digital health innovation | Edmonton-based research', accentColor: '#fb923c', bgColor: 'rgba(251,146,60,' },
-  { num: 8, name: 'Olds College of Technology', category: 'AgriTech', emoji: '🌱', metric: 'Smart farm research | Alberta precision agriculture hub', accentColor: '#4ade80', bgColor: 'rgba(74,222,128,' },
-  { num: 9, name: 'NovaBay Pharmaceuticals', category: 'Life Science Tech', emoji: '🔬', metric: 'Bioscience software & data platforms | Healthcare innovation', accentColor: '#94a3b8', bgColor: 'rgba(148,163,184,' },
-  { num: 10, name: 'Northforge Innovations', category: 'Boutique Dev Agency', emoji: '⚙️', metric: 'Edmonton-based custom software | Oil & gas and enterprise clients', accentColor: '#f87171', bgColor: 'rgba(248,113,113,' },
+const tocSections = [
+  { id: 'edmonton-tech-scene', label: "Edmonton's Tech Scene", emoji: '🏙️' },
+  { id: 'top-companies', label: 'Top 10 Companies', emoji: '🏆' },
+  { id: 'why-edmonton', label: 'Why Build in Edmonton', emoji: '🍁' },
+  { id: 'cost-guide', label: 'Cost Guide (CAD Rates)', emoji: '💰' },
+  { id: 'how-to-choose', label: 'How to Choose a Partner', emoji: '🔍' },
+  { id: 'tech-stack', label: 'Popular Tech Stacks', emoji: '⚙️' },
+  { id: 'talent-pool', label: 'Edmonton Talent Pool', emoji: '🎓' },
+  { id: 'industries', label: 'Key Industry Verticals', emoji: '🏗️' },
+  { id: 'faq', label: 'FAQ', emoji: '❓' },
 ];
+
+const companies = [
+  {
+    num: 1,
+    name: 'Codazz',
+    category: 'Mobile / AI / SaaS / Web',
+    emoji: '🍁',
+    accentColor: '#22c55e',
+    bgColor: 'rgba(34,197,94,',
+    hq: 'Edmonton, AB (HQ) + Chandigarh, India',
+    founded: '2018',
+    team: '45+ engineers',
+    rates: '$85–$145 CAD/hr',
+    highlight: 'Codazz is Edmonton\'s leading product-focused software studio, founded by Raman Makkar. Specialists in mobile apps (iOS/Android/React Native/Flutter), AI/ML-powered SaaS platforms, web applications, and full-stack custom software. 500+ apps shipped for clients across Canada, the US, UAE, and Australia. The go-to partner for startups and scale-ups that need a senior engineering team without the overhead of building in-house.',
+    badges: ['React Native', 'Flutter', 'Node.js', 'Next.js', 'AI/ML', 'AWS', 'SaaS'],
+  },
+  {
+    num: 2,
+    name: 'Jobber',
+    category: 'Field Service SaaS Platform',
+    emoji: '🔧',
+    accentColor: '#60a5fa',
+    bgColor: 'rgba(96,165,250,',
+    hq: 'Edmonton, AB',
+    founded: '2011',
+    team: '900+ employees',
+    rates: 'Product company (not for hire)',
+    highlight: "Edmonton's greatest tech success story. Jobber's field service management platform is used by 250,000+ service businesses globally (landscapers, plumbers, HVAC, cleaning). Raised $370M CAD total, including a $100M USD Series C led by Summit Partners. Consistently rated #1 field service software on G2. Headquarters on Jasper Avenue employs 700+ Edmontonians.",
+    badges: ['SaaS', 'Field Service', 'B2B', 'Edmonton-Born'],
+  },
+  {
+    num: 3,
+    name: 'Benevity',
+    category: 'Corporate Social Responsibility Tech',
+    emoji: '❤️',
+    accentColor: '#f472b6',
+    bgColor: 'rgba(244,114,182,',
+    hq: 'Calgary HQ, Edmonton engineering presence',
+    founded: '2008',
+    team: '850+ employees',
+    rates: 'Product company (not for hire)',
+    highlight: 'The global leader in corporate giving and employee volunteering software. $10B+ in charitable donations processed through the platform. Clients include Apple, Google, Microsoft, Coca-Cola, and 1,000+ Fortune 500 companies. Acquired by Vista Equity Partners in 2021 at a reported $1.1B+ valuation. Significant engineering presence in Edmonton.',
+    badges: ['CSR Tech', 'Enterprise SaaS', 'Non-Profit', 'B Corp'],
+  },
+  {
+    num: 4,
+    name: 'Arcurve',
+    category: 'Custom Software & Consulting',
+    emoji: '⚙️',
+    accentColor: '#fbbf24',
+    bgColor: 'rgba(251,191,36,',
+    hq: 'Edmonton, AB',
+    founded: '2010',
+    team: '200+ consultants',
+    rates: '$120–$200 CAD/hr',
+    highlight: 'Arcurve is one of Edmonton\'s largest independently owned software consulting firms. Specializes in enterprise application modernization, cloud migrations, and custom software for energy, government, and financial services clients. Strong Microsoft Azure and .NET expertise. Notable projects include digital transformation work for Alberta government ministries and major energy sector companies.',
+    badges: ['Enterprise', 'Azure', '.NET', 'Energy Sector', 'Gov Tech'],
+  },
+  {
+    num: 5,
+    name: 'ATB Financial Digital',
+    category: 'Banking Technology',
+    emoji: '🏦',
+    accentColor: '#34d399',
+    bgColor: 'rgba(52,211,153,',
+    hq: 'Edmonton, AB',
+    founded: '1938 (Digital division: 2015)',
+    team: '400+ in digital/tech roles',
+    rates: 'Internal team (not for hire)',
+    highlight: "Alberta's largest financial institution with $60B+ in assets and 800,000+ Albertan customers. ATB Financial's digital team has been recognized as one of Canada's most innovative banking technology groups, winning multiple FinTech innovation awards. Built a proprietary digital banking platform and launched ATB Ventures, which invests in Canadian FinTech startups. A major employer of Edmonton software engineers.",
+    badges: ['FinTech', 'Banking', 'Mobile Banking', 'AI', 'Alberta-Owned'],
+  },
+  {
+    num: 6,
+    name: 'Trimble',
+    category: 'AgriTech / Construction Tech',
+    emoji: '🌾',
+    accentColor: '#fb923c',
+    bgColor: 'rgba(251,146,60,',
+    hq: 'Sunnyvale CA (Edmonton office)',
+    founded: '1978',
+    team: '50+ in Edmonton',
+    rates: 'Product company (not for hire)',
+    highlight: "Trimble's Edmonton engineering team works on precision agriculture technology, GPS-guided construction equipment software, and fleet telematics. The Edmonton office focuses on agricultural mapping, variable rate application software, and autonomous machinery guidance systems serving Western Canada's $50B+ agriculture sector. Key employer for embedded systems and GIS engineers.",
+    badges: ['AgriTech', 'GPS/GIS', 'Construction Tech', 'IoT', 'Precision Ag'],
+  },
+  {
+    num: 7,
+    name: 'Infosys Edmonton',
+    category: 'IT Consulting & Outsourcing',
+    emoji: '🌐',
+    accentColor: '#a78bfa',
+    bgColor: 'rgba(167,139,250,',
+    hq: 'Bangalore (Edmonton delivery centre)',
+    founded: '1981 (Edmonton: 2017)',
+    team: '300+ in Edmonton',
+    rates: '$95–$160 CAD/hr',
+    highlight: "Infosys opened an Edmonton Technology Hub in 2017 as part of its US/Canada hiring commitment. The centre delivers enterprise digital transformation, SAP implementations, cloud migrations, and AI/analytics projects for Canadian government and energy clients. Part of Infosys's global delivery model — Canadian team leads, global execution. Notable client: Alberta government IT modernization contracts.",
+    badges: ['Enterprise IT', 'SAP', 'Cloud', 'Government', 'Global Delivery'],
+  },
+  {
+    num: 8,
+    name: 'Granify',
+    category: 'AI / E-Commerce Optimization',
+    emoji: '📊',
+    accentColor: '#22d3ee',
+    bgColor: 'rgba(34,211,238,',
+    hq: 'Edmonton, AB',
+    founded: '2012',
+    team: '80+ employees',
+    rates: 'Product company (not for hire)',
+    highlight: "An Edmonton-born AI company that uses machine learning to optimize e-commerce conversion rates in real time. Granify's platform analyzes millions of behavioral signals per second to serve the right message at the right moment, increasing revenue for large online retailers. Clients include Best Buy Canada, Mark's, and Sport Chek. Raised $10M+ and remains independent and profitable.",
+    badges: ['AI/ML', 'E-Commerce', 'Behavioral Analytics', 'SaaS', 'Edmonton-Founded'],
+  },
+  {
+    num: 9,
+    name: 'Nexen / CNOOC Digital',
+    category: 'Energy Tech / Digital Oilfield',
+    emoji: '⚡',
+    accentColor: '#f87171',
+    bgColor: 'rgba(248,113,113,',
+    hq: 'Calgary HQ, Edmonton operations',
+    founded: 'Nexen 1971, CNOOC acquisition 2013',
+    team: '150+ in digital roles',
+    rates: 'Internal team (not for hire)',
+    highlight: "The digital oilfield technology division of CNOOC-owned Nexen operates significant software development out of Edmonton, focused on upstream production optimization, SCADA/OT system modernization, and AI-driven predictive maintenance for oil sands operations. A major source of specialized industrial software engineering experience unique to the Edmonton market.",
+    badges: ['Energy Tech', 'SCADA', 'IoT', 'AI/ML', 'Digital Oilfield'],
+  },
+  {
+    num: 10,
+    name: 'Booster Media / Symend',
+    category: 'AI-Driven Collections SaaS',
+    emoji: '🤖',
+    accentColor: '#4ade80',
+    bgColor: 'rgba(74,222,128,',
+    hq: 'Calgary HQ, Edmonton engineering',
+    founded: '2016',
+    team: '200+ employees',
+    rates: 'Product company (not for hire)',
+    highlight: "Symend is an AI-powered customer engagement platform for collections — helping telcos, utilities, and financial services companies resolve past-due accounts through personalized, empathetic digital outreach rather than aggressive collections calls. Clients include Telus, Rogers, and major US carriers. Raised $160M+ CAD. Significant engineering presence in Edmonton focused on NLP/ML and real-time personalization.",
+    badges: ['AI/ML', 'NLP', 'FinTech', 'Telco', 'Collections Tech'],
+  },
+];
+
+const G = '#22c55e';
 
 const relatedPosts = [
-  { slug: 'top-app-development-companies-canada', title: 'Top App Development Companies in Canada (2026)', category: 'Rankings', readTime: '10 min' },
-  { slug: 'app-development-companies-toronto', title: 'Top App Development Companies in Toronto (2026)', category: 'Rankings', readTime: '12 min' },
-  { slug: 'app-development-cost-canada', title: 'How Much Does App Development Cost in Canada (2026)?', category: 'Cost Guide', readTime: '9 min' },
+  { slug: 'app-development-companies-toronto', title: 'Top App Development Companies in Toronto 2026', category: 'Canada', readTime: '14 min' },
+  { slug: 'app-development-cost-canada', title: 'App Development Cost in Canada 2026', category: 'Cost Guide', readTime: '14 min' },
+  { slug: 'how-to-hire-remote-developers', title: 'How to Hire Remote Developers: Complete Guide', category: 'Hiring', readTime: '12 min' },
 ];
 
-export default function SoftwareDevelopmentCompaniesEdmontonClient() {
+export default function PageClient() {
   const pageRef = useReveal();
-  const [copied, setCopied] = useState(false);
+  const [activeSection, setActiveSection] = useState('edmonton-tech-scene');
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [copied, setCopied] = useState(false);
+
+  useEffect(() => {
+    const handler = () => {
+      const sections = tocSections.map(s => document.getElementById(s.id)).filter(Boolean) as HTMLElement[];
+      for (let i = sections.length - 1; i >= 0; i--) {
+        if (window.scrollY >= sections[i].offsetTop - 120) { setActiveSection(sections[i].id); break; }
+      }
+    };
+    window.addEventListener('scroll', handler, { passive: true });
+    return () => window.removeEventListener('scroll', handler);
+  }, []);
 
   const handleCopy = () => {
-    if (typeof window !== 'undefined') {
-      navigator.clipboard.writeText(window.location.href);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    }
+    navigator.clipboard.writeText(window.location.href);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
     <>
-      <Navbar />
-      <main ref={pageRef as React.RefObject<HTMLElement>} style={{ background: '#000000', minHeight: '100vh' }}>
+      <style>{`
+        .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .reveal.visible { opacity: 1; transform: none; }
+        .card-hover { transition: transform 0.2s, box-shadow 0.2s; }
+        .card-hover:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(34,197,94,0.12); }
+        @media (max-width: 900px) { .blog-layout { flex-direction: column !important; } .toc-sidebar { display: none !important; } }
+        .cb-container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+      `}</style>
+      <div style={{ background: '#000', minHeight: '100vh' }}>
+        <HeroBackground />
+        <Navbar />
+        <main ref={pageRef} style={{ paddingTop: 100 }}>
 
-        {/* ARTICLE HERO */}
-        <section style={{ padding: 'clamp(100px, 15vw, 140px) 0 clamp(32px, 5vw, 64px)', position: 'relative', overflow: 'hidden' }}>
-          <HeroBackground variant="left" />
-          <div className="cb-container">
-            <div className="reveal" style={{ marginBottom: 24 }}>
-              <Link href="/blog" style={{
-                fontSize: 13, color: 'rgba(255,255,255,0.4)', textDecoration: 'none',
-                display: 'inline-flex', alignItems: 'center', gap: 8,
-                transition: 'color 0.2s',
-              }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M19 12H5M12 19l-7-7 7-7"/>
-                </svg>
-                All Articles
-              </Link>
-            </div>
-
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24, flexWrap: 'wrap' }}>
-              <span className="reveal reveal-d1" style={{
-                fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                background: 'rgba(34,197,94,0.12)', color: '#22c55e',
-                padding: '5px 14px', borderRadius: 100,
-              }}>Software Development</span>
-              <span className="reveal reveal-d1" style={{ fontSize: 13, color: 'rgba(255,255,255,0.25)' }}>March 21, 2026</span>
-              <span style={{ color: 'rgba(255,255,255,0.4)', margin: '0 8px' }}>·</span>
-              <span style={{ color: 'rgba(255,255,255,0.4)' }}>Updated Mar 2026</span>
-              <span className="reveal reveal-d1" style={{ fontSize: 13, color: 'rgba(255,255,255,0.25)' }}>·</span>
-              <span className="reveal reveal-d1" style={{
-                fontSize: 13, color: 'rgba(255,255,255,0.25)',
-                display: 'inline-flex', alignItems: 'center', gap: 6,
-              }}>
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/>
-                </svg>
-                11 min read
-              </span>
-            </div>
-
-            <h1 className="reveal reveal-d2" style={{
-              fontSize: 'clamp(2.4rem, 5vw, 4.5rem)', fontWeight: 800, color: '#ffffff',
-              letterSpacing: '-0.04em', lineHeight: 1.05, marginBottom: 24, maxWidth: 860,
-            }}>
-              Top Software Development Companies in Edmonton, Alberta (2026)
-            </h1>
-
-            <p className="reveal reveal-d3" style={{
-              fontSize: 20, color: 'rgba(255,255,255,0.5)', lineHeight: 1.65,
-              maxWidth: 720, marginBottom: 48, fontWeight: 400,
-            }}>
-              Edmonton is Canada&apos;s hidden tech hub — with AI research at the University of Alberta, oil and gas digital transformation driving massive software investment, and dev rates 20–30% below Toronto. This is the definitive 2026 guide to the top software development companies calling Edmonton home.
-            </p>
-
-            {/* Author + Share row */}
-            <div className="reveal reveal-d4" style={{
-              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-              flexWrap: 'wrap', gap: 24, paddingTop: 32,
-              borderTop: '1px solid rgba(255,255,255,0.05)',
-            }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-                <div style={{
-                  width: 48, height: 48, borderRadius: '50%',
-                  background: 'rgba(34,197,94,0.1)', border: '1px solid rgba(34,197,94,0.2)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: 15, fontWeight: 700, color: '#22c55e',
-                }}>RM</div>
-                <div>
-                  <p style={{ fontSize: 15, fontWeight: 600, color: '#ffffff', margin: 0 }}>Raman Makkar</p>
-                  <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)', margin: 0 }}>CEO, Codazz — Edmonton, Alberta</p>
-                </div>
+          {/* ── HERO ── */}
+          <section style={{ paddingTop: 40, paddingBottom: 64 }}>
+            <div className="cb-container">
+              <div className="reveal" style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 20 }}>
+                <Link href="/blog" style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none', fontSize: 14 }}>Blog</Link>
+                <span style={{ color: 'rgba(255,255,255,0.3)' }}>/</span>
+                <span style={{ color: G, fontSize: 14, fontWeight: 600 }}>Canada Tech</span>
               </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.25)', marginRight: 4 }}>Share:</span>
-                {[
-                  { label: 'Twitter', icon: '𝕏' },
-                  { label: 'LinkedIn', icon: 'in' },
-                ].map(s => (
-                  <button key={s.label} style={{
-                    width: 36, height: 36, borderRadius: '50%', border: '1px solid rgba(255,255,255,0.08)',
-                    background: 'rgba(255,255,255,0.02)', color: 'rgba(255,255,255,0.45)',
-                    fontSize: 13, fontWeight: 700, cursor: 'pointer', display: 'flex',
-                    alignItems: 'center', justifyContent: 'center',
-                  }}>{s.icon}</button>
-                ))}
-                <button onClick={handleCopy} style={{
-                  padding: '8px 16px', borderRadius: 100, border: '1px solid rgba(255,255,255,0.08)',
-                  background: copied ? 'rgba(34,197,94,0.1)' : 'rgba(255,255,255,0.02)',
-                  color: copied ? '#22c55e' : 'rgba(255,255,255,0.45)',
-                  fontSize: 12, fontWeight: 600, cursor: 'pointer',
-                  transition: 'all 0.2s',
-                }}>
-                  {copied ? 'Copied!' : 'Copy Link'}
-                </button>
+              <div className="reveal" style={{ display: 'inline-flex', background: 'rgba(34,197,94,0.1)', border: '1px solid rgba(34,197,94,0.25)', borderRadius: 20, padding: '6px 16px', marginBottom: 24 }}>
+                <span style={{ fontSize: 14, color: G, fontWeight: 600 }}>Edmonton Software Companies 2026</span>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ARTICLE BODY */}
-        <section className="section-padding" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-          <div className="cb-container" style={{ paddingTop: 80 }}>
-            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) 320px', gap: 80, alignItems: 'start' }}>
-
-              <article>
-
-                {/* Intro */}
-                <div className="reveal" style={{ marginBottom: 56 }}>
-                  <p style={{ fontSize: 18, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, marginBottom: 20 }}>
-                    Edmonton doesn&apos;t make headlines the way Toronto and Vancouver do. But if you look past the oil sands narrative, you&apos;ll find a city that has been quietly building one of Canada&apos;s most compelling technology ecosystems — anchored by the University of Alberta&apos;s globally ranked AI and machine learning research, a provincial government investing heavily in digital transformation, and a resource-sector client base with some of the deepest software development budgets in the country.
-                  </p>
-                  <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8, marginBottom: 20 }}>
-                    Edmonton&apos;s software development market has two distinct advantages that buyers consistently underestimate. First, developer rates run 20–30% below Toronto and Vancouver for equivalent seniority — a meaningful savings on any serious project. Second, because Edmonton-based firms primarily serve oil and gas, agriculture, government, and healthcare clients, they have developed deep domain expertise in exactly the sectors that are now undergoing the most dramatic digital transformation.
-                  </p>
-                  <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8 }}>
-                    This guide ranks the top 10 software development companies in Edmonton for 2026. We start with the clear market leader — Codazz, which is headquartered here — and cover the full ecosystem from enterprise SaaS success stories to government digital teams and agritech innovators.
-                  </p>
-                </div>
-
-                {/* Edmonton Ecosystem */}
-                <div className="reveal" id="edmonton-ecosystem" style={{ marginBottom: 56 }}>
-                  <h2 style={{
-                    fontSize: 'clamp(1.4rem, 2.5vw, 1.9rem)', fontWeight: 700, color: '#ffffff',
-                    letterSpacing: '-0.03em', marginBottom: 8,
-                  }}>Edmonton Tech Ecosystem Overview</h2>
-                  <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, marginBottom: 28 }}>
-                    Six market statistics that explain why Edmonton is Canada&apos;s most underestimated tech city.
-                  </p>
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 16, marginBottom: 32 }}>
-                    {[
-                      { stat: '55,000+', label: 'Tech workers in the Edmonton metro area (2026)', icon: '👥' },
-                      { stat: '$2.4B+', label: 'Government of Alberta digital transformation investment (2024–2027)', icon: '🏛️' },
-                      { stat: '20–30%', label: 'Lower developer rates vs Toronto / Vancouver for equivalent talent', icon: '💵' },
-                      { stat: '#6', label: 'University of Alberta AI research ranking globally (2026)', icon: '🤖' },
-                      { stat: '$180B+', label: 'Oil & gas sector driving software investment across Alberta', icon: '⛽' },
-                      { stat: '3,400+', label: 'Registered tech companies in the Edmonton Economic Region', icon: '🏢' },
-                    ].map((s, i) => (
-                      <div key={i} style={{
-                        padding: 24, borderRadius: 20,
-                        background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)',
-                      }}>
-                        <div style={{ fontSize: 28, marginBottom: 10 }}>{s.icon}</div>
-                        <p style={{ fontSize: 'clamp(1.4rem, 2vw, 1.8rem)', fontWeight: 800, color: '#22c55e', marginBottom: 6, letterSpacing: '-0.03em' }}>{s.stat}</p>
-                        <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.45)', lineHeight: 1.6, margin: 0 }}>{s.label}</p>
-                      </div>
-                    ))}
-                  </div>
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 14 }}>
-                    {[
-                      { name: 'University of Alberta', icon: '🎓', desc: 'Produces 2,000+ CS and engineering graduates annually. Home to the Alberta Machine Intelligence Institute (Amii), one of Canada\'s three national AI institutes.', type: 'AI Research Hub' },
-                      { name: 'NAIT & MacEwan', icon: '🏫', desc: 'NAIT\'s technology programs and MacEwan\'s computing science department are key pipelines for mid-level developer talent in Edmonton.', type: 'Talent Pipeline' },
-                      { name: 'Edmonton Economic Development', icon: '📊', desc: 'Actively supports tech sector growth through the Edmonton Innovation Corridor and partnerships with Startup Edmonton and the Business Link.', type: 'Ecosystem Support' },
-                      { name: 'Startup Edmonton', icon: '🚀', desc: 'A thriving startup community with 200+ active tech companies, accelerator programs, and connections to the Prairies tech investor network.', type: 'Startup Hub' },
-                    ].map((d, i) => (
-                      <div key={i} style={{
-                        padding: 20, borderRadius: 16,
-                        background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)',
-                      }}>
-                        <div style={{ fontSize: 26, marginBottom: 8 }}>{d.icon}</div>
-                        <p style={{ fontSize: 14, fontWeight: 700, color: '#ffffff', marginBottom: 4 }}>{d.name}</p>
-                        <p style={{ fontSize: 11, fontWeight: 700, color: '#22c55e', marginBottom: 8, textTransform: 'uppercase', letterSpacing: '0.08em' }}>{d.type}</p>
-                        <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.45)', lineHeight: 1.6, margin: 0 }}>{d.desc}</p>
-                      </div>
-                    ))}
+              <h1 className="reveal" style={{ fontSize: 'clamp(2rem,5vw,3.4rem)', fontWeight: 900, color: '#fff', lineHeight: 1.1, letterSpacing: '-0.03em', marginBottom: 24, maxWidth: 900 }}>
+                Top Software Development Companies<br /><span style={{ color: G }}>in Edmonton 2026</span>
+              </h1>
+              <p className="reveal" style={{ fontSize: 18, color: 'rgba(255,255,255,0.6)', lineHeight: 1.7, maxWidth: 700, marginBottom: 32 }}>
+                Edmonton has quietly become one of Canada's most competitive tech markets — home to Jobber (250K+ global clients), Benevity ($1B+ valuation), Granify, and a growing cluster of AI startups fueled by University of Alberta's world-class machine learning research. Here are the top 10 software development companies in Edmonton for 2026, with real rates, team sizes, and specializations.
+              </p>
+              <div className="reveal" style={{ display: 'flex', alignItems: 'center', gap: 20, flexWrap: 'wrap', marginBottom: 48 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                  <div style={{ width: 36, height: 36, borderRadius: '50%', background: 'linear-gradient(135deg,#22c55e,#16a34a)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#000', fontWeight: 800, fontSize: 14 }}>C</div>
+                  <div>
+                    <div style={{ fontSize: 13, color: '#fff', fontWeight: 600 }}>Codazz Engineering — Edmonton, AB</div>
+                    <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)' }}>March 21, 2026</div>
                   </div>
                 </div>
+                <span style={{ color: 'rgba(255,255,255,0.3)' }}>·</span>
+                <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)' }}>16 min read</span>
+                <button onClick={handleCopy} style={{ marginLeft: 'auto', background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 8, padding: '8px 16px', color: 'rgba(255,255,255,0.6)', cursor: 'pointer', fontSize: 13 }}>{copied ? '✓ Copied' : '🔗 Share'}</button>
+              </div>
+              <div className="reveal" style={{ width: '100%', aspectRatio: '16/7', background: 'linear-gradient(135deg,rgba(34,197,94,0.08),rgba(0,0,0,0.5))', borderRadius: 24, marginBottom: 64, display: 'flex', alignItems: 'center', justifyContent: 'center', border: '1px solid rgba(34,197,94,0.1)' }}>
+                <span style={{ fontSize: 72 }}>🏙️</span>
+              </div>
 
-                {/* Rates Table */}
-                <div className="reveal" id="edmonton-rates" style={{ marginBottom: 56 }}>
-                  <h2 style={{
-                    fontSize: 'clamp(1.4rem, 2.5vw, 1.9rem)', fontWeight: 700, color: '#ffffff',
-                    letterSpacing: '-0.03em', marginBottom: 8,
-                  }}>Edmonton Software Development Rates (2026)</h2>
-                  <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, marginBottom: 24 }}>
-                    All rates in CAD per hour. Edmonton rates are consistently 20–30% below Toronto and 15–25% below Vancouver for equivalent seniority — without any quality compromise.
-                  </p>
-                  <div style={{ overflowX: 'auto', borderRadius: 16, border: '1px solid rgba(255,255,255,0.06)' }}>
-                    <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 580 }}>
-                      <thead>
-                        <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
-                          {['Role', 'Junior', 'Mid-Level', 'Senior / Lead'].map(h => (
-                            <th key={h} style={{
-                              padding: '14px 16px', textAlign: 'left', fontSize: 11, fontWeight: 700,
-                              letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)',
-                              background: 'rgba(255,255,255,0.02)',
-                            }}>{h}</th>
-                          ))}
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {[
-                          { role: 'iOS Developer', junior: '$70–$85/hr', mid: '$90–$115/hr', senior: '$125–$160/hr' },
-                          { role: 'Android Developer', junior: '$70–$85/hr', mid: '$90–$115/hr', senior: '$125–$165/hr' },
-                          { role: 'React Native / Flutter', junior: '$72–$90/hr', mid: '$92–$120/hr', senior: '$128–$170/hr' },
-                          { role: 'Full-Stack (Node/React)', junior: '$70–$90/hr', mid: '$92–$120/hr', senior: '$128–$175/hr' },
-                          { role: 'Backend / Cloud', junior: '$75–$90/hr', mid: '$95–$125/hr', senior: '$130–$175/hr' },
-                          { role: 'UI/UX Designer', junior: '$65–$80/hr', mid: '$80–$110/hr', senior: '$115–$150/hr' },
-                          { role: 'AI / ML Engineer', junior: '$80–$100/hr', mid: '$105–$135/hr', senior: '$140–$185/hr' },
-                          { role: 'Codazz (All Roles)', junior: '—', mid: '$85–$115/hr', senior: '$115–$145/hr' },
-                        ].map((row, i) => (
-                          <tr key={i} style={{ borderBottom: '1px solid rgba(255,255,255,0.04)', background: i === 7 ? 'rgba(34,197,94,0.03)' : 'transparent' }}>
-                            <td style={{ padding: '13px 16px', fontSize: 13, color: i === 7 ? '#22c55e' : 'rgba(255,255,255,0.8)', fontWeight: i === 7 ? 700 : 600 }}>{row.role}</td>
-                            <td style={{ padding: '13px 16px', fontSize: 13, color: 'rgba(255,255,255,0.5)' }}>{row.junior}</td>
-                            <td style={{ padding: '13px 16px', fontSize: 13, color: i === 7 ? '#22c55e' : 'rgba(255,255,255,0.6)', fontWeight: i === 7 ? 700 : 500 }}>{row.mid}</td>
-                            <td style={{ padding: '13px 16px', fontSize: 13, color: i === 7 ? '#22c55e' : '#22c55e', fontWeight: 700 }}>{row.senior}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-
-                {/* Key Takeaways */}
-                <div className="reveal" id="key-takeaways" style={{ marginBottom: 56 }}>
-                  <div style={{
-                    background: 'rgba(34,197,94,0.04)', border: '1px solid rgba(34,197,94,0.15)',
-                    borderRadius: 20, padding: 32,
-                  }}>
-                    <p style={{
-                      fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                      color: '#22c55e', marginBottom: 20,
-                    }}>Key Takeaways</p>
-                    <ul style={{ margin: 0, paddingLeft: 20 }}>
-                      {[
-                        'Edmonton dev rates ($70–$175 CAD/hr) run 20–30% below Toronto for equivalent talent — making it Canada\'s best value market for high-quality software development.',
-                        'Codazz, headquartered in Edmonton, is the market\'s standout choice: 500+ apps launched, 100+ engineers, and a service model that scales from startup MVP to enterprise platform.',
-                        'Edmonton has unique domain depth in oil & gas software, government digital transformation, agriculture technology, and healthcare — sectors that most tech cities cannot match.',
-                        'University of Alberta\'s Amii (Alberta Machine Intelligence Institute) gives Edmonton-based firms access to world-class AI research talent, making the city a legitimate AI development hub.',
-                      ].map((item, i) => (
-                        <li key={i} style={{
-                          fontSize: 15, color: 'rgba(255,255,255,0.65)', lineHeight: 1.8,
-                          marginBottom: i < 3 ? 12 : 0,
-                        }}>{item}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                {/* Top 10 Companies heading */}
-                <div className="reveal" id="top-companies" style={{ marginBottom: 40 }}>
-                  <h2 style={{
-                    fontSize: 'clamp(1.4rem, 2.5vw, 1.9rem)', fontWeight: 700, color: '#ffffff',
-                    letterSpacing: '-0.03em', marginBottom: 8,
-                  }}>Top 10 Software Development Companies in Edmonton (2026)</h2>
-                  <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.5)', lineHeight: 1.7 }}>
-                    Ranked by delivery capability, domain expertise, client reach, and value for money. Codazz is ranked #1 — not as a formality, but because no other Edmonton firm matches its combination of scale, specialization, and track record.
-                  </p>
-                </div>
-
-                {/* Company 1 - Codazz FEATURED */}
-                <div className="reveal" id="codazz" style={{ marginBottom: 40 }}>
-                  <div style={{
-                    background: 'linear-gradient(135deg, rgba(34,197,94,0.12) 0%, rgba(255,255,255,0.015) 100%)',
-                    border: '2px solid rgba(34,197,94,0.35)',
-                    borderRadius: 28, padding: 44, position: 'relative', overflow: 'hidden',
-                  }}>
-                    <div style={{ position: 'absolute', top: -60, right: -60, width: 300, height: 300, background: 'radial-gradient(circle, rgba(34,197,94,0.16) 0%, transparent 70%)', filter: 'blur(50px)' }} />
-                    <div style={{ position: 'absolute', bottom: -40, left: -40, width: 200, height: 200, background: 'radial-gradient(circle, rgba(34,197,94,0.08) 0%, transparent 70%)', filter: 'blur(40px)' }} />
-                    <div style={{ position: 'relative', zIndex: 1 }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20, flexWrap: 'wrap' }}>
-                        <div style={{
-                          padding: '5px 16px', borderRadius: 100,
-                          background: 'rgba(34,197,94,0.18)', border: '1px solid rgba(34,197,94,0.4)',
-                          fontSize: 11, fontWeight: 800, color: '#22c55e', letterSpacing: '0.12em', textTransform: 'uppercase',
-                        }}>#1 Edmonton&apos;s Top Dev Company</div>
-                        <div style={{
-                          padding: '5px 14px', borderRadius: 100,
-                          background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)',
-                          fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.55)',
-                        }}>500+ Apps Launched</div>
-                        <div style={{
-                          padding: '5px 14px', borderRadius: 100,
-                          background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.1)',
-                          fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.55)',
-                        }}>100+ Engineers</div>
-                      </div>
-                      <div style={{ display: 'flex', alignItems: 'flex-start', gap: 24, marginBottom: 24 }}>
-                        <div style={{
-                          width: 72, height: 72, borderRadius: 20, flexShrink: 0,
-                          background: 'rgba(34,197,94,0.14)', border: '2px solid rgba(34,197,94,0.3)',
-                          display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 36,
-                        }}>🍁</div>
-                        <div>
-                          <h2 style={{
-                            fontSize: 'clamp(2rem, 3.5vw, 2.8rem)', fontWeight: 900, color: '#ffffff',
-                            letterSpacing: '-0.04em', margin: 0,
-                          }}>Codazz</h2>
-                          <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.45)', margin: '6px 0 0' }}>
-                            HQ: Edmonton, Alberta · Dev Centre: Chandigarh, India · Offices: New York, Dubai · Founded by Raman Makkar
-                          </p>
-                        </div>
-                      </div>
-
-                      {/* Why We're #1 card */}
-                      <div style={{
-                        background: 'rgba(34,197,94,0.06)', border: '1px solid rgba(34,197,94,0.18)',
-                        borderRadius: 18, padding: 24, marginBottom: 24,
-                      }}>
-                        <p style={{ fontSize: 12, fontWeight: 800, color: '#22c55e', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 12 }}>Why Codazz is Edmonton&apos;s #1</p>
-                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 12 }}>
-                          {[
-                            { icon: '📱', point: '500+ apps launched across mobile, SaaS, AI, and web — more than any other Edmonton firm' },
-                            { icon: '👥', point: '100+ engineers across Edmonton and Chandigarh, managed by Canadian leadership' },
-                            { icon: '🌎', point: 'Serving clients in Canada, USA, UAE, and UK with North American delivery standards' },
-                            { icon: '🔒', point: 'IP protected under Canadian law. PIPEDA-compliant. SR&ED-eligible projects supported' },
-                          ].map((p, i) => (
-                            <div key={i} style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
-                              <span style={{ fontSize: 18, flexShrink: 0, marginTop: 2 }}>{p.icon}</span>
-                              <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.65)', lineHeight: 1.6, margin: 0 }}>{p.point}</p>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-
-                      <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.75)', lineHeight: 1.85, marginBottom: 16 }}>
-                        Codazz is Edmonton&apos;s most prolific software development company and the clear first choice for businesses across Canada, the United States, and the UAE seeking world-class mobile, SaaS, and AI development. Founded by Raman Makkar, Codazz has built 500+ products ranging from startup MVPs to enterprise-scale platforms — with a team of 100+ engineers operating from Edmonton and Chandigarh under Canadian management oversight.
-                      </p>
-                      <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.75)', lineHeight: 1.85, marginBottom: 16 }}>
-                        What sets Codazz apart in the Edmonton market is the combination of local knowledge and global reach. Edmonton-based clients benefit from face-to-face discovery sessions, Alberta market context, and rates that make serious software investment viable without the Toronto or Vancouver overhead. International clients benefit from a North American time zone, Canadian law, and an engineering operation that runs with the precision of a top-tier US development firm at a fraction of the cost.
-                      </p>
-                      <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.75)', lineHeight: 1.85, marginBottom: 28 }}>
-                        Core capabilities include native mobile development (Swift, Kotlin), cross-platform (Flutter, React Native), full-stack web (Next.js, Node.js, Python), AI and ML engineering (LLM integration, RAG pipelines, custom models), cloud infrastructure (AWS, GCP, Azure), and UI/UX design. Codazz has delivered for clients in oil and gas, government, healthcare, fintech, logistics, ecommerce, and SaaS — the exact industries that dominate Edmonton&apos;s economy.
-                      </p>
-                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: 12, marginBottom: 28 }}>
-                        {[
-                          { label: 'Rate Range', value: '$85–$145 CAD/hr' },
-                          { label: 'Min Project', value: '$25K CAD' },
-                          { label: 'Team Size', value: '100+ Engineers' },
-                          { label: 'Apps Launched', value: '500+' },
-                          { label: 'HQ', value: 'Edmonton, AB' },
-                          { label: 'Clients In', value: 'CA / US / UAE / UK' },
-                        ].map((m, i) => (
-                          <div key={i} style={{
-                            padding: '14px 16px', borderRadius: 14,
-                            background: 'rgba(34,197,94,0.06)', border: '1px solid rgba(34,197,94,0.12)',
-                          }}>
-                            <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.35)', textTransform: 'uppercase', letterSpacing: '0.08em', margin: '0 0 4px' }}>{m.label}</p>
-                            <p style={{ fontSize: 14, fontWeight: 700, color: '#22c55e', margin: 0 }}>{m.value}</p>
-                          </div>
-                        ))}
-                      </div>
-                      <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-                        {['iOS & Android', 'Flutter / React Native', 'SaaS Platforms', 'AI / ML', 'Next.js', 'Cloud (AWS/GCP)', 'UI/UX', 'Oil & Gas Tech'].map((tag, i) => (
-                          <span key={i} style={{
-                            padding: '6px 14px', borderRadius: 100, fontSize: 12, fontWeight: 600,
-                            background: 'rgba(34,197,94,0.08)', color: 'rgba(255,255,255,0.6)',
-                            border: '1px solid rgba(34,197,94,0.15)',
-                          }}>{tag}</span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Companies 2-10 */}
+              {/* Stats */}
+              <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(160px,1fr))', gap: 16, marginBottom: 64 }}>
                 {[
-                  {
-                    num: '02', id: 'jobber', name: 'Jobber', category: 'Field Service SaaS',
-                    emoji: '🔧', accentColor: '#60a5fa', bgColor: 'rgba(96,165,250,',
-                    hq: 'Edmonton, Alberta',
-                    metric: '250,000+ service businesses | $100M+ raised | Edmonton-grown SaaS success',
-                    paragraphs: [
-                      'Jobber is Edmonton\'s most prominent global SaaS success story. Founded in 2011, Jobber built a field service management platform that serves over 250,000 home service businesses — plumbers, electricians, landscapers, cleaners — across North America, the UK, and Australia. With over $100M in funding and a team that grew from a small Edmonton team to a 1,000+ person distributed company, Jobber is proof of what Edmonton can produce at the highest level of software product excellence.',
-                      'Jobber\'s engineering team has solved some of the hardest problems in small business software: scheduling optimization, real-time dispatch, offline-capable mobile apps, payment processing, and client communication systems — all built to serve businesses that often operate entirely from a phone. Their architecture handles millions of job transactions daily and integrates with QuickBooks, Stripe, and dozens of other small business tools.',
-                      'Jobber is a product company, not a development agency — but their presence in Edmonton\'s tech ecosystem is significant. They attract top engineering talent to the city, participate in the Startup Edmonton community, and are proof to global investors that Edmonton can produce enterprise-grade SaaS at scale.',
-                    ],
-                  },
-                  {
-                    num: '03', id: 'benevity', name: 'Benevity', category: 'Corporate Giving Platform',
-                    emoji: '❤️', accentColor: '#f472b6', bgColor: 'rgba(244,114,182,',
-                    hq: 'Calgary HQ, significant Edmonton presence',
-                    metric: '$10B+ in donations processed | 1,000+ enterprise clients | Purpose-driven tech',
-                    paragraphs: [
-                      'Benevity is the world\'s leading corporate giving and employee engagement platform — a Calgary-headquartered company with meaningful engineering presence in Edmonton. Their platform has processed over $10 billion in charitable donations and volunteer hours for over 1,000 enterprise clients including Google, Microsoft, Apple, and Nike. Benevity\'s engineering team handles a remarkably complex technical challenge: real-time charitable donation routing to 2 million+ nonprofits across 130+ countries, with full tax compliance in each jurisdiction.',
-                      'For Edmonton\'s tech ecosystem, Benevity represents the premium end of the Alberta SaaS market — demonstrating that purpose-driven enterprise software built from the Prairies can compete globally with US and European incumbents. Their Edmonton-based engineers work on mission-critical financial infrastructure and compliance systems.',
-                      'Benevity is not a development partner — they are a platform company. But their technical standards and hiring practices set a benchmark for engineering quality in the Alberta market. Companies evaluating Edmonton-based dev firms should know that Benevity alumni represent some of the best senior engineering talent available locally.',
-                    ],
-                  },
-                  {
-                    num: '04', id: 'trimble', name: 'Trimble', category: 'AgriTech & Construction Tech',
-                    emoji: '🌾', accentColor: '#fbbf24', bgColor: 'rgba(251,191,36,',
-                    hq: 'Sunnyvale, CA (Edmonton operations)',
-                    metric: 'Precision agriculture & construction technology | NASDAQ-listed | $3.7B revenue',
-                    paragraphs: [
-                      'Trimble is a global technology company with significant operations in Edmonton, serving the agriculture and construction sectors with positioning, sensing, and workflow software that makes physical work more precise and efficient. Their agriculture division — which includes GPS-guided farming equipment, precision irrigation systems, and field management software — is heavily present in Alberta given the province\'s massive agricultural output.',
-                      'Trimble\'s Edmonton operations focus on developing and supporting software for Western Canadian agricultural clients: precision seeding and harvest management, field data platforms, and connectivity solutions that allow farmers to manage thousands of acres of crops from a tablet. Their presence anchors Edmonton\'s agritech ecosystem alongside Olds College and the Alberta government\'s Smart Farm initiative.',
-                      'Key Services: Precision agriculture software, GPS-guided farming systems, construction technology, asset tracking, field management platforms. Best For: Agricultural operations and construction companies in Western Canada seeking precision technology and workflow optimization.',
-                    ],
-                  },
-                  {
-                    num: '05', id: 'atb-digital', name: 'ATB Financial Digital', category: 'Banking Technology',
-                    emoji: '🏦', accentColor: '#34d399', bgColor: 'rgba(52,211,153,',
-                    hq: 'Edmonton, Alberta',
-                    metric: '800K+ Albertans served | Digital-first banking platform | $55B assets under management',
-                    paragraphs: [
-                      'ATB Financial is Alberta\'s bank — a Crown corporation serving over 800,000 Albertans and 55,000 businesses with $55 billion in assets under management. ATB\'s digital team, headquartered in Edmonton, has been one of the most progressive in Canadian banking — building mobile banking apps, AI-powered financial advice tools, and open banking APIs years ahead of the major chartered banks.',
-                      'ATB\'s investment in digital engineering has produced some of the most thoughtful banking software in Canada: their mobile app is consistently among the highest-rated banking apps on Canadian app stores, and their internal data platform powers personalized financial coaching features that the big banks are still trying to replicate. ATB is also notable for publishing open-source tools and participating in Canadian open banking standards development.',
-                      'ATB is not a development agency — they are Alberta\'s bank. But their engineering team is a significant talent anchor for Edmonton\'s tech ecosystem, and their digital products define the quality standard for fintech in the Alberta market.',
-                    ],
-                  },
-                  {
-                    num: '06', id: 'gov-alberta-digital', name: 'Government of Alberta Digital Services', category: 'Government Technology',
-                    emoji: '🏛️', accentColor: '#a78bfa', bgColor: 'rgba(167,139,250,',
-                    hq: 'Edmonton (Legislature Grounds)',
-                    metric: '$2.4B digital transformation budget | 4.5M Albertans served | Open-source delivery',
-                    paragraphs: [
-                      'The Government of Alberta\'s Digital Services division is one of the largest technology employers in Edmonton and one of the most ambitious government digital transformation programs in Canada. With a $2.4 billion investment in digital infrastructure from 2024–2027, the GoA Digital Services team is rebuilding dozens of government services — from driver\'s licence renewals to business registration, social services applications, and health benefit systems — for online delivery.',
-                      'Alberta\'s government technology team has adopted modern delivery practices including agile development, open-source software, and design thinking — methods that are still uncommon in most provincial governments. They publish code on GitHub, follow Government of Canada Digital Standards, and have built some of the cleanest government digital products in Canada, including the AlbertaCOVID app (built rapidly in 2020) and the MyAlberta Digital ID system.',
-                      'For Edmonton\'s tech ecosystem, the GoA Digital Services team is a significant employer of engineers, UX designers, and product managers. They also contract extensively with local development partners, including Edmonton-based firms with government security clearances and domain expertise in public sector software delivery.',
-                    ],
-                  },
-                  {
-                    num: '07', id: 'stollery-digital', name: 'Stollery Children\'s Hospital Digital Health', category: 'Healthcare Technology',
-                    emoji: '🏥', accentColor: '#fb923c', bgColor: 'rgba(251,146,60,',
-                    hq: 'Edmonton, Alberta (University of Alberta Hospital Campus)',
-                    metric: 'Pediatric digital health innovation | Research-to-clinical technology transfer',
-                    paragraphs: [
-                      'The Stollery Children\'s Hospital, part of the University of Alberta Hospital complex in Edmonton, has developed a notable digital health innovation program that bridges research-grade healthcare technology and clinical application. Their digital health team works on mobile health tools, patient monitoring platforms, telehealth applications, and clinical decision support systems that serve pediatric patients across Northern Alberta and rural communities.',
-                      'Stollery\'s digital work is significant in the Edmonton tech context because it demonstrates the depth of healthcare technology development happening in the city — not just for Alberta, but as a model for other pediatric centres across Canada. Their work on remote patient monitoring and AI-assisted clinical tools puts Edmonton at the forefront of Canadian healthcare innovation.',
-                      'For software companies looking to enter the digital health space, Stollery and the broader University of Alberta health research network represent a significant partnership opportunity. Edmonton-based firms with healthcare domain expertise — particularly HIPAA/PIPEDA-compliant development capability — have access to a healthcare research ecosystem that few cities outside Toronto can match.',
-                    ],
-                  },
-                  {
-                    num: '08', id: 'olds-college', name: 'Olds College of Technology', category: 'AgriTech Innovation',
-                    emoji: '🌱', accentColor: '#4ade80', bgColor: 'rgba(74,222,128,',
-                    hq: 'Olds, Alberta (90 min from Edmonton)',
-                    metric: 'Smart Farm research hub | Precision agriculture innovation | Federal AgriTech funding',
-                    paragraphs: [
-                      'Olds College of Technology, located 90 minutes south of Edmonton, operates one of Canada\'s most advanced agricultural technology research programs — the Olds College Smart Farm. This 2,700-acre research facility serves as a living laboratory for precision agriculture software, autonomous farming systems, IoT sensor networks, drone-based crop monitoring, and AI-powered agronomic advisory tools.',
-                      'Olds College is not a software development company in the traditional sense, but it is a critical anchor in Alberta\'s agritech innovation ecosystem and a key research partner for Edmonton-based software companies building agricultural technology. Their Smart Farm generates real-world data and testing environments for precision agriculture applications — a resource that gives Alberta-based agritech developers a significant advantage over out-of-province competitors.',
-                      'For software companies building in the agriculture technology space, the Olds College Smart Farm represents access to large-scale field testing, agronomic expertise, and federal research partnerships that can accelerate product development and SR&ED eligibility documentation.',
-                    ],
-                  },
-                  {
-                    num: '09', id: 'novabay', name: 'NovaBay Pharmaceuticals (Alberta)', category: 'Life Science Tech',
-                    emoji: '🔬', accentColor: '#94a3b8', bgColor: 'rgba(148,163,184,',
-                    hq: 'Edmonton research operations',
-                    metric: 'Bioscience software & clinical data platforms | Healthcare innovation',
-                    paragraphs: [
-                      'Edmonton\'s life sciences sector — anchored by the University of Alberta\'s Faculty of Medicine, the Cross Cancer Institute, and Alberta Health Services — has been growing rapidly, and with it comes demand for clinical data platforms, regulatory compliance software, and research informatics tools. NovaBay Pharmaceuticals\' Alberta research operations are part of this broader life sciences software ecosystem.',
-                      'Life science software in Edmonton covers clinical trial management systems, electronic health records integration, laboratory information systems, and bioinformatics tools — all requiring the combination of healthcare domain expertise, regulatory compliance knowledge, and strong software engineering that Edmonton\'s developer community is well-positioned to provide.',
-                      'Key Services (Ecosystem): Clinical data management, regulatory submission software, laboratory information systems, healthcare analytics, bioinformatics platforms. Best For: Life science companies and research institutions in Alberta seeking compliant healthcare software with domain-specific expertise.',
-                    ],
-                  },
-                  {
-                    num: '10', id: 'northforge', name: 'Northforge Innovations', category: 'Boutique Agency',
-                    emoji: '⚙️', accentColor: '#f87171', bgColor: 'rgba(248,113,113,',
-                    hq: 'Edmonton, Alberta',
-                    metric: 'Custom software for oil & gas and enterprise | Edmonton-born boutique studio',
-                    paragraphs: [
-                      'Northforge Innovations represents the boutique end of Edmonton\'s software development market — a smaller, specialist agency with deep expertise in custom software for the oil and gas, utilities, and enterprise sectors that dominate Alberta\'s economy. Boutique Edmonton agencies like Northforge often serve clients that require on-site consulting, provincial regulatory knowledge, and long-term support relationships that larger national firms are less equipped to provide.',
-                      'Edmonton\'s boutique agency ecosystem serves a specific need: local clients with complex, industry-specific requirements who need a team that understands Alberta\'s regulatory environment, can attend site visits at industrial facilities, and will be present over the multi-year lifecycle of a business-critical system. For these engagements, local boutique firms offer relationship depth that remote teams cannot easily replicate.',
-                      'Key Services: Custom ERP integrations, field operations software, industrial IoT dashboards, compliance reporting systems, legacy system modernization. Best For: Alberta-based oil and gas, utilities, and enterprise organizations that need local software partners with provincial industry knowledge and on-site availability.',
-                    ],
-                  },
-                ].map((app) => (
-                  <div key={app.id} className="reveal" style={{ marginBottom: 36 }} id={app.id}>
-                    <div style={{
-                      background: 'rgba(255,255,255,0.015)',
-                      border: '1px solid rgba(255,255,255,0.06)',
-                      borderRadius: 28, padding: 36,
-                    }}>
-                      <div style={{ display: 'flex', alignItems: 'flex-start', gap: 20, marginBottom: 20 }}>
-                        <div style={{
-                          width: 56, height: 56, borderRadius: 16, flexShrink: 0,
-                          background: `${app.bgColor}0.1)`, border: `1px solid ${app.bgColor}0.2)`,
-                          display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 28,
-                        }}>{app.emoji}</div>
-                        <div>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4, flexWrap: 'wrap' }}>
-                            <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.35)', fontWeight: 700 }}>{app.num}</span>
-                            <span style={{
-                              fontSize: 11, padding: '3px 10px', borderRadius: 100,
-                              background: `${app.bgColor}0.12)`, color: app.accentColor,
-                              fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase',
-                            }}>{app.category}</span>
-                            <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.3)' }}>{app.hq}</span>
-                          </div>
-                          <h3 style={{
-                            fontSize: 'clamp(1.2rem, 2vw, 1.6rem)', fontWeight: 700, color: '#ffffff',
-                            letterSpacing: '-0.03em', margin: 0,
-                          }}>{app.name}</h3>
-                        </div>
-                      </div>
-                      {app.paragraphs.map((para, pi) => (
-                        <p key={pi} style={{
-                          fontSize: 15, color: 'rgba(255,255,255,0.65)', lineHeight: 1.8,
-                          marginBottom: pi < app.paragraphs.length - 1 ? 14 : 18,
-                        }}>{para}</p>
-                      ))}
-                      <div style={{
-                        padding: '12px 18px', borderRadius: 12,
-                        background: `${app.bgColor}0.06)`, border: `1px solid ${app.bgColor}0.12)`,
-                        display: 'flex', alignItems: 'center', gap: 10,
-                      }}>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke={app.accentColor} strokeWidth="2">
-                          <polyline points="22,7 13.5,15.5 8.5,10.5 2,17"/><polyline points="16,7 22,7 22,13"/>
-                        </svg>
-                        <span style={{ fontSize: 13, color: app.accentColor, fontWeight: 600 }}>{app.metric}</span>
-                      </div>
-                    </div>
+                  ['$8.4B+', 'Alberta tech sector GDP'],
+                  ['28,000+', 'Tech workers in Edmonton'],
+                  ['#4', 'Canadian city for tech talent growth'],
+                  ['30–40%', 'Lower dev costs vs Toronto/Vancouver'],
+                  ['$85–$200', 'CAD/hr developer rate range'],
+                  ['U of A', 'Top-5 CS program in Canada'],
+                  ['7,500+', 'CS graduates per year (AB)'],
+                  ['Jobber', '$370M CAD raised — Edmonton-born'],
+                ].map(([v, l], i) => (
+                  <div key={i} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 16, padding: '20px 16px', textAlign: 'center' }}>
+                    <div style={{ fontSize: 22, fontWeight: 900, color: G, marginBottom: 6 }}>{v}</div>
+                    <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', lineHeight: 1.4 }}>{l}</div>
                   </div>
                 ))}
+              </div>
+            </div>
+          </section>
 
-                {/* Industry Cards */}
-                <div className="reveal" id="industries" style={{ marginBottom: 56 }}>
-                  <h2 style={{
-                    fontSize: 'clamp(1.4rem, 2.5vw, 1.9rem)', fontWeight: 700, color: '#ffffff',
-                    letterSpacing: '-0.03em', marginBottom: 8,
-                  }}>Edmonton Industries Leading Digital Transformation</h2>
-                  <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, marginBottom: 28 }}>
-                    Four sectors where Edmonton-based software companies have built world-class domain expertise.
-                  </p>
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 20 }}>
-                    {[
-                      {
-                        icon: '⛽',
-                        title: 'Oil & Gas',
-                        accentColor: '#fbbf24',
-                        desc: 'Field operations software, pipeline monitoring, SCADA integration, environmental compliance tracking, and asset management systems. Alberta\'s $180B+ oil and gas industry creates one of the largest industrial software markets in Canada.',
-                        tags: ['Field Ops', 'SCADA', 'Pipeline Tech', 'Asset Management'],
-                      },
-                      {
-                        icon: '🏛️',
-                        title: 'Government Services',
-                        accentColor: '#a78bfa',
-                        desc: 'Digital identity, citizen service portals, case management systems, open data platforms, and regulatory compliance tools. The GoA\'s $2.4B digital transformation is creating a sustained demand pipeline for local developers.',
-                        tags: ['Digital ID', 'Citizen Portals', 'Case Management', 'Open Data'],
-                      },
-                      {
-                        icon: '🌾',
-                        title: 'Agriculture / AgriTech',
-                        accentColor: '#4ade80',
-                        desc: 'Precision farming software, crop management platforms, IoT sensor integration, drone data processing, and agricultural AI tools. Alberta\'s 50M+ acres of farmland create massive demand for technology that makes farming more efficient and sustainable.',
-                        tags: ['Precision Farming', 'Crop AI', 'IoT Sensors', 'Drone Data'],
-                      },
-                      {
-                        icon: '🏥',
-                        title: 'Healthcare',
-                        accentColor: '#f87171',
-                        desc: 'Electronic health records, telehealth platforms, clinical decision support, patient monitoring apps, and healthcare analytics. Edmonton\'s University of Alberta Hospital, Cross Cancer Institute, and Stollery Children\'s Hospital anchor a deep healthcare technology ecosystem.',
-                        tags: ['EHR Systems', 'Telehealth', 'Clinical AI', 'Patient Apps'],
-                      },
-                    ].map((ind, i) => (
-                      <div key={i} style={{
-                        padding: 28, borderRadius: 24,
-                        background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)',
-                      }}>
-                        <div style={{ fontSize: 36, marginBottom: 14 }}>{ind.icon}</div>
-                        <h3 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', marginBottom: 10 }}>{ind.title}</h3>
-                        <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, marginBottom: 16 }}>{ind.desc}</p>
-                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-                          {ind.tags.map((tag, j) => (
-                            <span key={j} style={{
-                              fontSize: 11, fontWeight: 600, padding: '4px 10px', borderRadius: 100,
-                              background: 'rgba(255,255,255,0.04)', color: 'rgba(255,255,255,0.4)',
-                              border: '1px solid rgba(255,255,255,0.06)',
-                            }}>{tag}</span>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+          {/* ── BODY ── */}
+          <section>
+            <div className="cb-container">
+              <div className="blog-layout" style={{ display: 'flex', gap: 48, alignItems: 'flex-start' }}>
+                <article style={{ flex: 1, minWidth: 0 }}>
 
-                {/* City Comparison */}
-                <div className="reveal" id="city-comparison" style={{ marginBottom: 56 }}>
-                  <h2 style={{
-                    fontSize: 'clamp(1.4rem, 2.5vw, 1.9rem)', fontWeight: 700, color: '#ffffff',
-                    letterSpacing: '-0.03em', marginBottom: 8,
-                  }}>Edmonton vs Calgary vs Toronto: Cost &amp; Value Comparison</h2>
-                  <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, marginBottom: 24 }}>
-                    All rates in CAD per hour for mid-level developers. Edmonton consistently wins on value without sacrificing quality.
-                  </p>
-                  <div style={{ overflowX: 'auto', borderRadius: 16, border: '1px solid rgba(255,255,255,0.06)' }}>
-                    <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 620 }}>
-                      <thead>
-                        <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
-                          {['Factor', 'Edmonton', 'Calgary', 'Toronto'].map(h => (
-                            <th key={h} style={{
-                              padding: '14px 16px', textAlign: 'left', fontSize: 11, fontWeight: 700,
-                              letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)',
-                              background: 'rgba(255,255,255,0.02)',
-                            }}>{h}</th>
-                          ))}
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {[
-                          { factor: 'Mid Developer Rate', edmonton: '$90–$120/hr', calgary: '$95–$125/hr', toronto: '$110–$150/hr' },
-                          { factor: 'Senior Developer Rate', edmonton: '$120–$175/hr', calgary: '$125–$180/hr', toronto: '$150–$200+/hr' },
-                          { factor: 'Cost of Living', edmonton: 'Low (No prov. income tax)', calgary: 'Low (No prov. income tax)', toronto: 'High' },
-                          { factor: 'Developer Retention', edmonton: 'High (lower cost of living)', calgary: 'High', toronto: 'Moderate (high COL churn)' },
-                          { factor: 'AI Research', edmonton: 'World-class (Amii/UAlberta)', calgary: 'Strong (MILA presence)', toronto: 'Exceptional (Vector Inst.)' },
-                          { factor: 'Oil & Gas Domain', edmonton: 'Canada\'s best', calgary: 'Excellent', toronto: 'Limited' },
-                          { factor: 'Government Projects', edmonton: 'Provincial capital (prime)', calgary: 'Strong', toronto: 'Federal / Ontario focus' },
-                          { factor: 'AgriTech', edmonton: 'Leading (Olds / UAlberta)', calgary: 'Good', toronto: 'Limited' },
-                          { factor: 'SR&ED Credits', edmonton: 'Yes + AB 10% extra', calgary: 'Yes + AB 10% extra', toronto: 'Yes + ON 8% extra' },
-                        ].map((row, i) => (
-                          <tr key={i} style={{ borderBottom: '1px solid rgba(255,255,255,0.04)' }}>
-                            <td style={{ padding: '13px 16px', fontSize: 13, color: 'rgba(255,255,255,0.7)', fontWeight: 600 }}>{row.factor}</td>
-                            <td style={{ padding: '13px 16px', fontSize: 13, color: '#22c55e', fontWeight: 600 }}>{row.edmonton}</td>
-                            <td style={{ padding: '13px 16px', fontSize: 13, color: 'rgba(255,255,255,0.55)' }}>{row.calgary}</td>
-                            <td style={{ padding: '13px 16px', fontSize: 13, color: 'rgba(255,255,255,0.45)' }}>{row.toronto}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-
-                {/* Why Edmonton is Hidden Tech Hub */}
-                <div className="reveal" id="why-edmonton" style={{ marginBottom: 56 }}>
-                  <h2 style={{
-                    fontSize: 'clamp(1.4rem, 2.5vw, 1.9rem)', fontWeight: 700, color: '#ffffff',
-                    letterSpacing: '-0.03em', marginBottom: 8,
-                  }}>Why Edmonton is Canada&apos;s Hidden Tech Hub: 5 Reasons</h2>
-                  <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, marginBottom: 28 }}>
-                    The reasons Toronto and Vancouver get more headlines — but Edmonton increasingly wins on substance.
-                  </p>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
-                    {[
-                      {
-                        num: '01',
-                        title: 'Lower Cost of Living Means Better Talent Retention',
-                        desc: 'Edmonton has no provincial income tax and a cost of living 35–45% lower than Vancouver and 25–35% lower than Toronto. A senior developer earning $130K in Edmonton has more purchasing power than one earning $175K in Vancouver. This means Edmonton firms retain talent far longer — building institutional knowledge and senior team depth that high-churn Toronto agencies often lack.',
-                      },
-                      {
-                        num: '02',
-                        title: 'University of Alberta AI Research — World Top 10',
-                        desc: 'The University of Alberta\'s machine learning research program is ranked among the world\'s top 10 — ahead of most universities in the US. The Alberta Machine Intelligence Institute (Amii), one of Canada\'s three Pan-Canadian AI Institutes, is headquartered in Edmonton and gives local firms direct access to AI researchers, graduate talent, and research partnerships that most cities cannot replicate.',
-                      },
-                      {
-                        num: '03',
-                        title: 'Growing Startup Ecosystem with Lower Burn Rates',
-                        desc: 'Edmonton\'s startup ecosystem — anchored by Startup Edmonton, the Edmonton Unlimited accelerator, and University of Alberta entrepreneurship programs — is producing tech companies with meaningfully lower burn rates than Toronto or Vancouver equivalents. Lower office costs, lower developer salaries, and a growing investor community mean Edmonton startups reach product-market fit with less capital. Jobber built its first product in Edmonton for a fraction of what it would have cost in Toronto.',
-                      },
-                      {
-                        num: '04',
-                        title: 'Government Contracts — Provincial Capital Advantage',
-                        desc: 'Edmonton is Alberta\'s provincial capital and the seat of the Legislature, which means that the Government of Alberta\'s $2.4B digital transformation program primarily benefits Edmonton-based firms. Government technology contracts — which are long-term, stable, and increasingly sophisticated — give Edmonton\'s development ecosystem a reliable revenue base that Vancouver and Toronto firms compete for from a distance.',
-                      },
-                      {
-                        num: '05',
-                        title: 'Proximity to Resource Industries Driving Software Investment',
-                        desc: 'The oil and gas, agriculture, and mining sectors — all concentrated in Alberta — are undergoing the most significant digital transformation of any industries in Canada. Oil sands operators are deploying AI for predictive maintenance. Farmers are implementing precision agriculture platforms. Mining companies are digitalizing their safety and compliance systems. Edmonton-based firms are the natural first call for all of these engagements — giving them access to project budgets that dwarf what most consumer-tech firms encounter.',
-                      },
-                    ].map((r, i) => (
-                      <div key={i} style={{
-                        display: 'flex', gap: 24, padding: 28, borderRadius: 20,
-                        background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)',
-                      }}>
-                        <div style={{
-                          width: 44, height: 44, borderRadius: 12, flexShrink: 0,
-                          background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.15)',
-                          display: 'flex', alignItems: 'center', justifyContent: 'center',
-                          fontSize: 14, fontWeight: 800, color: '#22c55e',
-                        }}>{r.num}</div>
-                        <div>
-                          <p style={{ fontSize: 16, fontWeight: 700, color: '#ffffff', marginBottom: 8 }}>{r.title}</p>
-                          <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8, margin: 0 }}>{r.desc}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* FAQ */}
-                <div className="reveal" id="faq" style={{ marginBottom: 48 }}>
-                  <h2 style={{
-                    fontSize: 'clamp(1.5rem, 2.8vw, 2.2rem)', fontWeight: 700, color: '#ffffff',
-                    letterSpacing: '-0.03em', marginBottom: 8,
-                  }}>Frequently Asked Questions</h2>
-                  <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.4)', marginBottom: 28 }}>
-                    Common questions from businesses considering Edmonton-based software development.
-                  </p>
-                  {[
-                    {
-                      q: 'What does software development cost in Edmonton in 2026?',
-                      a: 'An MVP (5–8 features, one platform) built by an Edmonton development firm typically costs $40,000–$80,000 CAD. A mid-complexity app (10–15 features, backend API, admin dashboard) runs $80,000–$180,000 CAD. Enterprise-grade platforms with AI, real-time features, and multi-platform delivery start at $200,000 CAD. Codazz, Edmonton\'s leading development firm, charges $85–$145 CAD/hr — 20–35% below comparable Toronto agencies for equivalent quality.',
-                    },
-                    {
-                      q: 'Why choose an Edmonton software company over a Toronto one?',
-                      a: 'Three concrete advantages: (1) Cost — Edmonton rates are 20–30% lower than Toronto for equivalent seniority, with no provincial income tax increasing take-home pay for talent, which means better retention and more senior teams. (2) Domain expertise — if your project touches oil and gas, agriculture, government, or Alberta healthcare, no Toronto firm can match the domain depth of Edmonton-based teams. (3) Relationships — Edmonton firms build longer, more accountable client relationships because they operate in a market that rewards referrals and reputation over volume.',
-                    },
-                    {
-                      q: 'Does Codazz work with clients outside Edmonton and Alberta?',
-                      a: 'Yes — Codazz serves clients across Canada, the United States, the UAE, and the United Kingdom. Approximately 60% of Codazz\'s client base is outside Alberta. The Edmonton HQ provides cost-competitive rates and Canadian management standards; the Chandigarh engineering centre provides engineering depth and around-the-clock development capacity. International clients get the full benefit of this model with North American communication standards and IP protected under Canadian law.',
-                    },
-                    {
-                      q: 'What industries do Edmonton software companies specialize in?',
-                      a: 'Edmonton has particular depth in oil and gas software (field operations, SCADA, pipeline monitoring, environmental compliance), government digital services (Alberta is Canada\'s most ambitious province for digital government investment), agriculture technology (precision farming, crop management, IoT), and healthcare (clinical systems, telehealth, research informatics). Codazz additionally serves fintech, ecommerce, logistics, SaaS, and AI/ML clients globally.',
-                    },
-                    {
-                      q: 'How does Edmonton compare to Toronto for AI and ML development?',
-                      a: 'For AI and ML specifically, Edmonton punches above its weight dramatically. The University of Alberta\'s machine learning research program is world-ranked, and the Alberta Machine Intelligence Institute (Amii) in Edmonton is one of Canada\'s three national AI institutes. Codazz leverages this ecosystem directly — with AI/ML engineers trained in Edmonton and Chandigarh working on LLM integration, RAG pipelines, computer vision, and predictive analytics for North American and UAE clients. Toronto has the Vector Institute (also world-class), but Edmonton\'s AI talent is often available at rates 25–35% lower.',
-                    },
-                  ].map((faq, i) => (
-                    <div key={i} style={{
-                      background: 'rgba(255,255,255,0.015)', border: openFaq === i ? '1px solid rgba(34,197,94,0.2)' : '1px solid rgba(255,255,255,0.06)',
-                      borderRadius: 16, marginBottom: 12, overflow: 'hidden', transition: 'border-color 0.2s',
-                    }}>
-                      <button
-                        onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                        style={{
-                          width: '100%', padding: '20px 24px', background: 'transparent', border: 'none',
-                          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                          cursor: 'pointer', gap: 16, textAlign: 'left',
-                        }}
-                      >
-                        <span style={{ fontSize: 15, fontWeight: 700, color: '#ffffff', lineHeight: 1.4 }}>{faq.q}</span>
-                        <span style={{
-                          width: 28, height: 28, borderRadius: '50%', flexShrink: 0,
-                          background: openFaq === i ? 'rgba(34,197,94,0.15)' : 'rgba(255,255,255,0.05)',
-                          display: 'flex', alignItems: 'center', justifyContent: 'center',
-                          fontSize: 16, color: openFaq === i ? '#22c55e' : 'rgba(255,255,255,0.4)',
-                          transition: 'all 0.2s',
-                        }}>{openFaq === i ? '−' : '+'}</span>
-                      </button>
-                      {openFaq === i && (
-                        <div style={{ padding: '0 24px 20px' }}>
-                          <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8, margin: 0 }}>{faq.a}</p>
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
-
-              </article>
-
-              {/* SIDEBAR */}
-              <aside>
-                <div style={{ position: 'sticky', top: 100, display: 'flex', flexDirection: 'column', gap: 24 }}>
-
-                  {/* TOC */}
-                  <div style={{
-                    background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)',
-                    borderRadius: 20, padding: 24,
-                  }}>
-                    <p style={{
-                      fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                      color: 'rgba(255,255,255,0.25)', marginBottom: 16,
-                    }}>In This Article</p>
-                    <nav style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                      {[
-                        { href: '#edmonton-ecosystem', label: 'Edmonton Tech Ecosystem' },
-                        { href: '#edmonton-rates', label: 'Edmonton Dev Rates' },
-                        { href: '#key-takeaways', label: 'Key Takeaways' },
-                        { href: '#top-companies', label: 'Top 10 Companies' },
-                        { href: '#codazz', label: '#1 Codazz (Edmonton HQ)' },
-                        { href: '#industries', label: 'Industries Leading Digital Transformation' },
-                        { href: '#city-comparison', label: 'Edmonton vs Calgary vs Toronto' },
-                        { href: '#why-edmonton', label: 'Why Edmonton is Canada\'s Hidden Hub' },
-                        { href: '#faq', label: 'FAQ' },
-                      ].map((item) => (
-                        <a key={item.href} href={item.href} style={{
-                          fontSize: 13, color: 'rgba(255,255,255,0.4)', textDecoration: 'none',
-                          padding: '7px 10px', borderRadius: 8,
-                          transition: 'all 0.15s',
-                        }}
-                          onMouseEnter={e => {
-                            (e.currentTarget as HTMLAnchorElement).style.color = '#22c55e';
-                            (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(34,197,94,0.06)';
-                          }}
-                          onMouseLeave={e => {
-                            (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.4)';
-                            (e.currentTarget as HTMLAnchorElement).style.background = 'transparent';
-                          }}
-                        >{item.label}</a>
-                      ))}
-                    </nav>
-                  </div>
-
-                  {/* Rate Reference */}
-                  <div style={{
-                    background: 'rgba(34,197,94,0.04)', border: '1px solid rgba(34,197,94,0.12)',
-                    borderRadius: 20, padding: 24,
-                  }}>
-                    <p style={{
-                      fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                      color: '#22c55e', marginBottom: 16,
-                    }}>Edmonton Rate Reference (CAD/hr)</p>
-                    {[
-                      { label: 'Junior Developer', rate: '$70–$90' },
-                      { label: 'Mid-Level Developer', rate: '$90–$120' },
-                      { label: 'Senior Developer', rate: '$120–$175' },
-                      { label: 'AI / ML Engineer', rate: '$105–$185' },
-                      { label: 'Codazz (All roles)', rate: '$85–$145' },
-                    ].map((r, i) => (
-                      <div key={i} style={{
-                        display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-                        paddingBottom: i < 4 ? 10 : 0, marginBottom: i < 4 ? 10 : 0,
-                        borderBottom: i < 4 ? '1px solid rgba(255,255,255,0.04)' : 'none',
-                      }}>
-                        <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)' }}>{r.label}</span>
-                        <span style={{ fontSize: 12, fontWeight: 700, color: i === 4 ? '#22c55e' : 'rgba(255,255,255,0.7)' }}>{r.rate}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Author */}
-                  <div style={{
-                    background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)',
-                    borderRadius: 20, padding: 24,
-                  }}>
-                    <p style={{
-                      fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                      color: 'rgba(255,255,255,0.25)', marginBottom: 16,
-                    }}>About the Author</p>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
-                      <div style={{
-                        width: 44, height: 44, borderRadius: '50%',
-                        background: 'rgba(34,197,94,0.1)', border: '1px solid rgba(34,197,94,0.2)',
-                        display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        fontSize: 14, fontWeight: 700, color: '#22c55e', flexShrink: 0,
-                      }}>RM</div>
-                      <div>
-                        <p style={{ fontSize: 14, fontWeight: 600, color: '#ffffff', margin: 0 }}>Raman Makkar</p>
-                        <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', margin: 0 }}>CEO, Codazz — Edmonton, AB</p>
-                      </div>
-                    </div>
-                    <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)', lineHeight: 1.7, margin: 0 }}>
-                      Raman Makkar is the founder and CEO of Codazz, headquartered in Edmonton, Alberta. He has guided 500+ product launches across mobile, SaaS, AI, and web for clients across Canada, the US, and the UAE.
+                  {/* 1. Tech Scene */}
+                  <section id="edmonton-tech-scene" style={{ marginBottom: 72 }}>
+                    <h2 className="reveal" style={{ fontSize: 'clamp(1.5rem,3vw,2rem)', fontWeight: 800, color: '#fff', marginBottom: 16 }}>Edmonton's Tech Scene in 2026</h2>
+                    <p className="reveal" style={{ color: 'rgba(255,255,255,0.65)', marginBottom: 20, fontSize: 16, lineHeight: 1.8 }}>
+                      Edmonton is no longer a quiet energy-sector city with a small tech scene. It is a legitimate Canadian technology hub experiencing the fastest tech employment growth of any major Canadian city for three consecutive years. The combination of University of Alberta's globally recognized AI research program, competitive labour costs relative to Toronto and Vancouver, and a growing ecosystem of success stories (Jobber, Benevity, Granify) is attracting both venture capital and enterprise development mandates.
                     </p>
-                  </div>
-
-                  {/* Related Posts */}
-                  <div style={{
-                    background: 'rgba(255,255,255,0.015)', border: '1px solid rgba(255,255,255,0.06)',
-                    borderRadius: 20, padding: 24,
-                  }}>
-                    <p style={{
-                      fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                      color: 'rgba(255,255,255,0.25)', marginBottom: 16,
-                    }}>Related Articles</p>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-                      {relatedPosts.map(post => (
-                        <Link key={post.slug} href={`/blog/${post.slug}`} style={{
-                          textDecoration: 'none', display: 'block', padding: '14px',
-                          borderRadius: 12, border: '1px solid rgba(255,255,255,0.03)',
-                          background: 'transparent', transition: 'all 0.2s',
-                        }}
-                          onMouseEnter={e => {
-                            (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(34,197,94,0.15)';
-                            (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(34,197,94,0.03)';
-                          }}
-                          onMouseLeave={e => {
-                            (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(255,255,255,0.03)';
-                            (e.currentTarget as HTMLAnchorElement).style.background = 'transparent';
-                          }}
-                        >
-                          <p style={{ fontSize: 11, color: '#22c55e', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', margin: '0 0 6px' }}>{post.category}</p>
-                          <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.7)', lineHeight: 1.4, margin: '0 0 8px', fontWeight: 600 }}>{post.title}</p>
-                          <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.25)', margin: 0 }}>{post.readTime} read</p>
-                        </Link>
+                    <p className="reveal" style={{ color: 'rgba(255,255,255,0.65)', marginBottom: 32, fontSize: 16, lineHeight: 1.8 }}>
+                      The Alberta Advantage in 2026 is primarily economic: no provincial income tax on personal income below $148,269, the lowest corporate tax rate among Canadian provinces (8%), and developer salaries that run 30–40% below Toronto and Vancouver market rates for equivalent skill levels. For startups and scale-ups building software products, Edmonton offers a compelling combination of top-tier engineering talent at a significant cost advantage.
+                    </p>
+                    <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(220px,1fr))', gap: 16, marginBottom: 32 }}>
+                      {[
+                        { icon: '🎓', title: 'University of Alberta', desc: "UofA's CS department is consistently ranked top-5 in Canada and top-50 globally. The Amii (Alberta Machine Intelligence Institute) has produced research cited by Google, Meta, and OpenAI. 3,500+ CS students graduate annually from UofA alone." },
+                        { icon: '💼', title: 'Talent Pipeline', desc: "NAIT and MacEwan produce 2,000+ tech graduates annually. NORCAT (Northern Alberta Institute of Technology) launched a Digital Technology program in 2023. Combined with UofA, Edmonton produces more engineering graduates per capita than any Canadian city except Waterloo." },
+                        { icon: '🏗️', title: 'Tech Ecosystem', desc: "Startup Edmonton (pre-seed accelerator), TEC Edmonton (university commercialization), and Startup TNT (angel investment network) provide the full stack of startup support infrastructure. The Ice District's WeWork hosts 40+ Edmonton tech startups." },
+                        { icon: '🌐', title: 'Remote-First Adoption', desc: "Edmonton companies were early adopters of remote-first culture, giving them access to global talent while retaining local team culture. Codazz, Jobber, and Granify all operate hybrid/remote models, attracting senior engineers from across Canada and internationally." },
+                      ].map((item, i) => (
+                        <div key={i} className="reveal card-hover" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 18, padding: 22 }}>
+                          <div style={{ fontSize: 26, marginBottom: 10 }}>{item.icon}</div>
+                          <h3 style={{ fontSize: 14, fontWeight: 700, color: '#fff', marginBottom: 8 }}>{item.title}</h3>
+                          <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)', margin: 0, lineHeight: 1.6 }}>{item.desc}</p>
+                        </div>
                       ))}
+                    </div>
+                  </section>
+
+                  {/* 2. Top Companies */}
+                  <section id="top-companies" style={{ marginBottom: 72 }}>
+                    <h2 className="reveal" style={{ fontSize: 'clamp(1.5rem,3vw,2rem)', fontWeight: 800, color: '#fff', marginBottom: 8 }}>Top 10 Software Development Companies in Edmonton (2026)</h2>
+                    <p className="reveal" style={{ color: 'rgba(255,255,255,0.65)', marginBottom: 40, fontSize: 16, lineHeight: 1.8 }}>
+                      This list covers both software development firms available for hire and notable product companies headquartered in Edmonton that define the city's tech reputation. Rankings for development firms prioritize portfolio quality, client retention, and domain expertise over raw size.
+                    </p>
+
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+                      {companies.map((co, i) => (
+                        <div key={i} className="reveal card-hover" style={{ background: 'rgba(255,255,255,0.02)', border: `1px solid ${co.accentColor}22`, borderRadius: 24, padding: 28, position: 'relative', overflow: 'hidden' }}>
+                          {/* Number badge */}
+                          <div style={{ position: 'absolute', top: 24, right: 24, width: 40, height: 40, borderRadius: '50%', background: `${co.bgColor}0.12)`, border: `1px solid ${co.accentColor}30`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 16, fontWeight: 900, color: co.accentColor }}>
+                            {co.num}
+                          </div>
+
+                          <div style={{ display: 'flex', gap: 16, alignItems: 'flex-start', marginBottom: 16 }}>
+                            <div style={{ fontSize: 36 }}>{co.emoji}</div>
+                            <div style={{ flex: 1, minWidth: 0, paddingRight: 56 }}>
+                              <h3 style={{ fontSize: 20, fontWeight: 800, color: '#fff', margin: '0 0 4px' }}>{co.name}</h3>
+                              <div style={{ fontSize: 13, color: co.accentColor, fontWeight: 600 }}>{co.category}</div>
+                            </div>
+                          </div>
+
+                          <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.65)', lineHeight: 1.7, marginBottom: 20 }}>{co.highlight}</p>
+
+                          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(160px,1fr))', gap: 12, marginBottom: 20 }}>
+                            {[
+                              { label: 'Headquarters', value: co.hq },
+                              { label: 'Founded', value: co.founded },
+                              { label: 'Team Size', value: co.team },
+                              { label: 'Rate Range', value: co.rates },
+                            ].map((stat, j) => (
+                              <div key={j} style={{ background: 'rgba(255,255,255,0.03)', borderRadius: 10, padding: '10px 14px' }}>
+                                <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.4)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 4 }}>{stat.label}</div>
+                                <div style={{ fontSize: 13, color: '#fff', fontWeight: 600, lineHeight: 1.3 }}>{stat.value}</div>
+                              </div>
+                            ))}
+                          </div>
+
+                          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                            {co.badges.map((badge, j) => (
+                              <span key={j} style={{ fontSize: 11, fontWeight: 600, color: co.accentColor, background: `${co.bgColor}0.1)`, border: `1px solid ${co.accentColor}25`, padding: '4px 12px', borderRadius: 20 }}>{badge}</span>
+                            ))}
+                          </div>
+
+                          {co.num === 1 && (
+                            <div style={{ marginTop: 20, padding: '12px 16px', background: 'rgba(34,197,94,0.08)', borderRadius: 12, border: '1px solid rgba(34,197,94,0.2)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
+                              <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.7)' }}>Edmonton HQ — available for new projects</span>
+                              <Link href="/contact" style={{ fontSize: 13, fontWeight: 700, color: '#000', background: G, padding: '8px 20px', borderRadius: 8, textDecoration: 'none' }}>Get a Quote</Link>
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </section>
+
+                  {/* 3. Why Edmonton */}
+                  <section id="why-edmonton" style={{ marginBottom: 72 }}>
+                    <h2 className="reveal" style={{ fontSize: 'clamp(1.5rem,3vw,2rem)', fontWeight: 800, color: '#fff', marginBottom: 16 }}>Why Build Software in Edmonton?</h2>
+                    <p className="reveal" style={{ color: 'rgba(255,255,255,0.65)', marginBottom: 32, fontSize: 16, lineHeight: 1.8 }}>
+                      When sourcing a software development partner, location matters for timezone alignment, legal jurisdiction, IP ownership, and cultural fit. Edmonton checks every box for North American clients — with the added advantage of Alberta's unique economic structure.
+                    </p>
+                    <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: 20, marginBottom: 32 }}>
+                      {[
+                        {
+                          icon: '💵',
+                          title: 'The Cost Advantage',
+                          color: G,
+                          points: [
+                            'Senior developers: $95–$130K CAD/yr vs $140–$180K in Toronto',
+                            'No provincial sales tax (PST) on business services',
+                            'Alberta corporate tax: 8% (lowest in Canada)',
+                            'Office space 45% cheaper than Toronto/Vancouver',
+                            'CAD/USD exchange delivers additional 25–30% cost benefit for US clients',
+                          ]
+                        },
+                        {
+                          icon: '⏰',
+                          title: 'Timezone & Collaboration',
+                          color: '#3b82f6',
+                          points: [
+                            'Mountain Time (UTC-7) — overlaps US Pacific and Central',
+                            'Daily overlap with US East Coast (5–6 hours)',
+                            'European clients: 8am Edmonton = 3pm London',
+                            'Same legal/regulatory framework as all Canadian provinces',
+                            'English-first communication, no translation friction',
+                          ]
+                        },
+                        {
+                          icon: '🔒',
+                          title: 'IP & Legal Protections',
+                          color: '#f59e0b',
+                          points: [
+                            'Canadian IP law strongly protects client ownership',
+                            'PIPEDA/CPPA data privacy compliance built-in',
+                            'No GDPR exposure for pure North American data',
+                            'Canadian courts enforce IP agreements reliably',
+                            'US-Canada USMCA covers software services and IP',
+                          ]
+                        },
+                      ].map((item, i) => (
+                        <div key={i} className="reveal card-hover" style={{ background: 'rgba(255,255,255,0.03)', border: `1px solid ${item.color}22`, borderRadius: 20, padding: 26 }}>
+                          <div style={{ fontSize: 28, marginBottom: 12 }}>{item.icon}</div>
+                          <h3 style={{ fontSize: 16, fontWeight: 700, color: '#fff', marginBottom: 16 }}>{item.title}</h3>
+                          <ul style={{ margin: 0, paddingLeft: 0, listStyle: 'none' }}>
+                            {item.points.map((p, j) => (
+                              <li key={j} style={{ display: 'flex', gap: 8, marginBottom: 8 }}>
+                                <span style={{ color: item.color, fontWeight: 700, flexShrink: 0 }}>✓</span>
+                                <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.65)' }}>{p}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="reveal" style={{ background: 'rgba(34,197,94,0.06)', border: '1px solid rgba(34,197,94,0.18)', borderRadius: 16, padding: 20 }}>
+                      <strong style={{ color: G, display: 'block', marginBottom: 8 }}>Edmonton vs Toronto vs Vancouver</strong>
+                      <p style={{ color: 'rgba(255,255,255,0.65)', margin: 0, fontSize: 14, lineHeight: 1.7 }}>
+                        Toronto dominates Canadian tech by headcount but not by value per dollar. For equivalent senior engineering quality, Edmonton firms typically charge 30–40% less than Toronto counterparts — primarily because Edmonton engineers earn less (lower cost of living) and Edmonton firms have lower overhead (office, payroll taxes, etc.). Vancouver sits between the two. For US clients comparing nearshore options, Edmonton often outperforms Mexico City or Medellin on IP protection and timezone alignment.
+                      </p>
+                    </div>
+                  </section>
+
+                  {/* 4. Cost Guide */}
+                  <section id="cost-guide" style={{ marginBottom: 72 }}>
+                    <h2 className="reveal" style={{ fontSize: 'clamp(1.5rem,3vw,2rem)', fontWeight: 800, color: '#fff', marginBottom: 16 }}>Software Development Cost Guide — Edmonton Market (2026)</h2>
+                    <p className="reveal" style={{ color: 'rgba(255,255,255,0.65)', marginBottom: 32, fontSize: 16, lineHeight: 1.8 }}>
+                      Edmonton development rates vary significantly by company type (product studio vs IT consulting firm vs freelancer) and engagement model (fixed-price project vs time-and-materials vs dedicated team). Here is a comprehensive breakdown of what you should expect to pay in 2026.
+                    </p>
+
+                    {/* Hourly Rates Table */}
+                    <h3 className="reveal" style={{ fontSize: 16, fontWeight: 700, color: '#fff', marginBottom: 16 }}>Hourly Rates by Role & Experience</h3>
+                    <div className="reveal" style={{ overflowX: 'auto', marginBottom: 40 }}>
+                      <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14, minWidth: 560 }}>
+                        <thead>
+                          <tr style={{ background: 'rgba(34,197,94,0.08)', borderBottom: '1px solid rgba(34,197,94,0.2)' }}>
+                            {['Role', 'Junior (0–3 yrs)', 'Mid (3–6 yrs)', 'Senior (6+ yrs)', 'Lead/Architect'].map(h => (
+                              <th key={h} style={{ padding: '12px 14px', textAlign: 'left', color: '#fff', fontWeight: 700, fontSize: 13 }}>{h}</th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {[
+                            ['Full-Stack Developer', '$65–$85', '$90–$115', '$120–$150', '$145–$185'],
+                            ['Mobile (iOS/Android)', '$70–$90', '$95–$125', '$125–$155', '$150–$200'],
+                            ['React Native / Flutter', '$65–$85', '$90–$120', '$120–$150', '$145–$185'],
+                            ['DevOps / Cloud Architect', '$75–$95', '$100–$130', '$130–$165', '$165–$210'],
+                            ['AI/ML Engineer', '$90–$110', '$115–$145', '$145–$185', '$185–$240'],
+                            ['UI/UX Designer', '$55–$75', '$80–$105', '$105–$135', '$130–$170'],
+                            ['QA / Test Automation', '$55–$70', '$75–$95', '$95–$120', '$115–$145'],
+                            ['Product Manager', '$70–$90', '$95–$125', '$125–$160', '$155–$200'],
+                          ].map((row, i) => (
+                            <tr key={i} style={{ borderBottom: '1px solid rgba(255,255,255,0.04)', background: i % 2 === 0 ? 'transparent' : 'rgba(255,255,255,0.015)' }}>
+                              {row.map((cell, j) => (
+                                <td key={j} style={{ padding: '11px 14px', color: j === 0 ? G : 'rgba(255,255,255,0.7)', fontWeight: j === 0 ? 700 : 400 }}>{cell} CAD</td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+
+                    {/* Project Cost Tiers */}
+                    <h3 className="reveal" style={{ fontSize: 16, fontWeight: 700, color: '#fff', marginBottom: 16 }}>Project Cost Tiers</h3>
+                    <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(240px,1fr))', gap: 20, marginBottom: 32 }}>
+                      {[
+                        {
+                          tier: 'MVP / Prototype',
+                          range: '$35K – $85K CAD',
+                          timeline: '6–14 weeks',
+                          color: G,
+                          includes: ['Single platform (web or mobile)', '3–5 core features', 'Basic admin dashboard', 'Stripe payment integration', 'User auth + profiles', 'App Store / web deployment']
+                        },
+                        {
+                          tier: 'Full Product Build',
+                          range: '$85K – $250K CAD',
+                          timeline: '3–8 months',
+                          color: '#3b82f6',
+                          popular: true,
+                          includes: ['iOS + Android + Web', 'Full feature set', 'API integrations (3rd party)', 'Push notifications', 'Analytics dashboard', 'DevOps / CI-CD pipeline', '3 months post-launch support']
+                        },
+                        {
+                          tier: 'Enterprise Platform',
+                          range: '$250K – $1M+ CAD',
+                          timeline: '8–18 months',
+                          color: '#8b5cf6',
+                          includes: ['Multi-tenant SaaS architecture', 'Role-based access control', 'Advanced AI/ML features', 'High-availability infrastructure', 'SOC 2 / security review', 'Custom integrations', 'Dedicated team model']
+                        },
+                      ].map((tier, i) => (
+                        <div key={i} className="reveal card-hover" style={{ background: 'rgba(255,255,255,0.03)', border: `1px solid ${tier.color}33`, borderRadius: 22, padding: 26, position: 'relative' }}>
+                          {tier.popular && (
+                            <div style={{ position: 'absolute', top: -12, left: '50%', transform: 'translateX(-50%)', background: '#3b82f6', color: '#fff', fontSize: 11, fontWeight: 700, padding: '4px 16px', borderRadius: 20, whiteSpace: 'nowrap' }}>Most Common</div>
+                          )}
+                          <div style={{ fontSize: 11, fontWeight: 700, color: tier.color, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 8 }}>{tier.tier}</div>
+                          <div style={{ fontSize: 22, fontWeight: 900, color: '#fff', marginBottom: 4 }}>{tier.range}</div>
+                          <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', marginBottom: 20 }}>{tier.timeline}</div>
+                          <ul style={{ margin: 0, paddingLeft: 0, listStyle: 'none' }}>
+                            {tier.includes.map((f, j) => (
+                              <li key={j} style={{ display: 'flex', gap: 8, marginBottom: 8 }}>
+                                <span style={{ color: tier.color, fontWeight: 700 }}>✓</span>
+                                <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.65)' }}>{f}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Engagement Models */}
+                    <h3 className="reveal" style={{ fontSize: 16, fontWeight: 700, color: '#fff', marginBottom: 16 }}>Engagement Models Compared</h3>
+                    <div className="reveal" style={{ overflowX: 'auto' }}>
+                      <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 14, minWidth: 560 }}>
+                        <thead>
+                          <tr style={{ background: 'rgba(34,197,94,0.08)', borderBottom: '1px solid rgba(34,197,94,0.2)' }}>
+                            {['Model', 'Best For', 'Budget Control', 'Flexibility', 'Risk'].map(h => (
+                              <th key={h} style={{ padding: '12px 14px', textAlign: 'left', color: '#fff', fontWeight: 700, fontSize: 13 }}>{h}</th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {[
+                            ['Fixed Price', 'Well-defined MVP', 'High — capped budget', 'Low — scope locked', 'Scope creep risk'],
+                            ['Time & Materials', 'Evolving product roadmap', 'Medium — monthly billing', 'High — pivot freely', 'Budget overrun risk'],
+                            ['Dedicated Team', 'Long-term product build', 'Predictable monthly', 'Very high', 'Low if managed well'],
+                            ['Staff Augmentation', 'Filling skill gaps', 'Variable', 'High', 'Management overhead'],
+                          ].map((row, i) => (
+                            <tr key={i} style={{ borderBottom: '1px solid rgba(255,255,255,0.04)', background: i % 2 === 0 ? 'transparent' : 'rgba(255,255,255,0.015)' }}>
+                              {row.map((cell, j) => (
+                                <td key={j} style={{ padding: '11px 14px', color: j === 0 ? G : 'rgba(255,255,255,0.7)', fontWeight: j === 0 ? 700 : 400 }}>{cell}</td>
+                              ))}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </section>
+
+                  {/* 5. How to Choose */}
+                  <section id="how-to-choose" style={{ marginBottom: 72 }}>
+                    <h2 className="reveal" style={{ fontSize: 'clamp(1.5rem,3vw,2rem)', fontWeight: 800, color: '#fff', marginBottom: 16 }}>How to Choose a Software Development Company in Edmonton</h2>
+                    <p className="reveal" style={{ color: 'rgba(255,255,255,0.65)', marginBottom: 32, fontSize: 16, lineHeight: 1.8 }}>
+                      Selecting a development partner is one of the highest-leverage decisions a startup or growth company makes. The wrong choice costs 6–18 months and $50K–$500K in rework. The right criteria filter out 90% of unsuitable vendors before a single proposal is written.
+                    </p>
+                    <div className="reveal" style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+                      {[
+                        {
+                          num: '01',
+                          title: 'Verify relevant portfolio — not just case studies',
+                          desc: "Ask for GitHub repos, live app links, or direct references from 2–3 clients in your industry vertical. Case studies on a website are marketing. Code quality and shipped product is reality. If a firm won't share a live product reference, walk away."
+                        },
+                        {
+                          num: '02',
+                          title: 'Meet the actual developers, not just the sales team',
+                          desc: "Many Edmonton consulting firms use senior engineers for pitches and junior engineers for delivery. Request a technical discovery call with the specific developers who will work on your project. Assess their English communication, problem-solving approach, and technology opinions."
+                        },
+                        {
+                          num: '03',
+                          title: 'Clarify IP ownership in writing before signing',
+                          desc: "Every software development contract must explicitly state that all code, designs, and intellectual property transfer to the client upon payment. Without this clause, the development firm may technically retain ownership of your product. Standard in reputable Edmonton firms — a red flag if they resist it."
+                        },
+                        {
+                          num: '04',
+                          title: 'Require agile delivery with fortnightly demos',
+                          desc: "Avoid firms that propose a 6-month waterfall build with a single delivery at the end. Insist on 2-week sprint cycles with demo calls, access to a staging environment, and the ability to reprioritize features between sprints. This is the single biggest predictor of project success."
+                        },
+                        {
+                          num: '05',
+                          title: 'Clarify post-launch support and knowledge transfer',
+                          desc: "A product at launch is 30% of the work. What happens when you need a bug fix 8 months later? Ensure your contract includes a minimum 3-month post-launch support period, access to all code repositories, full documentation, and clear knowledge transfer to your internal team."
+                        },
+                        {
+                          num: '06',
+                          title: 'Request a fixed-price discovery sprint first',
+                          desc: "Before committing to a $100K+ build, ask for a 2-week paid discovery sprint ($5K–$15K) where the team produces a detailed technical specification, architecture diagram, and refined project estimate. This reveals team quality before major commitment and reduces estimate error by 60%."
+                        },
+                      ].map((item, i) => (
+                        <div key={i} className="reveal" style={{ display: 'flex', gap: 20, background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 18, padding: 24 }}>
+                          <div style={{ fontSize: 28, fontWeight: 900, color: G, opacity: 0.4, flexShrink: 0, lineHeight: 1 }}>{item.num}</div>
+                          <div>
+                            <h3 style={{ fontSize: 15, fontWeight: 700, color: '#fff', marginBottom: 8 }}>{item.title}</h3>
+                            <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', margin: 0, lineHeight: 1.6 }}>{item.desc}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </section>
+
+                  {/* 6. Tech Stacks */}
+                  <section id="tech-stack" style={{ marginBottom: 72 }}>
+                    <h2 className="reveal" style={{ fontSize: 'clamp(1.5rem,3vw,2rem)', fontWeight: 800, color: '#fff', marginBottom: 16 }}>Popular Tech Stacks Used by Edmonton Companies</h2>
+                    <p className="reveal" style={{ color: 'rgba(255,255,255,0.65)', marginBottom: 32, fontSize: 16, lineHeight: 1.8 }}>
+                      Edmonton's software development ecosystem covers the full stack of modern technologies. Here are the most commonly deployed stacks by project type in 2026.
+                    </p>
+                    <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(260px,1fr))', gap: 20 }}>
+                      {[
+                        {
+                          type: 'Mobile Apps',
+                          color: G,
+                          stacks: [
+                            { name: 'React Native', desc: 'Cross-platform iOS + Android — 85% of new mobile builds at Codazz' },
+                            { name: 'Flutter', desc: "Google's Dart-based cross-platform framework — fast growing in 2025–2026" },
+                            { name: 'Swift / Kotlin', desc: 'Native iOS and Android for performance-critical applications' },
+                          ]
+                        },
+                        {
+                          type: 'Web Applications',
+                          color: '#3b82f6',
+                          stacks: [
+                            { name: 'Next.js / React', desc: 'Default stack for SaaS web apps — SSR, SEO-friendly, Vercel-deployable' },
+                            { name: 'Node.js + TypeScript', desc: 'API and backend services — used in 70% of Edmonton web projects' },
+                            { name: 'Laravel / PHP', desc: 'Mature ecosystem for content-heavy and ecommerce platforms' },
+                          ]
+                        },
+                        {
+                          type: 'Cloud & Infrastructure',
+                          color: '#f59e0b',
+                          stacks: [
+                            { name: 'AWS', desc: 'Preferred cloud for most Edmonton startups and scale-ups' },
+                            { name: 'Azure', desc: 'Dominant in enterprise and government contracts (Arcurve, Infosys)' },
+                            { name: 'Terraform + Docker + K8s', desc: 'Infrastructure-as-code standard for production Edmonton builds' },
+                          ]
+                        },
+                        {
+                          type: 'AI & Data',
+                          color: '#8b5cf6',
+                          stacks: [
+                            { name: 'Python + FastAPI', desc: 'ML model serving and AI API layer — Codazz and Granify stack' },
+                            { name: 'OpenAI / Claude APIs', desc: 'LLM integration for product AI features (chat, summarization, agents)' },
+                            { name: 'PostgreSQL + Supabase', desc: 'Vector-capable relational database for AI-augmented SaaS products' },
+                          ]
+                        },
+                      ].map((group, i) => (
+                        <div key={i} className="reveal card-hover" style={{ background: 'rgba(255,255,255,0.03)', border: `1px solid ${group.color}20`, borderRadius: 20, padding: 24 }}>
+                          <div style={{ fontSize: 13, fontWeight: 700, color: group.color, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 16 }}>{group.type}</div>
+                          <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                            {group.stacks.map((s, j) => (
+                              <div key={j} style={{ borderBottom: j < group.stacks.length - 1 ? '1px solid rgba(255,255,255,0.05)' : 'none', paddingBottom: j < group.stacks.length - 1 ? 12 : 0 }}>
+                                <div style={{ fontSize: 14, fontWeight: 600, color: '#fff', marginBottom: 4 }}>{s.name}</div>
+                                <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', lineHeight: 1.5 }}>{s.desc}</div>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </section>
+
+                  {/* 7. Talent Pool */}
+                  <section id="talent-pool" style={{ marginBottom: 72 }}>
+                    <h2 className="reveal" style={{ fontSize: 'clamp(1.5rem,3vw,2rem)', fontWeight: 800, color: '#fff', marginBottom: 16 }}>Edmonton Software Engineering Talent Pool</h2>
+                    <p className="reveal" style={{ color: 'rgba(255,255,255,0.65)', marginBottom: 32, fontSize: 16, lineHeight: 1.8 }}>
+                      Edmonton's engineering talent pool is deep relative to the city's size, driven by three university engineering programs, two polytechnic institutions, and significant immigration of senior engineers from India, Ukraine, and Southeast Asia who settle in Alberta for its quality of life and immigration pathways.
+                    </p>
+                    <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(220px,1fr))', gap: 16, marginBottom: 32 }}>
+                      {[
+                        { institution: 'University of Alberta', program: 'Computing Science (BSc/MSc/PhD)', graduates: '1,200+ per year', strength: '#1 in Canada for AI/ML research' },
+                        { institution: 'NAIT', program: 'Computer Engineering Technology', graduates: '800+ per year', strength: 'Strongest industry placement in AB' },
+                        { institution: 'MacEwan University', program: 'Computer Science (BSc)', graduates: '300+ per year', strength: 'Strong co-op placement program' },
+                        { institution: 'Athabasca University', program: 'Computing & Info Systems (online)', graduates: '600+ per year', strength: 'Canada largest online CS program' },
+                      ].map((inst, i) => (
+                        <div key={i} className="reveal" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 18, padding: 22 }}>
+                          <div style={{ fontSize: 13, fontWeight: 700, color: G, marginBottom: 8 }}>{inst.institution}</div>
+                          <div style={{ fontSize: 13, color: '#fff', fontWeight: 500, marginBottom: 8 }}>{inst.program}</div>
+                          <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', marginBottom: 8 }}>{inst.graduates}</div>
+                          <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', fontStyle: 'italic' }}>{inst.strength}</div>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(240px,1fr))', gap: 16 }}>
+                      {[
+                        { icon: '🌍', title: 'Immigration & International Talent', desc: 'Alberta Advantage Immigration Program (AAIP) fast-tracks tech workers. Edmonton has the highest per-capita immigration of software engineers outside of Toronto and Vancouver. Indian, Ukrainian, and Filipino engineering communities are strong and well-established.' },
+                        { icon: '💼', title: 'Salary Benchmarks 2026', desc: 'Junior developer: $65–$80K CAD. Mid-level: $90–$115K CAD. Senior: $120–$155K CAD. Staff engineer: $150–$185K CAD. ML/AI engineer premium: +20–30% over equivalent backend role. All figures 25–35% below Toronto equivalent.' },
+                        { icon: '🤝', title: 'Developer Communities', desc: 'Edmonton JS (JavaScript meetup, 800+ members), Edmonton Python User Group, Edmonton .NET, and AI Edmonton run active monthly events. FounderCity connects Edmonton startup builders. HackerNest Edmonton runs quarterly tech social events.' },
+                      ].map((item, i) => (
+                        <div key={i} className="reveal card-hover" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 18, padding: 22 }}>
+                          <div style={{ fontSize: 26, marginBottom: 10 }}>{item.icon}</div>
+                          <h3 style={{ fontSize: 14, fontWeight: 700, color: '#fff', marginBottom: 8 }}>{item.title}</h3>
+                          <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)', margin: 0, lineHeight: 1.6 }}>{item.desc}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </section>
+
+                  {/* 8. Industries */}
+                  <section id="industries" style={{ marginBottom: 72 }}>
+                    <h2 className="reveal" style={{ fontSize: 'clamp(1.5rem,3vw,2rem)', fontWeight: 800, color: '#fff', marginBottom: 16 }}>Key Industry Verticals in Edmonton Tech</h2>
+                    <p className="reveal" style={{ color: 'rgba(255,255,255,0.65)', marginBottom: 32, fontSize: 16, lineHeight: 1.8 }}>
+                      Edmonton's software development ecosystem has deep expertise in specific industry verticals driven by the local economy. These verticals represent where Edmonton firms have domain knowledge competitors in Toronto or Vancouver typically lack.
+                    </p>
+                    <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(240px,1fr))', gap: 16 }}>
+                      {[
+                        {
+                          icon: '⚡',
+                          title: 'Energy & Oil Sands Tech',
+                          color: '#fbbf24',
+                          desc: "Edmonton is the operational hub of Canada's oil sands industry. Local firms have deep expertise in SCADA systems, digital oilfield software, pipeline monitoring, and upstream production optimization. A differentiator unmatched by any other Canadian tech city.",
+                          companies: 'Nexen Digital, Encana (Ovintiv), Pembina Pipeline'
+                        },
+                        {
+                          icon: '🏥',
+                          title: 'Health Tech & MedTech',
+                          color: '#f472b6',
+                          desc: "Alberta Health Services (AHS) is one of Canada's largest healthcare organizations with an ambitious digital health agenda. Edmonton firms build EMR integrations, patient portal software, clinical decision support tools, and telehealth platforms with AHS compliance built in.",
+                          companies: 'Vivante Health, Symplr, DragonWave (legacy)'
+                        },
+                        {
+                          icon: '🌾',
+                          title: 'AgriTech',
+                          color: G,
+                          desc: "Western Canada's $50B+ agriculture sector is one of Edmonton's most underappreciated tech markets. Precision agriculture software, crop management platforms, grain trading apps, and farm equipment telematics are all active development categories with strong local clients.",
+                          companies: 'Trimble Agriculture, Decisive Farming, Farmers Edge'
+                        },
+                        {
+                          icon: '🏛️',
+                          title: 'Government & Public Sector',
+                          color: '#60a5fa',
+                          desc: "Alberta's provincial government and City of Edmonton are major software procurement clients. Arcurve and Infosys Edmonton hold significant government contracts. New procurement reform initiatives in 2024–2026 have opened contracts to smaller Edmonton-based vendors.",
+                          companies: 'Service Alberta, City of Edmonton IT, AHS Digital'
+                        },
+                        {
+                          icon: '📦',
+                          title: 'Logistics & Supply Chain',
+                          color: '#fb923c',
+                          desc: "Edmonton's position as the gateway to Northern Canada creates a natural logistics tech cluster. Trucking management software, freight brokerage platforms, cold-chain monitoring, and last-mile delivery optimization are active development categories with local operators as clients.",
+                          companies: 'Day & Ross, TransX, Bison Transport (IT divisions)'
+                        },
+                        {
+                          icon: '🛍️',
+                          title: 'Retail & E-Commerce',
+                          color: '#a78bfa',
+                          desc: "West Edmonton Mall — the largest mall in North America — anchors a retail tech cluster. Omnichannel retail platforms, loyalty program apps, inventory management SaaS, and retail analytics tools have a natural client base and pilot market in Edmonton's retail ecosystem.",
+                          companies: 'Triple Five Group, The Brick, SportChek (FGL Sports)'
+                        },
+                      ].map((item, i) => (
+                        <div key={i} className="reveal card-hover" style={{ background: 'rgba(255,255,255,0.03)', border: `1px solid ${item.color}20`, borderRadius: 20, padding: 24 }}>
+                          <div style={{ fontSize: 28, marginBottom: 10 }}>{item.icon}</div>
+                          <h3 style={{ fontSize: 15, fontWeight: 700, color: '#fff', marginBottom: 8 }}>{item.title}</h3>
+                          <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)', marginBottom: 12, lineHeight: 1.6 }}>{item.desc}</p>
+                          <div style={{ fontSize: 11, color: item.color, fontWeight: 600 }}>Key players: {item.companies}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </section>
+
+                  {/* 9. FAQ */}
+                  <section id="faq" style={{ marginBottom: 72 }}>
+                    <h2 className="reveal" style={{ fontSize: 'clamp(1.5rem,3vw,2rem)', fontWeight: 800, color: '#fff', marginBottom: 32 }}>Frequently Asked Questions</h2>
+                    {[
+                      {
+                        q: 'Who is the #1 software development company in Edmonton in 2026?',
+                        a: "Codazz is Edmonton's top-rated product-focused software development studio for startups and growth-stage companies needing mobile apps, AI-powered SaaS platforms, and custom web applications. Founded by Raman Makkar, Codazz operates from its Edmonton headquarters with an engineering delivery centre in Chandigarh, India. For enterprise IT consulting, Arcurve and Infosys Edmonton are the dominant players. For internal product company quality, Jobber is Edmonton's most impressive software organization."
+                      },
+                      {
+                        q: 'How much does software development cost in Edmonton vs Toronto?',
+                        a: "Edmonton development rates typically run 30–40% below Toronto equivalents for the same engineering quality level. A senior full-stack developer in Edmonton costs $120–$150 CAD/hr vs $155–$200 CAD/hr in Toronto. On a $300K project, this difference is $60K–$90K in savings. The gap is driven by Edmonton's lower cost of living, no provincial income tax, and a less competitive tech labour market than the Toronto-Waterloo corridor."
+                      },
+                      {
+                        q: 'Is Edmonton a good place to hire software engineers?',
+                        a: "Yes — Edmonton is one of Canada's best-value markets for software engineering talent in 2026. The University of Alberta produces 1,200+ CS graduates annually, NAIT and MacEwan add another 1,100+, and Alberta's immigration programs attract experienced engineers internationally. Developer salaries run 30–35% below Toronto/Vancouver, and Edmonton's quality of life (affordable housing, short commutes, strong communities) produces high retention rates compared to hyper-competitive markets."
+                      },
+                      {
+                        q: 'What technology specialties is Edmonton known for?',
+                        a: "Edmonton has particular depth in: (1) AI/ML — driven by University of Alberta's Amii institute; (2) Energy tech / industrial IoT — driven by the oil sands industry cluster; (3) AgriTech — driven by Western Canada's agriculture sector; (4) Government IT — driven by Alberta Health Services and provincial government contracts; and (5) Field service software — driven by Jobber's presence and alumni network. For general web, mobile, and SaaS development, Edmonton is competitive with any major Canadian city."
+                      },
+                      {
+                        q: 'Does Codazz only serve Edmonton clients?',
+                        a: "No. Codazz operates from Edmonton, Alberta as its headquarters but serves clients across Canada, the United States, UAE, Australia, and the UK. The majority of our projects are for clients outside Edmonton — we are a remote-first studio that happens to be headquartered in Edmonton for talent access and cost structure reasons. We have delivered over 500 apps for US startups, Canadian scale-ups, UAE real estate companies, and Australian e-commerce businesses."
+                      },
+                      {
+                        q: 'What is the best way to hire a software development company in Edmonton?',
+                        a: "Start with referrals from your network, then verify portfolio quality (live apps, not just case studies), request a 2-week paid discovery sprint before committing to a full build, meet the specific developers who will work on your project, and insist on a contract that gives you full IP ownership and access to all code repositories from day one. Avoid firms that require long upfront payments before delivering any working software. At Codazz, we offer a free 30-minute technical consultation before any engagement begins."
+                      },
+                      {
+                        q: 'How does Edmonton compare to offshore development for cost and quality?',
+                        a: "Edmonton offers a compelling middle ground: significantly cheaper than San Francisco or New York ($120–$150 CAD/hr vs $200–$350 USD/hr), meaningfully cheaper than Toronto (30–40%), with the IP protection, timezone alignment, English-first communication, and regulatory compatibility of a Canadian partner. Offshore teams in India or Eastern Europe are cheaper ($25–$60 USD/hr) but introduce timezone friction (8–10 hours), communication overhead, IP risk in some jurisdictions, and no Canadian regulatory familiarity. For most North American startups, Edmonton nearshore offers the best risk-adjusted cost of the available options."
+                      },
+                    ].map((faq, i) => (
+                      <div key={i} className="reveal" style={{ border: '1px solid rgba(255,255,255,0.07)', borderRadius: 16, marginBottom: 12, overflow: 'hidden' }}>
+                        <button
+                          onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                          style={{ width: '100%', padding: '18px 24px', background: openFaq === i ? 'rgba(34,197,94,0.06)' : 'rgba(255,255,255,0.02)', border: 'none', cursor: 'pointer', textAlign: 'left', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 16 }}
+                        >
+                          <span style={{ fontSize: 15, fontWeight: 600, color: '#fff' }}>{faq.q}</span>
+                          <span style={{ color: G, fontSize: 20, flexShrink: 0, transform: openFaq === i ? 'rotate(45deg)' : 'none', transition: 'transform 0.2s' }}>+</span>
+                        </button>
+                        {openFaq === i && (
+                          <div style={{ padding: '0 24px 20px', color: 'rgba(255,255,255,0.65)', fontSize: 14, lineHeight: 1.7 }}>{faq.a}</div>
+                        )}
+                      </div>
+                    ))}
+                  </section>
+
+                  {/* CTA */}
+                  <div className="reveal" style={{ background: 'linear-gradient(135deg,rgba(34,197,94,0.1),rgba(8,50,30,0.3))', borderRadius: 28, padding: 48, textAlign: 'center', border: '1px solid rgba(34,197,94,0.2)', marginBottom: 64 }}>
+                    <div style={{ fontSize: 13, fontWeight: 700, color: G, textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 16 }}>Edmonton-Headquartered</div>
+                    <h2 style={{ fontSize: 'clamp(1.4rem,3vw,2rem)', fontWeight: 800, color: '#fff', marginBottom: 12 }}>Work with Codazz — Edmonton's Top Software Studio</h2>
+                    <p style={{ color: 'rgba(255,255,255,0.6)', maxWidth: 540, margin: '0 auto 28px', fontSize: 15, lineHeight: 1.6 }}>
+                      Mobile apps, AI-powered SaaS platforms, web applications, and custom software. 500+ apps shipped. Edmonton HQ, global client base. Free 30-minute technical consultation — no pitch, just honest advice.
+                    </p>
+                    <div style={{ display: 'flex', gap: 8, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 24 }}>
+                      {['React Native', 'Flutter', 'Node.js', 'Next.js', 'AI/ML', 'AWS', 'SaaS'].map(tag => (
+                        <span key={tag} style={{ fontSize: 12, fontWeight: 600, color: G, background: 'rgba(34,197,94,0.1)', border: '1px solid rgba(34,197,94,0.2)', padding: '4px 12px', borderRadius: 20 }}>{tag}</span>
+                      ))}
+                    </div>
+                    <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
+                      <Link href="/contact" style={{ background: G, color: '#000', padding: '14px 32px', borderRadius: 12, fontWeight: 700, textDecoration: 'none', fontSize: 15 }}>Book Free Consultation</Link>
+                      <Link href="/services/react-native-development" style={{ border: '1px solid rgba(34,197,94,0.4)', color: G, padding: '14px 32px', borderRadius: 12, fontWeight: 600, textDecoration: 'none', fontSize: 15 }}>View Our Services</Link>
                     </div>
                   </div>
 
-                </div>
-              </aside>
+                </article>
 
-            </div>
-          </div>
-        </section>
+                {/* Sidebar */}
+                <aside className="toc-sidebar" style={{ width: 280, flexShrink: 0 }}>
+                  <div style={{ position: 'sticky', top: 120, display: 'flex', flexDirection: 'column', gap: 20 }}>
 
-        {/* BOTTOM CTA */}
-        <section className="section-padding" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-          <div className="cb-container" style={{ paddingTop: 80, paddingBottom: 80 }}>
-            <div
-              className="reveal"
-              style={{
-                background: 'rgba(34,197,94,0.04)', border: '1px solid rgba(34,197,94,0.15)',
-                borderRadius: 28, padding: 'clamp(40px, 6vw, 64px) clamp(32px, 5vw, 56px)',
-                display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                flexWrap: 'wrap', gap: 32,
-              }}
-            >
-              <div>
-                <p style={{
-                  fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
-                  color: '#22c55e', marginBottom: 12,
-                }}>Edmonton&apos;s Top Development Team</p>
-                <h2 style={{
-                  fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)', fontWeight: 700, color: '#ffffff',
-                  letterSpacing: '-0.03em', marginBottom: 12,
-                }}>
-                  Work with Edmonton&apos;s Top Development Team
-                </h2>
-                <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.45)', maxWidth: 520, lineHeight: 1.7 }}>
-                  Codazz is Edmonton&apos;s most prolific app and software development company. 500+ launches. 100+ engineers. Serving clients across Canada, the US, and the UAE with Canadian management standards and competitive Alberta rates.
-                </p>
+                    {/* TOC */}
+                    <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 20, padding: 24 }}>
+                      <div style={{ fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 16 }}>Table of Contents</div>
+                      <nav style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+                        {tocSections.map(s => (
+                          <a key={s.id} href={`#${s.id}`} style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '7px 10px', borderRadius: 8, fontSize: 13, textDecoration: 'none', color: activeSection === s.id ? G : 'rgba(255,255,255,0.55)', background: activeSection === s.id ? 'rgba(34,197,94,0.08)' : 'transparent', fontWeight: activeSection === s.id ? 600 : 400 }}>
+                            <span>{s.emoji}</span><span>{s.label}</span>
+                          </a>
+                        ))}
+                      </nav>
+                    </div>
+
+                    {/* Codazz Highlight Card */}
+                    <div style={{ background: 'rgba(34,197,94,0.06)', border: '1px solid rgba(34,197,94,0.2)', borderRadius: 20, padding: 24 }}>
+                      <div style={{ fontSize: 11, fontWeight: 700, color: G, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 12 }}>Ranked #1 in Edmonton</div>
+                      <div style={{ fontSize: 18, fontWeight: 800, color: '#fff', marginBottom: 8 }}>Codazz</div>
+                      <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.6)', lineHeight: 1.5, marginBottom: 16 }}>Edmonton HQ · 500+ apps shipped · Mobile / AI / SaaS specialist · $85–$145 CAD/hr</div>
+                      {[
+                        ['Specialization', 'Mobile, AI, SaaS, Web'],
+                        ['Rate', '$85–$145 CAD/hr'],
+                        ['HQ', 'Edmonton, Alberta'],
+                        ['Dev Centre', 'Chandigarh, India'],
+                      ].map(([l, v], i) => (
+                        <div key={i} style={{ display: 'flex', justifyContent: 'space-between', padding: '5px 0', borderBottom: i < 3 ? '1px solid rgba(255,255,255,0.05)' : 'none' }}>
+                          <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)' }}>{l}</span>
+                          <span style={{ fontSize: 11, color: '#fff', fontWeight: 600 }}>{v}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Rate Card */}
+                    <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 20, padding: 24 }}>
+                      <div style={{ fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 14 }}>Edmonton Rate Ranges</div>
+                      {[
+                        ['Junior Developer', '$65–$85/hr'],
+                        ['Mid-Level Dev', '$90–$120/hr'],
+                        ['Senior Developer', '$120–$155/hr'],
+                        ['AI/ML Engineer', '$145–$185/hr'],
+                        ['Full Project MVP', '$35K–$85K'],
+                        ['Full Product Build', '$85K–$250K'],
+                      ].map(([l, v], i) => (
+                        <div key={i} style={{ display: 'flex', justifyContent: 'space-between', padding: '6px 0', borderBottom: i < 5 ? '1px solid rgba(255,255,255,0.04)' : 'none' }}>
+                          <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)' }}>{l}</span>
+                          <span style={{ fontSize: 12, color: '#fff', fontWeight: 600 }}>{v} CAD</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Related Articles */}
+                    <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: 20, padding: 24 }}>
+                      <div style={{ fontSize: 11, fontWeight: 700, color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 16 }}>Related Articles</div>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                        {relatedPosts.map(post => (
+                          <Link key={post.slug} href={`/blog/${post.slug}`} style={{ textDecoration: 'none', display: 'block', padding: '12px 14px', background: 'rgba(255,255,255,0.02)', borderRadius: 12, border: '1px solid rgba(255,255,255,0.05)' }}>
+                            <div style={{ fontSize: 10, color: G, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 4 }}>{post.category}</div>
+                            <div style={{ fontSize: 13, color: '#fff', fontWeight: 500, lineHeight: 1.4, marginBottom: 4 }}>{post.title}</div>
+                            <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)' }}>{post.readTime} read</div>
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+
+                    <Link href="/contact" style={{ display: 'block', background: G, color: '#000', textAlign: 'center', padding: '14px 24px', borderRadius: 14, fontWeight: 700, textDecoration: 'none', fontSize: 14 }}>Get Free Consultation</Link>
+                  </div>
+                </aside>
               </div>
-              <Link href="/contact" style={{ textDecoration: 'none' }}>
-                <button style={{
-                  padding: '18px 40px', borderRadius: 100, background: '#22c55e', color: '#000',
-                  fontSize: 15, fontWeight: 700, border: 'none', cursor: 'pointer',
-                  transition: 'all 0.2s', whiteSpace: 'nowrap',
-                }}>
-                  Talk to Codazz →
-                </button>
-              </Link>
             </div>
-          </div>
-        </section>
-
-      </main>
-      <Footer />
+          </section>
+        </main>
+        <Footer />
+      </div>
     </>
   );
 }

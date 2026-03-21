@@ -303,6 +303,17 @@ export default function EcommercePage() {
               <h2 style={{ fontSize: 'clamp(1.9rem, 4vw, 2.9rem)', fontWeight: 800, marginBottom: '1rem', letterSpacing: '-0.02em' }}>Commerce Platforms for Every Model</h2>
               <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '1.1rem', maxWidth: 580, margin: '0 auto' }}>Marketplaces, D2C stores, B2B portals, subscription platforms — we've built them all.</p>
             </div>
+
+            {/* ─── ECOM MARQUEE ─── */}
+            <div style={{ position: 'relative', overflow: 'hidden', marginBottom: '3rem', maskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)' }}>
+              <style>{`@keyframes ecom-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }`}</style>
+              <div style={{ display: 'flex', gap: '12px', width: 'max-content', animation: 'ecom-marquee 32s linear infinite' }}>
+                {['🛒 Multi-vendor Marketplace','💳 PCI DSS Checkout','📦 Inventory Management','🔍 AI Product Search','🎯 Personalization Engine','📊 Analytics Dashboard','🚚 Order Tracking','💰 Multi-currency','🛍️ Mobile Commerce','⭐ Reviews & Ratings','🔄 Returns Management','🌐 Headless Commerce','🛒 Multi-vendor Marketplace','💳 PCI DSS Checkout','📦 Inventory Management','🔍 AI Product Search','🎯 Personalization Engine','📊 Analytics Dashboard','🚚 Order Tracking','💰 Multi-currency','🛍️ Mobile Commerce','⭐ Reviews & Ratings','🔄 Returns Management','🌐 Headless Commerce'].map((item, i) => (
+                  <span key={i} style={{ padding: '8px 16px', borderRadius: 100, border: '1px solid rgba(255,255,255,0.08)', background: 'rgba(255,255,255,0.02)', display: 'flex', gap: 8, whiteSpace: 'nowrap', color: 'rgba(255,255,255,0.7)', fontSize: '0.875rem' }}>{item}</span>
+                ))}
+              </div>
+            </div>
+
             <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 340px), 1fr))', gap: '1.5rem' }}>
               {WHAT_WE_BUILD.map(s => (
                 <Card key={s.title}>
