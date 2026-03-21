@@ -499,6 +499,185 @@ export default function NodejsDevelopmentPage() {
 
 
         {/* ═══════════════════════════════════════
+            1b. WHY NODEJS DEVELOPMENT — Problems, Solutions, Who Needs It, Benefits
+        ═══════════════════════════════════════ */}
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+          <div className="cb-container">
+            <div className="reveal" style={{ marginBottom: 16 }}>
+              <span style={sectionLabel}>Why It Matters</span>
+            </div>
+            <h2 className="reveal reveal-d1" style={{ ...sectionH2, marginBottom: 16 }}>
+              Why Node.js is Critical for Your Backend
+            </h2>
+            <p className="reveal reveal-d2" style={{ fontSize: 16, color: 'rgba(255,255,255,0.55)', lineHeight: 1.75, marginBottom: 56, maxWidth: 700 }}>
+              Your backend is invisible to users, but it determines if your product works, scales, and survives 3am traffic spikes. Node.js is the fastest way to build real-time APIs, scalable backends, and microservices.
+            </p>
+
+            {/* Problems vs Solutions Cards */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: 24, marginBottom: 64 }}>
+              {/* Problem 1 */}
+              <div className="reveal" style={{
+                ...cardBase,
+                padding: '40px 32px',
+                borderColor: 'rgba(255,255,255,0.06)',
+              }}>
+                <div style={greenAccentLine} />
+                <div style={{ fontSize: 32, marginBottom: 16 }}>⚙️</div>
+                <h3 style={{ fontSize: 18, fontWeight: 600, color: '#ffffff', marginBottom: 12, letterSpacing: '-0.02em' }}>Manual Processes & API Silos</h3>
+                <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', lineHeight: 1.75, margin: 0 }}>Your teams use different tools. Mobile and web clients don't talk to each other. No real-time data. Manual syncing between databases. A nightmare to debug.</p>
+              </div>
+
+              {/* Solution 1 */}
+              <div className="reveal" style={{
+                ...cardBase,
+                padding: '40px 32px',
+                borderColor: 'rgba(34,197,94,0.3)',
+                background: 'rgba(34,197,94,0.05)',
+              }}>
+                <div style={greenAccentLine} />
+                <div style={{ fontSize: 32, marginBottom: 16 }}>✨</div>
+                <h3 style={{ fontSize: 18, fontWeight: 600, color: '#22c55e', marginBottom: 12, letterSpacing: '-0.02em' }}>Unified Scalable APIs</h3>
+                <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', lineHeight: 1.75, margin: 0 }}>A single Node.js backend serves REST or GraphQL APIs to web, mobile, and third-party integrations. Real-time data with WebSocket. One source of truth. Express, Fastify, or NestJS—we choose what fits.</p>
+              </div>
+
+              {/* Problem 2 */}
+              <div className="reveal" style={{
+                ...cardBase,
+                padding: '40px 32px',
+                borderColor: 'rgba(255,255,255,0.06)',
+              }}>
+                <div style={greenAccentLine} />
+                <div style={{ fontSize: 32, marginBottom: 16 }}>🔴</div>
+                <h3 style={{ fontSize: 18, fontWeight: 600, color: '#ffffff', marginBottom: 12, letterSpacing: '-0.02em' }}>Your Backend Can't Scale</h3>
+                <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', lineHeight: 1.75, margin: 0 }}>One server crashes during a traffic spike and your whole app is down. Database queries pile up. Response times go to 5+ seconds. Users abandon you.</p>
+              </div>
+
+              {/* Solution 2 */}
+              <div className="reveal" style={{
+                ...cardBase,
+                padding: '40px 32px',
+                borderColor: 'rgba(34,197,94,0.3)',
+                background: 'rgba(34,197,94,0.05)',
+              }}>
+                <div style={greenAccentLine} />
+                <div style={{ fontSize: 32, marginBottom: 16 }}>🚀</div>
+                <h3 style={{ fontSize: 18, fontWeight: 600, color: '#22c55e', marginBottom: 12, letterSpacing: '-0.02em' }}>Horizontal Scaling</h3>
+                <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', lineHeight: 1.75, margin: 0 }}>Node.js + Kubernetes automatically scales from 100 to 10 million requests per day. Load balancing across multiple servers. Database connection pooling with Redis. Response times stay under 50ms even during peaks.</p>
+              </div>
+
+              {/* Problem 3 */}
+              <div className="reveal" style={{
+                ...cardBase,
+                padding: '40px 32px',
+                borderColor: 'rgba(255,255,255,0.06)',
+              }}>
+                <div style={greenAccentLine} />
+                <div style={{ fontSize: 32, marginBottom: 16 }}>📡</div>
+                <h3 style={{ fontSize: 18, fontWeight: 600, color: '#ffffff', marginBottom: 12, letterSpacing: '-0.02em' }}>No Real-Time Features</h3>
+                <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', lineHeight: 1.75, margin: 0 }}>Users poll your server every second. Notifications are delayed by minutes. Chat feels sluggish. Live dashboards are useless because data is stale.</p>
+              </div>
+
+              {/* Solution 3 */}
+              <div className="reveal" style={{
+                ...cardBase,
+                padding: '40px 32px',
+                borderColor: 'rgba(34,197,94,0.3)',
+                background: 'rgba(34,197,94,0.05)',
+              }}>
+                <div style={greenAccentLine} />
+                <div style={{ fontSize: 32, marginBottom: 16 }}>⚡</div>
+                <h3 style={{ fontSize: 18, fontWeight: 600, color: '#22c55e', marginBottom: 12, letterSpacing: '-0.02em' }}>Real-Time Everything</h3>
+                <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', lineHeight: 1.75, margin: 0 }}>WebSocket servers for instant notifications, live chat, real-time dashboards, and collaborative features. Message queues (BullMQ) for background jobs. Event-driven architecture with Kafka for enterprise systems.</p>
+              </div>
+            </div>
+
+            {/* Who Needs It Section */}
+            <div style={{ marginBottom: 64 }}>
+              <div className="reveal" style={{ marginBottom: 32 }}>
+                <h3 style={{ fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', fontWeight: 600, color: '#ffffff', letterSpacing: '-0.02em', margin: 0 }}>
+                  Who Needs Node.js Backend Development
+                </h3>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 260px), 1fr))', gap: 20 }}>
+                {[
+                  { title: 'Startups', desc: 'Launch with a backend that scales from day 1. Node.js + AWS = fast, cheap, and bulletproof.' },
+                  { title: 'E-Commerce Platforms', desc: 'REST APIs for product catalogs, carts, payments. Real-time inventory sync across channels.' },
+                  { title: 'SaaS Companies', desc: 'Multi-tenant architecture, webhooks, subscription billing APIs, and analytics pipelines.' },
+                  { title: 'Enterprises', desc: 'Microservices, event streaming with Kafka, compliance (SOC 2, HIPAA), and dedicated teams.' },
+                  { title: 'Agencies', desc: 'White-label backend development for your clients. We ship the API, you own the frontend and relationship.' },
+                  { title: 'Real-Time Apps', desc: 'Chat, notifications, live dashboards, collaborative tools. Socket.io + Node.js = instant updates.' },
+                ].map((item, i) => (
+                  <div key={item.title} className="reveal" style={{
+                    ...cardBase,
+                    padding: '28px 24px',
+                    transitionDelay: `${i * 0.06}s`,
+                  }}
+                    onMouseEnter={e => {
+                      e.currentTarget.style.borderColor = 'rgba(34,197,94,0.2)';
+                      e.currentTarget.style.background = 'rgba(34,197,94,0.03)';
+                    }}
+                    onMouseLeave={e => {
+                      e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)';
+                      e.currentTarget.style.background = 'rgba(255,255,255,0.015)';
+                    }}>
+                    <h4 style={{ fontSize: 16, fontWeight: 600, color: '#22c55e', marginBottom: 8, margin: 0 }}>{item.title}</h4>
+                    <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.55)', lineHeight: 1.6, margin: 0 }}>{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Benefits Grid */}
+            <div>
+              <div className="reveal" style={{ marginBottom: 32 }}>
+                <h3 style={{ fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', fontWeight: 600, color: '#ffffff', letterSpacing: '-0.02em', margin: 0 }}>
+                  Key Benefits of Node.js Development
+                </h3>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 280px), 1fr))', gap: 24 }}>
+                {[
+                  {
+                    title: 'API Speed',
+                    desc: 'Fastify and Express handle 100K+ requests/second. Non-blocking I/O means response times under 50ms at scale.'
+                  },
+                  {
+                    title: 'Cost Efficiency',
+                    desc: 'Single server handles what takes 10+ servers in other languages. Auto-scale on AWS = you pay only for what you use.'
+                  },
+                  {
+                    title: 'Developer Velocity',
+                    desc: 'JavaScript across frontend and backend. One language means faster hiring, onboarding, and time-to-feature.'
+                  },
+                  {
+                    title: 'Scalable Databases',
+                    desc: 'PostgreSQL, MongoDB, Kafka event streams, Redis caching. We design schemas that grow from thousands to billions of records.'
+                  },
+                ].map((benefit, i) => (
+                  <div key={benefit.title} className="reveal" style={{
+                    ...cardBase,
+                    padding: '36px 28px',
+                    transitionDelay: `${i * 0.08}s`,
+                  }}
+                    onMouseEnter={cardHoverIn}
+                    onMouseLeave={cardHoverOut}>
+                    <h4 style={{ fontSize: 18, fontWeight: 600, color: '#22c55e', marginBottom: 12, letterSpacing: '-0.02em', margin: 0 }}>{benefit.title}</h4>
+                    <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', lineHeight: 1.7, margin: 0 }}>{benefit.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Closing Paragraph */}
+            <div className="reveal" style={{ marginTop: 64, ...cardBase, padding: '40px 36px', borderColor: 'rgba(34,197,94,0.3)', background: 'rgba(34,197,94,0.05)' }}>
+              <p style={{ fontSize: 16, color: '#ffffff', lineHeight: 1.8, margin: 0, maxWidth: 800 }}>
+                <strong>A fast, scalable backend is the difference between a startup that thrives and one that fails.</strong> When your API responds in 50ms instead of 5 seconds, users stay. When your backend scales automatically, you don't wake up at 3am to emergency calls. Node.js with Express, Fastify, or NestJS powers Netflix, LinkedIn, Uber, and Shopify—it's battle-tested at scale. At Codazz, we've delivered 300+ Node.js backends. Let's build yours next.
+              </p>
+            </div>
+          </div>
+        </section>
+
+
+        {/* ═══════════════════════════════════════
             2. AWARDS MARQUEE
         ═══════════════════════════════════════ */}
         <section style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', overflow: 'hidden', padding: '20px 0' }}>

@@ -289,6 +289,97 @@ export default function HealthcarePageClient() {
           </div>
         </section>
 
+        {/* ── WHY HEALTHCARE SOFTWARE ── */}
+        <section className="section-padding" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+          <div className="cb-container">
+            <div className="reveal" style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
+              <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.9rem)', fontWeight: 800, marginBottom: '1rem', letterSpacing: '-0.02em' }}>
+                Why Healthcare Organizations Need Custom Software Solutions
+              </h2>
+              <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '1.1rem', maxWidth: 700, margin: '0 auto' }}>
+                Clinical workflows are unique to every organization. Off-the-shelf EHR systems don't adapt to your care delivery model. Custom healthcare software, built HIPAA-first, gives clinicians the tools they actually use and patients the experience they expect.
+              </p>
+            </div>
+
+            {/* Problem-Solution Cards */}
+            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '1.5rem', marginBottom: '3.5rem' }}>
+              {[
+                {
+                  icon: '🔒',
+                  problem: 'HIPAA Compliance Risk',
+                  solution: 'End-to-end encryption of PHI, audit logging, and automatic BAA management. Your system passes HIPAA audits with zero findings.'
+                },
+                {
+                  icon: '📋',
+                  problem: 'Patient Data Fragmentation',
+                  solution: 'Unified patient records across systems via HL7 FHIR R4. Clinicians get one source of truth for every patient.'
+                },
+                {
+                  icon: '🎥',
+                  problem: 'Telemedicine Demands',
+                  solution: 'HIPAA-compliant video conferencing, asynchronous messaging, and remote patient monitoring built in. Scale from 10 patients to 100,000 overnight.'
+                },
+                {
+                  icon: '🔗',
+                  problem: 'System Integration Complexity',
+                  solution: 'Native integrations with Epic, Cerner, Allscripts via FHIR R4. Clinical data flows seamlessly without manual entry.'
+                }
+              ].map(card => (
+                <Card key={card.problem}>
+                  <div style={{ fontSize: '2.2rem', marginBottom: '1rem' }}>{card.icon}</div>
+                  <h3 style={{ fontWeight: 700, fontSize: '1.05rem', marginBottom: '0.75rem', color: '#ffffff' }}>
+                    {card.problem}
+                  </h3>
+                  <p style={{ color: 'rgba(255,255,255,0.65)', lineHeight: 1.75, fontSize: '0.93rem' }}>
+                    {card.solution}
+                  </p>
+                </Card>
+              ))}
+            </div>
+
+            {/* Who Needs It */}
+            <div className="reveal" style={{ background: 'rgba(34,197,94,0.03)', borderRadius: 28, border: '1px solid rgba(34,197,94,0.12)', padding: 'clamp(2rem, 4vw, 3rem)', marginBottom: '3.5rem' }}>
+              <h3 style={{ fontSize: '1.3rem', fontWeight: 700, marginBottom: '1.75rem' }}>
+                Healthcare Organizations We Serve
+              </h3>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: '1.5rem' }}>
+                {[
+                  { icon: '🏥', name: 'Health Systems & Hospitals', desc: 'Multi-site patient portals, telehealth platforms, and clinical dashboards for large health systems.' },
+                  { icon: '👨‍⚕️', name: 'Specialty Practices', desc: 'Custom EHR workflows, patient engagement tools, and practice management integrations.' },
+                  { icon: '🚑', name: 'Urgent Care & Clinics', desc: 'Fast-track scheduling, patient intake, lab integration, and real-time reporting.' },
+                  { icon: '💊', name: 'Digital Health Startups', desc: 'Telehealth platforms, remote monitoring apps, and consumer health tools with HIPAA compliance.' },
+                  { icon: '🧬', name: 'Genomics & Precision Medicine', desc: 'Complex data pipelines, patient data management, and FDA-compliant clinical tools.' },
+                  { icon: '📊', name: 'Healthcare Organizations', desc: 'Population health management, care coordination, and value-based care infrastructure.' }
+                ].map(item => (
+                  <div key={item.name} style={{ padding: '1.5rem', background: 'rgba(255,255,255,0.02)', borderRadius: 16, border: '1px solid rgba(255,255,255,0.05)' }}>
+                    <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>{item.icon}</div>
+                    <h4 style={{ fontWeight: 600, marginBottom: '0.5rem', fontSize: '0.95rem' }}>{item.name}</h4>
+                    <p style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.55)', lineHeight: 1.6 }}>{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Outcomes */}
+            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: '1.5rem' }}>
+              {[
+                { icon: '✅', title: 'HIPAA Audit Ready', desc: 'Pass compliance audits without anxiety. Full evidence documentation prepared by our team.' },
+                { icon: '📈', title: 'Clinical Efficiency', desc: 'Reduce documentation time by 40%. Clinicians spend more time with patients, less time in EHR.' },
+                { icon: '🤝', title: 'Patient Engagement', desc: 'Secure patient portals, appointment reminders, and messaging boost satisfaction scores.' },
+                { icon: '💰', title: 'Revenue Protection', desc: 'Reduce billing errors and claim denials with accurate, integrated patient data.' },
+                { icon: '⚡', title: 'Scalability', desc: 'Grow from 100 to 100,000 patients without system rewrites or performance degradation.' },
+                { icon: '🔗', title: 'Interoperability', desc: 'Seamless data exchange with Epic, Cerner, and other EHRs via HL7 FHIR standards.' }
+              ].map(benefit => (
+                <div key={benefit.title} style={{ padding: '1.5rem', border: '1px solid rgba(34,197,94,0.12)', borderRadius: 20, background: 'rgba(34,197,94,0.025)' }}>
+                  <div style={{ fontSize: '1.8rem', marginBottom: '0.75rem' }}>{benefit.icon}</div>
+                  <h4 style={{ fontWeight: 600, marginBottom: '0.5rem' }}>{benefit.title}</h4>
+                  <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.6)', lineHeight: 1.6 }}>{benefit.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ── WHAT WE BUILD ── */}
         <section className="section-padding" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">

@@ -540,6 +540,124 @@ export default function FlutterDevelopmentPage() {
 
 
         {/* ═══════════════════════════════════════
+            2.5. WHY FLUTTER IS ESSENTIAL
+        ═══════════════════════════════════════ */}
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+          <div className="cb-container">
+            <div className="reveal" style={{ marginBottom: 60 }}>
+              <h2 style={{ fontSize: 'clamp(2.2rem, 4vw, 4rem)', fontWeight: 500, color: '#ffffff', letterSpacing: '-0.04em', margin: '0 0 24px' }}>
+                Why Flutter Development is Essential for Your Multi-Platform Needs
+              </h2>
+            </div>
+
+            {/* Problem & Solution Cards */}
+            <div className="reveal reveal-d1" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 20, marginBottom: 60 }}>
+              {[
+                {
+                  icon: '🎨',
+                  title: 'Problem 1: Cross-Platform Consistency is Hard',
+                  desc: 'Building truly cross-platform apps with consistent UX across iOS, Android, web, and desktop is a nightmare. Each platform has different design patterns, rendering engines, and native components — leading to maintenance hell.'
+                },
+                {
+                  icon: '⏱️',
+                  title: 'Problem 2: Development Speed vs Performance Trade-off',
+                  desc: 'JavaScript-based frameworks are fast to develop but suffer from performance issues. Native development is performant but painfully slow. You\'re forced to choose between speed and user experience.'
+                },
+                {
+                  icon: '⚡',
+                  title: 'Solution 1: Flutter Delivers Both Beauty & Performance',
+                  desc: 'Flutter compiles to native ARM code with pixel-perfect rendering. 60fps (or 120fps on ProMotion) with gorgeous animations and custom UIs. Fast development without the performance tax. Your users get beautiful, buttery-smooth experiences.'
+                },
+                {
+                  icon: '🌍',
+                  title: 'Solution 2: Six Platforms, One Dart Codebase',
+                  desc: 'iOS, Android, web, macOS, Windows, and Linux — all from a single Dart codebase. Share business logic, state management, and networking across all platforms. Only write platform-specific code when you genuinely need to.'
+                }
+              ].map((item, i) => (
+                <div
+                  key={i}
+                  className={`reveal-d${i + 1}`}
+                  style={{
+                    padding: '36px 32px',
+                    border: '1px solid rgba(255,255,255,0.06)',
+                    borderRadius: 28,
+                    background: 'rgba(255,255,255,0.015)',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    transition: 'all 0.35s ease',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = 'rgba(34,197,94,0.2)';
+                    e.currentTarget.style.background = 'rgba(34,197,94,0.03)';
+                    e.currentTarget.style.transform = 'translateY(-4px)';
+                    e.currentTarget.style.boxShadow = '0 20px 50px rgba(255,255,255,0.04)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)';
+                    e.currentTarget.style.background = 'rgba(255,255,255,0.015)';
+                    e.currentTarget.style.transform = '';
+                    e.currentTarget.style.boxShadow = '';
+                  }}
+                >
+                  <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: 'linear-gradient(90deg,#22c55e,transparent)' }} />
+                  <div style={{ fontSize: 36, marginBottom: 16 }}>{item.icon}</div>
+                  <h3 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', margin: '0 0 12px', letterSpacing: '-0.01em' }}>{item.title}</h3>
+                  <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.65)', lineHeight: 1.75, margin: 0 }}>{item.desc}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Who Needs Flutter */}
+            <div className="reveal" style={{ background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.2)', borderRadius: 28, padding: 'clamp(36px, 4vw, 48px)', marginBottom: 60 }}>
+              <h3 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', margin: '0 0 28px' }}>Who Needs Flutter Development Services?</h3>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: 16 }}>
+                {[
+                  { icon: '🚀', title: 'Startups Going Global', desc: 'Launch on iOS, Android, and web simultaneously with one team. Flutter lets you enter multiple markets with 30-40% lower costs than native.' },
+                  { icon: '🎨', title: 'Brands Needing Beautiful UIs', desc: 'Custom animations, stunning material design, pixel-perfect layouts. Flutter\'s rendering engine gives you creative freedom native teams envy.' },
+                  { icon: '🏢', title: 'Enterprises with Desktop Needs', desc: 'Use one Dart codebase to build mobile, web, and desktop apps. Codazz has built Flutter desktop apps for Fortune 500 companies.' },
+                  { icon: '⚡', title: 'Performance-Critical Apps', desc: 'Real-time data, complex animations, high-frequency updates. Flutter\'s native compilation means never compromising on performance.' },
+                  { icon: '🌐', title: 'SaaS & Multi-Platform Products', desc: 'Internal dashboards, customer apps, admin panels — all from Dart. Share logic, cut development time, reduce maintenance.' },
+                  { icon: '📱', title: 'Companies Modernizing', desc: 'Migrate from Ionic, React Native, or Xamarin to Flutter. We do incremental migrations to protect your user base.' }
+                ].map((item, i) => (
+                  <div key={i} style={{ padding: '16px', borderRadius: 14, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
+                    <div style={{ fontSize: 28, marginBottom: 10 }}>{item.icon}</div>
+                    <h4 style={{ fontSize: 15, fontWeight: 700, color: '#ffffff', margin: '0 0 8px' }}>{item.title}</h4>
+                    <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)', margin: 0, lineHeight: 1.6 }}>{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Benefits Grid */}
+            <div className="reveal" style={{ marginBottom: 40 }}>
+              <h3 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', margin: '0 0 28px' }}>What You'll Achieve with Flutter Development</h3>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))', gap: 16 }}>
+                {[
+                  { metric: '30-40%', label: 'Lower Development Cost', desc: 'vs. separate native apps' },
+                  { metric: '60fps', label: 'Guaranteed Performance', desc: 'Pixel-perfect, buttery smooth' },
+                  { metric: '6', label: 'Target Platforms', desc: 'Mobile, web, desktop, all one code' },
+                  { metric: '4.9★', label: 'Average User Rating', desc: 'Apps built by our team' }
+                ].map((item, i) => (
+                  <div key={i} style={{ padding: '28px 24px', borderRadius: 16, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.015)', textAlign: 'center' }}>
+                    <div style={{ fontSize: 'clamp(1.6rem, 2.5vw, 2rem)', fontWeight: 800, color: '#22c55e', marginBottom: 8 }}>{item.metric}</div>
+                    <h4 style={{ fontSize: 15, fontWeight: 700, color: '#ffffff', margin: '0 0 4px' }}>{item.label}</h4>
+                    <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', margin: 0 }}>{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Closing Paragraph */}
+            <div className="reveal" style={{ padding: '32px', borderRadius: 20, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.015)' }}>
+              <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.75)', lineHeight: 1.85, margin: 0 }}>
+                Flutter has matured into the platform of choice for companies that care about beautiful, performant, cross-platform experiences. Google, Alibaba, BMW, and thousands of companies trust Flutter for mission-critical applications. If you need an app that looks stunning, performs flawlessly, and runs on iOS, Android, web, and desktop without code duplication, Flutter is your answer. Codazz has shipped 150+ Flutter apps, optimized performance across 60fps animations, and built enterprise applications trusted by millions of users. Let us help you build something beautiful and fast.
+              </p>
+            </div>
+          </div>
+        </section>
+
+
+        {/* ═══════════════════════════════════════
             3. SERVICES GRID
         ═══════════════════════════════════════ */}
         <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>

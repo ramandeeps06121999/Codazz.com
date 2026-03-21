@@ -164,6 +164,22 @@ function MarqueeStyles() {
       .reveal-d4 { transition-delay: 0.4s; }
       @media (max-width: 900px) { .loc-hero-grid { grid-template-columns: 1fr !important; gap: 40px !important; } }
       @media (max-width: 600px) { .loc-stats-row { grid-template-columns: repeat(2, 1fr) !important; } }
+
+      /* Company card hover */
+      .company-card { transition: all 0.3s ease; }
+      .company-card:hover { border-color: rgba(34, 197, 94, 0.2); background-color: rgba(34, 197, 94, 0.04); }
+
+      /* Service card hover */
+      .service-card { transition: all 0.3s ease; }
+      .service-card:hover { border-color: rgba(34, 197, 94, 0.25); background-color: rgba(34, 197, 94, 0.04); transform: translateY(-4px); }
+
+      /* Industry card hover */
+      .industry-card { transition: all 0.3s ease; }
+      .industry-card:hover { border-color: rgba(34, 197, 94, 0.25); background-color: rgba(34, 197, 94, 0.04); }
+
+      /* Button hover */
+      .form-submit-btn { transition: all 0.3s ease; }
+      .form-submit-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(34, 197, 94, 0.3); }
     `}</style>
   );
 }
@@ -197,9 +213,7 @@ function LeadCaptureForm({ cityName }: { cityName: string }) {
           <input type="email" name="email" placeholder="Work Email" value={formData.email} onChange={handleChange} required style={inputStyle} />
           <input type="tel" name="phone" placeholder="Phone Number" value={formData.phone} onChange={handleChange} required style={inputStyle} />
           <textarea name="project" placeholder="Tell us about your project..." value={formData.project} onChange={handleChange} required style={{ ...inputStyle, minHeight: 100, resize: 'none' }} />
-          <button type="submit" style={{ padding: '14px 24px', borderRadius: 12, background: '#22c55e', color: '#000', border: 'none', fontWeight: 700, cursor: 'pointer', fontSize: 14, transition: 'all 0.3s' }}
-            onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 8px 20px rgba(34,197,94,0.3)'; }}
-            onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}>
+          <button type="submit" className="form-submit-btn" style={{ padding: '14px 24px', borderRadius: 12, background: '#22c55e', color: '#000', border: 'none', fontWeight: 700, cursor: 'pointer', fontSize: 14, transition: 'all 0.3s' }}>
             Get Free Quote
           </button>
         </form>
@@ -292,9 +306,7 @@ export default function PageClient({ city }: { city: CityData }) {
           <div style={{ position: 'relative', overflow: 'hidden', maskImage: 'linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%)', WebkitMaskImage: 'linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%)' }}>
             <div style={{ display: 'flex', gap: 60, justifyContent: 'space-around', flexWrap: 'wrap', alignItems: 'center' }}>
               {['Google', 'Microsoft', 'Amazon', 'Meta', 'Apple', 'Netflix', 'Shopify', 'Stripe', 'Figma', 'Notion'].map((company, i) => (
-                <div key={company} className={`reveal reveal-d${(i % 4) + 1}`} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 24px', borderRadius: 14, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', minWidth: 160, justifyContent: 'center', transition: 'all 0.3s' }}
-                  onMouseEnter={e => { const t = e.currentTarget as HTMLElement; t.style.borderColor = 'rgba(34,197,94,0.2)'; t.style.background = 'rgba(34,197,94,0.04)'; }}
-                  onMouseLeave={e => { const t = e.currentTarget as HTMLElement; t.style.borderColor = 'rgba(255,255,255,0.08)'; t.style.background = 'rgba(255,255,255,0.03)'; }}>
+                <div key={company} className={`reveal reveal-d${(i % 4) + 1} company-card`} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 24px', borderRadius: 14, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', minWidth: 160, justifyContent: 'center', transition: 'all 0.3s' }}>
                   <div style={{ width: 36, height: 36, borderRadius: 8, background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 16, fontWeight: 800, color: '#22c55e' }}>
                     {company.charAt(0)}
                   </div>
@@ -441,10 +453,8 @@ export default function PageClient({ city }: { city: CityData }) {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: 28 }}>
             {services.map((svc, i) => (
               <Link key={svc.slug} href={`/services/${svc.slug}`}
-                className={`reveal reveal-d${(i % 2) + 1}`}
-                style={{ display: 'flex', flexDirection: 'column', padding: '32px', borderRadius: 20, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.015)', textDecoration: 'none', gap: 16, transition: 'all 0.3s', minHeight: 240 }}
-                onMouseEnter={e => { const t = e.currentTarget as HTMLElement; t.style.borderColor = 'rgba(34,197,94,0.25)'; t.style.background = 'rgba(34,197,94,0.04)'; t.style.transform = 'translateY(-4px)'; }}
-                onMouseLeave={e => { const t = e.currentTarget as HTMLElement; t.style.borderColor = 'rgba(255,255,255,0.06)'; t.style.background = 'rgba(255,255,255,0.015)'; t.style.transform = ''; }}>
+                className={`reveal reveal-d${(i % 2) + 1} service-card`}
+                style={{ display: 'flex', flexDirection: 'column', padding: '32px', borderRadius: 20, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.015)', textDecoration: 'none', gap: 16, transition: 'all 0.3s', minHeight: 240 }}>
                 <div style={{ fontSize: 32 }}>{svc.icon}</div>
                 <h3 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', margin: 0, letterSpacing: '-0.01em', lineHeight: 1.3 }}>{svc.name}</h3>
                 <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', margin: 0, flexGrow: 1, lineHeight: 1.7 }}>{svc.desc}</p>
@@ -470,10 +480,8 @@ export default function PageClient({ city }: { city: CityData }) {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))', gap: 24 }}>
             {Object.entries(industryData).map(([name, data], i) => (
               <Link key={name} href={`/industries/${name.toLowerCase().replace(/[\s&]+/g, '-')}`}
-                className={`reveal reveal-d${(i % 4) + 1}`}
-                style={{ display: 'flex', flexDirection: 'column', padding: '32px', borderRadius: 20, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.015)', textDecoration: 'none', gap: 14, transition: 'all 0.3s', minHeight: 280 }}
-                onMouseEnter={e => { const t = e.currentTarget as HTMLElement; t.style.borderColor = 'rgba(34,197,94,0.25)'; t.style.background = 'rgba(34,197,94,0.04)'; }}
-                onMouseLeave={e => { const t = e.currentTarget as HTMLElement; t.style.borderColor = 'rgba(255,255,255,0.06)'; t.style.background = 'rgba(255,255,255,0.015)'; }}>
+                className={`reveal reveal-d${(i % 4) + 1} industry-card`}
+                style={{ display: 'flex', flexDirection: 'column', padding: '32px', borderRadius: 20, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.015)', textDecoration: 'none', gap: 14, transition: 'all 0.3s', minHeight: 280 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
                   <div style={{ fontSize: 28 }}>{data.icon}</div>
                   <h3 style={{ fontSize: 16, fontWeight: 700, color: '#ffffff', margin: 0 }}>{name}</h3>
@@ -572,7 +580,7 @@ export default function PageClient({ city }: { city: CityData }) {
                     <h3 style={{ fontSize: 17, fontWeight: 700, color: '#ffffff', margin: 0 }}>{step.title}</h3>
                     <span style={{ fontSize: 12, fontWeight: 700, color: '#22c55e', padding: '4px 12px', borderRadius: 100, background: 'rgba(34,197,94,0.08)', whiteSpace: 'nowrap' }}>{step.duration}</span>
                   </div>
-                  <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.65)', lineHeight: 1.7, marginBottom: 16, margin: 0, marginBottom: 16 }}>{step.desc}</p>
+                  <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.65)', lineHeight: 1.7, marginBottom: 16, margin: 0 }}>{step.desc}</p>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                     {step.deliverables.map(d => (
                       <span key={d} style={{ fontSize: 12, fontWeight: 600, color: 'rgba(255,255,255,0.4)', padding: '5px 12px', borderRadius: 8, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.05)' }}>✓ {d}</span>

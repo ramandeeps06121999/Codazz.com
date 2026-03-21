@@ -628,6 +628,183 @@ export default function WebDevelopmentPage() {
         </section>
 
         {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+            1b. WHY CUSTOM WEB DEVELOPMENT — Problems, Solutions, Who Needs It, Benefits
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+        <section className="section-padding" style={sectionBorder}>
+          <div className="cb-container">
+            <div className="reveal" style={{ marginBottom: 16 }}>
+              <span style={tagStyle}>Why It Matters</span>
+            </div>
+            <h2 className="reveal reveal-d1" style={{ ...headingStyle, marginBottom: 16 }}>
+              Why Custom Web Development is Critical for Your Business
+            </h2>
+            <p className="reveal reveal-d2" style={{ ...subStyle, marginBottom: 56 }}>
+              Every business has unique needs. Off-the-shelf solutions slow you down. Custom web development built with React, Next.js, and responsive design gives you the competitive edge.
+            </p>
+
+            {/* Problems vs Solutions Cards */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: 24, marginBottom: 64 }}>
+              {/* Problem 1 */}
+              <div className="reveal" style={{
+                padding: '40px 32px',
+                border: `1px solid ${borderColor}`,
+                borderRadius: 28,
+                background: cardBg,
+                transition: 'all 0.35s ease',
+              }}>
+                <div style={{ fontSize: 32, marginBottom: 16 }}>⚙️</div>
+                <h3 style={{ fontSize: 18, fontWeight: 600, color: '#ffffff', marginBottom: 12, letterSpacing: '-0.02em' }}>Manual Processes Slow You Down</h3>
+                <p style={{ fontSize: 14, color: dimWhite, lineHeight: 1.75, margin: 0 }}>Spreadsheets, email workflows, and manual data entry waste 20+ hours per week. Your team gets burnt out. Your competitors scale faster.</p>
+              </div>
+
+              {/* Solution 1 */}
+              <div className="reveal" style={{
+                padding: '40px 32px',
+                border: `1px solid ${greenBorder}`,
+                borderRadius: 28,
+                background: greenBg,
+                transition: 'all 0.35s ease',
+              }}>
+                <div style={{ fontSize: 32, marginBottom: 16 }}>✨</div>
+                <h3 style={{ fontSize: 18, fontWeight: 600, color: green, marginBottom: 12, letterSpacing: '-0.02em' }}>Automation & Custom Tools</h3>
+                <p style={{ fontSize: 14, color: dimWhite, lineHeight: 1.75, margin: 0 }}>Web apps that automate workflows, integrate with your existing systems, and let you focus on growth. Built with modern stacks like React and Next.js for lightning-fast performance.</p>
+              </div>
+
+              {/* Problem 2 */}
+              <div className="reveal" style={{
+                padding: '40px 32px',
+                border: `1px solid ${borderColor}`,
+                borderRadius: 28,
+                background: cardBg,
+                transition: 'all 0.35s ease',
+              }}>
+                <div style={{ fontSize: 32, marginBottom: 16 }}>🔴</div>
+                <h3 style={{ fontSize: 18, fontWeight: 600, color: '#ffffff', marginBottom: 12, letterSpacing: '-0.02em' }}>Outdated Technology Stacks</h3>
+                <p style={{ fontSize: 14, color: dimWhite, lineHeight: 1.75, margin: 0 }}>Legacy systems are slow, hard to maintain, and leak security vulnerabilities. Hiring talent gets harder. Technical debt compounds every quarter.</p>
+              </div>
+
+              {/* Solution 2 */}
+              <div className="reveal" style={{
+                padding: '40px 32px',
+                border: `1px solid ${greenBorder}`,
+                borderRadius: 28,
+                background: greenBg,
+                transition: 'all 0.35s ease',
+              }}>
+                <div style={{ fontSize: 32, marginBottom: 16 }}>🚀</div>
+                <h3 style={{ fontSize: 18, fontWeight: 600, color: green, marginBottom: 12, letterSpacing: '-0.02em' }}>Modern, Future-Proof Stack</h3>
+                <p style={{ fontSize: 14, color: dimWhite, lineHeight: 1.75, margin: 0 }}>React, Next.js, TypeScript, and responsive design. SEO-optimized. Fast load times (95+ Lighthouse scores). Easy for developers to extend and maintain.</p>
+              </div>
+
+              {/* Problem 3 */}
+              <div className="reveal" style={{
+                padding: '40px 32px',
+                border: `1px solid ${borderColor}`,
+                borderRadius: 28,
+                background: cardBg,
+                transition: 'all 0.35s ease',
+              }}>
+                <div style={{ fontSize: 32, marginBottom: 16 }}>📈</div>
+                <h3 style={{ fontSize: 18, fontWeight: 600, color: '#ffffff', marginBottom: 12, letterSpacing: '-0.02em' }}>Can't Scale With Demand</h3>
+                <p style={{ fontSize: 14, color: dimWhite, lineHeight: 1.75, margin: 0 }}>Your site crashes during traffic spikes. Database locks when too many users login. You lose sales and reputation with every outage.</p>
+              </div>
+
+              {/* Solution 3 */}
+              <div className="reveal" style={{
+                padding: '40px 32px',
+                border: `1px solid ${greenBorder}`,
+                borderRadius: 28,
+                background: greenBg,
+                transition: 'all 0.35s ease',
+              }}>
+                <div style={{ fontSize: 32, marginBottom: 16 }}>♾️</div>
+                <h3 style={{ fontSize: 18, fontWeight: 600, color: green, marginBottom: 12, letterSpacing: '-0.02em' }}>Infinite Scalability</h3>
+                <p style={{ fontSize: 14, color: dimWhite, lineHeight: 1.75, margin: 0 }}>Cloud-native architecture on AWS/Vercel scales from 100 to 10 million users automatically. Load balancing, CDN, caching, database optimization baked in. 99.99% uptime guaranteed.</p>
+              </div>
+            </div>
+
+            {/* Who Needs It Section */}
+            <div style={{ marginBottom: 64 }}>
+              <div className="reveal" style={{ marginBottom: 32 }}>
+                <h3 style={{ fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', fontWeight: 600, color: '#ffffff', letterSpacing: '-0.02em', margin: 0 }}>
+                  Who Needs Custom Web Development
+                </h3>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 260px), 1fr))', gap: 20 }}>
+                {[
+                  { title: 'Startups', desc: 'Launch fast with a web app that raises funding, attracts users, and scales with you.' },
+                  { title: 'E-Commerce Brands', desc: 'High-converting product pages, checkout flows, and inventory systems that increase sales.' },
+                  { title: 'SaaS Companies', desc: 'Multi-tenant platforms with authentication, billing, dashboards, and APIs. Grow your ARR.' },
+                  { title: 'Enterprises', desc: 'Internal tools, portals, and data dashboards that replace expensive legacy systems.' },
+                  { title: 'Agencies', desc: 'White-label web development for your clients. We handle the technical work, you own the relationship.' },
+                  { title: 'Non-Profits', desc: 'Websites, volunteer management systems, and donation platforms. We offer 25% discount for non-profits.' },
+                ].map((item, i) => (
+                  <div key={item.title} className="reveal" style={{
+                    padding: '28px 24px',
+                    border: `1px solid ${borderColor}`,
+                    borderRadius: 20,
+                    background: cardBg,
+                    transitionDelay: `${i * 0.06}s`,
+                  }}>
+                    <h4 style={{ fontSize: 16, fontWeight: 600, color: green, marginBottom: 8, margin: 0 }}>{item.title}</h4>
+                    <p style={{ fontSize: 13, color: dimWhite, lineHeight: 1.6, margin: 0 }}>{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Benefits Grid */}
+            <div>
+              <div className="reveal" style={{ marginBottom: 32 }}>
+                <h3 style={{ fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', fontWeight: 600, color: '#ffffff', letterSpacing: '-0.02em', margin: 0 }}>
+                  Key Benefits of Custom Web Development
+                </h3>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 280px), 1fr))', gap: 24 }}>
+                {[
+                  {
+                    title: 'Time-to-Market',
+                    desc: 'Launch your MVP in 8-12 weeks instead of months. Agile sprints mean you see progress weekly.'
+                  },
+                  {
+                    title: 'Cost Reduction',
+                    desc: '25-40% cheaper than US agencies without compromising on quality. Transparent fixed-price quotes.'
+                  },
+                  {
+                    title: 'SEO Performance',
+                    desc: 'Next.js server-side rendering, semantic HTML, and Core Web Vitals optimization for page-one rankings.'
+                  },
+                  {
+                    title: 'User Retention',
+                    desc: 'Responsive design, fast load times, and intuitive UX keep visitors coming back. Less bounce rate.'
+                  },
+                ].map((benefit, i) => (
+                  <div key={benefit.title} className="reveal" style={{
+                    padding: '36px 28px',
+                    border: `1px solid ${borderColor}`,
+                    borderRadius: 24,
+                    background: cardBg,
+                    transitionDelay: `${i * 0.08}s`,
+                  }}
+                    onMouseEnter={e => { e.currentTarget.style.borderColor = greenBorder; e.currentTarget.style.background = greenBg; }}
+                    onMouseLeave={e => { e.currentTarget.style.borderColor = borderColor; e.currentTarget.style.background = cardBg; }}>
+                    <h4 style={{ fontSize: 18, fontWeight: 600, color: green, marginBottom: 12, letterSpacing: '-0.02em', margin: 0 }}>{benefit.title}</h4>
+                    <p style={{ fontSize: 14, color: dimWhite, lineHeight: 1.7, margin: 0 }}>{benefit.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Closing Paragraph */}
+            <div className="reveal" style={{ marginTop: 64, padding: '40px 36px', border: `1px solid ${greenBorder}`, borderRadius: 24, background: greenBg }}>
+              <p style={{ fontSize: 16, color: '#ffffff', lineHeight: 1.8, margin: 0, maxWidth: 800 }}>
+                <strong>Custom web development isn't a luxury—it's a business necessity.</strong> Your website and web applications are your most important sales tools. They're how customers discover you, how they transact with you, and how they judge your professionalism. A slow, outdated, or unresponsive web presence costs you leads every single day. At Codazz, we build web experiences using React, Next.js, and responsive design that rank on Google, convert visitors into customers, and scale with your business. Let's talk about what we can build for you.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
             2. AWARDS STRIP — Trust badges
         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
         <section style={{ ...sectionBorder, padding: '32px 0' }}>

@@ -458,6 +458,103 @@ export default function PageClient() {
           </div>
         </section>
 
+        {/* ── 2.5. WHY REACT NATIVE IS ESSENTIAL ────────────────────────────── */}
+        <section style={{ padding: '96px 24px', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+          <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+            <div className="reveal" style={{ marginBottom: 60 }}>
+              <h2 style={{ fontSize: 'clamp(26px, 4vw, 42px)', fontWeight: 800, letterSpacing: '-0.02em', margin: '0 0 24px' }}>
+                Why React Native Development is Essential for Your Project
+              </h2>
+            </div>
+
+            {/* Problem & Solution Cards */}
+            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 20, marginBottom: 60 }}>
+              {[
+                {
+                  icon: '💰',
+                  title: 'Problem 1: Native Development is Expensive',
+                  desc: 'Building separate iOS and Android apps requires two development teams, two codebases, and doubled testing effort. That\'s 40-60% higher costs and slower time-to-market.'
+                },
+                {
+                  icon: '⏱️',
+                  title: 'Problem 2: Maintaining Two Codebases Slows You Down',
+                  desc: 'Every feature takes twice as long. Bugs appear on one platform but not the other. Updates can\'t ship simultaneously. Your development velocity is capped by the slowest platform.'
+                },
+                {
+                  icon: '🚀',
+                  title: 'Solution 1: One Codebase, Both Platforms, 40% Cost Savings',
+                  desc: 'React Native lets you write once and deploy to iOS and Android from a single JavaScript/TypeScript codebase. Same features, same logic, massive cost and time savings. One team, unified development experience.'
+                },
+                {
+                  icon: '⚡',
+                  title: 'Solution 2: Fast Development with Hot Reload',
+                  desc: 'See code changes instantly on your device without rebuilding. Fast Refresh dramatically speeds iteration. Your team ships features faster, gets user feedback quicker, and compounds velocity advantages.'
+                }
+              ].map((item, i) => (
+                <div
+                  key={i}
+                  className={`reveal reveal-delay-${(i % 3) + 1}`}
+                  style={{
+                    background: 'rgba(255,255,255,0.025)', border: '1px solid rgba(255,255,255,0.08)',
+                    borderRadius: 22, padding: '32px 28px',
+                  }}
+                >
+                  <div style={{ fontSize: 36, marginBottom: 16 }}>{item.icon}</div>
+                  <h3 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', margin: '0 0 12px' }}>{item.title}</h3>
+                  <p style={{ color: 'rgba(255,255,255,0.58)', fontSize: 14.5, lineHeight: 1.7, margin: 0 }}>{item.desc}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Who Needs React Native */}
+            <div className="reveal" style={{ background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.2)', borderRadius: 24, padding: '40px', marginBottom: 60 }}>
+              <h3 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', margin: '0 0 28px' }}>Who Needs React Native Development Services?</h3>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: 16 }}>
+                {[
+                  { icon: '🚀', title: 'Startups with Limited Budget', desc: 'Launch your MVP with one team on both iOS and Android. React Native stretches your engineering budget 2-3x further.' },
+                  { icon: '🏢', title: 'Scale-ups Scaling Fast', desc: 'Your user base is growing but you need agility. React Native lets you ship cross-platform features in weeks, not months.' },
+                  { icon: '🔄', title: 'Companies with Native Apps', desc: 'Migrate incrementally from native to React Native or run hybrid apps. Protect your existing user base while gaining development speed.' },
+                  { icon: '🌐', title: 'Global Businesses', desc: 'Reach iOS users in rich markets and Android users worldwide with unified codebase. Cost-efficient international expansion.' },
+                  { icon: '⚡', title: 'Fast-Moving Product Teams', desc: 'A/B testing, rapid iterations, frequent updates. Hot Reload and instant deployment mean your team moves at startup speed.' },
+                  { icon: '💡', title: 'Enterprises Modernizing', desc: 'Legacy native apps slowing your team down? React Native migration lets you modernize without rewriting from scratch.' }
+                ].map((item, i) => (
+                  <div key={i} style={{ padding: '16px', borderRadius: 14, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
+                    <div style={{ fontSize: 28, marginBottom: 10 }}>{item.icon}</div>
+                    <h4 style={{ fontSize: 15, fontWeight: 700, color: '#ffffff', margin: '0 0 8px' }}>{item.title}</h4>
+                    <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)', margin: 0, lineHeight: 1.6 }}>{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Benefits Grid */}
+            <div className="reveal" style={{ marginBottom: 40 }}>
+              <h3 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', margin: '0 0 28px' }}>What You'll Achieve with React Native Development</h3>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))', gap: 16 }}>
+                {[
+                  { metric: '40-60%', label: 'Development Cost Savings', desc: 'vs. separate native development' },
+                  { metric: '50%', label: 'Faster Time-to-Market', desc: 'One team, unified deployment' },
+                  { metric: '95%', label: 'Code Sharing', desc: 'Business logic reused across platforms' },
+                  { metric: '4.8★', label: 'Average User Rating', desc: 'Performance users can\'t distinguish from native' }
+                ].map((item, i) => (
+                  <div key={i} style={{ padding: '28px 24px', borderRadius: 16, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.015)', textAlign: 'center' }}>
+                    <div style={{ fontSize: 'clamp(1.6rem, 2.5vw, 2rem)', fontWeight: 800, color: '#22c55e', marginBottom: 8 }}>{item.metric}</div>
+                    <h4 style={{ fontSize: 15, fontWeight: 700, color: '#ffffff', margin: '0 0 4px' }}>{item.label}</h4>
+                    <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', margin: 0 }}>{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Closing Paragraph */}
+            <div className="reveal" style={{ padding: '32px', borderRadius: 20, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.015)' }}>
+              <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.75)', lineHeight: 1.85, margin: 0 }}>
+                React Native has matured from side project to production-ready platform powering apps used by billions. Meta, Microsoft, Shopify, and Coinbase all rely on React Native for critical products. If you need to ship iOS and Android apps quickly without doubling your engineering costs, React Native is the right choice. Codazz has shipped 200+ React Native apps, optimized performance for millions of users, and built mission-critical enterprise applications. Let us help you build fast.
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* ── 3. WHY REACT NATIVE ───────────────────────────────────────────── */}
         <section style={{ padding: '96px 24px' }}>
           <div style={{ maxWidth: 1200, margin: '0 auto' }}>

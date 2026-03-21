@@ -289,6 +289,97 @@ export default function FintechPageClient() {
           </div>
         </section>
 
+        {/* ── WHY FINTECH SOFTWARE ── */}
+        <section className="section-padding" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+          <div className="cb-container">
+            <div className="reveal" style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
+              <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.9rem)', fontWeight: 800, marginBottom: '1rem', letterSpacing: '-0.02em' }}>
+                Why Fintech Companies Need Custom Software Solutions
+              </h2>
+              <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '1.1rem', maxWidth: 700, margin: '0 auto' }}>
+                Off-the-shelf fintech tools won't cut it. Regulations shift, competitors evolve, and margins are thin. Custom software gives you the competitive edge to move faster and comply automatically.
+              </p>
+            </div>
+
+            {/* Problem-Solution Cards */}
+            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '1.5rem', marginBottom: '3.5rem' }}>
+              {[
+                {
+                  icon: '⚖️',
+                  problem: 'Regulatory Complexity',
+                  solution: 'Automatic compliance checks built into your CI/CD pipeline. Your code passes PCI DSS, Open Banking, and AML rules before you commit.'
+                },
+                {
+                  icon: '🔐',
+                  problem: 'Security & Data Risk',
+                  solution: 'End-to-end encryption, HSM-backed key management, and audit logging that satisfies QSA auditors on day one. Zero breach liability.'
+                },
+                {
+                  icon: '⚡',
+                  problem: 'Speed to Market',
+                  solution: 'Deploy new payment methods, trading features, or insurance products in weeks, not months. Feature velocity without compliance rework.'
+                },
+                {
+                  icon: '📊',
+                  problem: 'Regulatory Reporting',
+                  solution: 'Real-time transaction logs, automated audit trails, and evidence packs ready for regulators. Compliance documentation happens automatically.'
+                }
+              ].map(card => (
+                <Card key={card.problem}>
+                  <div style={{ fontSize: '2.2rem', marginBottom: '1rem' }}>{card.icon}</div>
+                  <h3 style={{ fontWeight: 700, fontSize: '1.05rem', marginBottom: '0.75rem', color: '#ffffff' }}>
+                    {card.problem}
+                  </h3>
+                  <p style={{ color: 'rgba(255,255,255,0.65)', lineHeight: 1.75, fontSize: '0.93rem' }}>
+                    {card.solution}
+                  </p>
+                </Card>
+              ))}
+            </div>
+
+            {/* Who Needs It */}
+            <div className="reveal" style={{ background: 'rgba(34,197,94,0.03)', borderRadius: 28, border: '1px solid rgba(34,197,94,0.12)', padding: 'clamp(2rem, 4vw, 3rem)', marginBottom: '3.5rem' }}>
+              <h3 style={{ fontSize: '1.3rem', fontWeight: 700, marginBottom: '1.75rem' }}>
+                Industries & Business Types Served
+              </h3>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: '1.5rem' }}>
+                {[
+                  { icon: '🏦', name: 'Neobanks & Digital Banks', desc: 'Mobile-first banking apps with KYC, multi-currency, and FDIC-insured account infrastructure.' },
+                  { icon: '💳', name: 'Payment Processors', desc: 'Payment gateways, marketplace payouts, and ACH processing with PCI DSS Level 1 architecture.' },
+                  { icon: '📈', name: 'Investment Platforms', desc: 'Robo-advisors, equity trading, and portfolio management with real-time risk analytics.' },
+                  { icon: '🪙', name: 'Crypto Exchanges', desc: 'Custodial infrastructure, wallet technology, and DeFi protocol integration.' },
+                  { icon: '🛡️', name: 'InsurTech Companies', desc: 'Quote engines, policy management, claims automation, and embedded insurance APIs.' },
+                  { icon: '📋', name: 'Fintech Startups', desc: 'Pre-seed to Series B companies building the next generation of financial apps.' }
+                ].map(item => (
+                  <div key={item.name} style={{ padding: '1.5rem', background: 'rgba(255,255,255,0.02)', borderRadius: 16, border: '1px solid rgba(255,255,255,0.05)' }}>
+                    <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>{item.icon}</div>
+                    <h4 style={{ fontWeight: 600, marginBottom: '0.5rem', fontSize: '0.95rem' }}>{item.name}</h4>
+                    <p style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.55)', lineHeight: 1.6 }}>{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Outcomes */}
+            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: '1.5rem' }}>
+              {[
+                { icon: '✅', title: 'Compliance Confidence', desc: 'Pass PCI, SOC 2, and regulatory audits on first attempt with zero findings.' },
+                { icon: '⚡', title: 'Faster Go-Live', desc: 'Launch in weeks instead of months. Your compliance partner accelerates time-to-market.' },
+                { icon: '🔒', title: 'Security by Design', desc: 'Reduce breach risk with encryption, RBAC, and automated threat detection from day one.' },
+                { icon: '📊', title: 'Real-time Insights', desc: 'Live dashboards, transaction monitoring, and fraud detection powered by AI.' },
+                { icon: '💰', title: 'Revenue Expansion', desc: 'Scale to millions of transactions without infrastructure rewrites.' },
+                { icon: '🤝', title: 'Investor Appeal', desc: 'Demonstrate compliance and security posture to VCs and acquirers.' }
+              ].map(benefit => (
+                <div key={benefit.title} style={{ padding: '1.5rem', border: '1px solid rgba(34,197,94,0.12)', borderRadius: 20, background: 'rgba(34,197,94,0.025)' }}>
+                  <div style={{ fontSize: '1.8rem', marginBottom: '0.75rem' }}>{benefit.icon}</div>
+                  <h4 style={{ fontWeight: 600, marginBottom: '0.5rem' }}>{benefit.title}</h4>
+                  <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.6)', lineHeight: 1.6 }}>{benefit.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ── WHAT WE BUILD ── */}
         <section className="section-padding" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
           <style>{`

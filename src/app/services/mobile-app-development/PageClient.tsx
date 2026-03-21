@@ -601,6 +601,112 @@ export default function MobileAppDevelopmentPage() {
 
 
         {/* ═══════════════════════════════════════
+            2.5. WHY MOBILE APP DEVELOPMENT IS ESSENTIAL
+        ═══════════════════════════════════════ */}
+        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+          <div className="cb-container">
+            <div className="reveal" style={{ marginBottom: 60 }}>
+              <h2 style={{ fontSize: 'clamp(2.2rem, 4vw, 4rem)', fontWeight: 500, color: '#ffffff', letterSpacing: '-0.04em', margin: '0 0 24px' }}>
+                Why Mobile App Development is Essential for Your Business
+              </h2>
+            </div>
+
+            {/* Problem & Solution Cards */}
+            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 20, marginBottom: 60 }}>
+              {[
+                {
+                  icon: '📱',
+                  title: 'Problem 1: Desktop-Only Limits Your Reach',
+                  desc: 'Over 70% of web traffic comes from mobile devices. If your customers can only reach you on desktop, you\'re leaving massive revenue on the table. Desktop-first strategies are yesterday\'s approach.'
+                },
+                {
+                  icon: '⚡',
+                  title: 'Problem 2: Generic Apps Don\'t Compete',
+                  desc: 'Off-the-shelf solutions and outdated mobile experiences can\'t match your competitors. Custom mobile apps deliver personalized experiences, faster performance, and features that users actually want and expect.'
+                },
+                {
+                  icon: '🚀',
+                  title: 'Solution 1: Mobile Apps Drive Revenue',
+                  desc: 'Mobile apps increase customer engagement by 2-3x. Users spend 88% of their mobile time in apps, not browsers. Custom mobile apps unlock new revenue streams: in-app purchases, subscriptions, premium features, and direct customer relationships.'
+                },
+                {
+                  icon: '🔒',
+                  title: 'Solution 2: iOS + Android Covers All Users',
+                  desc: 'iOS dominates spending in wealthy markets, Android owns global user base. Building for both platforms with expert development ensures you don\'t lose customers to platform limitations, fragmentation, or poor performance.'
+                }
+              ].map((item, i) => (
+                <div
+                  key={i}
+                  className={`reveal-d${i + 1}`}
+                  style={{
+                    ...cardBase,
+                    padding: '32px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: 12
+                  }}
+                  onMouseEnter={cardHoverIn}
+                  onMouseLeave={cardHoverOut}
+                >
+                  <div style={greenAccentLine} />
+                  <div style={{ fontSize: 36 }}>{item.icon}</div>
+                  <h3 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', margin: 0, letterSpacing: '-0.01em' }}>{item.title}</h3>
+                  <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.65)', lineHeight: 1.75, margin: 0 }}>{item.desc}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Who Needs Mobile App Development */}
+            <div className="reveal" style={{ background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.2)', borderRadius: 28, padding: 'clamp(36px, 4vw, 48px)', marginBottom: 60 }}>
+              <h3 style={{ fontSize: 20, fontWeight: 700, color: '#ffffff', margin: '0 0 28px' }}>Who Needs Mobile App Development Services?</h3>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: 16 }}>
+                {[
+                  { icon: '🚀', title: 'Startups & Entrepreneurs', desc: 'Launch your MVP and acquire users on iOS and Android. Mobile-first is the fastest path to product-market fit.' },
+                  { icon: '🏢', title: 'SMBs & Growing Companies', desc: 'Reach new customers, increase loyalty, and compete with larger enterprises. Custom apps give you unfair advantage.' },
+                  { icon: '🌍', title: 'Enterprise & Established Brands', desc: 'Modernize customer experiences, launch apps across regions, and build direct distribution channels.' },
+                  { icon: '💰', title: 'E-Commerce & Retail', desc: 'Drive repeat purchases, increase AOV, and build customer loyalty through personalized mobile experiences.' },
+                  { icon: '🏥', title: 'Healthcare & SaaS', desc: 'Enable remote access, improve patient/user outcomes, and capture mobile-first user bases.' },
+                  { icon: '🎮', title: 'Gaming & Social', desc: 'Leverage iOS and Android capabilities for engagement, monetization, and viral growth.' }
+                ].map((item, i) => (
+                  <div key={i} style={{ padding: '16px', borderRadius: 14, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
+                    <div style={{ fontSize: 28, marginBottom: 10 }}>{item.icon}</div>
+                    <h4 style={{ fontSize: 15, fontWeight: 700, color: '#ffffff', margin: '0 0 8px' }}>{item.title}</h4>
+                    <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)', margin: 0, lineHeight: 1.6 }}>{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Benefits Grid */}
+            <div className="reveal" style={{ marginBottom: 40 }}>
+              <h3 style={{ fontSize: 20, fontWeight: 700, color: '#ffffff', margin: '0 0 28px' }}>What You'll Achieve with Professional Mobile App Development</h3>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))', gap: 16 }}>
+                {[
+                  { metric: '3-5x', label: 'User Engagement', desc: 'vs. Web-only solutions' },
+                  { metric: '35-50%', label: 'Revenue Growth', desc: 'Within first 12 months' },
+                  { metric: '2M+', label: 'Active Users', desc: 'Average per successful app' },
+                  { metric: '4.6★', label: 'Average Rating', desc: 'Apps built by our team' }
+                ].map((item, i) => (
+                  <div key={i} style={{ padding: '28px 24px', borderRadius: 16, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.015)', textAlign: 'center' }}>
+                    <div style={{ fontSize: 'clamp(1.6rem, 2.5vw, 2rem)', fontWeight: 800, color: '#22c55e', marginBottom: 8 }}>{item.metric}</div>
+                    <h4 style={{ fontSize: 15, fontWeight: 700, color: '#ffffff', margin: '0 0 4px' }}>{item.label}</h4>
+                    <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', margin: 0 }}>{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Closing Paragraph */}
+            <div className="reveal" style={{ padding: '32px', borderRadius: 20, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.015)' }}>
+              <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.75)', lineHeight: 1.85, margin: 0 }}>
+                Mobile app development isn't a luxury anymore — it's a business necessity. Whether you're building for iOS, Android, or both platforms, you need an expert partner who understands user experience, platform best practices, and business strategy. Codazz has shipped 500+ apps across industries, helped companies acquire millions of users, and generated billions in transaction value. Our team brings 16+ years of mobile expertise, proven methodologies, and a track record of shipping apps on time. Let us help you build an app that drives real business results.
+              </p>
+            </div>
+          </div>
+        </section>
+
+
+        {/* ═══════════════════════════════════════
             3. SUB-SERVICES GRID
         ═══════════════════════════════════════ */}
         <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>

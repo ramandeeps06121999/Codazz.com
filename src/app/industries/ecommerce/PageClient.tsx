@@ -295,6 +295,97 @@ export default function EcommercePage() {
           </div>
         </section>
 
+        {/* ─── WHY E-COMMERCE SOFTWARE ─── */}
+        <section className="section-padding">
+          <div className="cb-container">
+            <div className="reveal" style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
+              <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.9rem)', fontWeight: 800, marginBottom: '1rem', letterSpacing: '-0.02em' }}>
+                Why E-Commerce Brands Need Custom Software Solutions
+              </h2>
+              <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '1.1rem', maxWidth: 700, margin: '0 auto' }}>
+                Shopify works for most brands. But when you're doing $1M+ in annual revenue, standard platforms become your bottleneck — slow load times, generic checkout flows, and feature gaps that cost you sales. Custom e-commerce software is the competitive advantage that separates winners from everyone else.
+              </p>
+            </div>
+
+            {/* Problem-Solution Cards */}
+            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '1.5rem', marginBottom: '3.5rem' }}>
+              {[
+                {
+                  icon: '⚡',
+                  problem: 'Performance & Load Time',
+                  solution: 'Custom headless storefronts load in under 2 seconds. Every millisecond saved increases conversion rate by 0.5–2%. Our platforms achieve Lighthouse 95+ on day one.'
+                },
+                {
+                  icon: '💳',
+                  problem: 'Payment & PCI Complexity',
+                  solution: 'Tokenized payments via Stripe, Adyen, or Braintree. Cardholder data never touches your servers. PCI DSS Level 1 compliance automatic.'
+                },
+                {
+                  icon: '📦',
+                  problem: 'Inventory & Fulfillment',
+                  solution: 'Real-time inventory sync with your warehouse management system. Order processing, 3PL integrations, and returns management fully automated.'
+                },
+                {
+                  icon: '🎯',
+                  problem: 'Competitive Disadvantage',
+                  solution: 'AI-powered product recommendations, personalized search, and dynamic pricing. Increase AOV by 20–40% with data-driven merchandising.'
+                }
+              ].map(card => (
+                <Card key={card.problem}>
+                  <div style={{ fontSize: '2.2rem', marginBottom: '1rem' }}>{card.icon}</div>
+                  <h3 style={{ fontWeight: 700, fontSize: '1.05rem', marginBottom: '0.75rem', color: '#ffffff' }}>
+                    {card.problem}
+                  </h3>
+                  <p style={{ color: 'rgba(255,255,255,0.65)', lineHeight: 1.75, fontSize: '0.93rem' }}>
+                    {card.solution}
+                  </p>
+                </Card>
+              ))}
+            </div>
+
+            {/* Who Needs It */}
+            <div className="reveal" style={{ background: 'rgba(34,197,94,0.03)', borderRadius: 28, border: '1px solid rgba(34,197,94,0.12)', padding: 'clamp(2rem, 4vw, 3rem)', marginBottom: '3.5rem' }}>
+              <h3 style={{ fontSize: '1.3rem', fontWeight: 700, marginBottom: '1.75rem' }}>
+                E-Commerce Businesses We Serve
+              </h3>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: '1.5rem' }}>
+                {[
+                  { icon: '🛍️', name: 'Direct-to-Consumer Brands', desc: 'Lifestyle, fashion, and beauty brands scaling from $1M to $100M+ in revenue with custom storefronts.' },
+                  { icon: '🏪', name: 'High-Growth Retailers', desc: 'Brands experiencing 100%+ YoY growth that need platforms that scale without downtime.' },
+                  { icon: '🤝', name: 'Multi-Vendor Marketplaces', desc: 'Amazon-like marketplaces with seller onboarding, commission management, and payout engines.' },
+                  { icon: '📱', name: 'Mobile-First Brands', desc: 'Companies whose customers shop primarily on mobile. Custom apps and responsive storefronts.' },
+                  { icon: '🔄', name: 'Subscription Businesses', desc: 'Recurring revenue models with flexible plan management, dunning automation, and retention analytics.' },
+                  { icon: '🎁', name: 'Limited-Run / Flash Sale Brands', desc: 'Companies running influencer collaborations and flash sales that spike traffic 10x overnight.' }
+                ].map(item => (
+                  <div key={item.name} style={{ padding: '1.5rem', background: 'rgba(255,255,255,0.02)', borderRadius: 16, border: '1px solid rgba(255,255,255,0.05)' }}>
+                    <div style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>{item.icon}</div>
+                    <h4 style={{ fontWeight: 600, marginBottom: '0.5rem', fontSize: '0.95rem' }}>{item.name}</h4>
+                    <p style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.55)', lineHeight: 1.6 }}>{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Outcomes */}
+            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))', gap: '1.5rem' }}>
+              {[
+                { icon: '⚡', title: 'Conversion Velocity', desc: '2–5 second load times drive 5–15% conversion lift vs industry average.' },
+                { icon: '💰', title: 'Revenue Growth', desc: 'AOV increases 20–40% with personalized recommendations and optimized checkout.' },
+                { icon: '🛡️', title: 'Security & Compliance', desc: 'PCI DSS Level 1 compliance, GDPR, CCPA, and ADA accessibility built in.' },
+                { icon: '📊', title: 'Real-Time Analytics', desc: 'Live dashboards for revenue, conversion, AOV, and inventory. A/B test every page.' },
+                { icon: '🚀', title: 'Scale Without Fear', desc: 'Handle 500K concurrent users during Black Friday without crashing or slowdowns.' },
+                { icon: '🎯', title: 'Customer Experience', desc: 'Personalized product discovery, smart recommendations, and one-click checkout drive loyalty.' }
+              ].map(benefit => (
+                <div key={benefit.title} style={{ padding: '1.5rem', border: '1px solid rgba(34,197,94,0.12)', borderRadius: 20, background: 'rgba(34,197,94,0.025)' }}>
+                  <div style={{ fontSize: '1.8rem', marginBottom: '0.75rem' }}>{benefit.icon}</div>
+                  <h4 style={{ fontWeight: 600, marginBottom: '0.5rem' }}>{benefit.title}</h4>
+                  <p style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.6)', lineHeight: 1.6 }}>{benefit.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ─── WHAT WE BUILD ─── */}
         <section className="section-padding">
           <div className="cb-container">
