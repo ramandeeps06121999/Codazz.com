@@ -975,16 +975,17 @@ function MarqueeStyles() {
         0% { transform: translateX(-50%); }
         100% { transform: translateX(0); }
       }
-      .loc-hero-form-grid {
+      .loc-hero-grid {
         display: grid;
         grid-template-columns: 1fr 420px;
         gap: 60px;
         align-items: center;
       }
       .loc-carousel-wrap::-webkit-scrollbar { display: none; }
+      .loc-svc-scroll::-webkit-scrollbar { display: none; }
       .loc-city-marquee:hover .loc-city-track { animation-play-state: paused !important; }
       @media (max-width: 900px) {
-        .loc-hero-form-grid {
+        .loc-hero-grid {
           grid-template-columns: 1fr !important;
           gap: 40px !important;
         }
@@ -1037,7 +1038,6 @@ export default function PageClient({ city }: { city: CityData }) {
   const topDevReasons = getTopDevReasons(city.name);
   const relatedCities = getRelatedCities(city);
 
-  // Build enriched industry cards
   const industryCards = city.localIndustries.map(name => {
     const data = industryData[name];
     return {
@@ -1053,53 +1053,33 @@ export default function PageClient({ city }: { city: CityData }) {
       <Navbar />
       <main style={{ background: '#000000', color: '#ffffff', paddingTop: 80 }}>
 
-        {/* ════════════════════════════════════════════════════════════════════
-            1. HERO — Two-column layout with lead capture form
-        ════════════════════════════════════════════════════════════════════ */}
-        <section ref={heroRef} style={{ position: 'relative', overflow: 'hidden', minHeight: '85vh', display: 'flex', alignItems: 'center', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        {/* ═══ 1. HERO ═══ */}
+        <section ref={heroRef} style={{ position: 'relative', overflow: 'hidden', minHeight: '90vh', display: 'flex', alignItems: 'center', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <HeroBackground variant="center" />
-
           <div className="cb-container" style={{ position: 'relative', zIndex: 1, padding: 'clamp(60px, 10vw, 120px) 0' }}>
-            {/* Breadcrumb */}
-            <nav className="reveal" style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 28, flexWrap: 'wrap' }}>
-              {[
-                { label: 'Home', href: '/' },
-                { label: 'Locations', href: '/locations' },
-              ].map((crumb) => (
-                <span key={crumb.label} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                  <Link href={crumb.href} style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)', textDecoration: 'none', transition: 'color 0.2s' }}
-                    onMouseEnter={e => e.currentTarget.style.color = '#22c55e'}
-                    onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.4)'}>
-                    {crumb.label}
-                  </Link>
-                  <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.2)' }}>/</span>
-                </span>
-              ))}
-              <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.7)' }}>{city.name}</span>
-            </nav>
-
-            <div className="loc-hero-form-grid">
-              {/* Left column — H1, description, stats */}
+            <div className="loc-hero-grid">
               <div>
-                {/* Badge */}
+                <nav className="reveal" style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 28, flexWrap: 'wrap' }}>
+                  {[{ label: 'Home', href: '/' }, { label: 'Locations', href: '/locations' }].map(crumb => (
+                    <span key={crumb.label} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                      <Link href={crumb.href} style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)', textDecoration: 'none', transition: 'color 0.2s' }}
+                        onMouseEnter={e => e.currentTarget.style.color = '#22c55e'}
+                        onMouseLeave={e => e.currentTarget.style.color = 'rgba(255,255,255,0.4)'}>
+                        {crumb.label}
+                      </Link>
+                      <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.2)' }}>/</span>
+                    </span>
+                  ))}
+                  <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.7)' }}>{city.name}</span>
+                </nav>
                 <div className="reveal" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.2)', borderRadius: 100, padding: '8px 20px', marginBottom: 32 }}>
                   <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#22c55e', boxShadow: '0 0 8px #22c55e' }} />
-                  <span style={{ fontSize: 11, fontWeight: 700, color: '#ffffff', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
-                    {city.isHQ ? 'Dual HQ' : locationLabel}
-                  </span>
+                  <span style={{ fontSize: 11, fontWeight: 700, color: '#ffffff', letterSpacing: '0.12em', textTransform: 'uppercase' }}>{city.isHQ ? 'Dual HQ' : locationLabel}</span>
                 </div>
-
-                {/* H1 */}
-                <h1 className="reveal reveal-d1" style={{ fontSize: 'clamp(2.4rem, 5vw, 4.5rem)', fontWeight: 500, color: '#ffffff', letterSpacing: '-0.04em', lineHeight: 1.05, margin: '0 0 24px' }}>
-                  Software Development Company in{' '}<span style={{ color: '#ffffff' }}>{city.name}</span>
+                <h1 className="reveal reveal-d1" style={{ fontSize: 'clamp(2.4rem, 5vw, 4.8rem)', fontWeight: 500, color: '#ffffff', letterSpacing: '-0.04em', lineHeight: 1.05, margin: '0 0 24px' }}>
+                  Software Development<br />Company in{' '}<span style={{ color: '#22c55e' }}>{city.name}</span>
                 </h1>
-
-                {/* Hero context */}
-                <p className="reveal reveal-d2" style={{ fontSize: 17, color: 'rgba(255,255,255,0.7)', lineHeight: 1.75, maxWidth: 640, margin: '0 0 36px' }}>
-                  {city.heroContext}
-                </p>
-
-                {/* CTAs */}
+                <p className="reveal reveal-d2" style={{ fontSize: 17, color: 'rgba(255,255,255,0.7)', lineHeight: 1.75, maxWidth: 580, margin: '0 0 36px' }}>{city.heroContext}</p>
                 <div className="reveal reveal-d3" style={{ display: 'flex', gap: 14, flexWrap: 'wrap', marginBottom: 48 }}>
                   <Link href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, height: 56, padding: '0 36px', borderRadius: 100, background: '#22c55e', color: '#000', fontSize: 14, fontWeight: 700, textDecoration: 'none', transition: '0.3s' }}
                     onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 16px 40px rgba(34,197,94,0.35)'; }}
@@ -1108,185 +1088,94 @@ export default function PageClient({ city }: { city: CityData }) {
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
                   </Link>
                   <Link href="/case-studies" style={{ display: 'inline-flex', alignItems: 'center', height: 56, padding: '0 36px', borderRadius: 100, border: '1px solid rgba(255,255,255,0.08)', color: '#ffffff', fontSize: 14, fontWeight: 500, textDecoration: 'none', transition: '0.3s' }}
-                    onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)'}
+                    onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.2)'}
                     onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'}>
                     View Case Studies
                   </Link>
                 </div>
-
-                {/* Stats row */}
-                <div className="reveal reveal-d4" style={{ display: 'grid', gridTemplateColumns: `repeat(${city.stats.length}, 1fr)`, gap: 16, maxWidth: 600 }}>
+                <div className="reveal reveal-d4" style={{ display: 'grid', gridTemplateColumns: `repeat(${city.stats.length}, 1fr)`, borderRadius: 16, border: '1px solid rgba(255,255,255,0.06)', overflow: 'hidden', maxWidth: 560 }}>
                   {city.stats.map((s, i) => (
-                    <div key={s.label} style={{ textAlign: 'center', borderRight: i < city.stats.length - 1 ? '1px solid rgba(255,255,255,0.06)' : 'none', paddingRight: i < city.stats.length - 1 ? 16 : 0 }}>
-                      <div style={{ fontSize: 'clamp(1.4rem, 2.5vw, 2rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '-0.03em' }}>{s.value}</div>
-                      <div style={{ fontSize: 11, fontWeight: 600, color: 'rgba(255,255,255,0.25)', textTransform: 'uppercase', letterSpacing: '0.08em', marginTop: 4 }}>{s.label}</div>
+                    <div key={s.label} style={{ padding: '18px 16px', textAlign: 'center', borderRight: i < city.stats.length - 1 ? '1px solid rgba(255,255,255,0.06)' : 'none' }}>
+                      <div style={{ fontSize: 'clamp(1.3rem, 2.5vw, 1.8rem)', fontWeight: 700, color: '#22c55e', letterSpacing: '-0.03em' }}>{s.value}</div>
+                      <div style={{ fontSize: 10, fontWeight: 600, color: 'rgba(255,255,255,0.3)', textTransform: 'uppercase', letterSpacing: '0.08em', marginTop: 4 }}>{s.label}</div>
                     </div>
                   ))}
                 </div>
               </div>
-
-              {/* Right column — Lead capture form */}
-              <div className="reveal reveal-d3">
-                <LeadCaptureForm cityName={city.name} />
-              </div>
+              <div className="reveal reveal-d3"><LeadCaptureForm cityName={city.name} /></div>
             </div>
           </div>
         </section>
 
-        {/* ════════════════════════════════════════════════════════════════════
-            2. TRUST BADGES
-        ════════════════════════════════════════════════════════════════════ */}
-        <section ref={trustRef} style={{ ...sectionBorder, padding: 'clamp(32px, 6vw, 56px) 0' }}>
+        {/* ═══ 2. TRUST BAR ═══ */}
+        <section ref={trustRef} style={{ borderTop: '1px solid rgba(255,255,255,0.05)', padding: 'clamp(28px, 5vw, 48px) 0' }}>
           <div className="cb-container reveal" style={{ textAlign: 'center' }}>
-            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.2)', marginBottom: 20 }}>
-              Awards & Recognition
-            </div>
+            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.2)', marginBottom: 20 }}>Awards & Recognition</div>
             <TrustBadges />
             <div style={{ display: 'flex', justifyContent: 'center', gap: 32, flexWrap: 'wrap', marginTop: 24 }}>
-              {[
-                { label: 'Clutch 4.9★', icon: '⭐' },
-                { label: 'ISO 27001', icon: '🔒' },
-                { label: 'SOC II', icon: '🛡️' },
-                { label: 'AWS Partner', icon: '☁️' },
-                { label: '500+ Projects', icon: '🚀' },
-              ].map(badge => (
-                <div key={badge.label} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                  <span style={{ fontSize: 16 }}>{badge.icon}</span>
-                  <span style={{ fontSize: 12, fontWeight: 600, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.05em' }}>{badge.label}</span>
+              {[{ label: 'Clutch 4.9★', icon: '⭐' }, { label: 'ISO 27001', icon: '🔒' }, { label: 'SOC II', icon: '🛡️' }, { label: 'AWS Partner', icon: '☁️' }, { label: '500+ Projects', icon: '🚀' }].map(b => (
+                <div key={b.label} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                  <span style={{ fontSize: 16 }}>{b.icon}</span>
+                  <span style={{ fontSize: 12, fontWeight: 600, color: 'rgba(255,255,255,0.4)', letterSpacing: '0.05em' }}>{b.label}</span>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ════════════════════════════════════════════════════════════════════
-            3. CLIENT LOGOS — Scrolling marquee
-        ════════════════════════════════════════════════════════════════════ */}
-        <section ref={logosRef} style={{ ...sectionBorder, padding: 'clamp(48px, 8vw, 80px) 0', overflow: 'hidden' }}>
+        {/* ═══ 3. CLIENT LOGOS ═══ */}
+        <section ref={logosRef} style={{ borderTop: '1px solid rgba(255,255,255,0.05)', padding: 'clamp(48px, 8vw, 80px) 0', overflow: 'hidden' }}>
           <div className="cb-container reveal" style={{ textAlign: 'center', marginBottom: 40 }}>
-            <div style={{ ...subLabel, color: 'rgba(255,255,255,0.35)' }}>Trusted by Industry Leaders</div>
+            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)' }}>Trusted by Industry Leaders</div>
           </div>
-          {/* Row 1 — scrolls left */}
           <div style={{ position: 'relative', width: '100%', overflow: 'hidden', maskImage: 'linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%)', WebkitMaskImage: 'linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%)', marginBottom: 16 }}>
             <div style={{ display: 'flex', gap: 48, animation: 'marqueeScroll 35s linear infinite', width: 'max-content' }}>
               {[...clientLogos, ...clientLogos, ...clientLogos].map((logo, i) => (
-                <div key={`row1-${logo}-${i}`} style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: 14, padding: '14px 0' }}>
-                  <div style={{
-                    width: 44,
-                    height: 44,
-                    borderRadius: 12,
-                    background: 'rgba(34,197,94,0.06)',
-                    border: '1px solid rgba(34,197,94,0.1)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: 18,
-                    fontWeight: 800,
-                    color: '#22c55e',
-                  }}>
-                    {logo.charAt(0)}
-                  </div>
-                  <span style={{ fontSize: 18, fontWeight: 700, color: 'rgba(255,255,255,0.55)', letterSpacing: '-0.02em', whiteSpace: 'nowrap' }}>
-                    {logo}
-                  </span>
+                <div key={`r1-${logo}-${i}`} style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: 14, padding: '14px 0' }}>
+                  <div style={{ width: 44, height: 44, borderRadius: 12, background: 'rgba(34,197,94,0.06)', border: '1px solid rgba(34,197,94,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18, fontWeight: 800, color: '#22c55e' }}>{logo.charAt(0)}</div>
+                  <span style={{ fontSize: 18, fontWeight: 700, color: 'rgba(255,255,255,0.55)', letterSpacing: '-0.02em', whiteSpace: 'nowrap' }}>{logo}</span>
                 </div>
               ))}
             </div>
           </div>
-          {/* Row 2 — scrolls right (reverse) */}
           <div style={{ position: 'relative', width: '100%', overflow: 'hidden', maskImage: 'linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%)', WebkitMaskImage: 'linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%)' }}>
             <div style={{ display: 'flex', gap: 48, animation: 'marqueeScroll 40s linear infinite reverse', width: 'max-content' }}>
               {[...clientLogos.slice().reverse(), ...clientLogos.slice().reverse(), ...clientLogos.slice().reverse()].map((logo, i) => (
-                <div key={`row2-${logo}-${i}`} style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: 14, padding: '14px 0' }}>
-                  <div style={{
-                    width: 44,
-                    height: 44,
-                    borderRadius: 12,
-                    background: 'rgba(255,255,255,0.03)',
-                    border: '1px solid rgba(255,255,255,0.06)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: 18,
-                    fontWeight: 800,
-                    color: 'rgba(255,255,255,0.4)',
-                  }}>
-                    {logo.charAt(0)}
-                  </div>
-                  <span style={{ fontSize: 18, fontWeight: 700, color: 'rgba(255,255,255,0.45)', letterSpacing: '-0.02em', whiteSpace: 'nowrap' }}>
-                    {logo}
-                  </span>
+                <div key={`r2-${logo}-${i}`} style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: 14, padding: '14px 0' }}>
+                  <div style={{ width: 44, height: 44, borderRadius: 12, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18, fontWeight: 800, color: 'rgba(255,255,255,0.4)' }}>{logo.charAt(0)}</div>
+                  <span style={{ fontSize: 18, fontWeight: 700, color: 'rgba(255,255,255,0.45)', letterSpacing: '-0.02em', whiteSpace: 'nowrap' }}>{logo}</span>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ════════════════════════════════════════════════════════════════════
-            4. INDUSTRIES WE SERVE — Rich cards
-        ════════════════════════════════════════════════════════════════════ */}
-        <section ref={industriesRef} style={{ ...sectionPad, ...sectionBorder }}>
+        {/* ═══ 4. INDUSTRIES ═══ */}
+        <section ref={industriesRef} style={{ padding: 'clamp(60px, 10vw, 120px) 0', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div style={{ textAlign: 'center', marginBottom: 40 }}>
               <div className="reveal" style={subLabel}>Industries We Serve</div>
-              <h2 className="reveal" style={{ ...heading2, marginBottom: 16 }}>
-                Key Industries in <span style={{ color: '#ffffff' }}>{city.name}</span>
-              </h2>
-              <p className="reveal" style={{ ...bodyText, maxWidth: 640, margin: '0 auto', color: 'rgba(255,255,255,0.7)' }}>
-                Deep domain expertise across the industries that power {city.name}&apos;s economy.
-              </p>
+              <h2 className="reveal" style={{ ...heading2, marginBottom: 16 }}>Key Industries in <span style={{ color: 'rgba(255,255,255,0.3)' }}>{city.name}</span></h2>
+              {(city as CityData & { industriesIntro?: string }).industriesIntro && (
+                <p className="reveal" style={{ fontSize: 16, color: 'rgba(255,255,255,0.55)', lineHeight: 1.75, maxWidth: 680, margin: '0 auto' }}>
+                  {(city as CityData & { industriesIntro?: string }).industriesIntro}
+                </p>
+              )}
             </div>
-          </div>
-          {/* Industry cards grid — SEO-friendly, crawlable, clickable */}
-          <div className="cb-container">
-            {(city as CityData & { industriesIntro?: string }).industriesIntro && (
-              <p className="reveal" style={{ ...bodyText, textAlign: 'center', maxWidth: 700, margin: '0 auto 40px', color: 'rgba(255,255,255,0.6)', fontSize: 16 }}>
-                {(city as CityData & { industriesIntro?: string }).industriesIntro}
-              </p>
-            )}
             <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 280px), 1fr))', gap: 16 }}>
               {industryCards.map((ind, i) => (
-                <Link
-                  key={ind.name}
-                  href={`/industries/${ind.name.toLowerCase().replace(/[\s&]+/g, '-')}`}
+                <Link key={ind.name} href={`/industries/${ind.name.toLowerCase().replace(/[\s&]+/g, '-')}`}
                   className={`reveal reveal-d${(i % 4) + 1}`}
-                  style={{
-                    display: 'flex', flexDirection: 'column',
-                    padding: '28px 24px', borderRadius: 20,
-                    border: '1px solid rgba(255,255,255,0.06)',
-                    background: 'rgba(255,255,255,0.015)',
-                    textDecoration: 'none',
-                    transition: 'border-color 0.3s, background 0.3s, transform 0.3s, box-shadow 0.3s',
-                    gap: 14,
-                  }}
-                  onMouseEnter={e => {
-                    const t = e.currentTarget as HTMLElement;
-                    t.style.borderColor = 'rgba(34,197,94,0.25)';
-                    t.style.background = 'rgba(34,197,94,0.04)';
-                    t.style.transform = 'translateY(-3px)';
-                    t.style.boxShadow = '0 16px 40px rgba(34,197,94,0.08)';
-                  }}
-                  onMouseLeave={e => {
-                    const t = e.currentTarget as HTMLElement;
-                    t.style.borderColor = 'rgba(255,255,255,0.06)';
-                    t.style.background = 'rgba(255,255,255,0.015)';
-                    t.style.transform = '';
-                    t.style.boxShadow = '';
-                  }}
-                >
+                  style={{ display: 'flex', flexDirection: 'column', padding: '28px 24px', borderRadius: 20, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.015)', textDecoration: 'none', gap: 14, transition: 'all 0.3s', minHeight: 180 }}
+                  onMouseEnter={e => { const t = e.currentTarget as HTMLElement; t.style.borderColor = 'rgba(34,197,94,0.25)'; t.style.background = 'rgba(34,197,94,0.04)'; t.style.transform = 'translateY(-3px)'; t.style.boxShadow = '0 16px 40px rgba(34,197,94,0.08)'; }}
+                  onMouseLeave={e => { const t = e.currentTarget as HTMLElement; t.style.borderColor = 'rgba(255,255,255,0.06)'; t.style.background = 'rgba(255,255,255,0.015)'; t.style.transform = ''; t.style.boxShadow = ''; }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                    <div style={{
-                      width: 48, height: 48, borderRadius: 14, flexShrink: 0,
-                      background: 'rgba(34,197,94,0.06)', border: '1px solid rgba(34,197,94,0.12)',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22,
-                    }}>
-                      {ind.icon}
-                    </div>
+                    <div style={{ width: 48, height: 48, borderRadius: 14, flexShrink: 0, background: 'rgba(34,197,94,0.06)', border: '1px solid rgba(34,197,94,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 22 }}>{ind.icon}</div>
                     <h3 style={{ fontSize: 15, fontWeight: 700, color: '#ffffff', margin: 0, letterSpacing: '-0.01em', lineHeight: 1.2 }}>{ind.name}</h3>
                   </div>
-                  <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', lineHeight: 1.65, margin: 0 }}>{ind.desc}</p>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 'auto', paddingTop: 4 }}>
-                    <span style={{ fontSize: 12, fontWeight: 600, color: '#22c55e', letterSpacing: '0.02em' }}>Explore solutions</span>
+                  <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', lineHeight: 1.65, margin: 0, flexGrow: 1 }}>{ind.desc}</p>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                    <span style={{ fontSize: 12, fontWeight: 600, color: '#22c55e' }}>Explore solutions</span>
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
                   </div>
                 </Link>
@@ -1295,208 +1184,82 @@ export default function PageClient({ city }: { city: CityData }) {
           </div>
         </section>
 
-        {/* ════════════════════════════════════════════════════════════════════
-            5. WHY THIS CITY — Expanded cards
-        ════════════════════════════════════════════════════════════════════ */}
-        <section ref={whyRef} style={{ ...sectionPad, ...sectionBorder }}>
+        {/* ═══ 5. WHY THIS CITY ═══ */}
+        <section ref={whyRef} style={{ padding: 'clamp(60px, 10vw, 120px) 0', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div style={{ textAlign: 'center', marginBottom: 56 }}>
               <div className="reveal" style={subLabel}>Why {city.name}</div>
-              <h2 className="reveal" style={heading2}>
-                Why Businesses in <span style={{ color: '#ffffff' }}>{city.name}</span> Choose Codazz
+              <h2 className="reveal" style={{ ...heading2, marginBottom: 16 }}>
+                Why {city.name} Businesses<br /><span style={{ color: 'rgba(255,255,255,0.3)' }}>Choose Codazz</span>
               </h2>
-              <p className="reveal" style={{ ...bodyText, maxWidth: 640, margin: '16px auto 0', color: 'rgba(255,255,255,0.7)' }}>
+              <p className="reveal" style={{ ...bodyText, maxWidth: 600, margin: '0 auto', color: 'rgba(255,255,255,0.6)' }}>
                 We don&apos;t just write code — we understand the business context, regulatory landscape, and growth challenges specific to {city.name}.
               </p>
             </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 300px), 1fr))', gap: 20 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 280px), 1fr))', gap: 20 }}>
               {city.whyCity.map((item, i) => (
-                <div
-                  key={item.title}
-                  className={`reveal reveal-d${i + 1}`}
-                  style={{ ...cardStyle, padding: '40px 36px', position: 'relative', overflow: 'hidden' }}
-                  onMouseEnter={e => hoverCard(e, true)}
-                  onMouseLeave={e => hoverCard(e, false)}
-                >
-                  {/* Top accent bar */}
+                <div key={item.title} className={`reveal reveal-d${i + 1}`}
+                  style={{ padding: '40px 36px', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 28, background: 'rgba(255,255,255,0.015)', transition: 'all 0.3s', position: 'relative', overflow: 'hidden' }}
+                  onMouseEnter={e => { const t = e.currentTarget as HTMLElement; t.style.borderColor = 'rgba(34,197,94,0.2)'; t.style.background = 'rgba(34,197,94,0.03)'; t.style.transform = 'translateY(-4px)'; t.style.boxShadow = '0 24px 60px rgba(34,197,94,0.08)'; }}
+                  onMouseLeave={e => { const t = e.currentTarget as HTMLElement; t.style.borderColor = 'rgba(255,255,255,0.06)'; t.style.background = 'rgba(255,255,255,0.015)'; t.style.transform = ''; t.style.boxShadow = ''; }}>
                   <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: 'linear-gradient(90deg, #22c55e, transparent)' }} />
-                  {/* Step number */}
-                  <div style={{ fontSize: 11, fontWeight: 800, color: '#22c55e', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 20 }}>
-                    0{i + 1}
-                  </div>
+                  <div style={{ fontSize: 11, fontWeight: 800, color: '#22c55e', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 20 }}>0{i + 1}</div>
                   <div style={{ fontSize: 44, marginBottom: 20 }}>{item.icon}</div>
                   <h3 style={{ fontSize: 21, fontWeight: 600, color: '#ffffff', marginBottom: 16, letterSpacing: '-0.02em', lineHeight: 1.2 }}>{item.title}</h3>
-                  <p style={{ ...bodyText, margin: 0, lineHeight: 1.8 }}>{item.desc}</p>
+                  <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, margin: 0 }}>{item.desc}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ════════════════════════════════════════════════════════════════════
-            6. PORTFOLIO SHOWCASE
-        ════════════════════════════════════════════════════════════════════ */}
-        <section ref={portfolioRef} style={{ ...sectionPad, ...sectionBorder }}>
+        {/* ═══ 6. PORTFOLIO ═══ */}
+        <section ref={portfolioRef} style={{ padding: 'clamp(60px, 10vw, 120px) 0', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
-            {/* Stats bar */}
-            <div className="reveal" style={{
-              display: 'flex', justifyContent: 'center', gap: 0,
-              marginBottom: 56, flexWrap: 'wrap',
-              border: '1px solid rgba(255,255,255,0.06)', borderRadius: 20, overflow: 'hidden',
-            }}>
-              {[
-                { value: '500+', label: 'Projects Delivered' },
-                { value: '4.9★', label: 'Clutch Rating' },
-                { value: '$2B+', label: 'Transactions Processed' },
-                { value: '99.99%', label: 'Uptime SLA' },
-              ].map((stat, i) => (
-                <div key={stat.label} style={{
-                  padding: '20px 32px', textAlign: 'center', flex: 1, minWidth: 140,
-                  borderRight: i < 3 ? '1px solid rgba(255,255,255,0.06)' : 'none',
-                }}>
-                  <div style={{ fontSize: 'clamp(1.4rem,2.5vw,2rem)', fontWeight: 700, color: '#22c55e', letterSpacing: '-0.03em' }}>{stat.value}</div>
-                  <div style={{ fontSize: 11, fontWeight: 600, color: 'rgba(255,255,255,0.3)', textTransform: 'uppercase', letterSpacing: '0.08em', marginTop: 4 }}>{stat.label}</div>
+            <div className="reveal" style={{ display: 'flex', borderRadius: 20, border: '1px solid rgba(255,255,255,0.06)', overflow: 'hidden', marginBottom: 56, flexWrap: 'wrap' }}>
+              {[{ value: '500+', label: 'Projects Delivered' }, { value: '4.9★', label: 'Clutch Rating' }, { value: '$2B+', label: 'Transactions Processed' }, { value: '99.99%', label: 'Uptime SLA' }].map((s, i) => (
+                <div key={s.label} style={{ flex: 1, minWidth: 140, padding: '22px 28px', textAlign: 'center', borderRight: i < 3 ? '1px solid rgba(255,255,255,0.06)' : 'none' }}>
+                  <div style={{ fontSize: 'clamp(1.4rem, 2.5vw, 2rem)', fontWeight: 700, color: '#22c55e', letterSpacing: '-0.03em' }}>{s.value}</div>
+                  <div style={{ fontSize: 11, fontWeight: 600, color: 'rgba(255,255,255,0.3)', textTransform: 'uppercase', letterSpacing: '0.08em', marginTop: 4 }}>{s.label}</div>
                 </div>
               ))}
             </div>
-            <div style={{ textAlign: 'center', marginBottom: 56 }}>
+            <div style={{ textAlign: 'center', marginBottom: 48 }}>
               <div className="reveal" style={subLabel}>Our Work</div>
-              <h2 className="reveal" style={heading2}>
-                Featured Projects for {city.name} Clients
-              </h2>
-              <p className="reveal" style={{ ...bodyText, maxWidth: 640, margin: '16px auto 0', color: 'rgba(255,255,255,0.7)' }}>
-                Real projects, real results. Here&apos;s a glimpse of the platforms we&apos;ve built for businesses like yours.
-              </p>
+              <h2 className="reveal" style={{ ...heading2, marginBottom: 16 }}>Featured Projects for <span style={{ color: 'rgba(255,255,255,0.3)' }}>{city.name} Clients</span></h2>
+              <p className="reveal" style={{ ...bodyText, maxWidth: 560, margin: '0 auto', color: 'rgba(255,255,255,0.6)' }}>Real projects, real results — platforms serving millions of users worldwide.</p>
             </div>
-
             <div className="loc-portfolio-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 360px), 1fr))', gap: 24 }}>
               {(city.portfolio && city.portfolio.length > 0 ? city.portfolio : portfolioProjects).map((project, i) => {
-                // Normalize shape: city.portfolio uses `metrics`, hardcoded uses `results`
                 const projectName = project.name;
                 const projectDesc = project.description;
                 const projectTech = project.techStack;
                 const projectMetrics = 'metrics' in project ? (project as { metrics: { label: string; value: string }[] }).metrics : ('results' in project ? (project as { results: { label: string; value: string }[] }).results : []);
-                const gradients = [
-                  'linear-gradient(135deg, rgba(34,197,94,0.15) 0%, rgba(34,197,94,0.02) 100%)',
-                  'linear-gradient(135deg, rgba(59,130,246,0.15) 0%, rgba(59,130,246,0.02) 100%)',
-                  'linear-gradient(135deg, rgba(168,85,247,0.15) 0%, rgba(168,85,247,0.02) 100%)',
-                ];
-                const categoryIcons: Record<string, string> = {
-                  'FinTech': '💰', 'Healthcare': '🏥', 'Logistics': '🚛', 'E-Commerce': '🛒',
-                  'SaaS': '☁️', 'Real Estate': '🏠', 'AI': '🧠', 'Gaming': '🎮',
-                  'Energy': '⚡', 'EdTech': '📚', 'Media': '🎬', 'Cybersecurity': '🔒',
-                };
-                // Derive a category from the project name for the icon
-                const categoryKey = Object.keys(categoryIcons).find(k => projectName.toLowerCase().includes(k.toLowerCase())) || '';
-                const categoryIcon = categoryIcons[categoryKey] || '🚀';
-
+                const gradients = ['linear-gradient(135deg, rgba(34,197,94,0.12) 0%, rgba(0,0,0,0) 100%)', 'linear-gradient(135deg, rgba(59,130,246,0.12) 0%, rgba(0,0,0,0) 100%)', 'linear-gradient(135deg, rgba(168,85,247,0.12) 0%, rgba(0,0,0,0) 100%)'];
+                const categoryIcons: Record<string, string> = { 'FinTech': '💰', 'Healthcare': '🏥', 'Logistics': '🚛', 'E-Commerce': '🛒', 'SaaS': '☁️', 'Real Estate': '🏠', 'AI': '🧠', 'Media': '🎬' };
+                const catKey = Object.keys(categoryIcons).find(k => projectName.toLowerCase().includes(k.toLowerCase())) || '';
+                const catIcon = categoryIcons[catKey] || '🚀';
                 return (
-                  <div
-                    key={projectName}
-                    className={`reveal reveal-d${i + 1}`}
-                    style={{
-                      borderRadius: 28,
-                      border: '1px solid rgba(255,255,255,0.06)',
-                      background: 'rgba(255,255,255,0.015)',
-                      overflow: 'hidden',
-                      transition: 'border-color 0.3s, transform 0.3s, box-shadow 0.3s',
-                    }}
-                    onMouseEnter={e => {
-                      (e.currentTarget as HTMLElement).style.borderColor = 'rgba(34,197,94,0.2)';
-                      (e.currentTarget as HTMLElement).style.transform = 'translateY(-4px)';
-                      (e.currentTarget as HTMLElement).style.boxShadow = '0 24px 60px rgba(255,255,255,0.06)';
-                    }}
-                    onMouseLeave={e => {
-                      (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.06)';
-                      (e.currentTarget as HTMLElement).style.transform = '';
-                      (e.currentTarget as HTMLElement).style.boxShadow = '';
-                    }}
-                  >
-                    {/* Project card header with category icon, tech chips, gradient overlay */}
-                    <div style={{
-                      height: 200,
-                      background: gradients[i % gradients.length],
-                      display: 'flex',
-                      flexDirection: 'column',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      borderBottom: '1px solid rgba(255,255,255,0.04)',
-                      position: 'relative',
-                      overflow: 'hidden',
-                      gap: 16,
-                    }}>
-                      {/* Gradient overlay */}
-                      <div style={{
-                        position: 'absolute', inset: 0,
-                        background: 'linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.4) 100%)',
-                        pointerEvents: 'none',
-                      }} />
-                      {/* Category icon */}
-                      <div style={{
-                        position: 'relative', zIndex: 1,
-                        width: 64, height: 64, borderRadius: 20,
-                        background: 'rgba(0,0,0,0.5)',
-                        border: '1px solid rgba(255,255,255,0.1)',
-                        display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        fontSize: 32,
-                      }}>
-                        {categoryIcon}
-                      </div>
-                      {/* Tech stack chips overlay */}
-                      <div style={{
-                        position: 'relative', zIndex: 1,
-                        display: 'flex', flexWrap: 'wrap', gap: 6, justifyContent: 'center',
-                        padding: '0 20px',
-                      }}>
-                        {projectTech.slice(0, 4).map(tech => (
-                          <span key={tech} style={{
-                            fontSize: 10, fontWeight: 700,
-                            color: 'rgba(255,255,255,0.7)',
-                            padding: '4px 10px', borderRadius: 6,
-                            background: 'rgba(0,0,0,0.5)',
-                            border: '1px solid rgba(255,255,255,0.1)',
-                            letterSpacing: '0.04em',
-                          }}>
-                            {tech}
-                          </span>
+                  <div key={projectName} className={`reveal reveal-d${i + 1}`}
+                    style={{ borderRadius: 28, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.015)', overflow: 'hidden', transition: 'all 0.3s' }}
+                    onMouseEnter={e => { const t = e.currentTarget as HTMLElement; t.style.borderColor = 'rgba(34,197,94,0.2)'; t.style.transform = 'translateY(-4px)'; t.style.boxShadow = '0 24px 60px rgba(34,197,94,0.08)'; }}
+                    onMouseLeave={e => { const t = e.currentTarget as HTMLElement; t.style.borderColor = 'rgba(255,255,255,0.06)'; t.style.transform = ''; t.style.boxShadow = ''; }}>
+                    <div style={{ height: 200, background: gradients[i % 3], display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', borderBottom: '1px solid rgba(255,255,255,0.04)', position: 'relative', gap: 16 }}>
+                      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.5) 100%)', pointerEvents: 'none' }} />
+                      <div style={{ position: 'relative', zIndex: 1, width: 64, height: 64, borderRadius: 20, background: 'rgba(0,0,0,0.6)', border: '1px solid rgba(255,255,255,0.12)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 32 }}>{catIcon}</div>
+                      <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexWrap: 'wrap', gap: 6, justifyContent: 'center', padding: '0 20px' }}>
+                        {projectTech.slice(0, 4).map(t => (
+                          <span key={t} style={{ fontSize: 10, fontWeight: 700, color: 'rgba(255,255,255,0.8)', padding: '4px 10px', borderRadius: 6, background: 'rgba(0,0,0,0.6)', border: '1px solid rgba(255,255,255,0.12)', letterSpacing: '0.04em' }}>{t}</span>
                         ))}
-                        {projectTech.length > 4 && (
-                          <span style={{
-                            fontSize: 10, fontWeight: 700,
-                            color: 'rgba(255,255,255,0.5)',
-                            padding: '4px 10px', borderRadius: 6,
-                            background: 'rgba(0,0,0,0.5)',
-                            border: '1px solid rgba(255,255,255,0.08)',
-                          }}>
-                            +{projectTech.length - 4}
-                          </span>
-                        )}
                       </div>
                     </div>
-
                     <div style={{ padding: '28px 28px 32px' }}>
-                      <h3 style={{ fontSize: 20, fontWeight: 600, color: '#ffffff', marginBottom: 12, letterSpacing: '-0.02em' }}>{projectName}</h3>
+                      <h3 style={{ fontSize: 20, fontWeight: 600, color: '#ffffff', marginBottom: 10, letterSpacing: '-0.02em' }}>{projectName}</h3>
                       <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', lineHeight: 1.7, marginBottom: 20 }}>{projectDesc}</p>
-
-                      {/* Tech stack tags (full list) */}
-                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 20 }}>
-                        {projectTech.map(tech => (
-                          <span key={tech} style={{
-                            fontSize: 11,
-                            fontWeight: 600,
-                            color: 'rgba(255,255,255,0.4)',
-                            padding: '5px 12px',
-                            borderRadius: 8,
-                            background: 'rgba(255,255,255,0.04)',
-                            border: '1px solid rgba(255,255,255,0.04)',
-                          }}>
-                            {tech}
-                          </span>
-                        ))}
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 20 }}>
+                        {projectTech.map(t => (<span key={t} style={{ fontSize: 11, fontWeight: 600, color: 'rgba(255,255,255,0.35)', padding: '4px 10px', borderRadius: 6, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.04)' }}>{t}</span>))}
                       </div>
-
-                      {/* Metrics */}
-                      <div style={{ display: 'grid', gridTemplateColumns: `repeat(${projectMetrics.length}, 1fr)`, gap: 12, paddingTop: 20, borderTop: '1px solid rgba(255,255,255,0.04)' }}>
+                      <div style={{ display: 'grid', gridTemplateColumns: `repeat(${projectMetrics.length}, 1fr)`, gap: 12, paddingTop: 20, borderTop: '1px solid rgba(255,255,255,0.05)' }}>
                         {projectMetrics.map(r => (
                           <div key={r.label} style={{ textAlign: 'center' }}>
                             <div style={{ fontSize: 18, fontWeight: 700, color: '#22c55e', letterSpacing: '-0.02em' }}>{r.value}</div>
@@ -1509,14 +1272,8 @@ export default function PageClient({ city }: { city: CityData }) {
                 );
               })}
             </div>
-
             <div className="reveal" style={{ textAlign: 'center', marginTop: 48 }}>
-              <Link href="/case-studies" style={{
-                display: 'inline-flex', alignItems: 'center', gap: 10,
-                height: 52, padding: '0 32px', borderRadius: 100,
-                border: '1px solid rgba(255,255,255,0.08)', color: '#ffffff',
-                fontSize: 14, fontWeight: 500, textDecoration: 'none', transition: '0.3s',
-              }}
+              <Link href="/case-studies" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, height: 52, padding: '0 32px', borderRadius: 100, border: '1px solid rgba(255,255,255,0.08)', color: '#ffffff', fontSize: 14, fontWeight: 500, textDecoration: 'none', transition: '0.3s' }}
                 onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(34,197,94,0.3)'; e.currentTarget.style.color = '#22c55e'; }}
                 onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'; e.currentTarget.style.color = '#ffffff'; }}>
                 View All Case Studies
@@ -1526,82 +1283,35 @@ export default function PageClient({ city }: { city: CityData }) {
           </div>
         </section>
 
-        {/* ════════════════════════════════════════════════════════════════════
-            7. SERVICES BREAKDOWN — Accordion sections
-        ════════════════════════════════════════════════════════════════════ */}
-        <section ref={servicesRef} style={{ ...sectionPad, ...sectionBorder }}>
+        {/* ═══ 7. SERVICES ═══ */}
+        <section ref={servicesRef} style={{ padding: 'clamp(60px, 10vw, 120px) 0', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div style={{ textAlign: 'center', marginBottom: 56 }}>
               <div className="reveal" style={subLabel}>Our Services</div>
-              <h2 className="reveal" style={heading2}>
-                What We Build in <span style={{ color: '#ffffff' }}>{city.name}</span>
-              </h2>
-              <p className="reveal" style={{ ...bodyText, maxWidth: 640, margin: '16px auto 0', color: 'rgba(255,255,255,0.7)' }}>
-                {(city as CityData & { servicesIntro?: string }).servicesIntro || `Full-spectrum software development tailored to ${city.name}'s business landscape. Click each service to explore our specialized capabilities.`}
+              <h2 className="reveal" style={{ ...heading2, marginBottom: 16 }}>What We Build in <span style={{ color: 'rgba(255,255,255,0.3)' }}>{city.name}</span></h2>
+              <p className="reveal" style={{ ...bodyText, maxWidth: 640, margin: '0 auto', color: 'rgba(255,255,255,0.6)' }}>
+                {(city as CityData & { servicesIntro?: string }).servicesIntro || `Full-spectrum software development tailored to ${city.name}'s business landscape.`}
               </p>
             </div>
-
             <div className="reveal" style={{ maxWidth: 900, margin: '0 auto' }}>
               <ServiceAccordion services={servicesBreakdown} cityName={city.name} />
             </div>
-
-            {/* Quick-link horizontal carousel for all 12 services */}
-            <div className="reveal" style={{ marginTop: 56 }}>
-              <div style={{ textAlign: 'center', marginBottom: 28 }}>
-                <div style={{ fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,0.3)' }}>All Services in {city.name}</div>
-              </div>
-              <div style={{ position: 'relative' }}>
-                {/* Left fade */}
-                <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 48, background: 'linear-gradient(90deg, #000 0%, transparent 100%)', zIndex: 2, pointerEvents: 'none' }} />
-                {/* Right fade */}
-                <div style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 48, background: 'linear-gradient(270deg, #000 0%, transparent 100%)', zIndex: 2, pointerEvents: 'none' }} />
-                <div
-                  className="loc-carousel-wrap"
-                  style={{
-                    display: 'flex',
-                    gap: 12,
-                    overflowX: 'auto',
-                    scrollSnapType: 'x mandatory',
-                    padding: '8px 24px',
-                    msOverflowStyle: 'none',
-                    scrollbarWidth: 'none',
-                  }}
-                >
-                  {services.map((svc) => (
-                    <Link
-                      key={svc.slug}
-                      href={`/locations/${city.slug}/${svc.slug}`}
-                      style={{
-                        flexShrink: 0,
-                        width: 240,
-                        scrollSnapAlign: 'start',
-                        padding: '24px 24px',
-                        borderRadius: 28,
-                        border: '1px solid rgba(255,255,255,0.06)',
-                        background: 'rgba(255,255,255,0.015)',
-                        textDecoration: 'none',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        gap: 12,
-                        transition: 'border-color 0.3s, background 0.3s, transform 0.3s',
-                      }}
-                      onMouseEnter={e => {
-                        (e.currentTarget as HTMLElement).style.borderColor = 'rgba(34,197,94,0.2)';
-                        (e.currentTarget as HTMLElement).style.background = 'rgba(34,197,94,0.03)';
-                        (e.currentTarget as HTMLElement).style.transform = 'translateY(-4px)';
-                      }}
-                      onMouseLeave={e => {
-                        (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.06)';
-                        (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.015)';
-                        (e.currentTarget as HTMLElement).style.transform = '';
-                      }}
-                    >
+            <div style={{ position: 'relative', marginTop: 56 }}>
+              <div style={{ fontSize: 12, fontWeight: 600, color: 'rgba(255,255,255,0.25)', letterSpacing: '0.1em', textTransform: 'uppercase', textAlign: 'center', marginBottom: 20 }}>All Services in {city.name}</div>
+              <div style={{ position: 'absolute', left: 0, top: 36, bottom: 0, width: 48, background: 'linear-gradient(to right, #000, transparent)', zIndex: 2, pointerEvents: 'none' }} />
+              <div style={{ position: 'absolute', right: 0, top: 36, bottom: 0, width: 48, background: 'linear-gradient(to left, #000, transparent)', zIndex: 2, pointerEvents: 'none' }} />
+              <div className="loc-svc-scroll" style={{ overflowX: 'auto', scrollbarWidth: 'none' } as React.CSSProperties}>
+                <div style={{ display: 'flex', gap: 12, padding: '4px 24px 24px', width: 'max-content' }}>
+                  {services.map(svc => (
+                    <Link key={svc.slug} href={`/locations/${city.slug}/${svc.slug}`}
+                      style={{ display: 'flex', flexDirection: 'column', width: 200, flexShrink: 0, padding: '22px 20px', borderRadius: 20, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.015)', textDecoration: 'none', gap: 10, transition: 'all 0.3s', minHeight: 140 }}
+                      onMouseEnter={e => { const t = e.currentTarget as HTMLElement; t.style.borderColor = 'rgba(34,197,94,0.25)'; t.style.background = 'rgba(34,197,94,0.04)'; t.style.transform = 'translateY(-3px)'; }}
+                      onMouseLeave={e => { const t = e.currentTarget as HTMLElement; t.style.borderColor = 'rgba(255,255,255,0.06)'; t.style.background = 'rgba(255,255,255,0.015)'; t.style.transform = ''; }}>
                       <span style={{ fontSize: 28 }}>{svc.icon}</span>
-                      <div style={{ fontSize: 14, fontWeight: 600, color: '#ffffff', letterSpacing: '-0.01em' }}>{svc.name}</div>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 600, color: '#22c55e', marginTop: 'auto' }}>
-                        Learn More
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-                      </div>
+                      <span style={{ fontSize: 13, fontWeight: 700, color: '#ffffff', letterSpacing: '-0.01em', lineHeight: 1.3 }}>{svc.name}</span>
+                      <span style={{ fontSize: 12, color: '#22c55e', display: 'flex', alignItems: 'center', gap: 4, marginTop: 'auto' }}>
+                        Learn more <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+                      </span>
                     </Link>
                   ))}
                 </div>
@@ -1610,86 +1320,36 @@ export default function PageClient({ city }: { city: CityData }) {
           </div>
         </section>
 
-        {/* ════════════════════════════════════════════════════════════════════
-            8. DEVELOPMENT PROCESS — Timeline
-        ════════════════════════════════════════════════════════════════════ */}
-        <section ref={processRef} style={{ ...sectionPad, ...sectionBorder }}>
+        {/* ═══ 8. PROCESS — Vertical timeline ═══ */}
+        <section ref={processRef} style={{ padding: 'clamp(60px, 10vw, 120px) 0', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
-            <div style={{ textAlign: 'center', marginBottom: 64 }}>
-              <div className="reveal" style={subLabel}>Our Process</div>
-              <h2 className="reveal" style={heading2}>
-                How We Build Software in {city.name}
-              </h2>
-              <p className="reveal" style={{ ...bodyText, maxWidth: 640, margin: '16px auto 0', color: 'rgba(255,255,255,0.7)' }}>
-                A proven 5-step methodology refined over 500+ projects. From discovery to launch, every phase is designed to minimize risk and maximize ROI.
+            <div style={{ textAlign: 'center', marginBottom: 56 }}>
+              <div className="reveal" style={subLabel}>How We Work</div>
+              <h2 className="reveal" style={{ ...heading2, marginBottom: 16 }}>Our Development <span style={{ color: 'rgba(255,255,255,0.3)' }}>Process</span></h2>
+              <p className="reveal" style={{ ...bodyText, maxWidth: 560, margin: '0 auto', color: 'rgba(255,255,255,0.6)' }}>
+                A battle-tested 5-step process refined across 500+ projects. No surprises, no scope creep — just working software delivered on time.
               </p>
             </div>
-
-            {/* Vertical Timeline */}
             <div style={{ position: 'relative', maxWidth: 860, margin: '0 auto' }}>
-              {/* Vertical connector line */}
-              <div style={{
-                position: 'absolute', left: 39, top: 20, bottom: 20,
-                width: 2, background: 'linear-gradient(180deg, #22c55e 0%, rgba(34,197,94,0.1) 100%)',
-                zIndex: 0,
-              }} />
+              <div style={{ position: 'absolute', left: 39, top: 40, bottom: 40, width: 2, background: 'linear-gradient(180deg, #22c55e 0%, rgba(34,197,94,0.05) 100%)', zIndex: 0 }} />
               <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
                 {(city.processSteps || processSteps).map((step, i) => (
-                  <div
-                    key={i}
-                    className={`reveal reveal-d${(i % 3) + 1}`}
-                    style={{
-                      display: 'flex', gap: 28, alignItems: 'flex-start',
-                      position: 'relative', zIndex: 1,
-                    }}
-                  >
-                    {/* Step circle */}
-                    <div style={{
-                      width: 80, height: 80, borderRadius: '50%', flexShrink: 0,
-                      background: i === 0 ? '#22c55e' : 'rgba(255,255,255,0.03)',
-                      border: `2px solid ${i === 0 ? '#22c55e' : 'rgba(34,197,94,0.25)'}`,
-                      display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-                      transition: 'all 0.3s',
-                    }}>
-                      <div style={{ fontSize: 22 }}>{'icon' in step ? (step as { icon: string }).icon : ['🔍','📐','🎨','⚙️','🚀'][i]}</div>
-                      <div style={{ fontSize: 10, fontWeight: 800, color: i === 0 ? '#000' : '#22c55e', marginTop: 2, letterSpacing: '0.05em' }}>0{i + 1}</div>
+                  <div key={i} className={`reveal reveal-d${(i % 3) + 1}`} style={{ display: 'flex', gap: 28, alignItems: 'flex-start', position: 'relative', zIndex: 1 }}>
+                    <div style={{ width: 80, height: 80, borderRadius: '50%', flexShrink: 0, background: i === 0 ? '#22c55e' : 'transparent', border: `2px solid ${i === 0 ? '#22c55e' : 'rgba(34,197,94,0.3)'}`, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                      <div style={{ fontSize: 20 }}>{'icon' in step ? (step as { icon: string }).icon : ['🔍', '📐', '🎨', '⚙️', '🚀'][i]}</div>
+                      <div style={{ fontSize: 9, fontWeight: 800, color: i === 0 ? '#000' : '#22c55e', marginTop: 2, letterSpacing: '0.05em' }}>0{i + 1}</div>
                     </div>
-                    {/* Content */}
-                    <div style={{
-                      flex: 1, padding: '24px 28px', borderRadius: 24,
-                      border: '1px solid rgba(255,255,255,0.06)',
-                      background: 'rgba(255,255,255,0.015)',
-                      transition: 'border-color 0.3s, background 0.3s',
-                    }}
-                      onMouseEnter={e => {
-                        (e.currentTarget as HTMLElement).style.borderColor = 'rgba(34,197,94,0.2)';
-                        (e.currentTarget as HTMLElement).style.background = 'rgba(34,197,94,0.02)';
-                      }}
-                      onMouseLeave={e => {
-                        (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.06)';
-                        (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.015)';
-                      }}
-                    >
+                    <div style={{ flex: 1, padding: '24px 28px', borderRadius: 24, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.015)', transition: 'all 0.3s' }}
+                      onMouseEnter={e => { const t = e.currentTarget as HTMLElement; t.style.borderColor = 'rgba(34,197,94,0.2)'; t.style.background = 'rgba(34,197,94,0.02)'; }}
+                      onMouseLeave={e => { const t = e.currentTarget as HTMLElement; t.style.borderColor = 'rgba(255,255,255,0.06)'; t.style.background = 'rgba(255,255,255,0.015)'; }}>
                       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10, flexWrap: 'wrap', gap: 8 }}>
                         <h3 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', margin: 0, letterSpacing: '-0.02em' }}>{step.title}</h3>
-                        {'duration' in step && (
-                          <span style={{
-                            fontSize: 11, fontWeight: 700, color: '#22c55e',
-                            padding: '4px 12px', borderRadius: 100,
-                            background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.15)',
-                            letterSpacing: '0.04em', textTransform: 'uppercase',
-                          }}>{(step as { duration: string }).duration}</span>
-                        )}
+                        {'duration' in step && (<span style={{ fontSize: 11, fontWeight: 700, color: '#22c55e', padding: '4px 12px', borderRadius: 100, background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.15)', letterSpacing: '0.04em', textTransform: 'uppercase' as const }}>{(step as { duration: string }).duration}</span>)}
                       </div>
-                      <p style={{ ...bodyText, margin: '0 0 16px', fontSize: 14 }}>{step.description}</p>
+                      <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.65)', lineHeight: 1.75, margin: '0 0 16px' }}>{step.description}</p>
                       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
                         {step.deliverables.map((d: string, j: number) => (
-                          <span key={j} style={{
-                            fontSize: 12, fontWeight: 600, color: 'rgba(255,255,255,0.5)',
-                            padding: '5px 12px', borderRadius: 8,
-                            background: 'rgba(255,255,255,0.04)',
-                            border: '1px solid rgba(255,255,255,0.06)',
-                          }}>✓ {d}</span>
+                          <span key={j} style={{ fontSize: 12, fontWeight: 600, color: 'rgba(255,255,255,0.45)', padding: '5px 12px', borderRadius: 8, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.05)' }}>✓ {d}</span>
                         ))}
                       </div>
                     </div>
@@ -1700,141 +1360,69 @@ export default function PageClient({ city }: { city: CityData }) {
           </div>
         </section>
 
-        {/* ════════════════════════════════════════════════════════════════════
-            9. TECHNOLOGY STACK — Tabbed section
-        ════════════════════════════════════════════════════════════════════ */}
-        <section ref={techRef} style={{ ...sectionPad, ...sectionBorder }}>
+        {/* ═══ 9. TECH STACK ═══ */}
+        <section ref={techRef} style={{ padding: 'clamp(60px, 10vw, 120px) 0', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
-            <div style={{ textAlign: 'center', marginBottom: 56 }}>
-              <div className="reveal" style={subLabel}>Technology Stack</div>
-              <h2 className="reveal" style={heading2}>
-                Technologies We Use in {city.name}
-              </h2>
-              <p className="reveal" style={{ ...bodyText, maxWidth: 640, margin: '16px auto 0', color: 'rgba(255,255,255,0.7)' }}>
-                We choose the right technology for every project — not the trendy one. Our engineers are experts in 40+ technologies across the full stack.
-              </p>
+            <div style={{ textAlign: 'center', marginBottom: 48 }}>
+              <div className="reveal" style={subLabel}>Our Tech Stack</div>
+              <h2 className="reveal" style={heading2}>Technologies We Use in <span style={{ color: 'rgba(255,255,255,0.3)' }}>{city.name}</span></h2>
             </div>
-            <div className="reveal" style={{ maxWidth: 900, margin: '0 auto' }}>
-              <TechTabs />
-            </div>
+            <div className="reveal" style={{ maxWidth: 900, margin: '0 auto' }}><TechTabs /></div>
           </div>
         </section>
 
-        {/* ════════════════════════════════════════════════════════════════════
-            10. STATS SECTION — Big numbers
-        ════════════════════════════════════════════════════════════════════ */}
-        <section ref={statsRef} style={{ ...sectionPad, ...sectionBorder, position: 'relative', overflow: 'hidden' }}>
-          {/* Large background text */}
-          <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', fontSize: 'clamp(100px, 20vw, 220px)', fontWeight: 900, color: 'rgba(255,255,255,0.015)', letterSpacing: '-0.05em', whiteSpace: 'nowrap', pointerEvents: 'none', userSelect: 'none', lineHeight: 1 }}>CODAZZ</div>
-          {/* Green glow */}
-          <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: 800, height: 400, background: 'radial-gradient(ellipse, rgba(34,197,94,0.07) 0%, transparent 70%)', pointerEvents: 'none' }} />
-
+        {/* ═══ 10. ANIMATED STATS ═══ */}
+        <section ref={statsRef} style={{ padding: 'clamp(60px, 10vw, 120px) 0', borderTop: '1px solid rgba(255,255,255,0.05)', position: 'relative', overflow: 'hidden' }}>
+          <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', fontSize: 'clamp(100px, 20vw, 220px)', fontWeight: 900, color: 'rgba(255,255,255,0.012)', letterSpacing: '-0.05em', pointerEvents: 'none', userSelect: 'none', whiteSpace: 'nowrap' }}>CODAZZ</div>
+          <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: 800, height: 400, background: 'radial-gradient(ellipse, rgba(34,197,94,0.07) 0%, transparent 65%)', pointerEvents: 'none' }} />
           <div className="cb-container" style={{ position: 'relative', zIndex: 1 }}>
             <div style={{ textAlign: 'center', marginBottom: 56 }}>
-              <div className="reveal" style={{ ...subLabel, color: '#22c55e' }}>By The Numbers</div>
-              <h2 className="reveal" style={{ ...heading2, fontSize: 'clamp(2.5rem, 5vw, 4rem)' }}>
-                Codazz in Numbers
-              </h2>
-              <p className="reveal" style={{ ...bodyText, maxWidth: 520, margin: '16px auto 0', color: 'rgba(255,255,255,0.5)' }}>
-                Trusted by startups and Fortune 500 companies across {city.name} and 24 countries worldwide.
-              </p>
+              <div className="reveal" style={subLabel}>By The Numbers</div>
+              <h2 className="reveal" style={heading2}>Codazz in <span style={{ color: 'rgba(255,255,255,0.3)' }}>Numbers</span></h2>
             </div>
-
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 1, maxWidth: 1000, margin: '0 auto', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 24, overflow: 'hidden' }}>
-              {[
-                { value: '500+', label: 'Projects Delivered', icon: '🚀' },
-                { value: '100+', label: 'Engineers', icon: '👨‍💻' },
-                { value: '24', label: 'Countries Served', icon: '🌍' },
-                { value: '99%', label: 'Client Satisfaction', icon: '⭐' },
-                { value: '8-Week', label: 'MVP Delivery', icon: '⚡' },
-              ].map((stat, i) => (
-                <div key={stat.label} style={{
-                  padding: 'clamp(24px, 4vw, 40px) clamp(16px, 3vw, 28px)',
-                  textAlign: 'center',
-                  background: i % 2 === 0 ? 'rgba(255,255,255,0.015)' : 'rgba(255,255,255,0.008)',
-                  borderRight: i < 4 ? '1px solid rgba(255,255,255,0.05)' : 'none',
-                  transition: 'background 0.3s',
-                }}
-                  onMouseEnter={e => { (e.currentTarget as HTMLElement).style.background = 'rgba(34,197,94,0.05)'; }}
-                  onMouseLeave={e => { (e.currentTarget as HTMLElement).style.background = i % 2 === 0 ? 'rgba(255,255,255,0.015)' : 'rgba(255,255,255,0.008)'; }}
-                >
-                  <div style={{ fontSize: 24, marginBottom: 8 }}>{stat.icon}</div>
-                  <div style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 800, color: '#22c55e', letterSpacing: '-0.04em', lineHeight: 1, marginBottom: 8 }}>{stat.value}</div>
-                  <div style={{ fontSize: 12, fontWeight: 600, color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>{stat.label}</div>
+            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', borderRadius: 24, border: '1px solid rgba(255,255,255,0.06)', overflow: 'hidden' }}>
+              {[{ value: '500+', label: 'Projects Delivered', icon: '🚀' }, { value: '100+', label: 'Engineers', icon: '👨‍💻' }, { value: '24', label: 'Countries Served', icon: '🌍' }, { value: '99%', label: 'Client Satisfaction', icon: '⭐' }, { value: '8 Wks', label: 'MVP Delivery', icon: '⚡' }].map((s, i) => (
+                <div key={s.label} style={{ padding: '28px 16px', textAlign: 'center', borderRight: i < 4 ? '1px solid rgba(255,255,255,0.06)' : 'none', background: i % 2 === 1 ? 'rgba(255,255,255,0.01)' : 'transparent', transition: 'background 0.3s' }}
+                  onMouseEnter={e => (e.currentTarget as HTMLElement).style.background = 'rgba(34,197,94,0.03)'}
+                  onMouseLeave={e => (e.currentTarget as HTMLElement).style.background = i % 2 === 1 ? 'rgba(255,255,255,0.01)' : 'transparent'}>
+                  <div style={{ fontSize: 24, marginBottom: 8 }}>{s.icon}</div>
+                  <AnimatedStat value={s.value} label={s.label} />
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ════════════════════════════════════════════════════════════════════
-            11. TESTIMONIALS
-        ════════════════════════════════════════════════════════════════════ */}
-        <section ref={testimonialsRef} style={{ ...sectionBorder }}>
-          <div className="cb-container" style={{ textAlign: 'center', paddingTop: 'clamp(60px, 10vw, 100px)' }}>
-            <div className="reveal" style={subLabel}>Client Stories</div>
-            <h2 className="reveal" style={{ ...heading2, marginBottom: 8 }}>
-              What Clients in {city.name} Say About Us
-            </h2>
-            <p className="reveal" style={{ ...bodyText, maxWidth: 560, margin: '0 auto', color: 'rgba(255,255,255,0.5)' }}>
-              Don&apos;t take our word for it. Here&apos;s what our {city.name} clients have to say.
-            </p>
+        {/* ═══ 11. TESTIMONIALS ═══ */}
+        <section ref={testimonialsRef} style={{ padding: 'clamp(60px, 10vw, 120px) 0', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+          <div className="cb-container" style={{ marginBottom: 48 }}>
+            <div style={{ textAlign: 'center' }}>
+              <div className="reveal" style={subLabel}>Client Stories</div>
+              <h2 className="reveal" style={heading2}>What {city.name} Clients <span style={{ color: 'rgba(255,255,255,0.3)' }}>Say About Us</span></h2>
+            </div>
           </div>
-          <TestimonialMarquee testimonials={city.testimonials} heading="" />
+          <TestimonialMarquee testimonials={city.testimonials} />
         </section>
 
-        {/* ════════════════════════════════════════════════════════════════════
-            12. TOP DEVELOPERS SECTION — SEO targeting
-        ════════════════════════════════════════════════════════════════════ */}
-        <section ref={topDevsRef} style={{ ...sectionPad, ...sectionBorder }}>
+        {/* ═══ 12. WHY CODAZZ ═══ */}
+        <section ref={topDevsRef} style={{ padding: 'clamp(60px, 10vw, 120px) 0', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div style={{ textAlign: 'center', marginBottom: 56 }}>
-              <div className="reveal" style={subLabel}>Why We&apos;re #1</div>
-              <h2 className="reveal" style={{ ...heading2, marginBottom: 16 }}>
-                Top Software Development<br /><span style={{ color: 'rgba(255,255,255,0.4)' }}>Company in {city.name}</span>
-              </h2>
-              <p className="reveal" style={{ ...bodyText, maxWidth: 680, margin: '16px auto 0', color: 'rgba(255,255,255,0.7)' }}>
-                Codazz is consistently ranked among the top software development companies in {city.name} by Clutch, GoodFirms, and Manifest. Here&apos;s why businesses choose us over the competition.
-              </p>
+              <div className="reveal" style={subLabel}>Why Codazz</div>
+              <h2 className="reveal" style={heading2}>Top Software Development<br /><span style={{ color: 'rgba(255,255,255,0.3)' }}>Company in {city.name}</span></h2>
             </div>
-
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 400px), 1fr))', gap: 16 }}>
               {topDevReasons.map((reason, i) => {
                 const highlights = (city as CityData & { topDevsHighlights?: string[] }).topDevsHighlights;
                 return (
-                  <div
-                    key={reason.number}
-                    className={`reveal reveal-d${(i % 3) + 1}`}
-                    style={{
-                      padding: '28px 32px',
-                      borderTop: '1px solid rgba(255,255,255,0.06)',
-                      borderRight: '1px solid rgba(255,255,255,0.06)',
-                      borderBottom: '1px solid rgba(255,255,255,0.06)',
-                      borderLeft: '3px solid rgba(34,197,94,0.4)',
-                      borderRadius: 20,
-                      background: 'rgba(255,255,255,0.015)',
-                      transition: 'border-color 0.3s, background 0.3s, transform 0.3s',
-                    }}
-                    onMouseEnter={e => {
-                      const t = e.currentTarget as HTMLElement;
-                      t.style.borderColor = 'rgba(34,197,94,0.2)';
-                      t.style.background = 'rgba(34,197,94,0.03)';
-                      t.style.transform = 'translateY(-3px)';
-                    }}
-                    onMouseLeave={e => {
-                      const t = e.currentTarget as HTMLElement;
-                      t.style.borderColor = 'rgba(255,255,255,0.06)';
-                      t.style.background = 'rgba(255,255,255,0.015)';
-                      t.style.transform = '';
-                    }}
-                  >
+                  <div key={reason.number} className={`reveal reveal-d${(i % 3) + 1}`}
+                    style={{ padding: '28px 32px', borderTop: '1px solid rgba(255,255,255,0.06)', borderRight: '1px solid rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)', borderLeft: '3px solid rgba(34,197,94,0.4)', borderRadius: 20, background: 'rgba(255,255,255,0.015)', transition: 'all 0.3s' }}
+                    onMouseEnter={e => { const t = e.currentTarget as HTMLElement; t.style.background = 'rgba(34,197,94,0.03)'; t.style.transform = 'translateY(-3px)'; }}
+                    onMouseLeave={e => { const t = e.currentTarget as HTMLElement; t.style.background = 'rgba(255,255,255,0.015)'; t.style.transform = ''; }}>
                     <div style={{ fontSize: 11, fontWeight: 800, color: '#22c55e', letterSpacing: '0.12em', marginBottom: 10 }}>{reason.number}</div>
                     <h3 style={{ fontSize: 17, fontWeight: 700, color: '#ffffff', marginBottom: 10, letterSpacing: '-0.02em', lineHeight: 1.2 }}>{reason.title}</h3>
-                    <p style={{ ...bodyText, margin: 0, fontSize: 14, lineHeight: 1.75 }}>
-                      {reason.desc}
-                      {highlights?.[i] && (
-                        <span style={{ color: 'rgba(255,255,255,0.85)' }}> {highlights[i]}</span>
-                      )}
+                    <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', lineHeight: 1.75, margin: 0 }}>
+                      {reason.desc}{highlights?.[i] && <span style={{ color: 'rgba(255,255,255,0.85)' }}> {highlights[i]}</span>}
                     </p>
                   </div>
                 );
@@ -1843,161 +1431,102 @@ export default function PageClient({ city }: { city: CityData }) {
           </div>
         </section>
 
-        {/* ════════════════════════════════════════════════════════════════════
-            13. FAQ SECTION — Accordion
-        ════════════════════════════════════════════════════════════════════ */}
-        <section ref={faqRef} style={{ ...sectionPad, ...sectionBorder }}>
+        {/* ═══ 13. FAQ ═══ */}
+        <section ref={faqRef} style={{ padding: 'clamp(60px, 10vw, 120px) 0', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div style={{ textAlign: 'center', marginBottom: 56 }}>
               <div className="reveal" style={subLabel}>FAQ</div>
-              <h2 className="reveal" style={heading2}>
-                Frequently Asked Questions About Software Development in {city.name}
-              </h2>
-              <p className="reveal" style={{ ...bodyText, maxWidth: 640, margin: '16px auto 0', color: 'rgba(255,255,255,0.7)' }}>
-                Everything you need to know about working with Codazz in {city.name}.
+              <h2 className="reveal" style={{ ...heading2, marginBottom: 16 }}>Frequently Asked Questions</h2>
+              <p className="reveal" style={{ ...bodyText, maxWidth: 560, margin: '0 auto', color: 'rgba(255,255,255,0.55)' }}>
+                Everything you need to know about software development in {city.name}.
               </p>
             </div>
-            <div className="reveal" style={{ maxWidth: 800, margin: '0 auto' }}>
-              <Accordion items={faqs} />
-            </div>
+            <div className="reveal" style={{ maxWidth: 800, margin: '0 auto' }}><Accordion items={faqs} /></div>
           </div>
         </section>
 
-        {/* ════════════════════════════════════════════════════════════════════
-            14. GLOBAL PRESENCE
-        ════════════════════════════════════════════════════════════════════ */}
+        {/* ═══ 14. GLOBAL PRESENCE ═══ */}
         <GlobalPresence />
 
-        {/* ════════════════════════════════════════════════════════════════════
-            15. RELATED LOCATIONS
-        ════════════════════════════════════════════════════════════════════ */}
-        <section ref={relatedRef} style={{ ...sectionPad, ...sectionBorder, overflow: 'hidden' }}>
-          <div className="cb-container">
-            <div style={{ textAlign: 'center', marginBottom: 40 }}>
-              <div className="reveal" style={subLabel}>Other Locations</div>
-              <h2 className="reveal" style={heading2}>
-                We Also Serve These Cities
-              </h2>
-              <p className="reveal" style={{ ...bodyText, maxWidth: 600, margin: '16px auto 0', color: 'rgba(255,255,255,0.7)' }}>
-                Explore our software development services in other major cities around the world.
-              </p>
+        {/* ═══ 15. RELATED CITIES ═══ */}
+        <section ref={relatedRef} style={{ padding: 'clamp(60px, 10vw, 120px) 0', borderTop: '1px solid rgba(255,255,255,0.05)', overflow: 'hidden' }}>
+          <div className="cb-container reveal" style={{ textAlign: 'center', marginBottom: 48 }}>
+            <div style={subLabel}>Explore More</div>
+            <h2 style={heading2}>We Build in <span style={{ color: 'rgba(255,255,255,0.3)' }}>Every City</span></h2>
+          </div>
+          <div className="loc-city-marquee" style={{ position: 'relative', width: '100%', overflow: 'hidden', maskImage: 'linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%)', WebkitMaskImage: 'linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%)', marginBottom: 12 }}>
+            <div className="loc-city-track" style={{ display: 'flex', gap: 12, animation: 'cityMarqueeL 40s linear infinite', width: 'max-content' }}>
+              {[...relatedCities, ...relatedCities, ...relatedCities].map((rc, i) => (
+                <Link key={`r1-${rc.slug}-${i}`} href={`/locations/${rc.slug}`}
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '12px 22px', borderRadius: 100, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.015)', textDecoration: 'none', whiteSpace: 'nowrap', transition: 'all 0.3s', flexShrink: 0 }}
+                  onMouseEnter={e => { const t = e.currentTarget as HTMLElement; t.style.borderColor = 'rgba(34,197,94,0.3)'; t.style.background = 'rgba(34,197,94,0.05)'; }}
+                  onMouseLeave={e => { const t = e.currentTarget as HTMLElement; t.style.borderColor = 'rgba(255,255,255,0.06)'; t.style.background = 'rgba(255,255,255,0.015)'; }}>
+                  <span style={{ fontSize: 14 }}>📍</span>
+                  <span style={{ fontSize: 14, fontWeight: 600, color: '#ffffff' }}>{rc.name}</span>
+                  <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.3)' }}>{rc.stateAbbr}</span>
+                </Link>
+              ))}
             </div>
           </div>
-
-          {/* 2-row auto-scrolling marquee */}
-          <div className="reveal loc-city-marquee" style={{ display: 'flex', flexDirection: 'column', gap: 12, position: 'relative' }}>
-            <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 80, background: 'linear-gradient(90deg, #000 0%, transparent 100%)', zIndex: 2, pointerEvents: 'none' }} />
-            <div style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 80, background: 'linear-gradient(270deg, #000 0%, transparent 100%)', zIndex: 2, pointerEvents: 'none' }} />
-
-            {/* Row 1 - scrolls left */}
-            <div style={{ overflow: 'hidden' }}>
-              <div className="loc-city-track" style={{ display: 'flex', gap: 12, width: 'max-content', animation: 'cityMarqueeL 35s linear infinite' }}>
-                {[...relatedCities, ...cities.filter(c => c.slug !== city.slug).slice(0, 12), ...relatedCities, ...cities.filter(c => c.slug !== city.slug).slice(0, 12)].map((rc, i) => (
-                  <Link key={`r1-${rc.slug}-${i}`} href={`/locations/${rc.slug}`} style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: 8, padding: '12px 22px', borderRadius: 100, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.015)', textDecoration: 'none', whiteSpace: 'nowrap', transition: 'border-color 0.3s, background 0.3s' }}
-                    onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(34,197,94,0.25)'; (e.currentTarget as HTMLElement).style.background = 'rgba(34,197,94,0.05)'; }}
-                    onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.06)'; (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.015)'; }}
-                  >
-                    <span style={{ fontSize: 14 }}>📍</span>
-                    <span style={{ fontSize: 14, fontWeight: 600, color: '#ffffff' }}>{rc.name}</span>
-                    <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.3)' }}>{rc.country === 'UAE' ? 'UAE' : rc.state}</span>
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            {/* Row 2 - scrolls right */}
-            <div style={{ overflow: 'hidden' }}>
-              <div className="loc-city-track" style={{ display: 'flex', gap: 12, width: 'max-content', animation: 'cityMarqueeR 40s linear infinite' }}>
-                {[...cities.filter(c => c.slug !== city.slug).slice(6, 18), ...relatedCities, ...cities.filter(c => c.slug !== city.slug).slice(6, 18), ...relatedCities].map((rc, i) => (
-                  <Link key={`r2-${rc.slug}-${i}`} href={`/locations/${rc.slug}`} style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: 8, padding: '12px 22px', borderRadius: 100, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.015)', textDecoration: 'none', whiteSpace: 'nowrap', transition: 'border-color 0.3s, background 0.3s' }}
-                    onMouseEnter={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(34,197,94,0.25)'; (e.currentTarget as HTMLElement).style.background = 'rgba(34,197,94,0.05)'; }}
-                    onMouseLeave={e => { (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.06)'; (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.015)'; }}
-                  >
-                    <span style={{ fontSize: 14 }}>📍</span>
-                    <span style={{ fontSize: 14, fontWeight: 600, color: '#ffffff' }}>{rc.name}</span>
-                    <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.3)' }}>{rc.country === 'UAE' ? 'UAE' : rc.state}</span>
-                  </Link>
-                ))}
-              </div>
+          <div className="loc-city-marquee" style={{ position: 'relative', width: '100%', overflow: 'hidden', maskImage: 'linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%)', WebkitMaskImage: 'linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%)' }}>
+            <div className="loc-city-track" style={{ display: 'flex', gap: 12, animation: 'cityMarqueeR 45s linear infinite', width: 'max-content' }}>
+              {[...relatedCities.slice().reverse(), ...relatedCities.slice().reverse(), ...relatedCities.slice().reverse()].map((rc, i) => (
+                <Link key={`r2-${rc.slug}-${i}`} href={`/locations/${rc.slug}`}
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: 8, padding: '12px 22px', borderRadius: 100, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.015)', textDecoration: 'none', whiteSpace: 'nowrap', transition: 'all 0.3s', flexShrink: 0 }}
+                  onMouseEnter={e => { const t = e.currentTarget as HTMLElement; t.style.borderColor = 'rgba(34,197,94,0.3)'; t.style.background = 'rgba(34,197,94,0.05)'; }}
+                  onMouseLeave={e => { const t = e.currentTarget as HTMLElement; t.style.borderColor = 'rgba(255,255,255,0.06)'; t.style.background = 'rgba(255,255,255,0.015)'; }}>
+                  <span style={{ fontSize: 14 }}>📍</span>
+                  <span style={{ fontSize: 14, fontWeight: 600, color: '#ffffff' }}>{rc.name}</span>
+                  <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.3)' }}>{rc.stateAbbr}</span>
+                </Link>
+              ))}
             </div>
           </div>
-
-          <div className="cb-container" style={{ marginTop: 32 }}>
-            <div className="reveal" style={{ textAlign: 'center' }}>
-              <Link href="/locations" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, height: 48, padding: '0 28px', borderRadius: 100, border: '1px solid rgba(255,255,255,0.08)', color: '#ffffff', fontSize: 13, fontWeight: 500, textDecoration: 'none', transition: '0.3s' }}
-                onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)'}
-                onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'}>
-                View All Locations
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-              </Link>
-            </div>
+          <div className="reveal" style={{ textAlign: 'center', marginTop: 40 }}>
+            <Link href="/locations" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, height: 48, padding: '0 28px', borderRadius: 100, border: '1px solid rgba(255,255,255,0.08)', color: '#ffffff', fontSize: 14, fontWeight: 500, textDecoration: 'none', transition: '0.3s' }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(34,197,94,0.3)'; e.currentTarget.style.color = '#22c55e'; }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'; e.currentTarget.style.color = '#ffffff'; }}>
+              View All Locations
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+            </Link>
           </div>
         </section>
 
-        {/* ════════════════════════════════════════════════════════════════════
-            15. CTA — Enhanced with secondary form
-        ════════════════════════════════════════════════════════════════════ */}
-        <section ref={ctaRef} style={{ ...sectionPad, ...sectionBorder, position: 'relative', overflow: 'hidden' }}>
-          {/* Background glow */}
-          <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: 1000, height: 500, background: 'radial-gradient(ellipse, rgba(34,197,94,0.08) 0%, transparent 70%)', pointerEvents: 'none' }} />
-
-          <div className="cb-container" style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: 720, margin: '0 auto' }}>
-            <div className="reveal" style={subLabel}>Let&apos;s Talk</div>
-            <h2 className="reveal" style={{ ...heading2, marginBottom: 20, fontSize: 'clamp(2rem, 4vw, 3.5rem)' }}>
-              Ready to Build Something Great in <span style={{ color: '#ffffff' }}>{city.name}</span>?
+        {/* ═══ 16. FINAL CTA ═══ */}
+        <section ref={ctaRef} style={{ padding: 'clamp(80px, 12vw, 140px) 0', borderTop: '1px solid rgba(255,255,255,0.05)', position: 'relative', overflow: 'hidden' }}>
+          <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: 1000, height: 500, background: 'radial-gradient(ellipse, rgba(34,197,94,0.08) 0%, transparent 65%)', pointerEvents: 'none' }} />
+          <div className="cb-container reveal" style={{ textAlign: 'center', maxWidth: 720, margin: '0 auto', position: 'relative', zIndex: 1 }}>
+            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#22c55e', marginBottom: 20 }}>Let&apos;s Talk</div>
+            <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', fontWeight: 500, color: '#ffffff', letterSpacing: '-0.04em', lineHeight: 1.05, margin: '0 0 20px' }}>
+              Ready to Build Something<br />Great in {city.name}?
             </h2>
             {(city as CityData & { ctaHook?: string }).ctaHook && (
-              <p className="reveal" style={{
-                fontSize: 'clamp(1rem, 2vw, 1.2rem)',
-                color: '#22c55e',
-                fontWeight: 600,
-                margin: '0 0 20px',
-                letterSpacing: '-0.01em',
-              }}>
+              <p style={{ fontSize: 'clamp(1rem, 2vw, 1.15rem)', color: '#22c55e', fontWeight: 600, margin: '0 0 20px', letterSpacing: '-0.01em' }}>
                 {(city as CityData & { ctaHook?: string }).ctaHook}
               </p>
             )}
-            <p className="reveal" style={{ ...bodyText, marginBottom: 40, color: 'rgba(255,255,255,0.7)', maxWidth: 560, margin: '0 auto 40px' }}>
-              Whether you need a mobile app, a web platform, or an AI-powered solution, our team is ready to bring your vision to life. Get a free consultation and project estimate within 24 hours.
+            <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.6)', lineHeight: 1.75, margin: '0 0 40px', maxWidth: 560, marginLeft: 'auto', marginRight: 'auto' }}>
+              Whether you&apos;re a {city.name} startup building your first product or an enterprise modernising legacy systems — we deliver working software on time, every time.
             </p>
-
-            <div className="reveal" style={{ display: 'flex', gap: 14, flexWrap: 'wrap', justifyContent: 'center', marginBottom: 40 }}>
-              <Link href="/contact" style={{
-                display: 'inline-flex', alignItems: 'center', gap: 10,
-                height: 56, padding: '0 40px', borderRadius: 100,
-                background: '#22c55e', color: '#000',
-                fontSize: 14, fontWeight: 700, textDecoration: 'none',
-                transition: '0.3s',
-              }}
+            <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 40 }}>
+              <Link href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, height: 56, padding: '0 40px', borderRadius: 100, background: '#22c55e', color: '#000', fontSize: 15, fontWeight: 700, textDecoration: 'none', transition: '0.3s' }}
                 onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 16px 40px rgba(34,197,94,0.35)'; }}
                 onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}>
                 Start Your Project
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
               </Link>
-              <a href="https://calendly.com/codazz" target="_blank" rel="noopener noreferrer" style={{
-                display: 'inline-flex', alignItems: 'center', gap: 8,
-                height: 56, padding: '0 32px', borderRadius: 100,
-                border: '1px solid rgba(255,255,255,0.08)', color: '#ffffff',
-                fontSize: 14, fontWeight: 500, textDecoration: 'none',
-                transition: '0.3s',
-              }}
-                onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)'}
-                onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'}>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="4" width="18" height="18" rx="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" /></svg>
-                Book a Call
+              <a href="https://calendly.com/codazz" target="_blank" rel="noopener noreferrer"
+                style={{ display: 'inline-flex', alignItems: 'center', gap: 10, height: 56, padding: '0 40px', borderRadius: 100, border: '1px solid rgba(255,255,255,0.12)', color: '#ffffff', fontSize: 15, fontWeight: 500, textDecoration: 'none', transition: '0.3s' }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.25)'; e.currentTarget.style.background = 'rgba(255,255,255,0.04)'; }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)'; e.currentTarget.style.background = ''; }}>
+                📅 Book a Call
               </a>
             </div>
-
-            {/* Quick contact details */}
-            <div className="reveal" style={{ display: 'flex', gap: 32, justifyContent: 'center', flexWrap: 'wrap' }}>
-              {[
-                { icon: '✉️', text: 'hello@codazz.com' },
-                { icon: '📞', text: '+1 (403) 604-8692' },
-                { icon: '⏰', text: 'Response within 24 hours' },
-              ].map(item => (
-                <div key={item.text} style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+            <div style={{ display: 'flex', gap: 32, justifyContent: 'center', flexWrap: 'wrap' }}>
+              {[{ icon: '✉️', text: 'hello@codazz.com' }, { icon: '📞', text: '+1 (403) 604-8692' }, { icon: '⏰', text: 'Response within 24 hours' }].map(item => (
+                <div key={item.text} style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                   <span style={{ fontSize: 16 }}>{item.icon}</span>
-                  <span style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)' }}>{item.text}</span>
+                  <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)', fontWeight: 500 }}>{item.text}</span>
                 </div>
               ))}
             </div>
