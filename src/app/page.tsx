@@ -7,6 +7,7 @@ import LatestWork from '@/components/LatestWork';
 import ProcessSection from '@/components/ProcessSection';
 import FeaturedAwards from '@/components/FeaturedAwards';
 import TechStackSection from '@/components/TechStackSection';
+import TechMarquee from '@/components/TechMarquee';
 
 import GlobalPresence from '@/components/GlobalPresence';
 import PortfolioSection from '@/components/PortfolioSection';
@@ -181,6 +182,7 @@ export default function Home() {
         <div style={{ height: 1, background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.06) 50%, transparent)', margin: '0 auto', maxWidth: '80%' }} />
         <ProcessSection />
         <TechStackSection />
+        <TechMarquee />
         <PortfolioSection />
         <div style={{ height: 1, background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.06) 50%, transparent)', margin: '0 auto', maxWidth: '80%' }} />
         <MarketStats />
