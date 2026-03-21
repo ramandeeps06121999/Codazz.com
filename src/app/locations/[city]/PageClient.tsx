@@ -1237,96 +1237,43 @@ export default function PageClient({ city }: { city: CityData }) {
               </p>
             </div>
           </div>
-          {/* Auto-scrolling marquee — Row 1 LTR, Row 2 RTL */}
-          {(() => {
-            const extraIndustries = [
-              { name: 'FinTech', icon: '💳' }, { name: 'HealthTech', icon: '🏥' }, { name: 'EdTech', icon: '📚' },
-              { name: 'E-Commerce', icon: '🛒' }, { name: 'Logistics', icon: '🚚' }, { name: 'Real Estate', icon: '🏠' },
-              { name: 'Hospitality', icon: '🏨' }, { name: 'Legal Tech', icon: '⚖️' }, { name: 'Insurance', icon: '🛡️' },
-              { name: 'PropTech', icon: '🏗️' }, { name: 'AgriTech', icon: '🌾' }, { name: 'CleanTech', icon: '♻️' },
-              { name: 'Government', icon: '🏛️' }, { name: 'Retail', icon: '🏪' }, { name: 'Manufacturing', icon: '🏭' },
-              { name: 'Media & Entertainment', icon: '🎬' }, { name: 'Travel & Tourism', icon: '✈️' }, { name: 'Sports Tech', icon: '⚽' },
-            ];
-            const allInds = [...industryCards.map(i => ({ name: i.name, icon: i.icon })), ...extraIndustries.filter(e => !industryCards.find(i => i.name === e.name))];
-            const duped = [...allInds, ...allInds];
-            const mid = Math.ceil(duped.length / 2);
-            const row1 = duped.slice(0, mid);
-            const row2 = [...duped.slice(mid), ...duped.slice(0, mid)];
-            return (
-              <div className="reveal" style={{ position: 'relative' }}>
-                <style>{`
-                  @keyframes ind-ltr { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
-                  @keyframes ind-rtl { 0%{transform:translateX(-50%)} 100%{transform:translateX(0)} }
-                `}</style>
-                <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 80, background: 'linear-gradient(90deg,#000,transparent)', zIndex: 2, pointerEvents: 'none' }} />
-                <div style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 80, background: 'linear-gradient(270deg,#000,transparent)', zIndex: 2, pointerEvents: 'none' }} />
-                {/* Row 1 */}
-                <div style={{ overflow: 'hidden', marginBottom: 10 }}>
-                  <div style={{ display: 'flex', gap: 10, width: 'max-content', animation: 'ind-ltr 40s linear infinite' }}>
-                    {row1.map((ind, i) => (
-                      <Link key={`ind1-${i}`} href={`/industries/${ind.name.toLowerCase().replace(/[\s&]+/g, '-')}`}
-                        style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: 8, padding: '12px 22px', borderRadius: 100, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.015)', textDecoration: 'none', whiteSpace: 'nowrap', transition: 'border-color 0.3s,background 0.3s,transform 0.3s' }}
-                        onMouseEnter={e => { const t = e.currentTarget as HTMLElement; t.style.borderColor='rgba(34,197,94,0.25)'; t.style.background='rgba(34,197,94,0.05)'; t.style.transform='translateY(-2px)'; }}
-                        onMouseLeave={e => { const t = e.currentTarget as HTMLElement; t.style.borderColor='rgba(255,255,255,0.06)'; t.style.background='rgba(255,255,255,0.015)'; t.style.transform=''; }}
-                      >
-                        <span style={{ fontSize: 18 }}>{ind.icon}</span>
-                        <span style={{ fontSize: 13, fontWeight: 600, color: '#ffffff' }}>{ind.name}</span>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-                {/* Row 2 */}
-                <div style={{ overflow: 'hidden' }}>
-                  <div style={{ display: 'flex', gap: 10, width: 'max-content', animation: 'ind-rtl 45s linear infinite' }}>
-                    {row2.map((ind, i) => (
-                      <Link key={`ind2-${i}`} href={`/industries/${ind.name.toLowerCase().replace(/[\s&]+/g, '-')}`}
-                        style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: 8, padding: '12px 22px', borderRadius: 100, border: '1px solid rgba(34,197,94,0.08)', background: 'rgba(34,197,94,0.03)', textDecoration: 'none', whiteSpace: 'nowrap', transition: 'border-color 0.3s,background 0.3s,transform 0.3s' }}
-                        onMouseEnter={e => { const t = e.currentTarget as HTMLElement; t.style.borderColor='rgba(34,197,94,0.3)'; t.style.background='rgba(34,197,94,0.08)'; t.style.transform='translateY(-2px)'; }}
-                        onMouseLeave={e => { const t = e.currentTarget as HTMLElement; t.style.borderColor='rgba(34,197,94,0.08)'; t.style.background='rgba(34,197,94,0.03)'; t.style.transform=''; }}
-                      >
-                        <span style={{ fontSize: 18 }}>{ind.icon}</span>
-                        <span style={{ fontSize: 13, fontWeight: 600, color: 'rgba(34,197,94,0.8)' }}>{ind.name}</span>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            );
-          })()}
-          {/* legacy map anchor — keep for TS (unused) */}
-          {false && industryCards.map((ind) => (
+          {/* Industry cards grid — SEO-friendly, crawlable, clickable */}
+          <div className="cb-container">
+            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 200px), 1fr))', gap: 14 }}>
+              {industryCards.map((ind, i) => (
                 <Link
                   key={ind.name}
                   href={`/industries/${ind.name.toLowerCase().replace(/[\s&]+/g, '-')}`}
+                  className={`reveal reveal-d${(i % 4) + 1}`}
                   style={{
-                    flexShrink: 0,
-                    scrollSnapAlign: 'start',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 10,
-                    padding: '14px 24px',
-                    borderRadius: 100,
+                    display: 'flex', alignItems: 'center', gap: 12,
+                    padding: '18px 20px', borderRadius: 16,
                     border: '1px solid rgba(255,255,255,0.06)',
                     background: 'rgba(255,255,255,0.015)',
                     textDecoration: 'none',
-                    whiteSpace: 'nowrap',
-                    transition: 'border-color 0.3s, background 0.3s, transform 0.3s',
+                    transition: 'border-color 0.3s, background 0.3s, transform 0.3s, box-shadow 0.3s',
                   }}
                   onMouseEnter={e => {
-                    (e.currentTarget as HTMLElement).style.borderColor = 'rgba(34,197,94,0.25)';
-                    (e.currentTarget as HTMLElement).style.background = 'rgba(34,197,94,0.05)';
-                    (e.currentTarget as HTMLElement).style.transform = 'translateY(-2px)';
+                    const t = e.currentTarget as HTMLElement;
+                    t.style.borderColor = 'rgba(34,197,94,0.25)';
+                    t.style.background = 'rgba(34,197,94,0.05)';
+                    t.style.transform = 'translateY(-3px)';
+                    t.style.boxShadow = '0 12px 32px rgba(34,197,94,0.1)';
                   }}
                   onMouseLeave={e => {
-                    (e.currentTarget as HTMLElement).style.borderColor = 'rgba(255,255,255,0.06)';
-                    (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.015)';
-                    (e.currentTarget as HTMLElement).style.transform = '';
+                    const t = e.currentTarget as HTMLElement;
+                    t.style.borderColor = 'rgba(255,255,255,0.06)';
+                    t.style.background = 'rgba(255,255,255,0.015)';
+                    t.style.transform = '';
+                    t.style.boxShadow = '';
                   }}
                 >
-                  <span style={{ fontSize: 20 }}>{ind.icon}</span>
-                  <span style={{ fontSize: 14, fontWeight: 600, color: '#ffffff', letterSpacing: '-0.01em' }}>{ind.name}</span>
+                  <span style={{ fontSize: 22, flexShrink: 0 }}>{ind.icon}</span>
+                  <span style={{ fontSize: 13, fontWeight: 600, color: '#ffffff', letterSpacing: '-0.01em', lineHeight: 1.3 }}>{ind.name}</span>
                 </Link>
               ))}
+            </div>
+          </div>
         </section>
 
         {/* ════════════════════════════════════════════════════════════════════
@@ -1546,53 +1493,6 @@ export default function PageClient({ city }: { city: CityData }) {
               <p className="reveal" style={{ ...bodyText, maxWidth: 640, margin: '16px auto 0', color: 'rgba(255,255,255,0.7)' }}>
                 Full-spectrum software development tailored to {city.name}&apos;s business landscape. Click each service to explore our specialized capabilities.
               </p>
-            </div>
-
-            {/* Scrolling service marquee strip */}
-            <div className="reveal" style={{ position: 'relative', overflow: 'hidden', marginBottom: 48 }}>
-              <style>{`
-                @keyframes city-svc-marquee {
-                  0% { transform: translateX(0); }
-                  100% { transform: translateX(-50%); }
-                }
-              `}</style>
-              {/* Left fade mask */}
-              <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 80, background: 'linear-gradient(90deg, #000 0%, transparent 100%)', zIndex: 2, pointerEvents: 'none' }} />
-              {/* Right fade mask */}
-              <div style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 80, background: 'linear-gradient(270deg, #000 0%, transparent 100%)', zIndex: 2, pointerEvents: 'none' }} />
-              <div style={{ display: 'flex', gap: 12, width: 'max-content', animation: 'city-svc-marquee 32s linear infinite' }}>
-                {[
-                  { label: 'Mobile Apps', icon: '📱' },
-                  { label: 'Web Development', icon: '🌐' },
-                  { label: 'AI / ML', icon: '🤖' },
-                  { label: 'Cloud & DevOps', icon: '☁️' },
-                  { label: 'UI/UX Design', icon: '🎨' },
-                  { label: 'API Development', icon: '🔗' },
-                  { label: 'Blockchain', icon: '⛓️' },
-                  { label: 'Data Engineering', icon: '📊' },
-                  { label: 'AR / VR', icon: '🥽' },
-                  { label: 'SaaS Development', icon: '🏗️' },
-                  { label: 'Cybersecurity', icon: '🔒' },
-                  { label: 'MVP Launch', icon: '🚀' },
-                  { label: 'Mobile Apps', icon: '📱' },
-                  { label: 'Web Development', icon: '🌐' },
-                  { label: 'AI / ML', icon: '🤖' },
-                  { label: 'Cloud & DevOps', icon: '☁️' },
-                  { label: 'UI/UX Design', icon: '🎨' },
-                  { label: 'API Development', icon: '🔗' },
-                  { label: 'Blockchain', icon: '⛓️' },
-                  { label: 'Data Engineering', icon: '📊' },
-                  { label: 'AR / VR', icon: '🥽' },
-                  { label: 'SaaS Development', icon: '🏗️' },
-                  { label: 'Cybersecurity', icon: '🔒' },
-                  { label: 'MVP Launch', icon: '🚀' },
-                ].map((item, i) => (
-                  <div key={i} style={{ padding: '8px 18px', borderRadius: 100, border: '1px solid rgba(34,197,94,0.15)', background: 'rgba(34,197,94,0.05)', display: 'flex', alignItems: 'center', gap: 8, whiteSpace: 'nowrap', flexShrink: 0 }}>
-                    <span style={{ fontSize: 16 }}>{item.icon}</span>
-                    <span style={{ fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,0.75)' }}>{item.label}</span>
-                  </div>
-                ))}
-              </div>
             </div>
 
             <div className="reveal" style={{ maxWidth: 900, margin: '0 auto' }}>
