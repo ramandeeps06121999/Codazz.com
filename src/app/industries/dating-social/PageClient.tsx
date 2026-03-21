@@ -1,292 +1,151 @@
 'use client';
-import { useState, useRef, useEffect } from 'react';
-import Link from 'next/link';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import Breadcrumb from '@/components/Breadcrumb';
-import TrustBadges from '@/components/TrustBadges';
-import HeroBackground from '@/components/HeroBackground';
+import ServicePageTemplate, { ServicePageData } from '@/components/ServicePageTemplate';
 
-function useReveal() {
-  const ref = useRef<HTMLElement>(null);
-  useEffect(() => {
-    const io = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-      { threshold: 0.08 }
-    );
-    ref.current?.querySelectorAll('.reveal').forEach(el => io.observe(el));
-    return () => io.disconnect();
-  }, []);
-  return ref;
-}
-
-const cardBase: React.CSSProperties = {
-  border: '1px solid rgba(255,255,255,0.06)',
-  borderRadius: 24,
-  background: 'rgba(255,255,255,0.015)',
-  padding: '2rem',
-  transition: 'border-color 0.3s, background 0.3s, transform 0.3s, box-shadow 0.3s',
+const pageData: ServicePageData = {
+  breadcrumbs: [
+    { label: 'Home', href: '/' },
+    { label: 'Industries', href: '/services' },
+    { label: 'Dating & Social' },
+  ],
+  hero: {
+    badge: 'DATING & SOCIAL MEDIA',
+    title: 'We Build Apps That',
+    titleAccent: 'Connect People.',
+    description: 'AI-powered matching algorithms, real-time messaging, content moderation, and viral growth loops that drive engagement and retention at scale.',
+    service: 'Dating & Social Development',
+    stats: [
+      { value: '2M+', label: 'Users Onboarded' },
+      { value: '< 100ms', label: 'Chat Latency' },
+      { value: 'AI-Powered', label: 'Matching' },
+      { value: '38%', label: 'Month-1 Retention' },
+    ],
+  },
+  awards: [
+    'Top Social App Developer 2024',
+    'AI Matching Technology',
+    'GDPR Compliant',
+    'E2E Encryption Experts',
+    'App Store Featured',
+    'Engagement Engineering Pioneers',
+  ],
+  whySection: {
+    title: 'Why Social Platforms Choose Codazz',
+    cards: [
+      { icon: '\u{1F9E0}', title: 'Matching & Discovery', desc: 'AI algorithms that surface the right people at the right time, balancing relevance, diversity, and freshness to keep users engaged.' },
+      { icon: '\u{1F6E1}\u{FE0F}', title: 'Safety & Moderation', desc: 'Protecting users from harassment, fake profiles, and harmful content with AI moderation, verification systems, and reporting workflows.' },
+      { icon: '\u{1F4C8}', title: 'Viral Growth', desc: 'Engineering referral loops, shareable content formats, and network effects that turn users into organic growth engines.' },
+      { icon: '\u{1F4AC}', title: 'Real-Time Messaging', desc: 'WebSocket-powered chat with read receipts, typing indicators, media sharing, voice/video calls, and end-to-end encryption.' },
+    ],
+    whoNeedsTitle: 'Who Needs Social App Development?',
+    whoNeedsItems: [
+      { icon: '\u{1F495}', title: 'Dating App Founders', desc: 'AI matching engines, swipe mechanics, chat infrastructure, and monetization systems.' },
+      { icon: '\u{1F4F1}', title: 'Social Network Startups', desc: 'Feed algorithms, content creation tools, and community features for niche social platforms.' },
+      { icon: '\u{1F3AC}', title: 'Creator Platforms', desc: 'Short-form video, live streaming, tipping/gifting, and creator monetization tools.' },
+      { icon: '\u{1F465}', title: 'Community Platforms', desc: 'Interest-based groups, event organization, and moderated discussion forums.' },
+      { icon: '\u{1F91D}', title: 'Professional Networks', desc: 'B2B networking, mentorship matching, and professional community platforms.' },
+    ],
+    metricsTitle: 'Social App Development by the Numbers',
+    metrics: [
+      { metric: '2M+', label: 'Users Onboarded', desc: 'Across client platforms' },
+      { metric: '45 min', label: 'Avg Session', desc: 'Daily active engagement' },
+      { metric: '38%', label: 'Month-1 Retention', desc: 'Above industry average' },
+      { metric: '3x', label: 'Engagement Lift', desc: 'With AI matching' },
+    ],
+    closingText: 'Whether you are building a dating app, a social network, or a community platform, Codazz brings the engagement engineering expertise, real-time infrastructure, and growth mechanics to build social products that people cannot put down. We obsess over retention metrics because they determine whether your platform succeeds or fails.',
+  },
+  subServices: [
+    { title: 'AI Matching Engine', tag: 'Matching', desc: 'Collaborative filtering, behavioral scoring, and preference-learning algorithms that improve match quality over time.', chips: ['ML Models', 'Scoring', 'Preferences', 'Discovery'], href: '/contact', icon: '\u{1F495}' },
+    { title: 'Real-Time Messaging', tag: 'Chat', desc: 'WebSocket-powered chat with read receipts, typing indicators, media sharing, voice/video calls, and E2E encryption.', chips: ['WebSocket', 'Voice/Video', 'E2E', 'Media'], href: '/contact', icon: '\u{1F4AC}' },
+    { title: 'Profile & Verification', tag: 'Trust', desc: 'Photo verification, ID checks, social proof integration, and profile quality scoring that builds trust and reduces fake accounts.', chips: ['Verification', 'ID Check', 'Quality Score', 'Trust'], href: '/contact', icon: '\u{1F50D}' },
+    { title: 'Content & Stories', tag: 'Content', desc: 'Short-form video, disappearing stories, live streaming, and feed algorithms that maximize time-on-app and content creation.', chips: ['Stories', 'Video', 'Live', 'Feed'], href: '/contact', icon: '\u{1F3AC}' },
+    { title: 'Moderation & Safety', tag: 'Safety', desc: 'AI content scanning, user reporting workflows, shadow banning, and real-time toxic behavior detection.', chips: ['AI Moderation', 'Reporting', 'Detection', 'Banning'], href: '/contact', icon: '\u{1F6E1}\u{FE0F}' },
+    { title: 'Monetization Engine', tag: 'Revenue', desc: 'In-app purchases, premium subscriptions, boost mechanics, virtual gifting, and A/B tested paywalls.', chips: ['Subscriptions', 'IAP', 'Gifting', 'Paywalls'], href: '/contact', icon: '\u{1F48E}' },
+  ],
+  servicesHeading: {
+    label: 'Our Social App Solutions',
+    title: 'Full-Stack Social',
+    titleDim: 'Platform Engineering.',
+    description: 'From profiles to push notifications, we build every component of social platforms with engagement, safety, and real-time performance at the core.',
+  },
+  benefits: {
+    label: 'Why Codazz for Social Apps',
+    title: 'Engineered for',
+    titleDim: 'Addictive Engagement.',
+    items: [
+      { icon: '\u{1F3AF}', title: 'Engagement-First Design', desc: 'Every feature is designed, tested, and iterated to maximize daily active users and session length.' },
+      { icon: '\u{1F512}', title: 'Privacy & Trust Architecture', desc: 'E2E encryption, GDPR compliance, data minimization, and user control features that build trust.' },
+      { icon: '\u{1F680}', title: 'Launch-to-Scale Expertise', desc: 'From App Store optimization to handling viral growth spikes, we have launched social apps from zero to millions.' },
+      { icon: '\u{1F9E0}', title: 'AI-Powered Discovery', desc: 'Matching algorithms, content recommendations, and discovery features that keep users finding new connections.' },
+      { icon: '\u{1F6E1}\u{FE0F}', title: 'Safety-First Moderation', desc: 'AI content moderation, verification systems, and reporting workflows that protect your community.' },
+      { icon: '\u{1F4B0}', title: 'Monetization Expertise', desc: 'Subscription models, in-app purchases, and A/B tested paywalls that maximize revenue per user.' },
+    ],
+  },
+  clientLogos: [
+    'Tinder', 'Bumble', 'Hinge', 'Instagram', 'TikTok', 'Discord',
+    'Snapchat', 'Clubhouse', 'BeReal', 'Lemon8', 'Reddit', 'Telegram',
+  ],
+  bigStats: [
+    { value: '2M+', label: 'Users Onboarded', desc: 'Across platforms' },
+    { value: '45 min', label: 'Avg Session', desc: 'Daily engagement' },
+    { value: '38%', label: 'Month-1 Retention', desc: 'Industry-leading' },
+    { value: '< 100ms', label: 'Chat Latency', desc: 'Real-time messaging' },
+  ],
+  advancedTech: {
+    row1: [
+      { icon: '\u{1F9E0}', title: 'AI Matching', desc: 'ML-powered compatibility scoring' },
+      { icon: '\u{1F4AC}', title: 'WebSocket Chat', desc: 'Real-time messaging infrastructure' },
+      { icon: '\u{1F6E1}\u{FE0F}', title: 'AI Moderation', desc: 'Automated content safety' },
+      { icon: '\u{1F3AC}', title: 'Stories Engine', desc: 'Ephemeral content delivery' },
+      { icon: '\u{1F4F1}', title: 'Push Intelligence', desc: 'Engagement-optimized notifications' },
+    ],
+    row2: [
+      { icon: '\u{1F512}', title: 'E2E Encryption', desc: 'Private messaging security' },
+      { icon: '\u{1F50D}', title: 'Verification', desc: 'Photo and identity checks' },
+      { icon: '\u{1F4CA}', title: 'Engagement Analytics', desc: 'User behavior dashboards' },
+      { icon: '\u{1F48E}', title: 'In-App Purchases', desc: 'Revenue optimization' },
+      { icon: '\u{1F310}', title: 'CDN Delivery', desc: 'Global media distribution' },
+    ],
+  },
+  techStack: [
+    { category: 'Mobile', techs: ['React Native', 'Swift', 'Kotlin', 'Flutter'] },
+    { category: 'Real-Time', techs: ['WebSockets', 'Firebase', 'Redis Pub/Sub', 'Agora'] },
+    { category: 'AI/ML', techs: ['TensorFlow', 'PyTorch', 'OpenAI', 'Pinecone'] },
+    { category: 'Infrastructure', techs: ['AWS', 'CDN', 'PostgreSQL', 'Elasticsearch'] },
+    { category: 'Video & Media', techs: ['Mux', 'FFmpeg', 'CloudFront', 'ImageKit'] },
+    { category: 'Security', techs: ['Signal Protocol', 'AES-256', 'OAuth2', 'GDPR'] },
+  ],
+  faqs: [
+    { q: 'Can you build AI-powered matching algorithms?', a: 'Yes. We build collaborative filtering, behavioral scoring, and preference-learning algorithms that improve match quality over time. Our matching engines consider explicit preferences, implicit behavior patterns, and compatibility signals to surface the best possible matches.' },
+    { q: 'How do you handle user safety and moderation?', a: 'We implement multi-layered safety: AI-powered content scanning for explicit images and toxic text, photo verification against fraud, user reporting workflows with automated triage, shadow banning for bad actors, and real-time behavioral monitoring. Safety is never an afterthought.' },
+    { q: 'Do you build real-time messaging systems?', a: 'Absolutely. We build WebSocket-powered chat infrastructure with read receipts, typing indicators, media sharing, voice and video calls, message reactions, and optional end-to-end encryption. Our systems handle millions of concurrent connections with sub-100ms latency.' },
+    { q: 'How do you ensure GDPR compliance for social apps?', a: 'We implement GDPR compliance at every level: explicit consent collection, data minimization, right to erasure, data portability, transparent privacy controls, and proper data processing agreements. Users have full control over their data and visibility settings.' },
+    { q: 'Can you handle viral growth spikes?', a: 'Yes. Our auto-scaling infrastructure handles sudden traffic surges from viral moments or marketing campaigns. We use CDN delivery for media, database read replicas for query load, and queue-based processing for non-critical operations to maintain performance under any load.' },
+    { q: 'What monetization strategies do you implement?', a: 'We build and A/B test multiple monetization mechanics: premium subscriptions, in-app purchases (boosts, super likes), virtual gifting, ad integration, and paywall optimization. Our focus is on maximizing revenue per user while maintaining a great free experience.' },
+  ],
+  faqDescription: 'Common questions about our dating and social app development services, matching technology, and platform capabilities.',
+  relatedBlogs: [
+    { title: 'Building AI Matching Algorithms for Dating Apps', desc: 'How ML improves match quality and drives engagement.', href: '/blog' },
+    { title: 'Real-Time Messaging Architecture at Scale', desc: 'WebSocket infrastructure for millions of concurrent connections.', href: '/blog' },
+    { title: 'Content Moderation: AI Safety for Social Platforms', desc: 'How to protect users with automated moderation systems.', href: '/blog' },
+  ],
+  relatedServices: [
+    { name: 'Mobile App Development', desc: 'Native iOS and Android apps with real-time chat and smooth animations.', href: '/services/mobile-app-development' },
+    { name: 'AI & Machine Learning', desc: 'Matching algorithms, content moderation AI, and behavioral analytics.', href: '/services/ai-ml' },
+    { name: 'Product Design', desc: 'Swipe mechanics, profile flows, and engagement-optimized interfaces.', href: '/services/product-design' },
+    { name: 'Cloud & DevOps', desc: 'Real-time infrastructure with WebSockets, CDN delivery, and auto-scaling.', href: '/services/cloud-devops' },
+  ],
+  industries: [
+    { name: 'Streaming', href: '/industries/streaming-entertainment' },
+    { name: 'Fitness & Wellness', href: '/industries/fitness-wellness' },
+    { name: 'EdTech', href: '/industries/edtech' },
+    { name: 'Fantasy Sports', href: '/industries/fantasy-sports' },
+    { name: 'E-Commerce', href: '/industries/ecommerce' },
+    { name: 'Travel', href: '/industries/travel-hospitality' },
+    { name: 'Food Delivery', href: '/industries/food-delivery' },
+    { name: 'On-Demand', href: '/industries/on-demand' },
+  ],
 };
-
-const cardHover: React.CSSProperties = {
-  borderColor: 'rgba(34,197,94,0.2)',
-  background: 'rgba(34,197,94,0.03)',
-  transform: 'translateY(-4px)',
-  boxShadow: '0 24px 60px rgba(255,255,255,0.06)',
-};
-
-function Card({ children, style }: { children: React.ReactNode; style?: React.CSSProperties }) {
-  const [hovered, setHovered] = useState(false);
-  return (
-    <div
-      style={{ ...cardBase, ...(hovered ? cardHover : {}), ...style }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      {children}
-    </div>
-  );
-}
-
 
 export default function DatingSocialPage() {
-  const heroRef = useRef<HTMLElement>(null);
-  const s1 = useReveal() as React.RefObject<HTMLElement>;
-  const s2 = useReveal() as React.RefObject<HTMLElement>;
-  const s3 = useReveal() as React.RefObject<HTMLElement>;
-  const s4 = useReveal() as React.RefObject<HTMLElement>;
-  const s5 = useReveal() as React.RefObject<HTMLElement>;
-  const s6 = useReveal() as React.RefObject<HTMLElement>;
-
-  useEffect(() => {
-    heroRef.current?.querySelectorAll('.reveal').forEach(n => setTimeout(() => n.classList.add('visible'), 100));
-  }, []);
-
-  return (
-    <>
-      <Navbar />
-      <main style={{ background: '#000000', color: '#ffffff', paddingTop: 80 }}>
-        <div className="cb-container">
-          <Breadcrumb items={[
-            { label: 'Home', href: '/' },
-            { label: 'Industries', href: '/services' },
-            { label: 'Dating & Social' },
-          ]} />
-        </div>
-
-        {/* HERO */}
-        <section ref={heroRef} className="section-padding" style={{ position: 'relative', overflow: 'hidden', minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
-          <HeroBackground variant="center" />
-          <div className="cb-container" style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: 860, margin: '0 auto' }}>
-            <div className="reveal" style={{ display: 'inline-block', border: '1px solid rgba(34,197,94,0.4)', borderRadius: 999, padding: '6px 20px', fontSize: 13, color: '#ffffff', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>
-              Dating &amp; Social Media
-            </div>
-            <h1 className="reveal" style={{ fontSize: 'clamp(2.6rem, 6vw, 5rem)', fontWeight: 800, lineHeight: 1.1, marginBottom: '1.5rem', letterSpacing: '-0.02em' }}>
-              We Build Apps That <span style={{ color: '#ffffff' }}>Connect People.</span>
-            </h1>
-            <p className="reveal" style={{ fontSize: '1.2rem', color: 'rgba(255,255,255,0.7)', marginBottom: '2.5rem', lineHeight: 1.7 }}>
-              AI-powered matching algorithms, real-time messaging, content moderation, and viral growth loops that drive engagement.
-            </p>
-            <div className="reveal" style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '3.5rem' }}>
-              <Link href="/contact" style={{ background: '#22c55e', color: '#000', padding: '14px 32px', borderRadius: 999, fontWeight: 700, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
-                Start Your Project
-              </Link>
-              <Link href="/case-studies" style={{ border: '1px solid rgba(255,255,255,0.1)', color: '#ffffff', padding: '14px 32px', borderRadius: 999, fontWeight: 600, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
-                View Case Studies
-              </Link>
-            </div>
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(140px, 100%), 1fr))', gap: '1.5rem', maxWidth: 600, margin: '0 auto' }}>
-              {[['2M+', 'Users Onboarded'], ['< 100ms', 'Chat Latency'], ['AI-Powered', 'Matching']].map(([val, label]) => (
-                <div key={label} style={{ textAlign: 'center' }}>
-                  <div style={{ fontSize: '1.6rem', fontWeight: 800, color: '#ffffff' }}>{val}</div>
-                  <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.25)', marginTop: 4, letterSpacing: '0.05em' }}>{label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CHALLENGES */}
-        <section ref={s1} className="section-padding">
-          <div className="cb-container">
-            <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
-              <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '1rem' }}>Key Challenges We Solve</h2>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.1rem' }}>Social apps live or die on engagement. We engineer for addiction-level retention.</p>
-            </div>
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
-              {[
-                { icon: '🧠', title: 'Matching & Discovery', desc: 'Building AI algorithms that surface the right people at the right time — balancing relevance, diversity, and freshness to keep users engaged.' },
-                { icon: '🛡️', title: 'Safety & Moderation', desc: 'Protecting users from harassment, fake profiles, and harmful content with AI moderation, verification systems, and reporting workflows.' },
-                { icon: '📈', title: 'Viral Growth', desc: 'Engineering referral loops, shareable content formats, and network effects that turn users into organic growth engines.' },
-              ].map(c => (
-                <Card key={c.title}>
-                  <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>{c.icon}</div>
-                  <h3 style={{ fontWeight: 700, fontSize: '1.2rem', marginBottom: '0.75rem' }}>{c.title}</h3>
-                  <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, fontSize: '0.95rem' }}>{c.desc}</p>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* SOLUTIONS */}
-        <section ref={s2} className="section-padding">
-          <div className="cb-container">
-            <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
-              <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '1rem' }}>Our Solutions</h2>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.1rem' }}>Full-stack social platform engineering from profiles to push notifications.</p>
-            </div>
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 320px), 1fr))', gap: '1.5rem' }}>
-              {[
-                { icon: '💕', title: 'AI Matching Engine', desc: 'Collaborative filtering, behavioral scoring, and preference-learning algorithms that improve match quality over time and drive higher engagement.' },
-                { icon: '💬', title: 'Real-Time Messaging', desc: 'WebSocket-powered chat with read receipts, typing indicators, media sharing, voice/video calls, and end-to-end encryption for privacy.' },
-                { icon: '🔍', title: 'Profile & Verification', desc: 'Photo verification, ID checks, social proof integration, and profile quality scoring that builds trust and reduces fake accounts.' },
-                { icon: '🎥', title: 'Content & Stories', desc: 'Short-form video, disappearing stories, live streaming, and feed algorithms that maximize time-on-app and content creation.' },
-                { icon: '🛡️', title: 'Moderation & Safety', desc: 'AI-powered content scanning, user reporting workflows, shadow banning, and real-time toxic behavior detection that keeps your community safe.' },
-                { icon: '💎', title: 'Monetization Engine', desc: 'In-app purchases, premium subscriptions, boost mechanics, virtual gifting, and A/B tested paywalls that maximize revenue per user.' },
-              ].map(s => (
-                <Card key={s.title}>
-                  <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>{s.icon}</div>
-                  <h3 style={{ fontWeight: 700, fontSize: '1.15rem', marginBottom: '0.75rem' }}>{s.title}</h3>
-                  <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, fontSize: '0.95rem' }}>{s.desc}</p>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CASE STUDY */}
-        <section ref={s3} className="section-padding">
-          <div className="cb-container">
-            <div className="reveal" style={{ border: '1px solid rgba(34,197,94,0.15)', borderRadius: 32, background: 'rgba(34,197,94,0.03)', padding: 'clamp(1.5rem, 4vw, 3rem)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(400px, 100%), 1fr))', gap: 'clamp(1.5rem, 4vw, 3rem)', alignItems: 'center' }}>
-              <div>
-                <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.25)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>Case Study</div>
-                <div style={{ fontSize: '1.1rem', fontWeight: 700, color: '#ffffff', marginBottom: '0.5rem' }}>Social Platform Client</div>
-                <h3 style={{ fontSize: 'clamp(1.4rem, 3vw, 2rem)', fontWeight: 800, marginBottom: '1rem', lineHeight: 1.2 }}>2M+ users, 45-min avg session, 38% month-1 retention</h3>
-                <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.7 }}>We built their dating app from concept to launch — matching algorithm, chat infrastructure, verification system, and monetization engine.</p>
-              </div>
-              <div>
-                <blockquote style={{ borderLeft: '3px solid #22c55e', paddingLeft: '1.5rem', margin: 0 }}>
-                  <p style={{ fontSize: '1.15rem', lineHeight: 1.7, color: 'rgba(255,255,255,0.65)', fontStyle: 'italic', marginBottom: '1rem' }}>
-                    &ldquo;The matching algorithm Codazz built outperformed our previous system by 3x on engagement metrics.&rdquo;
-                  </p>
-                  <cite style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.25)', fontStyle: 'normal' }}>— CPO, Dating App Startup</cite>
-                </blockquote>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* TECH STACK */}
-        <section ref={s4} className="section-padding">
-          <div className="cb-container">
-            <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
-              <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '1rem' }}>Tech Stack</h2>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.1rem' }}>Engineered for real-time engagement at massive scale.</p>
-            </div>
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem' }}>
-              {[
-                { cat: 'Mobile', items: ['React Native', 'Swift', 'Kotlin', 'Flutter'] },
-                { cat: 'Real-Time', items: ['WebSockets', 'Firebase', 'Redis Pub/Sub', 'Agora'] },
-                { cat: 'AI/ML', items: ['TensorFlow', 'PyTorch', 'OpenAI', 'Pinecone'] },
-                { cat: 'Infrastructure', items: ['AWS', 'CDN', 'PostgreSQL', 'Elasticsearch'] },
-              ].map(t => (
-                <Card key={t.cat}>
-                  <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.25)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>{t.cat}</div>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                    {t.items.map(item => (
-                      <span key={item} style={{ background: 'rgba(255,255,255,0.03)', borderRadius: 8, padding: '4px 12px', fontSize: '0.85rem', color: 'rgba(255,255,255,0.65)' }}>{item}</span>
-                    ))}
-                  </div>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* WHY CODAZZ */}
-        <section ref={s5} className="section-padding">
-          <div className="cb-container">
-            <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
-              <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '1rem' }}>Why Codazz</h2>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.1rem' }}>We build social products that people can&apos;t put down.</p>
-            </div>
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
-              {[
-                { icon: '🎯', title: 'Engagement-First Design', desc: 'We obsess over retention metrics. Every feature is designed, tested, and iterated to maximize daily active users and session length.' },
-                { icon: '🔒', title: 'Privacy & Trust Architecture', desc: 'End-to-end encryption, GDPR compliance, data minimization, and user control features that build the trust social platforms need.' },
-                { icon: '🚀', title: 'Launch-to-Scale Expertise', desc: 'From App Store optimization to handling viral growth spikes — we have launched social apps from zero to millions of users.' },
-              ].map(w => (
-                <Card key={w.title}>
-                  <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>{w.icon}</div>
-                  <h3 style={{ fontWeight: 700, fontSize: '1.15rem', marginBottom: '0.75rem' }}>{w.title}</h3>
-                  <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, fontSize: '0.95rem' }}>{w.desc}</p>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Related Services */}
-        <section className="section-padding" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-          <div className="cb-container">
-            <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '-0.03em', marginBottom: 40, textAlign: 'center' }}>
-              Services for Dating &amp; Social
-            </h2>
-            <div className="industry-services-grid" style={{ display: 'grid', gap: 16 }}>
-              {[
-                { name: 'Mobile App Development', href: '/services/mobile-app-development', desc: 'Native iOS and Android apps with real-time chat, push notifications and smooth animations.' },
-                { name: 'AI & Machine Learning', href: '/services/ai-ml', desc: 'Matching algorithms, content moderation AI, recommendation engines and behavioral analytics.' },
-                { name: 'Product Design', href: '/services/product-design', desc: 'Swipe mechanics, profile flows, chat UX and engagement-optimized interfaces.' },
-                { name: 'Cloud & DevOps', href: '/services/cloud-devops', desc: 'Real-time infrastructure with WebSockets, CDN delivery and auto-scaling for viral growth.' },
-                { name: 'Digital Marketing', href: '/services/digital-marketing', desc: 'App Store optimization, user acquisition campaigns and growth analytics.' },
-              ].map((s) => (
-                <a key={s.href} href={s.href} style={{
-                  display: 'block', padding: '24px', borderRadius: 16,
-                  background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)',
-                  textDecoration: 'none', transition: 'all 0.3s ease',
-                }}
-                onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(34,197,94,0.2)'; e.currentTarget.style.transform = 'translateY(-3px)'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)'; e.currentTarget.style.transform = 'translateY(0)'; }}
-                >
-                  <div style={{ fontSize: 15, fontWeight: 600, color: '#ffffff', marginBottom: 6 }}>{s.name}</div>
-                  <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)', lineHeight: 1.5 }}>{s.desc}</div>
-                </a>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section ref={s6} className="section-padding">
-          <div className="cb-container">
-            <div className="reveal" style={{ textAlign: 'center', maxWidth: 700, margin: '0 auto' }}>
-              <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 800, lineHeight: 1.15, marginBottom: '1.5rem' }}>
-                Build Your <span style={{ color: '#ffffff' }}>Social Platform.</span>
-              </h2>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.15rem', marginBottom: '2.5rem', lineHeight: 1.7 }}>
-                From concept to community — we build social apps that people love.
-              </p>
-              <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '2.5rem' }}>
-                <Link href="/contact" style={{ background: '#22c55e', color: '#000', padding: '16px 36px', borderRadius: 999, fontWeight: 700, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
-                  Start Your Project
-                </Link>
-                <Link href="/case-studies" style={{ border: '1px solid rgba(255,255,255,0.1)', color: '#ffffff', padding: '16px 36px', borderRadius: 999, fontWeight: 600, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
-                  See Our Work
-                </Link>
-              </div>
-              <div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                {['GDPR Compliant', 'E2E Encrypted', 'NDA on Request', 'Fixed-Price Sprints'].map(t => (
-                  <span key={t} style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.25)' }}>✓ {t}</span>
-                ))}
-              </div>
-              <TrustBadges compact />
-            </div>
-          </div>
-        </section>
-
-      </main>
-      <Footer />
-    </>
-  );
+  return <ServicePageTemplate data={pageData} />;
 }

@@ -231,7 +231,7 @@ const industries: Industry[] = [
 ];
 
 export default function IndustriesIndexPage() {
-  const mainRef = useReveal() as React.RefObject<HTMLElement>;
+  const mainRef = useReveal() as React.RefObject<HTMLDivElement>;
 
   useEffect(() => {
     const el = mainRef.current;

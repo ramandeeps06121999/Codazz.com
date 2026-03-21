@@ -1,8 +1,9 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
-import { spaceGrotesk } from '@/lib/fonts';
 import { useState, useEffect } from 'react';
+import { BRAND_WORDMARK_LIGHT_PATH } from '@/lib/brand';
 
 const services = [
   { label: 'Mobile App Development', href: '/services/mobile-app-development' },
@@ -211,19 +212,15 @@ export default function Footer() {
 
           {/* Brand Column */}
           <div style={{ gridColumn: 'span 1' }}>
-            <span className={spaceGrotesk.className} style={{
-              display: 'inline-block',
-              fontSize: 'clamp(28px, 4vw, 38px)',
-              fontWeight: 700,
-              letterSpacing: '-0.02em',
-              background: 'linear-gradient(135deg, #22c55e 0%, #4ade80 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              marginBottom: 20,
-            }}>
-              codazz
-            </span>
+            <Link href="/" style={{ display: 'inline-block', marginBottom: 20, lineHeight: 0 }}>
+              <Image
+                src={BRAND_WORDMARK_LIGHT_PATH}
+                alt="Codazz"
+                width={392}
+                height={148}
+                style={{ height: 36, width: 'auto' }}
+              />
+            </Link>
             <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, maxWidth: 280, marginBottom: 20 }}>
               Headquartered in Edmonton &amp; Chandigarh with offices in New York &amp; Dubai — with the best engineers from around the world working virtually. 99% of our meetings happen online: faster starts, zero travel waste, and a greener way to build software.
             </p>

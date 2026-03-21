@@ -70,15 +70,15 @@ export default function HireDeveloperPage({
   technology, tagline, description, stats, whyHire, profiles, techCategories, faqs, startingRate, breadcrumbLabel,
 }: HireDeveloperPageProps) {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const heroRef = useReveal() as React.RefObject<HTMLElement>;
-  const whyRef = useReveal() as React.RefObject<HTMLElement>;
-  const profilesRef = useReveal() as React.RefObject<HTMLElement>;
-  const modelsRef = useReveal() as React.RefObject<HTMLElement>;
-  const techRef = useReveal() as React.RefObject<HTMLElement>;
-  const processRef = useReveal() as React.RefObject<HTMLElement>;
-  const pricingRef = useReveal() as React.RefObject<HTMLElement>;
-  const faqRef = useReveal() as React.RefObject<HTMLElement>;
-  const ctaRef = useReveal() as React.RefObject<HTMLElement>;
+  const heroRef = useReveal() as React.RefObject<HTMLDivElement>;
+  const whyRef = useReveal() as React.RefObject<HTMLDivElement>;
+  const profilesRef = useReveal() as React.RefObject<HTMLDivElement>;
+  const modelsRef = useReveal() as React.RefObject<HTMLDivElement>;
+  const techRef = useReveal() as React.RefObject<HTMLDivElement>;
+  const processRef = useReveal() as React.RefObject<HTMLDivElement>;
+  const pricingRef = useReveal() as React.RefObject<HTMLDivElement>;
+  const faqRef = useReveal() as React.RefObject<HTMLDivElement>;
+  const ctaRef = useReveal() as React.RefObject<HTMLDivElement>;
 
   return (
     <>

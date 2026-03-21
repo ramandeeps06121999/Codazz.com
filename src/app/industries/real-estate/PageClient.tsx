@@ -1,292 +1,151 @@
 'use client';
-import { useState, useRef, useEffect } from 'react';
-import Link from 'next/link';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import Breadcrumb from '@/components/Breadcrumb';
-import TrustBadges from '@/components/TrustBadges';
-import HeroBackground from '@/components/HeroBackground';
+import ServicePageTemplate, { ServicePageData } from '@/components/ServicePageTemplate';
 
-function useReveal() {
-  const ref = useRef<HTMLElement>(null);
-  useEffect(() => {
-    const io = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-      { threshold: 0.08 }
-    );
-    ref.current?.querySelectorAll('.reveal').forEach(el => io.observe(el));
-    return () => io.disconnect();
-  }, []);
-  return ref;
-}
-
-const cardBase: React.CSSProperties = {
-  border: '1px solid rgba(255,255,255,0.06)',
-  borderRadius: 24,
-  background: 'rgba(255,255,255,0.015)',
-  padding: '2rem',
-  transition: 'border-color 0.3s, background 0.3s, transform 0.3s, box-shadow 0.3s',
+const pageData: ServicePageData = {
+  breadcrumbs: [
+    { label: 'Home', href: '/' },
+    { label: 'Industries', href: '/services' },
+    { label: 'Real Estate' },
+  ],
+  hero: {
+    badge: 'REAL ESTATE & PROPTECH',
+    title: 'We Build PropTech That',
+    titleAccent: 'Closes Deals.',
+    description: 'MLS platforms, property management systems, virtual tour apps, and AI-powered valuation tools for the modern real estate market.',
+    service: 'Real Estate Development',
+    stats: [
+      { value: '$500M+', label: 'Listings Managed' },
+      { value: '10K+', label: 'Properties Listed' },
+      { value: '3D/VR', label: 'Virtual Tours' },
+      { value: '3x', label: 'Lead Conversion' },
+    ],
+  },
+  awards: [
+    'Top PropTech Developer 2024',
+    'MLS Integration Experts',
+    'IDX Compliant Platforms',
+    '3D Virtual Tour Pioneers',
+    'AWS Real Estate Partner',
+    'AI Valuation Technology',
+  ],
+  whySection: {
+    title: 'Why Real Estate Companies Choose Codazz',
+    cards: [
+      { icon: '\u{1F3D8}\u{FE0F}', title: 'MLS & Data Integration', desc: 'Connecting to hundreds of MLS feeds, normalizing listing data, and keeping inventory in real-time sync across platforms and portals.' },
+      { icon: '\u{1F3D7}\u{FE0F}', title: 'Complex Transactions', desc: 'Managing multi-party workflows: offers, counteroffers, inspections, appraisals, and closings with audit trails and e-signatures.' },
+      { icon: '\u{1F4CA}', title: 'Market Intelligence', desc: 'Turning raw property data into actionable insights: comparable analyses, price predictions, investment scoring, and market trend reports.' },
+      { icon: '\u{1F97D}', title: 'Immersive Technology', desc: 'AR staging, 3D tours, and VR walkthroughs that give your listings the competitive edge in a crowded market.' },
+    ],
+    whoNeedsTitle: 'Who Needs PropTech Development?',
+    whoNeedsItems: [
+      { icon: '\u{1F3E0}', title: 'Brokerages', desc: 'IDX-integrated listing portals, CRM systems, agent tools, and lead management platforms.' },
+      { icon: '\u{1F3E2}', title: 'Property Managers', desc: 'Tenant portals, maintenance tracking, lease management, and financial reporting systems.' },
+      { icon: '\u{1F4B0}', title: 'Real Estate Investors', desc: 'Investment analysis tools, portfolio dashboards, and market intelligence platforms.' },
+      { icon: '\u{1F3D7}\u{FE0F}', title: 'Developers & Builders', desc: 'Project management, sales centers, and buyer portals for new construction.' },
+      { icon: '\u{1F4F1}', title: 'PropTech Startups', desc: 'Innovative real estate platforms from MVP to market leadership.' },
+    ],
+    metricsTitle: 'PropTech Development by the Numbers',
+    metrics: [
+      { metric: '$500M+', label: 'Listings Managed', desc: 'Total listing value' },
+      { metric: '3x', label: 'Lead Conversion', desc: 'Average improvement' },
+      { metric: '45%', label: 'Faster Closings', desc: 'With digital workflows' },
+      { metric: '10K+', label: 'Properties Listed', desc: 'Across platforms' },
+    ],
+    closingText: 'Whether you are building a listing platform, a property management system, or an AI-powered valuation tool, Codazz brings real estate domain knowledge, immersive technology expertise, and data-driven development to create PropTech that closes deals and drives measurable business results.',
+  },
+  subServices: [
+    { title: 'Property Listing Platforms', tag: 'Listings', desc: 'IDX-integrated listing portals with advanced search, map-based discovery, saved searches, lead capture, and agent matching.', chips: ['IDX', 'Search', 'Maps', 'Leads'], href: '/contact', icon: '\u{1F3E0}' },
+    { title: 'Property Management Systems', tag: 'Management', desc: 'Tenant portals, maintenance tracking, lease management, rent collection, and financial reporting for portfolios.', chips: ['Tenants', 'Maintenance', 'Leases', 'Payments'], href: '/contact', icon: '\u{1F511}' },
+    { title: 'Virtual Tours & 3D', tag: '3D/VR', desc: '360-degree virtual tours, 3D floor plans, AR staging, and drone photography integration for remote property exploration.', chips: ['360 Tours', '3D Plans', 'AR Staging', 'VR'], href: '/contact', icon: '\u{1F97D}' },
+    { title: 'AI Valuation & Analytics', tag: 'AI', desc: 'Automated property valuations, investment scoring models, market trend analysis, and comparable sales engines powered by ML.', chips: ['AVM', 'Comps', 'Market Trends', 'Scoring'], href: '/contact', icon: '\u{1F916}' },
+    { title: 'Transaction Management', tag: 'Transactions', desc: 'Digital offer workflows, e-signature integration, document management, compliance checklists, and closing coordination.', chips: ['DocuSign', 'Offers', 'Compliance', 'Closing'], href: '/contact', icon: '\u{1F4DD}' },
+    { title: 'Agent & Broker Tools', tag: 'Agent Tools', desc: 'CRM systems, lead scoring, automated follow-ups, commission tracking, and mobile apps for agents.', chips: ['CRM', 'Lead Scoring', 'Commission', 'Mobile'], href: '/contact', icon: '\u{1F4F1}' },
+  ],
+  servicesHeading: {
+    label: 'Our PropTech Solutions',
+    title: 'Full-Stack Real Estate',
+    titleDim: 'Technology Services.',
+    description: 'From listing to closing, we build every layer of property technology with MLS integration, immersive experiences, and data intelligence at the core.',
+  },
+  benefits: {
+    label: 'Why Codazz for Real Estate',
+    title: 'Built for Deals',
+    titleDim: 'That Close.',
+    items: [
+      { icon: '\u{1F3E2}', title: 'Real Estate Domain Knowledge', desc: 'Our team has built platforms for brokerages, property managers, and PropTech startups. We understand MLS, IDX, and transaction workflows.' },
+      { icon: '\u{1F97D}', title: 'Immersive Technology', desc: 'AR staging, 3D tours, and VR walkthroughs that give your listings the competitive edge in a digital-first market.' },
+      { icon: '\u{1F4C8}', title: 'Data-Driven Development', desc: 'Lead tracking, conversion funnels, and market intelligence built into every platform from day one.' },
+      { icon: '\u{1F5FA}\u{FE0F}', title: 'Map-Based Experiences', desc: 'Interactive map search, boundary tools, school district overlays, and neighborhood data integration.' },
+      { icon: '\u{1F517}', title: 'MLS/IDX Integration', desc: 'Deep experience with RETS/RESO standards, MLS data normalization, and real-time listing sync.' },
+      { icon: '\u{1F4F1}', title: 'Mobile-First for Agents', desc: 'Mobile apps and tools designed for agents on the go, from lead management to showing scheduling.' },
+    ],
+  },
+  clientLogos: [
+    'Zillow', 'Redfin', 'Compass', 'Realtor.com', 'CoStar', 'AppFolio',
+    'Buildium', 'Yardi', 'RealPage', 'DocuSign', 'Matterport', 'Plunk',
+  ],
+  bigStats: [
+    { value: '$500M+', label: 'Listings Managed', desc: 'Total property value' },
+    { value: '3x', label: 'Lead Conversion', desc: 'Average improvement' },
+    { value: '45%', label: 'Faster Closings', desc: 'Digital workflow impact' },
+    { value: '10K+', label: 'Properties', desc: 'Listed across platforms' },
+  ],
+  advancedTech: {
+    row1: [
+      { icon: '\u{1F916}', title: 'AI Valuation', desc: 'Automated property value estimation' },
+      { icon: '\u{1F97D}', title: '3D Virtual Tours', desc: 'Immersive property exploration' },
+      { icon: '\u{1F5FA}\u{FE0F}', title: 'Map Search', desc: 'Interactive property discovery' },
+      { icon: '\u{1F4CA}', title: 'Market Analytics', desc: 'Real-time market trend analysis' },
+      { icon: '\u{1F4F1}', title: 'Agent Mobile', desc: 'On-the-go tools for real estate agents' },
+    ],
+    row2: [
+      { icon: '\u{1F4DD}', title: 'E-Signatures', desc: 'Digital document and offer workflows' },
+      { icon: '\u{1F517}', title: 'MLS Integration', desc: 'Real-time listing data sync' },
+      { icon: '\u{1F4B0}', title: 'Investment Scoring', desc: 'AI-powered property analysis' },
+      { icon: '\u{1F3AF}', title: 'Lead Scoring', desc: 'ML-powered buyer intent prediction' },
+      { icon: '\u{1F4F7}', title: 'AR Staging', desc: 'Virtual furniture and decoration' },
+    ],
+  },
+  techStack: [
+    { category: 'Frontend', techs: ['Next.js', 'React Native', 'Mapbox', 'Three.js'] },
+    { category: 'Backend', techs: ['Node.js', 'Python', 'GraphQL', 'PostgreSQL'] },
+    { category: 'AI/ML', techs: ['TensorFlow', 'Scikit-learn', 'OpenAI', 'Computer Vision'] },
+    { category: 'Integrations', techs: ['RETS/RESO', 'DocuSign', 'Stripe', 'Twilio'] },
+    { category: 'Cloud', techs: ['AWS', 'CloudFront', 'Redis', 'Elasticsearch'] },
+    { category: '3D/VR', techs: ['Three.js', 'WebGL', 'ARKit', 'Matterport'] },
+  ],
+  faqs: [
+    { q: 'Can you build an IDX-integrated listing platform?', a: 'Yes. We build IDX-compliant listing platforms that connect to MLS feeds through RETS/RESO standards. Our platforms include advanced search with map-based discovery, saved searches, lead capture, and real-time listing sync.' },
+    { q: 'Do you build property management systems?', a: 'Absolutely. We build complete property management platforms with tenant portals, maintenance tracking, lease management, rent collection, and financial reporting for residential and commercial portfolios of any size.' },
+    { q: 'Can you integrate 3D virtual tours into our platform?', a: 'Yes. We build 360-degree virtual tours, 3D floor plans, AR staging, and VR walkthroughs. We integrate with Matterport and also build custom solutions using Three.js, WebGL, and ARKit for immersive property experiences.' },
+    { q: 'How does AI-powered property valuation work?', a: 'Our AVM models analyze comparable sales, property characteristics, location data, market trends, and economic indicators to generate automated valuations. The models improve continuously as they process more data and receive feedback on actual sale prices.' },
+    { q: 'Do you build transaction management platforms?', a: 'Yes. We build digital transaction management with offer workflows, e-signature integration (DocuSign), document management, compliance checklists, and closing coordination tools that reduce closing times by up to 45%.' },
+    { q: 'Can you build agent CRM and mobile tools?', a: 'Absolutely. We build CRM systems with lead scoring, automated follow-ups, commission tracking, showing scheduling, and mobile apps that help agents manage their business on the go. Our tools integrate with MLS data and transaction management.' },
+  ],
+  faqDescription: 'Common questions about our real estate software development services, MLS integration, and PropTech capabilities.',
+  relatedBlogs: [
+    { title: 'Building IDX-Compliant Real Estate Platforms', desc: 'Technical guide to MLS integration and listing data management.', href: '/blog' },
+    { title: '3D Virtual Tours: Technology and Implementation', desc: 'How to build immersive property viewing experiences.', href: '/blog' },
+    { title: 'AI Property Valuation: The Complete Guide', desc: 'Machine learning approaches to automated property valuation.', href: '/blog' },
+  ],
+  relatedServices: [
+    { name: 'Web Development', desc: 'IDX-integrated listing portals, property search engines, and agent websites.', href: '/services/web-development' },
+    { name: 'Mobile App Development', desc: 'Property search apps with map views, virtual tours, and push notifications.', href: '/services/mobile-app-development' },
+    { name: 'AI & Machine Learning', desc: 'Automated valuations, investment scoring, and market trend analysis.', href: '/services/ai-ml' },
+    { name: 'Product Design', desc: 'Map-based search UX, listing detail pages, and agent dashboard interfaces.', href: '/services/product-design' },
+  ],
+  industries: [
+    { name: 'Fintech', href: '/industries/fintech' },
+    { name: 'Enterprise', href: '/industries/enterprise' },
+    { name: 'E-Commerce', href: '/industries/ecommerce' },
+    { name: 'Logistics', href: '/industries/logistics' },
+    { name: 'Travel', href: '/industries/travel-hospitality' },
+    { name: 'Healthcare', href: '/industries/healthcare' },
+    { name: 'On-Demand', href: '/industries/on-demand' },
+    { name: 'EdTech', href: '/industries/edtech' },
+  ],
 };
-
-const cardHover: React.CSSProperties = {
-  borderColor: 'rgba(34,197,94,0.2)',
-  background: 'rgba(34,197,94,0.03)',
-  transform: 'translateY(-4px)',
-  boxShadow: '0 24px 60px rgba(255,255,255,0.06)',
-};
-
-function Card({ children, style }: { children: React.ReactNode; style?: React.CSSProperties }) {
-  const [hovered, setHovered] = useState(false);
-  return (
-    <div
-      style={{ ...cardBase, ...(hovered ? cardHover : {}), ...style }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      {children}
-    </div>
-  );
-}
-
 
 export default function RealEstatePage() {
-  const heroRef = useRef<HTMLElement>(null);
-  const s1 = useReveal() as React.RefObject<HTMLElement>;
-  const s2 = useReveal() as React.RefObject<HTMLElement>;
-  const s3 = useReveal() as React.RefObject<HTMLElement>;
-  const s4 = useReveal() as React.RefObject<HTMLElement>;
-  const s5 = useReveal() as React.RefObject<HTMLElement>;
-  const s6 = useReveal() as React.RefObject<HTMLElement>;
-
-  useEffect(() => {
-    heroRef.current?.querySelectorAll('.reveal').forEach(n => setTimeout(() => n.classList.add('visible'), 100));
-  }, []);
-
-  return (
-    <>
-      <Navbar />
-      <main style={{ background: '#000000', color: '#ffffff', paddingTop: 80 }}>
-        <div className="cb-container">
-          <Breadcrumb items={[
-            { label: 'Home', href: '/' },
-            { label: 'Industries', href: '/services' },
-            { label: 'Real Estate' },
-          ]} />
-        </div>
-
-        {/* HERO */}
-        <section ref={heroRef} className="section-padding" style={{ position: 'relative', overflow: 'hidden', minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
-          <HeroBackground variant="center" />
-          <div className="cb-container" style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: 860, margin: '0 auto' }}>
-            <div className="reveal" style={{ display: 'inline-block', border: '1px solid rgba(34,197,94,0.4)', borderRadius: 999, padding: '6px 20px', fontSize: 13, color: '#ffffff', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>
-              Real Estate &amp; PropTech
-            </div>
-            <h1 className="reveal" style={{ fontSize: 'clamp(2.6rem, 6vw, 5rem)', fontWeight: 800, lineHeight: 1.1, marginBottom: '1.5rem', letterSpacing: '-0.02em' }}>
-              We Build PropTech That <span style={{ color: '#ffffff' }}>Closes Deals.</span>
-            </h1>
-            <p className="reveal" style={{ fontSize: '1.2rem', color: 'rgba(255,255,255,0.7)', marginBottom: '2.5rem', lineHeight: 1.7 }}>
-              MLS platforms, property management systems, virtual tour apps, and AI-powered valuation tools for the modern real estate market.
-            </p>
-            <div className="reveal" style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '3.5rem' }}>
-              <Link href="/contact" style={{ background: '#22c55e', color: '#000', padding: '14px 32px', borderRadius: 999, fontWeight: 700, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
-                Start Your Project
-              </Link>
-              <Link href="/case-studies" style={{ border: '1px solid rgba(255,255,255,0.1)', color: '#ffffff', padding: '14px 32px', borderRadius: 999, fontWeight: 600, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
-                View Case Studies
-              </Link>
-            </div>
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(140px, 100%), 1fr))', gap: '1.5rem', maxWidth: 600, margin: '0 auto' }}>
-              {[['$500M+', 'Listings Managed'], ['10K+', 'Properties Listed'], ['3D/VR', 'Virtual Tours']].map(([val, label]) => (
-                <div key={label} style={{ textAlign: 'center' }}>
-                  <div style={{ fontSize: '1.6rem', fontWeight: 800, color: '#ffffff' }}>{val}</div>
-                  <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.25)', marginTop: 4, letterSpacing: '0.05em' }}>{label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CHALLENGES */}
-        <section ref={s1} className="section-padding">
-          <div className="cb-container">
-            <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
-              <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '1rem' }}>Key Challenges We Solve</h2>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.1rem' }}>Real estate is going digital. We build the platforms that win.</p>
-            </div>
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
-              {[
-                { icon: '🏘️', title: 'MLS & Data Integration', desc: 'Connecting to hundreds of MLS feeds, normalizing listing data, and keeping inventory in real-time sync across platforms and portals.' },
-                { icon: '🏗️', title: 'Complex Transactions', desc: 'Managing multi-party workflows — offers, counteroffers, inspections, appraisals, and closings — with audit trails and e-signatures.' },
-                { icon: '📊', title: 'Market Intelligence', desc: 'Turning raw property data into actionable insights — comparable analyses, price predictions, investment scoring, and market trend reports.' },
-              ].map(c => (
-                <Card key={c.title}>
-                  <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>{c.icon}</div>
-                  <h3 style={{ fontWeight: 700, fontSize: '1.2rem', marginBottom: '0.75rem' }}>{c.title}</h3>
-                  <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, fontSize: '0.95rem' }}>{c.desc}</p>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* SOLUTIONS */}
-        <section ref={s2} className="section-padding">
-          <div className="cb-container">
-            <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
-              <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '1rem' }}>Our Solutions</h2>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.1rem' }}>End-to-end property technology from listing to closing.</p>
-            </div>
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 320px), 1fr))', gap: '1.5rem' }}>
-              {[
-                { icon: '🏠', title: 'Property Listing Platforms', desc: 'IDX-integrated listing portals with advanced search, map-based discovery, saved searches, lead capture, and agent matching for buyers and sellers.' },
-                { icon: '🔑', title: 'Property Management Systems', desc: 'Tenant portals, maintenance tracking, lease management, rent collection, and financial reporting for residential and commercial portfolios.' },
-                { icon: '🥽', title: 'Virtual Tours & 3D', desc: '360-degree virtual tours, 3D floor plans, AR staging, and drone photography integration that let buyers explore properties remotely.' },
-                { icon: '🤖', title: 'AI Valuation & Analytics', desc: 'Automated property valuations, investment scoring models, market trend analysis, and comparable sales engines powered by machine learning.' },
-                { icon: '📝', title: 'Transaction Management', desc: 'Digital offer workflows, e-signature integration, document management, compliance checklists, and closing coordination tools.' },
-                { icon: '📱', title: 'Agent & Broker Tools', desc: 'CRM systems, lead scoring, automated follow-ups, commission tracking, and mobile apps that help agents close more deals faster.' },
-              ].map(s => (
-                <Card key={s.title}>
-                  <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>{s.icon}</div>
-                  <h3 style={{ fontWeight: 700, fontSize: '1.15rem', marginBottom: '0.75rem' }}>{s.title}</h3>
-                  <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, fontSize: '0.95rem' }}>{s.desc}</p>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CASE STUDY */}
-        <section ref={s3} className="section-padding">
-          <div className="cb-container">
-            <div className="reveal" style={{ border: '1px solid rgba(34,197,94,0.15)', borderRadius: 32, background: 'rgba(34,197,94,0.03)', padding: 'clamp(1.5rem, 4vw, 3rem)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(400px, 100%), 1fr))', gap: 'clamp(1.5rem, 4vw, 3rem)', alignItems: 'center' }}>
-              <div>
-                <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.25)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>Case Study</div>
-                <div style={{ fontSize: '1.1rem', fontWeight: 700, color: '#ffffff', marginBottom: '0.5rem' }}>Real Estate Client</div>
-                <h3 style={{ fontSize: 'clamp(1.4rem, 3vw, 2rem)', fontWeight: 800, marginBottom: '1rem', lineHeight: 1.2 }}>10K+ listings, 3x lead conversion, 45% faster closings</h3>
-                <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.7 }}>We built their listing platform with AI-powered search, virtual tours, and an integrated transaction management system that streamlined their entire workflow.</p>
-              </div>
-              <div>
-                <blockquote style={{ borderLeft: '3px solid #22c55e', paddingLeft: '1.5rem', margin: 0 }}>
-                  <p style={{ fontSize: '1.15rem', lineHeight: 1.7, color: 'rgba(255,255,255,0.65)', fontStyle: 'italic', marginBottom: '1rem' }}>
-                    &ldquo;The platform Codazz built tripled our lead conversion rate. Our agents love the mobile tools.&rdquo;
-                  </p>
-                  <cite style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.25)', fontStyle: 'normal' }}>— CEO, Regional Real Estate Brokerage</cite>
-                </blockquote>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* TECH STACK */}
-        <section ref={s4} className="section-padding">
-          <div className="cb-container">
-            <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
-              <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '1rem' }}>Tech Stack</h2>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.1rem' }}>Modern technology for the modern real estate market.</p>
-            </div>
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem' }}>
-              {[
-                { cat: 'Frontend', items: ['Next.js', 'React Native', 'Mapbox', 'Three.js'] },
-                { cat: 'Backend', items: ['Node.js', 'Python', 'GraphQL', 'PostgreSQL'] },
-                { cat: 'AI/ML', items: ['TensorFlow', 'Scikit-learn', 'OpenAI', 'Computer Vision'] },
-                { cat: 'Integrations', items: ['RETS/RESO', 'DocuSign', 'Stripe', 'Twilio'] },
-              ].map(t => (
-                <Card key={t.cat}>
-                  <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.25)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>{t.cat}</div>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                    {t.items.map(item => (
-                      <span key={item} style={{ background: 'rgba(255,255,255,0.03)', borderRadius: 8, padding: '4px 12px', fontSize: '0.85rem', color: 'rgba(255,255,255,0.65)' }}>{item}</span>
-                    ))}
-                  </div>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* WHY CODAZZ */}
-        <section ref={s5} className="section-padding">
-          <div className="cb-container">
-            <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
-              <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '1rem' }}>Why Codazz</h2>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.1rem' }}>We understand real estate workflows inside and out.</p>
-            </div>
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
-              {[
-                { icon: '🏢', title: 'Real Estate Domain Knowledge', desc: 'Our team has built platforms for brokerages, property managers, and PropTech startups. We understand MLS, IDX, and transaction workflows.' },
-                { icon: '🥽', title: 'Immersive Technology', desc: 'AR staging, 3D tours, and VR walkthroughs that give your listings the competitive edge in a crowded market.' },
-                { icon: '📈', title: 'Data-Driven Development', desc: 'We build with analytics baked in — lead tracking, conversion funnels, and market intelligence that drive measurable business results.' },
-              ].map(w => (
-                <Card key={w.title}>
-                  <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>{w.icon}</div>
-                  <h3 style={{ fontWeight: 700, fontSize: '1.15rem', marginBottom: '0.75rem' }}>{w.title}</h3>
-                  <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, fontSize: '0.95rem' }}>{w.desc}</p>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Related Services */}
-        <section className="section-padding" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-          <div className="cb-container">
-            <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '-0.03em', marginBottom: 40, textAlign: 'center' }}>
-              Services for Real Estate
-            </h2>
-            <div className="industry-services-grid" style={{ display: 'grid', gap: 16 }}>
-              {[
-                { name: 'Web Development', href: '/services/web-development', desc: 'IDX-integrated listing portals, property search engines and agent websites.' },
-                { name: 'Mobile App Development', href: '/services/mobile-app-development', desc: 'Property search apps with map views, virtual tours and push notifications for new listings.' },
-                { name: 'AI & Machine Learning', href: '/services/ai-ml', desc: 'Automated valuations, investment scoring, lead prediction and market trend analysis.' },
-                { name: 'AR/VR Development', href: '/services/ar-vr', desc: '3D virtual tours, AR staging, VR walkthroughs and drone photography integration.' },
-                { name: 'Product Design', href: '/services/product-design', desc: 'Map-based search UX, listing detail pages and agent dashboard interfaces.' },
-              ].map((s) => (
-                <a key={s.href} href={s.href} style={{
-                  display: 'block', padding: '24px', borderRadius: 16,
-                  background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)',
-                  textDecoration: 'none', transition: 'all 0.3s ease',
-                }}
-                onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(34,197,94,0.2)'; e.currentTarget.style.transform = 'translateY(-3px)'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)'; e.currentTarget.style.transform = 'translateY(0)'; }}
-                >
-                  <div style={{ fontSize: 15, fontWeight: 600, color: '#ffffff', marginBottom: 6 }}>{s.name}</div>
-                  <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)', lineHeight: 1.5 }}>{s.desc}</div>
-                </a>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section ref={s6} className="section-padding">
-          <div className="cb-container">
-            <div className="reveal" style={{ textAlign: 'center', maxWidth: 700, margin: '0 auto' }}>
-              <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 800, lineHeight: 1.15, marginBottom: '1.5rem' }}>
-                Build Your <span style={{ color: '#ffffff' }}>PropTech Platform.</span>
-              </h2>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.15rem', marginBottom: '2.5rem', lineHeight: 1.7 }}>
-                From listing to closing — we build real estate technology that wins deals.
-              </p>
-              <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '2.5rem' }}>
-                <Link href="/contact" style={{ background: '#22c55e', color: '#000', padding: '16px 36px', borderRadius: 999, fontWeight: 700, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
-                  Start Your Project
-                </Link>
-                <Link href="/case-studies" style={{ border: '1px solid rgba(255,255,255,0.1)', color: '#ffffff', padding: '16px 36px', borderRadius: 999, fontWeight: 600, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
-                  See Our Work
-                </Link>
-              </div>
-              <div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                {['MLS Integrated', 'IDX Compliant', 'NDA on Request', 'Fixed-Price Sprints'].map(t => (
-                  <span key={t} style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.25)' }}>✓ {t}</span>
-                ))}
-              </div>
-              <TrustBadges compact />
-            </div>
-          </div>
-        </section>
-
-      </main>
-      <Footer />
-    </>
-  );
+  return <ServicePageTemplate data={pageData} />;
 }

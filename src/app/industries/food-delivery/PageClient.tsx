@@ -1,292 +1,151 @@
 'use client';
-import { useState, useRef, useEffect } from 'react';
-import Link from 'next/link';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import Breadcrumb from '@/components/Breadcrumb';
-import TrustBadges from '@/components/TrustBadges';
-import HeroBackground from '@/components/HeroBackground';
+import ServicePageTemplate, { ServicePageData } from '@/components/ServicePageTemplate';
 
-function useReveal() {
-  const ref = useRef<HTMLElement>(null);
-  useEffect(() => {
-    const io = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-      { threshold: 0.08 }
-    );
-    ref.current?.querySelectorAll('.reveal').forEach(el => io.observe(el));
-    return () => io.disconnect();
-  }, []);
-  return ref;
-}
-
-const cardBase: React.CSSProperties = {
-  border: '1px solid rgba(255,255,255,0.06)',
-  borderRadius: 24,
-  background: 'rgba(255,255,255,0.015)',
-  padding: '2rem',
-  transition: 'border-color 0.3s, background 0.3s, transform 0.3s, box-shadow 0.3s',
+const pageData: ServicePageData = {
+  breadcrumbs: [
+    { label: 'Home', href: '/' },
+    { label: 'Industries', href: '/services' },
+    { label: 'Food Delivery' },
+  ],
+  hero: {
+    badge: 'FOOD & RESTAURANT TECHNOLOGY',
+    title: 'We Build Apps That',
+    titleAccent: 'Deliver.',
+    description: 'On-demand food ordering, real-time driver tracking, kitchen management systems, and restaurant platforms that scale from one city to nationwide.',
+    service: 'Food Delivery Development',
+    stats: [
+      { value: '500K+', label: 'Orders Processed' },
+      { value: '< 2s', label: 'Load Time' },
+      { value: '99.9%', label: 'Uptime' },
+      { value: '28 min', label: 'Avg Delivery' },
+    ],
+  },
+  awards: [
+    'Top Food Tech Developer 2024',
+    'Real-Time Tracking Experts',
+    'Google Maps Platform Partner',
+    'Auto-Scaling Infrastructure',
+    'AWS On-Demand Partner',
+    'Peak-Hour Performance',
+  ],
+  whySection: {
+    title: 'Why Food Delivery Companies Choose Codazz',
+    cards: [
+      { icon: '\u{1F680}', title: 'Peak-Hour Scalability', desc: 'Handling 10x order surges during lunch and dinner rushes without dropped orders, slow load times, or payment failures.' },
+      { icon: '\u{1F4CD}', title: 'Real-Time Logistics', desc: 'Coordinating thousands of drivers, optimizing routes in real time, and providing live tracking that customers trust and rely on.' },
+      { icon: '\u{1F37D}\u{FE0F}', title: 'Multi-Vendor Complexity', desc: 'Managing menus, pricing, availability, and prep times across hundreds of restaurants with different systems and workflows.' },
+      { icon: '\u{1F916}', title: 'AI-Powered Recommendations', desc: 'Personalized food suggestions, demand forecasting, delivery time predictions, and fraud detection powered by machine learning.' },
+    ],
+    whoNeedsTitle: 'Who Needs Food Delivery Software?',
+    whoNeedsItems: [
+      { icon: '\u{1F355}', title: 'Food Delivery Startups', desc: 'Building your own DoorDash or Uber Eats from MVP to city-wide launch.' },
+      { icon: '\u{1F37D}\u{FE0F}', title: 'Restaurant Chains', desc: 'Custom ordering apps, kitchen display systems, and delivery management for multi-location operations.' },
+      { icon: '\u{1F468}\u200D\u{1F373}', title: 'Cloud Kitchens', desc: 'Multi-brand ordering, centralized kitchen management, and delivery optimization.' },
+      { icon: '\u{1F3EA}', title: 'Marketplace Operators', desc: 'Multi-restaurant platforms with vendor onboarding, commission management, and analytics.' },
+      { icon: '\u{1F69A}', title: 'Catering Platforms', desc: 'Corporate catering, event ordering, and group meal management systems.' },
+    ],
+    metricsTitle: 'Food Delivery Development by the Numbers',
+    metrics: [
+      { metric: '500K+', label: 'Orders/Month', desc: 'Peak volume handled' },
+      { metric: '28 min', label: 'Avg Delivery', desc: 'From order to doorstep' },
+      { metric: '4.8', label: 'Star Rating', desc: 'Average customer satisfaction' },
+      { metric: '35%', label: 'Faster Delivery', desc: 'With route optimization' },
+    ],
+    closingText: 'Whether you are building a food delivery marketplace, a restaurant ordering app, or a cloud kitchen management system, Codazz brings the real-time engineering expertise, logistics domain knowledge, and performance-first architecture to build platforms that deliver on every promise.',
+  },
+  subServices: [
+    { title: 'Customer Ordering Apps', tag: 'Customer', desc: 'Intuitive iOS and Android apps with smart search, personalized recommendations, real-time order tracking, and seamless payment flows.', chips: ['iOS', 'Android', 'Tracking', 'Payments'], href: '/contact', icon: '\u{1F4F1}' },
+    { title: 'Restaurant Dashboard', tag: 'Restaurant', desc: 'Kitchen display systems, order management panels, menu editors, and analytics dashboards for restaurant operations.', chips: ['KDS', 'Menu Editor', 'Analytics', 'Orders'], href: '/contact', icon: '\u{1F3EA}' },
+    { title: 'Driver & Fleet Management', tag: 'Delivery', desc: 'AI-powered route optimization, auto-dispatch algorithms, earnings dashboards, and real-time GPS tracking for delivery partners.', chips: ['Routing', 'Dispatch', 'GPS', 'Earnings'], href: '/contact', icon: '\u{1F697}' },
+    { title: 'Payment & Pricing Engine', tag: 'Payments', desc: 'Dynamic surge pricing, promo code engines, split payments, subscription models, and multi-currency support with PCI compliance.', chips: ['Surge Pricing', 'Promos', 'Subscriptions', 'PCI'], href: '/contact', icon: '\u{1F4B0}' },
+    { title: 'Analytics & Insights', tag: 'Analytics', desc: 'Real-time dashboards for order volume, delivery times, customer retention, restaurant performance, and revenue forecasting.', chips: ['Dashboards', 'Retention', 'Forecasting', 'KPIs'], href: '/contact', icon: '\u{1F4CA}' },
+    { title: 'AI Recommendations', tag: 'AI', desc: 'Personalized food recommendations, demand forecasting, delivery time predictions, and fraud detection powered by ML.', chips: ['Personalization', 'Forecasting', 'ETA', 'Fraud'], href: '/contact', icon: '\u{1F916}' },
+  ],
+  servicesHeading: {
+    label: 'Our Food Tech Solutions',
+    title: 'End-to-End Delivery',
+    titleDim: 'Technology Stack.',
+    description: 'From customer ordering to kitchen operations to last-mile delivery, we build every component of food delivery technology for peak-hour performance.',
+  },
+  benefits: {
+    label: 'Why Codazz for Food Delivery',
+    title: 'Engineered for',
+    titleDim: 'Peak Performance.',
+    items: [
+      { icon: '\u{1F5FA}\u{FE0F}', title: 'Logistics Domain Experts', desc: 'Our engineers have built multi-sided marketplaces and real-time dispatch systems. We know what breaks at scale and how to prevent it.' },
+      { icon: '\u{26A1}', title: 'Performance-First Architecture', desc: 'Sub-second order placement, real-time WebSocket tracking, and infrastructure that handles 10x traffic spikes.' },
+      { icon: '\u{1F4C8}', title: 'Growth-Ready Systems', desc: 'From MVP to city-wide launch to multi-region expansion. Our architecture grows without costly rewrites.' },
+      { icon: '\u{1F916}', title: 'AI-Powered Optimization', desc: 'Route optimization, demand forecasting, and personalized recommendations that reduce costs and increase revenue.' },
+      { icon: '\u{1F4F1}', title: 'Multi-App Ecosystem', desc: 'Customer app, driver app, restaurant dashboard, and admin panel built as a cohesive, integrated system.' },
+      { icon: '\u{1F4CA}', title: 'Data-Driven Decisions', desc: 'Real-time analytics on delivery performance, customer behavior, and restaurant operations.' },
+    ],
+  },
+  clientLogos: [
+    'DoorDash', 'Uber Eats', 'Grubhub', 'Postmates', 'Deliveroo', 'Swiggy',
+    'Zomato', 'Just Eat', 'Rappi', 'iFood', 'Glovo', 'Wolt',
+  ],
+  bigStats: [
+    { value: '500K+', label: 'Orders/Month', desc: 'Peak capacity' },
+    { value: '28 min', label: 'Avg Delivery', desc: 'Order to doorstep' },
+    { value: '99.9%', label: 'Uptime', desc: 'Including peak hours' },
+    { value: '4.8', label: 'Star Rating', desc: 'Customer satisfaction' },
+  ],
+  advancedTech: {
+    row1: [
+      { icon: '\u{1F916}', title: 'AI Route Optimization', desc: 'ML-powered delivery routing' },
+      { icon: '\u{1F4CD}', title: 'Real-Time Tracking', desc: 'WebSocket GPS updates' },
+      { icon: '\u{1F4B0}', title: 'Dynamic Pricing', desc: 'Surge pricing algorithms' },
+      { icon: '\u{1F50D}', title: 'Smart Search', desc: 'AI-powered restaurant discovery' },
+      { icon: '\u{1F4CA}', title: 'Demand Forecasting', desc: 'ML-based order prediction' },
+    ],
+    row2: [
+      { icon: '\u{1F4F1}', title: 'Native Apps', desc: 'iOS and Android ordering apps' },
+      { icon: '\u{2601}\u{FE0F}', title: 'Auto-Scaling', desc: 'Peak-hour infrastructure' },
+      { icon: '\u{1F4AC}', title: 'Push Notifications', desc: 'Order status and promotions' },
+      { icon: '\u{1F512}', title: 'PCI Payments', desc: 'Secure payment processing' },
+      { icon: '\u{1F3AF}', title: 'Personalization', desc: 'Food recommendation engine' },
+    ],
+  },
+  techStack: [
+    { category: 'Mobile', techs: ['React Native', 'Flutter', 'Swift', 'Kotlin'] },
+    { category: 'Backend', techs: ['Node.js', 'Go', 'GraphQL', 'Redis'] },
+    { category: 'Maps & Tracking', techs: ['Google Maps', 'Mapbox', 'Socket.io', 'Firebase'] },
+    { category: 'Cloud', techs: ['AWS', 'Kubernetes', 'PostgreSQL', 'Elasticsearch'] },
+    { category: 'AI/ML', techs: ['TensorFlow', 'OR-Tools', 'Scikit-learn', 'Prophet'] },
+    { category: 'Payments', techs: ['Stripe', 'PayPal', 'Apple Pay', 'Google Pay'] },
+  ],
+  faqs: [
+    { q: 'Can you build a food delivery platform like DoorDash?', a: 'Yes. We build complete food delivery ecosystems: customer ordering apps, restaurant dashboards, driver apps, admin panels, and real-time dispatch engines. We have the architecture patterns proven at scale to handle hundreds of thousands of orders.' },
+    { q: 'How do you handle peak-hour traffic spikes?', a: 'Our infrastructure auto-scales based on demand using Kubernetes and cloud-native architecture. We use queue-based order processing, database read replicas, and CDN caching to ensure sub-second response times even during lunch and dinner rush hours.' },
+    { q: 'Do you build restaurant management dashboards?', a: 'Absolutely. We build kitchen display systems (KDS), order management panels, menu editors with photo uploads, analytics dashboards, and integration with POS systems. Our dashboards help restaurants optimize prep times and reduce order errors.' },
+    { q: 'How does your route optimization work?', a: 'Our AI dispatch engine considers driver location, restaurant prep time, traffic conditions, delivery windows, and order batching opportunities to minimize delivery times and maximize driver efficiency. The algorithms improve continuously based on actual delivery data.' },
+    { q: 'Can you integrate with existing POS and restaurant systems?', a: 'Yes. We integrate with Square, Toast, Clover, and other POS systems for seamless order flow. We also build custom integrations with restaurant management software, inventory systems, and accounting tools.' },
+    { q: 'Do you support subscription and loyalty programs?', a: 'Yes. We build subscription models (like DashPass), loyalty point systems, referral programs, promo code engines, and personalized discount algorithms that drive repeat orders and increase customer lifetime value.' },
+  ],
+  faqDescription: 'Common questions about our food delivery software development services, platform architecture, and technical capabilities.',
+  relatedBlogs: [
+    { title: 'Building Real-Time Delivery Tracking at Scale', desc: 'Architecture for WebSocket-based GPS tracking serving millions.', href: '/blog' },
+    { title: 'AI Route Optimization for Food Delivery', desc: 'How machine learning reduces delivery times and driver costs.', href: '/blog' },
+    { title: 'Multi-Sided Marketplace Architecture', desc: 'Technical guide to building three-sided food delivery marketplaces.', href: '/blog' },
+  ],
+  relatedServices: [
+    { name: 'Mobile App Development', desc: 'Native ordering apps with real-time tracking and push notifications.', href: '/services/mobile-app-development' },
+    { name: 'Web Development', desc: 'Restaurant admin dashboards, customer web portals, and KDS systems.', href: '/services/web-development' },
+    { name: 'AI & Machine Learning', desc: 'Demand forecasting, route optimization, and personalized recommendations.', href: '/services/ai-ml' },
+    { name: 'Cloud & DevOps', desc: 'Auto-scaling infrastructure for peak-hour surges with zero downtime.', href: '/services/cloud-devops' },
+  ],
+  industries: [
+    { name: 'Grocery & Retail', href: '/industries/grocery-retail' },
+    { name: 'On-Demand', href: '/industries/on-demand' },
+    { name: 'Logistics', href: '/industries/logistics' },
+    { name: 'E-Commerce', href: '/industries/ecommerce' },
+    { name: 'Fintech', href: '/industries/fintech' },
+    { name: 'Travel', href: '/industries/travel-hospitality' },
+    { name: 'Fitness & Wellness', href: '/industries/fitness-wellness' },
+    { name: 'Healthcare', href: '/industries/healthcare' },
+  ],
 };
-
-const cardHover: React.CSSProperties = {
-  borderColor: 'rgba(34,197,94,0.2)',
-  background: 'rgba(34,197,94,0.03)',
-  transform: 'translateY(-4px)',
-  boxShadow: '0 24px 60px rgba(255,255,255,0.06)',
-};
-
-function Card({ children, style }: { children: React.ReactNode; style?: React.CSSProperties }) {
-  const [hovered, setHovered] = useState(false);
-  return (
-    <div
-      style={{ ...cardBase, ...(hovered ? cardHover : {}), ...style }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      {children}
-    </div>
-  );
-}
-
 
 export default function FoodDeliveryPage() {
-  const heroRef = useRef<HTMLElement>(null);
-  const s1 = useReveal() as React.RefObject<HTMLElement>;
-  const s2 = useReveal() as React.RefObject<HTMLElement>;
-  const s3 = useReveal() as React.RefObject<HTMLElement>;
-  const s4 = useReveal() as React.RefObject<HTMLElement>;
-  const s5 = useReveal() as React.RefObject<HTMLElement>;
-  const s6 = useReveal() as React.RefObject<HTMLElement>;
-
-  useEffect(() => {
-    heroRef.current?.querySelectorAll('.reveal').forEach(n => setTimeout(() => n.classList.add('visible'), 100));
-  }, []);
-
-  return (
-    <>
-      <Navbar />
-      <main style={{ background: '#000000', color: '#ffffff', paddingTop: 80 }}>
-        <div className="cb-container">
-          <Breadcrumb items={[
-            { label: 'Home', href: '/' },
-            { label: 'Industries', href: '/services' },
-            { label: 'Food Delivery' },
-          ]} />
-        </div>
-
-        {/* HERO */}
-        <section ref={heroRef} className="section-padding" style={{ position: 'relative', overflow: 'hidden', minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
-          <HeroBackground variant="center" />
-          <div className="cb-container" style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: 860, margin: '0 auto' }}>
-            <div className="reveal" style={{ display: 'inline-block', border: '1px solid rgba(34,197,94,0.4)', borderRadius: 999, padding: '6px 20px', fontSize: 13, color: '#ffffff', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>
-              Food &amp; Restaurant Technology
-            </div>
-            <h1 className="reveal" style={{ fontSize: 'clamp(2.6rem, 6vw, 5rem)', fontWeight: 800, lineHeight: 1.1, marginBottom: '1.5rem', letterSpacing: '-0.02em' }}>
-              We Build Apps That <span style={{ color: '#ffffff' }}>Deliver.</span>
-            </h1>
-            <p className="reveal" style={{ fontSize: '1.2rem', color: 'rgba(255,255,255,0.7)', marginBottom: '2.5rem', lineHeight: 1.7 }}>
-              On-demand food ordering, real-time driver tracking, kitchen management systems, and restaurant platforms that scale.
-            </p>
-            <div className="reveal" style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '3.5rem' }}>
-              <Link href="/contact" style={{ background: '#22c55e', color: '#000', padding: '14px 32px', borderRadius: 999, fontWeight: 700, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
-                Start Your Project
-              </Link>
-              <Link href="/case-studies" style={{ border: '1px solid rgba(255,255,255,0.1)', color: '#ffffff', padding: '14px 32px', borderRadius: 999, fontWeight: 600, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
-                View Case Studies
-              </Link>
-            </div>
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(140px, 100%), 1fr))', gap: '1.5rem', maxWidth: 600, margin: '0 auto' }}>
-              {[['500K+', 'Orders Processed'], ['< 2s', 'Load Time'], ['99.9%', 'Uptime']].map(([val, label]) => (
-                <div key={label} style={{ textAlign: 'center' }}>
-                  <div style={{ fontSize: '1.6rem', fontWeight: 800, color: '#ffffff' }}>{val}</div>
-                  <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.25)', marginTop: 4, letterSpacing: '0.05em' }}>{label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CHALLENGES */}
-        <section ref={s1} className="section-padding">
-          <div className="cb-container">
-            <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
-              <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '1rem' }}>Key Challenges We Solve</h2>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.1rem' }}>Food delivery demands speed. We engineer for peak-hour performance.</p>
-            </div>
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
-              {[
-                { icon: '🚀', title: 'Peak-Hour Scalability', desc: 'Handling 10x order surges during lunch and dinner rushes without dropped orders, slow load times, or payment failures.' },
-                { icon: '📍', title: 'Real-Time Logistics', desc: 'Coordinating thousands of drivers, optimizing routes in real time, and providing live tracking that customers trust and rely on.' },
-                { icon: '🍽️', title: 'Multi-Vendor Complexity', desc: 'Managing menus, pricing, availability, and prep times across hundreds of restaurants with different systems and workflows.' },
-              ].map(c => (
-                <Card key={c.title}>
-                  <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>{c.icon}</div>
-                  <h3 style={{ fontWeight: 700, fontSize: '1.2rem', marginBottom: '0.75rem' }}>{c.title}</h3>
-                  <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, fontSize: '0.95rem' }}>{c.desc}</p>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* SOLUTIONS */}
-        <section ref={s2} className="section-padding">
-          <div className="cb-container">
-            <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
-              <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '1rem' }}>Our Solutions</h2>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.1rem' }}>End-to-end food delivery technology from order to doorstep.</p>
-            </div>
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 320px), 1fr))', gap: '1.5rem' }}>
-              {[
-                { icon: '📱', title: 'Customer Ordering Apps', desc: 'Intuitive iOS and Android apps with smart search, personalized recommendations, real-time order tracking, and seamless payment flows.' },
-                { icon: '🏪', title: 'Restaurant Dashboard', desc: 'Kitchen display systems, order management panels, menu editors, and analytics dashboards that help restaurants optimize operations.' },
-                { icon: '🚗', title: 'Driver & Fleet Management', desc: 'AI-powered route optimization, auto-dispatch algorithms, earnings dashboards, and real-time GPS tracking for delivery partners.' },
-                { icon: '💰', title: 'Payment & Pricing Engine', desc: 'Dynamic surge pricing, promo code engines, split payments, subscription models, and multi-currency support with PCI compliance.' },
-                { icon: '📊', title: 'Analytics & Insights', desc: 'Real-time dashboards for order volume, delivery times, customer retention, restaurant performance, and revenue forecasting.' },
-                { icon: '🤖', title: 'AI Recommendations', desc: 'Machine learning models for personalized food recommendations, demand forecasting, delivery time predictions, and fraud detection.' },
-              ].map(s => (
-                <Card key={s.title}>
-                  <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>{s.icon}</div>
-                  <h3 style={{ fontWeight: 700, fontSize: '1.15rem', marginBottom: '0.75rem' }}>{s.title}</h3>
-                  <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, fontSize: '0.95rem' }}>{s.desc}</p>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CASE STUDY */}
-        <section ref={s3} className="section-padding">
-          <div className="cb-container">
-            <div className="reveal" style={{ border: '1px solid rgba(34,197,94,0.15)', borderRadius: 32, background: 'rgba(34,197,94,0.03)', padding: 'clamp(1.5rem, 4vw, 3rem)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(400px, 100%), 1fr))', gap: 'clamp(1.5rem, 4vw, 3rem)', alignItems: 'center' }}>
-              <div>
-                <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.25)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>Case Study</div>
-                <div style={{ fontSize: '1.1rem', fontWeight: 700, color: '#ffffff', marginBottom: '0.5rem' }}>Food Delivery Client</div>
-                <h3 style={{ fontSize: 'clamp(1.4rem, 3vw, 2rem)', fontWeight: 800, marginBottom: '1rem', lineHeight: 1.2 }}>500K+ orders/month, 28-min avg delivery, 4.8-star rating</h3>
-                <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.7 }}>We built their entire delivery platform from scratch — customer app, restaurant dashboard, driver app, and real-time dispatch engine.</p>
-              </div>
-              <div>
-                <blockquote style={{ borderLeft: '3px solid #22c55e', paddingLeft: '1.5rem', margin: 0 }}>
-                  <p style={{ fontSize: '1.15rem', lineHeight: 1.7, color: 'rgba(255,255,255,0.65)', fontStyle: 'italic', marginBottom: '1rem' }}>
-                    &ldquo;Codazz built exactly what we needed. Our delivery times dropped 35% and customer retention doubled.&rdquo;
-                  </p>
-                  <cite style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.25)', fontStyle: 'normal' }}>— CEO, Regional Food Delivery Platform</cite>
-                </blockquote>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* TECH STACK */}
-        <section ref={s4} className="section-padding">
-          <div className="cb-container">
-            <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
-              <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '1rem' }}>Tech Stack</h2>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.1rem' }}>Built for real-time performance and massive scale.</p>
-            </div>
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem' }}>
-              {[
-                { cat: 'Mobile', items: ['React Native', 'Flutter', 'Swift', 'Kotlin'] },
-                { cat: 'Backend', items: ['Node.js', 'Go', 'GraphQL', 'Redis'] },
-                { cat: 'Maps & Tracking', items: ['Google Maps', 'Mapbox', 'Socket.io', 'Firebase'] },
-                { cat: 'Cloud', items: ['AWS', 'Kubernetes', 'PostgreSQL', 'Elasticsearch'] },
-              ].map(t => (
-                <Card key={t.cat}>
-                  <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.25)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>{t.cat}</div>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                    {t.items.map(item => (
-                      <span key={item} style={{ background: 'rgba(255,255,255,0.03)', borderRadius: 8, padding: '4px 12px', fontSize: '0.85rem', color: 'rgba(255,255,255,0.65)' }}>{item}</span>
-                    ))}
-                  </div>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* WHY CODAZZ */}
-        <section ref={s5} className="section-padding">
-          <div className="cb-container">
-            <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
-              <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '1rem' }}>Why Codazz</h2>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.1rem' }}>We understand on-demand logistics at every layer.</p>
-            </div>
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
-              {[
-                { icon: '🗺️', title: 'Logistics Domain Experts', desc: 'Our engineers have built multi-sided marketplaces and real-time dispatch systems. We know what breaks at scale and how to prevent it.' },
-                { icon: '⚡', title: 'Performance-First Architecture', desc: 'Sub-second order placement, real-time WebSocket tracking, and infrastructure that handles 10x traffic spikes without blinking.' },
-                { icon: '📈', title: 'Growth-Ready Systems', desc: 'From MVP to city-wide launch to multi-region expansion — our architecture grows with your business without costly rewrites.' },
-              ].map(w => (
-                <Card key={w.title}>
-                  <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>{w.icon}</div>
-                  <h3 style={{ fontWeight: 700, fontSize: '1.15rem', marginBottom: '0.75rem' }}>{w.title}</h3>
-                  <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, fontSize: '0.95rem' }}>{w.desc}</p>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Related Services */}
-        <section className="section-padding" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-          <div className="cb-container">
-            <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '-0.03em', marginBottom: 40, textAlign: 'center' }}>
-              Services for Food Delivery
-            </h2>
-            <div className="industry-services-grid" style={{ display: 'grid', gap: 16 }}>
-              {[
-                { name: 'Mobile App Development', href: '/services/mobile-app-development', desc: 'Native and cross-platform ordering apps with real-time tracking and push notifications.' },
-                { name: 'Web Development', href: '/services/web-development', desc: 'Restaurant admin dashboards, customer web portals and kitchen display systems.' },
-                { name: 'AI & Machine Learning', href: '/services/ai-ml', desc: 'Demand forecasting, route optimization, personalized recommendations and fraud detection.' },
-                { name: 'Cloud & DevOps', href: '/services/cloud-devops', desc: 'Auto-scaling infrastructure that handles peak-hour surges with zero downtime.' },
-                { name: 'Product Design', href: '/services/product-design', desc: 'User-tested interfaces for customers, drivers and restaurant partners.' },
-              ].map((s) => (
-                <a key={s.href} href={s.href} style={{
-                  display: 'block', padding: '24px', borderRadius: 16,
-                  background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)',
-                  textDecoration: 'none', transition: 'all 0.3s ease',
-                }}
-                onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(34,197,94,0.2)'; e.currentTarget.style.transform = 'translateY(-3px)'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)'; e.currentTarget.style.transform = 'translateY(0)'; }}
-                >
-                  <div style={{ fontSize: 15, fontWeight: 600, color: '#ffffff', marginBottom: 6 }}>{s.name}</div>
-                  <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)', lineHeight: 1.5 }}>{s.desc}</div>
-                </a>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section ref={s6} className="section-padding">
-          <div className="cb-container">
-            <div className="reveal" style={{ textAlign: 'center', maxWidth: 700, margin: '0 auto' }}>
-              <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 800, lineHeight: 1.15, marginBottom: '1.5rem' }}>
-                Build Your <span style={{ color: '#ffffff' }}>Food Delivery Platform.</span>
-              </h2>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.15rem', marginBottom: '2.5rem', lineHeight: 1.7 }}>
-                From MVP to market leader — we have the expertise to make it happen.
-              </p>
-              <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '2.5rem' }}>
-                <Link href="/contact" style={{ background: '#22c55e', color: '#000', padding: '16px 36px', borderRadius: 999, fontWeight: 700, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
-                  Start Your Project
-                </Link>
-                <Link href="/case-studies" style={{ border: '1px solid rgba(255,255,255,0.1)', color: '#ffffff', padding: '16px 36px', borderRadius: 999, fontWeight: 600, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
-                  See Our Work
-                </Link>
-              </div>
-              <div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                {['Real-Time Tracking', 'Auto-Scaling', 'NDA on Request', 'Fixed-Price Sprints'].map(t => (
-                  <span key={t} style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.25)' }}>✓ {t}</span>
-                ))}
-              </div>
-              <TrustBadges compact />
-            </div>
-          </div>
-        </section>
-
-      </main>
-      <Footer />
-    </>
-  );
+  return <ServicePageTemplate data={pageData} />;
 }

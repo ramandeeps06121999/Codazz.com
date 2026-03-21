@@ -50,13 +50,13 @@ function Card({ children, style }: { children: React.ReactNode; style?: React.CS
 
 export default function EcommerceMarketplacePage() {
   const heroRef = useRef<HTMLElement>(null);
-  const s1 = useReveal() as React.RefObject<HTMLElement>;
-  const s2 = useReveal() as React.RefObject<HTMLElement>;
-  const s3 = useReveal() as React.RefObject<HTMLElement>;
-  const s4 = useReveal() as React.RefObject<HTMLElement>;
-  const s5 = useReveal() as React.RefObject<HTMLElement>;
-  const s6 = useReveal() as React.RefObject<HTMLElement>;
-  const s7 = useReveal() as React.RefObject<HTMLElement>;
+  const s1 = useReveal() as React.RefObject<HTMLDivElement>;
+  const s2 = useReveal() as React.RefObject<HTMLDivElement>;
+  const s3 = useReveal() as React.RefObject<HTMLDivElement>;
+  const s4 = useReveal() as React.RefObject<HTMLDivElement>;
+  const s5 = useReveal() as React.RefObject<HTMLDivElement>;
+  const s6 = useReveal() as React.RefObject<HTMLDivElement>;
+  const s7 = useReveal() as React.RefObject<HTMLDivElement>;
 
   useEffect(() => {
     heroRef.current?.querySelectorAll('.reveal').forEach(n => setTimeout(() => n.classList.add('visible'), 100));

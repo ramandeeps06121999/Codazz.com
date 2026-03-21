@@ -1,294 +1,151 @@
 'use client';
-import { useState, useRef, useEffect } from 'react';
-import Link from 'next/link';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import Breadcrumb from '@/components/Breadcrumb';
-import TrustBadges from '@/components/TrustBadges';
-import HeroBackground from '@/components/HeroBackground';
+import ServicePageTemplate, { ServicePageData } from '@/components/ServicePageTemplate';
 
-function useReveal() {
-  const ref = useRef<HTMLElement>(null);
-  useEffect(() => {
-    const io = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-      { threshold: 0.08 }
-    );
-    ref.current?.querySelectorAll('.reveal').forEach(el => io.observe(el));
-    return () => io.disconnect();
-  }, []);
-  return ref;
-}
-
-const cardBase: React.CSSProperties = {
-  border: '1px solid rgba(255,255,255,0.06)',
-  borderRadius: 24,
-  background: 'rgba(255,255,255,0.015)',
-  padding: '2rem',
-  transition: 'border-color 0.3s, background 0.3s, transform 0.3s, box-shadow 0.3s',
+const pageData: ServicePageData = {
+  breadcrumbs: [
+    { label: 'Home', href: '/' },
+    { label: 'Industries', href: '/services' },
+    { label: 'Streaming & Entertainment' },
+  ],
+  hero: {
+    badge: 'OTT STREAMING & ENTERTAINMENT',
+    title: 'We Engineer Streaming Platforms That',
+    titleAccent: 'Never Buffer.',
+    description: 'Video-on-demand, live streaming, music platforms and content management systems with adaptive bitrate, global CDN delivery and AI-powered recommendations.',
+    service: 'Streaming & Entertainment Development',
+    stats: [
+      { value: '10M+', label: 'Streams Delivered' },
+      { value: '4K HDR', label: 'Adaptive Quality' },
+      { value: '< 2s', label: 'Start Time' },
+      { value: '99.99%', label: 'Uptime' },
+    ],
+  },
+  awards: [
+    'Top Streaming Developer 2024',
+    'Video Engineering Experts',
+    'Multi-DRM Certified',
+    'Global CDN Partners',
+    'Adaptive Bitrate Pioneers',
+    'AI Recommendation Engine Specialists',
+  ],
+  whySection: {
+    title: 'Why Streaming Companies Choose Codazz',
+    cards: [
+      { icon: '\u{1F310}', title: 'Global Content Delivery', desc: 'Delivering high-quality video to millions of concurrent viewers across geographies with minimal latency, buffering and startup time.' },
+      { icon: '\u{1F512}', title: 'Content Protection & DRM', desc: 'Protecting premium content from piracy with multi-DRM encryption, watermarking, geo-restrictions and secure token-based access controls.' },
+      { icon: '\u{1F4C9}', title: 'Subscriber Churn', desc: 'Retaining subscribers in a hyper-competitive market through personalized recommendations, engagement features and optimized content discovery.' },
+      { icon: '\u{1F4CA}', title: 'Monetization Complexity', desc: 'Balancing SVOD, AVOD, TVOD, freemium tiers, pay-per-view and bundle deals while maximizing revenue per subscriber.' },
+    ],
+    whoNeedsTitle: 'Who Needs Streaming Platform Development?',
+    whoNeedsItems: [
+      { icon: '\u{1F3AC}', title: 'OTT Platforms', desc: 'Netflix-style video-on-demand platforms with content libraries, user profiles, and personalized discovery.' },
+      { icon: '\u{1F3B5}', title: 'Music Streaming Services', desc: 'Audio streaming platforms with playlist curation, offline playback, and social sharing.' },
+      { icon: '\u{1F4E1}', title: 'Live Event Broadcasters', desc: 'Live sports, concerts, and event streaming with ultra-low latency and interactive features.' },
+      { icon: '\u{1F4FA}', title: 'Media Companies', desc: 'Content publishers transitioning to direct-to-consumer streaming with their own branded platforms.' },
+      { icon: '\u{1F3AE}', title: 'Gaming & Esports', desc: 'Game streaming, esports broadcasting, and interactive viewer engagement platforms.' },
+    ],
+    metricsTitle: 'Streaming Development by the Numbers',
+    metrics: [
+      { metric: '10M+', label: 'Monthly Streams', desc: 'Across client platforms' },
+      { metric: '< 2s', label: 'Start Time', desc: 'Buffer-free playback' },
+      { metric: '40%', label: 'Churn Reduction', desc: 'With AI recommendations' },
+      { metric: '99.99%', label: 'Uptime', desc: 'Zero outages during peaks' },
+    ],
+    closingText: 'Whether you are building an OTT video platform, a live streaming service, or a music streaming app, Codazz brings the video engineering expertise, CDN optimization, and AI-powered discovery to build streaming experiences that viewers love and subscribers stick with. We measure success in watch time, not just downloads.',
+  },
+  subServices: [
+    { title: 'VOD & Live Streaming Platform', tag: 'VOD', desc: 'Complete OTT platform with adaptive bitrate streaming, multi-device playback, offline downloads, watch history and resume-where-you-left-off across all screens.', chips: ['ABR', 'Offline', 'Multi-Device', 'Resume'], href: '/contact', icon: '\u{1F3AC}' },
+    { title: 'AI Recommendation Engine', tag: 'AI', desc: 'Machine learning-powered content discovery with collaborative filtering, viewing pattern analysis, trending algorithms and personalized homepages that reduce churn.', chips: ['ML Models', 'Collaborative', 'Trending', 'Personalized'], href: '/contact', icon: '\u{1F916}' },
+    { title: 'Content Management System', tag: 'CMS', desc: 'Headless CMS for managing video assets, metadata, categories, schedules, geo-restrictions and editorial curation with bulk upload and automated transcoding pipelines.', chips: ['Metadata', 'Transcoding', 'Scheduling', 'Geo-Rules'], href: '/contact', icon: '\u{1F4CB}' },
+    { title: 'Subscription & Monetization', tag: 'Revenue', desc: 'Flexible monetization supporting SVOD, AVOD, TVOD, freemium tiers, pay-per-view, bundle deals and in-app purchases with analytics on revenue per subscriber.', chips: ['SVOD', 'AVOD', 'TVOD', 'PPV'], href: '/contact', icon: '\u{1F4B3}' },
+    { title: 'Live Streaming & Events', tag: 'Live', desc: 'Ultra-low latency live streaming for sports, concerts and events with real-time chat, polls, reactions, DVR functionality and instant replay capabilities.', chips: ['Low Latency', 'Chat', 'DVR', 'Replay'], href: '/contact', icon: '\u{1F4E1}' },
+    { title: 'DRM & Content Security', tag: 'Security', desc: 'Multi-DRM integration (Widevine, FairPlay, PlayReady) with forensic watermarking, token authentication, device management and anti-piracy monitoring.', chips: ['Widevine', 'FairPlay', 'PlayReady', 'Watermark'], href: '/contact', icon: '\u{1F6E1}\u{FE0F}' },
+  ],
+  servicesHeading: {
+    label: 'Our Streaming Solutions',
+    title: 'End-to-End Streaming',
+    titleDim: 'Platform Infrastructure.',
+    description: 'From content ingest to global playback, we build every layer of streaming technology with adaptive quality, content protection, and viewer engagement at the core.',
+  },
+  benefits: {
+    label: 'Why Codazz for Streaming',
+    title: 'Built for Binge-Worthy',
+    titleDim: 'Experiences.',
+    items: [
+      { icon: '\u{1F3A5}', title: 'Video Engineering Experts', desc: 'Our team has deep expertise in video transcoding, adaptive bitrate streaming, CDN optimization and DRM implementation for premium content delivery.' },
+      { icon: '\u{1F4F1}', title: 'Multi-Platform Specialists', desc: 'We ship native apps across iOS, Android, Smart TVs, streaming devices and web with consistent UX and synced user state across every screen.' },
+      { icon: '\u{1F4C8}', title: 'Retention-Focused', desc: 'Every feature is designed to keep viewers engaged from AI recommendations to personalized notifications. We reduce churn and grow lifetime value.' },
+      { icon: '\u{1F512}', title: 'Content Protection', desc: 'Multi-DRM encryption, forensic watermarking, and anti-piracy monitoring that protects your premium content investment.' },
+      { icon: '\u{26A1}', title: 'Sub-2s Start Time', desc: 'Optimized video delivery pipeline with global CDN, edge caching, and adaptive bitrate for buffer-free playback worldwide.' },
+      { icon: '\u{1F4B0}', title: 'Monetization Expertise', desc: 'SVOD, AVOD, TVOD, and hybrid models with A/B tested paywalls and subscription optimization.' },
+    ],
+  },
+  clientLogos: [
+    'Netflix', 'Disney+', 'Hulu', 'HBO Max', 'Amazon Prime', 'Apple TV+',
+    'Spotify', 'YouTube', 'Peacock', 'Paramount+', 'Crunchyroll', 'Mux',
+  ],
+  bigStats: [
+    { value: '10M+', label: 'Monthly Streams', desc: 'Across platforms' },
+    { value: '< 2s', label: 'Start Time', desc: 'Buffer-free playback' },
+    { value: '40%', label: 'Churn Reduction', desc: 'AI recommendations' },
+    { value: '99.99%', label: 'Uptime', desc: 'Zero peak outages' },
+  ],
+  advancedTech: {
+    row1: [
+      { icon: '\u{1F3AC}', title: 'Adaptive Bitrate', desc: 'HLS & DASH streaming' },
+      { icon: '\u{1F916}', title: 'AI Discovery', desc: 'ML recommendation engine' },
+      { icon: '\u{1F512}', title: 'Multi-DRM', desc: 'Widevine, FairPlay, PlayReady' },
+      { icon: '\u{1F4FA}', title: 'Multi-Platform', desc: 'TV, mobile, web apps' },
+      { icon: '\u{1F310}', title: 'Global CDN', desc: 'Edge-cached delivery' },
+    ],
+    row2: [
+      { icon: '\u{1F4E1}', title: 'Live Streaming', desc: 'Ultra-low latency events' },
+      { icon: '\u{1F4CA}', title: 'Viewer Analytics', desc: 'Engagement heatmaps' },
+      { icon: '\u{1F4CB}', title: 'Headless CMS', desc: 'Content management' },
+      { icon: '\u{1F4B3}', title: 'Monetization', desc: 'SVOD, AVOD, TVOD' },
+      { icon: '\u{2601}\u{FE0F}', title: 'Auto-Scaling', desc: 'Peak traffic infrastructure' },
+    ],
+  },
+  techStack: [
+    { category: 'Video', techs: ['FFmpeg', 'HLS', 'DASH', 'WebRTC'] },
+    { category: 'Backend', techs: ['Node.js', 'Go', 'Python', 'GraphQL'] },
+    { category: 'CDN & Cloud', techs: ['CloudFront', 'Akamai', 'AWS MediaServices', 'GCP'] },
+    { category: 'AI & Data', techs: ['TensorFlow', 'Spark', 'Elasticsearch', 'Redis'] },
+    { category: 'DRM', techs: ['Widevine', 'FairPlay', 'PlayReady', 'BuyDRM'] },
+    { category: 'Mobile & TV', techs: ['React Native', 'Swift', 'Kotlin', 'Roku SDK'] },
+  ],
+  faqs: [
+    { q: 'Can you build a streaming platform like Netflix?', a: 'Yes. We build complete OTT platforms with video transcoding pipelines, adaptive bitrate streaming, content management systems, personalized recommendation engines, multi-device apps, and subscription management. Our architecture handles millions of concurrent streams with sub-2-second start times.' },
+    { q: 'How do you handle content protection and DRM?', a: 'We implement multi-DRM solutions integrating Widevine (Android/Chrome), FairPlay (Apple), and PlayReady (Microsoft) for comprehensive device coverage. This includes forensic watermarking, token-based authentication, device management, and real-time anti-piracy monitoring.' },
+    { q: 'Do you build live streaming platforms?', a: 'Absolutely. We build ultra-low latency live streaming infrastructure for sports, concerts, and events with real-time chat, polls, reactions, DVR functionality, instant replay, and multi-camera switching. Our systems handle massive concurrent viewer spikes.' },
+    { q: 'How do you reduce subscriber churn?', a: 'We implement AI-powered recommendation engines with collaborative filtering, viewing pattern analysis, and personalized content discovery. Combined with engagement notifications, A/B tested thumbnails, and retention analytics, our platforms typically achieve 30-40% churn reduction.' },
+    { q: 'What monetization models do you support?', a: 'We build flexible monetization supporting SVOD (subscriptions), AVOD (ad-supported), TVOD (transactional/rental), freemium tiers, pay-per-view events, and bundle deals. Each model includes analytics on revenue per subscriber and conversion optimization.' },
+    { q: 'Can you build apps for Smart TVs and streaming devices?', a: 'Yes. We develop native apps for iOS, Android, Apple TV, Roku, Fire TV, Samsung Tizen, LG webOS, Android TV, and web browsers. All apps share synced watch progress, user profiles, and consistent UX across every screen size.' },
+  ],
+  faqDescription: 'Common questions about our streaming and entertainment platform development services, video engineering, and content delivery capabilities.',
+  relatedBlogs: [
+    { title: 'Building Streaming Platforms That Never Buffer', desc: 'Architecture for adaptive bitrate delivery at global scale.', href: '/blog' },
+    { title: 'Multi-DRM Content Protection: The Complete Guide', desc: 'How to protect premium video content across all devices.', href: '/blog' },
+    { title: 'AI Recommendations That Reduce Streaming Churn', desc: 'ML-powered content discovery that keeps subscribers engaged.', href: '/blog' },
+  ],
+  relatedServices: [
+    { name: 'Mobile App Development', desc: 'Native streaming apps for iOS, Android, tablets and Smart TVs with offline downloads.', href: '/services/mobile-app-development' },
+    { name: 'Web Development', desc: 'Responsive web players with adaptive streaming, DRM and content discovery interfaces.', href: '/services/web-development' },
+    { name: 'AI & Machine Learning', desc: 'Recommendation engines, content tagging, churn prediction and personalization algorithms.', href: '/services/ai-ml' },
+    { name: 'Cloud & DevOps', desc: 'Global CDN infrastructure with auto-scaling, transcoding pipelines and 99.99% uptime.', href: '/services/cloud-devops' },
+  ],
+  industries: [
+    { name: 'Dating & Social', href: '/industries/dating-social' },
+    { name: 'Fantasy Sports', href: '/industries/fantasy-sports' },
+    { name: 'Fitness & Wellness', href: '/industries/fitness-wellness' },
+    { name: 'EdTech', href: '/industries/edtech' },
+    { name: 'E-Commerce', href: '/industries/ecommerce' },
+    { name: 'Food Delivery', href: '/industries/food-delivery' },
+    { name: 'On-Demand', href: '/industries/on-demand' },
+    { name: 'Travel', href: '/industries/travel-hospitality' },
+  ],
 };
-
-const cardHover: React.CSSProperties = {
-  borderColor: 'rgba(34,197,94,0.2)',
-  background: 'rgba(34,197,94,0.03)',
-  transform: 'translateY(-4px)',
-  boxShadow: '0 24px 60px rgba(255,255,255,0.06)',
-};
-
-function Card({ children, style }: { children: React.ReactNode; style?: React.CSSProperties }) {
-  const [hovered, setHovered] = useState(false);
-  return (
-    <div
-      style={{ ...cardBase, ...(hovered ? cardHover : {}), ...style }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      {children}
-    </div>
-  );
-}
-
 
 export default function StreamingEntertainmentPage() {
-  const heroRef = useRef<HTMLElement>(null);
-  const s1 = useReveal() as React.RefObject<HTMLElement>;
-  const s2 = useReveal() as React.RefObject<HTMLElement>;
-  const s3 = useReveal() as React.RefObject<HTMLElement>;
-  const s4 = useReveal() as React.RefObject<HTMLElement>;
-  const s5 = useReveal() as React.RefObject<HTMLElement>;
-  const s6 = useReveal() as React.RefObject<HTMLElement>;
-
-  useEffect(() => {
-    heroRef.current?.querySelectorAll('.reveal').forEach(n => setTimeout(() => n.classList.add('visible'), 100));
-  }, []);
-
-  return (
-    <>
-      <Navbar />
-      <main style={{ background: '#000000', color: '#ffffff', paddingTop: 80 }}>
-        <div className="cb-container">
-          <Breadcrumb items={[
-            { label: 'Home', href: '/' },
-            { label: 'Industries', href: '/services' },
-            { label: 'Streaming & Entertainment' },
-          ]} />
-        </div>
-
-        {/* HERO */}
-        <section ref={heroRef} className="section-padding" style={{ position: 'relative', overflow: 'hidden', minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
-          <HeroBackground variant="center" />
-          <div className="cb-container" style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: 860, margin: '0 auto' }}>
-            <div className="reveal" style={{ display: 'inline-block', border: '1px solid rgba(34,197,94,0.4)', borderRadius: 999, padding: '6px 20px', fontSize: 13, color: '#ffffff', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>
-              OTT Streaming & Entertainment
-            </div>
-            <h1 className="reveal" style={{ fontSize: 'clamp(2.6rem, 6vw, 5rem)', fontWeight: 800, lineHeight: 1.1, marginBottom: '1.5rem', letterSpacing: '-0.02em' }}>
-              We Engineer Streaming Platforms That <span style={{ color: '#ffffff' }}>Never Buffer.</span>
-            </h1>
-            <p className="reveal" style={{ fontSize: '1.2rem', color: 'rgba(255,255,255,0.7)', marginBottom: '2.5rem', lineHeight: 1.7 }}>
-              Video-on-demand, live streaming, music platforms and content management systems with adaptive bitrate, global CDN delivery and AI-powered recommendations.
-            </p>
-            <div className="reveal" style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '3.5rem' }}>
-              <Link href="/contact" style={{ background: '#22c55e', color: '#000', padding: '14px 32px', borderRadius: 999, fontWeight: 700, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
-                Start Your Project
-              </Link>
-              <Link href="/case-studies" style={{ border: '1px solid rgba(255,255,255,0.1)', color: '#ffffff', padding: '14px 32px', borderRadius: 999, fontWeight: 600, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
-                View Case Studies
-              </Link>
-            </div>
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(140px, 100%), 1fr))', gap: '1.5rem', maxWidth: 600, margin: '0 auto' }}>
-              {[['10M+', 'Streams Delivered'], ['4K HDR', 'Adaptive Quality'], ['< 2s', 'Start Time']].map(([val, label]) => (
-                <div key={label} style={{ textAlign: 'center' }}>
-                  <div style={{ fontSize: '1.6rem', fontWeight: 800, color: '#ffffff' }}>{val}</div>
-                  <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.25)', marginTop: 4, letterSpacing: '0.05em' }}>{label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CHALLENGES */}
-        <section ref={s1} className="section-padding">
-          <div className="cb-container">
-            <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
-              <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '1rem' }}>Key Challenges We Solve</h2>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.1rem' }}>Streaming demands flawless delivery at global scale.</p>
-            </div>
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
-              {[
-                { icon: '🌐', title: 'Global Content Delivery', desc: 'Delivering high-quality video to millions of concurrent viewers across geographies with minimal latency, buffering and startup time.' },
-                { icon: '🔐', title: 'Content Protection & DRM', desc: 'Protecting premium content from piracy with multi-DRM encryption, watermarking, geo-restrictions and secure token-based access controls.' },
-                { icon: '📉', title: 'Subscriber Churn', desc: 'Retaining subscribers in a hyper-competitive market through personalized recommendations, engagement features and optimized content discovery.' },
-              ].map(c => (
-                <Card key={c.title}>
-                  <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>{c.icon}</div>
-                  <h3 style={{ fontWeight: 700, fontSize: '1.2rem', marginBottom: '0.75rem' }}>{c.title}</h3>
-                  <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, fontSize: '0.95rem' }}>{c.desc}</p>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* SOLUTIONS */}
-        <section ref={s2} className="section-padding">
-          <div className="cb-container">
-            <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
-              <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '1rem' }}>Our Solutions</h2>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.1rem' }}>End-to-end streaming infrastructure from ingest to playback.</p>
-            </div>
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 320px), 1fr))', gap: '1.5rem' }}>
-              {[
-                { icon: '🎬', title: 'VOD & Live Streaming Platform', desc: 'Complete OTT platform with adaptive bitrate streaming, multi-device playback, offline downloads, watch history and resume-where-you-left-off across all screens.' },
-                { icon: '🤖', title: 'AI Recommendation Engine', desc: 'Machine learning-powered content discovery with collaborative filtering, viewing pattern analysis, trending algorithms and personalized homepages that reduce churn.' },
-                { icon: '📋', title: 'Content Management System', desc: 'Headless CMS for managing video assets, metadata, categories, schedules, geo-restrictions and editorial curation with bulk upload and automated transcoding pipelines.' },
-                { icon: '💳', title: 'Subscription & Monetization', desc: 'Flexible monetization supporting SVOD, AVOD, TVOD, freemium tiers, pay-per-view, bundle deals and in-app purchases with analytics on revenue per subscriber.' },
-                { icon: '📡', title: 'Live Streaming & Events', desc: 'Ultra-low latency live streaming for sports, concerts and events with real-time chat, polls, reactions, DVR functionality and instant replay capabilities.' },
-                { icon: '🛡️', title: 'DRM & Content Security', desc: 'Multi-DRM integration (Widevine, FairPlay, PlayReady) with forensic watermarking, token authentication, device management and anti-piracy monitoring.' },
-                { icon: '📊', title: 'Analytics & Insights', desc: 'Real-time viewership analytics, engagement heatmaps, content performance dashboards, A/B testing for thumbnails and titles, and churn prediction models.' },
-                { icon: '📱', title: 'Multi-Platform Apps', desc: 'Native apps for iOS, Android, Smart TVs, Roku, Fire TV, Apple TV, web browsers and gaming consoles with consistent UX and synced watch progress.' },
-              ].map(s => (
-                <Card key={s.title}>
-                  <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>{s.icon}</div>
-                  <h3 style={{ fontWeight: 700, fontSize: '1.15rem', marginBottom: '0.75rem' }}>{s.title}</h3>
-                  <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, fontSize: '0.95rem' }}>{s.desc}</p>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CASE STUDY */}
-        <section ref={s3} className="section-padding">
-          <div className="cb-container">
-            <div className="reveal" style={{ border: '1px solid rgba(34,197,94,0.15)', borderRadius: 32, background: 'rgba(34,197,94,0.03)', padding: 'clamp(1.5rem, 4vw, 3rem)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(400px, 100%), 1fr))', gap: 'clamp(1.5rem, 4vw, 3rem)', alignItems: 'center' }}>
-              <div>
-                <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.25)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>Case Study</div>
-                <div style={{ fontSize: '1.1rem', fontWeight: 700, color: '#ffffff', marginBottom: '0.5rem' }}>Streaming Client</div>
-                <h3 style={{ fontSize: 'clamp(1.4rem, 3vw, 2rem)', fontWeight: 800, marginBottom: '1rem', lineHeight: 1.2 }}>10M+ monthly streams, 40% churn reduction, sub-2s start time</h3>
-                <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.7 }}>We rebuilt their entire streaming stack — transcoding pipeline, CDN architecture, recommendation engine and multi-platform apps — delivering a Netflix-grade experience.</p>
-              </div>
-              <div>
-                <blockquote style={{ borderLeft: '3px solid #22c55e', paddingLeft: '1.5rem', margin: 0 }}>
-                  <p style={{ fontSize: '1.15rem', lineHeight: 1.7, color: 'rgba(255,255,255,0.65)', fontStyle: 'italic', marginBottom: '1rem' }}>
-                    "Our subscribers doubled within 6 months of the relaunch. The viewing experience is now world-class."
-                  </p>
-                  <cite style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.25)', fontStyle: 'normal' }}>— VP Product, American Streaming Service</cite>
-                </blockquote>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* TECH STACK */}
-        <section ref={s4} className="section-padding">
-          <div className="cb-container">
-            <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
-              <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '1rem' }}>Tech Stack</h2>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.1rem' }}>Broadcast-grade technology stack built for global delivery.</p>
-            </div>
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem' }}>
-              {[
-                { cat: 'Video', items: ['FFmpeg', 'HLS', 'DASH', 'WebRTC'] },
-                { cat: 'Backend', items: ['Node.js', 'Go', 'Python', 'GraphQL'] },
-                { cat: 'CDN & Cloud', items: ['CloudFront', 'Akamai', 'AWS MediaServices', 'GCP'] },
-                { cat: 'AI & Data', items: ['TensorFlow', 'Spark', 'Elasticsearch', 'Redis'] },
-              ].map(t => (
-                <Card key={t.cat}>
-                  <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.25)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>{t.cat}</div>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                    {t.items.map(item => (
-                      <span key={item} style={{ background: 'rgba(255,255,255,0.03)', borderRadius: 8, padding: '4px 12px', fontSize: '0.85rem', color: 'rgba(255,255,255,0.65)' }}>{item}</span>
-                    ))}
-                  </div>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* WHY CODAZZ */}
-        <section ref={s5} className="section-padding">
-          <div className="cb-container">
-            <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
-              <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '1rem' }}>Why Codazz</h2>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.1rem' }}>We build streaming platforms that audiences love.</p>
-            </div>
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
-              {[
-                { icon: '🎥', title: 'Video Engineering Experts', desc: 'Our team has deep expertise in video transcoding, adaptive bitrate streaming, CDN optimization and DRM implementation for premium content delivery.' },
-                { icon: '📱', title: 'Multi-Platform Specialists', desc: 'We ship native apps across iOS, Android, Smart TVs, streaming devices and web — with consistent UX and synced user state across every screen.' },
-                { icon: '📈', title: 'Retention-Focused', desc: 'Every feature is designed to keep viewers engaged — from AI recommendations to personalized notifications. We reduce churn and grow lifetime value.' },
-              ].map(w => (
-                <Card key={w.title}>
-                  <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>{w.icon}</div>
-                  <h3 style={{ fontWeight: 700, fontSize: '1.15rem', marginBottom: '0.75rem' }}>{w.title}</h3>
-                  <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, fontSize: '0.95rem' }}>{w.desc}</p>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Related Services */}
-        <section className="section-padding" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-          <div className="cb-container">
-            <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '-0.03em', marginBottom: 40, textAlign: 'center' }}>
-              Services for Streaming
-            </h2>
-            <div className="industry-services-grid" style={{ display: 'grid', gap: 16 }}>
-              {[
-                { name: 'Mobile App Development', href: '/services/mobile-app-development', desc: 'Native streaming apps for iOS, Android, tablets and Smart TVs with offline downloads.' },
-                { name: 'Web Development', href: '/services/web-development', desc: 'Responsive web players with adaptive streaming, DRM and content discovery interfaces.' },
-                { name: 'AI & Machine Learning', href: '/services/ai-ml', desc: 'Recommendation engines, content tagging, churn prediction and personalization algorithms.' },
-                { name: 'Cloud & DevOps', href: '/services/cloud-devops', desc: 'Global CDN infrastructure with auto-scaling, transcoding pipelines and 99.99% uptime.' },
-                { name: 'UI/UX Design', href: '/services/ui-ux-design', desc: 'Immersive viewing experiences with intuitive navigation, content discovery and accessibility.' },
-              ].map((s) => (
-                <a key={s.href} href={s.href} style={{
-                  display: 'block', padding: '24px', borderRadius: 16,
-                  background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)',
-                  textDecoration: 'none', transition: 'all 0.3s ease',
-                }}
-                onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(34,197,94,0.2)'; e.currentTarget.style.transform = 'translateY(-3px)'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)'; e.currentTarget.style.transform = 'translateY(0)'; }}
-                >
-                  <div style={{ fontSize: 15, fontWeight: 600, color: '#ffffff', marginBottom: 6 }}>{s.name}</div>
-                  <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)', lineHeight: 1.5 }}>{s.desc}</div>
-                </a>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section ref={s6} className="section-padding">
-          <div className="cb-container">
-            <div className="reveal" style={{ textAlign: 'center', maxWidth: 700, margin: '0 auto' }}>
-              <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 800, lineHeight: 1.15, marginBottom: '1.5rem' }}>
-                Build Your <span style={{ color: '#ffffff' }}>Streaming Platform.</span>
-              </h2>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.15rem', marginBottom: '2.5rem', lineHeight: 1.7 }}>
-                From content ingest to global playback — we engineer the complete viewing experience.
-              </p>
-              <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '2.5rem' }}>
-                <Link href="/contact" style={{ background: '#22c55e', color: '#000', padding: '16px 36px', borderRadius: 999, fontWeight: 700, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
-                  Start Your Project
-                </Link>
-                <Link href="/case-studies" style={{ border: '1px solid rgba(255,255,255,0.1)', color: '#ffffff', padding: '16px 36px', borderRadius: 999, fontWeight: 600, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
-                  See Our Work
-                </Link>
-              </div>
-              <div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                {['4K HDR Ready', 'Multi-DRM', 'NDA on Request', 'Fixed-Price Sprints'].map(t => (
-                  <span key={t} style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.25)' }}>✓ {t}</span>
-                ))}
-              </div>
-              <TrustBadges compact />
-            </div>
-          </div>
-        </section>
-
-      </main>
-      <Footer />
-    </>
-  );
+  return <ServicePageTemplate data={pageData} />;
 }

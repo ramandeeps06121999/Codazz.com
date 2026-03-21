@@ -1,8 +1,10 @@
 'use client';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, type ReactNode, type CSSProperties } from 'react';
 import Link from 'next/link';
 
-const faqs = [
+export type FAQSectionItem = { q: string; a: string };
+
+const DEFAULT_FAQS: FAQSectionItem[] = [
   { q: 'What services does Codazz offer?', a: 'Codazz offers custom software development, mobile app development (iOS & Android), web application development, AI & machine learning solutions, blockchain development, SaaS development, UI/UX design, cloud engineering (AWS, GCP, Azure), DevOps, and digital marketing. We handle the full product lifecycle from ideation to post-launch support.' },
   { q: 'How much does custom software development cost?', a: 'Custom software development typically ranges from $25,000 for an MVP to $250,000+ for enterprise-grade platforms. The cost depends on complexity, features, integrations, and timeline. We provide a detailed fixed-price quote after a free scoping session — no surprises, no hourly billing.' },
   { q: 'What industries do you specialize in?', a: 'We specialise in FinTech, HealthTech, E-Commerce, EdTech, Real Estate, Logistics & Transportation, SaaS, and AI/ML. Our team has delivered 500+ projects across these verticals, giving us deep domain expertise that accelerates development and reduces risk.' },
@@ -21,7 +23,34 @@ const faqs = [
   { q: 'Can you scale the team up or down as needed?', a: 'Yes. Our virtual-first model means we can onboard additional engineers within days and scale down after launch. You are never locked into a fixed headcount.' },
 ];
 
-export default function FAQSection() {
+const gradientWordStyle: CSSProperties = {
+  background: 'linear-gradient(135deg, #22c55e, #4ade80)',
+  WebkitBackgroundClip: 'text',
+  WebkitTextFillColor: 'transparent',
+  backgroundClip: 'text',
+};
+
+export type FAQSectionProps = {
+  items?: FAQSectionItem[];
+  id?: string;
+  /** Left column heading (default: “Questions” + gradient “Answered.”) */
+  stickyHeading?: ReactNode;
+  description?: string;
+  ctaHref?: string;
+  ctaLabel?: string;
+  /** Accordion open height cap for CSS transition (raise for long answers) */
+  maxAnswerHeight?: number;
+};
+
+export default function FAQSection({
+  items = DEFAULT_FAQS,
+  id = 'faq',
+  stickyHeading,
+  description = 'Everything you need to know before starting a project with us.',
+  ctaHref = '#contact',
+  ctaLabel = 'Ask Us Anything',
+  maxAnswerHeight = 900,
+}: FAQSectionProps = {}) {
   const [active, setActive] = useState<number | null>(null);
   const ref = useRef<HTMLElement>(null);
   useEffect(() => {
@@ -33,33 +62,41 @@ export default function FAQSection() {
     return () => io.disconnect();
   }, []);
 
+  const heading =
+    stickyHeading ?? (
+      <>
+        Questions<br />
+        <span style={gradientWordStyle}>Answered.</span>
+      </>
+    );
+
   return (
-    <section ref={ref} id="faq" className="section-padding" style={{ background: '#000000', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+    <section ref={ref} id={id} className="section-padding" style={{ background: '#000000', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
       <div className="cb-container">
         <div className="faq-grid">
           <div className="reveal faq-sticky" style={{ position: 'sticky', top: 80 }}>
             <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.25)', marginBottom: 20 }}>FAQ</div>
             <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', fontWeight: 500, color: '#ffffff', letterSpacing: '-0.04em', lineHeight: 1.05, marginBottom: 20 }}>
-              Questions<br /><span style={{ background: 'linear-gradient(135deg, #22c55e, #4ade80)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Answered.</span>
+              {heading}
             </h2>
             <p style={{ fontSize: 'clamp(14px, 2.5vw, 16px)', color: '#9ca3af', lineHeight: 1.7, marginBottom: 'clamp(24px, 5vw, 40px)' }}>
-              Everything you need to know before starting a project with us.
+              {description}
             </p>
-            <Link href="#contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, height: 52, padding: '0 28px', borderRadius: 100, background: 'linear-gradient(135deg, #22c55e, #4ade80)', color: '#fff', fontSize: 14, fontWeight: 700, textDecoration: 'none', transition: '0.3s' }}
+            <Link href={ctaHref} style={{ display: 'inline-flex', alignItems: 'center', gap: 10, height: 52, padding: '0 28px', borderRadius: 100, background: 'linear-gradient(135deg, #22c55e, #4ade80)', color: '#fff', fontSize: 14, fontWeight: 700, textDecoration: 'none', transition: '0.3s' }}
               onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; }}
               onMouseLeave={e => { e.currentTarget.style.transform = ''; }}
             >
-              Ask Us Anything
+              {ctaLabel}
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
             </Link>
           </div>
 
           <div className="reveal reveal-d1" style={{ display: 'flex', flexDirection: 'column' }}>
-            {faqs.map((faq, i) => (
+            {items.map((faq, i) => (
               <div key={i} style={{ borderBottom: '1px solid rgba(255,255,255,0.06)', overflow: 'hidden' }}>
                 <button onClick={() => setActive(active === i ? null : i)}
                   aria-expanded={active === i}
-                  aria-controls={`faq-answer-${i}`}
+                  aria-controls={`faq-answer-${id}-${i}`}
                   className="faq-question-btn"
                   style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: 'clamp(16px, 3vw, 28px) 0', background: 'none', border: 'none', cursor: 'pointer', textAlign: 'left', gap: 'clamp(12px, 3vw, 24px)', fontFamily: 'inherit', minHeight: 44 }}
                 >
@@ -70,7 +107,7 @@ export default function FAQSection() {
                     </svg>
                   </div>
                 </button>
-                <div id={`faq-answer-${i}`} style={{ maxHeight: active === i ? 500 : 0, overflow: 'hidden', transition: 'max-height 0.45s cubic-bezier(0.16,1,0.3,1)' }}>
+                <div id={`faq-answer-${id}-${i}`} style={{ maxHeight: active === i ? maxAnswerHeight : 0, overflow: 'hidden', transition: 'max-height 0.45s cubic-bezier(0.16,1,0.3,1)' }}>
                   <p style={{ fontSize: 'clamp(14px, 2.5vw, 15px)', color: '#9ca3af', lineHeight: 1.8, paddingBottom: 'clamp(16px, 3vw, 28px)', margin: 0 }}>{faq.a}</p>
                 </div>
               </div>

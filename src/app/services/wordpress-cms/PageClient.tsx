@@ -1,290 +1,229 @@
 'use client';
-import { useState, useRef, useEffect } from 'react';
-import Link from 'next/link';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import Breadcrumb from '@/components/Breadcrumb';
-import ServiceHeroForm from '@/components/ServiceHeroForm';
-import TrustBadges from '@/components/TrustBadges';
-import HeroBackground from '@/components/HeroBackground';
+import ServicePageTemplate from '@/components/ServicePageTemplate';
+import type { ServicePageData } from '@/components/ServicePageTemplate';
 
-function useReveal() {
-  const ref = useRef<HTMLElement>(null);
-  useEffect(() => {
-    const io = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-      { threshold: 0.08 }
-    );
-    ref.current?.querySelectorAll('.reveal').forEach(el => io.observe(el));
-    return () => io.disconnect();
-  }, []);
-  return ref;
-}
+const pageData: ServicePageData = {
+  breadcrumbs: [
+    { label: 'Home', href: '/' },
+    { label: 'Services', href: '/services' },
+    { label: 'WordPress & CMS' },
+  ],
+  hero: {
+    badge: 'WordPress & CMS Development',
+    title: 'WordPress Without',
+    titleAccent: 'the Bloat.',
+    description:
+      'Custom themes, headless architectures, and enterprise-grade security — built for content teams who demand performance. No page builders. No bloat. Just clean, fast WordPress.',
+    service: 'WordPress & CMS',
+    stats: [
+      { value: '400+', label: 'WordPress Sites' },
+      { value: '100%', label: 'Custom Themes' },
+      { value: 'A+', label: 'Security Score' },
+      { value: '2 Wks', label: 'Avg Delivery' },
+    ],
+  },
+  awards: [
+    'Clutch Top WordPress Company 2026',
+    'WooCommerce Expert Partner',
+    'AWS Advanced Tier Partner',
+    'SOC 2 Type II Certified',
+    'ISO 27001 Certified',
+    'WordPress VIP Agency',
+    'Top CMS Development - GoodFirms',
+    'Google Cloud Partner',
+  ],
+  whySection: {
+    title: 'Why Custom WordPress Development Matters',
+    cards: [
+      { icon: '🐌', title: 'Page Builders Kill Performance', desc: 'Elementor, Divi, and WPBakery add 500KB+ of CSS and JS to every page load. Custom themes deliver the same designs at 5x the speed with clean, maintainable code.' },
+      { icon: '🔒', title: 'Security Requires Expertise', desc: '90% of hacked CMS sites are WordPress — but 99% of those used outdated plugins, weak configurations, or shared hosting. Proper security hardening eliminates these risks entirely.' },
+      { icon: '📱', title: 'Mobile-First Is Non-Negotiable', desc: '60% of web traffic is mobile. Custom WordPress themes are built mobile-first with responsive layouts, optimized images, and touch-friendly interactions from the ground up.' },
+      { icon: '⚡', title: 'Core Web Vitals Drive Rankings', desc: 'Google uses page speed as a ranking factor. Our custom WordPress sites consistently score 90+ on Lighthouse with sub-second load times and green Core Web Vitals.' },
+    ],
+    whoNeedsTitle: 'Who Needs Custom WordPress Development?',
+    whoNeedsItems: [
+      { icon: '🏢', title: 'Businesses & Agencies', desc: 'Professional websites that load fast, rank well, and are easy for your content team to update without developer help.' },
+      { icon: '🛒', title: 'E-Commerce & WooCommerce', desc: 'High-converting online stores with custom checkout flows, payment integrations, and inventory management.' },
+      { icon: '📰', title: 'Publishers & Media', desc: 'Content-heavy sites optimized for SEO, editorial workflows, and high-traffic performance.' },
+      { icon: '🏥', title: 'Healthcare & Finance', desc: 'HIPAA and compliance-ready WordPress with enterprise-grade security and access controls.' },
+      { icon: '🎓', title: 'Education & Non-Profit', desc: 'Accessible, affordable WordPress solutions with LMS integrations and donation management.' },
+      { icon: '🔄', title: 'Migration & Rebuild', desc: 'Migrating from Squarespace, Wix, or legacy WordPress to a clean, performant custom build.' },
+    ],
+    metricsTitle: 'WordPress Performance Metrics',
+    metrics: [
+      { metric: '400+', label: 'Sites Launched', desc: 'Across industries' },
+      { metric: '< 1s', label: 'Load Time', desc: 'Average across sites' },
+      { metric: '90+', label: 'Lighthouse Score', desc: 'Performance average' },
+      { metric: 'A+', label: 'Security Score', desc: 'Headers & hardening' },
+      { metric: '100%', label: 'Custom Themes', desc: 'No page builders' },
+      { metric: '2 Wks', label: 'Avg Delivery', desc: 'Kickoff to launch' },
+    ],
+    closingText:
+      'WordPress powers 43% of the web — but most WordPress sites are slow, insecure, and impossible to maintain. At Codazz, we build WordPress differently: custom themes with clean PHP, ACF Pro for flexible content, enterprise security hardening, and performance optimization that puts you in the green on every Core Web Vitals metric. Your content team gets an intuitive CMS. Your users get a blazing-fast experience.',
+  },
+  subServices: [
+    {
+      title: 'Custom Theme Development',
+      tag: 'Design & Build',
+      desc: 'Bespoke WordPress themes built from scratch — no bloated page builders, no off-the-shelf templates. Clean, fast, and uniquely yours.',
+      chips: ['PHP', 'ACF Pro', 'Tailwind CSS', 'Gutenberg', 'Figma to WP'],
+      href: '/services/wordpress-cms/custom-themes',
+      icon: '🎨',
+    },
+    {
+      title: 'WooCommerce Stores',
+      tag: 'E-Commerce',
+      desc: 'High-converting e-commerce experiences with custom checkout flows, payment integrations, and inventory management built on WooCommerce.',
+      chips: ['WooCommerce', 'Stripe', 'PayPal', 'Inventory', 'Subscriptions'],
+      href: '/services/wordpress-cms/woocommerce',
+      icon: '🛒',
+    },
+    {
+      title: 'Performance Optimization',
+      tag: 'Speed',
+      desc: 'Sub-second load times through caching, image optimization, code splitting, and CDN configuration. Core Web Vitals green across the board.',
+      chips: ['Redis', 'CDN', 'Image Optimization', 'Lazy Loading', 'Caching'],
+      href: '/services/wordpress-cms/performance',
+      icon: '⚡',
+    },
+    {
+      title: 'Security Hardening',
+      tag: 'Enterprise',
+      desc: 'Enterprise-grade security with automated backups, malware scanning, SSL management, WAF, and proactive threat monitoring.',
+      chips: ['WAF', 'Malware Scanning', 'SSL', 'Backups', '2FA'],
+      href: '/services/wordpress-cms/security',
+      icon: '🔒',
+    },
+    {
+      title: 'Plugin Development',
+      tag: 'Custom',
+      desc: 'Custom plugins for unique business logic, CRM integrations, and third-party API connections — built to WordPress coding standards.',
+      chips: ['REST API', 'WP CLI', 'Hooks & Filters', 'Custom Post Types'],
+      href: '/services/wordpress-cms/plugins',
+      icon: '🔌',
+    },
+    {
+      title: 'Headless WordPress',
+      tag: 'Decoupled',
+      desc: 'Decoupled architectures with React/Next.js frontends and WordPress as a CMS backend — best of both worlds for performance and flexibility.',
+      chips: ['Next.js', 'React', 'GraphQL', 'WPGraphQL', 'REST API'],
+      href: '/services/wordpress-cms/headless',
+      icon: '📱',
+    },
+  ],
+  servicesHeading: {
+    label: 'What We Build',
+    title: 'WordPress & CMS Services',
+    titleDim: 'Performance-first approach.',
+    description:
+      'Custom WordPress solutions that put performance and security first — from bespoke themes and WooCommerce stores to headless architectures and enterprise deployments.',
+  },
+  benefits: {
+    label: 'Why Codazz WordPress',
+    title: 'WordPress Done',
+    titleDim: 'The Right Way.',
+    items: [
+      { icon: '🚫', title: 'No Page Builders', desc: 'We never use Elementor, Divi, or WPBakery. Every theme is hand-coded for maximum performance, security, and maintainability.' },
+      { icon: '⚡', title: 'Sub-Second Load Times', desc: 'Server-side caching, image optimization, CDN configuration, and clean code deliver consistently fast page loads across all devices.' },
+      { icon: '🔒', title: 'Enterprise Security', desc: 'Security hardening, WAF configuration, automated backups, malware scanning, and proactive monitoring protect your site 24/7.' },
+      { icon: '📝', title: 'Content Team Friendly', desc: 'Intuitive ACF Pro content fields and custom Gutenberg blocks make updates easy for non-technical content editors.' },
+    ],
+  },
+  clientLogos: [
+    'Stripe', 'Shopify', 'AWS', 'Google Cloud', 'WooCommerce',
+    'Cloudflare', 'ACF Pro', 'Yoast SEO', 'WP Engine', 'Kinsta',
+    'Figma', 'Vercel', 'Elementor-Free Zone', 'WordPress VIP',
+    'Gravity Forms', 'WPML',
+  ],
+  bigStats: [
+    { value: '400+', label: 'Sites Launched', desc: 'Across industries' },
+    { value: '< 1s', label: 'Avg Load Time', desc: 'Custom themes only' },
+    { value: 'A+', label: 'Security Score', desc: 'Average rating' },
+    { value: '2 Wks', label: 'Avg Delivery', desc: 'Kickoff to launch' },
+    { value: '4.9★', label: 'Client Rating', desc: 'Across 80+ reviews' },
+  ],
+  advancedTech: {
+    row1: [
+      { icon: '🧩', title: 'ACF Pro', desc: 'Flexible custom fields for intuitive content management' },
+      { icon: '📦', title: 'Custom Gutenberg', desc: 'Bespoke block editor components for rich editing' },
+      { icon: '🔗', title: 'WPGraphQL', desc: 'GraphQL API for headless WordPress architectures' },
+      { icon: '🚀', title: 'Redis Caching', desc: 'Object and page caching for millisecond response times' },
+      { icon: '🖼️', title: 'WebP/AVIF', desc: 'Next-gen image formats with automatic conversion' },
+      { icon: '🌐', title: 'Multi-Site', desc: 'WordPress Multisite network management at scale' },
+    ],
+    row2: [
+      { icon: '🔒', title: 'WAF Protection', desc: 'Web application firewall with real-time threat blocking' },
+      { icon: '📊', title: 'Core Web Vitals', desc: 'LCP, FID, CLS optimization for search ranking' },
+      { icon: '🔄', title: 'CI/CD Deploys', desc: 'Git-based deployment workflows with staging environments' },
+      { icon: '🌍', title: 'WPML / Polylang', desc: 'Multi-language support for global content teams' },
+      { icon: '📱', title: 'PWA Ready', desc: 'Progressive Web App capabilities for offline access' },
+      { icon: '♿', title: 'WCAG 2.1', desc: 'Accessibility compliance built into every theme' },
+    ],
+  },
+  techStack: [
+    { category: 'WordPress Core', techs: ['PHP 8.x', 'ACF Pro', 'Gutenberg', 'WP REST API', 'WP CLI', 'Composer'] },
+    { category: 'Frontend', techs: ['Tailwind CSS', 'Alpine.js', 'GSAP', 'TypeScript', 'Vite'] },
+    { category: 'Headless Stack', techs: ['Next.js', 'React', 'WPGraphQL', 'Apollo Client', 'Vercel'] },
+    { category: 'E-Commerce', techs: ['WooCommerce', 'Stripe', 'PayPal', 'Square', 'Subscriptions'] },
+    { category: 'Performance', techs: ['Redis', 'Varnish', 'Cloudflare CDN', 'Imgix', 'WebP/AVIF'] },
+    { category: 'Hosting & DevOps', techs: ['WP Engine', 'Kinsta', 'AWS', 'Docker', 'GitHub Actions'] },
+  ],
+  pricingGuide: {
+    title: 'How Much Does WordPress Development Cost?',
+    description:
+      'WordPress development costs depend on design complexity, functionality requirements, and whether you need e-commerce or headless architecture. Codazz offers fixed-price quotes — no page builders, no surprises.',
+    tiers: [
+      { icon: '💰', name: 'Business Website', price: '$5,000 – $15,000', desc: 'Custom WordPress theme (5-15 pages), ACF Pro content fields, mobile-responsive design, SEO setup, security hardening, and Core Web Vitals optimization.', timeline: '⏱ 2–4 weeks' },
+      { icon: '💰', name: 'WooCommerce / Advanced Site', price: '$15,000 – $50,000', desc: 'Custom WooCommerce store or feature-rich WordPress site with payment integration, custom plugins, multi-language support, and performance optimization for high traffic.', timeline: '⏱ 4–8 weeks' },
+      { icon: '💰', name: 'Headless / Enterprise WordPress', price: '$50,000 – $150,000+', desc: 'Decoupled WordPress with Next.js/React frontend, WPGraphQL, multi-site networks, enterprise-grade security, custom admin workflows, and scalable hosting architecture.', timeline: '⏱ 8–16 weeks' },
+    ],
+  },
 
-const stats = [
-  { value: '400+', label: 'WordPress Sites' },
-  { value: '100%', label: 'Custom Themes' },
-  { value: 'A+', label: 'Security Score' },
-  { value: '2 Wks', label: 'Avg Delivery' },
-];
+  selectionGuide: {
+    title: 'How to Choose a WordPress Development Company',
+    description:
+      'Choosing the right WordPress partner is critical — most agencies rely on bloated page builders that create slow, insecure sites. Here is what to demand.',
+    criteria: [
+      { icon: '📋', title: 'Custom Theme Portfolio', desc: 'Look for hand-coded themes with Lighthouse scores above 90. If their portfolio sites use Elementor or Divi, that tells you everything about their approach.' },
+      { icon: '👨‍💻', title: 'Senior WordPress Engineers', desc: '8+ years avg experience in PHP, ACF Pro, WooCommerce, and headless architectures. Ask about their approach to security hardening and performance.' },
+      { icon: '💲', title: 'Fixed-Price Quotes', desc: 'No hourly surprises. Clear scope with defined pages, functionality, revision rounds, and timeline commitments before work begins.' },
+      { icon: '🛡️', title: 'Maintenance & Support SLAs', desc: 'Ongoing core/plugin updates, security monitoring, automated backups, and priority support retainers to keep your site secure and fast.' },
+      { icon: '🔒', title: 'Security-First Approach', desc: 'WAF configuration, malware scanning, 2FA, and proactive hardening — not just "install a security plugin and hope for the best."' },
+      { icon: '🕐', title: 'Your Timezone', desc: 'Dedicated PM, weekly progress demos, and a content training session so your team can manage updates independently after launch.' },
+    ],
+  },
 
-const services = [
-  { icon: '🎨', title: 'Custom Theme Development', desc: 'Bespoke WordPress themes built from scratch — no bloated page builders, no off-the-shelf templates. Clean, fast, and uniquely yours.' },
-  { icon: '🛒', title: 'WooCommerce Stores', desc: 'High-converting e-commerce experiences with custom checkout flows, payment integrations, and inventory management.' },
-  { icon: '⚡', title: 'Performance Optimization', desc: 'Sub-second load times through caching, image optimization, code splitting, and CDN configuration. Core Web Vitals green across the board.' },
-  { icon: '🔒', title: 'Security Hardening', desc: 'Enterprise-grade security with automated backups, malware scanning, SSL management, and proactive threat monitoring.' },
-  { icon: '🔌', title: 'Plugin Development', desc: 'Custom plugins for unique business logic, CRM integrations, and third-party API connections — built to WordPress coding standards.' },
-  { icon: '📱', title: 'Headless WordPress', desc: 'Decoupled architectures with React/Next.js frontends and WordPress as a CMS backend — best of both worlds.' },
-];
-
-const steps = [
-  { num: '01', title: 'Discovery', desc: 'We audit your current site (if any), understand your content workflow, and define technical requirements and performance targets.' },
-  { num: '02', title: 'Design', desc: 'Custom UI designs in Figma, optimized for WordPress content management and your editorial team\'s workflow.' },
-  { num: '03', title: 'Development', desc: 'Clean, maintainable PHP code with ACF Pro for flexible content management. Mobile-first, accessibility-compliant, and SEO-ready.' },
-  { num: '04', title: 'Launch & Training', desc: 'Staging, performance testing, security hardening, and hands-on training for your content team. Plus ongoing support options.' },
-];
-
-const results = [
-  { value: '400+', label: 'Sites Launched', sub: 'across industries' },
-  { value: 'A+', label: 'Security Score', sub: 'average rating' },
-  { value: '2 Wks', label: 'Avg Delivery', sub: 'from kickoff to launch' },
-];
-
-const faqs = [
-  { q: 'Do you use page builders like Elementor or Divi?', a: 'No. We build custom themes with clean PHP, ACF Pro, and modern CSS. This results in faster load times, better security, and easier long-term maintenance compared to bloated page builder sites.' },
-  { q: 'Can you migrate my existing WordPress site?', a: 'Absolutely. We handle full site migrations including content, SEO redirects, media files, and database transfers — with zero downtime and full backup protocols.' },
-  { q: 'How do you handle ongoing maintenance?', a: 'We offer monthly maintenance retainers covering core/plugin updates, security monitoring, backups, performance optimization, and priority support. Most clients choose this for peace of mind.' },
-  { q: 'Is WordPress secure enough for enterprise?', a: 'When properly configured, yes. We implement security hardening, regular updates, WAF protection, and monitoring. Many enterprise clients trust our WordPress implementations for their security and reliability.' },
-  { q: 'Can WordPress scale for high traffic?', a: 'Yes. With proper caching (Redis, Varnish), CDN configuration, database optimization, and scalable hosting, WordPress handles millions of monthly visitors. We architect for your growth targets.' },
-];
-
+  faqs: [
+    { q: 'Do you use page builders like Elementor or Divi?', a: 'No. We build custom themes with clean PHP, ACF Pro, and modern CSS. This results in faster load times, better security, and easier long-term maintenance compared to bloated page builder sites.' },
+    { q: 'Can you migrate my existing WordPress site?', a: 'Absolutely. We handle full site migrations including content, SEO redirects, media files, and database transfers — with zero downtime and full backup protocols.' },
+    { q: 'How do you handle ongoing maintenance?', a: 'We offer monthly maintenance retainers covering core/plugin updates, security monitoring, backups, performance optimization, and priority support. Most clients choose this for peace of mind.' },
+    { q: 'Is WordPress secure enough for enterprise?', a: 'When properly configured, yes. We implement security hardening, regular updates, WAF protection, and monitoring. Many enterprise clients trust our WordPress implementations for their security and reliability.' },
+    { q: 'Can WordPress scale for high traffic?', a: 'Yes. With proper caching (Redis, Varnish), CDN configuration, database optimization, and scalable hosting, WordPress handles millions of monthly visitors. We architect for your growth targets.' },
+    { q: 'What is headless WordPress?', a: 'Headless WordPress uses WordPress as a content management backend while a modern frontend framework like Next.js or React handles the user-facing website. This gives you the best of both worlds: WordPress editorial experience with blazing-fast, modern frontend performance.' },
+  ],
+  faqDescription:
+    'Get answers to common questions about our WordPress development services, custom themes, headless architecture, WooCommerce, and maintenance plans.',
+  relatedBlogs: [
+    { title: 'Why Custom WordPress Beats Page Builders in 2026', desc: 'The performance, security, and maintenance case against Elementor and Divi.', href: '/blog/custom-wordpress-vs-page-builders' },
+    { title: 'Headless WordPress with Next.js: Complete Guide', desc: 'How to build a decoupled WordPress site with a React frontend for ultimate performance.', href: '/blog/headless-wordpress-nextjs-guide' },
+    { title: 'WordPress Security Hardening Checklist', desc: 'Enterprise-grade security practices every WordPress site should implement.', href: '/blog/wordpress-security-hardening-checklist' },
+  ],
+  relatedServices: [
+    { name: 'Web Development', desc: 'Full-stack web applications with React, Next.js, and Node.js.', href: '/services/web-development' },
+    { name: 'E-Commerce Development', desc: 'Custom online stores beyond WooCommerce.', href: '/services/ecommerce-development' },
+    { name: 'UI/UX Design', desc: 'Conversion-optimized designs for WordPress themes.', href: '/services/ui-ux-design' },
+    { name: 'SEO & Digital Marketing', desc: 'Drive traffic to your WordPress site with technical SEO.', href: '/services/digital-marketing' },
+  ],
+  industries: [
+    { name: 'E-Commerce', href: '/industries/ecommerce' },
+    { name: 'Healthcare', href: '/industries/healthcare' },
+    { name: 'Education', href: '/industries/education' },
+    { name: 'FinTech', href: '/industries/fintech' },
+    { name: 'Enterprise', href: '/industries/enterprise' },
+    { name: 'Non-Profit', href: '/industries/non-profit' },
+  ],
+};
 
 export default function WordPressCMSPage() {
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const pageRef = useReveal() as React.RefObject<HTMLElement>;
-
-  return (
-    <>
-      <style>{`
-        .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
-        .reveal.visible { opacity: 1; transform: none; }
-        .reveal-d1 { transition-delay: 0.1s; }
-        .reveal-d2 { transition-delay: 0.2s; }
-        .reveal-d3 { transition-delay: 0.3s; }
-        .reveal-d4 { transition-delay: 0.4s; }
-      `}</style>
-      <Navbar />
-      <main ref={pageRef} style={{ background: '#000000', color: '#ffffff', paddingTop: 80 }}>
-        <div className="cb-container">
-          <Breadcrumb items={[
-            { label: 'Home', href: '/' },
-            { label: 'Services', href: '/services' },
-            { label: 'WordPress & CMS' },
-          ]} />
-        </div>
-
-        {/* HERO */}
-        <section className="section-padding" style={{ position: 'relative', overflow: 'hidden', minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
-          <HeroBackground variant="center" />
-          <div className="cb-container" style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: 860, margin: '0 auto' }}>
-            <div className="reveal" style={{ display: 'inline-block', border: '1px solid rgba(34,197,94,0.4)', borderRadius: 999, padding: '6px 20px', fontSize: 13, color: '#ffffff', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>
-              WordPress & CMS
-            </div>
-            <h1 className="reveal" style={{ fontSize: 'clamp(2.6rem, 6vw, 5rem)', fontWeight: 800, lineHeight: 1.1, marginBottom: '1.5rem', letterSpacing: '-0.02em' }}>
-              WordPress Without the Bloat.
-            </h1>
-            <p className="reveal" style={{ fontSize: '1.2rem', color: 'rgba(255,255,255,0.7)', marginBottom: '2.5rem', lineHeight: 1.7 }}>
-              Custom themes, headless architectures, and enterprise-grade security — built for content teams who demand performance.
-            </p>
-            <div className="reveal" style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '3.5rem' }}>
-              <Link href="/contact" style={{ background: '#22c55e', color: '#000', padding: '14px 32px', borderRadius: 999, fontWeight: 700, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
-                Start Your Project
-              </Link>
-              <Link href="/case-studies" style={{ border: '1px solid rgba(255,255,255,0.1)', color: '#ffffff', padding: '14px 32px', borderRadius: 999, fontWeight: 600, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
-                View Case Studies
-              </Link>
-            </div>
-            <div className="reveal" style={{ display: 'flex', gap: 32, justifyContent: 'center', flexWrap: 'wrap' }}>
-              {[
-                { value: '400+', label: 'WordPress Sites' },
-                { value: '100%', label: 'Custom Themes' },
-                { value: 'A+', label: 'Security Score' },
-              ].map((s, i) => (
-                <div key={i} style={{ textAlign: 'center' }}>
-                  <div style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 700, color: '#ffffff' }}>{s.value}</div>
-                  <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>{s.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* STATS */}
-        <section style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-          <div className="cb-container">
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(140px, 100%), 1fr))' }}>
-              {stats.map((s, i) => (
-                <div key={i} className="reveal" style={{ padding: 'clamp(28px, 4vw, 48px) 0', borderRight: i < 3 ? '1px solid rgba(255,255,255,0.05)' : 'none', paddingLeft: i > 0 ? 'clamp(16px, 3vw, 40px)' : 0, transitionDelay: `${i * 0.08}s` }}>
-                  <div style={{ fontSize: 'clamp(2rem,3.5vw,3rem)', fontWeight: 600, color: '#ffffff', letterSpacing: '-0.03em', lineHeight: 1 }}>{s.value}</div>
-                  <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.45)', marginTop: 8, textTransform: 'uppercase', letterSpacing: '0.08em' }}>{s.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* SERVICES */}
-        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-          <div className="cb-container">
-            <div className="reveal" style={{ marginBottom: 16 }}>
-              <span style={{ fontSize: 11, fontWeight: 700, color: '#ffffff', letterSpacing: '0.12em', textTransform: 'uppercase' }}>What We Build</span>
-            </div>
-            <h2 className="reveal reveal-d1" style={{ fontSize: 'clamp(2rem,3.5vw,3rem)', fontWeight: 500, letterSpacing: '-0.03em', margin: '0 0 16px' }}>WordPress & CMS Services</h2>
-            <p className="reveal reveal-d2" style={{ fontSize: 16, color: 'rgba(255,255,255,0.45)', maxWidth: 520, margin: '0 0 56px', lineHeight: 1.7 }}>Custom solutions that put performance and security first.</p>
-            {/* Service Cards */}
-            <div className="reveal reveal-d1" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 320px), 1fr))', gap: 20 }}>
-              {services.map(s => (
-                <div key={s.title} style={{ padding: '36px 32px', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 28, background: 'rgba(255,255,255,0.015)', position: 'relative', overflow: 'hidden', transition: 'all 0.35s ease' }}
-                  onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(34,197,94,0.2)'; e.currentTarget.style.background = 'rgba(34,197,94,0.03)'; e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 20px 50px rgba(255,255,255,0.04)'; }}
-                  onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)'; e.currentTarget.style.background = 'rgba(255,255,255,0.015)'; e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}>
-                  <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: 'linear-gradient(90deg,#22c55e,transparent)' }} />
-                  <div style={{ fontSize: 32, marginBottom: 20 }}>{s.icon}</div>
-                  <h3 style={{ fontSize: 'clamp(1.1rem, 1.8vw, 1.4rem)', fontWeight: 600, color: '#ffffff', letterSpacing: '-0.02em', marginBottom: 12 }}>{s.title}</h3>
-                  <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, margin: 0 }}>{s.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* PROCESS */}
-        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-          <div className="cb-container">
-            <div className="reveal" style={{ marginBottom: 16 }}>
-              <span style={{ fontSize: 11, fontWeight: 700, color: '#ffffff', letterSpacing: '0.12em', textTransform: 'uppercase' }}>How We Build</span>
-            </div>
-            <h2 className="reveal reveal-d1" style={{ fontSize: 'clamp(2rem,3.5vw,3rem)', fontWeight: 500, letterSpacing: '-0.03em', margin: '0 0 60px' }}>Our WordPress Process</h2>
-            <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', gap: 0 }}>
-              <div style={{ position: 'absolute', top: 24, bottom: 24, left: 23, width: 1, background: 'linear-gradient(to bottom, #22c55e, rgba(34,197,94,0.1))', zIndex: 0 }} />
-              {steps.map((step, i) => (
-                <div key={i} className="reveal" style={{ display: 'flex', gap: 32, paddingBottom: i < steps.length - 1 ? 48 : 0, position: 'relative', zIndex: 1, transitionDelay: `${i * 0.1}s` }}>
-                  <div style={{ width: 46, height: 46, borderRadius: '50%', background: '#22c55e', color: '#000', fontWeight: 700, fontSize: 13, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>{step.num}</div>
-                  <div style={{ paddingTop: 10 }}>
-                    <h3 style={{ fontSize: 20, fontWeight: 600, color: '#ffffff', margin: '0 0 12px', letterSpacing: '-0.02em' }}>{step.title}</h3>
-                    <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.5)', lineHeight: 1.75, margin: 0, maxWidth: 560 }}>{step.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* RESULTS */}
-        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-          <div className="cb-container">
-            <div className="reveal" style={{ marginBottom: 16 }}>
-              <span style={{ fontSize: 11, fontWeight: 700, color: '#ffffff', letterSpacing: '0.12em', textTransform: 'uppercase' }}>Results</span>
-            </div>
-            <h2 className="reveal reveal-d1" style={{ fontSize: 'clamp(2rem,3.5vw,3rem)', fontWeight: 500, letterSpacing: '-0.03em', margin: '0 0 48px' }}>Sites That Perform</h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 20 }}>
-              {results.map((r, i) => (
-                <div key={i} className="reveal" style={{ background: 'rgba(34,197,94,0.04)', border: '1px solid rgba(17,24,39,0.12)', borderRadius: 24, padding: '40px 32px', transitionDelay: `${i * 0.1}s` }}>
-                  <div style={{ fontSize: 'clamp(2.5rem,4vw,3.5rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '-0.04em', lineHeight: 1 }}>{r.value}</div>
-                  <div style={{ fontSize: 17, fontWeight: 600, color: '#ffffff', margin: '12px 0 8px' }}>{r.label}</div>
-                  <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.45)' }}>{r.sub}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* FAQ */}
-        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-          <div className="cb-container" style={{ maxWidth: 760 }}>
-            <div className="reveal" style={{ marginBottom: 16 }}>
-              <span style={{ fontSize: 11, fontWeight: 700, color: '#ffffff', letterSpacing: '0.12em', textTransform: 'uppercase' }}>FAQ</span>
-            </div>
-            <h2 className="reveal reveal-d1" style={{ fontSize: 'clamp(2rem,3.5vw,3rem)', fontWeight: 500, letterSpacing: '-0.03em', margin: '0 0 48px' }}>Common Questions</h2>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-              {faqs.map((faq, i) => (
-                <div key={i} className="reveal" style={{ background: openFaq === i ? 'rgba(34,197,94,0.04)' : 'rgba(255,255,255,0.015)', border: `1px solid ${openFaq === i ? 'rgba(34,197,94,0.2)' : 'rgba(255,255,255,0.05)'}`, borderRadius: 20, overflow: 'hidden', transition: '0.3s', transitionDelay: `${i * 0.06}s` }}>
-                  <button onClick={() => setOpenFaq(openFaq === i ? null : i)} style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '24px 28px', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'inherit' }}>
-                    <span style={{ fontSize: 16, fontWeight: 500, color: '#ffffff', textAlign: 'left' }}>{faq.q}</span>
-                    <div style={{ width: 30, height: 30, borderRadius: '50%', background: 'rgba(255,255,255,0.03)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, transform: openFaq === i ? 'rotate(45deg)' : 'none', transition: '0.3s' }}>
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={openFaq === i ? '#22c55e' : 'rgba(255,255,255,0.4)'} strokeWidth="2"><path d="M12 5v14M5 12h14" /></svg>
-                    </div>
-                  </button>
-                  {openFaq === i && <p style={{ padding: '0 28px 24px', margin: 0, fontSize: 15, color: 'rgba(255,255,255,0.7)', lineHeight: 1.75 }}>{faq.a}</p>}
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Industries We Serve */}
-        <section className="section-padding-sm">
-          <div className="cb-container" style={{ textAlign: 'center' }}>
-            <p style={{ fontSize: 13, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)', marginBottom: 24 }}>Industries We Serve</p>
-            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 12 }}>
-              {[
-                { name: 'FinTech', href: '/industries/fintech' },
-                { name: 'Healthcare', href: '/industries/healthcare' },
-                { name: 'E-Commerce', href: '/industries/ecommerce' },
-                { name: 'Logistics', href: '/industries/logistics' },
-                { name: 'EdTech', href: '/industries/edtech' },
-                { name: 'Enterprise', href: '/industries/enterprise' },
-              ].map((ind) => (
-                <a key={ind.href} href={ind.href} style={{
-                  padding: '8px 20px', borderRadius: 100, fontSize: 13, fontWeight: 500,
-                  color: 'rgba(255,255,255,0.7)', background: 'rgba(255,255,255,0.02)',
-                  border: '1px solid rgba(255,255,255,0.06)', textDecoration: 'none',
-                  transition: 'all 0.2s ease',
-                }}
-                onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(34,197,94,0.3)'; e.currentTarget.style.color = '#fff'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)'; e.currentTarget.style.color = 'rgb(0,0,0)'; }}
-                >
-                  {ind.name}
-                </a>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="section-padding">
-          <div className="cb-container" style={{ textAlign: 'center' }}>
-            <div className="reveal" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.2)', borderRadius: 100, padding: '8px 20px', marginBottom: 32 }}>
-              <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#22c55e', boxShadow: '0 0 8px #22c55e' }} />
-              <span style={{ fontSize: 11, fontWeight: 700, color: '#ffffff', letterSpacing: '0.12em', textTransform: 'uppercase' }}>Get Started</span>
-            </div>
-            <h2 className="reveal reveal-d1" style={{ fontSize: 'clamp(2.2rem,4vw,4rem)', fontWeight: 500, letterSpacing: '-0.04em', lineHeight: 1.05, margin: '0 0 24px' }}>
-              Ready for Better <span style={{ color: '#ffffff' }}>WordPress?</span>
-            </h2>
-            <p className="reveal reveal-d2" style={{ fontSize: 17, color: 'rgba(255,255,255,0.45)', maxWidth: 480, margin: '0 auto 40px', lineHeight: 1.75 }}>
-              400+ custom WordPress sites. No page builders. No bloat.
-            </p>
-            <div className="reveal reveal-d3" style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
-              <Link href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, height: 56, padding: '0 32px', borderRadius: 100, background: '#22c55e', color: '#000', fontSize: 14, fontWeight: 700, textDecoration: 'none', transition: '0.3s' }} onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 16px 40px rgba(34,197,94,0.35)'; }} onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}>
-                Start Your WordPress Project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-              </Link>
-              <Link href="/case-studies" style={{ display: 'inline-flex', alignItems: 'center', height: 56, padding: '0 32px', borderRadius: 100, border: '1px solid rgba(255,255,255,0.08)', color: '#ffffff', fontSize: 14, fontWeight: 500, textDecoration: 'none', transition: '0.3s' }} onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)'} onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'}>
-                View Our Work
-              </Link>
-            </div>
-            <div className="reveal reveal-d4" style={{ display: 'flex', gap: 32, justifyContent: 'center', marginTop: 48, flexWrap: 'wrap' }}>
-              {['Custom themes only', 'No page builders', 'Enterprise security'].map((t, i) => (
-                <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, color: 'rgba(255,255,255,0.45)' }}>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2.5"><path d="M20 6L9 17l-5-5" /></svg>
-                  {t}
-                </div>
-              ))}
-            </div>
-            <TrustBadges compact />
-          </div>
-        </section>
-
-      </main>
-      <Footer />
-    </>
-  );
+  return <ServicePageTemplate data={pageData} />;
 }

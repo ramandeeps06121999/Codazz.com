@@ -1,294 +1,151 @@
 'use client';
-import { useState, useRef, useEffect } from 'react';
-import Link from 'next/link';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import Breadcrumb from '@/components/Breadcrumb';
-import TrustBadges from '@/components/TrustBadges';
-import HeroBackground from '@/components/HeroBackground';
+import ServicePageTemplate, { ServicePageData } from '@/components/ServicePageTemplate';
 
-function useReveal() {
-  const ref = useRef<HTMLElement>(null);
-  useEffect(() => {
-    const io = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-      { threshold: 0.08 }
-    );
-    ref.current?.querySelectorAll('.reveal').forEach(el => io.observe(el));
-    return () => io.disconnect();
-  }, []);
-  return ref;
-}
-
-const cardBase: React.CSSProperties = {
-  border: '1px solid rgba(255,255,255,0.06)',
-  borderRadius: 24,
-  background: 'rgba(255,255,255,0.015)',
-  padding: '2rem',
-  transition: 'border-color 0.3s, background 0.3s, transform 0.3s, box-shadow 0.3s',
+const pageData: ServicePageData = {
+  breadcrumbs: [
+    { label: 'Home', href: '/' },
+    { label: 'Industries', href: '/services' },
+    { label: 'Fantasy Sports' },
+  ],
+  hero: {
+    badge: 'FANTASY SPORTS & BETTING',
+    title: 'We Build Fantasy Platforms That',
+    titleAccent: 'Keep Users Playing.',
+    description: 'Real-time scoring engines, daily fantasy contests, sports betting systems, and fan engagement platforms built for millions of concurrent users.',
+    service: 'Fantasy Sports Development',
+    stats: [
+      { value: '1M+', label: 'Concurrent Users' },
+      { value: '< 200ms', label: 'Score Updates' },
+      { value: '99.99%', label: 'Uptime' },
+      { value: 'Multi-State', label: 'Compliant' },
+    ],
+  },
+  awards: [
+    'Top Sports Tech Developer 2024',
+    'Real-Time Scoring Experts',
+    'Multi-State Compliance',
+    'Responsible Gaming Certified',
+    'High-Throughput Infrastructure',
+    'Sports Data Integration Partners',
+  ],
+  whySection: {
+    title: 'Why Fantasy Sports Companies Choose Codazz',
+    cards: [
+      { icon: '\u{26A1}', title: 'Real-Time at Scale', desc: 'Processing millions of score updates, lineup changes, and contest settlements simultaneously during live games without latency or data inconsistency.' },
+      { icon: '\u{1F3DB}\u{FE0F}', title: 'Regulatory Compliance', desc: 'Navigating state-by-state gambling laws, age verification, geo-fencing, responsible gaming requirements, and multi-jurisdiction licensing.' },
+      { icon: '\u{1F512}', title: 'Fraud & Collusion Prevention', desc: 'Detecting multi-accounting, collusion rings, bot entries, and suspicious betting patterns with real-time behavioral analysis and risk scoring.' },
+      { icon: '\u{1F4CA}', title: 'Engagement Engineering', desc: 'Push notification timing, contest mechanics, social features, and gamification designed to maximize daily active users and session length.' },
+    ],
+    whoNeedsTitle: 'Who Needs Fantasy Sports Development?',
+    whoNeedsItems: [
+      { icon: '\u{1F3C6}', title: 'DFS Platforms', desc: 'Daily fantasy sports platforms with contest engines, real-time scoring, and prize pool management.' },
+      { icon: '\u{1F3B0}', title: 'Sportsbook Operators', desc: 'Sports betting platforms with odds engines, live in-play betting, and risk management.' },
+      { icon: '\u{26BD}', title: 'Sports Leagues & Teams', desc: 'Fan engagement platforms, prediction games, and branded fantasy experiences.' },
+      { icon: '\u{1F4F1}', title: 'Sports Media Companies', desc: 'Interactive sports content, pick\'em games, and audience engagement tools.' },
+      { icon: '\u{1F3AE}', title: 'Gaming Companies', desc: 'Sports gaming platforms with virtual sports and simulated betting experiences.' },
+    ],
+    metricsTitle: 'Fantasy Sports Development by the Numbers',
+    metrics: [
+      { metric: '1M+', label: 'Concurrent Users', desc: 'NFL Sunday peak' },
+      { metric: '< 200ms', label: 'Score Latency', desc: 'Real-time updates' },
+      { metric: '99.99%', label: 'Uptime', desc: 'Zero incidents per season' },
+      { metric: '0', label: 'Game-Day Outages', desc: 'Across full seasons' },
+    ],
+    closingText: 'Whether you are building a daily fantasy platform, a sportsbook, or a fan engagement app, Codazz brings the real-time engineering expertise, regulatory compliance knowledge, and engagement-driven design to build sports tech that keeps fans playing and revenue growing throughout every season.',
+  },
+  subServices: [
+    { title: 'Contest & League Engine', tag: 'Contests', desc: 'Head-to-head, GPP tournaments, 50/50s, multipliers, and custom league formats with automated prize distribution.', chips: ['H2H', 'GPP', '50/50', 'Leagues'], href: '/contact', icon: '\u{1F3C6}' },
+    { title: 'Real-Time Scoring Engine', tag: 'Scoring', desc: 'Sub-200ms live scoring pipeline with custom rules, stat corrections, and instant leaderboard updates across all contests.', chips: ['Live Scoring', 'Stat Corrections', 'Leaderboards', 'Multi-Sport'], href: '/contact', icon: '\u{1F4CA}' },
+    { title: 'Sportsbook & Odds Engine', tag: 'Betting', desc: 'Dynamic odds calculation, live in-play betting, parlay builders, prop bets, and cash-out with risk management.', chips: ['Live Odds', 'Parlays', 'Props', 'Risk Mgmt'], href: '/contact', icon: '\u{1F3B0}' },
+    { title: 'Player & Roster Management', tag: 'Roster', desc: 'Salary cap optimizer, injury alerts, player news, lineup lock management, and draft room functionality.', chips: ['Salary Cap', 'Injuries', 'Drafts', 'Lineups'], href: '/contact', icon: '\u{1F464}' },
+    { title: 'Wallet & Transactions', tag: 'Wallet', desc: 'Secure digital wallet with deposits, withdrawals, bonus management, tax reporting, and multi-state compliance.', chips: ['Deposits', 'Withdrawals', 'Bonuses', 'Tax'], href: '/contact', icon: '\u{1F4B0}' },
+    { title: 'Responsible Gaming Suite', tag: 'Compliance', desc: 'Self-exclusion, deposit limits, cooling-off periods, session timers, and age/identity verification.', chips: ['Self-Exclusion', 'Limits', 'Verification', 'Compliance'], href: '/contact', icon: '\u{1F6E1}\u{FE0F}' },
+  ],
+  servicesHeading: {
+    label: 'Our Sports Tech Solutions',
+    title: 'Complete Fantasy & Betting',
+    titleDim: 'Platform Infrastructure.',
+    description: 'From contest engines to compliance suites, we build every component of fantasy sports and betting platforms for real-time performance and regulatory compliance.',
+  },
+  benefits: {
+    label: 'Why Codazz for Fantasy Sports',
+    title: 'Engineered for',
+    titleDim: 'Game Day.',
+    items: [
+      { icon: '\u{26A1}', title: 'Real-Time Engineering', desc: 'Live scoring systems processing millions of events per second with consistent, fast data under extreme load.' },
+      { icon: '\u{1F3DB}\u{FE0F}', title: 'Compliance Expertise', desc: 'Multi-state gaming regulations, geo-fencing, responsible gaming mandates navigated for platforms across the US.' },
+      { icon: '\u{1F4C8}', title: 'Engagement-Driven Design', desc: 'Every feature optimized for retention, from push notification timing to contest mechanics and social features.' },
+      { icon: '\u{1F512}', title: 'Fraud Prevention', desc: 'Real-time behavioral analysis detecting multi-accounting, collusion, and suspicious patterns.' },
+      { icon: '\u{1F3C8}', title: 'Multi-Sport Support', desc: 'NFL, NBA, MLB, NHL, soccer, cricket, golf, and more with sport-specific scoring and contest formats.' },
+      { icon: '\u{2601}\u{FE0F}', title: 'Scale for Peak Traffic', desc: 'Infrastructure that handles NFL Sunday traffic spikes with zero incidents and sub-second response times.' },
+    ],
+  },
+  clientLogos: [
+    'DraftKings', 'FanDuel', 'ESPN', 'Yahoo Fantasy', 'PrizePicks', 'Underdog',
+    'Sleeper', 'Bet365', 'BetMGM', 'Caesars', 'PointsBet', 'Sportradar',
+  ],
+  bigStats: [
+    { value: '1M+', label: 'Concurrent Users', desc: 'NFL Sunday peak' },
+    { value: '< 200ms', label: 'Score Updates', desc: 'Real-time latency' },
+    { value: '99.99%', label: 'Uptime', desc: 'Zero game-day outages' },
+    { value: '0', label: 'Season Incidents', desc: 'Bulletproof reliability' },
+  ],
+  advancedTech: {
+    row1: [
+      { icon: '\u{26A1}', title: 'Event Streaming', desc: 'Kafka-powered score pipeline' },
+      { icon: '\u{1F4CA}', title: 'Live Leaderboards', desc: 'Real-time contest standings' },
+      { icon: '\u{1F512}', title: 'Fraud Detection', desc: 'Behavioral risk scoring' },
+      { icon: '\u{1F3C8}', title: 'Multi-Sport', desc: 'Universal scoring engine' },
+      { icon: '\u{1F4F1}', title: 'Mobile-First', desc: 'Native sports apps' },
+    ],
+    row2: [
+      { icon: '\u{1F3DB}\u{FE0F}', title: 'Geo-Fencing', desc: 'State-level compliance' },
+      { icon: '\u{1F4B0}', title: 'Digital Wallet', desc: 'Secure financial transactions' },
+      { icon: '\u{1F916}', title: 'Odds Engine', desc: 'Dynamic probability calculation' },
+      { icon: '\u{1F465}', title: 'Social Features', desc: 'Friend challenges and chat' },
+      { icon: '\u{2601}\u{FE0F}', title: 'Auto-Scaling', desc: 'Peak traffic infrastructure' },
+    ],
+  },
+  techStack: [
+    { category: 'Backend', techs: ['Go', 'Node.js', 'Python', 'gRPC'] },
+    { category: 'Real-Time', techs: ['Apache Kafka', 'Redis', 'WebSockets', 'Flink'] },
+    { category: 'Mobile', techs: ['React Native', 'Swift', 'Kotlin', 'Flutter'] },
+    { category: 'Cloud', techs: ['AWS', 'Kubernetes', 'Terraform', 'CloudFront'] },
+    { category: 'Data & AI', techs: ['Spark', 'TensorFlow', 'Elasticsearch', 'TimescaleDB'] },
+    { category: 'Compliance', techs: ['GeoComply', 'Jumio', 'Socure', 'Iovation'] },
+  ],
+  faqs: [
+    { q: 'Can you build a fantasy sports platform like DraftKings?', a: 'Yes. We build complete DFS platforms with contest engines, real-time scoring, salary cap management, draft rooms, digital wallets, and responsible gaming tools. Our architecture handles millions of concurrent users during peak sports events.' },
+    { q: 'How do you handle real-time scoring at scale?', a: 'Our scoring pipeline uses Apache Kafka for event ingestion, Redis for leaderboard computation, and WebSockets for instant client updates. The system processes millions of scoring events per second with sub-200ms latency from data feed to user screen.' },
+    { q: 'Do you handle multi-state gambling compliance?', a: 'Yes. We implement state-by-state geo-fencing using GeoComply, age and identity verification, responsible gaming tools (deposit limits, self-exclusion, session timers), and regulatory reporting. We have navigated compliance requirements across multiple US states.' },
+    { q: 'How do you prevent fraud and collusion?', a: 'We implement multi-layered fraud prevention: device fingerprinting, behavioral analysis, IP monitoring, multi-account detection, collusion pattern recognition, and real-time risk scoring. Suspicious activity is flagged and actioned automatically with human review for edge cases.' },
+    { q: 'Can you build a sportsbook with live betting?', a: 'Yes. We build sportsbook platforms with pre-game and live in-play betting, dynamic odds engines, parlay builders, prop bet markets, cash-out functionality, and real-time risk management and liability controls.' },
+    { q: 'Do you support multiple sports?', a: 'Absolutely. Our scoring engine supports NFL, NBA, MLB, NHL, soccer, cricket, golf, tennis, MMA, and more. Each sport has configurable scoring rules, player pools, and contest formats. Adding new sports is a data integration exercise, not a rebuild.' },
+  ],
+  faqDescription: 'Common questions about our fantasy sports and betting platform development services, compliance capabilities, and real-time technology.',
+  relatedBlogs: [
+    { title: 'Building Real-Time Scoring Engines at Scale', desc: 'Architecture for sub-200ms live sports data processing.', href: '/blog' },
+    { title: 'Multi-State Gambling Compliance: The Technical Guide', desc: 'How to implement geo-fencing and regulatory compliance.', href: '/blog' },
+    { title: 'Fraud Prevention in Fantasy Sports Platforms', desc: 'ML-powered approaches to detecting collusion and fraud.', href: '/blog' },
+  ],
+  relatedServices: [
+    { name: 'Mobile App Development', desc: 'High-performance native apps with real-time updates and contest entry.', href: '/services/mobile-app-development' },
+    { name: 'AI & Machine Learning', desc: 'Fraud detection, player projections, and personalized recommendations.', href: '/services/ai-ml' },
+    { name: 'Cloud & DevOps', desc: 'Auto-scaling infrastructure for NFL Sunday traffic spikes.', href: '/services/cloud-devops' },
+    { name: 'Web Development', desc: 'Fast web platforms with live scoreboards and draft rooms.', href: '/services/web-development' },
+  ],
+  industries: [
+    { name: 'Streaming', href: '/industries/streaming-entertainment' },
+    { name: 'Dating & Social', href: '/industries/dating-social' },
+    { name: 'Fintech', href: '/industries/fintech' },
+    { name: 'E-Commerce', href: '/industries/ecommerce' },
+    { name: 'On-Demand', href: '/industries/on-demand' },
+    { name: 'EdTech', href: '/industries/edtech' },
+    { name: 'Fitness & Wellness', href: '/industries/fitness-wellness' },
+    { name: 'Travel', href: '/industries/travel-hospitality' },
+  ],
 };
-
-const cardHover: React.CSSProperties = {
-  borderColor: 'rgba(34,197,94,0.2)',
-  background: 'rgba(34,197,94,0.03)',
-  transform: 'translateY(-4px)',
-  boxShadow: '0 24px 60px rgba(255,255,255,0.06)',
-};
-
-function Card({ children, style }: { children: React.ReactNode; style?: React.CSSProperties }) {
-  const [hovered, setHovered] = useState(false);
-  return (
-    <div
-      style={{ ...cardBase, ...(hovered ? cardHover : {}), ...style }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      {children}
-    </div>
-  );
-}
-
 
 export default function FantasySportsPage() {
-  const heroRef = useRef<HTMLElement>(null);
-  const s1 = useReveal() as React.RefObject<HTMLElement>;
-  const s2 = useReveal() as React.RefObject<HTMLElement>;
-  const s3 = useReveal() as React.RefObject<HTMLElement>;
-  const s4 = useReveal() as React.RefObject<HTMLElement>;
-  const s5 = useReveal() as React.RefObject<HTMLElement>;
-  const s6 = useReveal() as React.RefObject<HTMLElement>;
-
-  useEffect(() => {
-    heroRef.current?.querySelectorAll('.reveal').forEach(n => setTimeout(() => n.classList.add('visible'), 100));
-  }, []);
-
-  return (
-    <>
-      <Navbar />
-      <main style={{ background: '#000000', color: '#ffffff', paddingTop: 80 }}>
-        <div className="cb-container">
-          <Breadcrumb items={[
-            { label: 'Home', href: '/' },
-            { label: 'Industries', href: '/services' },
-            { label: 'Fantasy Sports' },
-          ]} />
-        </div>
-
-        {/* HERO */}
-        <section ref={heroRef} className="section-padding" style={{ position: 'relative', overflow: 'hidden', minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
-          <HeroBackground variant="center" />
-          <div className="cb-container" style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: 860, margin: '0 auto' }}>
-            <div className="reveal" style={{ display: 'inline-block', border: '1px solid rgba(34,197,94,0.4)', borderRadius: 999, padding: '6px 20px', fontSize: 13, color: '#ffffff', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>
-              Fantasy Sports & Betting
-            </div>
-            <h1 className="reveal" style={{ fontSize: 'clamp(2.6rem, 6vw, 5rem)', fontWeight: 800, lineHeight: 1.1, marginBottom: '1.5rem', letterSpacing: '-0.02em' }}>
-              We Build Fantasy Platforms That <span style={{ color: '#ffffff' }}>Keep Users Playing.</span>
-            </h1>
-            <p className="reveal" style={{ fontSize: '1.2rem', color: 'rgba(255,255,255,0.7)', marginBottom: '2.5rem', lineHeight: 1.7 }}>
-              Real-time scoring engines, daily fantasy contests, sports betting systems and fan engagement platforms built for millions of concurrent users.
-            </p>
-            <div className="reveal" style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '3.5rem' }}>
-              <Link href="/contact" style={{ background: '#22c55e', color: '#000', padding: '14px 32px', borderRadius: 999, fontWeight: 700, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
-                Start Your Project
-              </Link>
-              <Link href="/case-studies" style={{ border: '1px solid rgba(255,255,255,0.1)', color: '#ffffff', padding: '14px 32px', borderRadius: 999, fontWeight: 600, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
-                View Case Studies
-              </Link>
-            </div>
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(140px, 100%), 1fr))', gap: '1.5rem', maxWidth: 600, margin: '0 auto' }}>
-              {[['1M+', 'Concurrent Users'], ['< 200ms', 'Score Updates'], ['99.99%', 'Uptime']].map(([val, label]) => (
-                <div key={label} style={{ textAlign: 'center' }}>
-                  <div style={{ fontSize: '1.6rem', fontWeight: 800, color: '#ffffff' }}>{val}</div>
-                  <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.25)', marginTop: 4, letterSpacing: '0.05em' }}>{label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CHALLENGES */}
-        <section ref={s1} className="section-padding">
-          <div className="cb-container">
-            <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
-              <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '1rem' }}>Key Challenges We Solve</h2>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.1rem' }}>Fantasy sports and betting demand real-time precision at massive scale.</p>
-            </div>
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
-              {[
-                { icon: '⚡', title: 'Real-Time at Scale', desc: 'Processing millions of score updates, lineup changes and contest settlements simultaneously during live games without latency or data inconsistency.' },
-                { icon: '🏛️', title: 'Regulatory Compliance', desc: 'Navigating state-by-state gambling laws, age verification, geo-fencing, responsible gaming requirements and multi-jurisdiction licensing across the US.' },
-                { icon: '🔐', title: 'Fraud & Collusion Prevention', desc: 'Detecting multi-accounting, collusion rings, bot entries and suspicious betting patterns with real-time behavioral analysis and risk scoring.' },
-              ].map(c => (
-                <Card key={c.title}>
-                  <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>{c.icon}</div>
-                  <h3 style={{ fontWeight: 700, fontSize: '1.2rem', marginBottom: '0.75rem' }}>{c.title}</h3>
-                  <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, fontSize: '0.95rem' }}>{c.desc}</p>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* SOLUTIONS */}
-        <section ref={s2} className="section-padding">
-          <div className="cb-container">
-            <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
-              <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '1rem' }}>Our Solutions</h2>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.1rem' }}>Complete fantasy sports and betting infrastructure built for engagement.</p>
-            </div>
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 320px), 1fr))', gap: '1.5rem' }}>
-              {[
-                { icon: '🏆', title: 'Contest & League Engine', desc: 'Flexible contest creation supporting head-to-head, GPP tournaments, 50/50s, multipliers and custom league formats with automated prize pool distribution and settlement.' },
-                { icon: '📊', title: 'Real-Time Scoring Engine', desc: 'Sub-200ms live scoring pipeline ingesting data from multiple sports feeds, with custom scoring rules, stat corrections and instant leaderboard updates across all contests.' },
-                { icon: '🎰', title: 'Sportsbook & Odds Engine', desc: 'Dynamic odds calculation, live in-play betting, parlay builders, prop bet markets and cash-out functionality with real-time risk management and liability controls.' },
-                { icon: '👤', title: 'Player & Roster Management', desc: 'Salary cap optimizer, injury alerts, player news feeds, lineup lock management and draft room functionality with real-time roster validation.' },
-                { icon: '💰', title: 'Wallet & Transaction System', desc: 'Secure digital wallet with deposits, withdrawals, bonus management, referral credits, tax reporting and multi-state regulatory compliance for financial transactions.' },
-                { icon: '🛡️', title: 'Responsible Gaming Suite', desc: 'Self-exclusion tools, deposit limits, cooling-off periods, loss limits, session timers and age/identity verification compliant with state gaming regulations.' },
-                { icon: '📱', title: 'Social & Engagement Features', desc: 'Friend challenges, chat rooms, leaderboards, achievement badges, push notifications for game events and social sharing to drive viral growth and retention.' },
-                { icon: '🌐', title: 'Multi-Sport & White-Label', desc: 'Support for NFL, NBA, MLB, NHL, soccer, cricket, golf and more with white-label deployment for operators entering new markets quickly.' },
-              ].map(s => (
-                <Card key={s.title}>
-                  <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>{s.icon}</div>
-                  <h3 style={{ fontWeight: 700, fontSize: '1.15rem', marginBottom: '0.75rem' }}>{s.title}</h3>
-                  <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, fontSize: '0.95rem' }}>{s.desc}</p>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CASE STUDY */}
-        <section ref={s3} className="section-padding">
-          <div className="cb-container">
-            <div className="reveal" style={{ border: '1px solid rgba(34,197,94,0.15)', borderRadius: 32, background: 'rgba(34,197,94,0.03)', padding: 'clamp(1.5rem, 4vw, 3rem)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(400px, 100%), 1fr))', gap: 'clamp(1.5rem, 4vw, 3rem)', alignItems: 'center' }}>
-              <div>
-                <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.25)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>Case Study</div>
-                <div style={{ fontSize: '1.1rem', fontWeight: 700, color: '#ffffff', marginBottom: '0.5rem' }}>Fantasy Sports Client</div>
-                <h3 style={{ fontSize: 'clamp(1.4rem, 3vw, 2rem)', fontWeight: 800, marginBottom: '1rem', lineHeight: 1.2 }}>1M concurrent users on NFL Sunday, sub-200ms scoring, zero downtime</h3>
-                <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.7 }}>We engineered their real-time scoring pipeline, contest engine and mobile apps to handle peak NFL traffic with zero incidents across an entire season.</p>
-              </div>
-              <div>
-                <blockquote style={{ borderLeft: '3px solid #22c55e', paddingLeft: '1.5rem', margin: 0 }}>
-                  <p style={{ fontSize: '1.15rem', lineHeight: 1.7, color: 'rgba(255,255,255,0.65)', fontStyle: 'italic', marginBottom: '1rem' }}>
-                    "NFL Sunday used to be our nightmare. Now it is our best day. Codazz made our platform bulletproof."
-                  </p>
-                  <cite style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.25)', fontStyle: 'normal' }}>— CTO, American Fantasy Sports Platform</cite>
-                </blockquote>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* TECH STACK */}
-        <section ref={s4} className="section-padding">
-          <div className="cb-container">
-            <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
-              <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '1rem' }}>Tech Stack</h2>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.1rem' }}>High-throughput infrastructure engineered for live sports at scale.</p>
-            </div>
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem' }}>
-              {[
-                { cat: 'Backend', items: ['Go', 'Node.js', 'Python', 'gRPC'] },
-                { cat: 'Real-Time', items: ['Apache Kafka', 'Redis', 'WebSockets', 'Flink'] },
-                { cat: 'Mobile', items: ['React Native', 'Swift', 'Kotlin', 'Flutter'] },
-                { cat: 'Cloud', items: ['AWS', 'Kubernetes', 'Terraform', 'CloudFront'] },
-              ].map(t => (
-                <Card key={t.cat}>
-                  <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.25)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>{t.cat}</div>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                    {t.items.map(item => (
-                      <span key={item} style={{ background: 'rgba(255,255,255,0.03)', borderRadius: 8, padding: '4px 12px', fontSize: '0.85rem', color: 'rgba(255,255,255,0.65)' }}>{item}</span>
-                    ))}
-                  </div>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* WHY CODAZZ */}
-        <section ref={s5} className="section-padding">
-          <div className="cb-container">
-            <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
-              <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '1rem' }}>Why Codazz</h2>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.1rem' }}>We understand sports tech — the stakes, the scale, the speed.</p>
-            </div>
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
-              {[
-                { icon: '⚡', title: 'Real-Time Engineering', desc: 'Our team has built live scoring systems processing millions of events per second. We know how to keep data consistent and fast under extreme load.' },
-                { icon: '🏛️', title: 'Compliance Expertise', desc: 'We have navigated multi-state gaming regulations, geo-fencing requirements and responsible gaming mandates for platforms across the US.' },
-                { icon: '📈', title: 'Engagement-Driven Design', desc: 'Every feature we build is optimized for retention — from push notification timing to contest mechanics. We measure success in daily active users.' },
-              ].map(w => (
-                <Card key={w.title}>
-                  <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>{w.icon}</div>
-                  <h3 style={{ fontWeight: 700, fontSize: '1.15rem', marginBottom: '0.75rem' }}>{w.title}</h3>
-                  <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, fontSize: '0.95rem' }}>{w.desc}</p>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Related Services */}
-        <section className="section-padding" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-          <div className="cb-container">
-            <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '-0.03em', marginBottom: 40, textAlign: 'center' }}>
-              Services for Fantasy Sports
-            </h2>
-            <div className="industry-services-grid" style={{ display: 'grid', gap: 16 }}>
-              {[
-                { name: 'Mobile App Development', href: '/services/mobile-app-development', desc: 'High-performance native apps with real-time updates, push notifications and seamless contest entry.' },
-                { name: 'AI & Machine Learning', href: '/services/ai-ml', desc: 'Fraud detection, player projection models, odds calculation engines and personalized recommendations.' },
-                { name: 'Cloud & DevOps', href: '/services/cloud-devops', desc: 'Auto-scaling infrastructure that handles NFL Sunday traffic spikes without breaking a sweat.' },
-                { name: 'Web Development', href: '/services/web-development', desc: 'Fast, responsive web platforms with live scoreboards, draft rooms and account management.' },
-                { name: 'UI/UX Design', href: '/services/ui-ux-design', desc: 'Addictive user experiences with intuitive lineup builders, live tracking and social features.' },
-              ].map((s) => (
-                <a key={s.href} href={s.href} style={{
-                  display: 'block', padding: '24px', borderRadius: 16,
-                  background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)',
-                  textDecoration: 'none', transition: 'all 0.3s ease',
-                }}
-                onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(34,197,94,0.2)'; e.currentTarget.style.transform = 'translateY(-3px)'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)'; e.currentTarget.style.transform = 'translateY(0)'; }}
-                >
-                  <div style={{ fontSize: 15, fontWeight: 600, color: '#ffffff', marginBottom: 6 }}>{s.name}</div>
-                  <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)', lineHeight: 1.5 }}>{s.desc}</div>
-                </a>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section ref={s6} className="section-padding">
-          <div className="cb-container">
-            <div className="reveal" style={{ textAlign: 'center', maxWidth: 700, margin: '0 auto' }}>
-              <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 800, lineHeight: 1.15, marginBottom: '1.5rem' }}>
-                Build Your <span style={{ color: '#ffffff' }}>Fantasy Platform.</span>
-              </h2>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.15rem', marginBottom: '2.5rem', lineHeight: 1.7 }}>
-                Real-time sports tech that keeps fans engaged and revenue growing.
-              </p>
-              <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '2.5rem' }}>
-                <Link href="/contact" style={{ background: '#22c55e', color: '#000', padding: '16px 36px', borderRadius: 999, fontWeight: 700, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
-                  Start Your Project
-                </Link>
-                <Link href="/case-studies" style={{ border: '1px solid rgba(255,255,255,0.1)', color: '#ffffff', padding: '16px 36px', borderRadius: 999, fontWeight: 600, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
-                  See Our Work
-                </Link>
-              </div>
-              <div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                {['Multi-State Compliant', 'Real-Time Scoring', 'NDA on Request', 'Fixed-Price Sprints'].map(t => (
-                  <span key={t} style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.25)' }}>✓ {t}</span>
-                ))}
-              </div>
-              <TrustBadges compact />
-            </div>
-          </div>
-        </section>
-
-      </main>
-      <Footer />
-    </>
-  );
+  return <ServicePageTemplate data={pageData} />;
 }

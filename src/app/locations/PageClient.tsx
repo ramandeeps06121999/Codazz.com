@@ -4,6 +4,8 @@ import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import HeroBackground from '@/components/HeroBackground';
+import LatestWork from '@/components/LatestWork';
+import OurWorkShowcase from '@/components/OurWorkShowcase';
 
 function useReveal() {
   const ref = useRef<HTMLElement>(null);
@@ -174,9 +176,9 @@ const totalCities = regions.reduce((sum, r) => sum + r.cities.length, 0);
 
 export default function LocationsIndexPage() {
   const heroRef = useRef<HTMLElement>(null);
-  const s1 = useReveal() as React.RefObject<HTMLElement>;
-  const s2 = useReveal() as React.RefObject<HTMLElement>;
-  const s3 = useReveal() as React.RefObject<HTMLElement>;
+  const s1 = useReveal() as React.RefObject<HTMLDivElement>;
+  const s2 = useReveal() as React.RefObject<HTMLDivElement>;
+  const s3 = useReveal() as React.RefObject<HTMLDivElement>;
   const [activeRegion, setActiveRegion] = useState<string | null>(null);
 
   useEffect(() => {
@@ -360,6 +362,21 @@ export default function LocationsIndexPage() {
             </div>
           </div>
         </section>
+
+        {/* ━━━ LATEST WORK ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+        <LatestWork />
+
+        {/* ━━━ OUR WORK SHOWCASE ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+        <OurWorkShowcase
+          items={[
+            { name: 'FinTech Trading Platform', category: 'Mobile App', company: 'FinTech Startup', results: ['2.1B+ Transactions', '50ms Latency', '4.8★ Rating'], techs: ['React Native', 'Node.js', 'AWS'] },
+            { name: 'Telehealth Solution', category: 'Healthcare App', company: 'Healthcare Network', results: ['120+ Clinics', '500K Consultations', 'HIPAA Certified'], techs: ['Swift', 'Kotlin', 'GCP'] },
+            { name: 'E-Commerce Marketplace', category: 'Mobile Platform', company: 'E-Commerce Brand', results: ['85K MAU', '28% Conversion', '$12M GMV'], techs: ['Flutter', 'Go', 'MongoDB'] },
+          ]}
+          title="Our Work"
+          subtitle="Products That Users Actually Love."
+          description="200+ products shipped across fintech, healthcare, e-commerce, and SaaS — built to scale, designed to convert."
+        />
 
       </main>
       <Footer />

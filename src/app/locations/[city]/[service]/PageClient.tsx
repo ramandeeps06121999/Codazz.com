@@ -5,6 +5,8 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import HeroBackground from '@/components/HeroBackground';
 import Image from 'next/image';
+import LatestWork from '@/components/LatestWork';
+import OurWorkShowcase from '@/components/OurWorkShowcase';
 
 // ─── REVEAL HOOK ─────────────────────────────────────────────────────────────
 
@@ -426,18 +428,18 @@ export default function CityServicePageClient(props: CityServicePageProps) {
   } = props;
 
   const heroRef = useRef<HTMLElement>(null);
-  const trustRef = useReveal() as React.RefObject<HTMLElement>;
-  const overviewRef = useReveal() as React.RefObject<HTMLElement>;
-  const servicesRef = useReveal() as React.RefObject<HTMLElement>;
-  const industryRef = useReveal() as React.RefObject<HTMLElement>;
-  const processRef = useReveal() as React.RefObject<HTMLElement>;
-  const techRef = useReveal() as React.RefObject<HTMLElement>;
-  const whyRef = useReveal() as React.RefObject<HTMLElement>;
-  const portfolioRef = useReveal() as React.RefObject<HTMLElement>;
-  const testimonialsRef = useReveal() as React.RefObject<HTMLElement>;
-  const faqRef = useReveal() as React.RefObject<HTMLElement>;
-  const relatedRef = useReveal() as React.RefObject<HTMLElement>;
-  const ctaRef = useReveal() as React.RefObject<HTMLElement>;
+  const trustRef = useReveal() as React.RefObject<HTMLDivElement>;
+  const overviewRef = useReveal() as React.RefObject<HTMLDivElement>;
+  const servicesRef = useReveal() as React.RefObject<HTMLDivElement>;
+  const industryRef = useReveal() as React.RefObject<HTMLDivElement>;
+  const processRef = useReveal() as React.RefObject<HTMLDivElement>;
+  const techRef = useReveal() as React.RefObject<HTMLDivElement>;
+  const whyRef = useReveal() as React.RefObject<HTMLDivElement>;
+  const portfolioRef = useReveal() as React.RefObject<HTMLDivElement>;
+  const testimonialsRef = useReveal() as React.RefObject<HTMLDivElement>;
+  const faqRef = useReveal() as React.RefObject<HTMLDivElement>;
+  const relatedRef = useReveal() as React.RefObject<HTMLDivElement>;
+  const ctaRef = useReveal() as React.RefObject<HTMLDivElement>;
 
   // FAQ accordion state
   const [openFaq, setOpenFaq] = useState<number | null>(0);
@@ -1326,6 +1328,21 @@ export default function CityServicePageClient(props: CityServicePageProps) {
             </div>
           </div>
         </section>
+
+        {/* ━━━ LATEST WORK ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+        <LatestWork />
+
+        {/* ━━━ OUR WORK SHOWCASE ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+        <OurWorkShowcase
+          items={[
+            { name: 'FinTech Trading Platform', category: 'Mobile App', company: 'FinTech Startup', results: ['2.1B+ Transactions', '50ms Latency', '4.8★ Rating'], techs: ['React Native', 'Node.js', 'AWS'] },
+            { name: 'Telehealth Solution', category: 'Healthcare App', company: 'Healthcare Network', results: ['120+ Clinics', '500K Consultations', 'HIPAA Certified'], techs: ['Swift', 'Kotlin', 'GCP'] },
+            { name: 'E-Commerce Marketplace', category: 'Mobile Platform', company: 'E-Commerce Brand', results: ['85K MAU', '28% Conversion', '$12M GMV'], techs: ['Flutter', 'Go', 'MongoDB'] },
+          ]}
+          title="Our Work"
+          subtitle="Products That Users Actually Love."
+          description="200+ products shipped across fintech, healthcare, e-commerce, and SaaS — built to scale, designed to convert."
+        />
 
       </main>
       <Footer />

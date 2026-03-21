@@ -311,9 +311,9 @@ const statsSection = [
    ═══════════════════════════════════════════════════════════════════════════ */
 export default function CaseStudiesPage() {
   const heroRef = useRef<HTMLElement>(null);
-  const s1 = useReveal() as React.RefObject<HTMLElement>;
+  const s1 = useReveal() as React.RefObject<HTMLDivElement>;
   const s2Ref = useRef<HTMLElement>(null);
-  const s3 = useReveal() as React.RefObject<HTMLElement>;
+  const s3 = useReveal() as React.RefObject<HTMLDivElement>;
 
   const [activeFilter, setActiveFilter] = useState('All');
   const [heroTriggered, setHeroTriggered] = useState(false);

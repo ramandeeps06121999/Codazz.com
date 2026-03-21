@@ -6,6 +6,10 @@ import NavigationHelper from "@/components/NavigationHelper";
 import ScrollProgress from "@/components/ScrollProgress";
 
 import { poppins } from "@/lib/fonts";
+import {
+  BRAND_OG_IMAGE_PATH,
+  BRAND_ORGANIZATION_LOGO_URL,
+} from "@/lib/brand";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -28,7 +32,7 @@ export const metadata: Metadata = {
       "Codazz builds custom software, web apps, mobile apps, AI solutions, and blockchain platforms. Headquartered in Edmonton & Chandigarh with offices in New York & Dubai — delivering worldwide.",
     images: [
       {
-        url: "/logo.png",
+        url: BRAND_OG_IMAGE_PATH,
         width: 1200,
         height: 630,
         alt: "Codazz - Custom Software Development Company",
@@ -42,6 +46,7 @@ export const metadata: Metadata = {
     title: "Codazz | Custom Software Development Company",
     description:
       "Codazz builds custom software, web apps, mobile apps, AI solutions, and blockchain platforms. Headquartered in Edmonton & Chandigarh with offices in New York & Dubai — delivering worldwide.",
+    images: [BRAND_OG_IMAGE_PATH],
   },
   robots: {
     index: true,
@@ -76,7 +81,7 @@ const organizationSchema = {
   "@type": "Organization",
   name: "Codazz",
   url: "https://codazz.com",
-  logo: "https://codazz.com/logo.png",
+  logo: BRAND_ORGANIZATION_LOGO_URL,
   description:
     "Custom software development company founded by Raman Makkar. Headquartered in Edmonton (Canada) & Chandigarh (India) with offices in New York & Dubai. 50 locations across 24 countries. Best engineers from around the world working virtually.",
   address: [
@@ -173,6 +178,61 @@ const organizationSchema = {
   ],
 };
 
+const localBusinessEdmonton = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Codazz - Edmonton HQ",
+  url: "https://codazz.com",
+  logo: BRAND_ORGANIZATION_LOGO_URL,
+  description:
+    "Custom software development company headquartered in Edmonton, Alberta. Mobile apps, web apps, AI solutions, and SaaS platforms.",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Edmonton",
+    addressRegion: "AB",
+    addressCountry: "CA",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 53.5461,
+    longitude: -113.4938,
+  },
+  areaServed: ["Edmonton", "Alberta", "Canada", "North America"],
+  priceRange: "$$$",
+  parentOrganization: {
+    "@type": "Organization",
+    name: "Codazz",
+    url: "https://codazz.com",
+  },
+};
+
+const localBusinessChandigarh = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Codazz - Chandigarh Development Center",
+  url: "https://codazz.com",
+  logo: BRAND_ORGANIZATION_LOGO_URL,
+  description:
+    "Software development center in Chandigarh, India. Full-stack engineering, mobile app development, AI/ML, and cloud solutions.",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Chandigarh",
+    addressCountry: "IN",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 30.7333,
+    longitude: 76.7794,
+  },
+  areaServed: ["Chandigarh", "India", "Asia-Pacific"],
+  priceRange: "$$$",
+  parentOrganization: {
+    "@type": "Organization",
+    name: "Codazz",
+    url: "https://codazz.com",
+  },
+};
+
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
@@ -238,6 +298,18 @@ gtag('config', 'G-LLHNY6HD88');`,
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(websiteSchema),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(localBusinessEdmonton),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(localBusinessChandigarh),
           }}
         />
         {children}

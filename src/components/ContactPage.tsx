@@ -80,7 +80,7 @@ export default function ContactPage() {
     name: '', email: '', phone: '', company: '', budget: '', projectType: '', description: '', _honey: '',
   });
 
-  const mainRef = useReveal() as React.RefObject<HTMLElement>;
+  const mainRef = useReveal() as React.RefObject<HTMLDivElement>;
 
   const handle = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
     setForm(p => ({ ...p, [e.target.name]: e.target.value }));

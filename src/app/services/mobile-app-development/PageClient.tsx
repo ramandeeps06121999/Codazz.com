@@ -1,13 +1,12 @@
 'use client';
-import { useState, useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import Link from 'next/link';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import Breadcrumb from '@/components/Breadcrumb';
-import TrustBadges from '@/components/TrustBadges';
 import HeroBackground from '@/components/HeroBackground';
 import ServiceHeroForm from '@/components/ServiceHeroForm';
-import GlobalPresence from '@/components/GlobalPresence';
+import ServicePageWrapper from '@/components/ServicePageWrapper';
+import FAQSection from '@/components/FAQSection';
+import WhoNeedsCarousel from '@/components/WhoNeedsCarousel';
 
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -106,6 +105,15 @@ const benefits = [
   },
 ];
 
+const whoNeedsItems = [
+  { icon: '🚀', title: 'Startups & Entrepreneurs', desc: 'Launch your MVP and acquire users on iOS and Android. Mobile-first is the fastest path to product-market fit.' },
+  { icon: '🏢', title: 'SMBs & Growing Companies', desc: 'Reach new customers, increase loyalty, and compete with larger enterprises. Custom apps give you unfair advantage.' },
+  { icon: '🌍', title: 'Enterprise & Established Brands', desc: 'Modernize customer experiences, launch apps across regions, and build direct distribution channels.' },
+  { icon: '💰', title: 'E-Commerce & Retail', desc: 'Drive repeat purchases, increase AOV, and build customer loyalty through personalized mobile experiences.' },
+  { icon: '🏥', title: 'Healthcare & SaaS', desc: 'Enable remote access, improve patient/user outcomes, and capture mobile-first user bases.' },
+  { icon: '🎮', title: 'Gaming & Social', desc: 'Leverage iOS and Android capabilities for engagement, monetization, and viral growth.' }
+];
+
 const clientLogos = [
   'Stripe', 'Shopify', 'Microsoft', 'AWS', 'Google Cloud', 'Salesforce',
   'MongoDB', 'Cloudflare', 'Twilio', 'SendGrid', 'Segment', 'Datadog',
@@ -144,115 +152,6 @@ const caseStudies = [
   },
 ];
 
-const advancedTech = [
-  {
-    title: 'AI & Machine Learning',
-    desc: 'Embed intelligent features like predictive analytics, NLP chatbots, image recognition, recommendation engines, and on-device ML using CoreML and ML Kit.',
-    icon: '🤖',
-  },
-  {
-    title: 'IoT Connectivity',
-    desc: 'Connect smartphones to smart devices, industrial sensors, and wearables via Bluetooth LE, MQTT, and custom IoT protocols. Real-time data streaming and device management dashboards.',
-    icon: '📡',
-  },
-  {
-    title: 'Cloud Architecture',
-    desc: 'Serverless, microservices, and containerized backends on AWS, GCP, and Azure. Auto-scaling infrastructure with multi-region deployment and 99.99% uptime guarantees.',
-    icon: '☁️',
-  },
-  {
-    title: 'Blockchain & Web3',
-    desc: 'Decentralized apps with smart contract integration, cryptocurrency wallets, NFT marketplaces, and token-gated experiences on Ethereum, Solana, and Polygon.',
-    icon: '🔗',
-  },
-  {
-    title: 'Big Data Analytics',
-    desc: 'Real-time analytics dashboards, event tracking, user behavior analysis, and business intelligence integrations. Process millions of events per second with streaming pipelines.',
-    icon: '📊',
-  },
-  {
-    title: 'AR/VR Experiences',
-    desc: 'Augmented reality product visualization, virtual try-on, spatial computing, and immersive training environments using ARKit, ARCore, and Unity.',
-    icon: '🥽',
-  },
-];
-
-const processSteps = [
-  {
-    num: '01',
-    title: 'Discovery & Validation',
-    whatWeDo: 'Deep-dive into your business goals, market landscape, competitor analysis, and technical constraints. We validate your concept with user research and feasibility assessment before committing resources.',
-    whatYouGet: ['Product Brief', 'Competitive Analysis', 'User Personas', 'Feasibility Report', 'Risk Assessment'],
-    duration: '1–2 weeks',
-  },
-  {
-    num: '02',
-    title: 'Strategy & Planning',
-    whatWeDo: 'Define the product roadmap, technology architecture, sprint plan, and success metrics. We create a detailed project plan with fixed milestones, deliverables, and a transparent budget breakdown.',
-    whatYouGet: ['Technology Architecture', 'Project Roadmap', 'Sprint Plan', 'Budget Breakdown', 'KPI Framework'],
-    duration: '1 week',
-  },
-  {
-    num: '03',
-    title: 'UI/UX Design',
-    whatWeDo: 'User journey mapping, wireframes, and high-fidelity interactive prototypes. Every screen is designed with accessibility (WCAG 2.1 AA) in mind and validated with real users before development begins.',
-    whatYouGet: ['Wireframes', 'Interactive Prototype', 'Design System', 'Accessibility Audit', 'User Test Results'],
-    duration: '2–3 weeks',
-  },
-  {
-    num: '04',
-    title: 'Development & Engineering',
-    whatWeDo: 'Two-week agile sprints with daily standups, live staging builds, and full code reviews. CI/CD pipelines ensure continuous integration and automated testing with every commit.',
-    whatYouGet: ['Sprint Demos', 'Staging Builds', 'API Documentation', 'Code Reviews', 'CI/CD Pipeline'],
-    duration: '6–16 weeks',
-  },
-  {
-    num: '05',
-    title: 'Quality Assurance',
-    whatWeDo: 'Rigorous testing across 200+ real device/OS combinations. Automated and manual testing including performance, security, accessibility, and regression testing before every release.',
-    whatYouGet: ['QA Test Reports', 'Performance Audit', 'Security Penetration Test', 'Accessibility Review', 'Crash Analytics'],
-    duration: '2–3 weeks',
-  },
-  {
-    num: '06',
-    title: 'Deployment & Support',
-    whatWeDo: 'App Store and Google Play submission with ASO optimization. Phased rollout strategy, 24/7 monitoring, and ongoing SLA support to keep your app performant as you scale.',
-    whatYouGet: ['Store Submission', 'ASO Package', 'Launch Analytics', 'Monitoring Dashboard', 'SLA Support Plan'],
-    duration: 'Ongoing',
-  },
-];
-
-const whyChooseUs = [
-  {
-    title: 'In-House Engineering Team',
-    desc: 'No freelancers, no offshore outsourcing black boxes. Every line of code is written by our 250+ senior engineers working under one roof with direct client communication. You get a dedicated team lead, daily standups, and full transparency.',
-    icon: '👥',
-  },
-  {
-    title: 'Fixed-Price Guarantee',
-    desc: 'No surprise invoices. No scope creep billing. We provide a fixed-price quote after discovery, and that is the price you pay. If our estimate is wrong, we absorb the cost — not you. 98% of our projects ship on budget.',
-    icon: '💰',
-  },
-  {
-    title: 'Post-Launch SLA Support',
-    desc: '24/7 monitoring, proactive OS update compatibility, performance optimization, and feature development. Every engagement includes a 30-day warranty, with flexible retainer options for ongoing support and growth.',
-    icon: '🛡️',
-  },
-  {
-    title: 'App Store Expertise',
-    desc: 'We have navigated 500+ App Store and Google Play reviews. We handle submissions, rejections, metadata optimization, ASO, and review compliance so you can focus on growing your business — not fighting platform bureaucracy.',
-    icon: '⭐',
-  },
-];
-
-const complianceBadges = [
-  { title: 'GDPR', desc: 'EU General Data Protection Regulation compliance for user data privacy and consent management.' },
-  { title: 'CCPA', desc: 'California Consumer Privacy Act compliance for user data rights and transparency.' },
-  { title: 'HIPAA', desc: 'Health Insurance Portability and Accountability Act compliance for protected health information.' },
-  { title: 'PCI DSS', desc: 'Payment Card Industry Data Security Standard for secure payment processing.' },
-  { title: 'SOC 2', desc: 'Type II certification for security, availability, processing integrity, and confidentiality.' },
-  { title: 'ISO 27001', desc: 'International standard for information security management systems.' },
-];
 
 const techStackGrid = [
   { category: 'Mobile - iOS', techs: ['Swift', 'SwiftUI', 'Objective-C', 'CoreML', 'ARKit', 'HealthKit', 'CloudKit', 'XCTest'] },
@@ -263,60 +162,6 @@ const techStackGrid = [
   { category: 'Cloud & DevOps', techs: ['AWS', 'Google Cloud', 'Azure', 'Docker', 'Kubernetes', 'Terraform', 'GitHub Actions', 'CircleCI'] },
   { category: 'AI/ML', techs: ['TensorFlow', 'PyTorch', 'OpenAI API', 'LangChain', 'Hugging Face', 'CoreML', 'ML Kit'] },
   { category: 'Tools & Services', techs: ['Firebase', 'Stripe', 'Twilio', 'SendGrid', 'Algolia', 'Segment', 'Sentry', 'Datadog'] },
-];
-
-const marketStats = [
-  { stat: '$569B', desc: 'Projected mobile app market revenue by 2027', source: 'Gartner' },
-  { stat: '11.8%', desc: 'Enterprise mobile market CAGR through 2028', source: 'MarketsandMarkets' },
-  { stat: '96%', desc: 'US adults who own a smartphone in 2026', source: 'Pew Research' },
-  { stat: '4.4hrs', desc: 'Average daily time spent on mobile apps', source: 'data.ai' },
-  { stat: '255B', desc: 'Global app downloads projected in 2027', source: 'Statista' },
-  { stat: '73%', desc: 'Mobile share of global e-commerce sales', source: 'eMarketer' },
-];
-
-const testimonials = [
-  {
-    name: 'Sarah Chen',
-    role: 'CTO',
-    company: 'FinPay Technologies',
-    quote: 'Codazz delivered our trading app 2 weeks ahead of schedule. The real-time execution engine they built handles $50M in daily volume without breaking a sweat. Best technical team we have ever worked with.',
-    rating: 5,
-  },
-  {
-    name: 'Michael Torres',
-    role: 'CEO',
-    company: 'MedConnect Health',
-    quote: 'Building a HIPAA-compliant telehealth app seemed impossible in 4 months. Codazz not only delivered on time but built a platform that 120 clinics now rely on daily. Their healthcare expertise is unmatched.',
-    rating: 5,
-  },
-  {
-    name: 'Jessica Park',
-    role: 'VP Product',
-    company: 'ShopStream',
-    quote: 'The AR try-on feature Codazz built increased our conversion rate by 28%. Their Flutter expertise meant we launched on both platforms simultaneously. Revenue grew 340% in the first year.',
-    rating: 5,
-  },
-  {
-    name: 'David Okafor',
-    role: 'Founder',
-    company: 'LogiTrack',
-    quote: 'Our fleet management app tracks 5,000+ vehicles in real-time. Codazz built the entire platform from scratch — driver app, dispatcher dashboard, and customer tracking portal. Flawless execution.',
-    rating: 5,
-  },
-  {
-    name: 'Amanda Liu',
-    role: 'Head of Digital',
-    company: 'EduSphere',
-    quote: 'Codazz transformed our educational content into an adaptive learning platform. Student engagement increased 67% and course completion rates doubled. Their UX design team is phenomenal.',
-    rating: 5,
-  },
-  {
-    name: 'Robert Kline',
-    role: 'CIO',
-    company: 'Nexus Enterprise',
-    quote: 'We needed an enterprise app that integrated with SAP, Salesforce, and our custom ERP. Codazz handled the complexity beautifully. 4,000 employees now use the app daily. Zero downtime since launch.',
-    rating: 5,
-  },
 ];
 
 const faqs = [
@@ -376,10 +221,8 @@ function useReveal() {
    ═══════════════════════════════════════════════════════════════════════════ */
 
 export default function MobileAppDevelopmentPage() {
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
-
   // Section refs
-  const pageRef = useReveal() as React.RefObject<HTMLElement>;
+  const pageRef = useReveal() as React.RefObject<HTMLDivElement>;
 
   // Shared styles
   const sectionLabel: React.CSSProperties = {
@@ -443,8 +286,7 @@ export default function MobileAppDevelopmentPage() {
 
   return (
     <>
-      <Navbar />
-      <main ref={pageRef} style={{ background: '#000000', color: '#ffffff', paddingTop: 80 }}>
+      <ServicePageWrapper><div ref={pageRef} style={{ paddingTop: 80 }}>
         {/* Breadcrumb */}
         <div className="cb-container">
           <Breadcrumb items={[
@@ -656,25 +498,10 @@ export default function MobileAppDevelopmentPage() {
               ))}
             </div>
 
-            {/* Who Needs Mobile App Development */}
+            {/* Who Needs Mobile App Development - Carousel */}
             <div className="reveal" style={{ background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.2)', borderRadius: 28, padding: 'clamp(36px, 4vw, 48px)', marginBottom: 60 }}>
               <h3 style={{ fontSize: 20, fontWeight: 700, color: '#ffffff', margin: '0 0 28px' }}>Who Needs Mobile App Development Services?</h3>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 220px), 1fr))', gap: 16 }}>
-                {[
-                  { icon: '🚀', title: 'Startups & Entrepreneurs', desc: 'Launch your MVP and acquire users on iOS and Android. Mobile-first is the fastest path to product-market fit.' },
-                  { icon: '🏢', title: 'SMBs & Growing Companies', desc: 'Reach new customers, increase loyalty, and compete with larger enterprises. Custom apps give you unfair advantage.' },
-                  { icon: '🌍', title: 'Enterprise & Established Brands', desc: 'Modernize customer experiences, launch apps across regions, and build direct distribution channels.' },
-                  { icon: '💰', title: 'E-Commerce & Retail', desc: 'Drive repeat purchases, increase AOV, and build customer loyalty through personalized mobile experiences.' },
-                  { icon: '🏥', title: 'Healthcare & SaaS', desc: 'Enable remote access, improve patient/user outcomes, and capture mobile-first user bases.' },
-                  { icon: '🎮', title: 'Gaming & Social', desc: 'Leverage iOS and Android capabilities for engagement, monetization, and viral growth.' }
-                ].map((item, i) => (
-                  <div key={i} style={{ padding: '16px', borderRadius: 14, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
-                    <div style={{ fontSize: 28, marginBottom: 10 }}>{item.icon}</div>
-                    <h4 style={{ fontSize: 15, fontWeight: 700, color: '#ffffff', margin: '0 0 8px' }}>{item.title}</h4>
-                    <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.6)', margin: 0, lineHeight: 1.6 }}>{item.desc}</p>
-                  </div>
-                ))}
-              </div>
+              <WhoNeedsCarousel items={whoNeedsItems} />
             </div>
 
             {/* Benefits Grid */}
@@ -871,74 +698,10 @@ export default function MobileAppDevelopmentPage() {
         </section>
 
 
-        {/* ═══════════════════════════════════════
-            7. CASE STUDIES
-        ═══════════════════════════════════════ */}
-        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-          <div className="cb-container">
-            <div className="reveal" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 64, gap: 40, flexWrap: 'wrap' }}>
-              <div>
-                <div style={sectionLabel}>Case Studies</div>
-                <h2 style={sectionH2}>
-                  Featured<br />
-                  <span style={{ color: 'rgba(255,255,255,0.2)' }}>Projects.</span>
-                </h2>
-              </div>
-              <Link href="/case-studies" style={{ fontSize: 14, fontWeight: 600, color: '#22c55e', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 6 }}>
-                View All Case Studies
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-              </Link>
-            </div>
-
-            <div className="reveal reveal-d1" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))', gap: 24 }}>
-              {caseStudies.map((cs, i) => (
-                <div
-                  key={cs.title}
-                  className={`reveal-d${i + 1}`}
-                  style={{ ...cardBase, padding: '40px 36px', display: 'flex', flexDirection: 'column' }}
-                  onMouseEnter={cardHoverIn}
-                  onMouseLeave={cardHoverOut}
-                >
-                  <div style={greenAccentLine} />
-                  <span style={{
-                    fontSize: 10,
-                    fontWeight: 700,
-                    letterSpacing: '0.12em',
-                    textTransform: 'uppercase',
-                    color: '#22c55e',
-                    background: 'rgba(34,197,94,0.1)',
-                    padding: '5px 14px',
-                    borderRadius: 100,
-                    display: 'inline-block',
-                    marginBottom: 20,
-                    alignSelf: 'flex-start',
-                  }}>{cs.industry}</span>
-                  <h3 style={{ fontSize: 22, fontWeight: 600, color: '#ffffff', letterSpacing: '-0.02em', marginBottom: 14 }}>{cs.title}</h3>
-                  <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.55)', lineHeight: 1.75, marginBottom: 24, flex: 1 }}>{cs.desc}</p>
-
-                  {/* Results metrics */}
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 12, marginBottom: 24 }}>
-                    {cs.results.map(r => (
-                      <div key={r} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, color: 'rgba(255,255,255,0.7)', fontWeight: 500 }}>
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg>
-                        {r}
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Tech stack */}
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-                    {cs.techStack.map(t => <span key={t} style={chipStyle}>{t}</span>)}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
 
         {/* ═══════════════════════════════════════
-            8. ADVANCED TECHNOLOGIES
+            9. ADVANCED TECHNOLOGIES
         ═══════════════════════════════════════ */}
         <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
@@ -1029,212 +792,6 @@ export default function MobileAppDevelopmentPage() {
 
 
         {/* ═══════════════════════════════════════
-            9. DEVELOPMENT PROCESS
-        ═══════════════════════════════════════ */}
-        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-          <div className="cb-container">
-            <div className="reveal" style={{ marginBottom: 80 }}>
-              <div style={sectionLabel}>Our Process</div>
-              <h2 style={sectionH2}>
-                How We Build<br />
-                <span style={{ color: 'rgba(255,255,255,0.2)' }}>Your App.</span>
-              </h2>
-              <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.5)', lineHeight: 1.75, marginTop: 20, maxWidth: 680 }}>
-                A battle-tested six-step process refined over 500+ projects. Every step is transparent,
-                collaborative, and designed to minimize risk while maximizing quality.
-              </p>
-            </div>
-
-            {/* Process pill marquee strip */}
-            <style>{`
-              @keyframes proc-marquee-ltr { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-            `}</style>
-            <div style={{ position: 'relative', overflow: 'hidden', marginBottom: 48 }}>
-              <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 80, background: 'linear-gradient(to right, #000000 0%, transparent 100%)', zIndex: 2, pointerEvents: 'none' }} />
-              <div style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 80, background: 'linear-gradient(to left, #000000 0%, transparent 100%)', zIndex: 2, pointerEvents: 'none' }} />
-              <div style={{ display: 'flex', gap: 12, animation: 'proc-marquee-ltr 20s linear infinite', width: 'max-content', alignItems: 'center' }}>
-                {[
-                  { num: '01', label: 'Discovery' },
-                  { num: '02', label: 'Design' },
-                  { num: '03', label: 'Development' },
-                  { num: '04', label: 'QA Testing' },
-                  { num: '05', label: 'Launch' },
-                  { num: '06', label: 'Support' },
-                  { num: '01', label: 'Discovery' },
-                  { num: '02', label: 'Design' },
-                  { num: '03', label: 'Development' },
-                  { num: '04', label: 'QA Testing' },
-                  { num: '05', label: 'Launch' },
-                  { num: '06', label: 'Support' },
-                ].map((step, i) => (
-                  <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8, flexShrink: 0 }}>
-                    <div style={{
-                      display: 'inline-flex', alignItems: 'center', gap: 8,
-                      padding: '8px 16px', borderRadius: 100,
-                      border: '1px solid rgba(34,197,94,0.2)',
-                      background: 'rgba(34,197,94,0.04)',
-                    }}>
-                      <span style={{ fontSize: 10, fontWeight: 800, color: '#22c55e', letterSpacing: '0.05em' }}>{step.num}</span>
-                      <span style={{ fontSize: 12, fontWeight: 600, color: 'rgba(255,255,255,0.7)', letterSpacing: '-0.01em' }}>{step.label}</span>
-                    </div>
-                    {i % 6 < 5 && (
-                      <svg width="16" height="10" viewBox="0 0 16 10" fill="none" style={{ flexShrink: 0 }}>
-                        <path d="M1 5h14M10 1l4 4-4 4" stroke="rgba(34,197,94,0.35)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div style={{ position: 'relative' }}>
-              {/* Vertical connecting line */}
-              <div style={{ position: 'absolute', left: 23, top: 24, bottom: 24, width: 2, background: 'linear-gradient(to bottom, rgba(34,197,94,0.5), rgba(34,197,94,0.05))', zIndex: 0 }} />
-
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-                {processSteps.map((step, i) => (
-                  <div
-                    key={step.num}
-                    className={`reveal reveal-d${i + 1}`}
-                    style={{ display: 'grid', gridTemplateColumns: '48px 1fr', gap: 'clamp(16px, 3vw, 32px)', alignItems: 'start', padding: '32px 0' }}
-                  >
-                    {/* Circle */}
-                    <div style={{
-                      width: 48, height: 48, borderRadius: '50%',
-                      border: '2px solid rgba(34,197,94,0.4)',
-                      background: 'rgba(34,197,94,0.08)',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      fontSize: 12, fontWeight: 800, color: '#ffffff',
-                      flexShrink: 0, position: 'relative', zIndex: 1,
-                    }}>{step.num}</div>
-
-                    {/* Content */}
-                    <div
-                      style={{
-                        padding: 'clamp(24px, 3vw, 36px) clamp(20px, 3vw, 40px)',
-                        border: '1px solid rgba(255,255,255,0.05)',
-                        borderRadius: 28,
-                        background: 'rgba(255,255,255,0.015)',
-                        transition: 'all 0.35s ease',
-                      }}
-                      onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(34,197,94,0.2)'; e.currentTarget.style.background = 'rgba(34,197,94,0.03)'; }}
-                      onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)'; e.currentTarget.style.background = 'rgba(255,255,255,0.015)'; }}
-                    >
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 16, flexWrap: 'wrap', gap: 12 }}>
-                        <h3 style={{ fontSize: 22, fontWeight: 600, color: '#ffffff', letterSpacing: '-0.02em', margin: 0 }}>{step.title}</h3>
-                        <span style={{ fontSize: 11, fontWeight: 700, color: '#22c55e', background: 'rgba(34,197,94,0.1)', padding: '5px 14px', borderRadius: 100, whiteSpace: 'nowrap' }}>{step.duration}</span>
-                      </div>
-
-                      {/* What We Do */}
-                      <div style={{ marginBottom: 20 }}>
-                        <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)', marginBottom: 8 }}>What We Do</div>
-                        <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.6)', lineHeight: 1.75, margin: 0 }}>{step.whatWeDo}</p>
-                      </div>
-
-                      {/* What You Get */}
-                      <div>
-                        <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)', marginBottom: 12 }}>What You Get</div>
-                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-                          {step.whatYouGet.map(d => (
-                            <span key={d} style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 600, color: 'rgba(255,255,255,0.7)', padding: '6px 14px', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 100 }}>
-                              <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg>
-                              {d}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-
-        {/* ═══════════════════════════════════════
-            10. WHY CHOOSE CODAZZ
-        ═══════════════════════════════════════ */}
-        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-          <div className="cb-container">
-            <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>
-              <div style={sectionLabel}>Why Codazz</div>
-              <h2 style={{ ...sectionH2, margin: '0 auto', maxWidth: 700 }}>
-                The Standard Other Agencies<br />
-                <span style={{ color: 'rgba(255,255,255,0.2)' }}>Cannot Match.</span>
-              </h2>
-            </div>
-            <div className="reveal reveal-d1" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 20 }}>
-              {whyChooseUs.map((w, i) => (
-                <div
-                  key={w.title}
-                  className={`reveal-d${i + 1}`}
-                  style={{ ...cardBase, padding: '48px 36px' }}
-                  onMouseEnter={e => {
-                    e.currentTarget.style.borderColor = 'rgba(34,197,94,0.2)';
-                    e.currentTarget.style.background = 'rgba(34,197,94,0.03)';
-                    e.currentTarget.style.transform = 'translateY(-4px)';
-                    e.currentTarget.style.boxShadow = '0 24px 60px rgba(255,255,255,0.06), 0 0 40px rgba(34,197,94,0.05)';
-                  }}
-                  onMouseLeave={cardHoverOut}
-                >
-                  <div style={greenAccentLine} />
-                  <div style={{ fontSize: 36, marginBottom: 24 }}>{w.icon}</div>
-                  <h3 style={{ fontSize: 20, fontWeight: 600, color: '#ffffff', letterSpacing: '-0.02em', marginBottom: 14 }}>{w.title}</h3>
-                  <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.45)', lineHeight: 1.75, margin: 0 }}>{w.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-
-        {/* ═══════════════════════════════════════
-            11. COMPLIANCE & SECURITY
-        ═══════════════════════════════════════ */}
-        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-          <div className="cb-container">
-            <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>
-              <div style={sectionLabel}>Compliance & Security</div>
-              <h2 style={{ ...sectionH2, margin: '0 auto', maxWidth: 700 }}>
-                Enterprise-Grade<br />
-                <span style={{ color: 'rgba(255,255,255,0.2)' }}>Security Standards.</span>
-              </h2>
-              <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.5)', lineHeight: 1.75, marginTop: 20, maxWidth: 600, marginLeft: 'auto', marginRight: 'auto' }}>
-                Every app we build meets the strictest security and compliance standards in your industry.
-              </p>
-            </div>
-
-            <div className="reveal reveal-d1" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 160px), 1fr))', gap: 16 }}>
-              {complianceBadges.map((badge, i) => (
-                <div
-                  key={badge.title}
-                  className={`reveal-d${i + 1}`}
-                  style={{
-                    textAlign: 'center',
-                    padding: '32px 20px',
-                    border: '1px solid rgba(255,255,255,0.05)',
-                    borderRadius: 24,
-                    background: 'rgba(255,255,255,0.015)',
-                    transition: 'all 0.35s ease',
-                  }}
-                  onMouseEnter={cardHoverIn}
-                  onMouseLeave={cardHoverOut}
-                >
-                  <div style={{ fontSize: 28, fontWeight: 800, color: '#22c55e', letterSpacing: '-0.02em', marginBottom: 12 }}>{badge.title}</div>
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', lineHeight: 1.6, margin: 0 }}>{badge.desc}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className="reveal" style={{ marginTop: 40 }}>
-              <TrustBadges />
-            </div>
-          </div>
-        </section>
-
-
-        {/* ═══════════════════════════════════════
             12. TECH STACK GRID
         ═══════════════════════════════════════ */}
         <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
@@ -1285,161 +842,75 @@ export default function MobileAppDevelopmentPage() {
 
 
         {/* ═══════════════════════════════════════
-            13. MARKET INTELLIGENCE
+            PRICING GUIDE
         ═══════════════════════════════════════ */}
         <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>
-              <div style={sectionLabel}>Market Intelligence</div>
-              <h2 style={{ ...sectionH2, margin: '0 auto', maxWidth: 700 }}>
-                The Mobile App Market<br />
-                <span style={{ color: 'rgba(255,255,255,0.2)' }}>Is Exploding.</span>
-              </h2>
-              <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.5)', lineHeight: 1.75, marginTop: 20, maxWidth: 600, marginLeft: 'auto', marginRight: 'auto' }}>
-                The numbers make the case: mobile is not optional — it is the primary channel for customer engagement, commerce, and enterprise productivity.
-              </p>
+              <div style={sectionLabel}>Pricing</div>
+              <h2 style={sectionH2}>How Much Does Mobile App Development Cost in 2026?</h2>
+              <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.5)', maxWidth: 700, margin: '20px auto 0', lineHeight: 1.7 }}>App development costs vary based on complexity, platforms, and features. Here&apos;s a transparent breakdown of what to expect at each tier.</p>
             </div>
-
-            <div className="reveal reveal-d1" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 180px), 1fr))', gap: 16 }}>
-              {marketStats.map((ms, i) => (
-                <div
-                  key={ms.stat}
-                  className={`reveal-d${i + 1}`}
-                  style={{
-                    textAlign: 'center',
-                    padding: '36px 20px',
-                    border: '1px solid rgba(255,255,255,0.05)',
-                    borderRadius: 24,
-                    background: 'rgba(255,255,255,0.015)',
-                    transition: 'all 0.35s ease',
-                  }}
-                  onMouseEnter={cardHoverIn}
-                  onMouseLeave={cardHoverOut}
-                >
-                  <div style={{ fontSize: 'clamp(1.8rem, 3vw, 2.5rem)', fontWeight: 700, color: '#22c55e', letterSpacing: '-0.03em', lineHeight: 1 }}>{ms.stat}</div>
-                  <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.55)', lineHeight: 1.5, margin: '12px 0 8px' }}>{ms.desc}</p>
-                  <span style={{ fontSize: 10, fontWeight: 600, color: 'rgba(255,255,255,0.25)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>{ms.source}</span>
+            <div className="reveal reveal-d1" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 20 }}>
+              {[
+                { icon: '🚀', name: 'Simple MVP', price: '$25,000 – $50,000', desc: 'Core functionality, single platform, basic UI, user auth, and essential backend. Ideal for validating your idea with early adopters.', timeline: '8–12 weeks' },
+                { icon: '📱', name: 'Mid-Range App', price: '$50,000 – $150,000', desc: 'Cross-platform (iOS + Android), custom UI/UX, API integrations, push notifications, analytics, and admin panel.', timeline: '12–20 weeks' },
+                { icon: '🏢', name: 'Enterprise App', price: '$150,000 – $500,000+', desc: 'Complex architecture, AI/ML features, real-time systems, multi-role dashboards, third-party integrations, and compliance (HIPAA, SOC 2).', timeline: '20–40 weeks' },
+                { icon: '🔄', name: 'Ongoing Support', price: '$3,000 – $15,000/mo', desc: 'Post-launch maintenance, feature updates, performance monitoring, bug fixes, and scaling infrastructure as your user base grows.', timeline: 'Monthly retainer' },
+              ].map((tier, i) => (
+                <div key={tier.name} className={`reveal-d${i + 1}`} style={{ padding: '36px 32px', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 24, background: 'rgba(255,255,255,0.015)', transition: 'all 0.35s ease' }} onMouseEnter={cardHoverIn} onMouseLeave={cardHoverOut}>
+                  <div style={{ fontSize: 28, marginBottom: 16 }}>{tier.icon}</div>
+                  <h3 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', letterSpacing: '-0.02em', marginBottom: 8 }}>{tier.name}</h3>
+                  <div style={{ fontSize: 'clamp(1.3rem, 2.5vw, 1.8rem)', fontWeight: 800, color: '#22c55e', letterSpacing: '-0.03em', marginBottom: 12 }}>{tier.price}</div>
+                  <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.45)', lineHeight: 1.7, marginBottom: 16 }}>{tier.desc}</p>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, color: 'rgba(255,255,255,0.35)' }}>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.35)" strokeWidth="2"><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></svg>
+                    {tier.timeline}
+                  </div>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-
         {/* ═══════════════════════════════════════
-            14. TESTIMONIALS
+            SELECTION GUIDE
         ═══════════════════════════════════════ */}
         <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
           <div className="cb-container">
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>
-              <div style={sectionLabel}>Client Testimonials</div>
-              <h2 style={{ ...sectionH2, margin: '0 auto', maxWidth: 700 }}>
-                What Our Clients<br />
-                <span style={{ color: 'rgba(255,255,255,0.2)' }}>Say About Us.</span>
-              </h2>
+              <div style={sectionLabel}>Selection Guide</div>
+              <h2 style={sectionH2}>How to Choose the Right Mobile App Development Partner</h2>
+              <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.5)', maxWidth: 700, margin: '20px auto 0', lineHeight: 1.7 }}>Selecting the right development team is critical to your app&apos;s success. Here are the key factors to evaluate.</p>
             </div>
-
-            <div className="reveal reveal-d1" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))', gap: 20 }}>
-              {testimonials.map((t, i) => (
-                <div
-                  key={t.name}
-                  className={`reveal-d${i + 1}`}
-                  style={{ ...cardBase, padding: '40px 32px', display: 'flex', flexDirection: 'column' }}
-                  onMouseEnter={cardHoverIn}
-                  onMouseLeave={cardHoverOut}
-                >
-                  {/* Star rating */}
-                  <div style={{ display: 'flex', gap: 4, marginBottom: 20 }}>
-                    {Array.from({ length: t.rating }).map((_, si) => (
-                      <svg key={si} width="16" height="16" viewBox="0 0 24 24" fill="#22c55e" stroke="none">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                      </svg>
-                    ))}
-                  </div>
-
-                  <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.6)', lineHeight: 1.75, flex: 1, margin: '0 0 24px' }}>
-                    &ldquo;{t.quote}&rdquo;
-                  </p>
-
-                  <div style={{ borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: 20 }}>
-                    <div style={{ fontSize: 15, fontWeight: 600, color: '#ffffff' }}>{t.name}</div>
-                    <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)' }}>{t.role}, {t.company}</div>
-                  </div>
+            <div className="reveal reveal-d1" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 20 }}>
+              {[
+                { icon: '🏆', title: 'Proven Portfolio', desc: 'Look for a team with 100+ shipped apps across your target platforms. Ask for case studies in your industry — experience matters more than promises.' },
+                { icon: '🛠️', title: 'Full-Stack Capability', desc: 'Your partner should handle everything: UI/UX design, native/cross-platform development, backend, DevOps, QA testing, and App Store submission.' },
+                { icon: '🔒', title: 'Security & Compliance', desc: 'Ensure they follow OWASP mobile security guidelines and hold relevant certifications (SOC 2, ISO 27001, HIPAA) for your industry requirements.' },
+                { icon: '📊', title: 'Transparent Process', desc: 'Expect weekly demos, access to project management tools, detailed sprint reports, and clear communication channels throughout development.' },
+                { icon: '⚡', title: 'Post-Launch Support', desc: 'A great partner doesn&apos;t disappear after launch. Look for ongoing maintenance plans, monitoring, performance optimization, and feature iteration.' },
+                { icon: '💰', title: 'Pricing Model Fit', desc: 'Choose between fixed-price (predictable budget), time & materials (flexibility), or dedicated team (long-term). Match the model to your project stage.' },
+              ].map((c, i) => (
+                <div key={c.title} className={`reveal-d${Math.min(i + 1, 4)}`} style={{ padding: '32px 28px', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 24, background: 'rgba(255,255,255,0.015)', transition: 'all 0.35s ease' }} onMouseEnter={cardHoverIn} onMouseLeave={cardHoverOut}>
+                  <div style={{ fontSize: 24, marginBottom: 14 }}>{c.icon}</div>
+                  <h3 style={{ fontSize: 16, fontWeight: 700, color: '#ffffff', letterSpacing: '-0.02em', marginBottom: 8 }}>{c.title}</h3>
+                  <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.45)', lineHeight: 1.7, margin: 0 }}>{c.desc}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-
         {/* ═══════════════════════════════════════
-            15. FAQ SECTION
+            15. FAQ SECTION (same layout as homepage FAQSection)
         ═══════════════════════════════════════ */}
-        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-          <div className="cb-container" style={{ maxWidth: 860 }}>
-            <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>
-              <div style={sectionLabel}>Frequently Asked Questions</div>
-              <h2 style={sectionH2}>
-                Everything You Need<br />
-                <span style={{ color: 'rgba(255,255,255,0.2)' }}>to Know.</span>
-              </h2>
-            </div>
-            <div className="reveal reveal-d1" style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-              {faqs.map((faq, i) => (
-                <div
-                  key={i}
-                  style={{
-                    background: openFaq === i ? 'rgba(34,197,94,0.04)' : 'rgba(255,255,255,0.015)',
-                    border: `1px solid ${openFaq === i ? 'rgba(34,197,94,0.2)' : 'rgba(255,255,255,0.05)'}`,
-                    borderRadius: 20,
-                    overflow: 'hidden',
-                    transition: 'border-color 0.3s, background 0.3s',
-                  }}
-                >
-                  <button
-                    onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                    aria-expanded={openFaq === i}
-                    style={{
-                      width: '100%',
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                      padding: '24px 28px',
-                      background: 'none',
-                      border: 'none',
-                      cursor: 'pointer',
-                      fontFamily: 'inherit',
-                    }}
-                  >
-                    <span style={{ fontSize: 16, fontWeight: 500, color: '#ffffff', textAlign: 'left', letterSpacing: '-0.01em', paddingRight: 16 }}>{faq.q}</span>
-                    <div style={{
-                      width: 30, height: 30, borderRadius: '50%',
-                      background: 'rgba(255,255,255,0.03)',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      flexShrink: 0, transition: 'transform 0.3s',
-                      transform: openFaq === i ? 'rotate(45deg)' : 'none',
-                    }}>
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={openFaq === i ? '#22c55e' : 'rgba(255,255,255,0.4)'} strokeWidth="2"><path d="M12 5v14M5 12h14" /></svg>
-                    </div>
-                  </button>
-                  <div style={{
-                    maxHeight: openFaq === i ? 400 : 0,
-                    overflow: 'hidden',
-                    transition: 'max-height 0.4s ease',
-                  }}>
-                    <p style={{ padding: '0 28px 24px', margin: 0, fontSize: 15, color: 'rgba(255,255,255,0.5)', lineHeight: 1.75 }}>{faq.a}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <FAQSection
+          items={faqs}
+          description="Everything you need to know about mobile app development with Codazz — platforms, timelines, cost, and how we work."
+          maxAnswerHeight={1200}
+        />
 
-
-        {/* ═══════════════════════════════════════
-            16. GLOBAL PRESENCE
-        ═══════════════════════════════════════ */}
-        <GlobalPresence />
 
         {/* ═══════════════════════════════════════
             17. RELATED BLOGS
@@ -1487,92 +958,6 @@ export default function MobileAppDevelopmentPage() {
                   </div>
                 </Link>
               ))}
-            </div>
-          </div>
-        </section>
-
-
-        {/* ═══════════════════════════════════════
-            17. CTA WITH FORM
-        ═══════════════════════════════════════ */}
-        <section className="section-padding" style={{ position: 'relative', overflow: 'hidden' }}>
-          {/* Background glow */}
-          <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: 900, height: 600, background: 'radial-gradient(ellipse,rgba(34,197,94,0.09) 0%,transparent 65%)', filter: 'blur(70px)', pointerEvents: 'none' }} />
-
-          <div className="cb-container" style={{ position: 'relative', zIndex: 1 }}>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 420px', gap: 'clamp(40px, 6vw, 80px)', alignItems: 'center' }} className="cta-layout-grid">
-              {/* Left — text */}
-              <div className="reveal">
-                <div style={sectionLabel}>Ready to Build?</div>
-                <h2 style={{ fontSize: 'clamp(2.5rem,5vw,4.5rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '-0.04em', lineHeight: 1.05, margin: '0 0 24px' }}>
-                  Your App Could Be<br />
-                  <span style={{ color: '#22c55e' }}>Next.</span>
-                </h2>
-                <p style={{ fontSize: 18, color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, marginBottom: 32, maxWidth: 500 }}>
-                  Tell us about your idea. A senior engineer will review your project and
-                  respond with a custom assessment and proposal within 48 hours — no commitment required.
-                </p>
-
-                {/* Trust strip */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 40 }}>
-                  {['NDA on Day 1', 'Fixed-Price Guarantee', '48hr Custom Proposal', 'No Commitment Required', 'Free Architecture Consultation'].map(t => (
-                    <div key={t} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2.5"><path d="M20 6L9 17l-5-5" /></svg>
-                      <span style={{ fontSize: 15, color: 'rgba(255,255,255,0.7)', fontWeight: 500 }}>{t}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <TrustBadges compact />
-
-                {/* Quick contact options */}
-                <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', marginTop: 24 }}>
-                  <Link
-                    href="/contact"
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: 10,
-                      height: 52,
-                      padding: '0 32px',
-                      borderRadius: 100,
-                      background: '#22c55e',
-                      color: '#000',
-                      fontSize: 15,
-                      fontWeight: 700,
-                      textDecoration: 'none',
-                      transition: '0.3s',
-                    }}
-                  >
-                    Schedule a Call
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-                  </Link>
-                  <a
-                    href="mailto:hello@codazz.com"
-                    style={{
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      gap: 10,
-                      height: 52,
-                      padding: '0 32px',
-                      borderRadius: 100,
-                      border: '1px solid rgba(255,255,255,0.1)',
-                      color: '#ffffff',
-                      fontSize: 15,
-                      fontWeight: 500,
-                      textDecoration: 'none',
-                      transition: '0.3s',
-                    }}
-                  >
-                    hello@codazz.com
-                  </a>
-                </div>
-              </div>
-
-              {/* Right — form */}
-              <div className="reveal cta-form-col">
-                <ServiceHeroForm service="Mobile App Development" />
-              </div>
             </div>
           </div>
         </section>
@@ -1643,12 +1028,8 @@ export default function MobileAppDevelopmentPage() {
           </div>
         </section>
 
-      </main>
-      <Footer />
+      </div></ServicePageWrapper>
 
-      {/* ═══════════════════════════════════════
-          STYLES
-      ═══════════════════════════════════════ */}
       <style>{`
         /* Awards Marquee */
         @keyframes marqueeScroll {
@@ -1689,25 +1070,6 @@ export default function MobileAppDevelopmentPage() {
         }
         @media (max-width: 640px) {
           .hero-form-col {
-            max-width: 100%;
-          }
-        }
-
-        /* CTA layout responsive */
-        .cta-layout-grid {
-          display: grid !important;
-          grid-template-columns: 1fr 420px !important;
-        }
-        @media (max-width: 1024px) {
-          .cta-layout-grid {
-            grid-template-columns: 1fr !important;
-          }
-          .cta-form-col {
-            max-width: 480px;
-          }
-        }
-        @media (max-width: 640px) {
-          .cta-form-col {
             max-width: 100%;
           }
         }

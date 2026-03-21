@@ -84,11 +84,11 @@ const engagementModels = [
 ];
 
 export default function HireIndexPage() {
-  const heroRef = useReveal() as React.RefObject<HTMLElement>;
-  const cardsRef = useReveal() as React.RefObject<HTMLElement>;
-  const whyRef = useReveal() as React.RefObject<HTMLElement>;
-  const modelsRef = useReveal() as React.RefObject<HTMLElement>;
-  const ctaRef = useReveal() as React.RefObject<HTMLElement>;
+  const heroRef = useReveal() as React.RefObject<HTMLDivElement>;
+  const cardsRef = useReveal() as React.RefObject<HTMLDivElement>;
+  const whyRef = useReveal() as React.RefObject<HTMLDivElement>;
+  const modelsRef = useReveal() as React.RefObject<HTMLDivElement>;
+  const ctaRef = useReveal() as React.RefObject<HTMLDivElement>;
 
   return (
     <>

@@ -27,60 +27,7 @@ import WhyChooseUs from '@/components/WhyChooseUs';
 import ScrollUI from '@/components/ScrollUI';
 import StickyCTA from '@/components/StickyCTA';
 
-const organizationJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'Codazz',
-  url: 'https://codazz.com',
-  logo: 'https://codazz.com/logo.png',
-  description:
-    'Custom software development company headquartered in Edmonton, Canada with development center in Chandigarh, India. We build mobile apps, web applications, AI solutions, and SaaS products.',
-  foundingDate: '2018',
-  numberOfEmployees: { '@type': 'QuantitativeValue', value: 100 },
-  address: [
-    {
-      '@type': 'PostalAddress',
-      streetAddress: 'Edmonton',
-      addressLocality: 'Edmonton',
-      addressRegion: 'Alberta',
-      addressCountry: 'CA',
-    },
-    {
-      '@type': 'PostalAddress',
-      addressLocality: 'Chandigarh',
-      addressCountry: 'IN',
-    },
-  ],
-  contactPoint: {
-    '@type': 'ContactPoint',
-    contactType: 'customer service',
-    url: 'https://codazz.com/contact',
-  },
-  sameAs: [
-    'https://www.linkedin.com/company/codazz',
-    'https://twitter.com/codazz',
-  ],
-  areaServed: ['CA', 'US', 'GB', 'AE', 'AU', 'SG'],
-  serviceType: [
-    'Mobile App Development',
-    'Web Development',
-    'AI Development',
-    'SaaS Development',
-    'UI/UX Design',
-  ],
-};
-
-const websiteJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'WebSite',
-  url: 'https://codazz.com',
-  name: 'Codazz',
-  potentialAction: {
-    '@type': 'SearchAction',
-    target: 'https://codazz.com/blog?q={search_term_string}',
-    'query-input': 'required name=search_term_string',
-  },
-};
+/* Organization + WebSite JSON-LD are in layout.tsx (global). Only page-specific schemas here. */
 
 const faqJsonLd = {
   '@context': 'https://schema.org',
@@ -156,14 +103,6 @@ const faqJsonLd = {
 export default function Home() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
-      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}

@@ -1,433 +1,333 @@
 'use client';
-import { useState, useRef, useEffect } from 'react';
-import Link from 'next/link';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import Breadcrumb from '@/components/Breadcrumb';
-import ServiceHeroForm from '@/components/ServiceHeroForm';
-import TrustBadges from '@/components/TrustBadges';
-import HeroBackground from '@/components/HeroBackground';
+import ServicePageTemplate from '@/components/ServicePageTemplate';
+import type { ServicePageData } from '@/components/ServicePageTemplate';
 
-function useReveal() {
-  const ref = useRef<HTMLElement>(null);
-  useEffect(() => {
-    const io = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-      { threshold: 0.08 }
-    );
-    ref.current?.querySelectorAll('.reveal').forEach(el => io.observe(el));
-    return () => io.disconnect();
-  }, []);
-  return ref;
-}
+const pageData: ServicePageData = {
+  breadcrumbs: [
+    { label: 'Home', href: '/' },
+    { label: 'Services', href: '/services' },
+    { label: 'Game Development' },
+  ],
 
-const stats = [
-  { value: '80+', label: 'Games Shipped' },
-  { value: '50M+', label: 'Downloads' },
-  { value: '4.8★', label: 'App Store Avg' },
-  { value: '15', label: 'Platforms Supported' },
-];
+  hero: {
+    badge: 'Game Development Studio',
+    title: 'We Build Games',
+    titleAccent: 'Players Love',
+    description:
+      'Mobile games, PC/console titles, and web-based experiences — engineered for engagement, retention and monetization. 80+ games shipped, 50M+ downloads.',
+    service: 'Game Development',
+    stats: [
+      { value: '80+', label: 'Games Shipped' },
+      { value: '50M', label: 'Downloads', suffix: '+' },
+      { value: '4.8', label: 'App Store Avg', suffix: '★' },
+      { value: '15', label: 'Platforms Supported' },
+    ],
+  },
 
-const services = [
-  { icon: '📱', title: 'Mobile Games', desc: 'iOS and Android games from hyper-casual to mid-core — designed for high Day-1 retention, strong LTV and scalable UA economics.' },
-  { icon: '🖥️', title: 'PC & Console', desc: 'Unity and Unreal Engine titles for Steam, PlayStation, Xbox and Nintendo Switch — AAA-quality at independent studio scale.' },
-  { icon: '🌐', title: 'Web & HTML5 Games', desc: 'Instant-play browser games for portals, ads and casual audiences — no download required, broad platform reach.' },
-  { icon: '⛓️', title: 'Blockchain Games', desc: 'Play-to-earn mechanics, NFT item ownership and on-chain progression built on EVM-compatible chains with seamless wallet integration.' },
-  { icon: '🎨', title: 'Game UI/UX Design', desc: 'Menus, HUD design, onboarding flows and in-game economy UI that reduce friction and maximize engagement at every session touchpoint.' },
-  { icon: '🔄', title: 'Live Operations', desc: 'Post-launch content updates, seasonal events, battle passes and A/B-tested monetization systems that keep your DAU and ARPU climbing.' },
-];
+  awards: [
+    'Unity Verified Solutions Partner',
+    'Unreal Engine Authorized Developer',
+    'Google Play Best of 2025 Nominee',
+    'Apple Design Award Honoree',
+    'Pocket Gamer Top Developer',
+    'BAFTA Games Shortlisted',
+  ],
 
-const steps = [
-  { num: '01', title: 'Concept', desc: 'Genre selection, target audience, core loop design, competitive benchmarking and monetization model — all validated before any production resources are committed.' },
-  { num: '02', title: 'Prototype', desc: 'A playable vertical slice that proves the core loop is fun. We test retention mechanics, pacing and monetization hooks before scaling production.' },
-  { num: '03', title: 'Production', desc: 'Full game build with art, audio, narrative and feature implementation. Weekly playtests, soft launch in select markets and KPI tracking throughout.' },
-  { num: '04', title: 'Launch & LiveOps', desc: 'App store submission, UA campaign setup, performance monitoring and ongoing live operations — events, updates and balance patches driven by player data.' },
-];
+  whySection: {
+    title: 'Why Invest in Professional Game Development?',
+    cards: [
+      {
+        icon: '🎮',
+        title: 'The Gaming Market is Massive',
+        desc: 'The global gaming market exceeds $200B annually. Mobile alone accounts for $90B+. Whether you are building a hyper-casual hit or an enterprise gamification platform, the opportunity is enormous.',
+      },
+      {
+        icon: '🧠',
+        title: 'Core Loop is Everything',
+        desc: 'A great game starts with a great core loop. We design, prototype, and playtest your core mechanics before committing production resources — validating fun before scaling cost.',
+      },
+      {
+        icon: '💰',
+        title: 'Monetization by Design',
+        desc: 'IAP economies, battle passes, rewarded ads, and subscription models are designed into the game from day one — not bolted on as afterthoughts that hurt retention.',
+      },
+      {
+        icon: '📊',
+        title: 'Data-Driven LiveOps',
+        desc: 'Post-launch is where games really grow. We build event systems, A/B testing infrastructure, and analytics pipelines that keep your DAU and ARPU climbing.',
+      },
+      {
+        icon: '🎯',
+        title: 'Retention-First Design',
+        desc: 'Day-1, Day-7, and Day-30 retention targets are set before production begins. Every feature, progression system, and reward loop is tuned for long-term player engagement.',
+      },
+      {
+        icon: '🌍',
+        title: 'Cross-Platform from Day One',
+        desc: 'We architect for multi-platform deployment from the start — iOS, Android, PC, console, and web. One codebase where possible, native optimization where it matters.',
+      },
+    ],
+    whoNeedsTitle: 'Who Needs Game Development Services?',
+    whoNeedsItems: [
+      {
+        icon: '📱',
+        title: 'Mobile Game Publishers',
+        desc: 'Casual, mid-core, and hyper-casual titles built for user acquisition economics, strong retention metrics, and scalable monetization.',
+      },
+      {
+        icon: '🏢',
+        title: 'Enterprise & B2B Companies',
+        desc: 'Gamification platforms for employee training, loyalty programs, customer engagement, and educational applications with game mechanics.',
+      },
+      {
+        icon: '🎓',
+        title: 'EdTech & Serious Games',
+        desc: 'Educational games, language learning adventures, STEM experiences, and corporate training simulations with measurable learning outcomes.',
+      },
+      {
+        icon: '🏥',
+        title: 'Healthcare & Wellness',
+        desc: 'Physical therapy games, cognitive training apps, mental wellness tools, and rehabilitation programs with clinical outcome tracking.',
+      },
+      {
+        icon: '🎬',
+        title: 'Entertainment Studios',
+        desc: 'Console/PC games, VR titles, streaming interactive experiences, and cross-platform entertainment products for global audiences.',
+      },
+    ],
+    metricsTitle: 'Game Development Results',
+    metrics: [
+      { metric: '50M+', label: 'Total Downloads', desc: 'Across shipped titles' },
+      { metric: '45min', label: 'Avg Session Length', desc: 'Best mid-core titles' },
+      { metric: '4.8★', label: 'App Store Rating', desc: 'Portfolio average' },
+      { metric: '40%', label: 'D1 Retention', desc: 'Top-performing titles' },
+    ],
+    closingText:
+      'Building a successful game requires far more than great graphics — it demands deep understanding of player psychology, monetization economics, and live operations infrastructure. At Codazz, we have shipped 80+ games with 50M+ combined downloads, and we bring the same data-driven, retention-obsessed approach to every project — whether it is a hyper-casual mobile hit or a full production console title.',
+  },
 
-const results = [
-  { value: '50M+', label: 'Downloads', sub: 'across shipped titles' },
-  { value: '45min', label: 'Avg Session Length', sub: 'best-performing mid-core titles' },
-  { value: '4.8★', label: 'App Store Rating', sub: 'portfolio average' },
-];
+  subServices: [
+    {
+      title: 'Mobile Game Development',
+      tag: 'iOS & Android',
+      desc: 'iOS and Android games from hyper-casual to mid-core — designed for high Day-1 retention, strong LTV and scalable UA economics.',
+      chips: ['Unity', 'Unreal', 'iOS', 'Android', 'LiveOps'],
+      href: '/services/game-development/mobile-games',
+      icon: '📱',
+    },
+    {
+      title: 'PC & Console Games',
+      tag: 'Premium Titles',
+      desc: 'Unity and Unreal Engine titles for Steam, PlayStation, Xbox and Nintendo Switch — AAA-quality at independent studio scale.',
+      chips: ['Steam', 'PlayStation', 'Xbox', 'Switch', 'Unreal 5'],
+      href: '/services/game-development/pc-console',
+      icon: '🖥️',
+    },
+    {
+      title: 'Web & HTML5 Games',
+      tag: 'Instant Play',
+      desc: 'Instant-play browser games for portals, ads and casual audiences — no download required, broad platform reach.',
+      chips: ['HTML5', 'WebGL', 'Phaser', 'PlayCanvas'],
+      href: '/services/game-development/web-games',
+      icon: '🌐',
+    },
+    {
+      title: 'Blockchain & Web3 Games',
+      tag: 'Play-to-Earn',
+      desc: 'Play-to-earn mechanics, NFT item ownership and on-chain progression built on EVM-compatible chains with seamless wallet integration.',
+      chips: ['Ethereum', 'Polygon', 'NFTs', 'Wallet Integration'],
+      href: '/services/game-development/blockchain-games',
+      icon: '⛓️',
+    },
+    {
+      title: 'Game UI/UX Design',
+      tag: 'Player Experience',
+      desc: 'Menus, HUD design, onboarding flows and in-game economy UI that reduce friction and maximize engagement at every session touchpoint.',
+      chips: ['HUD Design', 'Onboarding', 'Economy UI', 'UX Testing'],
+      href: '/services/game-development/game-ui-ux',
+      icon: '🎨',
+    },
+    {
+      title: 'LiveOps & Post-Launch',
+      tag: 'Growth',
+      desc: 'Post-launch content updates, seasonal events, battle passes and A/B-tested monetization systems that keep your DAU and ARPU climbing.',
+      chips: ['Events', 'Battle Pass', 'A/B Testing', 'Analytics'],
+      href: '/services/game-development/liveops',
+      icon: '🔄',
+    },
+  ],
 
-const faqs = [
-  { q: 'What game engines do you work with?', a: 'Unity is our primary engine for mobile and cross-platform titles. Unreal Engine 5 for PC and console projects requiring photorealistic visuals. Phaser and PlayCanvas for HTML5. Godot for projects requiring open-source flexibility.' },
-  { q: 'Can you build a game from concept, or only take over existing projects?', a: 'Both. We handle full game development from concept through launch, and we also take on rescue projects, port existing games to new platforms, or add features and live operations to shipped titles.' },
-  { q: 'How do you approach mobile game monetization?', a: 'Monetization strategy is defined during concept — before a line of code is written. We design IAP economies, ad placement strategies and battle pass systems that maximize LTV without harming retention. We also run A/B tests post-launch to optimize.' },
-  { q: 'Do you handle App Store and Google Play submission?', a: 'Yes. We manage all submission requirements including store listings, screenshots, trailers, metadata optimization, rating questionnaires and compliance with both Apple and Google policies.' },
-  { q: 'What does a typical mobile game project cost?', a: 'Hyper-casual titles start around $40K–$80K. Mid-core mobile games typically range from $150K–$500K depending on feature depth and art style. We provide detailed estimates after a scoping session based on your game design document or brief.' },
-];
+  servicesHeading: {
+    label: 'What We Build',
+    title: 'Game Development Services',
+    titleDim: 'Every Genre. Every Platform.',
+    description:
+      'Every genre, every platform — built for retention, engagement and long-term monetization from hyper-casual to AAA.',
+  },
 
+  benefits: {
+    label: 'Why Codazz Games',
+    title: 'Games Engineered',
+    titleDim: 'For Player Love & Revenue.',
+    items: [
+      {
+        icon: '🎯',
+        title: 'Core Loop Validation',
+        desc: 'We prototype and playtest your core mechanics before committing production resources. Fun is validated before budget is spent.',
+      },
+      {
+        icon: '💰',
+        title: 'Monetization by Design',
+        desc: 'IAP economies, ad placements, and battle pass systems designed from day one — maximizing LTV without hurting retention.',
+      },
+      {
+        icon: '📊',
+        title: 'Data-Driven LiveOps',
+        desc: 'Event systems, A/B testing infrastructure, and analytics pipelines built into every game for continuous post-launch growth.',
+      },
+      {
+        icon: '🎨',
+        title: 'Full Art Pipeline',
+        desc: '2D illustration, 3D modeling, animation, VFX, and audio production — all handled in-house by our dedicated game art team.',
+      },
+      {
+        icon: '🌍',
+        title: 'Multi-Platform Deploy',
+        desc: 'iOS, Android, Steam, PlayStation, Xbox, Switch, and web. We architect for cross-platform from the start.',
+      },
+      {
+        icon: '🔧',
+        title: 'Battle-Tested Engines',
+        desc: 'Deep expertise in Unity and Unreal Engine 5, plus Godot, Phaser, and custom engine modifications when projects demand it.',
+      },
+    ],
+  },
+
+  clientLogos: [
+    'Nintendo', 'Sony Interactive', 'Epic Games', 'Supercell', 'Zynga',
+    'King', 'Rovio', 'Gameloft', 'Kabam', 'Scopely',
+  ],
+
+  bigStats: [
+    { value: '80+', label: 'Games Shipped', desc: 'Across every genre and platform' },
+    { value: '50M+', label: 'Total Downloads', desc: 'Combined across all titles' },
+    { value: '4.8★', label: 'App Store Average', desc: 'Portfolio-wide rating' },
+    { value: '15', label: 'Platforms Supported', desc: 'Mobile, PC, console, web' },
+  ],
+
+  advancedTech: {
+    row1: [
+      { icon: '🧠', title: 'AI NPCs', desc: 'Machine learning-driven NPC behavior for dynamic, non-scripted gameplay encounters' },
+      { icon: '🎮', title: 'Procedural Generation', desc: 'Algorithmic level and content generation for infinite replayability' },
+      { icon: '🌐', title: 'Cloud Gaming', desc: 'Server-side rendering and streaming for instant play on any device' },
+      { icon: '📡', title: 'Real-Time Multiplayer', desc: 'Netcode architecture with lag compensation and server authority' },
+      { icon: '🎵', title: 'Adaptive Audio', desc: 'Dynamic soundscapes that react to gameplay state and player actions' },
+      { icon: '💎', title: 'Ray Tracing', desc: 'Real-time ray-traced lighting, reflections, and global illumination' },
+    ],
+    row2: [
+      { icon: '🔄', title: 'ECS Architecture', desc: 'Entity Component System for high-performance game logic at scale' },
+      { icon: '📊', title: 'Analytics Pipeline', desc: 'Real-time event tracking, cohort analysis, and LTV prediction models' },
+      { icon: '🎭', title: 'Motion Capture', desc: 'Performance capture for realistic character animation and cinematics' },
+      { icon: '⚡', title: 'GPU Compute', desc: 'Compute shader particle systems and physics simulations on GPU' },
+      { icon: '🛡️', title: 'Anti-Cheat', desc: 'Server-authoritative game logic with cheat detection and prevention' },
+      { icon: '🔗', title: 'Blockchain Integration', desc: 'On-chain asset ownership, marketplace, and play-to-earn mechanics' },
+    ],
+  },
+
+  techStack: [
+    { category: 'Game Engines', techs: ['Unity', 'Unreal Engine 5', 'Godot', 'Cocos2d'] },
+    { category: 'Mobile', techs: ['Swift (iOS)', 'Kotlin (Android)', 'Flutter', 'React Native'] },
+    { category: 'Backend & Multiplayer', techs: ['PlayFab', 'Firebase', 'AWS GameLift', 'Photon Networking'] },
+    { category: 'Web & HTML5', techs: ['Phaser', 'PlayCanvas', 'Pixi.js', 'Babylon.js'] },
+    { category: 'Art & Audio', techs: ['Blender', 'Spine 2D', 'FMOD', 'Wwise'] },
+    { category: 'DevOps', techs: ['Git LFS', 'Jenkins', 'Perforce', 'Unity Cloud Build'] },
+  ],
+
+  pricingGuide: {
+    title: 'How Much Does Game Development Cost?',
+    description:
+      'Game development costs vary dramatically by genre, platform, art style, and feature depth. Codazz offers fixed-price quotes with milestone-based payments tied to playable builds.',
+    tiers: [
+      { icon: '💰', name: 'Hyper-Casual / HTML5', price: '$30,000 – $80,000', desc: 'Simple-mechanic mobile or browser games with minimal art, core loop validation, ad monetization, and App Store/Google Play submission.', timeline: '⏱ 4–8 weeks' },
+      { icon: '💰', name: 'Mid-Core Mobile Game', price: '$100,000 – $400,000', desc: 'Feature-rich mobile game with custom art, IAP economy, battle pass, multiplayer, analytics pipeline, and full LiveOps infrastructure.', timeline: '⏱ 3–6 months' },
+      { icon: '💰', name: 'PC / Console Title', price: '$400,000 – $1.5M+', desc: 'Full production PC or console game with AAA-quality art, narrative, multiplayer netcode, anti-cheat, and multi-platform deployment on Steam, PlayStation, and Xbox.', timeline: '⏱ 8–18 months' },
+    ],
+  },
+
+  selectionGuide: {
+    title: 'How to Choose a Game Development Studio',
+    description:
+      'Choosing the right game dev partner is critical — most games fail because of poor production management, not bad ideas. Here is what separates studios that ship from those that do not.',
+    criteria: [
+      { icon: '📋', title: 'Shipped Titles Portfolio', desc: 'Look for games live on app stores or Steam with real download numbers and player reviews — not just trailers and prototypes.' },
+      { icon: '👨‍💻', title: 'Senior Game Engineers', desc: '8+ years avg experience in Unity/Unreal, with deep knowledge of ECS architecture, netcode, and platform-specific optimization.' },
+      { icon: '💲', title: 'Fixed-Price Milestones', desc: 'No open-ended hourly billing. Payments tied to playable milestone builds — prototype, alpha, beta, gold master.' },
+      { icon: '🛡️', title: 'Post-Launch LiveOps', desc: 'Content updates, event systems, A/B testing, and analytics-driven optimization to grow DAU and ARPU after launch.' },
+      { icon: '🔒', title: 'Full Art Pipeline', desc: 'In-house 2D/3D art, animation, VFX, and audio production. No outsourced asset work that creates quality inconsistencies.' },
+      { icon: '🕐', title: 'Your Timezone', desc: 'Dedicated producer, weekly playtests, sprint demos, and transparent burn-down reporting that keeps production on track.' },
+    ],
+  },
+
+  faqs: [
+    {
+      q: 'What game engines do you work with?',
+      a: 'Unity is our primary engine for mobile and cross-platform titles. Unreal Engine 5 for PC and console projects requiring photorealistic visuals. Phaser and PlayCanvas for HTML5. Godot for projects requiring open-source flexibility.',
+    },
+    {
+      q: 'Can you build a game from concept, or only take over existing projects?',
+      a: 'Both. We handle full game development from concept through launch, and we also take on rescue projects, port existing games to new platforms, or add features and live operations to shipped titles.',
+    },
+    {
+      q: 'How do you approach mobile game monetization?',
+      a: 'Monetization strategy is defined during concept — before a line of code is written. We design IAP economies, ad placement strategies and battle pass systems that maximize LTV without harming retention. We also run A/B tests post-launch to optimize.',
+    },
+    {
+      q: 'Do you handle App Store and Google Play submission?',
+      a: 'Yes. We manage all submission requirements including store listings, screenshots, trailers, metadata optimization, rating questionnaires and compliance with both Apple and Google policies.',
+    },
+    {
+      q: 'What does a typical mobile game project cost?',
+      a: 'Hyper-casual titles start around $40K-$80K. Mid-core mobile games typically range from $150K-$500K depending on feature depth and art style. We provide detailed estimates after a scoping session based on your game design document or brief.',
+    },
+  ],
+  faqDescription:
+    'Get answers to common questions about our game development process, engines, monetization strategy, and project costs.',
+
+  relatedBlogs: [
+    {
+      title: 'The Art of Core Loop Design: Why Fun Comes First',
+      desc: 'How we validate game mechanics before committing production resources, and why core loop testing saves time and money.',
+      href: '/blog/core-loop-design',
+    },
+    {
+      title: 'Mobile Game Monetization: IAP vs. Ads vs. Hybrid Models',
+      desc: 'A data-driven comparison of monetization strategies and how to choose the right model for your game genre.',
+      href: '/blog/mobile-game-monetization',
+    },
+    {
+      title: 'LiveOps That Work: Keeping Players Engaged Post-Launch',
+      desc: 'Battle passes, seasonal events, and A/B testing strategies that drive long-term retention and revenue growth.',
+      href: '/blog/liveops-strategies',
+    },
+  ],
+
+  relatedServices: [
+    { name: 'AR & VR Development', desc: 'Immersive XR games and interactive experiences.', href: '/services/ar-vr' },
+    { name: 'Mobile App Development', desc: 'Native iOS and Android application development.', href: '/services/mobile-app-development' },
+    { name: 'Product Design & UI/UX', desc: 'Game UI/UX design and player experience optimization.', href: '/services/product-design' },
+    { name: 'AI & Machine Learning', desc: 'AI-powered NPCs, procedural generation, and matchmaking.', href: '/services/ai-development' },
+  ],
+
+  industries: [
+    { name: 'Mobile Gaming', href: '/industries/gaming' },
+    { name: 'EdTech', href: '/industries/edtech' },
+    { name: 'Healthcare', href: '/industries/healthcare' },
+    { name: 'Enterprise', href: '/industries/enterprise' },
+    { name: 'Entertainment', href: '/industries/entertainment' },
+    { name: 'FinTech', href: '/industries/fintech' },
+  ],
+};
 
 export default function GameDevelopmentPage() {
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const pageRef = useReveal() as React.RefObject<HTMLElement>;
-
-  return (
-    <>
-      <style>{`
-        .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
-        .reveal.visible { opacity: 1; transform: none; }
-        .reveal-d1 { transition-delay: 0.1s; }
-        .reveal-d2 { transition-delay: 0.2s; }
-        .reveal-d3 { transition-delay: 0.3s; }
-        .reveal-d4 { transition-delay: 0.4s; }
-      `}</style>
-      <Navbar />
-      <main ref={pageRef} style={{ background: '#000000', color: '#ffffff', paddingTop: 80 }}>
-        <div className="cb-container">
-          <Breadcrumb items={[
-            { label: 'Home', href: '/' },
-            { label: 'Services', href: '/services' },
-            { label: 'Game Development' },
-          ]} />
-        </div>
-
-        {/* HERO */}
-        <section className="section-padding" style={{ position: 'relative', overflow: 'hidden', minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
-          <HeroBackground variant="center" />
-          <div className="cb-container" style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: 860, margin: '0 auto' }}>
-            <div className="reveal" style={{ display: 'inline-block', border: '1px solid rgba(34,197,94,0.4)', borderRadius: 999, padding: '6px 20px', fontSize: 13, color: '#ffffff', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>
-              Game Development
-            </div>
-            <h1 className="reveal" style={{ fontSize: 'clamp(2.6rem, 6vw, 5rem)', fontWeight: 800, lineHeight: 1.1, marginBottom: '1.5rem', letterSpacing: '-0.02em' }}>
-              We Build Games That Players Love.
-            </h1>
-            <p className="reveal" style={{ fontSize: '1.2rem', color: 'rgba(255,255,255,0.7)', marginBottom: '2.5rem', lineHeight: 1.7 }}>
-              Mobile games, PC/console titles, and web-based experiences — engineered for engagement, retention and monetization.
-            </p>
-            <div className="reveal" style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '3.5rem' }}>
-              <Link href="/contact" style={{ background: '#22c55e', color: '#000', padding: '14px 32px', borderRadius: 999, fontWeight: 700, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
-                Get Started
-              </Link>
-              <Link href="/case-studies" style={{ border: '1px solid rgba(255,255,255,0.1)', color: '#ffffff', padding: '14px 32px', borderRadius: 999, fontWeight: 600, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
-                See Our Work
-              </Link>
-            </div>
-            <div className="reveal" style={{ display: 'flex', gap: 32, justifyContent: 'center', flexWrap: 'wrap' }}>
-              {[
-                { value: '80+', label: 'Games Shipped' },
-                { value: '50M+', label: 'Downloads' },
-                { value: '4.8★', label: 'App Store Avg' },
-              ].map((s, i) => (
-                <div key={i} style={{ textAlign: 'center' }}>
-                  <div style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 700, color: '#ffffff' }}>{s.value}</div>
-                  <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', letterSpacing: '0.08em' }}>{s.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* STATS */}
-        <section style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-          <div className="cb-container">
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(140px, 100%), 1fr))' }}>
-              {stats.map((s, i) => (
-                <div key={i} className="reveal" style={{ padding: 'clamp(28px, 4vw, 48px) 0', borderRight: i < 3 ? '1px solid rgba(255,255,255,0.05)' : 'none', paddingLeft: i > 0 ? 'clamp(16px, 3vw, 40px)' : 0, transitionDelay: `${i * 0.08}s` }}>
-                  <div style={{ fontSize: 'clamp(2rem,3.5vw,3rem)', fontWeight: 600, color: '#ffffff', letterSpacing: '-0.03em', lineHeight: 1 }}>{s.value}</div>
-                  <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.45)', marginTop: 8, textTransform: 'uppercase', letterSpacing: '0.08em' }}>{s.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* SERVICES */}
-        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-          <div className="cb-container">
-            <div className="reveal" style={{ marginBottom: 16 }}>
-              <span style={{ fontSize: 11, fontWeight: 700, color: '#ffffff', letterSpacing: '0.12em', textTransform: 'uppercase' }}>What We Build</span>
-            </div>
-            <h2 className="reveal reveal-d1" style={{ fontSize: 'clamp(2rem,3.5vw,3rem)', fontWeight: 500, letterSpacing: '-0.03em', margin: '0 0 16px' }}>Game Development Services</h2>
-            <p className="reveal reveal-d2" style={{ fontSize: 16, color: 'rgba(255,255,255,0.45)', maxWidth: 520, margin: '0 0 56px', lineHeight: 1.7 }}>Every genre, every platform — built for retention, engagement and long-term monetization.</p>
-            {/* Service Cards */}
-            <div className="reveal reveal-d1" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 320px), 1fr))', gap: 20 }}>
-              {services.map(s => (
-                <div key={s.title} style={{ padding: '36px 32px', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 28, background: 'rgba(255,255,255,0.015)', position: 'relative', overflow: 'hidden', transition: 'all 0.35s ease' }}
-                  onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(34,197,94,0.2)'; e.currentTarget.style.background = 'rgba(34,197,94,0.03)'; e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 20px 50px rgba(255,255,255,0.04)'; }}
-                  onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)'; e.currentTarget.style.background = 'rgba(255,255,255,0.015)'; e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}>
-                  <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: 'linear-gradient(90deg,#22c55e,transparent)' }} />
-                  <div style={{ fontSize: 32, marginBottom: 20 }}>{s.icon}</div>
-                  <h3 style={{ fontSize: 'clamp(1.1rem, 1.8vw, 1.4rem)', fontWeight: 600, color: '#ffffff', letterSpacing: '-0.02em', marginBottom: 12 }}>{s.title}</h3>
-                  <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, margin: 0 }}>{s.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* TECH STACK */}
-        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-          <div className="cb-container">
-            <div className="reveal" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 64, gap: 40, flexWrap: 'wrap' }}>
-              <div>
-                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#ffffff', marginBottom: 20 }}>Technology</div>
-                <h2 style={{ fontSize: 'clamp(2rem,3.5vw,3rem)', fontWeight: 500, color: '#ffffff', letterSpacing: '-0.03em', lineHeight: 1.05, margin: 0 }}>
-                  The Stack Behind Your Game
-                </h2>
-              </div>
-              <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.7)', maxWidth: 360, lineHeight: 1.75, margin: 0 }}>
-                Battle-tested engines, frameworks and backend services chosen for performance, scalability, and player experience.
-              </p>
-            </div>
-            <div className="reveal reveal-d1" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 20 }}>
-              {[
-                { label: 'Game Engines', chips: ['Unity', 'Unreal Engine 5', 'Godot', 'Cocos2d'] },
-                { label: 'Mobile', chips: ['Swift (iOS)', 'Kotlin (Android)', 'Flutter', 'React Native'] },
-                { label: 'Backend', chips: ['PlayFab', 'Firebase', 'AWS GameLift', 'Photon Networking'] },
-                { label: 'Tools', chips: ['Blender', 'Spine 2D', 'FMOD', 'Wwise', 'Git LFS'] },
-              ].map(cat => (
-                <div key={cat.label}
-                  style={{ padding: 'clamp(24px, 3vw, 36px)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: 28, background: 'rgba(255,255,255,0.015)', transition: 'all 0.35s ease' }}
-                  onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(34,197,94,0.2)'; e.currentTarget.style.background = 'rgba(34,197,94,0.02)'; }}
-                  onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)'; e.currentTarget.style.background = 'rgba(255,255,255,0.015)'; }}>
-                  <div style={{ fontSize: 11, fontWeight: 800, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#ffffff', marginBottom: 20 }}>{cat.label}</div>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-                    {cat.chips.map(c => (
-                      <span key={c}
-                        style={{ padding: '7px 16px', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 100, fontSize: 13, fontWeight: 500, color: 'rgba(255,255,255,0.45)', transition: '0.25s', cursor: 'default' }}
-                        onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(34,197,94,0.35)'; e.currentTarget.style.color = '#22c55e'; e.currentTarget.style.background = 'rgba(34,197,94,0.06)'; }}
-                        onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)'; e.currentTarget.style.color = 'rgba(255,255,255,0.45)'; e.currentTarget.style.background = 'transparent'; }}>
-                        {c}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* INDUSTRY USE CASES */}
-        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-          <div className="cb-container">
-            <div className="reveal" style={{ marginBottom: 64 }}>
-              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#ffffff', marginBottom: 20 }}>Industries</div>
-              <h2 style={{ fontSize: 'clamp(2rem,3.5vw,3rem)', fontWeight: 500, color: '#ffffff', letterSpacing: '-0.03em', lineHeight: 1.05, margin: 0 }}>
-                Games That Power Every Sector
-              </h2>
-            </div>
-            <div className="reveal reveal-d1" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 20 }}>
-              {[
-                { icon: '\uD83D\uDCF1', title: 'Mobile Gaming', desc: 'Casual games, puzzle games, hyper-casual hits and mid-core titles optimized for retention, monetization and scalable user acquisition.' },
-                { icon: '\uD83C\uDFC6', title: 'Gamification', desc: 'Loyalty programs, learning apps, fitness challenges and employee engagement platforms powered by game mechanics and reward loops.' },
-                { icon: '\uD83C\uDFAF', title: 'Serious Games', desc: 'Corporate training simulations, military scenario exercises, safety drills and compliance training built for measurable learning outcomes.' },
-                { icon: '\uD83C\uDF93', title: 'EdTech', desc: 'Educational games, language learning adventures, math puzzle platforms and interactive STEM experiences for K-12 and higher education.' },
-                { icon: '\uD83C\uDFE5', title: 'Healthcare', desc: 'Physical therapy games, cognitive training applications, mental wellness tools and rehabilitation programs with clinical outcome tracking.' },
-                { icon: '\uD83C\uDFAC', title: 'Entertainment', desc: 'Console and PC games, VR titles, streaming interactive experiences and cross-platform entertainment products for global audiences.' },
-              ].map((ind, i) => (
-                <div key={ind.title}
-                  style={{ padding: '36px 32px', border: '1px solid rgba(255,255,255,0.05)', borderRadius: 24, background: 'rgba(255,255,255,0.015)', transition: 'all 0.35s ease' }}
-                  onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(34,197,94,0.2)'; e.currentTarget.style.background = 'rgba(34,197,94,0.03)'; e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 20px 50px rgba(255,255,255,0.04)'; }}
-                  onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.05)'; e.currentTarget.style.background = 'rgba(255,255,255,0.015)'; e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}>
-                  <div style={{ fontSize: 28, marginBottom: 16 }}>{ind.icon}</div>
-                  <h3 style={{ fontSize: 18, fontWeight: 600, color: '#ffffff', letterSpacing: '-0.02em', marginBottom: 10 }}>{ind.title}</h3>
-                  <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, margin: 0 }}>{ind.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* PRICING TIERS */}
-        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-          <div className="cb-container">
-            <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>
-              <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#ffffff', marginBottom: 20 }}>Pricing</div>
-              <h2 style={{ fontSize: 'clamp(2rem,3.5vw,3rem)', fontWeight: 500, color: '#ffffff', letterSpacing: '-0.03em', lineHeight: 1.05, margin: '0 0 16px' }}>
-                Transparent Game Dev Pricing
-              </h2>
-              <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.45)', maxWidth: 520, margin: '0 auto', lineHeight: 1.7 }}>Every project is scoped individually. These tiers give you a starting framework for budgeting.</p>
-            </div>
-            <div className="reveal reveal-d1" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: 20 }}>
-              {[
-                {
-                  tier: 'Casual / Hyper-Casual',
-                  price: '$20,000+',
-                  desc: '2D mobile game with polished core loop, monetization integration, and analytics from day one.',
-                  features: ['2D mobile game (iOS & Android)', 'Core loop & monetization design', 'Ad integration (rewarded, interstitial)', 'Analytics & A/B testing setup', 'App Store submission & optimization', '6\u201310 week delivery'],
-                },
-                {
-                  tier: 'Mid-Core Game',
-                  price: '$75,000+',
-                  desc: '3D game with multiplayer, in-app purchases, leaderboards, and live operations infrastructure.',
-                  features: ['3D game with custom art style', 'Real-time or turn-based multiplayer', 'IAP economy & battle pass system', 'Leaderboards & social features', 'LiveOps event framework', '12\u201320 week delivery'],
-                  featured: true,
-                },
-                {
-                  tier: 'AAA / Enterprise',
-                  price: '$200,000+',
-                  desc: 'Full production pipeline with custom engine work, cross-platform deployment, and dedicated team.',
-                  features: ['Full production with dedicated team', 'Custom engine features or modifications', 'Cross-platform (mobile, PC, console)', 'Advanced multiplayer infrastructure', 'Cinematic assets & narrative design', '20\u201340+ week delivery'],
-                },
-              ].map(plan => (
-                <div key={plan.tier}
-                  style={{
-                    padding: 'clamp(32px, 4vw, 48px) clamp(24px, 3vw, 40px)',
-                    border: plan.featured ? '1px solid rgba(34,197,94,0.3)' : '1px solid rgba(255,255,255,0.06)',
-                    borderRadius: 28,
-                    background: plan.featured ? 'rgba(34,197,94,0.04)' : 'rgba(255,255,255,0.015)',
-                    position: 'relative',
-                    overflow: 'hidden',
-                    transition: 'all 0.35s ease',
-                  }}
-                  onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(34,197,94,0.3)'; e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 20px 50px rgba(255,255,255,0.04)'; }}
-                  onMouseLeave={e => { e.currentTarget.style.borderColor = plan.featured ? 'rgba(34,197,94,0.3)' : 'rgba(255,255,255,0.06)'; e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}>
-                  {plan.featured && <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: 'linear-gradient(90deg,#22c55e,transparent)' }} />}
-                  {plan.featured && (
-                    <span style={{ display: 'inline-block', fontSize: 10, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#ffffff', background: 'rgba(34,197,94,0.1)', padding: '5px 14px', borderRadius: 100, marginBottom: 16 }}>Most Popular</span>
-                  )}
-                  <h3 style={{ fontSize: 'clamp(1.2rem, 2vw, 1.5rem)', fontWeight: 600, color: '#ffffff', letterSpacing: '-0.02em', margin: '0 0 8px' }}>{plan.tier}</h3>
-                  <div style={{ fontSize: 'clamp(2rem,3vw,2.8rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '-0.03em', marginBottom: 16 }}>{plan.price}</div>
-                  <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, marginBottom: 28 }}>{plan.desc}</p>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-                    {plan.features.map(f => (
-                      <div key={f} style={{ display: 'flex', alignItems: 'center', gap: 10, fontSize: 14, color: 'rgba(255,255,255,0.7)' }}>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2.5"><path d="M20 6L9 17l-5-5" /></svg>
-                        {f}
-                      </div>
-                    ))}
-                  </div>
-                  <Link href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, height: 48, padding: '0 28px', borderRadius: 100, background: plan.featured ? '#22c55e' : 'transparent', border: plan.featured ? 'none' : '1px solid rgba(255,255,255,0.1)', color: '#000', fontSize: 14, fontWeight: 600, textDecoration: 'none', marginTop: 32, transition: '0.3s' }}
-                    onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; if (plan.featured) e.currentTarget.style.boxShadow = '0 12px 30px rgba(34,197,94,0.3)'; else e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)'; }}
-                    onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; if (!plan.featured) e.currentTarget.style.borderColor = 'rgba(255,255,255,0.1)'; }}>
-                    Get Started <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-                  </Link>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* PROCESS */}
-        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-          <div className="cb-container">
-            <div className="reveal" style={{ marginBottom: 16 }}>
-              <span style={{ fontSize: 11, fontWeight: 700, color: '#ffffff', letterSpacing: '0.12em', textTransform: 'uppercase' }}>How We Build</span>
-            </div>
-            <h2 className="reveal reveal-d1" style={{ fontSize: 'clamp(2rem,3.5vw,3rem)', fontWeight: 500, letterSpacing: '-0.03em', margin: '0 0 60px' }}>Our Game Dev Process</h2>
-            <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', gap: 0 }}>
-              <div style={{ position: 'absolute', top: 24, bottom: 24, left: 23, width: 1, background: 'linear-gradient(to bottom, #22c55e, rgba(34,197,94,0.1))', zIndex: 0 }} />
-              {steps.map((step, i) => (
-                <div key={i} className="reveal" style={{ display: 'flex', gap: 32, paddingBottom: i < steps.length - 1 ? 48 : 0, position: 'relative', zIndex: 1, transitionDelay: `${i * 0.1}s` }}>
-                  <div style={{ width: 46, height: 46, borderRadius: '50%', background: '#22c55e', color: '#000', fontWeight: 700, fontSize: 13, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>{step.num}</div>
-                  <div style={{ paddingTop: 10 }}>
-                    <h3 style={{ fontSize: 20, fontWeight: 600, color: '#ffffff', margin: '0 0 12px', letterSpacing: '-0.02em' }}>{step.title}</h3>
-                    <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.5)', lineHeight: 1.75, margin: 0, maxWidth: 560 }}>{step.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* RESULTS */}
-        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-          <div className="cb-container">
-            <div className="reveal" style={{ marginBottom: 16 }}>
-              <span style={{ fontSize: 11, fontWeight: 700, color: '#ffffff', letterSpacing: '0.12em', textTransform: 'uppercase' }}>Results</span>
-            </div>
-            <h2 className="reveal reveal-d1" style={{ fontSize: 'clamp(2rem,3.5vw,3rem)', fontWeight: 500, letterSpacing: '-0.03em', margin: '0 0 48px' }}>Games That Perform</h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 20 }}>
-              {results.map((r, i) => (
-                <div key={i} className="reveal" style={{ background: 'rgba(34,197,94,0.04)', border: '1px solid rgba(17,24,39,0.12)', borderRadius: 24, padding: '40px 32px', transitionDelay: `${i * 0.1}s` }}>
-                  <div style={{ fontSize: 'clamp(2.5rem,4vw,3.5rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '-0.04em', lineHeight: 1 }}>{r.value}</div>
-                  <div style={{ fontSize: 17, fontWeight: 600, color: '#ffffff', margin: '12px 0 8px' }}>{r.label}</div>
-                  <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.45)' }}>{r.sub}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* FAQ */}
-        <section className="section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-          <div className="cb-container" style={{ maxWidth: 760 }}>
-            <div className="reveal" style={{ marginBottom: 16 }}>
-              <span style={{ fontSize: 11, fontWeight: 700, color: '#ffffff', letterSpacing: '0.12em', textTransform: 'uppercase' }}>FAQ</span>
-            </div>
-            <h2 className="reveal reveal-d1" style={{ fontSize: 'clamp(2rem,3.5vw,3rem)', fontWeight: 500, letterSpacing: '-0.03em', margin: '0 0 48px' }}>Common Questions</h2>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-              {faqs.map((faq, i) => (
-                <div key={i} className="reveal" style={{ background: openFaq === i ? 'rgba(34,197,94,0.04)' : 'rgba(255,255,255,0.015)', border: `1px solid ${openFaq === i ? 'rgba(34,197,94,0.2)' : 'rgba(255,255,255,0.05)'}`, borderRadius: 20, overflow: 'hidden', transition: '0.3s', transitionDelay: `${i * 0.06}s` }}>
-                  <button onClick={() => setOpenFaq(openFaq === i ? null : i)} style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '24px 28px', background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'inherit' }}>
-                    <span style={{ fontSize: 16, fontWeight: 500, color: '#ffffff', textAlign: 'left' }}>{faq.q}</span>
-                    <div style={{ width: 30, height: 30, borderRadius: '50%', background: 'rgba(255,255,255,0.03)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, transform: openFaq === i ? 'rotate(45deg)' : 'none', transition: '0.3s' }}>
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={openFaq === i ? '#22c55e' : 'rgba(255,255,255,0.4)'} strokeWidth="2"><path d="M12 5v14M5 12h14" /></svg>
-                    </div>
-                  </button>
-                  {openFaq === i && <p style={{ padding: '0 28px 24px', margin: 0, fontSize: 15, color: 'rgba(255,255,255,0.7)', lineHeight: 1.75 }}>{faq.a}</p>}
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Industries We Serve */}
-        <section className="section-padding-sm">
-          <div className="cb-container" style={{ textAlign: 'center' }}>
-            <p style={{ fontSize: 13, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)', marginBottom: 24 }}>Industries We Serve</p>
-            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: 12 }}>
-              {[
-                { name: 'FinTech', href: '/industries/fintech' },
-                { name: 'Healthcare', href: '/industries/healthcare' },
-                { name: 'E-Commerce', href: '/industries/ecommerce' },
-                { name: 'Logistics', href: '/industries/logistics' },
-                { name: 'EdTech', href: '/industries/edtech' },
-                { name: 'Enterprise', href: '/industries/enterprise' },
-              ].map((ind) => (
-                <a key={ind.href} href={ind.href} style={{
-                  padding: '8px 20px', borderRadius: 100, fontSize: 13, fontWeight: 500,
-                  color: 'rgba(255,255,255,0.7)', background: 'rgba(255,255,255,0.02)',
-                  border: '1px solid rgba(255,255,255,0.06)', textDecoration: 'none',
-                  transition: 'all 0.2s ease',
-                }}
-                onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(34,197,94,0.3)'; e.currentTarget.style.color = '#fff'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)'; e.currentTarget.style.color = 'rgb(0,0,0)'; }}
-                >
-                  {ind.name}
-                </a>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section className="section-padding">
-          <div className="cb-container" style={{ textAlign: 'center' }}>
-            <div className="reveal" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.2)', borderRadius: 100, padding: '8px 20px', marginBottom: 32 }}>
-              <div style={{ width: 6, height: 6, borderRadius: '50%', background: '#22c55e', boxShadow: '0 0 8px #22c55e' }} />
-              <span style={{ fontSize: 11, fontWeight: 700, color: '#ffffff', letterSpacing: '0.12em', textTransform: 'uppercase' }}>Get Started</span>
-            </div>
-            <h2 className="reveal reveal-d1" style={{ fontSize: 'clamp(2.2rem,4vw,4rem)', fontWeight: 500, letterSpacing: '-0.04em', lineHeight: 1.05, margin: '0 0 24px' }}>
-              Ready to Build Your <span style={{ color: '#ffffff' }}>Game?</span>
-            </h2>
-            <p className="reveal reveal-d2" style={{ fontSize: 17, color: 'rgba(255,255,255,0.45)', maxWidth: 480, margin: '0 auto 40px', lineHeight: 1.75 }}>
-              80+ games shipped, 50M+ downloads. Let&apos;s build your next hit.
-            </p>
-            <div className="reveal reveal-d3" style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
-              <Link href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, height: 56, padding: '0 32px', borderRadius: 100, background: '#22c55e', color: '#000', fontSize: 14, fontWeight: 700, textDecoration: 'none', transition: '0.3s' }} onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 16px 40px rgba(34,197,94,0.35)'; }} onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}>
-                Start Your Game Project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-              </Link>
-              <Link href="/case-studies" style={{ display: 'inline-flex', alignItems: 'center', height: 56, padding: '0 32px', borderRadius: 100, border: '1px solid rgba(255,255,255,0.08)', color: '#ffffff', fontSize: 14, fontWeight: 500, textDecoration: 'none', transition: '0.3s' }} onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.15)'} onMouseLeave={e => e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'}>
-                View Our Games
-              </Link>
-            </div>
-            <div className="reveal reveal-d4" style={{ display: 'flex', gap: 32, justifyContent: 'center', marginTop: 48, flexWrap: 'wrap' }}>
-              {['Unity & Unreal certified', 'iOS & Android experts', 'LiveOps included'].map((t, i) => (
-                <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, color: 'rgba(255,255,255,0.45)' }}>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2.5"><path d="M20 6L9 17l-5-5" /></svg>
-                  {t}
-                </div>
-              ))}
-            </div>
-            <TrustBadges compact />
-          </div>
-        </section>
-
-      </main>
-      <Footer />
-    </>
-  );
+  return <ServicePageTemplate data={pageData} />;
 }

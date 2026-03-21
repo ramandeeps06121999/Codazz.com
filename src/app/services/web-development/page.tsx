@@ -44,7 +44,7 @@ const jsonLdService = {
     "@type": "Organization",
     "name": "Codazz",
     "url": "https://codazz.com",
-    "logo": "https://codazz.com/logo.svg",
+    "logo": "https://codazz.com/brand/logo-wordmark-green.png",
     "sameAs": [
       "https://www.linkedin.com/company/codazz",
       "https://clutch.co/profile/codazz"
@@ -146,7 +146,7 @@ const jsonLdOrganization = {
   "@type": "Organization",
   "name": "Codazz",
   "url": "https://codazz.com",
-  "logo": "https://codazz.com/logo.svg",
+  "logo": "https://codazz.com/brand/logo-wordmark-green.png",
   "contactPoint": {
     "@type": "ContactPoint",
     "contactType": "sales",
@@ -156,7 +156,7 @@ const jsonLdOrganization = {
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "4.9",
-    "reviewCount": "87",
+    "reviewCount": "527",
     "bestRating": "5"
   }
 };

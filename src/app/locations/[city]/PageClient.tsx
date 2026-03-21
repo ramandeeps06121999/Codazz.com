@@ -1,724 +1,827 @@
 'use client';
-import { useRef, useEffect, useState } from 'react';
+
+import { useRef, useState } from 'react';
 import Link from 'next/link';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import HeroBackground from '@/components/HeroBackground';
-import TrustBadges from '@/components/TrustBadges';
+import AwardsMarquee from '@/components/AwardsMarquee';
+import PartnersMarquee from '@/components/PartnersMarquee';
+import LatestWork from '@/components/LatestWork';
+import OurWorkShowcase from '@/components/OurWorkShowcase';
+import ShowcaseMarquee from '@/components/ShowcaseMarquee';
+import ProcessSection from '@/components/ProcessSection';
+import MarketStats from '@/components/MarketStats';
+import IndustriesSection from '@/components/IndustriesSection';
+import WhyChooseUs from '@/components/WhyChooseUs';
+import TestimonialsSection from '@/components/TestimonialsSection';
+import ComplianceBadges from '@/components/ComplianceBadges';
+import InsightsSection from '@/components/InsightsSection';
+import GlobalPresence from '@/components/GlobalPresence';
+import Contact from '@/components/Contact';
+import FeaturedAwards from '@/components/FeaturedAwards';
 import type { CityData } from '@/data/cities';
 import { cities } from '@/data/cities';
-import TestimonialMarquee from '@/components/TestimonialMarquee';
-import GlobalPresence from '@/components/GlobalPresence';
 
-function useReveal() {
-  const ref = useRef<HTMLElement>(null);
-  useEffect(() => {
-    const io = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-      { threshold: 0.08 }
-    );
-    ref.current?.querySelectorAll('.reveal').forEach(el => io.observe(el));
-    return () => io.disconnect();
-  }, []);
-  return ref;
-}
+/* ─── animation ─────────────────────────────────────────────────────────── */
 
-const services = [
-  { name: 'Mobile App Development', slug: 'mobile-app-development', icon: '📱', desc: 'Native iOS & Android apps, React Native, Flutter. Full-cycle development from concept to App Store launch.' },
-  { name: 'Web Development', slug: 'web-development', icon: '🌐', desc: 'React, Next.js, Node.js web platforms. Responsive, fast, and SEO-optimized web applications.' },
-  { name: 'AI Solutions', slug: 'ai-solutions', icon: '🧠', desc: 'ChatGPT integration, LLM APIs, machine learning models, AI-powered automation and analytics.' },
-  { name: 'Cloud & DevOps', slug: 'cloud-architecture', icon: '☁️', desc: 'AWS, GCP, Azure deployment. Docker, Kubernetes, CI/CD pipelines, infrastructure as code.' },
-  { name: 'IoT Development', slug: 'iot-development', icon: '📡', desc: 'Embedded systems, sensor integration, real-time data collection, device management platforms.' },
-  { name: 'Blockchain & Web3', slug: 'blockchain', icon: '⛓️', desc: 'Smart contracts, crypto wallets, NFT platforms, DeFi solutions, blockchain architecture.' },
-];
-
-const industryData: Record<string, { icon: string; desc: string; details: string }> = {
-  'FinTech': { icon: '💰', desc: 'Payment systems, trading platforms, lending apps.', details: 'We build secure, compliant financial software. Payment gateways, portfolio management, trading interfaces, blockchain integration.' },
-  'Healthcare': { icon: '🏥', desc: 'Telemedicine, patient management, EHR systems.', details: 'HIPAA-compliant healthcare solutions. Virtual consultations, patient records, appointment scheduling, health monitoring.' },
-  'E-Commerce': { icon: '🛒', desc: 'Marketplaces, shopping apps, inventory management.', details: 'End-to-end e-commerce platforms. Shopping carts, payment processing, inventory tracking, order fulfillment.' },
-  'Real Estate': { icon: '🏠', desc: 'Property portals, virtual tours, CRM systems.', details: 'Real estate tech solutions. Property listings, 3D tours, buyer/agent management, transaction tracking.' },
-  'Logistics': { icon: '🚛', desc: 'Fleet management, route optimization, tracking.', details: 'Supply chain and logistics software. Real-time tracking, route optimization, fleet management, delivery scheduling.' },
-  'EdTech': { icon: '📚', desc: 'Learning platforms, video courses, assessments.', details: 'Education technology platforms. Online courses, student progress tracking, interactive quizzes, certification systems.' },
-  'SaaS': { icon: '☁️', desc: 'Subscription apps, analytics, billing systems.', details: 'SaaS infrastructure. Multi-tenant platforms, subscription billing, usage analytics, user authentication.' },
-  'AI Products': { icon: '🤖', desc: 'Intelligent automation, predictive analytics.', details: 'AI-powered applications. Machine learning models, predictive algorithms, intelligent automation workflows.' },
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  visible: (i: number) => ({
+    opacity: 1, y: 0,
+    transition: { duration: 0.6, delay: i * 0.09, ease: [0.25, 0.46, 0.45, 0.94] as const },
+  }),
 };
 
-const processSteps = [
-  {
-    num: '01',
-    title: 'Discovery & Strategy',
-    duration: '1-2 weeks',
-    desc: 'We dive deep into understanding your business goals, target market, competitive landscape, and technical requirements. Through workshops and discovery sessions, we create a roadmap for success.',
-    deliverables: ['Project Plan', 'Requirements Doc', 'Tech Stack', 'Timeline', 'Budget Estimate']
-  },
-  {
-    num: '02',
-    title: 'Design & Architecture',
-    duration: '2-3 weeks',
-    desc: 'Our designers create beautiful, user-centered interfaces while engineers design scalable system architecture. We prepare wireframes, prototypes, and technical documentation for review.',
-    deliverables: ['UI/UX Designs', 'Architecture Diagram', 'Database Schema', 'API Specs', 'Prototypes']
-  },
-  {
-    num: '03',
-    title: 'Development (Sprints)',
-    duration: '8-16 weeks',
-    desc: 'We follow agile 2-week sprints with daily standups and weekly demos. You see progress continuously with regular code reviews, automated testing, and incremental feature releases.',
-    deliverables: ['Working Code', 'Automated Tests', 'Documentation', 'Code Reviews', 'Sprint Reports']
-  },
-  {
-    num: '04',
-    title: 'QA & Optimization',
-    duration: '2-4 weeks',
-    desc: 'Comprehensive testing including automated tests, manual QA, performance optimization, security audits, and bug fixes. We ensure production readiness.',
-    deliverables: ['QA Reports', 'Bug Fixes', 'Performance Data', 'Security Audit', 'Optimization Report']
-  },
-  {
-    num: '05',
-    title: 'Launch & Support',
-    duration: 'Ongoing',
-    desc: 'Seamless deployment to production with monitoring, alerts, and 24/7 support. We continue optimizing and adding features based on user feedback and analytics.',
-    deliverables: ['Live Deployment', 'Monitoring Setup', 'Support Plan', 'Analytics Dashboard', 'Feature Updates']
-  }
-];
-
-const portfolioProjects = [
-  {
-    name: 'Multi-Currency Payment Platform',
-    category: 'FinTech',
-    desc: 'Crypto and fiat payment platform with real-time trading, portfolio management, and secure wallets.',
-    metrics: [{ label: 'Users', value: '500K+' }, { label: 'Transactions', value: '$2B+' }, { label: 'Uptime', value: '99.99%' }],
-    tech: ['React Native', 'Node.js', 'PostgreSQL', 'Stripe', 'Blockchain']
-  },
-  {
-    name: 'Enterprise AI Chatbot Platform',
-    category: 'AI',
-    desc: 'NLP-powered chatbot with multi-language support, custom training, analytics, and integration APIs.',
-    metrics: [{ label: 'Customers', value: '1K+' }, { label: 'Messages/Day', value: '10M+' }, { label: 'Accuracy', value: '94%' }],
-    tech: ['Next.js', 'Python', 'OpenAI', 'PostgreSQL', 'Redis']
-  },
-  {
-    name: 'Virtual Telemedicine Platform',
-    category: 'Healthcare',
-    desc: 'HIPAA-compliant platform connecting patients with doctors for video consultations and prescriptions.',
-    metrics: [{ label: 'Doctors', value: '5K+' }, { label: 'Appointments', value: '100K+' }, { label: 'Rating', value: '4.8★' }],
-    tech: ['React', 'Node.js', 'WebRTC', 'MongoDB', 'AWS']
-  },
-];
-
-const topReasons = [
-  { num: '01', title: 'Proven Track Record', desc: '500+ projects delivered across startups and enterprises. 99.9% on-time delivery. Average client satisfaction: 4.9/5 stars on Clutch.' },
-  { num: '02', title: 'Senior Engineering Team', desc: 'Average 8+ years of professional experience. Continuous learning, certifications, and expertise in latest technologies and best practices.' },
-  { num: '03', title: 'Transparent & Agile', desc: 'Fixed-price quotes with no hidden fees. 2-week sprints, daily standups, weekly demos. Full ownership of your project.' },
-  { num: '04', title: 'Cost Advantage', desc: '25-40% lower than Silicon Valley rates without compromising quality. Proven by Clutch 4.9★ rating and case studies.' },
-  { num: '05', title: '24/7 Support', desc: 'Round-the-clock support across time zones. Dedicated team, rapid response to issues, proactive monitoring and optimization.' },
-  { num: '06', title: 'Startup-Friendly', desc: 'Flexible engagement models. Equity partnerships available. We grow with your business. Success-oriented approach.' },
-];
-
-function generateFAQs(cityName: string): Array<{ q: string; a: string }> {
-  return [
-    { q: `How much does custom software development cost in ${cityName}?`, a: `Costs vary based on project complexity and scope. Small projects: $20K-$50K. Medium projects: $50K-$150K. Enterprise solutions: $150K+. We provide fixed-price quotes with detailed breakdowns. Contact us for a free consultation and estimate.` },
-    { q: `How long does it take to build a mobile app or web application?`, a: `MVP (Minimum Viable Product): 8-12 weeks. Full-featured application: 4-6 months. Enterprise systems: 6-12 months. We use 2-week sprints so you see progress continuously with weekly demos.` },
-    { q: `Do you offer staff augmentation and dedicated development teams?`, a: `Yes! Hire dedicated developers, designers, or entire teams. Senior engineers, full benefits, seamless integration with your existing team. Flexible scaling up or down based on needs.` },
-    { q: `What is your software development process and methodology?`, a: `Discovery → Design → Development (2-week sprints) → QA → Launch → Support. Daily standups, weekly demos, code reviews, automated testing. We follow agile principles with full transparency.` },
-    { q: `Do you provide post-launch support and maintenance?`, a: `Absolutely. 24/7 support, monitoring, bug fixes, performance optimization. Optional retainer packages for ongoing feature development. SLAs and uptime guarantees available.` },
-    { q: `Can you help modernize legacy systems and technical debt?`, a: `Yes. We audit, refactor, and migrate old systems to modern stacks like Next.js, React, Node.js, Python. Zero downtime migration guaranteed. Updated security and performance.` },
-    { q: `What technologies and frameworks do you specialize in?`, a: `Frontend: React, Next.js, TypeScript, Tailwind. Backend: Node.js, Python, Go, Java. Mobile: React Native, Flutter, Swift, Kotlin. Cloud: AWS, GCP, Azure. Databases: PostgreSQL, MongoDB, DynamoDB.` },
-    { q: `How do you ensure security and data privacy?`, a: `ISO 27001 certified. HIPAA-compliant for healthcare. SOC II Type II. We implement industry best practices: encryption, secure authentication, regular security audits, compliance standards.` },
-  ];
+function Reveal({ children, className, delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.12 }}
+      transition={{ duration: 0.55, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
 }
 
+function Divider() {
+  return (
+    <div aria-hidden="true" style={{ height: 1, background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.06) 50%, transparent)', maxWidth: '80%', margin: '0 auto' }} />
+  );
+}
+
+/* ─── static data ───────────────────────────────────────────────────────── */
+
+const services = [
+  { name: 'Mobile App Development', slug: 'mobile-app-development', icon: '📱', desc: 'Native iOS & Android apps, React Native, Flutter — full-cycle from concept to App Store launch.' },
+  { name: 'Web Development', slug: 'web-development', icon: '🌐', desc: 'React, Next.js, Node.js web platforms — responsive, fast, and SEO-optimized.' },
+  { name: 'AI & Machine Learning', slug: 'ai-ml', icon: '🧠', desc: 'ChatGPT integration, LLM APIs, ML models, AI-powered automation and analytics.' },
+  { name: 'Cloud & DevOps', slug: 'cloud-architecture', icon: '☁️', desc: 'AWS, GCP, Azure. Docker, Kubernetes, CI/CD pipelines, infrastructure as code.' },
+  { name: 'SaaS Development', slug: 'saas-development', icon: '🚀', desc: 'Multi-tenant architecture, subscription billing, analytics dashboards and SSO.' },
+  { name: 'Blockchain & Web3', slug: 'blockchain', icon: '⛓️', desc: 'Smart contracts, crypto wallets, NFT platforms, DeFi solutions and architecture.' },
+];
+
 function getRelatedCities(city: CityData): Array<{ name: string; slug: string }> {
-  const nearby = city.nearbyLocations || [];
-  return nearby.map(slug => {
+  return (city.nearbyLocations || []).map(slug => {
     const c = cities.find(x => x.slug === slug);
     return { name: c?.name || slug, slug };
   });
 }
 
+/* ─── sub-components ────────────────────────────────────────────────────── */
+
 function Accordion({ items }: { items: Array<{ q: string; a: string }> }) {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-      {items.map((item, i) => (
-        <div key={i} style={{ borderRadius: 16, border: '1px solid rgba(255,255,255,0.06)', overflow: 'hidden' }}>
-          <button onClick={() => setOpen(open === i ? null : i)} style={{ width: '100%', padding: '20px 24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', border: 'none', background: 'transparent', cursor: 'pointer', color: '#ffffff', fontWeight: 600, fontSize: 15 }}>
-            {item.q}
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2" style={{ transition: 'transform 0.3s', transform: open === i ? 'rotate(180deg)' : '' }}><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </button>
-          {open === i && <div style={{ padding: '0 24px 20px', color: 'rgba(255,255,255,0.6)', lineHeight: 1.8, fontSize: 14 }}>{item.a}</div>}
-        </div>
-      ))}
+    <div className="flex flex-col gap-3">
+      {items.map((item, i) => {
+        const isOpen = open === i;
+        return (
+          <div key={i} className="rounded-2xl overflow-hidden transition-all duration-300"
+            style={{ border: `1px solid ${isOpen ? 'rgba(34,197,94,0.2)' : 'rgba(255,255,255,0.06)'}`, background: isOpen ? 'rgba(34,197,94,0.03)' : 'rgba(255,255,255,0.015)' }}>
+            <button onClick={() => setOpen(isOpen ? null : i)} className="w-full text-left flex items-center justify-between gap-4 px-6 py-5 cursor-pointer">
+              <span className="text-[15px] font-semibold text-white leading-snug">{item.q}</span>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2" className="shrink-0 transition-transform duration-300" style={{ transform: isOpen ? 'rotate(180deg)' : '' }}>
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            <div className="overflow-hidden transition-all duration-300" style={{ maxHeight: isOpen ? 600 : 0, opacity: isOpen ? 1 : 0 }}>
+              <div className="px-6 pb-5 text-sm text-white/60 leading-[1.8]">{item.a}</div>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 }
 
-function MarqueeStyles() {
-  return (
-    <style>{`
-      .loc-hero-grid { display: grid; grid-template-columns: 1fr 420px; gap: 60px; align-items: center; }
-      .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
-      .reveal.visible { opacity: 1; transform: none; }
-      .reveal-d1 { transition-delay: 0.1s; }
-      .reveal-d2 { transition-delay: 0.2s; }
-      .reveal-d3 { transition-delay: 0.3s; }
-      .reveal-d4 { transition-delay: 0.4s; }
-      @media (max-width: 900px) { .loc-hero-grid { grid-template-columns: 1fr !important; gap: 40px !important; } }
-      @media (max-width: 600px) { .loc-stats-row { grid-template-columns: repeat(2, 1fr) !important; } }
+function LeadForm({ cityName }: { cityName: string }) {
+  const [form, setForm] = useState({ name: '', email: '', phone: '', project: '' });
+  const [loading, setLoading] = useState(false);
+  const [done, setDone] = useState(false);
 
-      /* Company card hover */
-      .company-card { transition: all 0.3s ease; }
-      .company-card:hover { border-color: rgba(34, 197, 94, 0.2); background-color: rgba(34, 197, 94, 0.04); }
+  const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+    setForm(f => ({ ...f, [e.target.name]: e.target.value }));
 
-      /* Service card hover */
-      .service-card { transition: all 0.3s ease; }
-      .service-card:hover { border-color: rgba(34, 197, 94, 0.25); background-color: rgba(34, 197, 94, 0.04); transform: translateY(-4px); }
-
-      /* Industry card hover */
-      .industry-card { transition: all 0.3s ease; }
-      .industry-card:hover { border-color: rgba(34, 197, 94, 0.25); background-color: rgba(34, 197, 94, 0.04); }
-
-      /* Button hover */
-      .form-submit-btn { transition: all 0.3s ease; }
-      .form-submit-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(34, 197, 94, 0.3); }
-    `}</style>
-  );
-}
-
-function LeadCaptureForm({ cityName }: { cityName: string }) {
-  const [formData, setFormData] = useState({ name: '', email: '', phone: '', project: '' });
-  const [submitted, setSubmitted] = useState(false);
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-  const handleSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (formData.name && formData.email && formData.phone && formData.project) {
-      setSubmitted(true);
-      setTimeout(() => { setFormData({ name: '', email: '', phone: '', project: '' }); setSubmitted(false); }, 3000);
-    }
+    if (loading) return;
+    setLoading(true);
+    try {
+      const body = new FormData();
+      body.append('access_key', '9646b6a0-81d5-459f-bc00-6656c77bbcae');
+      body.append('name', form.name);
+      body.append('email', form.email);
+      body.append('phone', form.phone);
+      body.append('message', `[Location: ${cityName}] ${form.project}`);
+      const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body });
+      if (res.ok) {
+        setDone(true);
+        setForm({ name: '', email: '', phone: '', project: '' });
+        setTimeout(() => setDone(false), 4000);
+      }
+    } catch { /* silently fail */ } finally { setLoading(false); }
   };
-  const inputStyle = { padding: '12px 16px', borderRadius: 12, border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(255,255,255,0.05)', color: '#ffffff', fontSize: 14, fontFamily: 'inherit', width: '100%', boxSizing: 'border-box' as const };
+
+  const inputCls = 'w-full rounded-xl border border-white/10 bg-[#0a0a0a] px-4 py-3.5 text-[15px] text-white placeholder:text-white/25 outline-none transition-all duration-200 focus:border-green-500/50 focus:shadow-[0_0_0_3px_rgba(34,197,94,0.1)]';
+
   return (
-    <div style={{ padding: '40px 32px', borderRadius: 24, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.015)' }}>
-      <h3 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', margin: '0 0 8px' }}>Free Project Estimate</h3>
-      <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.5)', margin: '0 0 24px' }}>Get a Quote in 24 Hours</p>
-      {submitted ? (
-        <div style={{ padding: '20px', borderRadius: 12, background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.2)', textAlign: 'center' }}>
-          <div style={{ fontSize: 28, marginBottom: 12 }}>✓</div>
-          <p style={{ fontSize: 14, color: '#22c55e', fontWeight: 600, margin: 0 }}>Thank you! We'll contact you within 24 hours.</p>
+    <div className="rounded-3xl border border-white/[0.06] bg-white/[0.02] p-8 md:p-9 backdrop-blur-sm">
+      <div className="flex items-center gap-2.5 mb-5">
+        <div className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)] animate-pulse" />
+        <span className="text-[11px] font-bold text-green-500 uppercase tracking-[0.12em]">Available Now</span>
+      </div>
+      <h3 className="text-xl font-bold text-white mb-1">Get a Free Quote</h3>
+      <p className="text-xs text-white/40 mb-7">Response within 24 hours · NDA on Day 1</p>
+
+      {done ? (
+        <div className="rounded-xl bg-green-500/8 border border-green-500/20 py-8 px-6 text-center">
+          <div className="w-14 h-14 rounded-full bg-green-500/10 border-2 border-green-500 flex items-center justify-center text-green-500 text-2xl mx-auto mb-4">✓</div>
+          <p className="text-base font-bold text-white mb-1">Message Sent!</p>
+          <p className="text-sm text-white/50">Our team will respond within 4 business hours.</p>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-          <input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleChange} required style={inputStyle} />
-          <input type="email" name="email" placeholder="Work Email" value={formData.email} onChange={handleChange} required style={inputStyle} />
-          <input type="tel" name="phone" placeholder="Phone Number" value={formData.phone} onChange={handleChange} required style={inputStyle} />
-          <textarea name="project" placeholder="Tell us about your project..." value={formData.project} onChange={handleChange} required style={{ ...inputStyle, minHeight: 100, resize: 'none' }} />
-          <button type="submit" className="form-submit-btn" style={{ padding: '14px 24px', borderRadius: 12, background: '#22c55e', color: '#000', border: 'none', fontWeight: 700, cursor: 'pointer', fontSize: 14, transition: 'all 0.3s' }}>
-            Get Free Quote
+        <form onSubmit={onSubmit} className="flex flex-col gap-4">
+          <div>
+            <label className="block text-[11px] font-semibold text-white/40 mb-2 uppercase tracking-wider">Name *</label>
+            <input type="text" name="name" placeholder="Your name" value={form.name} onChange={onChange} required className={inputCls} />
+          </div>
+          <div>
+            <label className="block text-[11px] font-semibold text-white/40 mb-2 uppercase tracking-wider">Email *</label>
+            <input type="email" name="email" placeholder="you@company.com" value={form.email} onChange={onChange} required className={inputCls} />
+          </div>
+          <div>
+            <label className="block text-[11px] font-semibold text-white/40 mb-2 uppercase tracking-wider">Phone</label>
+            <input type="tel" name="phone" placeholder="+1 (555) 000-0000" value={form.phone} onChange={onChange} className={inputCls} />
+          </div>
+          <div>
+            <label className="block text-[11px] font-semibold text-white/40 mb-2 uppercase tracking-wider">Project Details *</label>
+            <textarea name="project" placeholder="Tell us about your project..." value={form.project} onChange={onChange} required className={`${inputCls} min-h-[100px] resize-none`} />
+          </div>
+          <button type="submit" disabled={loading}
+            className="w-full h-[52px] rounded-full font-bold text-[15px] flex items-center justify-center gap-2 cursor-pointer transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_40px_rgba(34,197,94,0.35)] disabled:opacity-60 disabled:cursor-not-allowed"
+            style={{ background: 'linear-gradient(135deg, #22c55e, #4ade80)', color: '#fff' }}
+          >
+            {loading ? 'Sending...' : 'Get Free Quote'}
+            {!loading && <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>}
           </button>
         </form>
       )}
-      <p style={{ fontSize: 11, color: 'rgba(255,255,255,0.3)', marginTop: 14 }}>Your data is protected • NDA available</p>
+
+      <div className="flex items-center gap-6 mt-6 pt-5 border-t border-white/[0.04] flex-wrap">
+        {['Fixed-Price', 'NDA Signed', '8-Week MVP'].map(item => (
+          <div key={item} className="flex items-center gap-2">
+            <div className="w-4 h-4 rounded-full bg-green-500/15 flex items-center justify-center">
+              <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg>
+            </div>
+            <span className="text-[11px] text-white/40 font-medium">{item}</span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
 
-export default function PageClient({ city }: { city: CityData }) {
-  const heroRef = useRef<HTMLElement>(null);
-  const servicesRef = useReveal() as React.RefObject<HTMLElement>;
-  const industriesRef = useReveal() as React.RefObject<HTMLElement>;
-  const whyRef = useReveal() as React.RefObject<HTMLElement>;
-  const portfolioRef = useReveal() as React.RefObject<HTMLElement>;
-  const processRef = useReveal() as React.RefObject<HTMLElement>;
-  const statsRef = useReveal() as React.RefObject<HTMLElement>;
-  const testimonialsRef = useReveal() as React.RefObject<HTMLElement>;
-  const whyUsRef = useReveal() as React.RefObject<HTMLElement>;
-  const faqRef = useReveal() as React.RefObject<HTMLElement>;
-  const ctaRef = useReveal() as React.RefObject<HTMLElement>;
+function ServicesCarousel() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const x = useMotionValue(0);
+  const springX = useSpring(x, { stiffness: 300, damping: 40 });
+  const [activeIdx, setActiveIdx] = useState(0);
+  const CARD_W = 360;
+  const GAP = 20;
+  const totalCards = services.length;
 
-  useEffect(() => {
-    heroRef.current?.querySelectorAll('.reveal').forEach(n => setTimeout(() => n.classList.add('visible'), 100));
-  }, []);
+  const scrollTo = (idx: number) => {
+    const clamped = Math.max(0, Math.min(idx, totalCards - 1));
+    setActiveIdx(clamped);
+    x.set(-clamped * (CARD_W + GAP));
+  };
 
+  return (
+    <div className="relative">
+      <div aria-hidden="true" className="absolute top-0 left-0 w-16 md:w-24 h-full z-10 pointer-events-none" style={{ background: 'linear-gradient(to right, #000000, transparent)' }} />
+      <div aria-hidden="true" className="absolute top-0 right-0 w-16 md:w-24 h-full z-10 pointer-events-none" style={{ background: 'linear-gradient(to left, #000000, transparent)' }} />
+
+      <div ref={containerRef} className="overflow-hidden px-6 md:px-[60px] cursor-grab active:cursor-grabbing">
+        <motion.div className="flex gap-5" style={{ x: springX }} drag="x"
+          dragConstraints={{ left: -(totalCards - 1) * (CARD_W + GAP), right: 0 }} dragElastic={0.1}
+          onDragEnd={(_, info) => {
+            const threshold = CARD_W / 3;
+            if (info.offset.x < -threshold) scrollTo(activeIdx + 1);
+            else if (info.offset.x > threshold) scrollTo(activeIdx - 1);
+            else scrollTo(activeIdx);
+          }}
+        >
+          {services.map((svc) => (
+            <Link key={svc.slug} href={`/services/${svc.slug}`} draggable={false}
+              className="group flex flex-col shrink-0 rounded-3xl border border-white/[0.06] bg-[#0a0a0a] no-underline hover:border-green-500/20 hover:bg-green-500/[0.02] transition-all duration-300"
+              style={{ width: CARD_W, padding: '36px 32px' }}
+            >
+              <div className="w-14 h-14 rounded-2xl bg-green-500/8 border border-green-500/15 flex items-center justify-center text-2xl mb-6">{svc.icon}</div>
+              <h3 className="text-lg font-bold text-white mb-3 tracking-[-0.01em]">{svc.name}</h3>
+              <p className="text-sm text-white/50 leading-[1.75] flex-1">{svc.desc}</p>
+              <div className="flex items-center gap-1.5 text-green-500 text-[13px] font-semibold mt-6 group-hover:gap-3 transition-all">
+                Learn more
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+              </div>
+            </Link>
+          ))}
+        </motion.div>
+      </div>
+
+      <div className="flex items-center justify-center gap-6 mt-10">
+        <button onClick={() => scrollTo(activeIdx - 1)} disabled={activeIdx === 0} aria-label="Previous"
+          className="w-11 h-11 rounded-full border border-white/10 flex items-center justify-center cursor-pointer transition-all hover:border-green-500/30 hover:bg-green-500/5 disabled:opacity-25 disabled:cursor-not-allowed">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><path d="M19 12H5M12 19l-7-7 7-7" /></svg>
+        </button>
+        <div className="flex gap-2">
+          {services.map((_, i) => (
+            <button key={i} onClick={() => scrollTo(i)} aria-label={`Slide ${i + 1}`} className="cursor-pointer transition-all duration-300"
+              style={{ width: activeIdx === i ? 28 : 8, height: 8, borderRadius: 100, background: activeIdx === i ? '#22c55e' : 'rgba(255,255,255,0.12)' }} />
+          ))}
+        </div>
+        <button onClick={() => scrollTo(activeIdx + 1)} disabled={activeIdx === totalCards - 1} aria-label="Next"
+          className="w-11 h-11 rounded-full border border-white/10 flex items-center justify-center cursor-pointer transition-all hover:border-green-500/30 hover:bg-green-500/5 disabled:opacity-25 disabled:cursor-not-allowed">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function CityGuide({ city }: { city: CityData }) {
+  const c = city.name;
+  const industries = city.localIndustries?.join(', ') || 'FinTech, Healthcare, E-Commerce, SaaS';
+
+  const h3Style: React.CSSProperties = { fontSize: 'clamp(20px, 3vw, 28px)', fontWeight: 600, color: '#fff', marginBottom: 16, letterSpacing: '-0.02em', lineHeight: 1.2 };
+  const pStyle: React.CSSProperties = { fontSize: 15, color: 'rgba(255,255,255,0.6)', lineHeight: 1.85, margin: 0 };
+  const tagStyle: React.CSSProperties = { fontSize: 11, fontWeight: 700, color: '#22c55e', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 12, display: 'flex', alignItems: 'center', gap: 8 };
+
+  return (
+    <section id="guide" className="section-padding" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+      <style>{`
+        .guide-row { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 6vw, 80px); align-items: center; }
+        .guide-row--reverse { direction: rtl; }
+        .guide-row--reverse > * { direction: ltr; }
+        @media (max-width: 768px) {
+          .guide-row, .guide-row--reverse { grid-template-columns: 1fr; direction: ltr; }
+        }
+      `}</style>
+
+      <div className="cb-container">
+        <Reveal>
+          <div style={{ textAlign: 'center', marginBottom: 'clamp(48px, 7vw, 80px)' }}>
+            <div className="section-tag">City Guide</div>
+            <h2 className="section-heading">
+              Complete Guide to Software<br />Development in {c}
+            </h2>
+            <p className="section-subtext" style={{ margin: '0 auto' }}>
+              Everything {c} businesses need to know — from costs and timelines to choosing the right development partner.
+            </p>
+          </div>
+        </Reveal>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(48px, 8vw, 80px)' }}>
+
+          {/* ── Row 1: Why It Matters (text LEFT, visual RIGHT) ── */}
+          <Reveal>
+            <div className="guide-row">
+              <article>
+                <div style={tagStyle}>
+                  <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#22c55e' }} />
+                  Why It Matters
+                </div>
+                <h3 style={h3Style}>Why Software Development Matters for {c} Businesses</h3>
+                <p style={{ ...pStyle, marginBottom: 16 }}>
+                  {c} is home to a thriving ecosystem across {industries}. Companies that invest in custom software gain 30-40% operational cost reductions and 3x faster time-to-market. Off-the-shelf solutions rarely fit the unique compliance and growth needs of {c} businesses.
+                </p>
+                <p style={pStyle}>
+                  Whether you&apos;re a startup building your first MVP, a scaleup automating operations, or an enterprise modernizing legacy systems — custom software gives you full control over your technology, user experience, and IP.
+                </p>
+              </article>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+                {[
+                  { val: '30-40%', label: 'Cost Reduction' },
+                  { val: '3x', label: 'Faster Launch' },
+                  { val: '99.9%', label: 'Uptime SLA' },
+                  { val: '100%', label: 'IP Ownership' },
+                ].map(s => (
+                  <div key={s.label} style={{ padding: 24, borderRadius: 16, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.02)', textAlign: 'center' }}>
+                    <div style={{ fontSize: 'clamp(1.4rem, 2.5vw, 2rem)', fontWeight: 700, color: '#22c55e', lineHeight: 1 }}>{s.val}</div>
+                    <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.4)', marginTop: 8, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.06em' }}>{s.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+
+          {/* ── Row 2: Cost (visual LEFT, text RIGHT) ── */}
+          <Reveal>
+            <div className="guide-row guide-row--reverse">
+              <article>
+                <div style={tagStyle}>
+                  <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#22c55e' }} />
+                  Pricing
+                </div>
+                <h3 style={h3Style}>How Much Does Software Development Cost in {c}?</h3>
+                <p style={{ ...pStyle, marginBottom: 20 }}>
+                  Costs depend on complexity, team size, and stack. Codazz offers fixed-price quotes — 25-40% lower than local {c} agencies through our global delivery model.
+                </p>
+              </article>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                {[
+                  { tier: 'MVP / Prototype', range: '$25K – $60K', time: '8–12 weeks', desc: 'Core features, single platform, market validation', color: 'rgba(34,197,94,0.15)' },
+                  { tier: 'Mid-Market App', range: '$60K – $200K', time: '3–6 months', desc: 'Multi-platform, integrations, advanced UI/UX', color: 'rgba(34,197,94,0.1)' },
+                  { tier: 'Enterprise Platform', range: '$200K – $500K+', time: '6–12 months', desc: 'Scalable architecture, compliance, multi-tenant', color: 'rgba(34,197,94,0.06)' },
+                ].map(item => (
+                  <div key={item.tier} style={{ display: 'flex', gap: 16, padding: '20px 24px', borderRadius: 16, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.02)', alignItems: 'flex-start' }}>
+                    <div style={{ width: 48, height: 48, borderRadius: 12, background: item.color, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, fontSize: 18 }}>💰</div>
+                    <div style={{ flex: 1 }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 8, flexWrap: 'wrap' }}>
+                        <h4 style={{ fontSize: 15, fontWeight: 600, color: '#fff', margin: 0 }}>{item.tier}</h4>
+                        <span style={{ fontSize: 13, fontWeight: 700, color: '#22c55e' }}>{item.range}</span>
+                      </div>
+                      <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.45)', margin: '6px 0 0', lineHeight: 1.6 }}>{item.desc} · ⏱ {item.time}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+
+          {/* ── Row 3: How to Choose (text LEFT, checklist RIGHT) ── */}
+          <Reveal>
+            <div className="guide-row">
+              <article>
+                <div style={tagStyle}>
+                  <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#22c55e' }} />
+                  Selection Guide
+                </div>
+                <h3 style={h3Style}>How to Choose a Software Development Company in {c}</h3>
+                <p style={pStyle}>
+                  Choosing the right partner is critical. Evaluate these six factors to find a development company that delivers results — not just promises.
+                </p>
+              </article>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                {[
+                  { title: 'Proven Portfolio', desc: `${c}-specific references with measurable results.` },
+                  { title: 'Senior Engineers', desc: '8+ years avg experience. React, Node, Python, AWS.' },
+                  { title: 'Fixed-Price Quotes', desc: 'No hourly surprises. Clear scope and milestones.' },
+                  { title: 'Post-Launch SLAs', desc: 'Maintenance, monitoring, and uptime guarantees.' },
+                  { title: 'Security Certs', desc: 'SOC 2, ISO 27001, HIPAA, PCI-DSS compliant.' },
+                  { title: 'Your Timezone', desc: 'Dedicated PM, daily standups, sprint demos.' },
+                ].map((item, i) => (
+                  <div key={item.title} style={{ display: 'flex', alignItems: 'center', gap: 14, padding: '14px 18px', borderRadius: 12, border: '1px solid rgba(255,255,255,0.04)', background: i % 2 === 0 ? 'rgba(255,255,255,0.015)' : 'transparent', transition: 'background 0.2s' }}>
+                    <div style={{ width: 28, height: 28, borderRadius: 8, background: 'rgba(34,197,94,0.1)', border: '1px solid rgba(34,197,94,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="3"><path d="M20 6L9 17l-5-5" /></svg>
+                    </div>
+                    <div style={{ flex: 1 }}>
+                      <span style={{ fontSize: 14, fontWeight: 600, color: '#fff' }}>{item.title}</span>
+                      <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)', marginLeft: 8 }}>{item.desc}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+
+          {/* ── Row 4: Industries (visual LEFT, text RIGHT) ── */}
+          <Reveal>
+            <div className="guide-row guide-row--reverse">
+              <article>
+                <div style={tagStyle}>
+                  <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#22c55e' }} />
+                  Industries
+                </div>
+                <h3 style={h3Style}>Industries That Benefit from Custom Software in {c}</h3>
+                <p style={{ ...pStyle, marginBottom: 16 }}>
+                  {c}&apos;s economy is driven by key industries that demand specialized software. From HIPAA-compliant healthcare to PCI-DSS payment systems — off-the-shelf software can&apos;t match purpose-built solutions.
+                </p>
+                <p style={pStyle}>Codazz has deep domain expertise across all verticals with 500+ projects delivered.</p>
+              </article>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
+                {(city.localIndustries || ['FinTech', 'Healthcare', 'E-Commerce', 'SaaS', 'Logistics', 'Real Estate']).map(ind => (
+                  <div key={ind} style={{ padding: '16px 18px', borderRadius: 12, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.02)', display: 'flex', alignItems: 'center', gap: 10 }}>
+                    <div style={{ width: 8, height: 8, borderRadius: '50%', background: '#22c55e', flexShrink: 0 }} />
+                    <span style={{ fontSize: 14, fontWeight: 600, color: 'rgba(255,255,255,0.7)' }}>{ind}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+
+          {/* ── Row 5: Tech Stack (text LEFT, grid RIGHT) ── */}
+          <Reveal>
+            <div className="guide-row">
+              <article>
+                <div style={tagStyle}>
+                  <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#22c55e' }} />
+                  Tech Stack
+                </div>
+                <h3 style={h3Style}>Technologies We Use for {c} Projects</h3>
+                <p style={pStyle}>
+                  We select the optimal stack for each project. Our {c} clients benefit from modern, battle-tested technologies across every layer of the application.
+                </p>
+              </article>
+
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
+                {[
+                  { cat: 'Frontend', techs: 'React, Next.js, Vue, Angular' },
+                  { cat: 'Mobile', techs: 'React Native, Flutter, Swift' },
+                  { cat: 'Backend', techs: 'Node.js, Python, Go, Java' },
+                  { cat: 'Cloud', techs: 'AWS, GCP, Azure, Vercel' },
+                  { cat: 'Database', techs: 'PostgreSQL, MongoDB, Redis' },
+                  { cat: 'DevOps', techs: 'Docker, K8s, Terraform, CI/CD' },
+                ].map(item => (
+                  <div key={item.cat} style={{ padding: '14px 16px', borderRadius: 12, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.02)' }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: '#22c55e', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: 4 }}>{item.cat}</div>
+                    <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.45)', lineHeight: 1.5, margin: 0 }}>{item.techs}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── main page ─────────────────────────────────────────────────────────── */
+
+interface PageClientProps {
+  city: CityData;
+  blogLinks?: { title: string; href: string }[];
+  lastUpdated?: string;
+}
+
+export default function PageClient({ city, blogLinks = [], lastUpdated }: PageClientProps) {
   const relatedCities = getRelatedCities(city);
-  const faqs = (city.faqs && city.faqs.length > 0) ? city.faqs : generateFAQs(city.name);
+  const portfolio = city.portfolio?.length ? city.portfolio : [];
+  const faqs = city.faqs;
 
   return (
     <>
-      <MarqueeStyles />
       <Navbar />
-      <main style={{ background: '#000000', color: '#ffffff', paddingTop: 80 }}>
+      <style>{`
+        .loc-page .section-padding { padding: 80px 0; }
+        .loc-page .section-padding-sm { padding: 40px 0; }
+        @media (min-width: 769px) {
+          .loc-page .section-padding { padding: 100px 0; }
+        }
+        @media (max-width: 640px) {
+          .loc-page .section-padding { padding: 48px 0; }
+        }
+      `}</style>
+      <main id="main-content" className="loc-page bg-black text-white pt-20">
 
-        {/* HERO */}
-        <section ref={heroRef} style={{ position: 'relative', overflow: 'hidden', minHeight: '90vh', display: 'flex', alignItems: 'center', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
+        {/* ━━━ HERO ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+        <section id="hero" className="relative overflow-hidden min-h-[92vh] flex items-center">
           <HeroBackground variant="center" />
-          <div style={{ position: 'relative', zIndex: 1, padding: 'clamp(60px, 10vw, 120px) 0', maxWidth: 1280, margin: '0 auto', width: '100%', paddingLeft: 'max(2vw, 24px)', paddingRight: 'max(2vw, 24px)' }}>
-            <div className="loc-hero-grid">
+          <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 md:px-[60px] py-24 lg:py-32">
+            <div className="grid grid-cols-1 lg:grid-cols-[1fr_440px] gap-14 lg:gap-20 items-center">
               <div>
-                <nav className="reveal" style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 28, flexWrap: 'wrap', fontSize: 13 }}>
-                  <Link href="/" style={{ color: 'rgba(255,255,255,0.4)', textDecoration: 'none' }}>Home</Link>
-                  <span style={{ color: 'rgba(255,255,255,0.2)' }}>/</span>
-                  <Link href="/locations" style={{ color: 'rgba(255,255,255,0.4)', textDecoration: 'none' }}>Locations</Link>
-                  <span style={{ color: 'rgba(255,255,255,0.2)' }}>/</span>
-                  <span style={{ color: 'rgba(255,255,255,0.7)' }}>{city.name}</span>
-                </nav>
+                <motion.nav initial="hidden" animate="visible" variants={fadeUp} custom={0} className="flex items-center gap-2 mb-7 text-[13px] flex-wrap">
+                  <Link href="/" className="text-white/40 hover:text-white/60 transition no-underline">Home</Link>
+                  <span className="text-white/15">/</span>
+                  <Link href="/locations" className="text-white/40 hover:text-white/60 transition no-underline">Locations</Link>
+                  <span className="text-white/15">/</span>
+                  <span className="text-white/70 font-medium">{city.name}</span>
+                </motion.nav>
 
-                <h1 className="reveal reveal-d1" style={{ fontSize: 'clamp(2.4rem, 5vw, 4.8rem)', fontWeight: 500, color: '#ffffff', letterSpacing: '-0.04em', lineHeight: 1.05, margin: '0 0 24px' }}>
-                  Software Development Company in <span style={{ color: '#22c55e' }}>{city.name}</span>
-                </h1>
+                <motion.div initial="hidden" animate="visible" variants={fadeUp} custom={0.5}
+                  className="inline-flex items-center gap-2.5 mb-6 px-5 py-2.5 rounded-full"
+                  style={{ background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.18)' }}>
+                  <div className="w-[7px] h-[7px] rounded-full bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.6)] animate-pulse" />
+                  <span className="text-[11px] font-bold text-white/85 uppercase tracking-[0.1em]">Trusted by 500+ companies worldwide</span>
+                </motion.div>
 
-                <p className="reveal reveal-d2" style={{ fontSize: 17, color: 'rgba(255,255,255,0.7)', lineHeight: 1.75, maxWidth: 580, margin: '0 0 36px' }}>
+                <motion.h1 initial="hidden" animate="visible" variants={fadeUp} custom={1}
+                  className="text-[clamp(2.6rem,5.5vw,4.8rem)] font-medium tracking-[-0.04em] leading-[1.05] mb-6">
+                  Software Development<br className="hidden md:block" />
+                  Company in <span className="text-green-500">{city.name}</span>
+                </motion.h1>
+
+                <motion.p initial="hidden" animate="visible" variants={fadeUp} custom={2}
+                  className="text-[17px] text-white/65 leading-[1.8] max-w-[560px] mb-10">
                   {city.heroContext}
-                </p>
+                </motion.p>
 
-                <div className="reveal reveal-d3" style={{ display: 'flex', gap: 14, flexWrap: 'wrap', marginBottom: 48 }}>
-                  <Link href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, height: 56, padding: '0 36px', borderRadius: 100, background: '#22c55e', color: '#000', fontSize: 14, fontWeight: 700, textDecoration: 'none' }}>
+                <motion.div initial="hidden" animate="visible" variants={fadeUp} custom={3} className="flex flex-wrap gap-3.5 mb-14">
+                  <Link href="/contact" className="btn-pill btn-pill--dark no-underline">
                     Get a Free Quote
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
                   </Link>
-                  <Link href="/case-studies" style={{ display: 'inline-flex', alignItems: 'center', height: 56, padding: '0 36px', borderRadius: 100, border: '1px solid rgba(255,255,255,0.08)', color: '#ffffff', fontSize: 14, fontWeight: 500, textDecoration: 'none' }}>
-                    View Case Studies
+                  <Link href="/case-studies" className="btn-pill btn-pill--outline no-underline">View Case Studies</Link>
+                </motion.div>
+
+                <motion.div initial="hidden" animate="visible" variants={fadeUp} custom={4}
+                  className="grid rounded-2xl border border-white/[0.06] overflow-hidden max-w-[580px]"
+                  style={{ gridTemplateColumns: `repeat(${city.stats.length}, 1fr)` }}>
+                  {city.stats.map((s, i) => (
+                    <div key={s.label} className="py-5 px-4 text-center" style={{ borderRight: i < city.stats.length - 1 ? '1px solid rgba(255,255,255,0.06)' : 'none' }}>
+                      <div className="text-[clamp(1.4rem,2.5vw,1.9rem)] font-bold text-green-500 leading-none">{s.value}</div>
+                      <div className="text-[10px] font-semibold text-white/30 uppercase tracking-[0.08em] mt-2">{s.label}</div>
+                    </div>
+                  ))}
+                </motion.div>
+              </div>
+
+              <motion.div initial="hidden" animate="visible" variants={fadeUp} custom={3}>
+                <LeadForm cityName={city.name} />
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* ━━━ TABLE OF CONTENTS ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+        <nav aria-label="Page sections" style={{ borderTop: '1px solid rgba(255,255,255,0.04)', borderBottom: '1px solid rgba(255,255,255,0.04)', background: 'rgba(255,255,255,0.015)' }}>
+          <div className="cb-container" style={{ display: 'flex', gap: 'clamp(8px, 1.5vw, 16px)', padding: '14px 0', overflowX: 'auto', scrollbarWidth: 'none' }}>
+            {[
+              { label: 'Services', id: 'services' },
+              { label: 'Work', id: 'portfolio' },
+              { label: 'Process', id: 'process' },
+              { label: `Why ${city.name}`, id: 'why-city' },
+              { label: 'Guide', id: 'guide' },
+              { label: 'FAQ', id: 'faq' },
+              { label: 'Contact', id: 'contact' },
+            ].map(item => (
+              <a key={item.id} href={`#${item.id}`} style={{ fontSize: 12, fontWeight: 600, color: 'rgba(255,255,255,0.4)', textDecoration: 'none', whiteSpace: 'nowrap', padding: '6px 14px', borderRadius: 100, border: '1px solid rgba(255,255,255,0.06)', transition: '0.2s' }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = 'rgba(34,197,94,0.3)'; e.currentTarget.style.color = '#22c55e'; }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)'; e.currentTarget.style.color = 'rgba(255,255,255,0.4)'; }}>
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </nav>
+
+        {/* ━━━ TRUST STRIP: Awards + Partners ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+        <AwardsMarquee />
+        <PartnersMarquee />
+
+        {/* ─── PHASE 1: SHOW CAPABILITIES ─────────────────────────────────── */}
+
+        {/* ━━━ SERVICES CAROUSEL ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+        <section id="services" className="section-padding overflow-hidden">
+          <div className="max-w-[1400px] mx-auto px-6 md:px-[60px]">
+            <Reveal>
+              <div className="text-center mb-16">
+                <div className="section-tag">What We Build</div>
+                <h2 className="section-heading">Software Development Services in {city.name}</h2>
+                <p className="section-subtext mx-auto">
+                  {city.servicesIntro || `Full-spectrum development tailored to ${city.name} businesses — from mobile apps to enterprise platforms, AI to cloud infrastructure.`}
+                </p>
+              </div>
+            </Reveal>
+          </div>
+          <ServicesCarousel />
+        </section>
+
+        <ShowcaseMarquee />
+        <Divider />
+
+        {/* ━━━ LATEST WORK ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+        <LatestWork />
+
+        {/* ━━━ OUR WORK SHOWCASE ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+        <OurWorkShowcase
+          items={[
+            { name: 'FinTech Trading Platform', category: 'Mobile App', company: 'FinTech Startup', results: ['2.1B+ Transactions', '50ms Latency', '4.8★ Rating'], techs: ['React Native', 'Node.js', 'AWS'] },
+            { name: 'Telehealth Solution', category: 'Healthcare App', company: 'Healthcare Network', results: ['120+ Clinics', '500K Consultations', 'HIPAA Certified'], techs: ['Swift', 'Kotlin', 'GCP'] },
+            { name: 'E-Commerce Marketplace', category: 'Mobile Platform', company: 'E-Commerce Brand', results: ['85K MAU', '28% Conversion', '$12M GMV'], techs: ['Flutter', 'Go', 'MongoDB'] },
+          ]}
+          title="Our Work"
+          subtitle="Products That Users Actually Love."
+          description="200+ products shipped across fintech, healthcare, e-commerce, and SaaS — built to scale, designed to convert."
+        />
+
+        {/* ━━━ PORTFOLIO (city-specific) ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+        {portfolio.length > 0 && (
+          <section id="portfolio" className="section-padding" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+            <div className="cb-container">
+              <Reveal>
+                <div style={{ marginBottom: 'clamp(40px, 6vw, 80px)' }}>
+                  <div className="section-tag">Our Work in {city.name}</div>
+                  <h2 className="section-heading">Featured Projects & Case Studies</h2>
+                  <p className="section-subtext">Real projects with measurable results for {city.name} businesses.</p>
+                </div>
+              </Reveal>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                {portfolio.map((project, i) => (
+                  <Reveal key={project.name} delay={i * 0.08}>
+                    <div className="card-clean flex flex-col !p-7 h-full">
+                      <div className="flex items-center gap-2.5 mb-5">
+                        <div className="w-2.5 h-2.5 rounded-full bg-green-500" />
+                        <span style={{ fontSize: 11, fontWeight: 700, color: '#22c55e', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Case Study</span>
+                      </div>
+                      <h3 style={{ fontSize: 'clamp(16px, 2vw, 20px)', fontWeight: 600, color: '#fff', marginBottom: 8 }}>{project.name}</h3>
+                      <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)', lineHeight: 1.7, marginBottom: 24, flex: 1 }}>{project.description}</p>
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 24 }}>
+                        {project.techStack.map(t => (
+                          <span key={t} style={{ fontSize: 11, fontWeight: 500, color: 'rgba(255,255,255,0.35)', padding: '4px 10px', borderRadius: 6, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.06)' }}>{t}</span>
+                        ))}
+                      </div>
+                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12, paddingTop: 20, borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+                        {project.metrics.map(m => (
+                          <div key={m.label} style={{ textAlign: 'center' }}>
+                            <div style={{ fontSize: 14, fontWeight: 700, color: '#22c55e' }}>{m.value}</div>
+                            <div style={{ fontSize: 9, color: 'rgba(255,255,255,0.25)', marginTop: 4, textTransform: 'uppercase', fontWeight: 700, letterSpacing: '0.05em' }}>{m.label}</div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
+              <Reveal delay={0.15}>
+                <div style={{ textAlign: 'center', marginTop: 48 }}>
+                  <Link href="/case-studies" className="btn-pill btn-pill--outline no-underline">
+                    View All Case Studies
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
                   </Link>
                 </div>
+              </Reveal>
+            </div>
+          </section>
+        )}
 
-                <div className="reveal reveal-d4 loc-stats-row" style={{ display: 'grid', gridTemplateColumns: `repeat(${city.stats.length}, 1fr)`, borderRadius: 16, border: '1px solid rgba(255,255,255,0.06)', overflow: 'hidden', maxWidth: 560 }}>
-                  {city.stats.map((s, i) => (
-                    <div key={s.label} style={{ padding: '18px 16px', textAlign: 'center', borderRight: i < city.stats.length - 1 ? '1px solid rgba(255,255,255,0.06)' : 'none' }}>
-                      <div style={{ fontSize: 'clamp(1.3rem, 2.5vw, 1.8rem)', fontWeight: 700, color: '#22c55e' }}>{s.value}</div>
-                      <div style={{ fontSize: 10, fontWeight: 600, color: 'rgba(255,255,255,0.3)', textTransform: 'uppercase', marginTop: 4 }}>{s.label}</div>
+        <Divider />
+
+        {/* ─── PHASE 2: BUILD CONFIDENCE ──────────────────────────────────── */}
+
+        {/* ━━━ PROCESS ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+        <ProcessSection />
+        <Divider />
+
+        {/* ━━━ INDUSTRIES ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+        <IndustriesSection />
+
+        {/* ━━━ WHY THIS CITY (city-specific) ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+        <section id="why-city" className="section-padding relative overflow-hidden" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+          <div aria-hidden="true" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] pointer-events-none"
+            style={{ background: 'radial-gradient(at 30% 60%, rgba(34,197,94,0.06) 0%, transparent 60%), radial-gradient(at 70% 30%, rgba(74,222,128,0.04) 0%, transparent 60%)', filter: 'blur(80px)' }} />
+          <div className="relative z-10 cb-container">
+            <Reveal>
+              <div style={{ marginBottom: 'clamp(40px, 6vw, 80px)' }}>
+                <div className="section-tag">Local Advantage</div>
+                <h2 className="section-heading">Why {city.name} Businesses Choose Codazz</h2>
+                <p className="section-subtext">Local market expertise combined with global delivery — we understand {city.name}&apos;s regulatory landscape and growth dynamics.</p>
+              </div>
+            </Reveal>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              {city.whyCity.map((item, i) => (
+                <Reveal key={item.title} delay={i * 0.08}>
+                  <div className="card-clean relative !p-8 h-full">
+                    <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: 'linear-gradient(90deg, #22c55e 0%, transparent 60%)' }} />
+                    <div style={{ display: 'flex', alignItems: 'flex-start', gap: 20 }}>
+                      <div style={{ fontSize: 28, flexShrink: 0, marginTop: 2 }}>{item.icon}</div>
+                      <div>
+                        <h3 style={{ fontSize: 17, fontWeight: 600, color: '#fff', marginBottom: 12 }}>{item.title}</h3>
+                        <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.55)', lineHeight: 1.8, margin: 0 }}>{item.desc}</p>
+                      </div>
                     </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="reveal reveal-d3">
-                <LeadCaptureForm cityName={city.name} />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* TRUSTED BY LEADERS */}
-        <section style={{ padding: 'clamp(60px, 8vw, 100px) 0', borderTop: '1px solid rgba(255,255,255,0.05)', maxWidth: 1280, margin: '0 auto', width: '100%', paddingLeft: 'max(2vw, 24px)', paddingRight: 'max(2vw, 24px)' }}>
-          <div className="reveal" style={{ textAlign: 'center', marginBottom: 50 }}>
-            <p style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.25)', margin: 0 }}>Trusted by Industry Leaders</p>
-          </div>
-          <div style={{ position: 'relative', overflow: 'hidden', maskImage: 'linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%)', WebkitMaskImage: 'linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%)' }}>
-            <div style={{ display: 'flex', gap: 60, justifyContent: 'space-around', flexWrap: 'wrap', alignItems: 'center' }}>
-              {['Google', 'Microsoft', 'Amazon', 'Meta', 'Apple', 'Netflix', 'Shopify', 'Stripe', 'Figma', 'Notion'].map((company, i) => (
-                <div key={company} className={`reveal reveal-d${(i % 4) + 1} company-card`} style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '12px 24px', borderRadius: 14, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', minWidth: 160, justifyContent: 'center', transition: 'all 0.3s' }}>
-                  <div style={{ width: 36, height: 36, borderRadius: 8, background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 16, fontWeight: 800, color: '#22c55e' }}>
-                    {company.charAt(0)}
                   </div>
-                  <span style={{ fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,0.65)', whiteSpace: 'nowrap' }}>{company}</span>
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>
-          <div className="reveal" style={{ textAlign: 'center', marginTop: 50 }}>
-            <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)', margin: 0, lineHeight: 1.6 }}>
-              Trusted by startups, scaleups, and enterprises building next-generation software in {city.name} and globally.
-            </p>
-          </div>
         </section>
 
-        {/* TRUST */}
-        <section style={{ borderTop: '1px solid rgba(255,255,255,0.05)', padding: 'clamp(40px, 6vw, 80px) 0', maxWidth: 1280, margin: '0 auto', width: '100%', paddingLeft: 'max(2vw, 24px)', paddingRight: 'max(2vw, 24px)' }}>
-          <div className="reveal" style={{ textAlign: 'center' }}>
-            <TrustBadges />
-          </div>
-        </section>
+        {/* ━━━ MARKET STATS ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+        <MarketStats />
+        <Divider />
 
-        {/* WHY SOFTWARE DEVELOPMENT */}
-        <section style={{ padding: 'clamp(100px, 12vw, 160px) 0', borderTop: '1px solid rgba(255,255,255,0.05)', maxWidth: 1280, margin: '0 auto', width: '100%', paddingLeft: 'max(2vw, 24px)', paddingRight: 'max(2vw, 24px)' }}>
-          <div className="reveal" style={{ marginBottom: 60 }}>
-            <h2 style={{ fontSize: 'clamp(2.2rem, 4vw, 4rem)', fontWeight: 500, color: '#ffffff', letterSpacing: '-0.04em', margin: '0 0 24px' }}>
-              Unlock Your Business Potential with Expert Software Development in {city.name}
-            </h2>
+        {/* ━━━ WHY CHOOSE US ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+        <WhyChooseUs />
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 500px), 1fr))', gap: 32, marginTop: 40 }}>
-              {/* Problem 1 */}
-              <div style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
-                <div style={{ fontSize: 32, flexShrink: 0 }}>⚡</div>
-                <div>
-                  <h3 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', margin: '0 0 12px' }}>Digital Transformation is No Longer Optional</h3>
-                  <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, margin: 0 }}>
-                    {city.name}'s competitive business landscape demands digital transformation. Companies without modern software solutions fall behind competitors. Custom software development is essential for automating processes, improving efficiency, and scaling your business faster than your competition.
+        {/* ━━━ COMPLIANCE & SECURITY ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+        <ComplianceBadges />
+
+        {/* ─── PHASE 3: SEO CONTENT ──────────────────────────────────────── */}
+
+        {/* ━━━ CITY GUIDE (unique SEO content) ━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+        <CityGuide city={city} />
+
+        {/* ━━━ CITY-SPECIFIC FAQ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+        <section id="faq" className="section-padding" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+          <div className="cb-container">
+            <div className="faq-grid">
+              <Reveal>
+                <div style={{ position: 'sticky', top: 120 }}>
+                  <div className="section-tag">FAQ</div>
+                  <h2 className="section-heading" style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}>
+                    Software Development<br />in {city.name}
+                  </h2>
+                  <p className="section-subtext" style={{ marginBottom: 32 }}>
+                    Common questions about building software products in {city.name}.
                   </p>
+                  <Link href="/contact" className="btn-pill btn-pill--dark no-underline">
+                    Ask Us Anything
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+                  </Link>
                 </div>
-              </div>
-
-              {/* Problem 2 */}
-              <div style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
-                <div style={{ fontSize: 32, flexShrink: 0 }}>💼</div>
-                <div>
-                  <h3 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', margin: '0 0 12px' }}>Off-the-Shelf Software Has Limits</h3>
-                  <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, margin: 0 }}>
-                    Generic software may not fit your unique business requirements. Custom software development gives you full control — tailored features, scalable architecture, and solutions built specifically for your {city.name} market. No compromises, no vendor lock-in.
-                  </p>
-                </div>
-              </div>
-
-              {/* Solution 1 */}
-              <div style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
-                <div style={{ fontSize: 32, flexShrink: 0 }}>🚀</div>
-                <div>
-                  <h3 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', margin: '0 0 12px' }}>Custom Software Accelerates Growth</h3>
-                  <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, margin: 0 }}>
-                    Software development services empower {city.name} businesses to reduce operational costs by 30-40%, increase productivity, and scale operations without proportional cost increases. Our clients report faster time-to-market, improved customer satisfaction, and higher profitability.
-                  </p>
-                </div>
-              </div>
-
-              {/* Solution 2 */}
-              <div style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
-                <div style={{ fontSize: 32, flexShrink: 0 }}>🔒</div>
-                <div>
-                  <h3 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', margin: '0 0 12px' }}>Security & Compliance Built In</h3>
-                  <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, margin: 0 }}>
-                    Custom software development includes security-by-design principles. For {city.name} FinTech, Healthcare, and regulated industries, we ensure compliance with local data protection laws, PCI-DSS, HIPAA, and industry standards from day one.
-                  </p>
-                </div>
-              </div>
+              </Reveal>
+              <Reveal delay={0.1}>
+                <Accordion items={faqs} />
+              </Reveal>
             </div>
           </div>
-
-          <div className="reveal" style={{ background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.2)', borderRadius: 24, padding: '40px', marginTop: 60, marginBottom: 60 }}>
-            <h3 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', margin: '0 0 24px' }}>Who Needs Software Development Services in {city.name}?</h3>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 20 }}>
-              {[
-                { icon: '🚀', title: 'Startups & MVPs', desc: city.name === 'Toronto' ? "Launch your startup in Canada's startup capital. Scale from idea to Series A at MaRS Discovery District pace." : 'Build your first product or scale from idea to Series A funding round' },
-                { icon: '🏢', title: 'Growing SMBs', desc: 'Automate operations, compete with larger players, enter new markets' },
-                { icon: '🔄', title: 'Enterprises', desc: 'Modernize legacy systems, integrate APIs, improve customer experience' },
-                { icon: '💰', title: 'Financial Services', desc: city.name === 'Toronto' ? 'Build OSFI-compliant fintech platforms, trading systems, and payment solutions for Bay Street and beyond' : 'Build fintech platforms, payment systems, trading interfaces on Wall Street' },
-                { icon: '🏥', title: 'Healthcare Orgs', desc: city.name === 'Toronto' ? 'Launch PHIPA-compliant telemedicine and patient management systems serving Ontario Health' : 'Launch telemedicine platforms, patient management, HIPAA-compliant systems' },
-                { icon: '🛒', title: 'E-Commerce', desc: 'Build marketplaces, shopping apps, inventory systems, payment integration' },
-              ].map((item, i) => (
-                <div key={i} style={{ padding: '16px', borderRadius: 14, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
-                  <div style={{ fontSize: 24, marginBottom: 8 }}>{item.icon}</div>
-                  <h4 style={{ fontSize: 14, fontWeight: 700, color: '#ffffff', margin: '0 0 8px' }}>{item.title}</h4>
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.6)', margin: 0, lineHeight: 1.6 }}>{item.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="reveal" style={{ marginBottom: 60 }}>
-            <h3 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', margin: '0 0 24px' }}>What You'll Gain from Professional Software Development</h3>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: 20 }}>
-              {[
-                { value: '30-40%', label: 'Cost Reduction', desc: 'Automated processes, reduced manual work' },
-                { value: '3x Faster', label: 'Time-to-Market', desc: 'Launch new features and products quickly' },
-                { value: '90%+ Uptime', label: 'Business Continuity', desc: 'Reliable systems that keep you running' },
-                { value: '99.9% SLA', label: 'Production Reliability', desc: 'Enterprise-grade uptime guarantees' },
-              ].map((item, i) => (
-                <div key={i} style={{ padding: '24px', borderRadius: 16, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.015)', textAlign: 'center' }}>
-                  <div style={{ fontSize: 'clamp(1.4rem, 2vw, 1.8rem)', fontWeight: 700, color: '#22c55e', marginBottom: 8 }}>{item.value}</div>
-                  <h4 style={{ fontSize: 14, fontWeight: 700, color: '#ffffff', margin: '0 0 6px' }}>{item.label}</h4>
-                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.6)', margin: 0 }}>{item.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="reveal" style={{ padding: '32px', borderRadius: 20, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.015)' }}>
-            <h3 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', margin: '0 0 16px' }}>Why Software Development Matters for Your {city.name} Business</h3>
-            <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, margin: '0 0 16px' }}>
-              {city.name === 'Toronto' ?
-                "Software development is the foundation of competitive advantage in Toronto's thriving tech ecosystem. Whether you're building fintech on King West, scaling AI research into products, launching healthcare solutions for Ontario, or growing your e-commerce empire, custom software gives you the tools to dominate your market, reduce operational costs by 30-40%, improve customer satisfaction, and scale rapidly."
-                :
-                `Software development is an investment in your company's future. Whether you're in FinTech on Wall Street, Healthcare in the Medical District, E-Commerce, or any industry in ${city.name}, custom software gives you competitive advantage, reduces operational cost, improves customer satisfaction, and enables rapid scaling.`
-              }
-            </p>
-            <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, margin: 0 }}>
-              {city.name === 'Toronto' ?
-                "Codazz is trusted by leading Toronto fintech platforms, healthcare systems, AI startups, and enterprises. We bring 500+ projects of experience, deep expertise in OSFI compliance and Ontario Health integration, proven track record with Canadian startups and institutions, and developers who average 8+ years of experience. We understand Toronto's unique business landscape, regulatory environment, and growth velocity. Partner with us to build software that scales with your ambition."
-                :
-                `The right development partner makes all the difference. Codazz brings 500+ projects of experience, proven expertise in ${city.name}'s unique market, and a commitment to delivering working software on time and budget. Our developers average 8+ years of professional experience and understand your industry challenges.`
-              }
-            </p>
-          </div>
         </section>
 
-        {/* SERVICES */}
-        <section ref={servicesRef} style={{ padding: 'clamp(80px, 10vw, 140px) 0', borderTop: '1px solid rgba(255,255,255,0.05)', maxWidth: 1280, margin: '0 auto', width: '100%', paddingLeft: 'max(2vw, 24px)', paddingRight: 'max(2vw, 24px)' }}>
-          <div className="reveal" style={{ textAlign: 'center', marginBottom: 60 }}>
-            <h2 style={{ fontSize: 'clamp(2.2rem, 4vw, 4rem)', fontWeight: 500, color: '#ffffff', letterSpacing: '-0.04em', margin: '0 0 20px' }}>
-              Software Development Services in {city.name}
-            </h2>
-            <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8, maxWidth: 720, margin: '0 auto' }}>
-              Full-spectrum software development tailored to your business. From mobile apps to enterprise platforms, AI solutions to cloud infrastructure — we deliver working software on time.
-            </p>
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))', gap: 28 }}>
-            {services.map((svc, i) => (
-              <Link key={svc.slug} href={`/services/${svc.slug}`}
-                className={`reveal reveal-d${(i % 2) + 1} service-card`}
-                style={{ display: 'flex', flexDirection: 'column', padding: '32px', borderRadius: 20, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.015)', textDecoration: 'none', gap: 16, transition: 'all 0.3s', minHeight: 240 }}>
-                <div style={{ fontSize: 32 }}>{svc.icon}</div>
-                <h3 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', margin: 0, letterSpacing: '-0.01em', lineHeight: 1.3 }}>{svc.name}</h3>
-                <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', margin: 0, flexGrow: 1, lineHeight: 1.7 }}>{svc.desc}</p>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 6, color: '#22c55e', fontSize: 13, fontWeight: 600, marginTop: 'auto' }}>
-                  Learn more
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </section>
+        {/* ─── PHASE 4: CLOSE THE DEAL ───────────────────────────────────── */}
 
-        {/* INDUSTRIES */}
-        <section ref={industriesRef} style={{ padding: 'clamp(80px, 10vw, 140px) 0', borderTop: '1px solid rgba(255,255,255,0.05)', maxWidth: 1280, margin: '0 auto', width: '100%', paddingLeft: 'max(2vw, 24px)', paddingRight: 'max(2vw, 24px)' }}>
-          <div className="reveal" style={{ textAlign: 'center', marginBottom: 60 }}>
-            <h2 style={{ fontSize: 'clamp(2.2rem, 4vw, 4rem)', fontWeight: 500, color: '#ffffff', letterSpacing: '-0.04em', margin: '0 0 20px' }}>
-              Industries We Serve
-            </h2>
-            <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8, maxWidth: 720, margin: '0 auto' }}>
-              Industry expertise across FinTech, Healthcare, E-Commerce, Real Estate, Logistics, EdTech, SaaS, and AI. We understand compliance, user needs, and market dynamics for every vertical.
-            </p>
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))', gap: 24 }}>
-            {Object.entries(industryData).map(([name, data], i) => (
-              <Link key={name} href={`/industries/${name.toLowerCase().replace(/[\s&]+/g, '-')}`}
-                className={`reveal reveal-d${(i % 4) + 1} industry-card`}
-                style={{ display: 'flex', flexDirection: 'column', padding: '32px', borderRadius: 20, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.015)', textDecoration: 'none', gap: 14, transition: 'all 0.3s', minHeight: 280 }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                  <div style={{ fontSize: 28 }}>{data.icon}</div>
-                  <h3 style={{ fontSize: 16, fontWeight: 700, color: '#ffffff', margin: 0 }}>{name}</h3>
-                </div>
-                <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)', margin: 0, fontWeight: 500 }}>{data.desc}</p>
-                <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.65)', margin: 0, flexGrow: 1, lineHeight: 1.7 }}>{data.details}</p>
-                <div style={{ color: '#22c55e', fontSize: 12, fontWeight: 600 }}>Explore solutions →</div>
-              </Link>
-            ))}
-          </div>
-        </section>
+        {/* ━━━ TESTIMONIALS (social proof near the end) ━━━━━━━━━━━━━━━━━━━ */}
+        <TestimonialsSection />
 
-        {/* WHY */}
-        <section ref={whyRef} style={{ padding: 'clamp(80px, 10vw, 140px) 0', borderTop: '1px solid rgba(255,255,255,0.05)', maxWidth: 1280, margin: '0 auto', width: '100%', paddingLeft: 'max(2vw, 24px)', paddingRight: 'max(2vw, 24px)' }}>
-          <div className="reveal" style={{ textAlign: 'center', marginBottom: 60 }}>
-            <h2 style={{ fontSize: 'clamp(2.2rem, 4vw, 4rem)', fontWeight: 500, color: '#ffffff', letterSpacing: '-0.04em', margin: '0 0 20px' }}>
-              Why {city.name} Businesses Choose Codazz
-            </h2>
-            <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8, maxWidth: 720, margin: '0 auto' }}>
-              We understand the unique business landscape, regulatory requirements, and growth challenges in {city.name}. Our local expertise combined with global best practices delivers results.
-            </p>
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 24 }}>
-            {city.whyCity.map((item, i) => (
-              <div key={item.title} className={`reveal reveal-d${(i % 2) + 1}`}
-                style={{ padding: '32px', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 20, background: 'rgba(255,255,255,0.015)', position: 'relative' }}>
-                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: 'linear-gradient(90deg, #22c55e, transparent)' }} />
-                <div style={{ fontSize: 32, marginBottom: 16 }}>{item.icon}</div>
-                <h3 style={{ fontSize: 17, fontWeight: 700, color: '#ffffff', marginBottom: 12, margin: 0 }}>{item.title}</h3>
-                <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, margin: 0 }}>{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+        {/* ━━━ LATEST BLOG / INSIGHTS ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+        <InsightsSection />
 
-        {/* PORTFOLIO */}
-        <section ref={portfolioRef} style={{ padding: 'clamp(80px, 10vw, 140px) 0', borderTop: '1px solid rgba(255,255,255,0.05)', maxWidth: 1280, margin: '0 auto', width: '100%', paddingLeft: 'max(2vw, 24px)', paddingRight: 'max(2vw, 24px)' }}>
-          <div className="reveal" style={{ textAlign: 'center', marginBottom: 60 }}>
-            <h2 style={{ fontSize: 'clamp(2.2rem, 4vw, 4rem)', fontWeight: 500, color: '#ffffff', letterSpacing: '-0.04em', margin: '0 0 20px' }}>
-              Featured Projects & Case Studies
-            </h2>
-            <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8, maxWidth: 720, margin: '0 auto' }}>
-              Real projects with measurable results. From fintech platforms processing billions to AI chatbots serving millions of messages daily. See the impact we deliver.
-            </p>
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 360px), 1fr))', gap: 24, marginBottom: 40 }}>
-            {portfolioProjects.map((project, i) => (
-              <Link key={project.name} href="/case-studies"
-                className={`reveal reveal-d${(i % 3) + 1}`}
-                style={{ display: 'flex', flexDirection: 'column', padding: '32px', borderRadius: 20, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.015)', textDecoration: 'none', transition: 'all 0.3s' }}
-                onMouseEnter={e => { const t = e.currentTarget as HTMLElement; t.style.borderColor = 'rgba(34,197,94,0.25)'; t.style.background = 'rgba(34,197,94,0.04)'; t.style.transform = 'translateY(-4px)'; }}
-                onMouseLeave={e => { const t = e.currentTarget as HTMLElement; t.style.borderColor = 'rgba(255,255,255,0.06)'; t.style.background = 'rgba(255,255,255,0.015)'; t.style.transform = ''; }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
-                  <div style={{ fontSize: 24 }}>🚀</div>
-                  <div style={{ fontSize: 11, fontWeight: 700, color: '#22c55e', textTransform: 'uppercase', letterSpacing: '0.08em' }}>{project.category}</div>
-                </div>
-                <h3 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', marginBottom: 12, margin: 0 }}>{project.name}</h3>
-                <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', lineHeight: 1.7, marginBottom: 20, flexGrow: 1 }}>{project.desc}</p>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12, paddingTop: 20, borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                  {project.metrics.map(m => (
-                    <div key={m.label} style={{ textAlign: 'center' }}>
-                      <div style={{ fontSize: 16, fontWeight: 700, color: '#22c55e' }}>{m.value}</div>
-                      <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.3)', marginTop: 4, fontWeight: 600, textTransform: 'uppercase' }}>{m.label}</div>
-                    </div>
-                  ))}
-                </div>
-              </Link>
-            ))}
-          </div>
-          <div className="reveal" style={{ textAlign: 'center' }}>
-            <Link href="/case-studies" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, height: 52, padding: '0 32px', borderRadius: 100, border: '1px solid rgba(255,255,255,0.08)', color: '#ffffff', fontSize: 14, fontWeight: 500, textDecoration: 'none' }}>
-              View All Case Studies
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-            </Link>
-          </div>
-        </section>
-
-        {/* PROCESS */}
-        <section ref={processRef} style={{ padding: 'clamp(80px, 10vw, 140px) 0', borderTop: '1px solid rgba(255,255,255,0.05)', maxWidth: 1280, margin: '0 auto', width: '100%', paddingLeft: 'max(2vw, 24px)', paddingRight: 'max(2vw, 24px)' }}>
-          <div className="reveal" style={{ textAlign: 'center', marginBottom: 60 }}>
-            <h2 style={{ fontSize: 'clamp(2.2rem, 4vw, 4rem)', fontWeight: 500, color: '#ffffff', letterSpacing: '-0.04em', margin: '0 0 20px' }}>
-              Our Development Process
-            </h2>
-            <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8, maxWidth: 720, margin: '0 auto' }}>
-              A proven, battle-tested 5-step process refined over 500+ projects. We focus on transparency, communication, and delivering exceptional results on time and budget.
-            </p>
-          </div>
-          <div style={{ maxWidth: 900, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 24 }}>
-            {processSteps.map((step, i) => (
-              <div key={i} className={`reveal reveal-d${(i % 2) + 1}`} style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: 24, alignItems: 'start' }}>
-                <div style={{ width: 60, height: 60, borderRadius: '50%', flexShrink: 0, background: i === 0 ? '#22c55e' : 'transparent', border: `2px solid ${i === 0 ? '#22c55e' : 'rgba(34,197,94,0.3)'}`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 18, fontWeight: 700, color: i === 0 ? '#000' : '#22c55e' }}>
-                  {step.num}
-                </div>
-                <div style={{ padding: '24px 28px', borderRadius: 20, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.015)' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 12, marginBottom: 12, flexWrap: 'wrap' }}>
-                    <h3 style={{ fontSize: 17, fontWeight: 700, color: '#ffffff', margin: 0 }}>{step.title}</h3>
-                    <span style={{ fontSize: 12, fontWeight: 700, color: '#22c55e', padding: '4px 12px', borderRadius: 100, background: 'rgba(34,197,94,0.08)', whiteSpace: 'nowrap' }}>{step.duration}</span>
-                  </div>
-                  <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.65)', lineHeight: 1.7, marginBottom: 16, margin: 0 }}>{step.desc}</p>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-                    {step.deliverables.map(d => (
-                      <span key={d} style={{ fontSize: 12, fontWeight: 600, color: 'rgba(255,255,255,0.4)', padding: '5px 12px', borderRadius: 8, background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.05)' }}>✓ {d}</span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* STATS */}
-        <section ref={statsRef} style={{ padding: 'clamp(80px, 10vw, 140px) 0', borderTop: '1px solid rgba(255,255,255,0.05)', maxWidth: 1280, margin: '0 auto', width: '100%', paddingLeft: 'max(2vw, 24px)', paddingRight: 'max(2vw, 24px)' }}>
-          <div className="reveal" style={{ textAlign: 'center', marginBottom: 60 }}>
-            <h2 style={{ fontSize: 'clamp(2.2rem, 4vw, 4rem)', fontWeight: 500, color: '#ffffff', letterSpacing: '-0.04em', margin: '0 0 20px' }}>
-              By The Numbers
-            </h2>
-            <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8, maxWidth: 640, margin: '0 auto' }}>
-              Proven results across multiple projects and clients. Our track record speaks for itself.
-            </p>
-          </div>
-          <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', borderRadius: 20, border: '1px solid rgba(255,255,255,0.06)', overflow: 'hidden' }}>
-            {[
-              { value: '500+', label: 'Projects', desc: 'Delivered across startups and enterprises' },
-              { value: '100+', label: 'Engineers', desc: 'Avg 8+ years experience' },
-              { value: '24', label: 'Countries', desc: 'Global presence and expertise' },
-              { value: '99.9%', label: 'Uptime', desc: 'Production SLA guarantee' },
-            ].map((stat, i) => (
-              <div key={stat.label} style={{ padding: '32px 20px', textAlign: 'center', borderRight: i < 3 ? '1px solid rgba(255,255,255,0.06)' : 'none', background: i % 2 === 0 ? 'transparent' : 'rgba(255,255,255,0.01)' }}>
-                <div style={{ fontSize: 'clamp(1.4rem, 2.5vw, 2.2rem)', fontWeight: 700, color: '#22c55e' }}>{stat.value}</div>
-                <div style={{ fontSize: 12, fontWeight: 600, color: 'rgba(255,255,255,0.5)', textTransform: 'uppercase', marginTop: 8, letterSpacing: '0.06em' }}>{stat.label}</div>
-                <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.35)', marginTop: 6 }}>{stat.desc}</div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* TESTIMONIALS */}
-        <section ref={testimonialsRef} style={{ padding: 'clamp(80px, 10vw, 140px) 0', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-          <div style={{ maxWidth: 1280, margin: '0 auto', width: '100%', paddingLeft: 'max(2vw, 24px)', paddingRight: 'max(2vw, 24px)' }}>
-            <div className="reveal" style={{ textAlign: 'center', marginBottom: 60 }}>
-              <h2 style={{ fontSize: 'clamp(2.2rem, 4vw, 4rem)', fontWeight: 500, color: '#ffffff', letterSpacing: '-0.04em', margin: '0 0 20px' }}>
-                What Our Clients Say
-              </h2>
-              <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8, maxWidth: 640, margin: '0 auto' }}>
-                Hear from founders and executives who have partnered with us to build their products.
-              </p>
-            </div>
-            <TestimonialMarquee testimonials={city.testimonials} />
-          </div>
-        </section>
-
-        {/* WHY US */}
-        <section ref={whyUsRef} style={{ padding: 'clamp(80px, 10vw, 140px) 0', borderTop: '1px solid rgba(255,255,255,0.05)', maxWidth: 1280, margin: '0 auto', width: '100%', paddingLeft: 'max(2vw, 24px)', paddingRight: 'max(2vw, 24px)' }}>
-          <div className="reveal" style={{ textAlign: 'center', marginBottom: 60 }}>
-            <h2 style={{ fontSize: 'clamp(2.2rem, 4vw, 4rem)', fontWeight: 500, color: '#ffffff', letterSpacing: '-0.04em', margin: '0 0 20px' }}>
-              Why Choose Codazz for {city.name}
-            </h2>
-            <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8, maxWidth: 720, margin: '0 auto' }}>
-              We're not just developers — we're partners invested in your success. Here's why {city.name} businesses trust us.
-            </p>
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))', gap: 24 }}>
-            {topReasons.map((reason, i) => (
-              <div key={reason.num} className={`reveal reveal-d${(i % 3) + 1}`}
-                style={{ padding: '28px 32px', borderLeft: '3px solid rgba(34,197,94,0.4)', borderTop: '1px solid rgba(255,255,255,0.06)', borderRight: '1px solid rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)', borderRadius: 16, background: 'rgba(255,255,255,0.015)' }}>
-                <div style={{ fontSize: 12, fontWeight: 800, color: '#22c55e', marginBottom: 12, letterSpacing: '0.08em' }}>{reason.num}</div>
-                <h3 style={{ fontSize: 16, fontWeight: 700, color: '#ffffff', marginBottom: 12, margin: 0 }}>{reason.title}</h3>
-                <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.65)', lineHeight: 1.7, margin: 0 }}>{reason.desc}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* FAQ */}
-        <section ref={faqRef} style={{ padding: 'clamp(80px, 10vw, 140px) 0', borderTop: '1px solid rgba(255,255,255,0.05)', maxWidth: 1280, margin: '0 auto', width: '100%', paddingLeft: 'max(2vw, 24px)', paddingRight: 'max(2vw, 24px)' }}>
-          <div className="reveal" style={{ textAlign: 'center', marginBottom: 60 }}>
-            <h2 style={{ fontSize: 'clamp(2.2rem, 4vw, 4rem)', fontWeight: 500, color: '#ffffff', letterSpacing: '-0.04em', margin: '0 0 20px' }}>
-              Frequently Asked Questions
-            </h2>
-            <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8, maxWidth: 640, margin: '0 auto' }}>
-              Common questions about software development, our process, pricing, and partnerships.
-            </p>
-          </div>
-          <div className="reveal" style={{ maxWidth: 800, margin: '0 auto' }}>
-            <Accordion items={faqs} />
-          </div>
-        </section>
-
-        {/* GLOBAL */}
+        {/* ━━━ GLOBAL PRESENCE ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
         <GlobalPresence />
 
-        {/* RELATED CITIES */}
-        <section style={{ padding: 'clamp(80px, 10vw, 140px) 0', borderTop: '1px solid rgba(255,255,255,0.05)', maxWidth: 1280, margin: '0 auto', width: '100%', paddingLeft: 'max(2vw, 24px)', paddingRight: 'max(2vw, 24px)' }}>
-          <div className="reveal" style={{ textAlign: 'center', marginBottom: 60 }}>
-            <h2 style={{ fontSize: 'clamp(2.2rem, 4vw, 4rem)', fontWeight: 500, color: '#ffffff', letterSpacing: '-0.04em', margin: '0 0 20px' }}>
-              Software Development in Other Cities
-            </h2>
-            <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8, maxWidth: 640, margin: '0 auto', marginBottom: 40 }}>
-              Serving clients across North America with local expertise in every major tech hub.
-            </p>
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))', gap: 12 }}>
-            {relatedCities.map(city => (
-              <Link key={city.slug} href={`/locations/${city.slug}`}
-                style={{ padding: '16px 20px', borderRadius: 14, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.015)', textDecoration: 'none', color: '#ffffff', fontSize: 14, fontWeight: 600, textAlign: 'center', transition: 'all 0.3s' }}
-                onMouseEnter={e => { const t = e.currentTarget as HTMLElement; t.style.borderColor = 'rgba(34,197,94,0.3)'; t.style.background = 'rgba(34,197,94,0.05)'; }}
-                onMouseLeave={e => { const t = e.currentTarget as HTMLElement; t.style.borderColor = 'rgba(255,255,255,0.06)'; t.style.background = 'rgba(255,255,255,0.015)'; }}>
-                📍 {city.name}
-              </Link>
-            ))}
-          </div>
-        </section>
+        {/* ━━━ RELATED CITIES (city-specific) ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+        {relatedCities.length > 0 && (
+          <>
+            <Divider />
+            <section className="section-padding">
+              <div className="cb-container">
+                <Reveal>
+                  <div style={{ textAlign: 'center', marginBottom: 48 }}>
+                    <div className="section-tag">Nearby</div>
+                    <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.8rem)', fontWeight: 500, letterSpacing: '-0.03em', marginBottom: 12 }}>We Also Serve</h2>
+                    <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.45)', maxWidth: 480, margin: '0 auto' }}>Explore our presence across other major tech hubs.</p>
+                  </div>
+                </Reveal>
+                <Reveal delay={0.1}>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3">
+                    {relatedCities.map(c => (
+                      <Link key={c.slug} href={`/locations/${c.slug}`}
+                        className="py-4 px-5 rounded-xl border border-white/[0.06] bg-[#0a0a0a] text-center text-sm font-semibold text-white no-underline hover:border-green-500/20 hover:bg-green-500/[0.03] transition-all duration-300">
+                        📍 {c.name}
+                      </Link>
+                    ))}
+                  </div>
+                </Reveal>
+              </div>
+            </section>
+          </>
+        )}
 
-        {/* CTA */}
-        <section ref={ctaRef} style={{ padding: 'clamp(100px, 12vw, 160px) 0', borderTop: '1px solid rgba(255,255,255,0.05)', maxWidth: 1280, margin: '0 auto', width: '100%', paddingLeft: 'max(2vw, 24px)', paddingRight: 'max(2vw, 24px)' }}>
-          <div className="reveal" style={{ textAlign: 'center', maxWidth: 720, margin: '0 auto' }}>
-            <h2 style={{ fontSize: 'clamp(2rem, 4vw, 3.5rem)', fontWeight: 500, color: '#ffffff', letterSpacing: '-0.04em', lineHeight: 1.1, margin: '0 0 20px' }}>
-              Ready to Start Your Project?
-            </h2>
-            <p style={{ fontSize: 17, color: 'rgba(255,255,255,0.6)', lineHeight: 1.8, margin: '0 0 40px' }}>
-              Whether you're a startup building your first MVP or an enterprise modernizing legacy systems — we're ready to help you build something great in {city.name}.
-            </p>
-            <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 40 }}>
-              <Link href="/contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, height: 56, padding: '0 40px', borderRadius: 100, background: '#22c55e', color: '#000', fontSize: 15, fontWeight: 700, textDecoration: 'none' }}>
-                Start Your Project
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
-              </Link>
-              <a href="https://calendly.com/codazz" target="_blank" rel="noopener noreferrer"
-                style={{ display: 'inline-flex', alignItems: 'center', height: 56, padding: '0 40px', borderRadius: 100, border: '1px solid rgba(255,255,255,0.12)', color: '#ffffff', fontSize: 15, fontWeight: 500, textDecoration: 'none' }}>
-                📅 Schedule Call
-              </a>
-            </div>
-            <div style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)' }}>
-              hello@codazz.com • +1 (403) 604-8692 • Response within 24 hours
-            </div>
+        {/* ━━━ BLOG LINKS (city-specific internal linking) ━━━━━━━━━━━━━━━━━ */}
+        {blogLinks.length > 0 && (
+          <>
+            <Divider />
+            <section className="section-padding">
+              <div className="cb-container">
+                <Reveal>
+                  <div style={{ marginBottom: 'clamp(32px, 5vw, 56px)' }}>
+                    <div className="section-tag">Further Reading</div>
+                    <h2 className="section-heading" style={{ fontSize: 'clamp(1.8rem, 3vw, 2.8rem)' }}>
+                      Insights for {city.name} Businesses
+                    </h2>
+                  </div>
+                </Reveal>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {blogLinks.map((link, i) => (
+                    <Reveal key={link.href} delay={i * 0.06}>
+                      <Link href={link.href} className="blog-post-link flex items-center gap-4">
+                        <div style={{ width: 40, height: 40, borderRadius: 12, background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" /><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" /></svg>
+                        </div>
+                        <span style={{ fontSize: 14, fontWeight: 600, color: '#fff', lineHeight: 1.4 }}>{link.title}</span>
+                      </Link>
+                    </Reveal>
+                  ))}
+                </div>
+              </div>
+            </section>
+          </>
+        )}
+
+        {/* ━━━ CONTACT (same as homepage) ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+        <Contact />
+
+        {/* ━━━ FEATURED AWARDS (same as homepage) ━━━━━━━━━━━━━━━━━━━━━━━━━ */}
+        <FeaturedAwards />
+
+        {/* Last updated signal for freshness */}
+        {lastUpdated && (
+          <div style={{ textAlign: 'center', padding: '24px 0', borderTop: '1px solid rgba(255,255,255,0.04)' }}>
+            <time dateTime={lastUpdated} style={{ fontSize: 12, color: 'rgba(255,255,255,0.2)' }}>
+              Last updated: {new Date(lastUpdated).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+            </time>
           </div>
-        </section>
+        )}
 
       </main>
       <Footer />

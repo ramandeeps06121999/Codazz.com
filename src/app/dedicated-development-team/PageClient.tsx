@@ -474,7 +474,7 @@ const btnOutline: React.CSSProperties = {
 
 export default function DedicatedTeamPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const pageRef = useReveal() as React.RefObject<HTMLElement>;
+  const pageRef = useReveal() as React.RefObject<HTMLDivElement>;
 
   return (
     <>

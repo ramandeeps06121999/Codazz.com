@@ -34,8 +34,8 @@ const jsonLd0 = {
     "foundingDate": "2018",
     "numberOfEmployees": {
       "@type": "QuantitativeValue",
-      "minValue": 25,
-      "maxValue": 50
+      "minValue": 100,
+      "maxValue": 200
     }
   }
 };

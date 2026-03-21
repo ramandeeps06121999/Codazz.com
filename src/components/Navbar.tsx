@@ -1,9 +1,10 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { spaceGrotesk } from '@/lib/fonts';
+import { BRAND_WORDMARK_LIGHT_PATH } from '@/lib/brand';
 
 // ── Mega menu data ──────────────────────────────────────────────────
 const serviceCategories = [
@@ -375,9 +376,14 @@ export default function Navbar() {
 
             {/* Logo */}
             <Link href="/" className="nav-logo-link" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', flexShrink: 0, position: 'relative', zIndex: 2 }}>
-              <span className={`${spaceGrotesk.className} nav-logo-text`}>
-                codazz
-              </span>
+              <Image
+                src={BRAND_WORDMARK_LIGHT_PATH}
+                alt="Codazz"
+                width={392}
+                height={148}
+                priority
+                style={{ height: 28, width: 'auto' }}
+              />
             </Link>
 
             {/* Desktop nav links */}

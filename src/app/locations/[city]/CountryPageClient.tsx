@@ -67,9 +67,9 @@ const services = [
 
 export default function CountryPageClient({ country, countryCities }: { country: CountryData; countryCities: CityData[] }) {
   const heroRef = useRef<HTMLElement>(null);
-  const citiesRef = useReveal() as React.RefObject<HTMLElement>;
-  const servicesRef = useReveal() as React.RefObject<HTMLElement>;
-  const ctaRef = useReveal() as React.RefObject<HTMLElement>;
+  const citiesRef = useReveal() as React.RefObject<HTMLDivElement>;
+  const servicesRef = useReveal() as React.RefObject<HTMLDivElement>;
+  const ctaRef = useReveal() as React.RefObject<HTMLDivElement>;
 
   // Primary city for service links (HQ first, else first city)
   const primaryCity = countryCities.find(c => c.isHQ) || countryCities[0];

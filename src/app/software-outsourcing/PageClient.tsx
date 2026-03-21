@@ -429,7 +429,7 @@ const btnOutline: React.CSSProperties = {
 
 export default function SoftwareOutsourcingPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const pageRef = useReveal() as React.RefObject<HTMLElement>;
+  const pageRef = useReveal() as React.RefObject<HTMLDivElement>;
 
   return (
     <>

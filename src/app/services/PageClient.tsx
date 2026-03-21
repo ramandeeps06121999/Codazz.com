@@ -1,8 +1,7 @@
 'use client';
+import ServicePageWrapper from '@/components/ServicePageWrapper';
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import HeroBackground from '@/components/HeroBackground';
 import Breadcrumb from '@/components/Breadcrumb';
 
@@ -260,7 +259,7 @@ const steps = [
 ];
 
 export default function ServicesIndexPage() {
-  const mainRef = useReveal() as React.RefObject<HTMLElement>;
+  const mainRef = useReveal() as React.RefObject<HTMLDivElement>;
 
   useEffect(() => {
     mainRef.current?.querySelectorAll('.reveal').forEach((n, i) =>
@@ -270,8 +269,7 @@ export default function ServicesIndexPage() {
 
   return (
     <>
-      <Navbar />
-      <main ref={mainRef} style={{ background: '#000000', color: '#ffffff', paddingTop: 80 }}>
+      <ServicePageWrapper><div ref={mainRef} style={{ paddingTop: 80 }}>
 
         {/* ── HERO ── */}
         <section className="section-padding" style={{ position: 'relative', overflow: 'hidden', minHeight: '55vh', display: 'flex', alignItems: 'center' }}>
@@ -486,8 +484,8 @@ export default function ServicesIndexPage() {
           </div>
         </section>
 
-      </main>
-      <Footer />
+      </div>
+    </ServicePageWrapper>
     </>
   );
 }

@@ -1,292 +1,151 @@
 'use client';
-import { useState, useRef, useEffect } from 'react';
-import Link from 'next/link';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import Breadcrumb from '@/components/Breadcrumb';
-import TrustBadges from '@/components/TrustBadges';
-import HeroBackground from '@/components/HeroBackground';
+import ServicePageTemplate, { ServicePageData } from '@/components/ServicePageTemplate';
 
-function useReveal() {
-  const ref = useRef<HTMLElement>(null);
-  useEffect(() => {
-    const io = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-      { threshold: 0.08 }
-    );
-    ref.current?.querySelectorAll('.reveal').forEach(el => io.observe(el));
-    return () => io.disconnect();
-  }, []);
-  return ref;
-}
-
-const cardBase: React.CSSProperties = {
-  border: '1px solid rgba(255,255,255,0.06)',
-  borderRadius: 24,
-  background: 'rgba(255,255,255,0.015)',
-  padding: '2rem',
-  transition: 'border-color 0.3s, background 0.3s, transform 0.3s, box-shadow 0.3s',
+const pageData: ServicePageData = {
+  breadcrumbs: [
+    { label: 'Home', href: '/' },
+    { label: 'Industries', href: '/services' },
+    { label: 'Enterprise' },
+  ],
+  hero: {
+    badge: 'ENTERPRISE SOFTWARE DEVELOPMENT',
+    title: 'We Build Enterprise Software That',
+    titleAccent: 'Actually Works.',
+    description: 'Internal tools, workflow automation, ERP integrations, and mission-critical systems for companies with thousands of employees and complex operations.',
+    service: 'Enterprise Development',
+    stats: [
+      { value: '5,000+', label: 'Enterprise Users' },
+      { value: 'SOC II', label: 'Certified' },
+      { value: 'Zero', label: 'Critical Downtime' },
+      { value: '30+', label: 'Enterprise Projects' },
+    ],
+  },
+  awards: [
+    'SOC 2 Type II Compliant',
+    'ISO 27001 Aligned',
+    'Top Enterprise Developer 2024',
+    'AWS Enterprise Partner',
+    'Microsoft Gold Partner',
+    'Enterprise Architecture Experts',
+  ],
+  whySection: {
+    title: 'Why Enterprises Choose Codazz',
+    cards: [
+      { icon: '\u{1F517}', title: 'Legacy System Integration', desc: 'Connecting decades-old ERP, CRM, and mainframe systems to modern interfaces and APIs without the big-bang migration risk that derails projects.' },
+      { icon: '\u{1F512}', title: 'Enterprise Security', desc: 'SSO, RBAC, audit trails, and zero-trust networking that satisfies your CISO, passes penetration tests, and keeps business data protected.' },
+      { icon: '\u{1F465}', title: 'Change Management', desc: 'Software that employees actually adopt. We conduct user research, design onboarding flows, and drive real utilization across the organization.' },
+      { icon: '\u{2699}\u{FE0F}', title: 'Workflow Automation', desc: 'Eliminating manual processes with intelligent automation, approval chains, and integrations that save thousands of hours per month.' },
+    ],
+    whoNeedsTitle: 'Who Needs Enterprise Software?',
+    whoNeedsItems: [
+      { icon: '\u{1F3E2}', title: 'Large Organizations', desc: 'Custom internal tools, admin dashboards, and employee portals that replace spreadsheets and manual workflows.' },
+      { icon: '\u{1F3ED}', title: 'Manufacturing & Operations', desc: 'ERP integrations, production tracking, quality management, and supply chain visibility systems.' },
+      { icon: '\u{1F3E6}', title: 'Financial Services', desc: 'Compliance platforms, risk management tools, and regulatory reporting systems.' },
+      { icon: '\u{1F3E5}', title: 'Healthcare Enterprises', desc: 'Clinical workflow automation, multi-system integration, and population health management.' },
+      { icon: '\u{1F4BC}', title: 'Professional Services', desc: 'Resource management, project tracking, time billing, and client portal systems.' },
+    ],
+    metricsTitle: 'Enterprise Development by the Numbers',
+    metrics: [
+      { metric: '5,000+', label: 'Enterprise Users', desc: 'On our platforms' },
+      { metric: '60%', label: 'Manual Task Reduction', desc: 'Average automation savings' },
+      { metric: '$2.1M', label: 'Annual Savings', desc: 'Average per enterprise client' },
+      { metric: '30+', label: 'Enterprise Projects', desc: 'Delivered successfully' },
+    ],
+    closingText: 'Whether you need custom ERP integrations, internal tooling, or workflow automation, Codazz builds enterprise software that survives leadership changes, acquisitions, and a decade of growth. We design for maintainability, extensibility, and the organizational realities of large companies.',
+  },
+  subServices: [
+    { title: 'Custom ERP & CRM Systems', tag: 'ERP/CRM', desc: 'Multi-department workflow automation, approval chains, reporting dashboards, and deep integrations with SAP, Salesforce, and Oracle.', chips: ['SAP', 'Salesforce', 'Workflows', 'Dashboards'], href: '/contact', icon: '\u{1F3E2}' },
+    { title: 'Enterprise Integration & APIs', tag: 'Integration', desc: 'REST and GraphQL API platforms, ESB implementations, legacy middleware bridges, and SSO unification across your technology estate.', chips: ['APIs', 'ESB', 'SSO', 'Middleware'], href: '/contact', icon: '\u{1F517}' },
+    { title: 'Internal Tooling', tag: 'Tools', desc: 'Custom admin panels, operations dashboards, and employee-facing apps that replace spreadsheets and manual processes.', chips: ['Admin Panels', 'Dashboards', 'Portals', 'Automation'], href: '/contact', icon: '\u{1F6E0}\u{FE0F}' },
+    { title: 'Business Intelligence', tag: 'BI', desc: 'Real-time reporting dashboards, data warehousing, and self-service analytics that empower every department.', chips: ['Power BI', 'Tableau', 'Looker', 'dbt'], href: '/contact', icon: '\u{1F4CA}' },
+    { title: 'Workflow Automation', tag: 'Automation', desc: 'End-to-end process automation with approval chains, notifications, and integrations that eliminate repetitive tasks.', chips: ['Approvals', 'Notifications', 'Triggers', 'Rules'], href: '/contact', icon: '\u{2699}\u{FE0F}' },
+    { title: 'MDM & Compliance', tag: 'Compliance', desc: 'Master data management, audit trails, and regulatory compliance tooling that keeps your organization aligned with standards.', chips: ['MDM', 'Audit Trail', 'RBAC', 'Compliance'], href: '/contact', icon: '\u{1F512}' },
+  ],
+  servicesHeading: {
+    label: 'Our Enterprise Solutions',
+    title: 'Mission-Critical',
+    titleDim: 'Enterprise Technology.',
+    description: 'From internal tools to enterprise-wide integrations, we build software that handles the complexity of large organizations with security and reliability at the core.',
+  },
+  benefits: {
+    label: 'Why Codazz for Enterprise',
+    title: 'Built for Decades',
+    titleDim: 'Not Just Sprints.',
+    items: [
+      { icon: '\u{1F3DB}\u{FE0F}', title: 'Enterprise Architecture', desc: 'Designed for maintainability, extensibility, and the organizational realities of large companies with multi-year roadmaps.' },
+      { icon: '\u{1F512}', title: 'Security & Compliance', desc: 'SOC 2 Type II, ISO 27001 alignment, penetration testing, and security architecture that passes enterprise audits.' },
+      { icon: '\u{1F517}', title: 'Legacy Integration', desc: 'Deep experience connecting modern applications with SAP, Oracle, mainframes, and decades-old enterprise systems.' },
+      { icon: '\u{2699}\u{FE0F}', title: 'Process Automation', desc: 'Intelligent workflow automation that eliminates manual tasks and reduces human error across departments.' },
+      { icon: '\u{1F4CA}', title: 'Data-Driven Insights', desc: 'Business intelligence and analytics that turn enterprise data into actionable decisions.' },
+      { icon: '\u{1F91D}', title: 'Long-Term Partnership', desc: 'Ongoing development, support, and strategic guidance as your business evolves and grows.' },
+    ],
+  },
+  clientLogos: [
+    'SAP', 'Salesforce', 'Oracle', 'Microsoft', 'ServiceNow', 'Workday',
+    'Slack', 'Jira', 'Okta', 'Snowflake', 'Tableau', 'Power BI',
+  ],
+  bigStats: [
+    { value: '5,000+', label: 'Enterprise Users', desc: 'On our platforms' },
+    { value: '$2.1M', label: 'Annual Savings', desc: 'Per enterprise client' },
+    { value: '60%', label: 'Task Reduction', desc: 'Through automation' },
+    { value: 'Zero', label: 'Critical Downtime', desc: 'Mission-critical SLA' },
+  ],
+  advancedTech: {
+    row1: [
+      { icon: '\u{1F517}', title: 'API Gateway', desc: 'Unified enterprise API management' },
+      { icon: '\u{1F512}', title: 'Zero-Trust', desc: 'Enterprise security architecture' },
+      { icon: '\u{2699}\u{FE0F}', title: 'Workflow Engine', desc: 'Configurable business process automation' },
+      { icon: '\u{1F4CA}', title: 'BI Dashboards', desc: 'Real-time business intelligence' },
+      { icon: '\u{1F465}', title: 'SSO & RBAC', desc: 'Enterprise identity management' },
+    ],
+    row2: [
+      { icon: '\u{1F916}', title: 'AI Automation', desc: 'Intelligent document processing' },
+      { icon: '\u{1F4DD}', title: 'Audit Logging', desc: 'Compliance-ready activity tracking' },
+      { icon: '\u{2601}\u{FE0F}', title: 'Cloud Migration', desc: 'Legacy to cloud transformation' },
+      { icon: '\u{1F4F1}', title: 'Employee Apps', desc: 'Mobile-first internal tools' },
+      { icon: '\u{1F527}', title: 'Microservices', desc: 'Scalable service architecture' },
+    ],
+  },
+  techStack: [
+    { category: 'Integration', techs: ['MuleSoft', 'Apache Camel', 'REST', 'GraphQL', 'gRPC'] },
+    { category: 'Auth & Security', techs: ['Okta', 'Azure AD', 'SAML', 'OAuth2', 'LDAP'] },
+    { category: 'Backend', techs: ['Java', '.NET', 'Python', 'Go', 'Kubernetes'] },
+    { category: 'BI & Data', techs: ['Power BI', 'Tableau', 'Looker', 'dbt', 'Snowflake'] },
+    { category: 'Cloud', techs: ['AWS', 'Azure', 'GCP', 'Terraform', 'Docker'] },
+    { category: 'Frontend', techs: ['React', 'Next.js', 'TypeScript', 'Electron'] },
+  ],
+  faqs: [
+    { q: 'Can you integrate with our legacy enterprise systems?', a: 'Yes. We have deep experience integrating with SAP, Oracle, Salesforce, mainframes, and custom legacy systems. We build API bridges, middleware, and data sync layers that connect modern applications to existing infrastructure without disruptive migrations.' },
+    { q: 'How do you handle enterprise security requirements?', a: 'Security is foundational to our enterprise work. We implement SSO (SAML/OAuth), role-based access control, audit trails, encryption at rest and in transit, zero-trust networking, and regular penetration testing. Our processes align with SOC 2 Type II and ISO 27001 standards.' },
+    { q: 'What is your approach to change management?', a: 'We design for adoption from day one. This means extensive user research with actual employees, iterative UX testing, clear onboarding flows, and phased rollouts. We have learned that the best enterprise software fails if people refuse to use it.' },
+    { q: 'Can you build custom internal tools to replace spreadsheets?', a: 'Absolutely. We have replaced countless spreadsheet-based workflows with purpose-built internal tools. These typically include data entry forms, approval workflows, reporting dashboards, and integrations with existing systems, reducing errors and saving hundreds of hours per month.' },
+    { q: 'Do you provide ongoing support after launch?', a: 'Yes. Enterprise software requires ongoing development, security patches, compliance updates, and feature enhancements. We offer retainer-based support packages that include dedicated development hours, priority support, and quarterly strategic reviews.' },
+    { q: 'How do you handle multi-department requirements?', a: 'We use a structured discovery process that includes stakeholder interviews across departments, workflow mapping, and requirement prioritization. We build modular systems where each department gets customized views and workflows while sharing a unified data layer.' },
+  ],
+  faqDescription: 'Common questions about our enterprise software development services, integration capabilities, and security approach.',
+  relatedBlogs: [
+    { title: 'Enterprise Integration Architecture Patterns', desc: 'Best practices for connecting legacy and modern enterprise systems.', href: '/blog' },
+    { title: 'Building Internal Tools That Employees Actually Use', desc: 'Design principles for enterprise software adoption and engagement.', href: '/blog' },
+    { title: 'Workflow Automation: The ROI of Process Digitization', desc: 'How enterprise automation delivers measurable cost savings.', href: '/blog' },
+  ],
+  relatedServices: [
+    { name: 'Web Development', desc: 'Internal tools, admin dashboards, and employee portals for large organizations.', href: '/services/web-development' },
+    { name: 'Cloud & DevOps', desc: 'Enterprise cloud migrations, Kubernetes orchestration, and CI/CD pipelines.', href: '/services/cloud-devops' },
+    { name: 'AI & Machine Learning', desc: 'Business intelligence models, process automation, and predictive analytics.', href: '/services/ai-ml' },
+    { name: 'SaaS Development', desc: 'Multi-tenant enterprise platforms with SSO, RBAC, and compliance tooling.', href: '/services/saas-development' },
+  ],
+  industries: [
+    { name: 'Fintech', href: '/industries/fintech' },
+    { name: 'Healthcare', href: '/industries/healthcare' },
+    { name: 'Logistics', href: '/industries/logistics' },
+    { name: 'E-Commerce', href: '/industries/ecommerce' },
+    { name: 'EdTech', href: '/industries/edtech' },
+    { name: 'Real Estate', href: '/industries/real-estate' },
+    { name: 'Travel', href: '/industries/travel-hospitality' },
+    { name: 'On-Demand', href: '/industries/on-demand' },
+  ],
 };
-
-const cardHover: React.CSSProperties = {
-  borderColor: 'rgba(34,197,94,0.2)',
-  background: 'rgba(34,197,94,0.03)',
-  transform: 'translateY(-4px)',
-  boxShadow: '0 24px 60px rgba(255,255,255,0.06)',
-};
-
-function Card({ children, style }: { children: React.ReactNode; style?: React.CSSProperties }) {
-  const [hovered, setHovered] = useState(false);
-  return (
-    <div
-      style={{ ...cardBase, ...(hovered ? cardHover : {}), ...style }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      {children}
-    </div>
-  );
-}
-
 
 export default function EnterprisePage() {
-  const heroRef = useRef<HTMLElement>(null);
-  const s1 = useReveal() as React.RefObject<HTMLElement>;
-  const s2 = useReveal() as React.RefObject<HTMLElement>;
-  const s3 = useReveal() as React.RefObject<HTMLElement>;
-  const s4 = useReveal() as React.RefObject<HTMLElement>;
-  const s5 = useReveal() as React.RefObject<HTMLElement>;
-  const s6 = useReveal() as React.RefObject<HTMLElement>;
-
-  useEffect(() => {
-    heroRef.current?.querySelectorAll('.reveal').forEach(n => setTimeout(() => n.classList.add('visible'), 100));
-  }, []);
-
-  return (
-    <>
-      <Navbar />
-      <main style={{ background: '#000000', color: '#ffffff', paddingTop: 80 }}>
-        <div className="cb-container">
-          <Breadcrumb items={[
-            { label: 'Home', href: '/' },
-            { label: 'Industries', href: '/services' },
-            { label: 'Enterprise' },
-          ]} />
-        </div>
-
-        {/* HERO */}
-        <section ref={heroRef} className="section-padding" style={{ position: 'relative', overflow: 'hidden', minHeight: '90vh', display: 'flex', alignItems: 'center' }}>
-          <HeroBackground variant="center" />
-          <div className="cb-container" style={{ position: 'relative', zIndex: 1, textAlign: 'center', maxWidth: 860, margin: '0 auto' }}>
-            <div className="reveal" style={{ display: 'inline-block', border: '1px solid rgba(34,197,94,0.4)', borderRadius: 999, padding: '6px 20px', fontSize: 13, color: '#ffffff', marginBottom: '1.5rem', letterSpacing: '0.05em' }}>
-              Enterprise Software
-            </div>
-            <h1 className="reveal" style={{ fontSize: 'clamp(2.6rem, 6vw, 5rem)', fontWeight: 800, lineHeight: 1.1, marginBottom: '1.5rem', letterSpacing: '-0.02em' }}>
-              We Build Enterprise Software That <span style={{ color: '#ffffff' }}>Actually Works.</span>
-            </h1>
-            <p className="reveal" style={{ fontSize: '1.2rem', color: 'rgba(255,255,255,0.7)', marginBottom: '2.5rem', lineHeight: 1.7 }}>
-              Internal tools, workflow automation, ERP integrations and mission-critical systems for companies with thousands of employees.
-            </p>
-            <div className="reveal" style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '3.5rem' }}>
-              <Link href="/contact" style={{ background: '#22c55e', color: '#000', padding: '14px 32px', borderRadius: 999, fontWeight: 700, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
-                Start Your Project
-              </Link>
-              <Link href="/case-studies" style={{ border: '1px solid rgba(255,255,255,0.1)', color: '#ffffff', padding: '14px 32px', borderRadius: 999, fontWeight: 600, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
-                View Case Studies
-              </Link>
-            </div>
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(140px, 100%), 1fr))', gap: '1.5rem', maxWidth: 600, margin: '0 auto' }}>
-              {[['5,000+', 'Enterprise Users'], ['SOC II', 'Certified'], ['Zero', 'Critical Downtime']].map(([val, label]) => (
-                <div key={label} style={{ textAlign: 'center' }}>
-                  <div style={{ fontSize: '1.6rem', fontWeight: 800, color: '#ffffff' }}>{val}</div>
-                  <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.25)', marginTop: 4, letterSpacing: '0.05em' }}>{label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CHALLENGES */}
-        <section ref={s1} className="section-padding">
-          <div className="cb-container">
-            <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
-              <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '1rem' }}>Key Challenges We Solve</h2>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.1rem' }}>Enterprise complexity demands architecture that lasts decades, not months.</p>
-            </div>
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
-              {[
-                { icon: '🔗', title: 'Legacy System Integration', desc: 'Connecting decades-old ERP, CRM, and mainframe systems to modern interfaces and APIs — without the big-bang migration risk that derails projects.' },
-                { icon: '🔐', title: 'Enterprise Security', desc: 'SSO, RBAC, audit trails, and zero-trust networking that satisfies your CISO, passes penetration tests, and keeps sensitive business data protected at rest and in transit.' },
-                { icon: '👥', title: 'Change Management', desc: 'Software that employees actually adopt. We conduct user research, run change champions programs, and design onboarding flows that drive real utilisation.' },
-              ].map(c => (
-                <Card key={c.title}>
-                  <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>{c.icon}</div>
-                  <h3 style={{ fontWeight: 700, fontSize: '1.2rem', marginBottom: '0.75rem' }}>{c.title}</h3>
-                  <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, fontSize: '0.95rem' }}>{c.desc}</p>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* SOLUTIONS */}
-        <section ref={s2} className="section-padding">
-          <div className="cb-container">
-            <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
-              <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '1rem' }}>Our Solutions</h2>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.1rem' }}>Enterprise-grade systems built for the long term.</p>
-            </div>
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 320px), 1fr))', gap: '1.5rem' }}>
-              {[
-                { icon: '🏢', title: 'Custom ERP & CRM Systems', desc: 'Multi-department workflow automation, approval chains, reporting dashboards, and deep integrations with SAP, Salesforce, and Oracle — tailored to your exact processes.' },
-                { icon: '🔗', title: 'Enterprise Integration & APIs', desc: 'REST and GraphQL API platforms, ESB implementations, legacy middleware bridges, and SSO unification that connects your entire technology estate.' },
-                { icon: '🛠️', title: 'Internal Tooling', desc: 'Custom admin panels, operations dashboards, and employee-facing apps that replace spreadsheets and manual processes with streamlined workflows.' },
-                { icon: '📊', title: 'Business Intelligence', desc: 'Real-time reporting dashboards, data warehousing, and self-service analytics that empower every department to make data-driven decisions.' },
-                { icon: '⚙️', title: 'Workflow Automation', desc: 'End-to-end process automation with approval chains, notifications, and integrations that eliminate repetitive tasks and reduce human error.' },
-                { icon: '🔐', title: 'MDM & Compliance', desc: 'Master data management, audit trails, and regulatory compliance tooling that keeps your organization aligned with industry standards.' },
-              ].map(s => (
-                <Card key={s.title}>
-                  <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>{s.icon}</div>
-                  <h3 style={{ fontWeight: 700, fontSize: '1.15rem', marginBottom: '0.75rem' }}>{s.title}</h3>
-                  <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, fontSize: '0.95rem' }}>{s.desc}</p>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CASE STUDY */}
-        <section ref={s3} className="section-padding">
-          <div className="cb-container">
-            <div className="reveal" style={{ border: '1px solid rgba(34,197,94,0.15)', borderRadius: 32, background: 'rgba(34,197,94,0.03)', padding: 'clamp(1.5rem, 4vw, 3rem)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(400px, 100%), 1fr))', gap: 'clamp(1.5rem, 4vw, 3rem)', alignItems: 'center' }}>
-              <div>
-                <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.25)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>Case Study</div>
-                <div style={{ fontSize: '1.1rem', fontWeight: 700, color: '#ffffff', marginBottom: '0.5rem' }}>EnterpriseX</div>
-                <h3 style={{ fontSize: 'clamp(1.4rem, 3vw, 2rem)', fontWeight: 800, marginBottom: '1rem', lineHeight: 1.2 }}>8,000 employees onboarded, 60% reduction in manual tasks, $2.1M annual savings</h3>
-                <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.7 }}>We replaced a patchwork of 14 internal tools with a unified platform — single sign-on, role-based access, and workflow automation that eliminated thousands of hours of manual work per month.</p>
-              </div>
-              <div>
-                <blockquote style={{ borderLeft: '3px solid #22c55e', paddingLeft: '1.5rem', margin: 0 }}>
-                  <p style={{ fontSize: '1.15rem', lineHeight: 1.7, color: 'rgba(255,255,255,0.65)', fontStyle: 'italic', marginBottom: '1rem' }}>
-                    "We went from 14 disconnected tools to one platform. The productivity gain was immediate and the cost savings exceeded our projections."
-                  </p>
-                  <cite style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.25)', fontStyle: 'normal' }}>— CIO, EnterpriseX</cite>
-                </blockquote>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* TECH STACK */}
-        <section ref={s4} className="section-padding">
-          <div className="cb-container">
-            <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
-              <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '1rem' }}>Tech Stack</h2>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.1rem' }}>Enterprise-grade technologies chosen for reliability and longevity.</p>
-            </div>
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem' }}>
-              {[
-                { cat: 'Integration', items: ['MuleSoft', 'Apache Camel', 'REST', 'GraphQL', 'gRPC'] },
-                { cat: 'Auth', items: ['Okta', 'Azure AD', 'SAML', 'OAuth2', 'LDAP'] },
-                { cat: 'Backend', items: ['Java', '.NET', 'Python', 'Go', 'Kubernetes'] },
-                { cat: 'BI', items: ['Power BI', 'Tableau', 'Looker', 'dbt', 'Snowflake'] },
-              ].map(t => (
-                <Card key={t.cat}>
-                  <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.25)', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>{t.cat}</div>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                    {t.items.map(item => (
-                      <span key={item} style={{ background: 'rgba(255,255,255,0.03)', borderRadius: 8, padding: '4px 12px', fontSize: '0.85rem', color: 'rgba(255,255,255,0.65)' }}>{item}</span>
-                    ))}
-                  </div>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* WHY CODAZZ */}
-        <section ref={s5} className="section-padding">
-          <div className="cb-container">
-            <div className="reveal" style={{ textAlign: 'center', marginBottom: '3rem' }}>
-              <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: 800, marginBottom: '1rem' }}>Why Codazz</h2>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.1rem' }}>Enterprise software that survives leadership changes, acquisitions, and a decade of growth.</p>
-            </div>
-            <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
-              {[
-                { icon: '🏛️', title: 'Enterprise Architecture Experts', desc: 'We design for maintainability, extensibility, and the organizational realities of large companies — multiple teams, multiple stakeholders, multi-year roadmaps.' },
-                { icon: '🔒', title: 'Security & Compliance', desc: 'SOC II Type II, ISO 27001 alignment, penetration testing, and security architecture reviews that keep your enterprise software out of the headlines.' },
-                { icon: '🤝', title: 'Long-term Partnership', desc: 'We don\'t disappear after launch. Our retainer teams provide ongoing development, support, and strategic guidance as your business evolves.' },
-              ].map(w => (
-                <Card key={w.title}>
-                  <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>{w.icon}</div>
-                  <h3 style={{ fontWeight: 700, fontSize: '1.15rem', marginBottom: '0.75rem' }}>{w.title}</h3>
-                  <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, fontSize: '0.95rem' }}>{w.desc}</p>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Related Services */}
-        <section className="section-padding" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-          <div className="cb-container">
-            <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: 700, color: '#ffffff', letterSpacing: '-0.03em', marginBottom: 40, textAlign: 'center' }}>
-              Services for Enterprise
-            </h2>
-            <div className="industry-services-grid" style={{ display: 'grid', gap: 16 }}>
-              {[
-                { name: 'Web Development', href: '/services/web-development', desc: 'Internal tools, admin dashboards and employee portals built for thousands of concurrent users.' },
-                { name: 'Cloud & DevOps', href: '/services/cloud-devops', desc: 'Enterprise cloud migrations, Kubernetes orchestration and CI/CD pipelines for large teams.' },
-                { name: 'AI & Machine Learning', href: '/services/ai-ml', desc: 'Business intelligence models, process automation and predictive analytics for enterprise data.' },
-                { name: 'SaaS Development', href: '/services/saas-development', desc: 'Multi-tenant enterprise platforms with SSO, RBAC and audit-ready compliance tooling.' },
-                { name: 'Blockchain Development', href: '/services/blockchain', desc: 'Distributed ledger solutions for supply chain transparency and secure enterprise transactions.' },
-              ].map((s) => (
-                <a key={s.href} href={s.href} style={{
-                  display: 'block', padding: '24px', borderRadius: 16,
-                  background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)',
-                  textDecoration: 'none', transition: 'all 0.3s ease',
-                }}
-                onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(34,197,94,0.2)'; e.currentTarget.style.transform = 'translateY(-3px)'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.06)'; e.currentTarget.style.transform = 'translateY(0)'; }}
-                >
-                  <div style={{ fontSize: 15, fontWeight: 600, color: '#ffffff', marginBottom: 6 }}>{s.name}</div>
-                  <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.4)', lineHeight: 1.5 }}>{s.desc}</div>
-                </a>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CTA */}
-        <section ref={s6} className="section-padding">
-          <div className="cb-container">
-            <div className="reveal" style={{ textAlign: 'center', maxWidth: 700, margin: '0 auto' }}>
-              <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 800, lineHeight: 1.15, marginBottom: '1.5rem' }}>
-                Build Your <span style={{ color: '#ffffff' }}>Enterprise System.</span>
-              </h2>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.15rem', marginBottom: '2.5rem', lineHeight: 1.7 }}>
-                Mission-critical software that scales with your organization and stands the test of time.
-              </p>
-              <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '2.5rem' }}>
-                <Link href="/contact" style={{ background: '#22c55e', color: '#000', padding: '16px 36px', borderRadius: 999, fontWeight: 700, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
-                  Start Your Project
-                </Link>
-                <Link href="/case-studies" style={{ border: '1px solid rgba(255,255,255,0.1)', color: '#ffffff', padding: '16px 36px', borderRadius: 999, fontWeight: 600, fontSize: '1rem', textDecoration: 'none', display: 'inline-block' }}>
-                  See Our Work
-                </Link>
-              </div>
-              <div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                {['SOC II Certified', 'SSO Ready', 'Long-term Support', 'NDA on Request'].map(t => (
-                  <span key={t} style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.25)' }}>✓ {t}</span>
-                ))}
-              </div>
-              <TrustBadges compact />
-            </div>
-          </div>
-        </section>
-
-      </main>
-      <Footer />
-    </>
-  );
+  return <ServicePageTemplate data={pageData} />;
 }
