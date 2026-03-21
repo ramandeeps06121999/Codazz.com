@@ -264,6 +264,109 @@ export default function PageClient({ city }: { city: CityData }) {
           </div>
         </section>
 
+        {/* WHY SOFTWARE DEVELOPMENT */}
+        <section style={{ padding: 'clamp(100px, 12vw, 160px) 0', borderTop: '1px solid rgba(255,255,255,0.05)', maxWidth: 1280, margin: '0 auto', width: '100%', paddingLeft: 'max(2vw, 24px)', paddingRight: 'max(2vw, 24px)' }}>
+          <div className="reveal" style={{ marginBottom: 60 }}>
+            <h2 style={{ fontSize: 'clamp(2.2rem, 4vw, 4rem)', fontWeight: 500, color: '#ffffff', letterSpacing: '-0.04em', margin: '0 0 24px' }}>
+              Unlock Your Business Potential with Expert Software Development in {city.name}
+            </h2>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 500px), 1fr))', gap: 32, marginTop: 40 }}>
+              {/* Problem 1 */}
+              <div style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
+                <div style={{ fontSize: 32, flexShrink: 0 }}>⚡</div>
+                <div>
+                  <h3 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', margin: '0 0 12px' }}>Digital Transformation is No Longer Optional</h3>
+                  <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, margin: 0 }}>
+                    {city.name}'s competitive business landscape demands digital transformation. Companies without modern software solutions fall behind competitors. Custom software development is essential for automating processes, improving efficiency, and scaling your business faster than your competition.
+                  </p>
+                </div>
+              </div>
+
+              {/* Problem 2 */}
+              <div style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
+                <div style={{ fontSize: 32, flexShrink: 0 }}>💼</div>
+                <div>
+                  <h3 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', margin: '0 0 12px' }}>Off-the-Shelf Software Has Limits</h3>
+                  <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, margin: 0 }}>
+                    Generic software may not fit your unique business requirements. Custom software development gives you full control — tailored features, scalable architecture, and solutions built specifically for your {city.name} market. No compromises, no vendor lock-in.
+                  </p>
+                </div>
+              </div>
+
+              {/* Solution 1 */}
+              <div style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
+                <div style={{ fontSize: 32, flexShrink: 0 }}>🚀</div>
+                <div>
+                  <h3 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', margin: '0 0 12px' }}>Custom Software Accelerates Growth</h3>
+                  <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, margin: 0 }}>
+                    Software development services empower {city.name} businesses to reduce operational costs by 30-40%, increase productivity, and scale operations without proportional cost increases. Our clients report faster time-to-market, improved customer satisfaction, and higher profitability.
+                  </p>
+                </div>
+              </div>
+
+              {/* Solution 2 */}
+              <div style={{ display: 'flex', gap: 16, alignItems: 'flex-start' }}>
+                <div style={{ fontSize: 32, flexShrink: 0 }}>🔒</div>
+                <div>
+                  <h3 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', margin: '0 0 12px' }}>Security & Compliance Built In</h3>
+                  <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, margin: 0 }}>
+                    Custom software development includes security-by-design principles. For {city.name} FinTech, Healthcare, and regulated industries, we ensure compliance with local data protection laws, PCI-DSS, HIPAA, and industry standards from day one.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="reveal" style={{ background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.2)', borderRadius: 24, padding: '40px', marginTop: 60, marginBottom: 60 }}>
+            <h3 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', margin: '0 0 24px' }}>Who Needs Software Development Services in {city.name}?</h3>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 20 }}>
+              {[
+                { icon: '🚀', title: 'Startups & MVPs', desc: 'Build your first product or scale from idea to Series A funding round' },
+                { icon: '🏢', title: 'Growing SMBs', desc: 'Automate operations, compete with larger players, enter new markets' },
+                { icon: '🔄', title: 'Enterprises', desc: 'Modernize legacy systems, integrate APIs, improve customer experience' },
+                { icon: '💰', title: 'Financial Services', desc: 'Build fintech platforms, payment systems, trading interfaces on Wall Street' },
+                { icon: '🏥', title: 'Healthcare Orgs', desc: 'Launch telemedicine platforms, patient management, HIPAA-compliant systems' },
+                { icon: '🛒', title: 'E-Commerce', desc: 'Build marketplaces, shopping apps, inventory systems, payment integration' },
+              ].map((item, i) => (
+                <div key={i} style={{ padding: '16px', borderRadius: 14, background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)' }}>
+                  <div style={{ fontSize: 24, marginBottom: 8 }}>{item.icon}</div>
+                  <h4 style={{ fontSize: 14, fontWeight: 700, color: '#ffffff', margin: '0 0 8px' }}>{item.title}</h4>
+                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.6)', margin: 0, lineHeight: 1.6 }}>{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="reveal" style={{ marginBottom: 60 }}>
+            <h3 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', margin: '0 0 24px' }}>What You'll Gain from Professional Software Development</h3>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 240px), 1fr))', gap: 20 }}>
+              {[
+                { value: '30-40%', label: 'Cost Reduction', desc: 'Automated processes, reduced manual work' },
+                { value: '3x Faster', label: 'Time-to-Market', desc: 'Launch new features and products quickly' },
+                { value: '90%+ Uptime', label: 'Business Continuity', desc: 'Reliable systems that keep you running' },
+                { value: '99.9% SLA', label: 'Production Reliability', desc: 'Enterprise-grade uptime guarantees' },
+              ].map((item, i) => (
+                <div key={i} style={{ padding: '24px', borderRadius: 16, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.015)', textAlign: 'center' }}>
+                  <div style={{ fontSize: 'clamp(1.4rem, 2vw, 1.8rem)', fontWeight: 700, color: '#22c55e', marginBottom: 8 }}>{item.value}</div>
+                  <h4 style={{ fontSize: 14, fontWeight: 700, color: '#ffffff', margin: '0 0 6px' }}>{item.label}</h4>
+                  <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.6)', margin: 0 }}>{item.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="reveal" style={{ padding: '32px', borderRadius: 20, border: '1px solid rgba(255,255,255,0.06)', background: 'rgba(255,255,255,0.015)' }}>
+            <h3 style={{ fontSize: 18, fontWeight: 700, color: '#ffffff', margin: '0 0 16px' }}>Why Software Development Matters for Your {city.name} Business</h3>
+            <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, margin: '0 0 16px' }}>
+              Software development is an investment in your company's future. Whether you're in FinTech on Wall Street, Healthcare in the Medical District, E-Commerce, or any industry in {city.name}, custom software gives you competitive advantage, reduces operational cost, improves customer satisfaction, and enables rapid scaling.
+            </p>
+            <p style={{ fontSize: 15, color: 'rgba(255,255,255,0.7)', lineHeight: 1.8, margin: 0 }}>
+              The right development partner makes all the difference. Codazz brings 500+ projects of experience, proven expertise in {city.name}'s unique market, and a commitment to delivering working software on time and budget. Our developers average 8+ years of professional experience and understand your industry challenges.
+            </p>
+          </div>
+        </section>
+
         {/* SERVICES */}
         <section ref={servicesRef} style={{ padding: 'clamp(80px, 10vw, 140px) 0', borderTop: '1px solid rgba(255,255,255,0.05)', maxWidth: 1280, margin: '0 auto', width: '100%', paddingLeft: 'max(2vw, 24px)', paddingRight: 'max(2vw, 24px)' }}>
           <div className="reveal" style={{ textAlign: 'center', marginBottom: 60 }}>
