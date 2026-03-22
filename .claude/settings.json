@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:codazz.com)",
+      "Bash(ls /Users/ramanmakkar/Desktop/codazz.com/src/app/locations/[city]/)",
+      "WebFetch(domain:ahrefs.com)",
+      "WebFetch(domain:clutch.co)",
+      "WebFetch(domain:www.bestinedmonton.com)",
+      "Bash(grep -n '\\\\$[0-9]' /Users/ramanmakkar/Desktop/codazz.com/src/app/page.tsx)",
+      "Bash(curl -s -L -A \"Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0.0.0 Safari/537.36\" https://backlinko.com/rank-high-on-google)",
+      "Bash(ls -la /Users/ramanmakkar/Desktop/codazz.com/*.md /Users/ramanmakkar/Desktop/codazz.com/*.py /Users/ramanmakkar/Desktop/codazz.com/*.txt)",
+      "Bash(ls -la /Users/ramanmakkar/Desktop/codazz.com/*.md /Users/ramanmakkar/Desktop/codazz.com/*.py)",
+      "Bash(git -C /Users/ramanmakkar/Desktop/codazz.com ls-files --cached -- '*.md' '*.py' 'blog-posts/')",
+      "Bash(git rm:*)",
+      "Bash(find /Users/ramanmakkar/Desktop/codazz.com/src/app/services -type f -name \"page.tsx\" -exec grep -l '\\\\$[0-9]' {})",
+      "Bash(grep -n '\\\\$[0-9]' /Users/ramanmakkar/Desktop/codazz.com/src/app/services/web-development/ecommerce-systems/page.tsx)",
+      "Bash(grep -n '\\\\$[0-9]' /Users/ramanmakkar/Desktop/codazz.com/src/app/services/mobile-app-development/page.tsx)",
+      "WebFetch(domain:backlinko.com)",
+      "Bash(python3 -c \"import sys,json; d=json.loads\\(sys.stdin.read\\(\\)\\); print\\(d.get\\(''''type'''',''''''''\\), d.get\\(''''message'''',{}\\).get\\(''''content'''',''''''''\\)[:200] if isinstance\\(d.get\\(''''message'''',{}\\).get\\(''''content'''',''''''''\\), str\\) else ''''tool_use''''\\)\")",
+      "Bash(git status:*)",
+      "WebFetch(domain:webcache.googleusercontent.com)",
+      "Bash(ls /Users/ramanmakkar/Desktop/codazz.com/.git/*.lock)",
+      "Bash(ls /Users/ramanmakkar/Desktop/codazz.com/.git/refs/heads/*.lock)"
+    ],
+    "additionalDirectories": [
+      "/Users/ramanmakkar/Desktop/codazz.com/.git"
+    ]
+  }
+}
