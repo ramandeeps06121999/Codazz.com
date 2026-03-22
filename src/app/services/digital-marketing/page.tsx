@@ -40,7 +40,7 @@ const faqSchema = {
       name: 'How much does digital marketing cost?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Digital marketing costs vary based on scope and channels. SEO programs typically start at $3,000/month, PPC management at $2,500/month plus ad spend, and comprehensive multi-channel programs from $7,500/month. We customize every engagement to your goals and budget.',
+        text: 'Digital marketing costs vary based on scope and channels. SEO programs typically start at $2,200/month, PPC management at $1,900/month plus ad spend, and comprehensive multi-channel programs from $5,600/month. We customize every engagement to your goals and budget.',
       },
     },
     {

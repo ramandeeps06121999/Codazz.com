@@ -611,7 +611,7 @@ export default function PageClient({ city, blogLinks = [], lastUpdated }: PageCl
               <Reveal>
                 <div style={{ marginBottom: 'clamp(40px, 6vw, 80px)' }}>
                   <div className="section-tag">Our Work in {city.name}</div>
-                  <h2 className="section-heading">Featured Projects & Case Studies</h2>
+                  <h2 className="section-heading">Featured Projects & Case Studies in {city.name}</h2>
                   <p className="section-subtext">Real projects with measurable results for {city.name} businesses.</p>
                 </div>
               </Reveal>

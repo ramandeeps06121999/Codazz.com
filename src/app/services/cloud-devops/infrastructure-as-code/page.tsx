@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'Infrastructure as Code Services | Terraform',
+  title: 'Infrastructure as Code Services | Codazz',
   description: 'Terraform and Pulumi IaC services by Codazz San Francisco. GitOps workflows, state management, and security scanning. 70+ IaC projects delivered across 24 countries worldwide.',
   openGraph: {
     title: 'Infrastructure as Code Services | Codazz',

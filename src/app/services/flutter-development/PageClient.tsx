@@ -171,9 +171,9 @@ const pageData: ServicePageData = {
     title: 'How Much Does Flutter App Development Cost?',
     description: 'Costs depend on app complexity, number of target platforms, backend requirements, and third-party integrations. Codazz offers fixed-price quotes — Flutter saves 30-40% vs building separate native apps.',
     tiers: [
-      { icon: '💰', name: 'Flutter MVP', price: '$25,000 – $60,000', desc: 'Cross-platform app for iOS and Android with core features, basic backend (Firebase/Supabase), authentication, and App Store deployment.', timeline: '⏱ 6–10 weeks' },
-      { icon: '💰', name: 'Full-Featured App', price: '$60,000 – $200,000', desc: 'Production app with custom UI, complex animations, payment integration, push notifications, analytics, CI/CD pipeline, and multi-platform (mobile + web) deployment.', timeline: '⏱ 3–6 months' },
-      { icon: '💰', name: 'Enterprise Flutter Platform', price: '$200,000 – $500,000+', desc: 'Multi-platform deployment (iOS, Android, web, desktop), offline-first architecture, role-based access, custom backend APIs, admin dashboard, and enterprise integrations.', timeline: '⏱ 5–10 months' },
+      { icon: '💰', name: 'Flutter MVP', price: 'Starting at $19,000', desc: 'Cross-platform app for iOS and Android with core features, basic backend (Firebase/Supabase), authentication, and App Store deployment.', timeline: '⏱ 6–10 weeks' },
+      { icon: '💰', name: 'Full-Featured App', price: 'Starting at $45,000', desc: 'Production app with custom UI, complex animations, payment integration, push notifications, analytics, CI/CD pipeline, and multi-platform (mobile + web) deployment.', timeline: '⏱ 3–6 months' },
+      { icon: '💰', name: 'Enterprise Flutter Platform', price: 'Starting at $150,000', desc: 'Multi-platform deployment (iOS, Android, web, desktop), offline-first architecture, role-based access, custom backend APIs, admin dashboard, and enterprise integrations.', timeline: '⏱ 5–10 months' },
     ],
   },
   selectionGuide: {
@@ -192,7 +192,7 @@ const pageData: ServicePageData = {
     { q: 'Is Flutter good enough for production apps?', a: 'Absolutely. Flutter powers apps from Google, BMW, eBay, Alibaba, and Toyota. With the Impeller rendering engine, Flutter delivers 60fps performance that rivals native apps. We have shipped 150+ Flutter apps to production serving millions of users.' },
     { q: 'How does Flutter compare to React Native?', a: 'Flutter offers superior UI consistency (pixel-perfect across platforms), better animation performance (Impeller vs JavaScript bridge), and broader platform support (web + desktop). React Native has a larger ecosystem and JavaScript talent pool. We recommend Flutter for UI-heavy apps and React Native for React-experienced teams.' },
     { q: 'Can Flutter apps access native device features?', a: 'Yes. Flutter provides platform channels for direct access to native iOS and Android APIs. Camera, Bluetooth, GPS, biometrics, push notifications, in-app purchases — everything available natively is accessible from Flutter through plugins or custom platform channels.' },
-    { q: 'How much does Flutter app development cost?', a: 'A Flutter MVP typically costs $25,000-$60,000. Full-featured apps range from $60,000-$200,000+. Flutter saves 30-40% compared to building separate native iOS and Android apps because you maintain a single codebase, single team, and single testing pipeline.' },
+    { q: 'How much does Flutter app development cost?', a: 'A Flutter MVP starts at $19,000. Full-featured apps start at $45,000. Enterprise platforms start at $150,000. Flutter saves 30-40% compared to building separate native iOS and Android apps because you maintain a single codebase, single team, and single testing pipeline.' },
     { q: 'Can you migrate our existing native app to Flutter?', a: 'Yes. We offer two approaches: full migration (rebuild in Flutter) or gradual migration (add Flutter screens to your existing native app). The add-to-app approach lets you migrate feature by feature without disrupting your existing app.' },
     { q: 'Do Flutter apps look native on iOS and Android?', a: 'Yes. Flutter provides Material Design and Cupertino widget libraries that adapt to each platform. We build adaptive UIs that use iOS-native patterns on iPhone and Material Design on Android, so users feel at home on their platform.' },
   ],

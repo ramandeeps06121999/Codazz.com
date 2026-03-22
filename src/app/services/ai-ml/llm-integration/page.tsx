@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'LLM Integration Services',
+  title: 'LLM Integration Services | Codazz',
   description: 'LLM and large language model integration services. Codazz helps you integrate GPT, Claude, and custom AI models into your applications.',
   openGraph: {
     title: 'LLM Integration Services | Codazz',

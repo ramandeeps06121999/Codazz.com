@@ -173,9 +173,9 @@ const pageData: ServicePageData = {
     description:
       'WordPress development costs depend on design complexity, functionality requirements, and whether you need e-commerce or headless architecture. Codazz offers fixed-price quotes — no page builders, no surprises.',
     tiers: [
-      { icon: '💰', name: 'Business Website', price: '$5,000 – $15,000', desc: 'Custom WordPress theme (5-15 pages), ACF Pro content fields, mobile-responsive design, SEO setup, security hardening, and Core Web Vitals optimization.', timeline: '⏱ 2–4 weeks' },
-      { icon: '💰', name: 'WooCommerce / Advanced Site', price: '$15,000 – $50,000', desc: 'Custom WooCommerce store or feature-rich WordPress site with payment integration, custom plugins, multi-language support, and performance optimization for high traffic.', timeline: '⏱ 4–8 weeks' },
-      { icon: '💰', name: 'Headless / Enterprise WordPress', price: '$50,000 – $150,000+', desc: 'Decoupled WordPress with Next.js/React frontend, WPGraphQL, multi-site networks, enterprise-grade security, custom admin workflows, and scalable hosting architecture.', timeline: '⏱ 8–16 weeks' },
+      { icon: '💰', name: 'Business Website', price: 'Starting at $3,800', desc: 'Custom WordPress theme (5-15 pages), ACF Pro content fields, mobile-responsive design, SEO setup, security hardening, and Core Web Vitals optimization.', timeline: '⏱ 2–4 weeks' },
+      { icon: '💰', name: 'WooCommerce / Advanced Site', price: 'Starting at $11,000', desc: 'Custom WooCommerce store or feature-rich WordPress site with payment integration, custom plugins, multi-language support, and performance optimization for high traffic.', timeline: '⏱ 4–8 weeks' },
+      { icon: '💰', name: 'Headless / Enterprise WordPress', price: 'Starting at $38,000', desc: 'Decoupled WordPress with Next.js/React frontend, WPGraphQL, multi-site networks, enterprise-grade security, custom admin workflows, and scalable hosting architecture.', timeline: '⏱ 8–16 weeks' },
     ],
   },
 

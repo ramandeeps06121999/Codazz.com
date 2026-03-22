@@ -65,7 +65,7 @@ const faqSchema = {
       name: 'How much does React Native app development cost?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'React Native app development typically costs $20,000–$30,000 for a simple MVP, $50,000–$120,000 for a mid-complexity app with backend and third-party integrations, and $150,000–$400,000+ for an enterprise-grade application. React Native saves 30–40% compared to building separate native iOS and Android apps. Codazz provides fixed-price quotes after a free discovery session.',
+        text: 'React Native MVP apps start at $15,000. Full-featured apps start at $38,000. Enterprise platforms start at $150,000. React Native saves 30–40% compared to building separate native iOS and Android apps. Codazz provides fixed-price quotes after a free discovery session.',
       },
     },
     {
@@ -110,12 +110,6 @@ const serviceSchema = {
       'https://www.linkedin.com/company/codazz',
       'https://clutch.co/profile/codazz',
     ],
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '527',
-      bestRating: '5',
-    },
   },
   serviceType: 'React Native App Development',
   areaServed: [

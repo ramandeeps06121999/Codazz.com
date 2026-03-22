@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'SaaS Analytics & Dashboard Development',
+  title: 'SaaS Analytics & Dashboard Development | Codazz',
   description: 'Product analytics, MRR dashboards, and embedded customer analytics for SaaS. Codazz builds data-driven SaaS tools from San Francisco, United States.',
   openGraph: {
     title: 'SaaS Analytics & Dashboard Development | Codazz',

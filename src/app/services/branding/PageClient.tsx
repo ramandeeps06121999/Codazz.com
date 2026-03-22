@@ -248,9 +248,9 @@ const pageData: ServicePageData = {
     description:
       'Branding costs depend on the depth of strategy, number of brand touchpoints, and whether you need a full identity system or a focused refresh. Codazz offers fixed-price quotes with clear deliverables at every milestone.',
     tiers: [
-      { icon: '💰', name: 'Logo & Core Identity', price: '$5,000 – $15,000', desc: 'Logo design, primary color palette, typography selection, and basic usage guidelines. Ideal for early-stage startups and MVPs that need a professional foundation.', timeline: '⏱ 2–4 weeks' },
-      { icon: '💰', name: 'Full Brand Identity', price: '$15,000 – $50,000', desc: 'Strategy, positioning, logo system, complete visual identity, brand guidelines, social templates, and marketing collateral. Everything you need to launch with confidence.', timeline: '⏱ 6–10 weeks' },
-      { icon: '💰', name: 'Enterprise Brand System', price: '$50,000 – $150,000+', desc: 'Multi-brand architecture, sub-brand systems, naming, verbal identity, motion branding, sonic identity, and comprehensive guidelines with governance for large organizations.', timeline: '⏱ 3–5 months' },
+      { icon: '💰', name: 'Logo & Core Identity', price: 'Starting at $3,800', desc: 'Logo design, primary color palette, typography selection, and basic usage guidelines. Ideal for early-stage startups and MVPs that need a professional foundation.', timeline: '⏱ 2–4 weeks' },
+      { icon: '💰', name: 'Full Brand Identity', price: 'Starting at $11,000', desc: 'Strategy, positioning, logo system, complete visual identity, brand guidelines, social templates, and marketing collateral. Everything you need to launch with confidence.', timeline: '⏱ 6–10 weeks' },
+      { icon: '💰', name: 'Enterprise Brand System', price: 'Starting at $38,000', desc: 'Multi-brand architecture, sub-brand systems, naming, verbal identity, motion branding, sonic identity, and comprehensive guidelines with governance for large organizations.', timeline: '⏱ 3–5 months' },
     ],
   },
 

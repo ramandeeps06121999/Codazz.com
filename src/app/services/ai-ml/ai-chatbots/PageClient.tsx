@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'ai-ml',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our AI Chatbot Development Process',
     steps: [
       { num: '01', title: 'Conversation Design', desc: 'We map your key user journeys, define intents, design conversation flows, and create fallback strategies. Good conversation design is the foundation of a bot that users actually enjoy talking to.' },
       { num: '02', title: 'Knowledge Base Setup', desc: 'We ingest and structure your documentation, product data, and FAQs into a vector database. Content is chunked, embedded, and indexed for fast semantic retrieval during live conversations.' },

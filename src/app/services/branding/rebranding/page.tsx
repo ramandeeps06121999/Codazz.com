@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'Rebranding Services',
+  title: 'Rebranding Services | Codazz',
   description: 'Strategic rebranding services by Codazz. Refresh your brand identity, messaging, and visual language to stay relevant and competitive.',
   openGraph: {
     title: 'Rebranding Services | Codazz',

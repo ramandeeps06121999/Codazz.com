@@ -7,7 +7,7 @@ export interface CityServicePageData {
   citySlug: string;
   state: string;
   stateAbbr: string;
-  country: 'US' | 'UAE' | 'UK' | 'AU' | 'CA' | 'SA' | 'QA' | 'SG' | 'DE' | 'IN' | 'JP' | 'KR' | 'NL' | 'IE' | 'IL' | 'PL' | 'BR' | 'MX' | 'NG' | 'KE' | 'VN' | 'EG' | 'NZ' | 'CH';
+  country: 'US' | 'UAE' | 'UK' | 'AU' | 'CA' | 'SA' | 'QA' | 'SG' | 'DE' | 'IN' | 'JP' | 'KR' | 'NL' | 'IE' | 'IL' | 'PL' | 'BR' | 'MX' | 'NG' | 'KE' | 'VN' | 'EG' | 'NZ' | 'CH' | 'KW' | 'BH' | 'OM' | 'SE' | 'DK' | 'PT' | 'ES' | 'HK' | 'GH' | 'RW' | 'ZA';
   isHQ: boolean;
   // Service data
   serviceName: string;

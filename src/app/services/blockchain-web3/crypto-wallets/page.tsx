@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'Crypto Wallet Development Services | San Francisco',
+  title: 'Crypto Wallet Development Services | Codazz',
   description: 'Custom crypto wallet development with multi-chain support, HD key management, and hardware wallet integration. Codazz builds secure wallets in the US.',
   openGraph: {
     title: 'Crypto Wallet Development Services | Codazz',

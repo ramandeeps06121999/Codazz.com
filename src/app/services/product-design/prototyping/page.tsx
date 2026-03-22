@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'Prototyping & User Testing Services | San Francisco',
+  title: 'Prototyping & User Testing Services | Codazz',
   description: 'Interactive prototyping and usability testing by Codazz. Figma prototypes, design sprints, and real-user testing. 500+ prototypes built across 24 countries worldwide.',
   openGraph: {
     title: 'Prototyping & User Testing Services | Codazz',

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'Wireframing & UX Design Services | United States',
+  title: 'Wireframing & UX Design Services | Codazz',
   description: 'Professional wireframing and UX design by Codazz. Lo-fi to hi-fi wireframes in Figma, user flow mapping, and handoff-ready specs. 200+ products wireframed.',
   openGraph: {
     title: 'Wireframing & UX Design Services | Codazz',

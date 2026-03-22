@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'Unreal Engine 5 Development | AAA Game Studio',
+  title: 'Unreal Engine 5 Development | Codazz',
   description: 'Unreal Engine 5 game development with Lumen, Nanite, and Chaos Physics. AAA-quality games, simulations, and archviz. 30+ UE5 projects delivered in the US.',
   openGraph: {
     title: 'Unreal Engine 5 Development | Codazz',

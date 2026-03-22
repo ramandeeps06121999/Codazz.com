@@ -295,21 +295,21 @@ const pageData: ServicePageData = {
       {
         icon: '\uD83D\uDCB0',
         name: 'Marketing Website / Landing Pages',
-        price: '$8,000 – $25,000',
+        price: 'Starting at $6,000',
         desc: 'High-converting marketing site with SEO-optimized pages, responsive design, CMS integration, and 95+ Lighthouse score.',
         timeline: '\u23F1 3–5 weeks',
       },
       {
         icon: '\uD83D\uDCB0',
         name: 'Custom Web Application',
-        price: '$25,000 – $100,000',
+        price: 'Starting at $19,000',
         desc: 'Full-stack web app with user authentication, dashboards, API integrations, database design, and admin panel. Next.js + Node.js.',
         timeline: '\u23F1 8–16 weeks',
       },
       {
         icon: '\uD83D\uDCB0',
         name: 'Enterprise Platform / SaaS',
-        price: '$100,000 – $300,000+',
+        price: 'Starting at $75,000',
         desc: 'Complex enterprise portals, multi-tenant SaaS, e-commerce platforms with billing, RBAC, real-time features, and cloud infrastructure.',
         timeline: '\u23F1 4–8 months',
       },
@@ -333,7 +333,7 @@ const pageData: ServicePageData = {
   faqs: [
     {
       q: 'How much does web development cost in the USA?',
-      a: 'Web development costs vary based on complexity. A marketing website typically costs $8,000\u2013$25,000. A custom web application ranges from $25,000\u2013$100,000+. SaaS platforms start at $40,000. We provide fixed-price quotes after a free discovery call so there are no surprises.',
+      a: 'Web development costs vary based on complexity. Marketing websites start at $6,000. Custom web applications start at $19,000. SaaS platforms start at $75,000. We provide fixed-price quotes after a free discovery call so there are no surprises.',
     },
     {
       q: 'What technologies do you use for web development?',
@@ -353,7 +353,7 @@ const pageData: ServicePageData = {
     },
     {
       q: 'Do you provide ongoing website maintenance and support?',
-      a: 'Yes. We offer monthly maintenance retainers covering security updates, performance monitoring, bug fixes, content updates, and new feature development. Most clients stay with us long-term as their digital needs evolve. Plans start at $1,500/month.',
+      a: 'Yes. We offer monthly maintenance retainers covering security updates, performance monitoring, bug fixes, content updates, and new feature development. Most clients stay with us long-term as their digital needs evolve. Plans start at $1,100/month.',
     },
     {
       q: 'What industries do you serve?',
@@ -419,6 +419,11 @@ const pageData: ServicePageData = {
     { name: 'Real Estate & PropTech', href: '/industries/real-estate' },
     { name: 'Media & Entertainment', href: '/industries/media' },
   ],
+
+  statsH2: { line1: 'Web Development Results', line2: 'That Speak for Themselves.' },
+  advancedTechH2: { line1: 'Web Development Technologies', line2: 'Built Into Every Project.' },
+  techStackH2: { line1: 'Web Development Stack.', line2: '40+ Technologies.' },
+  blogsH2: { line1: 'Web Development', line2: 'Insights & Guides.' },
 };
 
 export default function WebDevelopmentPage() {

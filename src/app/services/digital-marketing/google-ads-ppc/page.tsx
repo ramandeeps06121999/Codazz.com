@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'Google Ads & PPC Management Services San Francisco',
+  title: 'Google Ads & PPC Management Services | Codazz',
   description: 'Expert Google Ads & PPC management in San Francisco. Search, Shopping, Display, and YouTube campaigns with 3.5x avg ROAS. Google Premier Partner agency.',
   openGraph: {
     title: 'Google Ads & PPC Management | Codazz',

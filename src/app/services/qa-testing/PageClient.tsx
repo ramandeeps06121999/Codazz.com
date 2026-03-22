@@ -172,9 +172,9 @@ const pageData: ServicePageData = {
     description:
       'QA testing costs depend on application complexity, testing types required, and engagement duration. Codazz offers fixed-price projects and dedicated QA team retainers — predictable costs, no hourly surprises.',
     tiers: [
-      { icon: '💰', name: 'Focused Test Cycle', price: '$5,000 – $15,000', desc: 'Manual functional testing, smoke testing, and regression testing for a single release cycle — ideal for pre-launch quality gates or critical hotfix validation.', timeline: '⏱ 1–3 weeks' },
-      { icon: '💰', name: 'Automation Framework + Testing', price: '$15,000 – $50,000', desc: 'Custom test automation framework (Cypress/Playwright/Selenium), CI/CD integration, performance testing, and a comprehensive test suite covering functional, API, and cross-browser scenarios.', timeline: '⏱ 4–8 weeks' },
-      { icon: '💰', name: 'Dedicated QA Team', price: '$50,000 – $150,000+', desc: 'Embedded QA engineers integrated into your sprints with full test automation, performance engineering, security testing, mobile device coverage, and real-time quality dashboards.', timeline: '⏱ 3–12 months' },
+      { icon: '💰', name: 'Focused Test Cycle', price: 'Starting at $3,800', desc: 'Manual functional testing, smoke testing, and regression testing for a single release cycle — ideal for pre-launch quality gates or critical hotfix validation.', timeline: '⏱ 1–3 weeks' },
+      { icon: '💰', name: 'Automation Framework + Testing', price: 'Starting at $11,000', desc: 'Custom test automation framework (Cypress/Playwright/Selenium), CI/CD integration, performance testing, and a comprehensive test suite covering functional, API, and cross-browser scenarios.', timeline: '⏱ 4–8 weeks' },
+      { icon: '💰', name: 'Dedicated QA Team', price: 'Starting at $38,000', desc: 'Embedded QA engineers integrated into your sprints with full test automation, performance engineering, security testing, mobile device coverage, and real-time quality dashboards.', timeline: '⏱ 3–12 months' },
     ],
   },
 
@@ -193,7 +193,7 @@ const pageData: ServicePageData = {
   },
 
   faqs: [
-    { q: 'How much do QA testing services cost?', a: 'QA testing costs typically range from $5,000 to $50,000+ per project depending on scope, complexity, testing types required, and duration. We offer flexible engagement models including per-project, dedicated team, and hourly rates. Contact us for a free testing audit and custom quote.' },
+    { q: 'How much do QA testing services cost?', a: 'QA testing projects start at $3,800 depending on scope, complexity, testing types required, and duration. We offer flexible engagement models including per-project, dedicated team, and hourly rates. Contact us for a free testing audit and custom quote.' },
     { q: 'What is the difference between manual testing and automation testing?', a: 'Manual testing involves human testers executing test cases without scripts or tools, ideal for exploratory testing, usability testing, and ad-hoc scenarios. Automation testing uses frameworks like Selenium, Cypress, or Playwright to run scripted tests automatically, ideal for regression testing, CI/CD pipelines, and repetitive test scenarios. Most projects benefit from a combination of both.' },
     { q: 'How long does a typical QA testing engagement take?', a: 'A typical QA testing engagement runs 2 to 12 weeks depending on application complexity and testing scope. Functional testing for a mid-size app takes 2-4 weeks, while comprehensive testing including performance, security, and automation framework setup may take 8-12 weeks.' },
     { q: 'Do you provide QA testing for mobile apps?', a: 'Yes. We provide comprehensive mobile testing services for iOS and Android applications, including functional testing, UI/UX testing, performance testing, compatibility testing across 200+ real devices via BrowserStack, and automation testing using Appium and Detox frameworks.' },

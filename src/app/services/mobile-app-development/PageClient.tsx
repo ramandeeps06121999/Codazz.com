@@ -166,7 +166,7 @@ const techStackGrid = [
 
 const faqs = [
   { q: 'Who are the top mobile app developers in 2026?', a: 'The top mobile app development companies in 2026 include Codazz (4.9★ Clutch, 500+ apps), Toptal, WillowTree, and Intellectsoft. Codazz is recognized for its full in-house engineering team of 250+ developers, fixed-price guarantees, and deep expertise across iOS, Android, Flutter, and React Native platforms.' },
-  { q: 'How much does it cost to build a mobile app?', a: 'Mobile app development costs range from $25,000 for a simple MVP to $150,000–$500,000+ for complex enterprise applications. Key cost factors include platform choice (native vs. cross-platform), feature complexity, backend infrastructure, third-party integrations, and compliance requirements. Codazz provides fixed-price quotes after a free discovery session — no surprise invoices.' },
+  { q: 'How much does it cost to build a mobile app?', a: 'Mobile app development starts at $19,000 for a simple MVP, with mid-range apps starting at $38,000 and enterprise applications starting at $112,000. Key cost factors include platform choice (native vs. cross-platform), feature complexity, backend infrastructure, third-party integrations, and compliance requirements. Codazz provides fixed-price quotes after a free discovery session — no surprise invoices.' },
   { q: 'How long does mobile app development take?', a: 'A basic MVP can be delivered in 8–12 weeks. Full-featured consumer apps typically take 4–6 months. Enterprise-grade applications with complex integrations may take 6–12 months. We provide a detailed milestone plan with sprint-by-sprint deliverables before development begins.' },
   { q: 'Should I choose native or cross-platform development?', a: 'Native apps (Swift for iOS, Kotlin for Android) offer the best performance and full access to platform APIs. Cross-platform frameworks like Flutter and React Native deliver 90–95% of native quality at 30–40% lower cost. Choose native for performance-critical apps; choose cross-platform for faster time-to-market and budget efficiency.' },
   { q: 'Do you sign NDAs before project discussions?', a: 'Yes — always. We sign a mutual NDA on Day 1, before any project discussion takes place. Your idea, intellectual property, and business strategy are fully protected from the very first conversation.' },
@@ -541,8 +541,8 @@ export default function MobileAppDevelopmentPage() {
             <div className="reveal" style={{ marginBottom: 64 }}>
               <div style={sectionLabel}>Our Services</div>
               <h2 style={sectionH2}>
-                Every Platform.<br />
-                <span style={{ color: 'rgba(255,255,255,0.2)' }}>Every Device. Every User.</span>
+                Mobile App Development Services.<br />
+                <span style={{ color: 'rgba(255,255,255,0.2)' }}>Every Platform. Every Device.</span>
               </h2>
               <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.5)', lineHeight: 1.75, marginTop: 20, maxWidth: 680 }}>
                 From native iOS and Android to cross-platform Flutter and React Native, we engineer mobile
@@ -600,7 +600,7 @@ export default function MobileAppDevelopmentPage() {
               <div style={sectionLabel}>Why Mobile App Development?</div>
               <h2 style={{ ...sectionH2, margin: '0 auto', maxWidth: 700 }}>
                 The Strategic Advantage<br />
-                <span style={{ color: 'rgba(255,255,255,0.2)' }}>of Going Mobile.</span>
+                <span style={{ color: 'rgba(255,255,255,0.2)' }}>of Mobile App Development.</span>
               </h2>
             </div>
             <div className="reveal reveal-d1" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: 20 }}>
@@ -668,8 +668,8 @@ export default function MobileAppDevelopmentPage() {
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>
               <div style={sectionLabel}>By the Numbers</div>
               <h2 style={{ ...sectionH2, margin: '0 auto' }}>
-                Results That<br />
-                <span style={{ color: 'rgba(255,255,255,0.2)' }}>Speak for Themselves.</span>
+                Mobile App Development Results<br />
+                <span style={{ color: 'rgba(255,255,255,0.2)' }}>That Speak for Themselves.</span>
               </h2>
             </div>
             <div className="reveal reveal-d1" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 20 }}>
@@ -708,7 +708,7 @@ export default function MobileAppDevelopmentPage() {
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>
               <div style={sectionLabel}>Advanced Technologies</div>
               <h2 style={{ ...sectionH2, margin: '0 auto', maxWidth: 700 }}>
-                Cutting-Edge Tech<br />
+                Mobile App Technologies<br />
                 <span style={{ color: 'rgba(255,255,255,0.2)' }}>Built Into Every App.</span>
               </h2>
               <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.5)', lineHeight: 1.75, marginTop: 20, maxWidth: 600, marginLeft: 'auto', marginRight: 'auto' }}>
@@ -800,8 +800,8 @@ export default function MobileAppDevelopmentPage() {
               <div>
                 <div style={sectionLabel}>Technology Stack</div>
                 <h2 style={sectionH2}>
-                  40+ Technologies.<br />
-                  <span style={{ color: 'rgba(255,255,255,0.2)' }}>One Seamless Stack.</span>
+                  Mobile App Development Stack.<br />
+                  <span style={{ color: 'rgba(255,255,255,0.2)' }}>40+ Technologies.</span>
                 </h2>
               </div>
               <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.5)', maxWidth: 380, lineHeight: 1.75, margin: 0 }}>
@@ -853,10 +853,10 @@ export default function MobileAppDevelopmentPage() {
             </div>
             <div className="reveal reveal-d1" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: 20 }}>
               {[
-                { icon: '🚀', name: 'Simple MVP', price: '$25,000 – $50,000', desc: 'Core functionality, single platform, basic UI, user auth, and essential backend. Ideal for validating your idea with early adopters.', timeline: '8–12 weeks' },
-                { icon: '📱', name: 'Mid-Range App', price: '$50,000 – $150,000', desc: 'Cross-platform (iOS + Android), custom UI/UX, API integrations, push notifications, analytics, and admin panel.', timeline: '12–20 weeks' },
-                { icon: '🏢', name: 'Enterprise App', price: '$150,000 – $500,000+', desc: 'Complex architecture, AI/ML features, real-time systems, multi-role dashboards, third-party integrations, and compliance (HIPAA, SOC 2).', timeline: '20–40 weeks' },
-                { icon: '🔄', name: 'Ongoing Support', price: '$3,000 – $15,000/mo', desc: 'Post-launch maintenance, feature updates, performance monitoring, bug fixes, and scaling infrastructure as your user base grows.', timeline: 'Monthly retainer' },
+                { icon: '🚀', name: 'Simple MVP', price: 'Starting at $19,000', desc: 'Core functionality, single platform, basic UI, user auth, and essential backend. Ideal for validating your idea with early adopters.', timeline: '8–12 weeks' },
+                { icon: '📱', name: 'Mid-Range App', price: 'Starting at $38,000', desc: 'Cross-platform (iOS + Android), custom UI/UX, API integrations, push notifications, analytics, and admin panel.', timeline: '12–20 weeks' },
+                { icon: '🏢', name: 'Enterprise App', price: 'Starting at $112,000', desc: 'Complex architecture, AI/ML features, real-time systems, multi-role dashboards, third-party integrations, and compliance (HIPAA, SOC 2).', timeline: '20–40 weeks' },
+                { icon: '🔄', name: 'Ongoing Support', price: 'Starting at $2,200/mo', desc: 'Post-launch maintenance, feature updates, performance monitoring, bug fixes, and scaling infrastructure as your user base grows.', timeline: 'Monthly retainer' },
               ].map((tier, i) => (
                 <div key={tier.name} className={`reveal-d${i + 1}`} style={{ padding: '36px 32px', border: '1px solid rgba(255,255,255,0.06)', borderRadius: 24, background: 'rgba(255,255,255,0.015)', transition: 'all 0.35s ease' }} onMouseEnter={cardHoverIn} onMouseLeave={cardHoverOut}>
                   <div style={{ fontSize: 28, marginBottom: 16 }}>{tier.icon}</div>
@@ -907,6 +907,7 @@ export default function MobileAppDevelopmentPage() {
         ═══════════════════════════════════════ */}
         <FAQSection
           items={faqs}
+          stickyHeading={<>Mobile App Development<br /><span style={{ background: 'linear-gradient(135deg, #22c55e, #4ade80)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>FAQ.</span></>}
           description="Everything you need to know about mobile app development with Codazz — platforms, timelines, cost, and how we work."
           maxAnswerHeight={1200}
         />
@@ -921,8 +922,8 @@ export default function MobileAppDevelopmentPage() {
               <div>
                 <div style={sectionLabel}>From Our Blog</div>
                 <h2 style={sectionH2}>
-                  Related<br />
-                  <span style={{ color: 'rgba(255,255,255,0.2)' }}>Insights.</span>
+                  Mobile App Development<br />
+                  <span style={{ color: 'rgba(255,255,255,0.2)' }}>Insights & Guides.</span>
                 </h2>
               </div>
               <Link href="/blog" style={{ fontSize: 14, fontWeight: 600, color: '#22c55e', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 6 }}>

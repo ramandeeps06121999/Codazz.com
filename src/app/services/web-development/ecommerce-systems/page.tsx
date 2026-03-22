@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'E-Commerce Development Services | United States',
+  title: 'E-Commerce Development Services | Codazz',
   description: 'Custom e-commerce stores built to convert and scale. Shopify, headless commerce, and Next.js storefronts by Codazz in San Francisco. 80+ stores launched.',
   openGraph: {
     title: 'E-Commerce Development Services | Codazz',

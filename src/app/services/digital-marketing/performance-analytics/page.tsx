@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'Performance Analytics & GA4 Setup Services',
+  title: 'Performance Analytics & GA4 Setup Services | Codazz',
   description: 'GA4 setup, conversion tracking, attribution modeling, and custom dashboards. Certified analytics specialists serving San Francisco and United States. 30% avg CPA reduction.',
   openGraph: {
     title: 'Performance Analytics & GA4 Setup | Codazz',

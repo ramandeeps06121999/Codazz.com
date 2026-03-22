@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'React Native App Development',
+  title: 'React Native App Development | Codazz',
   description: 'React Native app development services by Codazz. Build cross-platform mobile apps with native performance using JavaScript and React.',
   openGraph: {
     title: 'React Native App Development | Codazz',

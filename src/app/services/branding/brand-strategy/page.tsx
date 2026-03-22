@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'Brand Strategy Services',
+  title: 'Brand Strategy Services | Codazz',
   description: 'Strategic brand strategy consulting by Codazz. Market positioning, competitive analysis, and brand architecture for lasting market impact.',
   openGraph: {
     title: 'Brand Strategy Services | Codazz',

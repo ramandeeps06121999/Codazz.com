@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'NFT Platform & Marketplace Development',
+  title: 'NFT Platform & Marketplace Development | Codazz',
   description: 'Gas-optimized NFT minting contracts, custom marketplaces, and royalty systems. 500K+ NFTs minted across 30+ platforms by Codazz in San Francisco.',
   openGraph: {
     title: 'NFT Platform Development | Codazz',

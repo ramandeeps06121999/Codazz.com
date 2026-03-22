@@ -49,10 +49,10 @@ const offices = [
 ];
 
 const costSavingsData = [
-  { category: 'Senior Developer (Annual)', us: '$180,000 – $250,000', offshore: '$36,000 – $66,000', saved: '$114,000 – $184,000' },
-  { category: 'Project Manager (Annual)', us: '$130,000 – $180,000', offshore: '$30,000 – $48,000', saved: '$100,000 – $132,000' },
-  { category: 'QA Engineer (Annual)', us: '$100,000 – $150,000', offshore: '$24,000 – $42,000', saved: '$76,000 – $108,000' },
-  { category: '5-Person Team (Annual)', us: '$750,000 – $1,000,000', offshore: '$180,000 – $330,000', saved: '$420,000 – $670,000' },
+  { category: 'Senior Developer (Annual)', us: '$180,000 – $250,000', offshore: 'Starting at $27,000', saved: '$153,000 – $223,000' },
+  { category: 'Project Manager (Annual)', us: '$130,000 – $180,000', offshore: 'Starting at $22,500', saved: '$107,500 – $157,500' },
+  { category: 'QA Engineer (Annual)', us: '$100,000 – $150,000', offshore: 'Starting at $18,000', saved: '$82,000 – $132,000' },
+  { category: '5-Person Team (Annual)', us: '$750,000 – $1,000,000', offshore: 'Starting at $135,000', saved: '$615,000 – $865,000' },
 ];
 
 const additionalSavings = [
@@ -351,7 +351,7 @@ const faqs = [
   },
   {
     q: 'How much can I save with offshore development?',
-    a: 'Companies typically save 60-70% on development costs by choosing offshore development with Codazz. A senior full-stack developer in the US costs $150-$200/hour, while equivalent talent through our Chandigarh center costs $35-$55/hour. A 5-person team can save you $500,000-$800,000 annually.',
+    a: 'Companies typically save 60-70% on development costs by choosing offshore development with Codazz. A senior full-stack developer in the US costs $150-$200/hour, while equivalent talent through our Chandigarh center starts at $26/hour. A 5-person team can save you $500,000-$800,000 annually.',
   },
   {
     q: 'How do you handle time zone differences?',

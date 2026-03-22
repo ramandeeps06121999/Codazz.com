@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'Android App Development Services',
+  title: 'Android App Development Services | Codazz',
   description: 'Professional Android app development with Kotlin & Jetpack Compose. Codazz creates scalable apps for phones, tablets, and foldables.',
   openGraph: {
     title: 'Android App Development Services | Codazz',

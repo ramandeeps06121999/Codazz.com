@@ -9,8 +9,8 @@ const pageData: SubServicePageData = {
   ],
   hero: {
     badge: 'CROSS-PLATFORM NATIVE',
-    title: 'One Codebase.',
-    titleAccent: 'Every Platform. Native Speed.',
+    title: 'Flutter Development:',
+    titleAccent: 'One Codebase. Every Platform.',
     description: 'Flutter lets us ship beautiful, high-performance apps for iOS, Android, web, and desktop from a single Dart codebase \u2014 cutting your development cost by up to 60% without sacrificing quality or native feel.',
     service: 'Flutter Development',
     stats: [
@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'mobile-app-development',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our Flutter Development Process',
     steps: [
       { num: '01', title: 'Architecture Design', desc: 'We define the app architecture \u2014 folder structure, state management approach, routing strategy, and third-party package selection \u2014 establishing a solid foundation before writing a single widget.' },
       { num: '02', title: 'Widget Development', desc: 'UI is built widget by widget in Flutter, with our designers and developers collaborating closely to produce pixel-perfect implementations of your Figma designs across both iOS and Android.' },

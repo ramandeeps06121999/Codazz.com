@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'Design System Development | Figma & Storybook',
+  title: 'Design System Development | Codazz',
   description: 'Scalable design systems built by Codazz in San Francisco. Figma component libraries, Storybook docs, and WCAG 2.1 accessibility. 50+ systems delivered in the US.',
   openGraph: {
     title: 'Design System Development | Codazz',

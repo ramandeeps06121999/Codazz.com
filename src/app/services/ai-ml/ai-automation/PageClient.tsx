@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'ai-ml',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our AI Automation Process',
     steps: [
       { num: '01', title: 'Process Audit', desc: 'We map your existing workflows, identify bottleneck tasks, quantify time costs, and rank automation opportunities by ROI potential and implementation feasibility.' },
       { num: '02', title: 'Automation Design', desc: 'We design the automation architecture — defining triggers, AI decision points, data flows, exception handling, and human-in-the-loop checkpoints for edge cases.' },

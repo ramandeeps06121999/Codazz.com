@@ -9,7 +9,7 @@ const pageData: SubServicePageData = {
   ],
   hero: {
     badge: 'APPLE ECOSYSTEM',
-    title: 'iOS Apps Built for the',
+    title: 'iOS App Development for the',
     titleAccent: 'App Store Top Charts',
     description: 'We craft high-performance native iOS applications using Swift and SwiftUI that users love and Apple approves. From concept to App Store launch, our team delivers polished, scalable apps across the entire Apple ecosystem.',
     service: 'iOS App Development',
@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'mobile-app-development',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our iOS App Development Process',
     steps: [
       { num: '01', title: 'Discovery & Spec', desc: 'We deep-dive into your product goals, target users, and technical requirements to define a clear specification, architecture plan, and project roadmap.' },
       { num: '02', title: 'Design & Prototype', desc: 'Our designers create high-fidelity Figma prototypes with interactive flows, ensuring the UX is validated before a single line of Swift is written.' },

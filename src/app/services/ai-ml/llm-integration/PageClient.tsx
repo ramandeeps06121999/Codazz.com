@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'ai-ml',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our LLM Integration Process',
     steps: [
       { num: '01', title: 'Use Case Scoping', desc: 'We assess your goals, data, and existing systems to define the optimal LLM integration approach — from simple API calls to complex multi-agent pipelines.' },
       { num: '02', title: 'Model Selection', desc: 'We evaluate GPT-4, Claude, Gemini, Llama, and open-source alternatives across accuracy, cost, latency, and compliance requirements to recommend the best fit.' },

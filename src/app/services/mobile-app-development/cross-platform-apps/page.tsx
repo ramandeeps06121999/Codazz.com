@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'Cross-Platform App Development',
+  title: 'Cross-Platform App Development | Codazz',
   description: 'Cross-platform mobile app development services. Codazz builds apps that run on iOS and Android with shared codebases and native performance.',
   openGraph: {
     title: 'Cross-Platform App Development | Codazz',

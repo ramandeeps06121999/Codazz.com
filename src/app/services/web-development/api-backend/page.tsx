@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'API & Backend Development Services',
+  title: 'API & Backend Development Services | Codazz',
   description: 'Scalable REST and GraphQL APIs with sub-100ms latency and 99.9% uptime. Secure backend engineering by Codazz, San Francisco. 200+ APIs delivered.',
   openGraph: {
     title: 'API & Backend Development | Codazz',

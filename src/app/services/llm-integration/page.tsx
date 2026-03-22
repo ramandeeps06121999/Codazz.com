@@ -115,7 +115,7 @@ const jsonLdFAQ = {
       name: 'How much does LLM integration cost?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'LLM integration costs range from $10,000-$25,000 for straightforward API integrations, $25,000-$75,000 for RAG systems with vector search, and $50,000-$200,000 for custom fine-tuned models with production deployment. Cost depends on the LLM provider, data volume, integration complexity and compliance requirements. We provide fixed-price proposals after a free scoping session.',
+        text: 'LLM integration starts at $11,000 for straightforward API integrations, $30,000 for RAG systems with vector search, and $90,000 for custom fine-tuned models with production deployment. Cost depends on the LLM provider, data volume, integration complexity and compliance requirements. We provide fixed-price proposals after a free scoping session.',
       },
     },
     {

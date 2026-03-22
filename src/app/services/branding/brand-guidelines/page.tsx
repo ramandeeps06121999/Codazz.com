@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'Brand Guidelines Development',
+  title: 'Brand Guidelines Development | Codazz',
   description: 'Comprehensive brand guidelines by Codazz. Usage rules, asset libraries, and style guides that maintain brand consistency across all touchpoints.',
   openGraph: {
     title: 'Brand Guidelines Development | Codazz',

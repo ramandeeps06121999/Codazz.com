@@ -172,9 +172,9 @@ const pageData: ServicePageData = {
     title: 'How Much Does RAG Development Cost?',
     description: 'RAG project costs depend on document volume, number of data sources, accuracy requirements, and security needs. Codazz offers fixed-price quotes with retrieval accuracy guarantees.',
     tiers: [
-      { icon: '💰', name: 'RAG MVP / Chatbot', price: '$20,000 – $50,000', desc: 'Single data source RAG chatbot with document ingestion, vector search, and a conversational UI. Ideal for internal knowledge bases or FAQ bots.', timeline: '⏱ 4–8 weeks' },
-      { icon: '💰', name: 'Enterprise RAG System', price: '$50,000 – $150,000', desc: 'Multi-source ingestion, hybrid search, re-ranking, RBAC, source citations, evaluation pipelines, and custom UI. Supports millions of documents.', timeline: '⏱ 2–5 months' },
-      { icon: '💰', name: 'Agentic RAG Platform', price: '$150,000 – $350,000+', desc: 'Multi-step reasoning, multi-source orchestration, Graph RAG, real-time indexing, advanced evaluation, on-premise deployment, and enterprise integrations.', timeline: '⏱ 4–8 months' },
+      { icon: '💰', name: 'RAG MVP / Chatbot', price: 'Starting at $15,000', desc: 'Single data source RAG chatbot with document ingestion, vector search, and a conversational UI. Ideal for internal knowledge bases or FAQ bots.', timeline: '⏱ 4–8 weeks' },
+      { icon: '💰', name: 'Enterprise RAG System', price: 'Starting at $38,000', desc: 'Multi-source ingestion, hybrid search, re-ranking, RBAC, source citations, evaluation pipelines, and custom UI. Supports millions of documents.', timeline: '⏱ 2–5 months' },
+      { icon: '💰', name: 'Agentic RAG Platform', price: 'Starting at $112,000', desc: 'Multi-step reasoning, multi-source orchestration, Graph RAG, real-time indexing, advanced evaluation, on-premise deployment, and enterprise integrations.', timeline: '⏱ 4–8 months' },
     ],
   },
   selectionGuide: {
@@ -195,7 +195,7 @@ const pageData: ServicePageData = {
     { q: 'What types of documents can RAG systems handle?', a: 'Our RAG systems handle PDFs, Word documents, HTML pages, Markdown, Confluence wikis, Notion databases, Google Docs, Slack messages, email archives, code repositories, and structured data from databases. We build custom parsers for any document format.' },
     { q: 'How do you ensure RAG accuracy?', a: 'We use advanced chunking strategies, hybrid search (semantic + keyword), cross-encoder re-ranking, and comprehensive evaluation pipelines. Our systems are tested with automated quality metrics (Ragas, DeepEval) and human evaluation to achieve 99%+ retrieval accuracy.' },
     { q: 'Can RAG systems handle millions of documents?', a: 'Yes. We architect RAG systems using distributed vector databases (Pinecone, Weaviate, Qdrant) that scale to billions of vectors. Combined with efficient indexing, caching, and query optimization, our systems maintain sub-200ms latency even with millions of documents.' },
-    { q: 'How much does a RAG system cost?', a: 'A basic RAG chatbot starts at $20,000. Enterprise knowledge base systems with multi-source ingestion, RBAC, and custom UI range from $50,000-$150,000. Ongoing infrastructure costs (vector DB, LLM API) typically run $200-$2,000/month depending on volume.' },
+    { q: 'How much does a RAG system cost?', a: 'A basic RAG chatbot starts at $15,000. Enterprise knowledge base systems with multi-source ingestion, RBAC, and custom UI start at $38,000. Ongoing infrastructure costs (vector DB, LLM API) start at $150/month depending on volume.' },
   ],
   faqDescription:
     'Get answers to common questions about RAG development, vector databases, retrieval accuracy, and enterprise knowledge management systems.',

@@ -232,9 +232,9 @@ const pageData: ServicePageData = {
     description:
       'Digital marketing pricing depends on the channels, scope, and competitiveness of your market. Codazz offers fixed monthly retainers with transparent reporting — every dollar tracked.',
     tiers: [
-      { icon: '💰', name: 'Starter / Single Channel', price: '$3,000 – $7,500/mo', desc: 'Focused SEO or PPC management for a single channel — technical audit, keyword strategy, content optimization, or Google Ads campaign management with weekly reporting.', timeline: '⏱ 3-month minimum' },
-      { icon: '💰', name: 'Growth / Multi-Channel', price: '$7,500 – $20,000/mo', desc: 'SEO + PPC + content marketing across Google, Meta, and LinkedIn. Full-funnel strategy with custom dashboards, A/B testing, and dedicated account team.', timeline: '⏱ 6-month engagement' },
-      { icon: '💰', name: 'Enterprise / Full-Service', price: '$20,000 – $50,000+/mo', desc: 'All channels, all markets. International SEO, multi-platform advertising, content production, marketing automation, and C-suite reporting with a senior strategist.', timeline: '⏱ 12-month partnership' },
+      { icon: '💰', name: 'Starter / Single Channel', price: 'Starting at $2,200/mo', desc: 'Focused SEO or PPC management for a single channel — technical audit, keyword strategy, content optimization, or Google Ads campaign management with weekly reporting.', timeline: '⏱ 3-month minimum' },
+      { icon: '💰', name: 'Growth / Multi-Channel', price: 'Starting at $5,600/mo', desc: 'SEO + PPC + content marketing across Google, Meta, and LinkedIn. Full-funnel strategy with custom dashboards, A/B testing, and dedicated account team.', timeline: '⏱ 6-month engagement' },
+      { icon: '💰', name: 'Enterprise / Full-Service', price: 'Starting at $15,000/mo', desc: 'All channels, all markets. International SEO, multi-platform advertising, content production, marketing automation, and C-suite reporting with a senior strategist.', timeline: '⏱ 12-month partnership' },
     ],
   },
 
@@ -263,7 +263,7 @@ const pageData: ServicePageData = {
     },
     {
       q: 'How much does digital marketing cost?',
-      a: 'Digital marketing costs vary based on scope and channels. SEO programs typically start at $3,000/month, PPC management at $2,500/month plus ad spend, and comprehensive multi-channel programs from $7,500/month. We customize every engagement to your goals and budget.',
+      a: 'Digital marketing costs vary based on scope and channels. SEO programs typically start at $2,200/month, PPC management at $1,900/month plus ad spend, and comprehensive multi-channel programs from $5,600/month. We customize every engagement to your goals and budget.',
     },
     {
       q: 'Do you manage ad spend or just strategy?',

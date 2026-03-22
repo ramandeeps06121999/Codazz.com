@@ -240,9 +240,9 @@ const pageData: ServicePageData = {
     description:
       'Product design costs depend on the scope of research, number of screens, and complexity of the design system. Codazz offers fixed-price quotes with clear deliverables — no hourly surprises.',
     tiers: [
-      { icon: '💰', name: 'UX Audit / Sprint', price: '$5,000 – $15,000', desc: 'Heuristic evaluation, UX audit, or a focused 1-week design sprint to validate a concept with wireframes and a clickable prototype.', timeline: '⏱ 1–2 weeks' },
-      { icon: '💰', name: 'Full Product Design', price: '$15,000 – $60,000', desc: 'End-to-end UI/UX for an MVP or mid-complexity product — user research, wireframes, high-fidelity screens, interactive prototype, and developer handoff specs.', timeline: '⏱ 4–8 weeks' },
-      { icon: '💰', name: 'Enterprise Design System', price: '$60,000 – $150,000+', desc: 'Multi-role enterprise products with scalable design systems, component libraries, design tokens, accessibility compliance, and comprehensive documentation.', timeline: '⏱ 8–16 weeks' },
+      { icon: '💰', name: 'UX Audit / Sprint', price: 'Starting at $3,800', desc: 'Heuristic evaluation, UX audit, or a focused 1-week design sprint to validate a concept with wireframes and a clickable prototype.', timeline: '⏱ 1–2 weeks' },
+      { icon: '💰', name: 'Full Product Design', price: 'Starting at $11,000', desc: 'End-to-end UI/UX for an MVP or mid-complexity product — user research, wireframes, high-fidelity screens, interactive prototype, and developer handoff specs.', timeline: '⏱ 4–8 weeks' },
+      { icon: '💰', name: 'Enterprise Design System', price: 'Starting at $45,000', desc: 'Multi-role enterprise products with scalable design systems, component libraries, design tokens, accessibility compliance, and comprehensive documentation.', timeline: '⏱ 8–16 weeks' },
     ],
   },
 
@@ -263,7 +263,7 @@ const pageData: ServicePageData = {
   faqs: [
     {
       q: 'How much does UI/UX design cost?',
-      a: 'UI/UX design costs vary by scope. A focused UX audit starts at $3,000-$5,000. Full product design for an MVP ranges from $15,000-$40,000. Enterprise design systems with multiple user types can be $50,000-$120,000+. We provide detailed estimates after a free scoping call.',
+      a: 'UI/UX design costs vary by scope. A focused UX audit starts at $3,800. Full product design for an MVP starts at $11,000. Enterprise design systems start at $45,000. We provide detailed estimates after a free scoping call.',
     },
     {
       q: 'How long does a product design project take?',

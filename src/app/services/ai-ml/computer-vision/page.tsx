@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'Computer Vision Development',
+  title: 'Computer Vision Development | Codazz',
   description: 'Custom computer vision solutions by Codazz. Image recognition, object detection, OCR, and visual AI for enterprise applications.',
   openGraph: {
     title: 'Computer Vision Development | Codazz',

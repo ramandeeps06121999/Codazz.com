@@ -9,8 +9,8 @@ const pageData: SubServicePageData = {
   ],
   hero: {
     badge: 'GOOGLE ECOSYSTEM',
-    title: 'Android Apps That Dominate the',
-    titleAccent: 'Play Store',
+    title: 'Android App Development for the',
+    titleAccent: 'Google Play Store',
     description: 'We build high-quality native Android applications in Kotlin with Jetpack Compose that perform flawlessly across the full spectrum of Android devices. From Play Store strategy to production launch, we cover every step.',
     service: 'Android App Development',
     stats: [
@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'mobile-app-development',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our Android App Development Process',
     steps: [
       { num: '01', title: 'Research & Architecture', desc: 'We analyze your target audience, device landscape, and business requirements to define the optimal Android architecture, third-party integrations, and development approach.' },
       { num: '02', title: 'UI/UX Design', desc: 'Our designers create adaptive layouts that look great on every screen size \u2014 from compact phones to large foldables \u2014 following Material Design 3 principles throughout.' },

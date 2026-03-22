@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'SaaS MVP Development in 8 Weeks | San Francisco',
+  title: 'SaaS MVP Development in 8 Weeks | Codazz',
   description: 'Launch your SaaS MVP in 8 weeks with production-quality code. Codazz builds scalable MVPs for startups from San Francisco, United States.',
   openGraph: {
     title: 'SaaS MVP Development in 8 Weeks | Codazz',

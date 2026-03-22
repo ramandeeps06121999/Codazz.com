@@ -65,7 +65,7 @@ const faqSchema = {
       name: 'How much can I save with offshore development?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Companies typically save 60-70% on development costs by choosing offshore development with Codazz. A senior full-stack developer in the US costs $150-$200/hour, while equivalent talent through our Chandigarh center costs $35-$55/hour. A 5-person team can save you $500,000-$800,000 annually.',
+        text: 'Companies typically save 60-70% on development costs by choosing offshore development with Codazz. A senior full-stack developer in the US costs $150-$200/hour, while equivalent talent through our Chandigarh center starts at $26/hour. A 5-person team can save you $500,000-$800,000 annually.',
       },
     },
     {
@@ -131,12 +131,6 @@ const serviceSchema = {
         addressCountry: 'IN',
       },
     ],
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '527',
-      bestRating: '5',
-    },
   },
   serviceType: 'Offshore Software Development',
   areaServed: [

@@ -61,7 +61,7 @@ const teamRoles = [
     ),
     title: 'Project Manager',
     desc: 'Your single point of contact who coordinates sprints, removes blockers, manages timelines, and ensures alignment between your business goals and engineering execution.',
-    rate: '$2,500 – $4,000/mo',
+    rate: 'Starting at $1,900/mo',
   },
   {
     icon: (
@@ -75,7 +75,7 @@ const teamRoles = [
     ),
     title: 'Frontend Developer',
     desc: 'React, Next.js, Angular, or Vue.js specialists who craft pixel-perfect, accessible, and performant user interfaces. Expertise in TypeScript, Tailwind, and modern component architectures.',
-    rate: '$3,000 – $5,500/mo',
+    rate: 'Starting at $2,250/mo',
   },
   {
     icon: (
@@ -86,7 +86,7 @@ const teamRoles = [
     ),
     title: 'Backend Developer',
     desc: 'Node.js, Python, Java, Go, or .NET engineers who build robust APIs, microservices, and server-side architectures. Deep expertise in databases, caching, message queues, and cloud-native patterns.',
-    rate: '$3,000 – $6,000/mo',
+    rate: 'Starting at $2,500/mo',
   },
   {
     icon: (
@@ -97,7 +97,7 @@ const teamRoles = [
     ),
     title: 'QA Engineer',
     desc: 'Manual and automation testing specialists using Selenium, Cypress, Playwright, and Jest. They ensure every release is regression-free with comprehensive test coverage across unit, integration, and E2E layers.',
-    rate: '$2,000 – $3,500/mo',
+    rate: 'Starting at $1,500/mo',
   },
   {
     icon: (
@@ -109,14 +109,14 @@ const teamRoles = [
     ),
     title: 'DevOps Engineer',
     desc: 'CI/CD pipeline architects who automate deployments, manage infrastructure as code (Terraform, Pulumi), and ensure 99.99% uptime with monitoring, alerting, and incident response protocols.',
-    rate: '$3,500 – $6,000/mo',
+    rate: 'Starting at $2,600/mo',
   },
 ];
 
 const pricingModels = [
   {
     name: 'Starter Team',
-    price: '$8,000',
+    price: 'Starting at $6,000',
     period: '/month',
     features: [
       '1 Frontend Developer',
@@ -131,7 +131,7 @@ const pricingModels = [
   },
   {
     name: 'Growth Team',
-    price: '$18,000',
+    price: 'Starting at $13,500',
     period: '/month',
     features: [
       '2 Frontend Developers',
@@ -147,7 +147,7 @@ const pricingModels = [
   },
   {
     name: 'Enterprise Team',
-    price: '$35,000',
+    price: 'Starting at $26,000',
     period: '/month',
     features: [
       '3+ Frontend Developers',
@@ -385,7 +385,7 @@ const faqs = [
   },
   {
     q: 'How much does a dedicated development team cost?',
-    a: 'A dedicated development team from Codazz typically costs $8,000-$35,000/month depending on team size and seniority. This is 60-70% less than hiring equivalent talent in the US or Canada. Pricing is fully transparent with no hidden fees — you pay a fixed monthly rate per team member.',
+    a: 'A dedicated development team from Codazz typically starts at $6,000/month depending on team size and seniority. This is 60-70% less than hiring equivalent talent in the US or Canada. Pricing is fully transparent with no hidden fees — you pay a fixed monthly rate per team member.',
   },
   {
     q: 'Can I scale the team up or down?',

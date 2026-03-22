@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'Multiplayer & LiveOps Game Development',
+  title: 'Multiplayer & LiveOps Game Development | Codazz',
   description: 'Real-time multiplayer infrastructure and LiveOps systems built for scale. Netcode, matchmaking, seasonal events, and anti-cheat from a American game dev team.',
   openGraph: {
     title: 'Multiplayer & LiveOps Development | Codazz',

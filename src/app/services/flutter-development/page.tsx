@@ -65,7 +65,7 @@ const faqSchema = {
       name: 'How much does Flutter app development cost?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Flutter app development costs $18,000–$40,000 for a simple MVP, $45,000–$110,000 for a mid-complexity app with backend and custom animations, and $120,000–$400,000+ for enterprise apps with complex integrations. Flutter consistently saves 30–40% vs building separate iOS and Android apps. Codazz provides fixed-price quotes after a free discovery session.',
+        text: 'Flutter MVP apps start at $19,000. Full-featured apps start at $45,000. Enterprise platforms start at $150,000. Flutter consistently saves 30–40% vs building separate iOS and Android apps. Codazz provides fixed-price quotes after a free discovery session.',
       },
     },
     {
@@ -110,12 +110,6 @@ const serviceSchema = {
       'https://www.linkedin.com/company/codazz',
       'https://clutch.co/profile/codazz',
     ],
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '527',
-      bestRating: '5',
-    },
   },
   serviceType: 'Flutter App Development',
   areaServed: [

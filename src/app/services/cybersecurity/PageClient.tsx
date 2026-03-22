@@ -173,9 +173,9 @@ const pageData: ServicePageData = {
     description:
       'Cybersecurity pricing depends on scope, asset count, and engagement type. Codazz offers fixed-price assessments and monthly managed security retainers — no open-ended hourly billing.',
     tiers: [
-      { icon: '💰', name: 'Focused Pen Test', price: '$8,000 – $25,000', desc: 'Web application, API, or mobile app penetration test with OWASP methodology, detailed findings report, remediation guidance, and free re-test after fixes.', timeline: '⏱ 1–2 weeks' },
-      { icon: '💰', name: 'Full Security Audit', price: '$25,000 – $75,000', desc: 'Comprehensive security assessment covering infrastructure, applications, cloud, and policy review with prioritized remediation roadmap and compliance gap analysis.', timeline: '⏱ 3–6 weeks' },
-      { icon: '💰', name: 'Managed Security / Compliance', price: '$75,000 – $200,000+', desc: 'End-to-end SOC 2 or ISO 27001 readiness, 24/7 managed SIEM, continuous vulnerability management, incident response retainer, and quarterly penetration testing.', timeline: '⏱ 3–12 months' },
+      { icon: '💰', name: 'Focused Pen Test', price: 'Starting at $6,000', desc: 'Web application, API, or mobile app penetration test with OWASP methodology, detailed findings report, remediation guidance, and free re-test after fixes.', timeline: '⏱ 1–2 weeks' },
+      { icon: '💰', name: 'Full Security Audit', price: 'Starting at $19,000', desc: 'Comprehensive security assessment covering infrastructure, applications, cloud, and policy review with prioritized remediation roadmap and compliance gap analysis.', timeline: '⏱ 3–6 weeks' },
+      { icon: '💰', name: 'Managed Security / Compliance', price: 'Starting at $56,000', desc: 'End-to-end SOC 2 or ISO 27001 readiness, 24/7 managed SIEM, continuous vulnerability management, incident response retainer, and quarterly penetration testing.', timeline: '⏱ 3–12 months' },
     ],
   },
 
@@ -199,7 +199,7 @@ const pageData: ServicePageData = {
     { q: 'Can you help us achieve SOC 2 or ISO 27001 compliance?', a: 'Yes. We provide end-to-end compliance readiness services for SOC 2 Type I and Type II, ISO 27001, HIPAA, PCI DSS, and GDPR. This includes gap analysis, policy development, control implementation, evidence collection, and audit preparation. Most clients achieve certification within 3–6 months.' },
     { q: 'What happens if you find a critical vulnerability during testing?', a: 'Critical and high-severity vulnerabilities are reported immediately through our secure communication channel — not at the end of the engagement. We provide a detailed remediation guide and can assist your team in patching the issue. A free re-test is included to verify the fix.' },
     { q: 'Do you offer ongoing security monitoring and managed services?', a: 'Yes. Beyond one-time assessments, we offer continuous security monitoring, managed SIEM, vulnerability management programs, and retainer-based incident response. Our managed security services include 24/7 threat detection, monthly vulnerability scans, and quarterly penetration tests.' },
-    { q: 'How much do cybersecurity services cost?', a: 'Pricing depends on scope and complexity. Web application pentests start at $8,000. Full infrastructure security audits start at $25,000. Compliance readiness programs start at $40,000. Managed security retainers start at $5,000/month. Every engagement is scoped individually after a free consultation.' },
+    { q: 'How much do cybersecurity services cost?', a: 'Pricing depends on scope and complexity. Web application pentests start at $6,000. Full infrastructure security audits start at $19,000. Compliance readiness programs start at $30,000. Managed security retainers start at $3,800/month. Every engagement is scoped individually after a free consultation.' },
   ],
   faqDescription:
     'Get answers to common questions about our cybersecurity services, penetration testing, compliance readiness, and managed security offerings.',

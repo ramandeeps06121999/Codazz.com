@@ -81,7 +81,7 @@ const faqSchema = {
       name: 'How much does software outsourcing cost?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Software outsourcing with Codazz typically costs $25-$55/hour depending on the role and seniority, compared to $100-$200/hour for equivalent US-based talent. A typical 5-person team costs $15,000-$30,000/month. We offer both fixed-price and time-and-materials pricing models.',
+        text: 'Software outsourcing with Codazz starts at $19/hour depending on the role and seniority, compared to $100-$200/hour for equivalent US-based talent. A typical 5-person team starts at $11,000/month. We offer both fixed-price and time-and-materials pricing models.',
       },
     },
     {
@@ -121,12 +121,6 @@ const serviceSchema = {
     address: {
       '@type': 'PostalAddress',
       addressCountry: 'CA',
-    },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '527',
-      bestRating: '5',
     },
   },
   serviceType: 'Software Development Outsourcing',

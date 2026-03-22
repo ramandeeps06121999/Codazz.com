@@ -9,8 +9,8 @@ const pageData: SubServicePageData = {
   ],
   hero: {
     badge: 'BRANDING & IDENTITY',
-    title: 'Guidelines That',
-    titleAccent: 'Protect Your Brand',
+    title: 'Brand Guidelines That',
+    titleAccent: 'Protect Your Identity',
     description: 'Comprehensive brand guidelines in Figma and PDF that give every team member, agency, and partner the rules they need to represent your brand consistently and confidently.',
     service: 'Brand Guidelines',
     stats: [
@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'branding',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our Brand Guidelines Process',
     steps: [
       { num: '01', title: 'Brand Asset Audit', desc: 'We audit all existing brand assets \u2014 logos, colors, fonts, photography \u2014 documenting what exists, what is inconsistent, and what needs to be created or standardized.' },
       { num: '02', title: 'Guidelines Structure', desc: 'We define the scope and structure of your guidelines document, mapping all sections required and aligning with your team on depth, format, and primary use cases.' },

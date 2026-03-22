@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'Unity Game Development Services | C# Experts',
+  title: 'Unity Game Development Services | Codazz',
   description: 'Expert Unity game development with deep C# skills. 80+ projects across mobile, PC, and console. HDRP, URP, multiplayer, and cross-platform game studio in the US.',
   openGraph: {
     title: 'Unity Game Development Services | Codazz',

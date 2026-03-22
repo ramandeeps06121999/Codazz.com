@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'UI/UX Strategy Services | San Francisco, United States',
+  title: 'UI/UX Strategy Services | Codazz',
   description: 'Data-driven UI/UX strategy from Codazz in San Francisco. User research, UX audits, and design sprints that boost conversions by 40%. Get a free consultation.',
   openGraph: {
     title: 'UI/UX Strategy Services | Codazz',

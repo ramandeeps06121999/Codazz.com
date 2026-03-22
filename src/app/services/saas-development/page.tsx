@@ -54,7 +54,7 @@ const faqSchema = {
       name: 'How much does it cost to build a SaaS platform?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'SaaS development costs range from $50,000-$150,000 for an MVP and $150,000-$500,000+ for a full-featured platform. The exact cost depends on the number of features, integrations, compliance requirements, and the complexity of your billing model. We provide detailed estimates after a free discovery session.',
+        text: 'SaaS development costs start at $38,000 for an MVP and scale to $225,000+ for a full-featured platform. The exact cost depends on the number of features, integrations, compliance requirements, and the complexity of your billing model. We provide detailed estimates after a free discovery session.',
       },
     },
     {

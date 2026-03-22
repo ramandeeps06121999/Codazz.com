@@ -76,7 +76,7 @@ const jsonLdFaq = {
     {
       "@type": "Question",
       "name": "How much does blockchain development cost?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Blockchain development costs range from $30,000 for a simple smart contract to $500,000+ for a full DeFi protocol. Factors include complexity of smart contracts, number of chains supported, security audit requirements, and frontend dApp development. We provide detailed estimates after a free technical consultation." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Blockchain development costs start at $22,000 for a simple smart contract, scaling to $188,000+ for a full DeFi protocol. Factors include complexity of smart contracts, number of chains supported, security audit requirements, and frontend dApp development. We provide detailed estimates after a free technical consultation." }
     },
     {
       "@type": "Question",

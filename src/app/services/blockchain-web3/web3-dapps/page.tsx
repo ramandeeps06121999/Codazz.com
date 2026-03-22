@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'Web3 dApp Development Services | San Francisco',
+  title: 'Web3 dApp Development Services | Codazz',
   description: 'Full-stack Web3 dApp development with wallet integration, on-chain indexing, and cross-chain UX. Codazz ships production dApps from San Francisco, United States.',
   openGraph: {
     title: 'Web3 dApp Development Services | Codazz',

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'Brand Identity Design Services | San Francisco',
+  title: 'Brand Identity Design Services | Codazz',
   description: 'Custom brand identity design by Codazz. Logo design, visual identity systems, and brand guidelines for American startups and enterprises. 100+ brands created.',
   openGraph: {
     title: 'Brand Identity Design Services | Codazz',

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'VR Application Development',
+  title: 'VR Application Development | Codazz',
   description: 'Virtual reality application development for Meta Quest, HTC Vive, and enterprise. Codazz creates immersive VR training and experiences.',
   openGraph: {
     title: 'VR Application Development | Codazz',

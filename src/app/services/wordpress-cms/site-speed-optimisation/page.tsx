@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'WordPress Site Speed Optimization Services',
+  title: 'WordPress Site Speed Optimization Services | Codazz',
   description: 'Transform slow WordPress sites into 90+ Lighthouse performers. Core Web Vitals fixes, caching, CDN setup, and image optimization by Codazz, United States.',
   openGraph: {
     title: 'WordPress Speed Optimization | Codazz',

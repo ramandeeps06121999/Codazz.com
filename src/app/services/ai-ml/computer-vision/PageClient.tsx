@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'ai-ml',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our Computer Vision Development Process',
     steps: [
       { num: '01', title: 'Data Assessment', desc: 'We evaluate your existing image/video data, identify annotation requirements, assess data quality, and determine if additional collection or augmentation is needed to train a reliable model.' },
       { num: '02', title: 'Model Selection', desc: 'We select the optimal architecture — YOLO variants for real-time detection, ViT for high-accuracy classification, SAM for segmentation — and choose between training from scratch or fine-tuning foundation models.' },

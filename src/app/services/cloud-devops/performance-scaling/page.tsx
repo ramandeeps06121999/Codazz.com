@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'Performance Scaling & Optimization Services',
+  title: 'Performance Scaling & Optimization Services | Codazz',
   description: 'Expert performance engineering and scaling solutions. Load testing, database optimization, CDN strategy, and autoscaling for American businesses. 99.99% uptime.',
   openGraph: {
     title: 'Performance Scaling & Optimization | Codazz',

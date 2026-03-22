@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'DeFi Protocol Development',
+  title: 'DeFi Protocol Development | Codazz',
   description: 'Custom DeFi protocol development by Codazz. Build decentralized exchanges, lending platforms, yield aggregators, and liquidity pools.',
   openGraph: {
     title: 'DeFi Protocol Development | Codazz',

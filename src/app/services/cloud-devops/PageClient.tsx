@@ -276,21 +276,21 @@ const pageData: ServicePageData = {
       {
         icon: '\uD83D\uDCB0',
         name: 'Startup / SMB Cloud Setup',
-        price: '$15,000 – $50,000',
+        price: 'Starting at $11,000',
         desc: 'AWS/GCP architecture, Terraform IaC, CI/CD pipeline, basic monitoring, and single-region deployment for startups and small teams.',
         timeline: '\u23F1 3–6 weeks',
       },
       {
         icon: '\uD83D\uDCB0',
         name: 'Mid-Market Infrastructure',
-        price: '$50,000 – $150,000',
+        price: 'Starting at $38,000',
         desc: 'Multi-environment Kubernetes clusters, GitOps with ArgoCD, full observability stack, FinOps optimization, and cloud migration.',
         timeline: '\u23F1 2–4 months',
       },
       {
         icon: '\uD83D\uDCB0',
         name: 'Enterprise Cloud Platform',
-        price: '$150,000 – $400,000+',
+        price: 'Starting at $112,000',
         desc: 'Multi-region, multi-cloud architecture with disaster recovery, DevSecOps, compliance automation (SOC 2/HIPAA), and 24/7 managed services.',
         timeline: '\u23F1 4–8 months',
       },
@@ -314,7 +314,7 @@ const pageData: ServicePageData = {
   faqs: [
     {
       q: 'How much does cloud migration cost?',
-      a: 'Cloud migration costs typically range from $15,000 to $250,000+ depending on infrastructure complexity, data volume, compliance requirements, and the number of applications being migrated. We provide a free infrastructure audit with a detailed cost estimate before any commitment.',
+      a: 'Cloud migration costs start at $11,000, scaling to $112,000+ depending on infrastructure complexity, data volume, compliance requirements, and the number of applications being migrated. We provide a free infrastructure audit with a detailed cost estimate before any commitment.',
     },
     {
       q: 'What is the difference between DevOps and DevSecOps?',

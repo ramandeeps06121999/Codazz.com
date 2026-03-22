@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'Enterprise Portal Development Services',
+  title: 'Enterprise Portal Development Services | Codazz',
   description: 'Secure, SOC2-compliant enterprise portals with SSO, RBAC, and workflow automation. Built by Codazz in San Francisco for 10,000+ daily active users.',
   openGraph: {
     title: 'Enterprise Portal Development | Codazz',

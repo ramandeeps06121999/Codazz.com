@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'WebXR Development Services',
+  title: 'WebXR Development Services | Codazz',
   description: 'Browser-based AR and VR experiences with WebXR. Codazz builds immersive 3D web applications accessible on any device.',
   openGraph: {
     title: 'WebXR Development Services | Codazz',

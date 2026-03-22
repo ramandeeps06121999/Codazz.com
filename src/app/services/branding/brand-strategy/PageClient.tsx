@@ -9,8 +9,8 @@ const pageData: SubServicePageData = {
   ],
   hero: {
     badge: 'BRANDING & IDENTITY',
-    title: 'Strategy That',
-    titleAccent: 'Defines Brands',
+    title: 'Brand Strategy That',
+    titleAccent: 'Defines Markets',
     description: 'A rigorous brand strategy that positions you distinctly in the market, articulates your purpose clearly, and gives your team the strategic foundation to build a brand that lasts.',
     service: 'Brand Strategy',
     stats: [
@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'branding',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our Brand Strategy Process',
     steps: [
       { num: '01', title: 'Discovery & Research', desc: 'Stakeholder interviews, customer research, competitor analysis, and category immersion \u2014 building the factual foundation every great brand strategy is built upon.' },
       { num: '02', title: 'Positioning Workshop', desc: 'A facilitated strategy workshop bringing together your leadership team to align on purpose, audience, competitive context, and positioning direction.' },

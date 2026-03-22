@@ -67,7 +67,7 @@ const faqSchema = {
       name: 'How much does it cost to build a mobile app in 2026?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Mobile app development costs in 2026 typically range from $25,000 for a simple MVP to $150,000–$500,000+ for complex enterprise applications. Factors include platform choice (iOS, Android, or cross-platform), feature complexity, backend infrastructure, third-party integrations, and compliance requirements (HIPAA, PCI DSS). At Codazz, you receive a fixed-price quote after a free discovery session.',
+        text: 'Mobile app development starts at $19,000 for a simple MVP, with mid-range apps starting at $38,000 and enterprise applications starting at $112,000. Factors include platform choice (iOS, Android, or cross-platform), feature complexity, backend infrastructure, third-party integrations, and compliance requirements (HIPAA, PCI DSS). At Codazz, you receive a fixed-price quote after a free discovery session.',
       },
     },
     {
@@ -155,12 +155,6 @@ const serviceSchema = {
     address: {
       '@type': 'PostalAddress',
       addressCountry: 'US',
-    },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '527',
-      bestRating: '5',
     },
   },
   serviceType: 'Mobile Application Development',

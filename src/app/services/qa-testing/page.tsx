@@ -95,7 +95,7 @@ const jsonLdFaq = {
       name: 'How much do QA testing services cost?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'QA testing costs typically range from $5,000 to $50,000+ per project depending on scope, complexity, testing types required, and duration. We offer flexible engagement models including per-project, dedicated team, and hourly rates. Contact us for a free testing audit and custom quote.',
+        text: 'QA testing projects start at $3,800 depending on scope, complexity, testing types required, and duration. We offer flexible engagement models including per-project, dedicated team, and hourly rates. Contact us for a free testing audit and custom quote.',
       },
     },
     {

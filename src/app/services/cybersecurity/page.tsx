@@ -134,7 +134,7 @@ const jsonLdFaq = {
       name: 'How much do cybersecurity services cost?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Pricing depends on scope and complexity. Web application pentests start at $8,000. Full infrastructure security audits start at $25,000. Compliance readiness programs start at $40,000. Managed security retainers start at $5,000/month. Every engagement is scoped individually after a free consultation.',
+        text: 'Pricing depends on scope and complexity. Web application pentests start at $6,000. Full infrastructure security audits start at $19,000. Compliance readiness programs start at $30,000. Managed security retainers start at $3,800/month. Every engagement is scoped individually after a free consultation.',
       },
     },
   ],

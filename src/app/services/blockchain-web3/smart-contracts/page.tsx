@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'Smart Contract Development',
+  title: 'Smart Contract Development | Codazz',
   description: 'Audited smart contract development on Ethereum, Solana, and Polygon. Codazz builds secure DeFi, NFT, and DAO smart contracts.',
   openGraph: {
     title: 'Smart Contract Development | Codazz',

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'Motion & Video Branding',
+  title: 'Motion & Video Branding | Codazz',
   description: 'Motion graphics and video branding by Codazz. Animated logos, brand videos, social media content, and product demos that captivate audiences.',
   openGraph: {
     title: 'Motion & Video Branding | Codazz',

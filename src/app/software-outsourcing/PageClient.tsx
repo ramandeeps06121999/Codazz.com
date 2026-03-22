@@ -49,7 +49,7 @@ const whyOutsource = [
       </svg>
     ),
     title: '60-70% Cost Reduction',
-    desc: 'Access senior engineers at $25-$55/hour vs $100-$200/hour for equivalent US-based talent. No office costs, benefits administration, or HR overhead. Pure engineering value.',
+    desc: 'Access senior engineers starting at $19/hour vs $100-$200/hour for equivalent US-based talent. No office costs, benefits administration, or HR overhead. Pure engineering value.',
   },
   {
     icon: (
@@ -124,12 +124,12 @@ const outsourcingModels = [
 ];
 
 const costComparison = [
-  { role: 'Senior Full-Stack Developer', us: '$150 – $200/hr', india: '$35 – $55/hr', savings: '65-72%' },
-  { role: 'Project Manager', us: '$120 – $160/hr', india: '$25 – $40/hr', savings: '70-75%' },
-  { role: 'QA Engineer', us: '$80 – $130/hr', india: '$20 – $35/hr', savings: '70-75%' },
-  { role: 'DevOps Engineer', us: '$140 – $190/hr', india: '$35 – $55/hr', savings: '70-75%' },
-  { role: 'UI/UX Designer', us: '$100 – $160/hr', india: '$25 – $45/hr', savings: '70-75%' },
-  { role: 'AI/ML Engineer', us: '$160 – $220/hr', india: '$40 – $65/hr', savings: '70-75%' },
+  { role: 'Senior Full-Stack Developer', us: '$150 – $200/hr', india: 'Starting at $26/hr', savings: '82-87%' },
+  { role: 'Project Manager', us: '$120 – $160/hr', india: 'Starting at $19/hr', savings: '84-88%' },
+  { role: 'QA Engineer', us: '$80 – $130/hr', india: 'Starting at $15/hr', savings: '81-88%' },
+  { role: 'DevOps Engineer', us: '$140 – $190/hr', india: 'Starting at $26/hr', savings: '81-86%' },
+  { role: 'UI/UX Designer', us: '$100 – $160/hr', india: 'Starting at $19/hr', savings: '81-88%' },
+  { role: 'AI/ML Engineer', us: '$160 – $220/hr', india: 'Starting at $30/hr', savings: '81-86%' },
 ];
 
 const securityFeatures = [
@@ -307,7 +307,7 @@ const roiData = [
     metric: 'Cost Savings',
     value: '60-70%',
     detail: 'vs. equivalent US/Canada in-house hires',
-    example: 'A 5-person team that costs $600K/yr in the US costs $180K-$240K/yr with Codazz',
+    example: 'A 5-person team that costs $600K/yr in the US starts at $135K/yr with Codazz',
   },
   {
     metric: 'Time to First Commit',
@@ -344,7 +344,7 @@ const faqs = [
   },
   {
     q: 'How much does software outsourcing cost?',
-    a: 'Software outsourcing with Codazz typically costs $25-$55/hour depending on the role and seniority, compared to $100-$200/hour for equivalent US-based talent. A typical 5-person team costs $15,000-$30,000/month. We offer both fixed-price and time-and-materials pricing models.',
+    a: 'Software outsourcing with Codazz starts at $19/hour depending on the role and seniority, compared to $100-$200/hour for equivalent US-based talent. A typical 5-person team starts at $11,000/month. We offer both fixed-price and time-and-materials pricing models.',
   },
   {
     q: 'Can I communicate directly with the development team?',

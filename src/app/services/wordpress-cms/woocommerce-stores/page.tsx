@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'WooCommerce Store Development',
+  title: 'WooCommerce Store Development | Codazz',
   description: 'WooCommerce store development services. Codazz builds high-converting online stores with custom plugins, payment gateways, and integrations.',
   openGraph: {
     title: 'WooCommerce Store Development | Codazz',

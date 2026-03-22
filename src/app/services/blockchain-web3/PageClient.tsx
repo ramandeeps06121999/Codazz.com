@@ -267,21 +267,21 @@ const pageData: ServicePageData = {
       {
         icon: '\uD83D\uDCB0',
         name: 'Token / Smart Contract',
-        price: '$30,000 – $75,000',
+        price: 'Starting at $22,000',
         desc: 'ERC-20/721 token deployment, single smart contract with unit tests, basic audit, and a simple minting or staking UI.',
         timeline: '\u23F1 4–8 weeks',
       },
       {
         icon: '\uD83D\uDCB0',
         name: 'DeFi Protocol / NFT Platform',
-        price: '$75,000 – $250,000',
+        price: 'Starting at $56,000',
         desc: 'Multi-contract protocol suite (lending, AMM, or marketplace), full-stack dApp, third-party audit, multi-chain deployment, and subgraph indexing.',
         timeline: '\u23F1 3–6 months',
       },
       {
         icon: '\uD83D\uDCB0',
         name: 'Enterprise Blockchain Platform',
-        price: '$250,000 – $600,000+',
+        price: 'Starting at $188,000',
         desc: 'Complex DeFi protocol with cross-chain bridges, formal verification, multiple audit rounds, governance, and 24/7 on-chain monitoring.',
         timeline: '\u23F1 6–12 months',
       },
@@ -305,7 +305,7 @@ const pageData: ServicePageData = {
   faqs: [
     {
       q: 'How much does blockchain development cost?',
-      a: 'Blockchain development costs range from $30,000 for a simple smart contract or token deployment to $500,000+ for a full DeFi protocol with multiple audit rounds. Factors include contract complexity, number of chains, security audit requirements, frontend dApp development, and ongoing maintenance. We provide detailed, transparent estimates after a free technical consultation.',
+      a: 'Blockchain development costs start at $22,000 for a simple smart contract or token deployment, scaling to $188,000+ for a full DeFi protocol with multiple audit rounds. Factors include contract complexity, number of chains, security audit requirements, frontend dApp development, and ongoing maintenance. We provide detailed, transparent estimates after a free technical consultation.',
     },
     {
       q: 'How long does it take to build a blockchain application?',

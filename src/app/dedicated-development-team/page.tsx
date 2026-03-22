@@ -73,7 +73,7 @@ const faqSchema = {
       name: 'How much does a dedicated development team cost?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'A dedicated development team from Codazz typically costs $8,000-$25,000/month depending on team size and seniority. This is 60-70% less than hiring equivalent talent in the US or Canada. Pricing is fully transparent with no hidden fees — you pay a fixed monthly rate per team member.',
+        text: 'A dedicated development team from Codazz typically starts at $6,000/month depending on team size and seniority. This is 60-70% less than hiring equivalent talent in the US or Canada. Pricing is fully transparent with no hidden fees — you pay a fixed monthly rate per team member.',
       },
     },
     {
@@ -121,12 +121,6 @@ const serviceSchema = {
     address: {
       '@type': 'PostalAddress',
       addressCountry: 'CA',
-    },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '527',
-      bestRating: '5',
     },
   },
   serviceType: 'Dedicated Development Team',

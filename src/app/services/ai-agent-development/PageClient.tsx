@@ -176,21 +176,21 @@ const pageData: ServicePageData = {
       {
         icon: '\uD83D\uDCB0',
         name: 'Single-Purpose Agent',
-        price: '$20,000 – $50,000',
+        price: 'Starting at $15,000',
         desc: 'Task-specific AI agent with 3-5 tool integrations, basic error recovery, audit logging, and human-in-the-loop checkpoints.',
         timeline: '\u23F1 4–6 weeks',
       },
       {
         icon: '\uD83D\uDCB0',
         name: 'Multi-Agent System',
-        price: '$50,000 – $150,000',
+        price: 'Starting at $38,000',
         desc: 'Orchestrated agent teams with supervisor patterns, 10+ tool integrations, complex planning, memory systems, and performance dashboards.',
         timeline: '\u23F1 2–5 months',
       },
       {
         icon: '\uD83D\uDCB0',
         name: 'Enterprise Agent Platform',
-        price: '$150,000 – $350,000+',
+        price: 'Starting at $112,000',
         desc: 'Organization-wide agent infrastructure with custom tool frameworks, sandboxed execution, compliance controls, and 24/7 monitoring.',
         timeline: '\u23F1 4–8 months',
       },
@@ -216,7 +216,7 @@ const pageData: ServicePageData = {
     { q: 'Are AI agents reliable enough for production use?', a: 'With proper engineering, yes. Our agents include error recovery mechanisms, human-in-the-loop checkpoints for high-stakes decisions, comprehensive audit logging, and automated quality monitoring. We design for graceful degradation — agents never get stuck or make irreversible mistakes without human approval.' },
     { q: 'What can AI agents automate?', a: 'Virtually any knowledge work: customer support ticket resolution, data entry and processing, report generation, email triage, lead qualification, contract review, code generation, research and analysis, invoice processing, and complex multi-system workflows. If it involves reasoning over information and taking actions, an agent can likely handle it.' },
     { q: 'How do you handle AI agent safety?', a: 'Multiple layers: sandboxed tool execution, configurable human approval gates, action limits and budgets, comprehensive audit logging, automated quality checks, and graceful error recovery. For high-stakes actions (financial transactions, data deletion), agents always require human confirmation.' },
-    { q: 'How much does AI agent development cost?', a: 'A single-purpose task agent starts at $20,000-$40,000. Multi-agent systems with complex orchestration range from $50,000-$150,000+. Ongoing operational costs depend on LLM API usage and typically run $500-$5,000/month.' },
+    { q: 'How much does AI agent development cost?', a: 'A single-purpose task agent starts at $15,000. Multi-agent systems with complex orchestration start at $38,000. Ongoing operational costs depend on LLM API usage and start at $375/month.' },
     { q: 'Can AI agents work with our existing tools and systems?', a: 'Yes. Agents integrate with any system that has an API — CRMs (Salesforce, HubSpot), databases, email providers, Slack, project management tools, ERPs, and custom internal systems. We build custom tool integrations for your specific workflow.' },
   ],
   faqDescription:

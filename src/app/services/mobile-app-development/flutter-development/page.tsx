@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'Flutter App Development Services',
+  title: 'Flutter App Development Services | Codazz',
   description: 'Cross-platform Flutter app development by Codazz. Build beautiful, natively compiled apps for mobile, web, and desktop from a single codebase.',
   openGraph: {
     title: 'Flutter App Development Services | Codazz',

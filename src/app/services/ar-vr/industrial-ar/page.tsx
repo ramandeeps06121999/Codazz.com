@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'Industrial AR Solutions | HoloLens Development',
+  title: 'Industrial AR Solutions | Codazz',
   description: 'Enterprise industrial AR for manufacturing and maintenance. HoloLens 2, digital twins, and IoT overlays by Codazz in San Francisco, United States.',
   openGraph: {
     title: 'Industrial AR Solutions | Codazz',

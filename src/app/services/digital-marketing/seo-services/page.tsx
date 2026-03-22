@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'SEO Services San Francisco | Search Engine Optimization',
+  title: 'SEO Services | Search Engine Optimization | Codazz',
   description: 'Results-driven SEO services in San Francisco & across 24 countries worldwide. Technical SEO, link building, local SEO, and content strategy. 200% avg organic traffic growth.',
   openGraph: {
     title: 'SEO Services San Francisco | Codazz',

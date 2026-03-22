@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'Mobile AR Development',
+  title: 'Mobile AR Development | Codazz',
   description: 'Mobile augmented reality development with ARKit and ARCore. Codazz builds immersive AR experiences for iOS and Android applications.',
   openGraph: {
     title: 'Mobile AR Development | Codazz',

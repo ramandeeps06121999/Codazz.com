@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'Strapi & Sanity CMS Development Services',
+  title: 'Strapi & Sanity CMS Development Services | Codazz',
   description: 'Expert Strapi and Sanity headless CMS setup with Next.js integration, live preview, and content migration. Codazz, San Francisco. 30+ CMS projects.',
   openGraph: {
     title: 'Strapi & Sanity CMS Development | Codazz',

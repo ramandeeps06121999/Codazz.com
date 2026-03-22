@@ -56,7 +56,7 @@ const faqSchema = {
       name: 'How much does legacy modernization cost?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Cost depends on system complexity, chosen approach and timeline. A focused re-platforming project starts around $50,000. Full enterprise modernization programs range from $150,000 to $500,000+. We provide detailed cost-benefit analysis during the assessment phase so ROI is clear before committing.',
+        text: 'Cost depends on system complexity, chosen approach and timeline. A focused re-platforming project starts at $30,000. Full enterprise modernization programs start at $60,000. We provide detailed cost-benefit analysis during the assessment phase so ROI is clear before committing.',
       },
     },
     {

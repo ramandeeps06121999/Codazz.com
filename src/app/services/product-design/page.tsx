@@ -55,13 +55,7 @@ const jsonLdService = {
       { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "User Research & Testing" } }
     ]
   },
-  "serviceType": "Product Design & UI/UX",
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "reviewCount": "527",
-    "bestRating": "5"
-  }
+  "serviceType": "Product Design & UI/UX"
 };
 
 const jsonLdBreadcrumb = {
@@ -78,7 +72,7 @@ const jsonLdFaq = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    { "@type": "Question", "name": "How much does UI/UX design cost?", "acceptedAnswer": { "@type": "Answer", "text": "UI/UX design costs vary by scope. A focused UX audit starts at $3,000-$5,000. Full product design for an MVP ranges from $15,000-$40,000. Enterprise design systems with multiple user types can be $50,000-$120,000+. We provide detailed estimates after a free scoping call." } },
+    { "@type": "Question", "name": "How much does UI/UX design cost?", "acceptedAnswer": { "@type": "Answer", "text": "UI/UX design costs vary by scope. A focused UX audit starts at $3,800. Full product design for an MVP starts at $11,000. Enterprise design systems start at $45,000. We provide detailed estimates after a free scoping call." } },
     { "@type": "Question", "name": "How long does a product design project take?", "acceptedAnswer": { "@type": "Answer", "text": "Discovery and strategy typically run 1-2 weeks. Full UI design for an MVP takes 3-4 weeks. Complex enterprise products with multiple user types may extend to 8-12 weeks. We provide detailed timelines after our initial scoping call." } },
     { "@type": "Question", "name": "What design tools do you use?", "acceptedAnswer": { "@type": "Answer", "text": "Figma is our primary tool for UI design, prototyping, and design systems. We also use Sketch, Adobe XD, Framer for interactive prototypes, Principle for animations, InVision for collaboration, Zeplin for developer handoff, and Storybook for component documentation." } },
     { "@type": "Question", "name": "Do you do user research and testing?", "acceptedAnswer": { "@type": "Answer", "text": "Yes - user research and testing are core to our process. We conduct user interviews, usability testing, A/B testing, heuristic evaluations, and analytics analysis. We build user testing into every major project." } },

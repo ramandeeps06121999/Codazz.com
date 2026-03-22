@@ -9,7 +9,7 @@ const pageData: SubServicePageData = {
   ],
   hero: {
     badge: 'JAVASCRIPT-POWERED MOBILE',
-    title: 'React Native Apps with',
+    title: 'React Native App Development with',
     titleAccent: 'True Native Feel',
     description: 'We leverage the full React Native ecosystem \u2014 including the New Architecture \u2014 to build fast, maintainable iOS and Android apps that share up to 70% of their codebase. Ship faster without compromising on quality.',
     service: 'React Native App Development',
@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'mobile-app-development',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our React Native App Development Process',
     steps: [
       { num: '01', title: 'Scoping & Stack Decision', desc: 'We evaluate your team\'s skills, integration requirements, and performance needs to select the optimal React Native setup \u2014 Expo vs bare, state management library, navigation approach, and testing strategy.' },
       { num: '02', title: 'Component Design', desc: 'We build a shared component library in TypeScript, with platform-adaptive styles that honour iOS and Android design conventions where appropriate while maintaining a consistent brand identity.' },

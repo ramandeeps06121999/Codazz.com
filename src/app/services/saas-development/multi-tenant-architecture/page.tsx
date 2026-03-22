@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'Multi-Tenant SaaS Architecture | San Francisco',
+  title: 'Multi-Tenant SaaS Architecture | Codazz',
   description: 'Scalable multi-tenant architecture with tenant isolation, RBAC, and custom domains. Codazz builds enterprise SaaS platforms from San Francisco, United States.',
   openGraph: {
     title: 'Multi-Tenant SaaS Architecture | Codazz',

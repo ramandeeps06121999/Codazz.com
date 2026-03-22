@@ -248,9 +248,9 @@ const pageData: ServicePageData = {
     description:
       'Game development costs vary dramatically by genre, platform, art style, and feature depth. Codazz offers fixed-price quotes with milestone-based payments tied to playable builds.',
     tiers: [
-      { icon: '💰', name: 'Hyper-Casual / HTML5', price: '$30,000 – $80,000', desc: 'Simple-mechanic mobile or browser games with minimal art, core loop validation, ad monetization, and App Store/Google Play submission.', timeline: '⏱ 4–8 weeks' },
-      { icon: '💰', name: 'Mid-Core Mobile Game', price: '$100,000 – $400,000', desc: 'Feature-rich mobile game with custom art, IAP economy, battle pass, multiplayer, analytics pipeline, and full LiveOps infrastructure.', timeline: '⏱ 3–6 months' },
-      { icon: '💰', name: 'PC / Console Title', price: '$400,000 – $1.5M+', desc: 'Full production PC or console game with AAA-quality art, narrative, multiplayer netcode, anti-cheat, and multi-platform deployment on Steam, PlayStation, and Xbox.', timeline: '⏱ 8–18 months' },
+      { icon: '💰', name: 'Hyper-Casual / HTML5', price: 'Starting at $22,000', desc: 'Simple-mechanic mobile or browser games with minimal art, core loop validation, ad monetization, and App Store/Google Play submission.', timeline: '⏱ 4–8 weeks' },
+      { icon: '💰', name: 'Mid-Core Mobile Game', price: 'Starting at $75,000', desc: 'Feature-rich mobile game with custom art, IAP economy, battle pass, multiplayer, analytics pipeline, and full LiveOps infrastructure.', timeline: '⏱ 3–6 months' },
+      { icon: '💰', name: 'PC / Console Title', price: 'Starting at $300,000', desc: 'Full production PC or console game with AAA-quality art, narrative, multiplayer netcode, anti-cheat, and multi-platform deployment on Steam, PlayStation, and Xbox.', timeline: '⏱ 8–18 months' },
     ],
   },
 
@@ -287,7 +287,7 @@ const pageData: ServicePageData = {
     },
     {
       q: 'What does a typical mobile game project cost?',
-      a: 'Hyper-casual titles start around $40K-$80K. Mid-core mobile games typically range from $150K-$500K depending on feature depth and art style. We provide detailed estimates after a scoping session based on your game design document or brief.',
+      a: 'Hyper-casual titles start at $22K. Mid-core mobile games start at $75K depending on feature depth and art style. We provide detailed estimates after a scoping session based on your game design document or brief.',
     },
   ],
   faqDescription:

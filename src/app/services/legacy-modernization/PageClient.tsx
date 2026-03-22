@@ -172,9 +172,9 @@ const pageData: ServicePageData = {
     title: 'How Much Does Legacy Modernization Cost?',
     description: 'Costs depend on system complexity, number of components, chosen migration strategy, and timeline urgency. Codazz offers fixed-price quotes with phased milestones and clear ROI projections.',
     tiers: [
-      { icon: '💰', name: 'Targeted Re-Platform', price: '$40,000 – $80,000', desc: 'Migrate a single legacy application to cloud infrastructure with containerization, CI/CD, and basic monitoring. Ideal for quick wins and cost reduction.', timeline: '⏱ 8–12 weeks' },
-      { icon: '💰', name: 'Application Modernization', price: '$80,000 – $250,000', desc: 'Decompose a monolith into microservices, migrate databases, add API layers, and implement full observability. Includes knowledge transfer and documentation.', timeline: '⏱ 4–8 months' },
-      { icon: '💰', name: 'Enterprise Transformation', price: '$250,000 – $750,000+', desc: 'Multi-system modernization program — monolith decomposition, cloud migration, database re-platforming, API-first integration, and full organizational change management.', timeline: '⏱ 8–18 months' },
+      { icon: '💰', name: 'Targeted Re-Platform', price: 'Starting at $30,000', desc: 'Migrate a single legacy application to cloud infrastructure with containerization, CI/CD, and basic monitoring. Ideal for quick wins and cost reduction.', timeline: '⏱ 8–12 weeks' },
+      { icon: '💰', name: 'Application Modernization', price: 'Starting at $60,000', desc: 'Decompose a monolith into microservices, migrate databases, add API layers, and implement full observability. Includes knowledge transfer and documentation.', timeline: '⏱ 4–8 months' },
+      { icon: '💰', name: 'Enterprise Transformation', price: 'Starting at $188,000', desc: 'Multi-system modernization program — monolith decomposition, cloud migration, database re-platforming, API-first integration, and full organizational change management.', timeline: '⏱ 8–18 months' },
     ],
   },
   selectionGuide: {
@@ -194,7 +194,7 @@ const pageData: ServicePageData = {
     { q: 'Can you modernize our system without downtime?', a: 'Yes. We use strangler-fig patterns, blue-green deployments and incremental migration strategies that keep your existing system running while we build and cut over to the modernized version. Zero-downtime migration is a core requirement in every project we take on.' },
     { q: 'What is the difference between re-platforming, refactoring and rebuilding?', a: 'Re-platforming moves your application to a new infrastructure (e.g., cloud) with minimal code changes. Refactoring restructures the internal codebase for better performance and maintainability. Rebuilding means creating a new application from scratch using modern architecture while preserving business logic and data.' },
     { q: 'Will we lose data during migration?', a: 'Absolutely not. Data integrity is non-negotiable. We run parallel environments, perform incremental data syncs and execute comprehensive validation checks before any cutover. Every migration includes rollback procedures and data reconciliation reports.' },
-    { q: 'How much does legacy modernization cost?', a: 'Cost depends on system complexity, chosen approach and timeline. A focused re-platforming project starts around $50,000. Full enterprise modernization programs range from $150,000 to $500,000+. We provide detailed cost-benefit analysis during the assessment phase so ROI is clear before committing.' },
+    { q: 'How much does legacy modernization cost?', a: 'Cost depends on system complexity, chosen approach and timeline. A focused re-platforming project starts at $30,000. Full enterprise modernization programs start at $60,000. We provide detailed cost-benefit analysis during the assessment phase so ROI is clear before committing.' },
     { q: 'What technologies do you migrate legacy systems to?', a: 'We migrate to modern stacks including Node.js, Python, Go, .NET Core, React, Next.js, and cloud-native architectures on AWS, Azure and GCP. Database migrations cover PostgreSQL, MongoDB, DynamoDB and more. The target stack is chosen based on your team capabilities, performance needs and long-term strategy.' },
   ],
   faqDescription:

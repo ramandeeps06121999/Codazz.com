@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'Custom WordPress Theme Development',
+  title: 'Custom WordPress Theme Development | Codazz',
   description: 'Custom WordPress theme development by Codazz. Pixel-perfect, fast-loading themes built from scratch with clean code and SEO best practices.',
   openGraph: {
     title: 'Custom WordPress Theme Development | Codazz',

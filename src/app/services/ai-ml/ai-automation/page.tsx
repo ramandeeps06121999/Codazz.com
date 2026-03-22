@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'AI Automation Solutions',
+  title: 'AI Automation Solutions | Codazz',
   description: 'AI-powered automation solutions by Codazz. Automate workflows, processes, and decision-making with custom artificial intelligence systems.',
   openGraph: {
     title: 'AI Automation Solutions | Codazz',

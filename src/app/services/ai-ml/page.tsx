@@ -107,7 +107,7 @@ const jsonLdFAQ = {
       name: 'How much does AI development cost in the USA?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'AI development costs range from $25,000 for focused ML models to $250,000+ for enterprise-grade AI platforms. Cost depends on data complexity, model architecture, integration requirements and compliance needs. We provide fixed-price proposals after a free scoping session.',
+        text: 'AI development costs start at $19,000 for focused ML models, scaling to $131,000+ for enterprise-grade AI platforms. Cost depends on data complexity, model architecture, integration requirements and compliance needs. We provide fixed-price proposals after a free scoping session.',
       },
     },
     {

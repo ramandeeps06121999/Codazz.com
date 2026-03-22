@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'SaaS Billing & Subscription Integration',
+  title: 'SaaS Billing & Subscription Integration | Codazz',
   description: 'Stripe billing integration for SaaS with subscriptions, dunning, and self-serve portals. Codazz builds payment infrastructure from San Francisco, United States.',
   openGraph: {
     title: 'SaaS Billing & Subscription Integration | Codazz',

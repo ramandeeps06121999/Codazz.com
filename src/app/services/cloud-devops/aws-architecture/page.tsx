@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'AWS Architecture & Cloud Solutions | United States',
+  title: 'AWS Architecture & Cloud Solutions | Codazz',
   description: 'Certified AWS architects at Codazz San Francisco. Cloud migration, cost optimization, and multi-region HA design. $2M+ saved for American businesses. Free audit.',
   openGraph: {
     title: 'AWS Architecture & Cloud Solutions | Codazz',

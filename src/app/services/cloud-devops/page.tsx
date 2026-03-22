@@ -93,7 +93,7 @@ const jsonLdFaq = {
       name: 'How much does cloud migration cost?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Cloud migration costs typically range from $15,000 to $250,000+ depending on infrastructure complexity, data volume, compliance requirements, and the number of applications. We provide a free infrastructure audit with a detailed cost estimate before any commitment.',
+        text: 'Cloud migration costs start at $11,000, scaling to $112,000+ depending on infrastructure complexity, data volume, compliance requirements, and the number of applications. We provide a free infrastructure audit with a detailed cost estimate before any commitment.',
       },
     },
     {

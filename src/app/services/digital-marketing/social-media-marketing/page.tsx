@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'Social Media Marketing Services San Francisco',
+  title: 'Social Media Marketing Services | Codazz',
   description: 'Full-service social media marketing in San Francisco. Strategy, content creation, community management, and paid social campaigns. 50M+ impressions generated.',
   openGraph: {
     title: 'Social Media Marketing Services | Codazz',

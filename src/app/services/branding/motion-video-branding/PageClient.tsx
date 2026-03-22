@@ -9,7 +9,7 @@ const pageData: SubServicePageData = {
   ],
   hero: {
     badge: 'BRANDING & IDENTITY',
-    title: 'Motion That Makes Brands',
+    title: 'Motion & Video Branding That Makes Brands',
     titleAccent: 'Come Alive',
     description: 'Broadcast-quality motion branding \u2014 from logo animations and Lottie web assets to explainer videos and social motion templates \u2014 that gives your brand a dynamic visual presence across every screen.',
     service: 'Motion & Video Branding',
@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'branding',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our Motion & Video Branding Process',
     steps: [
       { num: '01', title: 'Brief & Storyboard', desc: 'We develop a detailed creative brief and storyboard \u2014 mapping every scene, transition, and timing beat before any animation begins, ensuring full alignment on the visual direction.' },
       { num: '02', title: 'Style Development', desc: 'A motion styleframe is designed and approved \u2014 establishing the visual look, color palette, typography treatment, and animation mood before full production commences.' },

@@ -172,9 +172,9 @@ const pageData: ServicePageData = {
     title: 'How Much Does Node.js Development Cost?',
     description: 'Costs depend on API complexity, number of microservices, real-time requirements, and infrastructure needs. Codazz offers fixed-price quotes with performance SLAs baked in.',
     tiers: [
-      { icon: '💰', name: 'REST API / MVP Backend', price: '$10,000 – $40,000', desc: 'RESTful API with auth (JWT/OAuth2), database integration (PostgreSQL/MongoDB), Swagger docs, basic tests, and Docker deployment.', timeline: '⏱ 4–8 weeks' },
-      { icon: '💰', name: 'Full-Stack Backend', price: '$40,000 – $150,000', desc: 'NestJS or Fastify backend with GraphQL, real-time features (WebSocket), message queues, caching, CI/CD pipeline, monitoring, and 90%+ test coverage.', timeline: '⏱ 2–5 months' },
-      { icon: '💰', name: 'Enterprise Microservices', price: '$150,000 – $400,000+', desc: 'Distributed microservices architecture with event sourcing, API gateway, service mesh, Kubernetes orchestration, distributed tracing, and 99.99% uptime SLA.', timeline: '⏱ 5–10 months' },
+      { icon: '💰', name: 'REST API / MVP Backend', price: 'Starting at $7,500', desc: 'RESTful API with auth (JWT/OAuth2), database integration (PostgreSQL/MongoDB), Swagger docs, basic tests, and Docker deployment.', timeline: '⏱ 4–8 weeks' },
+      { icon: '💰', name: 'Full-Stack Backend', price: 'Starting at $30,000', desc: 'NestJS or Fastify backend with GraphQL, real-time features (WebSocket), message queues, caching, CI/CD pipeline, monitoring, and 90%+ test coverage.', timeline: '⏱ 2–5 months' },
+      { icon: '💰', name: 'Enterprise Microservices', price: 'Starting at $112,000', desc: 'Distributed microservices architecture with event sourcing, API gateway, service mesh, Kubernetes orchestration, distributed tracing, and 99.99% uptime SLA.', timeline: '⏱ 5–10 months' },
     ],
   },
   selectionGuide: {
@@ -194,7 +194,7 @@ const pageData: ServicePageData = {
     { q: 'Node.js vs Go vs Python for backend: Which should we choose?', a: 'Choose Node.js for full-stack JavaScript teams, real-time applications, and API development. Choose Go for high-concurrency, CPU-bound workloads. Choose Python for data science, ML, and rapid prototyping. Node.js offers the best developer experience and largest ecosystem for web backends.' },
     { q: 'How does Node.js handle high concurrency?', a: 'Node.js uses an event-driven, non-blocking I/O model that handles thousands of concurrent connections on a single thread. For CPU-intensive work, Worker Threads and clustering distribute load across cores. This architecture makes Node.js ideal for I/O-heavy APIs and real-time applications.' },
     { q: 'Should we use Express or NestJS?', a: 'Express is lighter and more flexible — ideal for simple APIs and microservices. NestJS provides structure with dependency injection, modules, guards, and decorators — ideal for large enterprise applications. We recommend NestJS for projects with 3+ developers or complex domain logic.' },
-    { q: 'How much does Node.js backend development cost?', a: 'A simple REST API costs $10,000-$30,000. Full-featured backends with auth, real-time features, and microservices range from $30,000-$150,000+. Node.js projects typically cost 20-30% less than comparable Java or .NET projects due to faster development velocity.' },
+    { q: 'How much does Node.js backend development cost?', a: 'REST API backends start at $7,500. Full-stack backends start at $30,000. Enterprise microservices platforms start at $112,000. Node.js projects typically cost 20-30% less than comparable Java or .NET projects due to faster development velocity.' },
     { q: 'Can you migrate our existing backend to Node.js?', a: 'Yes. We migrate backends from PHP, Ruby on Rails, Java, and Python to Node.js with zero downtime. We use the strangler-fig pattern to migrate APIs incrementally, validating each endpoint before cutover.' },
   ],
   faqDescription:

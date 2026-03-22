@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'Apple Vision Pro App Development | United States',
+  title: 'Apple Vision Pro App Development | Codazz',
   description: 'visionOS app development with SwiftUI and RealityKit. Codazz builds spatial computing apps for Apple Vision Pro from San Francisco, United States.',
   openGraph: {
     title: 'Apple Vision Pro App Development | Codazz',

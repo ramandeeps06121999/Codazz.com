@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'ai-ml',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our Predictive Analytics Process',
     steps: [
       { num: '01', title: 'Data Audit', desc: 'We assess the quality, completeness, and history of your data sources, identify gaps, and define a data strategy — including what additional data collection or enrichment will improve model performance.' },
       { num: '02', title: 'Feature Engineering', desc: 'The most impactful phase. We transform raw data into predictive signals — lag features, rolling aggregates, external enrichment (weather, economics), and domain-specific derived metrics.' },

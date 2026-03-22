@@ -101,7 +101,7 @@ const jsonLdFaq = {
     {
       "@type": "Question",
       "name": "How much does web development cost in the USA?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Web development costs vary based on complexity. A marketing website typically costs $8,000-$25,000. A custom web application ranges from $25,000-$100,000+. SaaS platforms start at $40,000. We provide fixed-price quotes after a free discovery call so there are no surprises." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Web development costs vary based on complexity. Marketing websites start at $6,000. Custom web applications start at $19,000. SaaS platforms start at $75,000. We provide fixed-price quotes after a free discovery call so there are no surprises." }
     },
     {
       "@type": "Question",
@@ -126,7 +126,7 @@ const jsonLdFaq = {
     {
       "@type": "Question",
       "name": "Do you provide ongoing website maintenance?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Yes. We offer monthly maintenance retainers covering security updates, performance monitoring, bug fixes, content updates, and new feature development. Most clients stay with us long-term as their digital needs evolve. Plans start at $1,500/month." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. We offer monthly maintenance retainers covering security updates, performance monitoring, bug fixes, content updates, and new feature development. Most clients stay with us long-term as their digital needs evolve. Plans start at $1,100/month." }
     },
     {
       "@type": "Question",
@@ -152,12 +152,6 @@ const jsonLdOrganization = {
     "contactType": "sales",
     "availableLanguage": ["English"],
     "url": "https://codazz.com/contact"
-  },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "4.9",
-    "reviewCount": "527",
-    "bestRating": "5"
   }
 };
 

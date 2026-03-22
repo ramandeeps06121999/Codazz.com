@@ -172,9 +172,9 @@ const pageData: ServicePageData = {
     title: 'How Much Does IoT Development Cost?',
     description: 'IoT project costs depend on hardware complexity, number of device types, cloud infrastructure, and companion app requirements. Codazz offers fixed-price quotes with detailed hardware and software breakdowns.',
     tiers: [
-      { icon: '💰', name: 'IoT Proof of Concept', price: '$25,000 – $60,000', desc: '1-2 device prototypes, basic cloud backend (MQTT + dashboard), companion mobile app, and initial firmware. Ideal for validating an IoT product idea.', timeline: '⏱ 6–10 weeks' },
-      { icon: '💰', name: 'Connected Product', price: '$60,000 – $200,000', desc: 'Production firmware, cloud platform (AWS IoT / Azure IoT Hub), mobile app with BLE/Wi-Fi pairing, OTA updates, analytics dashboard, and device fleet management.', timeline: '⏱ 3–6 months' },
-      { icon: '💰', name: 'Enterprise IoT Platform', price: '$200,000 – $500,000+', desc: 'Multi-device fleet, edge computing, digital twins, advanced analytics, role-based access, integrations with ERP/CRM, and 24/7 monitoring with SLA guarantees.', timeline: '⏱ 6–12 months' },
+      { icon: '💰', name: 'IoT Proof of Concept', price: 'Starting at $19,000', desc: '1-2 device prototypes, basic cloud backend (MQTT + dashboard), companion mobile app, and initial firmware. Ideal for validating an IoT product idea.', timeline: '⏱ 6–10 weeks' },
+      { icon: '💰', name: 'Connected Product', price: 'Starting at $45,000', desc: 'Production firmware, cloud platform (AWS IoT / Azure IoT Hub), mobile app with BLE/Wi-Fi pairing, OTA updates, analytics dashboard, and device fleet management.', timeline: '⏱ 3–6 months' },
+      { icon: '💰', name: 'Enterprise IoT Platform', price: 'Starting at $150,000', desc: 'Multi-device fleet, edge computing, digital twins, advanced analytics, role-based access, integrations with ERP/CRM, and 24/7 monitoring with SLA guarantees.', timeline: '⏱ 6–12 months' },
     ],
   },
   selectionGuide: {

@@ -46,7 +46,7 @@ const faqJsonLd = {
       name: 'How much does custom software development cost?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Custom software development typically ranges from $25,000 for an MVP to $250,000+ for enterprise-grade platforms. The cost depends on complexity, features, integrations, and timeline. We provide a detailed fixed-price quote after a free scoping session — no surprises, no hourly billing.',
+        text: 'Custom software development starts at $19,000 for an MVP and scales to $188,000+ for enterprise-grade platforms. The cost depends on complexity, features, integrations, and timeline. We provide a detailed fixed-price quote after a free scoping session — no surprises, no hourly billing.',
       },
     },
     {

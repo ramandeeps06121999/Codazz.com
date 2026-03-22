@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'Logo & Visual Identity Design',
+  title: 'Logo & Visual Identity Design | Codazz',
   description: 'Professional logo and visual identity design by Codazz. Memorable logos, color systems, and typography that define your brand.',
   openGraph: {
     title: 'Logo & Visual Identity Design | Codazz',

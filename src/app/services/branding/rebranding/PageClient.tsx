@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'branding',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our Rebranding Process',
     steps: [
       { num: '01', title: 'Brand Audit', desc: 'We assess your current brand comprehensively \u2014 internal perception, customer research, competitive context, asset inventory, and brand equity measurement.' },
       { num: '02', title: 'Stakeholder Alignment', desc: 'Leadership workshops and cross-functional sessions to align on rebrand rationale, strategic direction, and success criteria before any design work begins.' },

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'iOS App Development Services',
+  title: 'iOS App Development Services | Codazz',
   description: 'Expert iOS app development with Swift & SwiftUI. Codazz builds high-performance native iPhone and iPad apps. 200+ iOS apps delivered.',
   openGraph: {
     title: 'iOS App Development Services | Codazz',

@@ -204,6 +204,7 @@ export default function SubServicePageTemplate({ data }: { data: SubServicePageD
         ═══════════════════════════════════════ */}
         <FAQSection
           items={data.faqs}
+          stickyHeading={<>{data.hero.service || 'Development'}<br /><span style={{ background: 'linear-gradient(135deg, #22c55e, #4ade80)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>FAQ.</span></>}
           description={data.faqDescription || `Everything you need to know about our ${data.hero.service || 'development'} services.`}
           maxAnswerHeight={1200}
         />

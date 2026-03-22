@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'CI/CD Pipeline Development Services | United States',
+  title: 'CI/CD Pipeline Development Services | Codazz',
   description: 'Automated CI/CD pipelines by Codazz San Francisco. GitHub Actions, blue-green deploys, and zero-downtime releases. 100+ pipelines built for American teams.',
   openGraph: {
     title: 'CI/CD Pipeline Development Services | Codazz',

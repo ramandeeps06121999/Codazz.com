@@ -172,9 +172,9 @@ const pageData: ServicePageData = {
     title: 'How Much Does LLM Integration Cost?',
     description: 'Costs depend on the number of LLM features, model complexity, volume of API calls, and safety requirements. Codazz offers fixed-price quotes with cost optimization guarantees.',
     tiers: [
-      { icon: '💰', name: 'Single LLM Feature', price: '$15,000 – $40,000', desc: 'Integrate one LLM-powered feature (chatbot, content generation, summarization) with prompt engineering, error handling, and basic monitoring.', timeline: '⏱ 4–6 weeks' },
-      { icon: '💰', name: 'Multi-Feature AI Product', price: '$40,000 – $120,000', desc: 'Multiple LLM features with multi-model routing, semantic caching, guardrails, structured outputs, fine-tuning, and production observability dashboards.', timeline: '⏱ 2–4 months' },
-      { icon: '💰', name: 'Enterprise AI Platform', price: '$120,000 – $300,000+', desc: 'Full-scale LLM infrastructure — multi-model orchestration, RAG integration, PII redaction, on-premise deployment, A/B testing, cost analytics, and 24/7 monitoring.', timeline: '⏱ 4–8 months' },
+      { icon: '💰', name: 'Single LLM Feature', price: 'Starting at $11,000', desc: 'Integrate one LLM-powered feature (chatbot, content generation, summarization) with prompt engineering, error handling, and basic monitoring.', timeline: '⏱ 4–6 weeks' },
+      { icon: '💰', name: 'Multi-Feature AI Product', price: 'Starting at $30,000', desc: 'Multiple LLM features with multi-model routing, semantic caching, guardrails, structured outputs, fine-tuning, and production observability dashboards.', timeline: '⏱ 2–4 months' },
+      { icon: '💰', name: 'Enterprise AI Platform', price: 'Starting at $90,000', desc: 'Full-scale LLM infrastructure — multi-model orchestration, RAG integration, PII redaction, on-premise deployment, A/B testing, cost analytics, and 24/7 monitoring.', timeline: '⏱ 4–8 months' },
     ],
   },
   selectionGuide: {
@@ -195,7 +195,7 @@ const pageData: ServicePageData = {
     { q: 'How do you handle LLM hallucinations?', a: 'We implement multiple layers: RAG for grounding responses in your data, structured output schemas for format control, guardrails for content validation, citation requirements for verifiability, and automated evaluation pipelines for quality monitoring. These bring hallucination rates below 5% for most use cases.' },
     { q: 'Can you deploy LLMs on our private infrastructure?', a: 'Yes. We deploy open-source models (Llama, Mistral) on your private cloud or on-premise infrastructure using vLLM, TGI, or Ollama. This ensures zero data leaves your security boundary while maintaining full control over the model and infrastructure.' },
     { q: 'How long does an LLM integration project take?', a: 'A basic LLM integration (chatbot, content generation) takes 4-6 weeks. Complex integrations with RAG, multi-model routing, guardrails, and custom fine-tuning take 8-16 weeks. We deliver incrementally with a working prototype in the first 2-3 weeks.' },
-    { q: 'How much does LLM integration cost?', a: 'Project costs range from $15,000 for a focused integration to $100,000+ for enterprise-scale multi-model systems. Ongoing LLM API costs depend on volume — typically $500-$10,000/month. We optimize aggressively to keep operational costs low.' },
+    { q: 'How much does LLM integration cost?', a: 'Project costs start at $11,000 for a focused integration to $90,000+ for enterprise-scale multi-model systems. Ongoing LLM API costs start at $375/month depending on volume. We optimize aggressively to keep operational costs low.' },
   ],
   faqDescription:
     'Get answers to common questions about LLM integration, model selection, cost optimization, and enterprise AI deployment.',

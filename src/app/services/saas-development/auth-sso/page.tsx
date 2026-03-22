@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'SaaS Authentication & SSO Development',
+  title: 'SaaS Authentication & SSO Development | Codazz',
   description: 'Enterprise-ready auth with SAML SSO, MFA, RBAC, and audit logs for SaaS products. Codazz builds secure auth systems from San Francisco, United States.',
   openGraph: {
     title: 'SaaS Authentication & SSO Development | Codazz',

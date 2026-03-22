@@ -9,8 +9,8 @@ const pageData: SubServicePageData = {
   ],
   hero: {
     badge: 'BRANDING & IDENTITY',
-    title: 'Logos That',
-    titleAccent: 'Make an Impact',
+    title: 'Logo & Visual Identity Design That',
+    titleAccent: 'Makes an Impact',
     description: 'Award-winning logo design and complete visual identity systems \u2014 built to be distinctive, versatile, and timeless across every touchpoint your brand inhabits.',
     service: 'Logo & Visual Identity',
     stats: [
@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'branding',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our Logo & Visual Identity Process',
     steps: [
       { num: '01', title: 'Brief & Inspiration', desc: 'A detailed creative brief session exploring your brand personality, audience, competitive context, and visual references \u2014 giving our designers a precise creative north star.' },
       { num: '02', title: 'Concept Development', desc: 'Our design team develops 3 distinct logo concepts with rationale \u2014 different strategic directions for you to review, react to, and build on.' },

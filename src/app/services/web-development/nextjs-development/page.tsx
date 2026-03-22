@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'Next.js Development Services',
+  title: 'Next.js Development Services | Codazz',
   description: 'Expert Next.js development by Codazz. Build fast, SEO-friendly React applications with server-side rendering and static site generation.',
   openGraph: {
     title: 'Next.js Development Services | Codazz',

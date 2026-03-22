@@ -268,21 +268,21 @@ const pageData: ServicePageData = {
       {
         icon: '\uD83D\uDCB0',
         name: 'Focused AI Model / Chatbot',
-        price: '$25,000 – $60,000',
+        price: 'Starting at $19,000',
         desc: 'Single-purpose ML model, AI chatbot, or LLM integration with one data source. Includes model training, API development, and basic monitoring.',
         timeline: '\u23F1 4–8 weeks',
       },
       {
         icon: '\uD83D\uDCB0',
         name: 'Multi-Model AI Platform',
-        price: '$60,000 – $175,000',
+        price: 'Starting at $45,000',
         desc: 'Multiple AI models, RAG pipelines, computer vision, or predictive analytics with real-time inference, dashboard UI, and MLOps infrastructure.',
         timeline: '\u23F1 3–5 months',
       },
       {
         icon: '\uD83D\uDCB0',
         name: 'Enterprise AI System',
-        price: '$175,000 – $500,000+',
+        price: 'Starting at $131,000',
         desc: 'Full-scale AI platform with multi-model orchestration, fine-tuned LLMs, real-time pipelines, compliance (HIPAA/SOC 2), and 24/7 MLOps monitoring.',
         timeline: '\u23F1 5–9 months',
       },
@@ -306,7 +306,7 @@ const pageData: ServicePageData = {
   faqs: [
     {
       q: 'How much does AI development cost in the USA?',
-      a: 'AI development costs range from $25,000 for focused ML models and chatbots to $250,000+ for enterprise-grade AI platforms with multiple models, real-time inference and compliance requirements. We provide fixed-price proposals after a free scoping session — no hourly billing or scope creep surprises.',
+      a: 'AI development costs start at $19,000 for focused ML models and chatbots, scaling to $131,000+ for enterprise-grade AI platforms with multiple models, real-time inference and compliance requirements. We provide fixed-price proposals after a free scoping session — no hourly billing or scope creep surprises.',
     },
     {
       q: 'How long does it take to build a custom AI solution?',
@@ -389,6 +389,11 @@ const pageData: ServicePageData = {
     { name: 'Real Estate', href: '/industries/real-estate' },
     { name: 'Media & Entertainment', href: '/industries/media' },
   ],
+
+  statsH2: { line1: 'AI Development Results', line2: 'That Speak for Themselves.' },
+  advancedTechH2: { line1: 'AI & ML Technologies', line2: 'Built Into Every Solution.' },
+  techStackH2: { line1: 'AI & ML Technology Stack.', line2: '40+ Tools & Frameworks.' },
+  blogsH2: { line1: 'AI & ML Development', line2: 'Insights & Guides.' },
 };
 
 export default function AiMlPage() {

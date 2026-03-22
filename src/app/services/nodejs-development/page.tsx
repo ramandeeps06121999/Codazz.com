@@ -90,7 +90,7 @@ const faqSchema = {
       name: 'How much does Node.js backend development cost?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'A simple REST API backend costs $8,000–$25,000. A mid-complexity backend with authentication, payments, real-time features, and third-party integrations ranges from $30,000–$80,000. A full microservices architecture with API gateway, event streaming (Kafka/RabbitMQ), and DevOps infrastructure typically costs $80,000–$250,000+. Codazz provides fixed-price quotes after a free technical discovery session.',
+        text: 'REST API backends start at $7,500. Full-stack backends start at $30,000. Enterprise microservices platforms start at $112,000. Codazz provides fixed-price quotes after a free technical discovery session.',
       },
     },
   ],
@@ -111,12 +111,6 @@ const serviceSchema = {
       'https://www.linkedin.com/company/codazz',
       'https://clutch.co/profile/codazz',
     ],
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '527',
-      bestRating: '5',
-    },
   },
   serviceType: 'Node.js Backend Development',
   areaServed: [

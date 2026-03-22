@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'Hyper-Casual Game Development Services',
+  title: 'Hyper-Casual Game Development Services | Codazz',
   description: 'We build and publish hyper-casual games fast — from 3-day prototypes to CPI-validated launches. 50M+ downloads shipped by our San Francisco-based game studio.',
   openGraph: {
     title: 'Hyper-Casual Game Development | Codazz',

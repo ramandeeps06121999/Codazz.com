@@ -115,7 +115,7 @@ const jsonLdFAQ = {
       name: 'How much does custom generative AI development cost?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'A proof-of-concept starts at $15,000. Production solutions with RAG, fine-tuning and integrations range from $50,000 to $200,000. Enterprise-scale deployments with multi-model orchestration, guardrails and dedicated infrastructure start at $200,000+. We provide detailed cost breakdowns including ongoing inference costs before you commit.',
+        text: 'A proof-of-concept starts at $19,000. Production solutions with RAG, fine-tuning and integrations start at $45,000. Enterprise-scale deployments with multi-model orchestration, guardrails and dedicated infrastructure start at $112,000. We provide detailed cost breakdowns including ongoing inference costs before you commit.',
       },
     },
     {

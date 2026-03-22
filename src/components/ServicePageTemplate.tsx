@@ -75,6 +75,18 @@ export interface ServicePageData {
   relatedBlogs: Array<{ title: string; desc: string; href: string }>;
   relatedServices: Array<{ name: string; desc: string; href: string }>;
   industries: Array<{ name: string; href: string }>;
+
+  /* ── Keyword-rich H2 overrides (SEO) ── */
+  /** Stats section: replaces "Results That / Speak for Themselves." */
+  statsH2?: { line1: string; line2: string };
+  /** Advanced tech section: replaces "Cutting-Edge Tech / Built Into Every Project." */
+  advancedTechH2?: { line1: string; line2: string };
+  /** Tech stack section: replaces "40+ Technologies. / One Seamless Stack." */
+  techStackH2?: { line1: string; line2: string };
+  /** Related blogs section: replaces "Related / Insights." */
+  blogsH2?: { line1: string; line2: string };
+  /** FAQ sticky heading (ReactNode) */
+  faqStickyHeading?: import('react').ReactNode;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -350,8 +362,8 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>
               <div style={sectionLabel}>By the Numbers</div>
               <h2 style={{ ...sectionH2, margin: '0 auto' }}>
-                Results That<br />
-                <span style={{ color: 'rgba(255,255,255,0.2)' }}>Speak for Themselves.</span>
+                {data.statsH2?.line1 ?? `${data.hero.service} Results`}<br />
+                <span style={{ color: 'rgba(255,255,255,0.2)' }}>{data.statsH2?.line2 ?? 'That Speak for Themselves.'}</span>
               </h2>
             </div>
             <div className="reveal reveal-d1" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 20 }}>
@@ -374,8 +386,8 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
             <div className="reveal" style={{ textAlign: 'center', marginBottom: 64 }}>
               <div style={sectionLabel}>Advanced Technologies</div>
               <h2 style={{ ...sectionH2, margin: '0 auto', maxWidth: 700 }}>
-                Cutting-Edge Tech<br />
-                <span style={{ color: 'rgba(255,255,255,0.2)' }}>Built Into Every Project.</span>
+                {data.advancedTechH2?.line1 ?? `${data.hero.service} Technologies`}<br />
+                <span style={{ color: 'rgba(255,255,255,0.2)' }}>{data.advancedTechH2?.line2 ?? 'Built Into Every Project.'}</span>
               </h2>
               <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.5)', lineHeight: 1.75, marginTop: 20, maxWidth: 600, marginLeft: 'auto', marginRight: 'auto' }}>
                 We do not just build products — we engineer intelligent, connected, future-proof digital experiences.
@@ -428,8 +440,8 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
               <div>
                 <div style={sectionLabel}>Technology Stack</div>
                 <h2 style={sectionH2}>
-                  40+ Technologies.<br />
-                  <span style={{ color: 'rgba(255,255,255,0.2)' }}>One Seamless Stack.</span>
+                  {data.techStackH2?.line1 ?? `${data.hero.service} Stack.`}<br />
+                  <span style={{ color: 'rgba(255,255,255,0.2)' }}>{data.techStackH2?.line2 ?? '40+ Technologies.'}</span>
                 </h2>
               </div>
               <p style={{ fontSize: 16, color: 'rgba(255,255,255,0.5)', maxWidth: 380, lineHeight: 1.75, margin: 0 }}>
@@ -513,7 +525,7 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
         {/* ═══════════════════════════════════════
             15. FAQ SECTION
         ═══════════════════════════════════════ */}
-        <FAQSection items={data.faqs} description={data.faqDescription} maxAnswerHeight={1200} />
+        <FAQSection items={data.faqs} description={data.faqDescription} maxAnswerHeight={1200} stickyHeading={data.faqStickyHeading ?? <>{data.hero.service}<br /><span style={{ background: 'linear-gradient(135deg, #22c55e, #4ade80)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>FAQ.</span></>} />
 
         {/* ═══════════════════════════════════════
             17. RELATED BLOGS
@@ -523,7 +535,7 @@ export default function ServicePageTemplate({ data }: { data: ServicePageData })
             <div className="reveal" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 64, gap: 40, flexWrap: 'wrap' }}>
               <div>
                 <div style={sectionLabel}>From Our Blog</div>
-                <h2 style={sectionH2}>Related<br /><span style={{ color: 'rgba(255,255,255,0.2)' }}>Insights.</span></h2>
+                <h2 style={sectionH2}>{data.blogsH2?.line1 ?? `${data.hero.service}`}<br /><span style={{ color: 'rgba(255,255,255,0.2)' }}>{data.blogsH2?.line2 ?? 'Insights & Guides.'}</span></h2>
               </div>
               <Link href="/blog" style={{ fontSize: 14, fontWeight: 600, color: '#22c55e', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 6 }}>
                 View All Articles

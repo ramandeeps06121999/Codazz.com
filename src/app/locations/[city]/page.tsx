@@ -19,7 +19,8 @@ const COUNTRY_TO_ISO: Record<string, string> = {
   US: 'US', UAE: 'AE', UK: 'GB', AU: 'AU', CA: 'CA', SA: 'SA', QA: 'QA',
   SG: 'SG', DE: 'DE', IN: 'IN', JP: 'JP', KR: 'KR', NL: 'NL', IE: 'IE',
   IL: 'IL', PL: 'PL', BR: 'BR', MX: 'MX', NG: 'NG', KE: 'KE', VN: 'VN',
-  EG: 'EG', NZ: 'NZ', CH: 'CH',
+  EG: 'EG', NZ: 'NZ', CH: 'CH', KW: 'KW', BH: 'BH', OM: 'OM',
+  SE: 'SE', DK: 'DK', PT: 'PT', ES: 'ES', HK: 'HK', GH: 'GH', RW: 'RW', ZA: 'ZA',
 };
 
 const COUNTRY_LABELS: Record<string, string> = {
@@ -28,13 +29,16 @@ const COUNTRY_LABELS: Record<string, string> = {
   KR: 'South Korea', NL: 'Netherlands', IE: 'Ireland', IL: 'Israel',
   PL: 'Poland', BR: 'Brazil', MX: 'Mexico', NG: 'Nigeria', KE: 'Kenya',
   VN: 'Vietnam', EG: 'Egypt', NZ: 'New Zealand', CH: 'Switzerland',
+  KW: 'Kuwait', BH: 'Bahrain', OM: 'Oman', SE: 'Sweden', DK: 'Denmark',
+  PT: 'Portugal', ES: 'Spain', HK: 'Hong Kong', GH: 'Ghana', RW: 'Rwanda', ZA: 'South Africa',
 };
 
 const GEO_REGIONS: Record<string, string> = {
   US: 'US', UAE: 'AE', UK: 'GB', AU: 'AU', CA: 'CA', SA: 'SA', QA: 'QA',
   SG: 'SG', DE: 'DE', IN: 'IN', JP: 'JP', KR: 'KR', NL: 'NL', IE: 'IE',
   IL: 'IL', PL: 'PL', BR: 'BR', MX: 'MX', NG: 'NG', KE: 'KE', VN: 'VN',
-  EG: 'EG', NZ: 'NZ', CH: 'CH',
+  EG: 'EG', NZ: 'NZ', CH: 'CH', KW: 'KW', BH: 'BH', OM: 'OM',
+  SE: 'SE', DK: 'DK', PT: 'PT', ES: 'ES', HK: 'HK', GH: 'GH', RW: 'RW', ZA: 'ZA',
 };
 
 const BLOG_LINKS: Record<string, { title: string; href: string }[]> = {
@@ -202,18 +206,6 @@ export default async function CityPage({ params }: PageProps) {
       'Mobile App Development', 'Web Development', 'AI & Machine Learning',
       'Cloud & DevOps', 'SaaS Development', 'UI/UX Design', 'Blockchain Development',
     ],
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      ratingCount: '527',
-      bestRating: '5',
-    },
-    sameAs: [
-      'https://www.linkedin.com/company/codazz/',
-      'https://www.instagram.com/codazz/',
-      'https://twitter.com/codazz',
-      'https://clutch.co/profile/codazz',
-    ],
   };
 
   // ─── Breadcrumb schema ─────────────────────────────────────────────
@@ -229,7 +221,7 @@ export default async function CityPage({ params }: PageProps) {
 
   // ─── FAQ schema ────────────────────────────────────────────────────
   const faqItems = data.faqs && data.faqs.length > 0 ? data.faqs : [
-    { q: `How much does app development cost in ${data.name}?`, a: `App development in ${data.name} typically starts at $25,000 for an MVP and scales to $250,000+ for enterprise platforms.` },
+    { q: `How much does app development cost in ${data.name}?`, a: `App development in ${data.name} starts at $19,000 for an MVP and scales to $188,000+ for enterprise platforms.` },
     { q: `Does Codazz have an office in ${data.name}?`, a: `We serve ${data.name} clients through our global delivery model with headquarters in Edmonton, Canada and Chandigarh, India.` },
   ];
   const faqPageSchema = {
@@ -242,20 +234,16 @@ export default async function CityPage({ params }: PageProps) {
     })),
   };
 
-  // ─── Review schema from testimonials ───────────────────────────────
-  const reviewSchema = data.testimonials?.length > 0 ? {
-    '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
-    name: `Codazz — ${data.name}`,
-    url: `https://codazz.com/locations/${data.slug}`,
-    review: data.testimonials.map(t => ({
+  // ─── Merge reviews into professionalServiceSchema instead of separate LocalBusiness ──
+  if (data.testimonials?.length > 0) {
+    (professionalServiceSchema as Record<string, unknown>).review = data.testimonials.map(t => ({
       '@type': 'Review',
       author: { '@type': 'Person', name: t.name },
       reviewBody: t.quote,
       reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
       publisher: { '@type': 'Organization', name: t.company },
-    })),
-  } : null;
+    }));
+  }
 
   // ─── Hreflang alternates for international cities ──────────────────
   const hreflangCities = cities.filter(c =>
@@ -270,6 +258,8 @@ export default async function CityPage({ params }: PageProps) {
     KR: 'ko-KR', NL: 'nl-NL', BR: 'pt-BR', MX: 'es-MX', VN: 'vi-VN',
     UAE: 'ar-AE', SA: 'ar-SA', QA: 'ar-QA', EG: 'ar-EG',
     IL: 'he-IL', PL: 'pl-PL', KE: 'en-KE', NG: 'en-NG', CH: 'de-CH',
+    KW: 'ar-KW', BH: 'ar-BH', OM: 'ar-OM', SE: 'sv-SE', DK: 'da-DK',
+    PT: 'pt-PT', ES: 'es-ES', HK: 'zh-HK', GH: 'en-GH', RW: 'en-RW', ZA: 'en-ZA',
   };
   const selfLang = langMap[data.country] || 'en';
   hreflangLinks[selfLang] = `https://codazz.com/locations/${data.slug}`;
@@ -286,18 +276,14 @@ export default async function CityPage({ params }: PageProps) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(professionalServiceSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageSchema) }} />
-      {reviewSchema && (
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }} />
-      )}
-
       {/* Hreflang tags */}
       {Object.entries(hreflangLinks).map(([lang, url]) => (
         <link key={lang} rel="alternate" hrefLang={lang} href={url} />
       ))}
 
       {/* Server-rendered SEO content for crawlers */}
-      <div className="sr-only" aria-hidden="true">
-        <h1>Software Development Company in {data.name} — Codazz</h1>
+      <div className="sr-only">
+        <p><strong>Software Development Company in {data.name} — Codazz</strong></p>
         <p>{data.heroContext}</p>
         <p>Codazz is a custom software development company serving {locationLabel}. We build mobile apps, web platforms, AI solutions, SaaS products, and blockchain applications. {desc}</p>
         <p>Last updated: {lastUpdated}</p>

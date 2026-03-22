@@ -113,14 +113,39 @@ export const hireSlugs = [
 ];
 
 export const citySlugs = [
-  'new-york', 'dubai', 'san-francisco', 'los-angeles', 'chicago', 'austin',
+  // North America — US
+  'new-york', 'san-francisco', 'los-angeles', 'chicago', 'austin',
   'seattle', 'miami', 'boston', 'denver', 'atlanta', 'dallas', 'houston',
-  'london', 'manchester', 'birmingham', 'sydney', 'melbourne', 'brisbane',
-  'toronto', 'vancouver', 'montreal', 'riyadh', 'jeddah', 'doha',
-  'singapore', 'berlin', 'munich', 'bangalore', 'mumbai', 'delhi',
-  'tokyo', 'seoul', 'amsterdam', 'dublin', 'tel-aviv', 'warsaw',
-  'sao-paulo', 'mexico-city', 'lagos', 'nairobi', 'ho-chi-minh-city',
-  'cairo', 'auckland', 'zurich', 'abu-dhabi',
+  // North America — Canada
+  'edmonton', 'toronto', 'vancouver', 'montreal', 'calgary', 'ottawa',
+  'waterloo', 'halifax', 'winnipeg', 'victoria', 'quebec-city',
+  // Middle East
+  'dubai', 'abu-dhabi', 'riyadh', 'jeddah', 'doha', 'kuwait-city', 'manama', 'muscat',
+  // Europe
+  'london', 'manchester', 'birmingham', 'edinburgh', 'leeds', 'bristol',
+  'glasgow', 'cambridge', 'berlin', 'munich', 'hamburg', 'frankfurt',
+  'amsterdam', 'dublin', 'zurich', 'geneva', 'stockholm', 'copenhagen',
+  'lisbon', 'barcelona', 'warsaw', 'tel-aviv',
+  // Asia Pacific
+  'singapore', 'bangalore', 'mumbai', 'delhi', 'chandigarh', 'pune', 'hyderabad',
+  'ahmedabad', 'jaipur', 'kochi', 'tokyo', 'seoul', 'hong-kong',
+  'sydney', 'melbourne', 'brisbane', 'perth', 'adelaide', 'canberra',
+  'auckland',
+  // Latin America
+  'sao-paulo', 'mexico-city',
+  // Africa
+  'lagos', 'nairobi', 'cairo', 'cape-town', 'johannesburg', 'accra', 'kigali',
+  // Southeast Asia
+  'ho-chi-minh-city',
+];
+
+export const countrySlugs = [
+  'usa', 'uae', 'uk', 'australia', 'canada', 'saudi-arabia', 'singapore',
+  'germany', 'india', 'japan', 'south-korea', 'netherlands', 'ireland',
+  'israel', 'poland', 'brazil', 'mexico', 'nigeria', 'kenya', 'vietnam',
+  'egypt', 'new-zealand', 'switzerland', 'kuwait', 'bahrain', 'oman',
+  'sweden', 'denmark', 'portugal', 'spain', 'hong-kong', 'south-africa',
+  'ghana', 'rwanda',
 ];
 
 export function buildUrlset(urls: { loc: string; lastmod: string; changefreq: string; priority: string }[]): string {

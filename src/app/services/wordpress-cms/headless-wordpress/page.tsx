@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'Headless WordPress Development Services',
+  title: 'Headless WordPress Development Services | Codazz',
   description: 'Headless WordPress with Next.js frontends for blazing-fast performance. WPGraphQL, ISR, and CDN delivery by Codazz, San Francisco. 40+ projects shipped.',
   openGraph: {
     title: 'Headless WordPress Development | Codazz',

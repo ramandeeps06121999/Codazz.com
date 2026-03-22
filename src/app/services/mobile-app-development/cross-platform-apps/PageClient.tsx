@@ -9,7 +9,7 @@ const pageData: SubServicePageData = {
   ],
   hero: {
     badge: 'MULTI-PLATFORM STRATEGY',
-    title: 'Reach Every Platform with',
+    title: 'Cross-Platform App Development at',
     titleAccent: 'Half the Investment',
     description: 'We design and build cross-platform mobile apps that deliver a native-quality experience on iOS, Android, and beyond \u2014 from a single unified team and codebase. Maximize your reach while minimizing your development cost.',
     service: 'Cross-Platform App Development',
@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'mobile-app-development',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our Cross-Platform App Development Process',
     steps: [
       { num: '01', title: 'Platform Audit', desc: 'We assess your target platforms, user demographics, feature requirements, and existing tech stack to define the cross-platform strategy and framework selection with full justification.' },
       { num: '02', title: 'Shared Architecture', desc: 'We design the shared module boundaries \u2014 what lives in shared code vs platform-specific layers \u2014 and establish the project structure, CI pipeline, and development workflow before coding begins.' },

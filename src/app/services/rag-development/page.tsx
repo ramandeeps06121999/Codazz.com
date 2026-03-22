@@ -163,7 +163,7 @@ const jsonLdFAQ = {
       name: 'What does RAG development cost?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'A proof-of-concept starts at $10,000–$20,000. Production RAG systems typically range from $30,000–$100,000 depending on data volume, integrations, and complexity. Enterprise deployments with multi-tenant architecture, compliance features, and custom LLM hosting start at $100,000+. We scope every project individually.',
+        text: 'A proof-of-concept starts at $15,000. Production RAG systems start at $38,000 depending on data volume, integrations, and complexity. Enterprise deployments with multi-tenant architecture, compliance features, and custom LLM hosting start at $112,000. We scope every project individually.',
       },
     },
   ],

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'Kubernetes & Docker Services | San Francisco, United States',
+  title: 'Kubernetes & Docker Services | Codazz',
   description: 'Production-grade Kubernetes and Docker by Codazz. EKS, GKE, AKS cluster setup, Helm charts, and container security. 60+ K8s clusters deployed in the US.',
   openGraph: {
     title: 'Kubernetes & Docker Services | Codazz',

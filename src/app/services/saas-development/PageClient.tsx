@@ -246,21 +246,21 @@ const pageData: ServicePageData = {
       {
         icon: '\uD83D\uDCB0',
         name: 'SaaS MVP',
-        price: '$50,000 – $120,000',
+        price: 'Starting at $38,000',
         desc: 'Core product features, Stripe billing, authentication (SSO), multi-tenancy, analytics dashboard, and production deployment in 8-12 weeks.',
         timeline: '\u23F1 8–12 weeks',
       },
       {
         icon: '\uD83D\uDCB0',
         name: 'Growth-Stage SaaS',
-        price: '$120,000 – $300,000',
+        price: 'Starting at $90,000',
         desc: 'Full-featured platform with usage-based billing, API ecosystem, advanced analytics, integrations marketplace, and SOC 2 compliance.',
         timeline: '\u23F1 4–7 months',
       },
       {
         icon: '\uD83D\uDCB0',
         name: 'Enterprise SaaS Platform',
-        price: '$300,000 – $600,000+',
+        price: 'Starting at $225,000',
         desc: 'Multi-region deployment, SAML SSO, HIPAA/SOC 2/GDPR compliance, white-label capabilities, advanced RBAC, and dedicated infrastructure.',
         timeline: '\u23F1 6–12 months',
       },
@@ -292,7 +292,7 @@ const pageData: ServicePageData = {
     },
     {
       q: 'How much does SaaS development cost?',
-      a: 'SaaS development costs range from $50,000-$150,000 for a focused MVP and $150,000-$500,000+ for a full-featured platform. The exact cost depends on the number of features, integrations, compliance requirements, billing model complexity, and whether you need multi-tenancy from day one. We provide detailed estimates after a free discovery session.',
+      a: 'SaaS development costs start at $38,000 for a focused MVP and scale to $225,000+ for a full-featured platform. The exact cost depends on the number of features, integrations, compliance requirements, billing model complexity, and whether you need multi-tenancy from day one. We provide detailed estimates after a free discovery session.',
     },
     {
       q: 'Do you build multi-tenant architectures from day one?',

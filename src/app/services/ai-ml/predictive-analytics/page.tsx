@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'Predictive Analytics Services',
+  title: 'Predictive Analytics Services | Codazz',
   description: 'Predictive analytics and machine learning services. Codazz builds data-driven models for forecasting, recommendations, and business intelligence.',
   openGraph: {
     title: 'Predictive Analytics Services | Codazz',

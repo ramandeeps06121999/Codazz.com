@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PageClient from './PageClient';
 
 export const metadata: Metadata = {
-  title: 'Content Marketing Services | Strategy & SEO',
+  title: 'Content Marketing Services | Codazz',
   description: 'Strategic content marketing that drives organic traffic and conversions. Blog writing, video, email, and content distribution for American brands. 400% avg growth.',
   openGraph: {
     title: 'Content Marketing Services | Codazz',

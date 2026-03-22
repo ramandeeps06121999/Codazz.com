@@ -248,9 +248,9 @@ const pageData: ServicePageData = {
     description:
       'XR project costs depend heavily on platform complexity, 3D asset requirements, and interaction depth. Codazz offers fixed-price quotes with milestone-based delivery — no open-ended hourly billing.',
     tiers: [
-      { icon: '💰', name: 'AR Filter / WebXR MVP', price: '$10,000 – $30,000', desc: 'Snapchat/Instagram AR filters, simple WebXR product viewers, or mobile AR proof-of-concept with basic 3D assets and single-platform deployment.', timeline: '⏱ 2–4 weeks' },
-      { icon: '💰', name: 'Full AR/VR Application', price: '$40,000 – $150,000', desc: 'Complete mobile AR app, VR training simulation, or spatial computing experience with custom 3D assets, multi-scene interaction, and analytics integration.', timeline: '⏱ 8–16 weeks' },
-      { icon: '💰', name: 'Enterprise XR Platform', price: '$150,000 – $500,000+', desc: 'Multi-user enterprise VR training, digital twin systems, or cross-platform XR suites with backend infrastructure, admin dashboards, and ongoing content pipelines.', timeline: '⏱ 4–8 months' },
+      { icon: '💰', name: 'AR Filter / WebXR MVP', price: 'Starting at $7,500', desc: 'Snapchat/Instagram AR filters, simple WebXR product viewers, or mobile AR proof-of-concept with basic 3D assets and single-platform deployment.', timeline: '⏱ 2–4 weeks' },
+      { icon: '💰', name: 'Full AR/VR Application', price: 'Starting at $30,000', desc: 'Complete mobile AR app, VR training simulation, or spatial computing experience with custom 3D assets, multi-scene interaction, and analytics integration.', timeline: '⏱ 8–16 weeks' },
+      { icon: '💰', name: 'Enterprise XR Platform', price: 'Starting at $112,000', desc: 'Multi-user enterprise VR training, digital twin systems, or cross-platform XR suites with backend infrastructure, admin dashboards, and ongoing content pipelines.', timeline: '⏱ 4–8 months' },
     ],
   },
 
@@ -326,6 +326,11 @@ const pageData: ServicePageData = {
     { name: 'Manufacturing', href: '/industries/enterprise' },
     { name: 'Entertainment', href: '/industries/entertainment' },
   ],
+
+  statsH2: { line1: 'AR & VR Development Results', line2: 'That Speak for Themselves.' },
+  advancedTechH2: { line1: 'AR & VR Technologies', line2: 'Built Into Every Experience.' },
+  techStackH2: { line1: 'AR & VR Technology Stack.', line2: '30+ Platforms & Tools.' },
+  blogsH2: { line1: 'AR & VR Development', line2: 'Insights & Guides.' },
 };
 
 export default function ARVRPage() {

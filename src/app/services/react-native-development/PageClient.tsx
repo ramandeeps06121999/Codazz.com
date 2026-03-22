@@ -172,9 +172,9 @@ const pageData: ServicePageData = {
     title: 'How Much Does React Native App Development Cost?',
     description: 'Costs depend on app complexity, native module requirements, backend needs, and third-party integrations. Codazz offers fixed-price quotes — React Native saves 30-40% vs separate native iOS and Android teams.',
     tiers: [
-      { icon: '💰', name: 'React Native MVP', price: '$20,000 – $50,000', desc: 'Cross-platform app for iOS and Android with core features, Expo managed workflow, Firebase/Supabase backend, auth, and App Store deployment.', timeline: '⏱ 5–8 weeks' },
-      { icon: '💰', name: 'Full-Featured App', price: '$50,000 – $200,000', desc: 'Production app with custom native modules, complex navigation, payment integration, push notifications, analytics, OTA updates, and CI/CD via EAS Build.', timeline: '⏱ 3–6 months' },
-      { icon: '💰', name: 'Enterprise RN Platform', price: '$200,000 – $500,000+', desc: 'Multi-app ecosystem with shared component library, custom TurboModules, offline-first sync, role-based access, admin dashboard, and web + mobile code sharing.', timeline: '⏱ 5–10 months' },
+      { icon: '💰', name: 'React Native MVP', price: 'Starting at $15,000', desc: 'Cross-platform app for iOS and Android with core features, Expo managed workflow, Firebase/Supabase backend, auth, and App Store deployment.', timeline: '⏱ 5–8 weeks' },
+      { icon: '💰', name: 'Full-Featured App', price: 'Starting at $38,000', desc: 'Production app with custom native modules, complex navigation, payment integration, push notifications, analytics, OTA updates, and CI/CD via EAS Build.', timeline: '⏱ 3–6 months' },
+      { icon: '💰', name: 'Enterprise RN Platform', price: 'Starting at $150,000', desc: 'Multi-app ecosystem with shared component library, custom TurboModules, offline-first sync, role-based access, admin dashboard, and web + mobile code sharing.', timeline: '⏱ 5–10 months' },
     ],
   },
   selectionGuide: {
@@ -193,7 +193,7 @@ const pageData: ServicePageData = {
     { q: 'Is React Native still relevant in 2026?', a: 'Absolutely. React Native powers apps from Meta, Microsoft, Shopify, Discord, and Bloomberg. The New Architecture (Fabric, TurboModules, Hermes) has eliminated historical performance concerns. It remains the top choice for teams with JavaScript/React expertise.' },
     { q: 'React Native vs Flutter: Which should we choose?', a: 'Choose React Native if your team knows JavaScript/TypeScript or you need to share code with a React web app. Choose Flutter for pixel-perfect custom UIs and broader platform support (desktop, embedded). Both deliver excellent production apps — the best choice depends on your team and requirements.' },
     { q: 'Can React Native achieve native-level performance?', a: 'Yes, with the New Architecture. Fabric renderer enables synchronous layout, TurboModules provide lazy-loaded native access via JSI, and Hermes engine optimizes JavaScript execution. For 95% of apps, React Native performance is indistinguishable from native.' },
-    { q: 'How much does a React Native app cost?', a: 'A React Native MVP costs $20,000-$50,000. Full-featured apps range from $50,000-$200,000+. React Native saves 30-40% compared to separate native iOS and Android development due to shared codebase, single team, and unified testing.' },
+    { q: 'How much does a React Native app cost?', a: 'A React Native MVP starts at $15,000. Full-featured apps start at $38,000. Enterprise platforms start at $150,000. React Native saves 30-40% compared to separate native iOS and Android development due to shared codebase, single team, and unified testing.' },
     { q: 'Can you add React Native to our existing native app?', a: 'Yes. React Native supports incremental adoption. We can add React Native screens to your existing Swift/Kotlin app, letting you migrate features gradually without disrupting your current codebase or development workflow.' },
     { q: 'Do you use Expo or bare React Native?', a: 'We primarily use Expo (SDK 52+) which now supports custom native modules through Expo Modules API. For projects requiring specialized native code, we use bare React Native with the New Architecture. Most projects benefit from Expo\'s superior developer experience and EAS build system.' },
   ],
