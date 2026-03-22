@@ -218,6 +218,11 @@ const pageData: ServicePageData = {
     { name: 'Enterprise', href: '/industries/enterprise' },
     { name: 'Logistics', href: '/industries/logistics' },
   ],
+
+  statsH2: { line1: 'Node.js Development Results', line2: 'That Speak for Themselves.' },
+  advancedTechH2: { line1: 'Node.js Technologies', line2: 'Built Into Every Backend.' },
+  techStackH2: { line1: 'Node.js Development Stack.', line2: '30+ Packages & Tools.' },
+  blogsH2: { line1: 'Node.js Development', line2: 'Insights & Guides.' },
 };
 
 export default function NodejsDevelopmentPage() {

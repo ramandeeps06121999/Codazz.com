@@ -218,6 +218,11 @@ const pageData: ServicePageData = {
     { name: 'Logistics', href: '/industries/logistics' },
     { name: 'Government', href: '/industries/government' },
   ],
+
+  statsH2: { line1: 'Legacy Modernization Results', line2: 'That Speak for Themselves.' },
+  advancedTechH2: { line1: 'Modernization Technologies', line2: 'Built Into Every Migration.' },
+  techStackH2: { line1: 'Legacy Modernization Stack.', line2: '40+ Migration Tools.' },
+  blogsH2: { line1: 'Legacy Modernization', line2: 'Insights & Guides.' },
 };
 
 export default function LegacyModernizationPage() {

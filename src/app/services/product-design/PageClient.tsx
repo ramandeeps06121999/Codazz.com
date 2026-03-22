@@ -332,6 +332,11 @@ const pageData: ServicePageData = {
     { name: 'Real Estate', href: '/industries/real-estate' },
     { name: 'Enterprise', href: '/industries/enterprise' },
   ],
+
+  statsH2: { line1: 'Product Design Results', line2: 'That Speak for Themselves.' },
+  advancedTechH2: { line1: 'Product Design Technologies', line2: 'Built Into Every Product.' },
+  techStackH2: { line1: 'UI/UX Design Stack.', line2: '20+ Design Tools.' },
+  blogsH2: { line1: 'Product Design & UI/UX', line2: 'Insights & Guides.' },
 };
 
 export default function ProductDesignPage() {

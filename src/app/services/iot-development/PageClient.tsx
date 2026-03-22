@@ -218,6 +218,11 @@ const pageData: ServicePageData = {
     { name: 'Agriculture', href: '/industries/agriculture' },
     { name: 'Smart Home', href: '/industries/smart-home' },
   ],
+
+  statsH2: { line1: 'IoT Development Results', line2: 'That Speak for Themselves.' },
+  advancedTechH2: { line1: 'IoT Development Technologies', line2: 'Built Into Every Device.' },
+  techStackH2: { line1: 'IoT Development Stack.', line2: '30+ Protocols & Tools.' },
+  blogsH2: { line1: 'IoT Development', line2: 'Insights & Guides.' },
 };
 
 export default function IoTDevelopmentPage() {

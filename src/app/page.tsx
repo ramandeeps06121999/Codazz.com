@@ -133,7 +133,7 @@ export default function Home() {
         <ComplianceBadges />
         <InsightsSection />
         <GlobalPresence />
-        <FAQSection />
+        <FAQSection stickyHeading={<>Software Development<br /><span style={{ background: 'linear-gradient(135deg, #22c55e, #4ade80)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>FAQ.</span></>} />
         <Contact />
         <FeaturedAwards />
       </main>
