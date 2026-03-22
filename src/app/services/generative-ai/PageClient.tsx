@@ -240,6 +240,11 @@ const pageData: ServicePageData = {
     { name: 'Media', href: '/industries/media' },
     { name: 'Education', href: '/industries/education' },
   ],
+
+  statsH2: { line1: 'Generative AI Results', line2: 'That Speak for Themselves.' },
+  advancedTechH2: { line1: 'Generative AI Technologies', line2: 'Built Into Every Solution.' },
+  techStackH2: { line1: 'Generative AI Stack.', line2: '40+ Models & Tools.' },
+  blogsH2: { line1: 'Generative AI', line2: 'Insights & Guides.' },
 };
 
 export default function GenerativeAIPage() {
