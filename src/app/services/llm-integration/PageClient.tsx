@@ -218,6 +218,11 @@ const pageData: ServicePageData = {
     { name: 'Enterprise', href: '/industries/enterprise' },
     { name: 'Education', href: '/industries/education' },
   ],
+
+  statsH2: { line1: 'LLM Integration Results', line2: 'That Speak for Themselves.' },
+  advancedTechH2: { line1: 'LLM Integration Technologies', line2: 'Built Into Every Product.' },
+  techStackH2: { line1: 'LLM Integration Stack.', line2: '30+ Models & Tools.' },
+  blogsH2: { line1: 'LLM Integration', line2: 'Insights & Guides.' },
 };
 
 export default function LLMIntegrationPage() {

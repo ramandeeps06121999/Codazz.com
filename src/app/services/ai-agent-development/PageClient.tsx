@@ -240,6 +240,11 @@ const pageData: ServicePageData = {
     { name: 'Healthcare', href: '/industries/healthcare' },
     { name: 'Legal', href: '/industries/legal' },
   ],
+
+  statsH2: { line1: 'AI Agent Development Results', line2: 'That Speak for Themselves.' },
+  advancedTechH2: { line1: 'AI Agent Technologies', line2: 'Built Into Every Agent.' },
+  techStackH2: { line1: 'AI Agent Development Stack.', line2: '30+ Frameworks & Tools.' },
+  blogsH2: { line1: 'AI Agent Development', line2: 'Insights & Guides.' },
 };
 
 export default function AIAgentDevelopmentPage() {

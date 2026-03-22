@@ -218,6 +218,11 @@ const pageData: ServicePageData = {
     { name: 'Enterprise', href: '/industries/enterprise' },
     { name: 'Logistics', href: '/industries/logistics' },
   ],
+
+  statsH2: { line1: 'React Native Development Results', line2: 'That Speak for Themselves.' },
+  advancedTechH2: { line1: 'React Native Technologies', line2: 'Built Into Every App.' },
+  techStackH2: { line1: 'React Native Stack.', line2: '30+ Packages & Tools.' },
+  blogsH2: { line1: 'React Native Development', line2: 'Insights & Guides.' },
 };
 
 export default function ReactNativeDevelopmentPage() {

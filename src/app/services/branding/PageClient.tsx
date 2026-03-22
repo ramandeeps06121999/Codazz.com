@@ -326,6 +326,11 @@ const pageData: ServicePageData = {
     { name: 'EdTech', href: '/industries/edtech' },
     { name: 'Enterprise', href: '/industries/enterprise' },
   ],
+
+  statsH2: { line1: 'Branding & Identity Results', line2: 'That Speak for Themselves.' },
+  advancedTechH2: { line1: 'Branding & Design Technologies', line2: 'Built Into Every Project.' },
+  techStackH2: { line1: 'Branding & Design Stack.', line2: '20+ Design Tools.' },
+  blogsH2: { line1: 'Branding & Identity', line2: 'Insights & Guides.' },
 };
 
 export default function BrandingPage() {

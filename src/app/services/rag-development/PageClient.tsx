@@ -218,6 +218,11 @@ const pageData: ServicePageData = {
     { name: 'SaaS', href: '/industries/saas' },
     { name: 'Education', href: '/industries/education' },
   ],
+
+  statsH2: { line1: 'RAG Development Results', line2: 'That Speak for Themselves.' },
+  advancedTechH2: { line1: 'RAG Development Technologies', line2: 'Built Into Every Pipeline.' },
+  techStackH2: { line1: 'RAG Development Stack.', line2: '30+ Vector & LLM Tools.' },
+  blogsH2: { line1: 'RAG Development', line2: 'Insights & Guides.' },
 };
 
 export default function RAGDevelopmentPage() {

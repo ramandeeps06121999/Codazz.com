@@ -322,6 +322,11 @@ const pageData: ServicePageData = {
     { name: 'Logistics', href: '/industries/logistics' },
     { name: 'Enterprise', href: '/industries/enterprise' },
   ],
+
+  statsH2: { line1: 'Digital Marketing Results', line2: 'That Speak for Themselves.' },
+  advancedTechH2: { line1: 'Digital Marketing Technologies', line2: 'Built Into Every Campaign.' },
+  techStackH2: { line1: 'Digital Marketing Stack.', line2: '30+ Platforms & Tools.' },
+  blogsH2: { line1: 'Digital Marketing', line2: 'Insights & Guides.' },
 };
 
 export default function DigitalMarketingPage() {
