@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'product-design',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our Design Systems Process',
     steps: [
       { num: '01', title: 'Audit & Foundation', desc: 'We audit your existing UI for inconsistencies, establish design principles, and define the token architecture that underpins everything.' },
       { num: '02', title: 'Component Design', desc: 'Core components are designed in Figma with all states and variants, reviewed against accessibility standards before any code is written.' },

@@ -222,6 +222,11 @@ const pageData: ServicePageData = {
     { name: 'Enterprise', href: '/industries/enterprise' },
     { name: 'Logistics', href: '/industries/logistics' },
   ],
+
+  statsH2: { line1: 'Cybersecurity Results', line2: 'That Speak for Themselves.' },
+  advancedTechH2: { line1: 'Cybersecurity Technologies', line2: 'Built Into Every Layer.' },
+  techStackH2: { line1: 'Cybersecurity Tool Stack.', line2: '40+ Security Tools.' },
+  blogsH2: { line1: 'Cybersecurity', line2: 'Insights & Guides.' },
 };
 
 export default function CybersecurityPage() {

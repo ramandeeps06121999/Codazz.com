@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'web-development',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our SaaS Platform Development Process',
     steps: [
       { num: '01', title: 'Product Discovery', desc: 'We run structured discovery workshops to define your ICP, core workflow, pricing model, and technical requirements \u2014 producing a product spec, architecture proposal, and phased roadmap with clear MVP scope.' },
       { num: '02', title: 'Architecture Design', desc: 'We design the multi-tenant data model, authentication flows, billing integration, API contracts, and infrastructure topology before any code is written \u2014 preventing expensive architectural debt later.' },

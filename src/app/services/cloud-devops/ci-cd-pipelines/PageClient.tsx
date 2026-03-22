@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'cloud-devops',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our CI/CD Pipeline Development Process',
     steps: [
       { num: '01', title: 'Current State Audit', desc: 'We map your existing deployment process, identify bottlenecks, manual steps, and security gaps that a pipeline will address.' },
       { num: '02', title: 'Pipeline Design', desc: 'We design the full pipeline architecture: stages, triggers, environment strategy, secrets management, and rollback procedures.' },

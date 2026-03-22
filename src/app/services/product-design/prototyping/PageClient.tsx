@@ -9,7 +9,7 @@ const pageData: SubServicePageData = {
   ],
   hero: {
     badge: 'PRODUCT DESIGN',
-    title: 'Prototyping That',
+    title: 'Prototyping & User Testing That',
     titleAccent: 'Catches Issues Early',
     description: 'Interactive prototypes and real-user testing that surface usability problems before they become expensive engineering mistakes.',
     service: 'Prototyping & User Testing',
@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'product-design',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our Prototyping & User Testing Process',
     steps: [
       { num: '01', title: 'Concept Definition', desc: 'We align on scope, the specific flows to prototype, and the success criteria for usability testing before building anything.' },
       { num: '02', title: 'Prototype Build', desc: 'Interactive prototypes are built in Figma with realistic states, transitions, and edge cases that reflect the real product experience.' },

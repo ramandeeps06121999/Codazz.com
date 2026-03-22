@@ -9,7 +9,7 @@ const pageData: SubServicePageData = {
   ],
   hero: {
     badge: 'AR & VR DEVELOPMENT',
-    title: 'WebXR That Runs',
+    title: 'WebXR Development That Runs',
     titleAccent: 'In Any Browser',
     description: 'We build browser-native AR and VR experiences using the WebXR API, Three.js, and A-Frame — zero app install required, maximum audience reach.',
     service: 'WebXR Development',
@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'ar-vr',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our WebXR Development Process',
     steps: [
       { num: '01', title: 'Experience Design', desc: 'We define the interaction model, content hierarchy, and performance budget based on target devices. WebXR experiences are designed for zero-friction access from day one.' },
       { num: '02', title: '3D Scene Build', desc: 'Our 3D team constructs optimized WebGL scenes — geometry, materials, lighting, and audio — built for browser performance constraints rather than native app luxury.' },

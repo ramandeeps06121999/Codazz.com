@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'web-development',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our Enterprise Portal Development Process',
     steps: [
       { num: '01', title: 'Requirements Gathering', desc: 'We run structured discovery with key stakeholders across IT, compliance, and business units to document functional requirements, integration needs, security policies, and success metrics before any design work begins.' },
       { num: '02', title: 'Architecture', desc: 'We design the system architecture covering identity integration, data model, permission structure, integration points with legacy systems, infrastructure topology, and disaster recovery strategy \u2014 fully documented and reviewed.' },

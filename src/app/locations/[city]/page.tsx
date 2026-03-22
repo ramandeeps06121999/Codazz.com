@@ -234,15 +234,24 @@ export default async function CityPage({ params }: PageProps) {
     })),
   };
 
-  // ─── Merge reviews into professionalServiceSchema instead of separate LocalBusiness ──
+  // ─── Merge reviews + aggregateRating into professionalServiceSchema ──
   if (data.testimonials?.length > 0) {
-    (professionalServiceSchema as Record<string, unknown>).review = data.testimonials.map(t => ({
+    const schema = professionalServiceSchema as Record<string, unknown>;
+    schema.review = data.testimonials.map(t => ({
       '@type': 'Review',
       author: { '@type': 'Person', name: t.name },
       reviewBody: t.quote,
       reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
       publisher: { '@type': 'Organization', name: t.company },
     }));
+    schema.aggregateRating = {
+      '@type': 'AggregateRating',
+      ratingValue: '5',
+      bestRating: '5',
+      worstRating: '1',
+      ratingCount: String(data.testimonials.length),
+      reviewCount: String(data.testimonials.length),
+    };
   }
 
   // ─── Hreflang alternates for international cities ──────────────────

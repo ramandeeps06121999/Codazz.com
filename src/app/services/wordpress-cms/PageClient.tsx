@@ -222,6 +222,11 @@ const pageData: ServicePageData = {
     { name: 'Enterprise', href: '/industries/enterprise' },
     { name: 'Non-Profit', href: '/industries/non-profit' },
   ],
+
+  statsH2: { line1: 'WordPress Development Results', line2: 'That Speak for Themselves.' },
+  advancedTechH2: { line1: 'WordPress & CMS Technologies', line2: 'Built Into Every Site.' },
+  techStackH2: { line1: 'WordPress & CMS Stack.', line2: '20+ Plugins & Tools.' },
+  blogsH2: { line1: 'WordPress & CMS', line2: 'Insights & Guides.' },
 };
 
 export default function WordPressCMSPage() {

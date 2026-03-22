@@ -370,6 +370,11 @@ const pageData: ServicePageData = {
     { name: 'Real Estate', href: '/industries/real-estate' },
     { name: 'HR Tech', href: '/industries/hr-tech' },
   ],
+
+  statsH2: { line1: 'SaaS Development Results', line2: 'That Speak for Themselves.' },
+  advancedTechH2: { line1: 'SaaS Development Technologies', line2: 'Built Into Every Platform.' },
+  techStackH2: { line1: 'SaaS Development Stack.', line2: '40+ Technologies.' },
+  blogsH2: { line1: 'SaaS Development', line2: 'Insights & Guides.' },
 };
 
 export default function SaaSDevelopmentPage() {

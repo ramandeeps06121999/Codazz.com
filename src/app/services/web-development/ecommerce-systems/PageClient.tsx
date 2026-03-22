@@ -9,7 +9,7 @@ const pageData: SubServicePageData = {
   ],
   hero: {
     badge: 'ONLINE RETAIL & COMMERCE',
-    title: 'E-Commerce Stores Built to',
+    title: 'E-Commerce Development Built to',
     titleAccent: 'Convert & Scale',
     description: 'We build high-converting online stores with lightning-fast storefronts, seamless payment integration, and conversion-optimized checkout flows. From boutique brands to enterprise retail, we engineer commerce experiences that drive revenue.',
     service: 'E-Commerce Development',
@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'web-development',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our E-Commerce Development Process',
     steps: [
       { num: '01', title: 'Store Strategy', desc: 'We define your product catalogue structure, checkout flow, payment and fulfilment strategy, and technology stack \u2014 ensuring the architecture supports your current catalogue size and future growth trajectory.' },
       { num: '02', title: 'Design & UX', desc: 'Our designers create conversion-focused storefronts with data-driven layouts \u2014 optimized product listing pages, persuasive product detail pages, and a frictionless checkout funnel tested against best-practice patterns.' },

@@ -9,7 +9,7 @@ const pageData: SubServicePageData = {
   ],
   hero: {
     badge: 'DIGITAL MARKETING',
-    title: 'Content That',
+    title: 'Content Marketing That',
     titleAccent: 'Attracts & Converts',
     description: 'Strategic content marketing that builds your authority, drives organic traffic, and nurtures prospects through the funnel — from first click to loyal customer.',
     service: 'Content Marketing',
@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'digital-marketing',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our Content Marketing Process',
     steps: [
       { num: '01', title: 'Content Audit', desc: 'We analyze your existing content library for performance, gaps, and cannibalisation, then benchmark against top-ranking competitors in your niche.' },
       { num: '02', title: 'Strategy & Calendar', desc: 'We develop a content strategy covering topics, formats, word counts, target keywords, and a publishing calendar aligned to your business goals.' },

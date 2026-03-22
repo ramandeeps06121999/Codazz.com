@@ -393,6 +393,11 @@ const pageData: ServicePageData = {
     { name: 'EdTech', href: '/industries/edtech' },
     { name: 'Enterprise', href: '/industries/enterprise' },
   ],
+
+  statsH2: { line1: 'Cloud & DevOps Results', line2: 'That Speak for Themselves.' },
+  advancedTechH2: { line1: 'Cloud & DevOps Technologies', line2: 'Built Into Every Stack.' },
+  techStackH2: { line1: 'Cloud & DevOps Stack.', line2: '40+ Infrastructure Tools.' },
+  blogsH2: { line1: 'Cloud & DevOps', line2: 'Insights & Guides.' },
 };
 
 export default function CloudDevOpsPage() {

@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'wordpress-cms',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our WooCommerce Store Development Process',
     steps: [
       { num: '01', title: 'Store Strategy', desc: 'We map your product catalogue, customer journey and payment flows \u2014 identifying quick wins and defining the architecture before any design or development begins.' },
       { num: '02', title: 'Design & Theme Build', desc: 'Custom theme development with WooCommerce template overrides, mobile-first layouts, and conversion-focused UX patterns throughout the shopping journey.' },

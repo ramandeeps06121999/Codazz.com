@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'wordpress-cms',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our Strapi & Sanity CMS Development Process',
     steps: [
       { num: '01', title: 'CMS Selection', desc: 'We evaluate your content complexity, team size, hosting preference and budget to recommend Strapi or Sanity \u2014 both excellent choices for different scenarios.' },
       { num: '02', title: 'Schema Design', desc: 'Content modeling workshop to define document types, field relationships, reusable components and validation rules before any configuration begins.' },

@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'game-development',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our Unity Game Development Process',
     steps: [
       { num: '01', title: 'Architecture Design', desc: 'We design the project architecture before writing code — scene structure, domain separation, data flow, and system dependencies — to avoid technical debt that kills teams mid-project.' },
       { num: '02', title: 'Core Systems', desc: 'Foundation systems first: input, state management, UI framework, audio, save/load, and platform abstraction layers. Solid foundations prevent costly rewrites later in production.' },

@@ -9,8 +9,8 @@ const pageData: SubServicePageData = {
   ],
   hero: {
     badge: 'GAME DEVELOPMENT',
-    title: 'Multiplayer &',
-    titleAccent: 'LiveOps at Scale',
+    title: 'Multiplayer & LiveOps Development at',
+    titleAccent: 'Scale',
     description: 'We build real-time multiplayer infrastructure and the LiveOps systems that keep players engaged and spending — from netcode architecture through seasonal events and anti-cheat.',
     service: 'Multiplayer & LiveOps Development',
     stats: [
@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'game-development',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our Multiplayer & LiveOps Development Process',
     steps: [
       { num: '01', title: 'Network Architecture', desc: 'We design the full network topology — authoritative server model, state synchronisation strategy, tick rate, packet structure, and latency compensation — before a line of code is written.' },
       { num: '02', title: 'Server Setup', desc: 'Cloud infrastructure provisioned with auto-scaling, regional failover, monitoring (Prometheus/Grafana), and deployment pipelines. Load tests validate capacity before launch.' },

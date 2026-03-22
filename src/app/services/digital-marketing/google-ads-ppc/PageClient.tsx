@@ -9,7 +9,7 @@ const pageData: SubServicePageData = {
   ],
   hero: {
     badge: 'DIGITAL MARKETING',
-    title: 'Google Ads That',
+    title: 'Google Ads & PPC That',
     titleAccent: 'Maximize ROAS',
     description: 'Expert PPC management that turns ad spend into predictable, scalable revenue — with transparent reporting and a Google Premier Partner team behind every campaign.',
     service: 'Google Ads & PPC',
@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'digital-marketing',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our Google Ads & PPC Process',
     steps: [
       { num: '01', title: 'Account Audit', desc: 'We audit your existing Google Ads account (or benchmark competitors) to identify wasted spend, quality score issues, and immediate optimization opportunities.' },
       { num: '02', title: 'Campaign Strategy', desc: 'We develop a full campaign architecture — keyword segmentation, audience targeting, bidding strategy, ad copy frameworks, and landing page requirements.' },

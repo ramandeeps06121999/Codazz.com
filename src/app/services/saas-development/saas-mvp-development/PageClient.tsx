@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'saas-development',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our SaaS MVP Development Process',
     steps: [
       { num: '01', title: 'Scope & Spec', desc: 'Two-week discovery: user story mapping, technical architecture decisions, stack selection, and a fixed-scope spec document that prevents scope creep and keeps the timeline predictable.' },
       { num: '02', title: 'Architecture Design', desc: 'Database schema, API design, authentication strategy, third-party integrations and infrastructure planning — designed for your MVP and the product you\'ll grow into.' },

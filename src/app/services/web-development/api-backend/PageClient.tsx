@@ -9,7 +9,7 @@ const pageData: SubServicePageData = {
   ],
   hero: {
     badge: 'BACKEND ENGINEERING',
-    title: 'APIs & Backends Built for',
+    title: 'API & Backend Development for',
     titleAccent: 'Performance & Scale',
     description: 'We design and build robust REST and GraphQL APIs with sub-100ms latency, 99.9% uptime, and bulletproof security. From single-purpose microservices to complex distributed backends, we engineer the foundation your product depends on.',
     service: 'API & Backend Development',
@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'web-development',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our API & Backend Development Process',
     steps: [
       { num: '01', title: 'API Design & Contract', desc: 'We define your API contract first \u2014 resource models, endpoint design, authentication flows, error codes, and pagination \u2014 producing an OpenAPI spec that serves as the single source of truth before any implementation begins.' },
       { num: '02', title: 'Build & Test', desc: 'We implement the API with a test-first approach: unit tests for business logic, integration tests for each endpoint, contract tests for external dependencies, and automated load tests to verify performance under realistic traffic.' },

@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'saas-development',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our Authentication & SSO Process',
     steps: [
       { num: '01', title: 'Auth Requirements', desc: 'We map your user types, access control requirements, enterprise customer expectations and compliance obligations to define the full scope of your auth system.' },
       { num: '02', title: 'Provider Selection', desc: 'Evaluate Auth0, Clerk, Supabase Auth, WorkOS, or custom implementation against your requirements — recommending the right tool for your scale, budget and control needs.' },

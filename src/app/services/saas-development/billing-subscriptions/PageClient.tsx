@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'saas-development',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our Billing & Subscriptions Process',
     steps: [
       { num: '01', title: 'Pricing Model Design', desc: 'Workshop to align your pricing strategy with your product value metric, customer segments and competitive context — before touching any code.' },
       { num: '02', title: 'Stripe Architecture', desc: 'Product and price configuration in Stripe, webhook event design, idempotency strategy, and the data model for storing subscription state in your application database.' },

@@ -9,7 +9,7 @@ const pageData: SubServicePageData = {
   ],
   hero: {
     badge: 'AR & VR DEVELOPMENT',
-    title: 'Mobile AR with',
+    title: 'Mobile AR Development with',
     titleAccent: 'ARKit & ARCore',
     description: 'We build native iOS and Android augmented reality experiences — from try-on to location-based AR — using the latest ARKit and ARCore capabilities.',
     service: 'Mobile AR Development',
@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'ar-vr',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our Mobile AR Development Process',
     steps: [
       { num: '01', title: 'Use Case Definition', desc: 'We map your business goals to the right AR modality — marker, markerless, face, or location — and define success metrics before a single line of code is written.' },
       { num: '02', title: 'Environment Mapping', desc: 'Our team analyzes target environments, lighting conditions, and device constraints to design an AR architecture that performs reliably in the real world.' },

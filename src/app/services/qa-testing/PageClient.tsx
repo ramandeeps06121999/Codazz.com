@@ -221,6 +221,11 @@ const pageData: ServicePageData = {
     { name: 'Enterprise', href: '/industries/enterprise' },
     { name: 'Logistics', href: '/industries/logistics' },
   ],
+
+  statsH2: { line1: 'QA & Testing Results', line2: 'That Speak for Themselves.' },
+  advancedTechH2: { line1: 'QA & Testing Technologies', line2: 'Built Into Every Pipeline.' },
+  techStackH2: { line1: 'QA & Testing Stack.', line2: '30+ Testing Tools.' },
+  blogsH2: { line1: 'QA & Testing', line2: 'Insights & Guides.' },
 };
 
 export default function QATestingPage() {

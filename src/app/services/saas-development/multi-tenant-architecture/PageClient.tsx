@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'saas-development',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our Multi-Tenant Architecture Process',
     steps: [
       { num: '01', title: 'Isolation Model Selection', desc: 'We evaluate your product\'s compliance requirements, expected tenant count, performance SLAs and operational complexity to recommend the optimal isolation strategy.' },
       { num: '02', title: 'Database Schema Design', desc: 'Design of the tenant model, foreign key constraints, Row Level Security policies (Postgres), index strategy, and migration plan for future tenant provisioning.' },

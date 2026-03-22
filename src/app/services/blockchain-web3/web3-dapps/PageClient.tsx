@@ -9,8 +9,8 @@ const pageData: SubServicePageData = {
   ],
   hero: {
     badge: 'BLOCKCHAIN & WEB3',
-    title: 'Web3 dApps Built to',
-    titleAccent: 'Ship',
+    title: 'Web3 dApp Development Built to',
+    titleAccent: 'Ship & Scale',
     description: 'We build full-stack Web3 decentralized applications — from smart contract integration and wallet connection to on-chain data indexing and cross-chain UX — shipping 50+ dApps with 500K+ wallet connections.',
     service: 'Web3 dApp Development',
     stats: [
@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'blockchain-web3',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our Web3 dApp Development Process',
     steps: [
       { num: '01', title: 'dApp Architecture', desc: 'We design the full-stack architecture — smart contract interfaces, indexing strategy, frontend state management, authentication flow, and off-chain data requirements — before any implementation begins.' },
       { num: '02', title: 'Smart Contract Integration', desc: 'Type-safe contract integration using Typechain or wagmi\'s code generation. We implement transaction flows, event listeners, error handling, and gas estimation with user-friendly feedback throughout.' },

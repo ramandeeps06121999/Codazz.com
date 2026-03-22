@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'product-design',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our UI/UX Strategy Process',
     steps: [
       { num: '01', title: 'Research & Discovery', desc: 'We conduct stakeholder interviews, user research, and competitive audits to build a full picture of your landscape.' },
       { num: '02', title: 'Synthesis', desc: 'Raw research is distilled into insights, opportunity maps, and prioritised problem statements.' },

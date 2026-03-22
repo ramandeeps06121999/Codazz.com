@@ -9,7 +9,7 @@ const pageData: SubServicePageData = {
   ],
   hero: {
     badge: 'REACT FRAMEWORK',
-    title: 'Next.js Websites Built for',
+    title: 'Next.js Development Built for',
     titleAccent: 'Speed & Search',
     description: 'We specialize in Next.js development \u2014 building production-ready web applications with perfect Lighthouse scores, sub-second load times, and SEO-optimized architecture. From marketing sites to complex web apps, we do it right.',
     service: 'Next.js Development',
@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'web-development',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our Next.js Development Process',
     steps: [
       { num: '01', title: 'Architecture Planning', desc: 'We map out the rendering strategy, data fetching patterns, caching layers, and deployment target before any code is written \u2014 ensuring the architecture scales from day one without costly rewrites.' },
       { num: '02', title: 'Component System', desc: 'We build a typed, reusable component library using TypeScript and Storybook, establishing consistent design tokens, layout primitives, and a shared UI kit that accelerates every subsequent page.' },

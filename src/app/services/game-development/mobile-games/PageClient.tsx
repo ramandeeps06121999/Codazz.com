@@ -9,7 +9,7 @@ const pageData: SubServicePageData = {
   ],
   hero: {
     badge: 'GAME DEVELOPMENT',
-    title: 'Mobile Games for',
+    title: 'Mobile Game Development for',
     titleAccent: 'iOS & Android',
     description: 'We design, build, and launch mobile games — from hyper-casual to mid-core — with proven monetization strategies and the retention mechanics that keep players coming back.',
     service: 'Mobile Game Development',
@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'game-development',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our Mobile Game Development Process',
     steps: [
       { num: '01', title: 'Concept & GDD', desc: 'We develop a Game Design Document defining core loop, monetization model, target audience, platform requirements, and art direction — a single source of truth for the whole team.' },
       { num: '02', title: 'Prototype', desc: 'A playable prototype validates the core loop is fun before full production begins. Real players test the prototype and data drives the decision to proceed or pivot.' },

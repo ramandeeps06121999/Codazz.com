@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'cloud-devops',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our Infrastructure as Code Process',
     steps: [
       { num: '01', title: 'Existing Infra Audit', desc: 'We document your current infrastructure, identify manually provisioned resources, and assess the scope of what needs to be codified.' },
       { num: '02', title: 'IaC Design', desc: 'Module structure, state backend, workspace strategy, and environment parameterisation are designed before any code is written.' },

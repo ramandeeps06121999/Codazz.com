@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'wordpress-cms',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our Custom WordPress Theme Development Process',
     steps: [
       { num: '01', title: 'Design Review', desc: 'We audit your Figma or XD files, flag any ambiguities, and align on component inventory, breakpoints and animation behaviour before writing a single line of code.' },
       { num: '02', title: 'Theme Architecture', desc: 'We plan the file structure, template hierarchy, custom post types, taxonomies and block patterns that will power the theme \u2014 built for maintainability from day one.' },

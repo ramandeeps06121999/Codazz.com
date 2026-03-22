@@ -9,8 +9,8 @@ const pageData: SubServicePageData = {
   ],
   hero: {
     badge: 'AR & VR DEVELOPMENT',
-    title: 'Building for',
-    titleAccent: 'Apple Vision Pro',
+    title: 'Apple Vision Pro Development for',
+    titleAccent: 'Spatial Computing',
     description: 'We are early visionOS adopters building spatial computing apps with SwiftUI, RealityKit, and Apple\'s spatial design principles for the world\'s most advanced computing platform.',
     service: 'Apple Vision Pro Development',
     stats: [
@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'ar-vr',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our Apple Vision Pro Development Process',
     steps: [
       { num: '01', title: 'Spatial Design Strategy', desc: 'We define how your content lives in space — which views are windows, which are volumes, which warrant a full immersive space. Spatial design principles guide every decision.' },
       { num: '02', title: 'visionOS Architecture', desc: 'App architecture designed for visionOS lifecycle, window management, scene phases, and ornament placement. We plan for collaboration and Persona features from the start.' },

@@ -9,7 +9,7 @@ const pageData: SubServicePageData = {
   ],
   hero: {
     badge: 'PRODUCT DESIGN',
-    title: 'Brand Identity That',
+    title: 'Brand Identity Design That',
     titleAccent: 'Gets Remembered',
     description: 'We create distinctive brand identities that communicate who you are, what you stand for, and why customers should choose you — across every touchpoint.',
     service: 'Brand Identity Design',
@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'product-design',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our Brand Identity Design Process',
     steps: [
       { num: '01', title: 'Brand Discovery', desc: 'We run workshops and surveys to understand your mission, values, audience, competitors, and the personality you want to project.' },
       { num: '02', title: 'Concept Development', desc: 'Multiple distinct creative directions are explored and presented — each with rationale, moodboard, and logo concepts.' },

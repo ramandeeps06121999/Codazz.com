@@ -374,6 +374,11 @@ const pageData: ServicePageData = {
     { name: 'Real Estate', href: '/industries/real-estate' },
     { name: 'Gaming', href: '/industries/gaming' },
   ],
+
+  statsH2: { line1: 'Blockchain Development Results', line2: 'That Speak for Themselves.' },
+  advancedTechH2: { line1: 'Blockchain & Web3 Technologies', line2: 'Security & Compliance Built In.' },
+  techStackH2: { line1: 'Blockchain Development Stack.', line2: '30+ Chains & Tools.' },
+  blogsH2: { line1: 'Blockchain Development', line2: 'Insights & Guides.' },
 };
 
 export default function BlockchainWeb3Page() {

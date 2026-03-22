@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'cloud-devops',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our AWS Architecture Process',
     steps: [
       { num: '01', title: 'Architecture Assessment', desc: 'We review your existing infrastructure, workloads, and requirements against the AWS Well-Architected Framework to identify gaps and opportunities.' },
       { num: '02', title: 'Design & Proposal', desc: 'A detailed architecture design is produced with service selection rationale, cost estimates, and a phased implementation plan.' },

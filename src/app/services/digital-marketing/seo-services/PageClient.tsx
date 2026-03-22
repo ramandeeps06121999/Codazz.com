@@ -9,7 +9,7 @@ const pageData: SubServicePageData = {
   ],
   hero: {
     badge: 'DIGITAL MARKETING',
-    title: 'SEO That Drives',
+    title: 'SEO Services That Drive',
     titleAccent: 'Real Growth',
     description: 'Data-driven search engine optimization that moves you up the rankings, grows organic traffic, and converts visitors into customers — month after month.',
     service: 'SEO Services',
@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'digital-marketing',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our SEO Services Process',
     steps: [
       { num: '01', title: 'Site Audit', desc: 'We crawl your entire website and benchmark your current organic performance, identifying every technical, on-page, and off-page opportunity.' },
       { num: '02', title: 'Strategy Development', desc: 'We build a bespoke SEO roadmap prioritised by revenue impact — keyword targets, content gaps, technical fixes, and a link acquisition plan.' },

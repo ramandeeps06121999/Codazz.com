@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'game-development',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our Hyper-Casual Game Development Process',
     steps: [
       { num: '01', title: 'Concept Validation', desc: 'We evaluate your concept against hyper-casual success criteria — simple mechanic, instant understanding, satisfying feedback loops, and trend alignment — before any development begins.' },
       { num: '02', title: '3-Day Prototype', desc: 'A rough but playable prototype built in three days. Real players test it. If the core loop is fun and unique, we proceed. If not, we iterate the concept — not waste months on the wrong idea.' },

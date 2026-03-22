@@ -9,7 +9,7 @@ const pageData: SubServicePageData = {
   ],
   hero: {
     badge: 'BLOCKCHAIN & WEB3',
-    title: 'Crypto Wallets Built for',
+    title: 'Crypto Wallet Development Built for',
     titleAccent: 'Security',
     description: 'We build production-grade custodial and non-custodial wallets — from HD key management and multi-chain support to hardware wallet integration and DeFi connectivity — trusted by 1M+ users across 15+ wallets.',
     service: 'Crypto Wallet Development',
@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'blockchain-web3',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our Crypto Wallet Development Process',
     steps: [
       { num: '01', title: 'Security Architecture', desc: 'We design the security model first: key derivation scheme, storage encryption strategy (AES-256, Secure Enclave on iOS/Android), biometric authentication, and threat model for seed phrase protection.' },
       { num: '02', title: 'Key Management Design', desc: 'Implementation of BIP standards for HD key derivation, secure key storage using platform secure storage (iOS Keychain, Android Keystore), and optional MPC (Multi-Party Computation) for enhanced security.' },

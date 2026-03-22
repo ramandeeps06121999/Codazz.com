@@ -9,7 +9,7 @@ const pageData: SubServicePageData = {
   ],
   hero: {
     badge: 'GAME DEVELOPMENT',
-    title: 'Unreal Engine 5 with',
+    title: 'Unreal Engine Development with',
     titleAccent: 'AAA Visuals',
     description: 'We build cinematic-quality games, simulations, and visualisations in Unreal Engine 5 — leveraging Lumen, Nanite, and Chaos to deliver experiences that redefine what real-time looks like.',
     service: 'Unreal Engine Development',
@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'game-development',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our Unreal Engine Development Process',
     steps: [
       { num: '01', title: 'Project Scoping', desc: 'We define the technical scope — target platforms, visual quality tier, performance budgets, and required Unreal systems. Platform targets and hardware constraints are set before design begins.' },
       { num: '02', title: 'Level Design', desc: 'World building with World Partition, PCG (Procedural Content Generation), and Nanite-ready asset pipeline. Environments are designed for both visual quality and performance from the start.' },

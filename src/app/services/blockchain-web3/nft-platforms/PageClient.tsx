@@ -9,8 +9,8 @@ const pageData: SubServicePageData = {
   ],
   hero: {
     badge: 'BLOCKCHAIN & WEB3',
-    title: 'NFT Platforms Built to',
-    titleAccent: 'Launch',
+    title: 'NFT Platform Development Built to',
+    titleAccent: 'Launch & Scale',
     description: 'We build gas-optimized NFT minting contracts, custom marketplaces, and royalty systems from strategy through launch — 500K+ NFTs minted across 30+ platforms we\'ve shipped.',
     service: 'NFT Platform Development',
     stats: [
@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'blockchain-web3',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our NFT Platform Development Process',
     steps: [
       { num: '01', title: 'Collection Strategy', desc: 'We define your collection architecture — token standard, supply, pricing tiers, allowlist strategy, reveal mechanics, and royalty structure — aligned with your community and revenue goals.' },
       { num: '02', title: 'Contract Development', desc: 'Gas-optimized minting contracts built with ERC-721A for significant gas savings on batch mints, thorough test coverage, allowlist verification via Merkle proofs, and Chainlink VRF integration for reveals.' },

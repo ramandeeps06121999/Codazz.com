@@ -9,8 +9,8 @@ const pageData: SubServicePageData = {
   ],
   hero: {
     badge: 'CLOUD & DEVOPS',
-    title: 'Performance Engineering for',
-    titleAccent: 'Any Scale',
+    title: 'Performance & Scaling for',
+    titleAccent: 'Any Traffic Level',
     description: 'We find and fix the bottlenecks that slow your product down — from database queries to global CDN strategy — so you can handle any traffic without breaking a sweat.',
     service: 'Performance & Scaling',
     stats: [
@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'cloud-devops',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our Performance & Scaling Process',
     steps: [
       { num: '01', title: 'Performance Audit', desc: 'We instrument your application with APM tooling and collect baseline metrics across response times, throughput, error rates, and resource utilisation.' },
       { num: '02', title: 'Bottleneck Identification', desc: 'Distributed traces, slow query logs, and profiling data are analyzed to pinpoint the specific code paths, queries, or infrastructure components causing latency.' },

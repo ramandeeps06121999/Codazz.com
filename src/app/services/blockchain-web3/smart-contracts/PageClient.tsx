@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'blockchain-web3',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our Smart Contract Development Process',
     steps: [
       { num: '01', title: 'Requirements & Architecture', desc: 'We map out your contract architecture — state variables, access control roles, function interfaces, and upgrade strategy — before writing a single line of code. Clear specs prevent costly post-deployment mistakes.' },
       { num: '02', title: 'Development', desc: 'Contracts are written following OpenZeppelin standards, with comprehensive unit and integration tests using Hardhat or Foundry. Every function is tested against expected and edge-case inputs.' },

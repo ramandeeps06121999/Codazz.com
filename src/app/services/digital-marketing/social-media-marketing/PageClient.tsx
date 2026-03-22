@@ -9,7 +9,7 @@ const pageData: SubServicePageData = {
   ],
   hero: {
     badge: 'DIGITAL MARKETING',
-    title: 'Social Media That',
+    title: 'Social Media Marketing That',
     titleAccent: 'Builds Brands',
     description: 'Strategy, content, community management, and paid social — a full-service social media team that grows your audience and drives measurable business results.',
     service: 'Social Media Marketing',
@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'digital-marketing',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our Social Media Marketing Process',
     steps: [
       { num: '01', title: 'Audit & Strategy', desc: 'We audit your existing social presence, analyze your competitors, define your target audiences, and build a channel-specific content and paid strategy.' },
       { num: '02', title: 'Content Calendar', desc: 'A monthly content calendar is planned and approved before publishing — covering content pillars, formats, captions, and paid creative requirements.' },

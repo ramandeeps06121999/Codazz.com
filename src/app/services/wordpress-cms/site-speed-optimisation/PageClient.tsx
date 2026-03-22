@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'wordpress-cms',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our Site Speed Optimization Process',
     steps: [
       { num: '01', title: 'Speed Audit & Baseline', desc: 'We run comprehensive speed tests (Lighthouse, WebPageTest, GTmetrix) across multiple pages and devices to establish a performance baseline and identify the biggest impact fixes.' },
       { num: '02', title: 'Fix Prioritisation', desc: 'All findings are ranked by potential performance gain vs implementation effort. We focus on the 20% of fixes that deliver 80% of the performance improvement first.' },

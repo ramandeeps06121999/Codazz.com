@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'saas-development',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our Analytics & Dashboards Process',
     steps: [
       { num: '01', title: 'Metrics Definition', desc: 'We run a metrics workshop to define your North Star metric, leading indicators, and the event taxonomy that will capture user behaviour without creating data noise.' },
       { num: '02', title: 'Tracking Implementation', desc: 'Event tracking integrated into your product — server-side events for reliability, client-side for UI interactions — with a tracking plan document keeping naming consistent.' },

@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'cloud-devops',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our Kubernetes & Docker Process',
     steps: [
       { num: '01', title: 'Container Strategy', desc: 'We assess your application architecture, team capabilities, and deployment requirements to design the right containerization approach.' },
       { num: '02', title: 'Dockerization', desc: 'Applications are containerized with optimized, production-hardened Dockerfiles, image scanning integrated into the build pipeline.' },

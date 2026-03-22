@@ -9,8 +9,8 @@ const pageData: SubServicePageData = {
   ],
   hero: {
     badge: 'AR & VR DEVELOPMENT',
-    title: 'VR Applications That',
-    titleAccent: 'Transport Users',
+    title: 'VR Application Development That',
+    titleAccent: 'Transports Users',
     description: 'From Meta Quest standalone apps to high-fidelity PC VR simulations, we build immersive virtual reality experiences for enterprise and consumer markets.',
     service: 'VR Application Development',
     stats: [
@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'ar-vr',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our VR Application Development Process',
     steps: [
       { num: '01', title: 'Concept & Storyboard', desc: 'We define the VR experience narrative, interaction model, and comfort guidelines. Storyboards and reference material align the team before any development begins.' },
       { num: '02', title: 'Environment Design', desc: '3D artists build optimized virtual environments — geometry, textures, lighting, and audio — designed for the target headset\'s rendering budget from the ground up.' },

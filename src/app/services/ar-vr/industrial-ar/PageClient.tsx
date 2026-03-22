@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'ar-vr',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our Industrial AR Solutions Process',
     steps: [
       { num: '01', title: 'Workflow Analysis', desc: 'Our team embeds with your operations team to map current workflows, identify pain points, and quantify the time and error costs that industrial AR can address.' },
       { num: '02', title: 'Use Case Selection', desc: 'We prioritise the highest-ROI use case for a focused pilot — assembly guidance, remote support, or IoT overlay — and define measurable success metrics.' },

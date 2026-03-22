@@ -9,7 +9,7 @@ const pageData: SubServicePageData = {
   ],
   hero: {
     badge: 'DIGITAL MARKETING',
-    title: 'Analytics That',
+    title: 'Performance Analytics That',
     titleAccent: 'Drive Decisions',
     description: 'GA4 setup, conversion tracking, attribution modeling, and real-time dashboards — giving you the data clarity to make confident marketing decisions and reduce wasted spend.',
     service: 'Performance Analytics',
@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'digital-marketing',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our Performance Analytics Process',
     steps: [
       { num: '01', title: 'Tracking Audit', desc: 'We audit every existing tag, goal, and conversion action — documenting what is working, what is broken, and what is missing across your analytics setup.' },
       { num: '02', title: 'Implementation Plan', desc: 'We produce a detailed measurement plan specifying every event, conversion, and data layer variable required to answer your key business questions.' },

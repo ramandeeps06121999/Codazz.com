@@ -326,6 +326,11 @@ const pageData: ServicePageData = {
     { name: 'Entertainment', href: '/industries/entertainment' },
     { name: 'FinTech', href: '/industries/fintech' },
   ],
+
+  statsH2: { line1: 'Game Development Results', line2: 'That Speak for Themselves.' },
+  advancedTechH2: { line1: 'Game Development Technologies', line2: 'Built Into Every Title.' },
+  techStackH2: { line1: 'Game Development Stack.', line2: '30+ Engines & Tools.' },
+  blogsH2: { line1: 'Game Development', line2: 'Insights & Guides.' },
 };
 
 export default function GameDevelopmentPage() {

@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'wordpress-cms',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our Headless WordPress Development Process',
     steps: [
       { num: '01', title: 'Architecture Design', desc: 'We define the data flow between WordPress and your Next.js frontend, plan the API structure, authentication strategy, and CDN/caching layer before writing any code.' },
       { num: '02', title: 'WordPress API Setup', desc: 'Custom post types, fields (ACF/Meta Box), WPGraphQL schema configuration, and REST API endpoints set up and documented for your content model.' },

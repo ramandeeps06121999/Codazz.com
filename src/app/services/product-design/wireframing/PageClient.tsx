@@ -9,7 +9,7 @@ const pageData: SubServicePageData = {
   ],
   hero: {
     badge: 'PRODUCT DESIGN',
-    title: 'Wireframing That',
+    title: 'Wireframing & UX Design That',
     titleAccent: 'Aligns Teams',
     description: 'From first sketch to handoff-ready specs, we wireframe every screen and flow so your team builds the right product — fast.',
     service: 'Wireframing & UX Design',
@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'product-design',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our Wireframing & UX Design Process',
     steps: [
       { num: '01', title: 'Brief & User Flows', desc: 'We start with your goals, user journeys, and content inventory to map every screen and flow before drawing a single frame.' },
       { num: '02', title: 'Low-Fi Wireframes', desc: 'Rapid low-fidelity wireframes are produced for key screens, focusing on structure, hierarchy, and navigation logic.' },

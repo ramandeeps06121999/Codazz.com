@@ -35,7 +35,7 @@ const pageData: SubServicePageData = {
   portfolioCategory: 'blockchain-web3',
   process: {
     label: 'Our Process',
-    title: 'How We Work',
+    title: 'Our DeFi Protocol Development Process',
     steps: [
       { num: '01', title: 'Economic Model Design', desc: 'We model your protocol tokenomics, fee structures, interest rate curves, and incentive mechanisms using agent-based simulations to stress-test the economics before writing any code.' },
       { num: '02', title: 'Smart Contract Build', desc: 'Core protocol contracts implemented in Solidity with modular architecture, comprehensive test coverage (unit, integration, fuzz), and full documentation. Formal specification written before development begins.' },
