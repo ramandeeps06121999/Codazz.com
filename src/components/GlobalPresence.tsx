@@ -1,9 +1,14 @@
 'use client';
 
 import { useRef, useEffect, useState } from 'react';
-import { Globe } from '@/components/ui/globe';
+import dynamic from 'next/dynamic';
 import type { COBEOptions } from 'cobe';
 import Link from 'next/link';
+
+const Globe = dynamic(() => import('@/components/ui/globe').then(m => m.Globe), {
+  ssr: false,
+  loading: () => null,
+});
 
 const GLOBE_CONFIG: COBEOptions = {
   width: 800,

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Analytics } from "@vercel/analytics/react";
 import CookieConsent from "@/components/CookieConsent";
 import ClarityAnalytics from "@/components/ClarityAnalytics";
@@ -95,7 +96,12 @@ const organizationSchema = {
       addressCountry: "IN",
     },
   ],
-  sameAs: [],
+  sameAs: [
+    "https://www.linkedin.com/company/codazz",
+    "https://github.com/codazz",
+    "https://clutch.co/profile/codazz",
+    "https://x.com/codazz",
+  ],
   knowsAbout: [
     "Mobile App Development",
     "AI Development",
@@ -184,9 +190,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en-US">
-      <head>
-        {/* Google Tag Manager */}
-        <script
+      <body className={poppins.className}>
+        {/* Google Tag Manager — loaded after interactive to avoid blocking FCP/LCP */}
+        <Script
+          id="gtm"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -196,8 +204,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           }}
         />
         {/* Google Analytics (gtag.js) */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-LLHNY6HD88" />
-        <script
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-LLHNY6HD88"
+          strategy="afterInteractive"
+        />
+        <Script
+          id="gtag-init"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
@@ -205,8 +218,6 @@ gtag('js', new Date());
 gtag('config', 'G-LLHNY6HD88');`,
           }}
         />
-      </head>
-      <body className={poppins.className}>
         <ScrollProgress />
         <a href="#main-content" className="sr-only-focusable">Skip to main content</a>
         {/* Google Tag Manager (noscript) */}

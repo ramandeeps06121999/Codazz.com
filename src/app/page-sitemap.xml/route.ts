@@ -15,6 +15,10 @@ export function GET() {
     { loc: `${BASE_URL}/locations`, lastmod: '2026-02-15', changefreq: 'monthly', priority: '0.8' },
     { loc: `${BASE_URL}/faq`, lastmod: '2026-03-01', changefreq: 'monthly', priority: '0.7' },
     { loc: `${BASE_URL}/about/raman-makkar`, lastmod: '2026-02-20', changefreq: 'monthly', priority: '0.6' },
+    { loc: `${BASE_URL}/careers`, lastmod: '2026-03-01', changefreq: 'monthly', priority: '0.7' },
+    { loc: `${BASE_URL}/dedicated-development-team`, lastmod: '2026-03-01', changefreq: 'monthly', priority: '0.8' },
+    { loc: `${BASE_URL}/software-outsourcing`, lastmod: '2026-03-01', changefreq: 'monthly', priority: '0.8' },
+    { loc: `${BASE_URL}/offshore-development`, lastmod: '2026-03-01', changefreq: 'monthly', priority: '0.8' },
   ]);
   return new Response(xml, { headers: { 'Content-Type': 'application/xml' } });
 }

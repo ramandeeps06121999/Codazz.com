@@ -1,10 +1,15 @@
 'use client';
 import { useRef, useEffect, useState } from 'react';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { Globe } from '@/components/ui/globe';
 import type { COBEOptions } from 'cobe';
+
+const Globe = dynamic(() => import('@/components/ui/globe').then(m => m.Globe), {
+  ssr: false,
+  loading: () => null,
+});
 
 const words = ['Mobile Apps', 'Web Platforms', 'AI Systems', 'SaaS Products', 'Fintech Tools'];
 

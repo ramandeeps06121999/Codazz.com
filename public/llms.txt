@@ -4,7 +4,7 @@
 
 ## Company Overview
 - Name: Codazz
-- Founded: 2020
+- Founded: 2018
 - CEO: Raman Makkar
 - Headquarters: Edmonton, Alberta, Canada
 - Development Center: Chandigarh, India

@@ -1,20 +1,11 @@
-import { BASE_URL, buildUrlset } from '@/lib/sitemap-data';
+import { BASE_URL, hireSlugs, buildUrlset } from '@/lib/sitemap-data';
 
 export function GET() {
-  const now = new Date().toISOString();
+  const allSlugs = ['', ...hireSlugs]; // '' = index page
 
-  const hireSlugs = [
-    '', // index page
-    'react-developers',
-    'nodejs-developers',
-    'flutter-developers',
-    'python-developers',
-    'ai-ml-engineers',
-  ];
-
-  const urls = hireSlugs.map(slug => ({
+  const urls = allSlugs.map(slug => ({
     loc: `${BASE_URL}/hire${slug ? `/${slug}` : ''}`,
-    lastmod: now,
+    lastmod: '2026-03-15',
     changefreq: 'weekly',
     priority: slug === '' ? '0.9' : '0.8',
   }));

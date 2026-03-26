@@ -234,7 +234,7 @@ export default async function CityPage({ params }: PageProps) {
     })),
   };
 
-  // ─── Merge reviews + aggregateRating into professionalServiceSchema ──
+  // ─── Merge reviews into professionalServiceSchema (no self-generated aggregateRating) ──
   if (data.testimonials?.length > 0) {
     const schema = professionalServiceSchema as Record<string, unknown>;
     schema.review = data.testimonials.map(t => ({
@@ -244,14 +244,6 @@ export default async function CityPage({ params }: PageProps) {
       reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
       publisher: { '@type': 'Organization', name: t.company },
     }));
-    schema.aggregateRating = {
-      '@type': 'AggregateRating',
-      ratingValue: '5',
-      bestRating: '5',
-      worstRating: '1',
-      ratingCount: String(data.testimonials.length),
-      reviewCount: String(data.testimonials.length),
-    };
   }
 
   // ─── Hreflang alternates for international cities ──────────────────
