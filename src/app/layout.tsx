@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     canonical: "https://codazz.com",
   },
   verification: {
-    google: "bk5xt83LIShhQ9QrejYXCOg9lXhZubSY9ksIEtYrIVs",
+    google: "rqs8a3Cx1UVYLVumfA1UJaf-VZIt0L35zlmWqHtwCqo",
   },
   manifest: "/manifest.json",
   icons: {
