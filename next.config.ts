@@ -24,6 +24,9 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // Legacy / default crawler path → actual asset (Linux deploys are case-sensitive)
+      { source: '/favicon.ico', destination: '/favicon.png', permanent: true },
+      { source: '/Favicon.png', destination: '/favicon.png', permanent: true },
       // Old city+service slug pattern redirects
       { source: '/software-development-company-in-:city', destination: '/locations/:city/web-development', permanent: true },
       { source: '/app-development-company-in-:city', destination: '/locations/:city/mobile-app-development', permanent: true },
