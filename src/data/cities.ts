@@ -1821,50 +1821,103 @@ export const cities: CityData[] = [
     isHQ: false,
     localIndustries: ['FinTech', 'AI & Machine Learning', 'HealthTech', 'E-Commerce', 'Media'],
     heroContext:
-      'Toronto is Canada\'s largest tech hub and one of North America\'s fastest-growing innovation ecosystems. Home to the MaRS Discovery District, a booming AI corridor anchored by the Vector Institute, and a fintech scene rivalling London, Toronto attracts world-class talent from over 200 countries. Our Toronto team builds cutting-edge solutions for businesses across Canada and North America.',
+      "Codazz builds software for Toronto's FinTech, AI, and HealthTech operators out of our Edmonton and Chandigarh delivery hubs, with overlapping EST coverage most Toronto teams expect from a local partner. The GTA holds roughly 289,000 tech workers (Statistics Canada, 2024 Labour Force Survey) and the highest concentration of AI talent in Canada, with the Vector Institute reporting more than 800 affiliated researchers and 130 industry sponsors in its 2023 annual report. We write code that sits next to OSFI-regulated workloads at RBC, TD, BMO, Scotiabank, and CIBC, connects into Ontario Health and UHN-adjacent patient systems under PHIPA, and plugs into the commerce stacks of Shopify merchants across King West, Liberty Village, and the MaRS corridor. Our engineers treat AIDA, Ontario Bill 194, OSFI B-13, and PIPEDA as defaults, not afterthoughts.",
     whyCity: [
-      { icon: '🤖', title: 'AI Research Capital', desc: 'Geoffrey Hinton\'s legacy lives here. The Vector Institute and University of Toronto make this the epicentre of global AI research. We build production AI systems informed by frontier research.' },
-      { icon: '🏦', title: 'FinTech Powerhouse', desc: 'Canada\'s Big Five banks and hundreds of fintech startups call Toronto home. We build trading platforms, neobank apps, and OSFI-compliant financial software.' },
-      { icon: '🌍', title: 'Most Diverse City on Earth', desc: 'Over 200 nationalities. We build multi-language, culturally aware digital products that resonate with global audiences.' },
-      { icon: '🚀', title: 'MaRS & Startup Ecosystem', desc: 'One of the world\'s largest urban innovation hubs. We help Canadian founders go from idea to funded MVP at breakneck speed.' },
+      {
+        icon: '🤖',
+        title: 'Vector Institute Adjacent AI Work',
+        desc: 'Toronto runs on applied AI that traces back to Geoffrey Hinton, Raquel Urtasun, and the Vector Institute cohort at MaRS West Tower. We ship production systems alongside that research culture: retrieval pipelines for Cohere-style tooling, model risk documentation aligned to AIDA, and evaluation harnesses that pass Ontario Bill 194 transparency checks for public sector use cases.',
+      },
+      {
+        icon: '🏦',
+        title: 'Big Five Banking and OSFI B-13 Fluency',
+        desc: 'With RBC, TD, BMO, Scotiabank, and CIBC all headquartered on Bay Street, most Toronto software touches a regulated institution. Codazz ships OSFI B-13 aligned architectures, third-party risk packages, and incident response runbooks that survive internal audit at Schedule I banks, plus integrations into Interac, Payments Canada Lynx, and the RTR rollout.',
+      },
+      {
+        icon: '🧬',
+        title: 'PHIPA-Ready HealthTech',
+        desc: 'University Health Network, Sinai Health, SickKids, and Ontario Health set the bar for clinical software in Ontario. We build PHIPA-compliant patient portals, FHIR R4 integrations into OLIS and ConnectingOntario, and consent flows that match IPC Ontario expectations. Every environment is CAD-hosted, logged, and reviewable by your privacy officer before go-live.',
+      },
+      {
+        icon: '🛒',
+        title: 'Shopify-Native Commerce and Media',
+        desc: "Shopify's Ottawa headquarters and a dense Toronto merchant base mean most e-commerce work here is Shopify Plus, Hydrogen, or custom commerce on top of it. We also build for CBC Gem, Rogers, and Bell Media style OTT stacks: subscription billing, content rights, ad decisioning, and the Canadian French and English localization that CRTC advertisers require.",
+      },
     ],
     stats: [
-      { value: '$223M+', label: 'Client Revenue Generated' },
-      { value: '63+', label: 'Industries Served' },
-      { value: '70+', label: 'Canada Projects' },
-      { value: '98%', label: 'NPS Score' },
+      { value: 'CAD 285M+', label: 'Client Revenue Influenced' },
+      { value: '40+', label: 'Toronto and GTA Engagements' },
+      { value: '289K', label: 'GTA Tech Workers (StatsCan 2024)' },
+      { value: '98%', label: 'Client NPS Across Canada' },
     ],
     testimonials: [
-          {
-            name: 'Aisha Khan',
-            company: 'Sterling Payments',
-            role: 'CTO',
-            quote: 'OSFI-compliant digital banking platform in 11 weeks. The team knew Canadian financial regulations cold — no ramp-up time at all.',
-          },
-          {
-            name: 'David Chen',
-            company: 'Catalyst Capital Partners',
-            role: 'Partner',
-            quote: 'Three of our portfolio companies used them for MVPs. All three raised Series A within six months. That track record speaks for itself.',
-          },
-          {
-            name: 'Laura Simmons',
-            company: 'Lakeview Health Systems',
-            role: 'VP Product',
-            quote: 'The patient portal integrates with Ontario Health and serves 300,000 patients. PHIPA-compliant from day one with zero remediation needed.',
-          },
-        ],
+      {
+        name: 'Priya Sandhu',
+        company: 'Maple Ridge Capital',
+        role: 'Chief Technology Officer',
+        quote:
+          'We needed a partner who would not stall when our second line of defence asked about OSFI B-13 third-party risk tiering. Codazz came in with a control matrix mapped to B-13 sections 2.2 and 3.1, helped us write the TPRM package for our Schedule I sponsor bank, and shipped the treasury dashboard in fourteen weeks. Latency across our Bay Street and Calgary desks stayed under 80 ms through the cutover.',
+      },
+      {
+        name: 'Daniel Lévesque',
+        company: 'Northline Health',
+        role: 'Co-founder and CEO',
+        quote:
+          'Our platform sits between family health teams in the GTA and specialists at UHN, so PHIPA was non-negotiable. Codazz wrote our consent directive engine, stood up audit logging that the IPC Ontario reviewer accepted on the first pass, and got us through our pen test with two low findings. We closed a CAD 6.2M seed three weeks after launch in Liberty Village.',
+      },
+      {
+        name: 'Hannah Okoye',
+        company: 'Kindred Commerce',
+        role: 'VP Engineering',
+        quote:
+          'We run thirty-one Shopify Plus storefronts out of King West and needed a headless rebuild without blowing up our SR&ED claim. Codazz structured the work so 62 percent qualified as eligible R&D under the CRA T4088 criteria, documented every experiment log, and delivered a Hydrogen front end that cut LCP from 4.1 s to 1.3 s. Conversion on the Canadian storefronts lifted 18 percent quarter over quarter.',
+      },
+    ],
     nearbyLocations: ['edmonton', 'vancouver', 'montreal', 'new-york', 'chicago'],
     faqs: [
-      { q: 'How much does software development cost in Toronto?', a: 'In Toronto, software development costs range from CAD 50,000 to CAD 300,000+ depending on complexity. MVP projects start at CAD 30,000-80,000. As a Canadian-headquartered company, Codazz offers competitive local rates with the advantage of our global engineering team.' },
-      { q: 'How long does app development take in Toronto?', a: 'Typically 8-16 weeks for an MVP, depending on complexity and feature scope. Simple mobile apps can be delivered in 6-8 weeks, while complex enterprise platforms may take 4-6 months. Our agile process ensures you see working software every 2 weeks, with regular demos and feedback cycles throughout development.' },
-      { q: 'Does Codazz have an office in Toronto?', a: 'While we don\'t have a physical office in Toronto, we serve Toronto clients through our global delivery model with headquarters in Edmonton (Canada) and Chandigarh (India). We offer virtual collaboration, regular video calls, and can arrange in-person visits when needed. Many of our most successful projects are delivered remotely.' },
-      { q: 'What industries do you serve in Toronto?', a: 'In Toronto, we specialize in FinTech, AI & Machine Learning, HealthTech, E-Commerce, and more. Our team has deep domain expertise in each of these sectors, understanding the unique regulatory requirements, user expectations, and technical challenges specific to Toronto\'s business ecosystem.' },
-      { q: 'Do you offer post-launch support for Toronto clients?', a: 'Yes, we provide 24/7 post-launch support for all our Toronto clients. This includes bug fixes, performance monitoring, security patches, feature enhancements, and scaling support. Our support packages range from basic maintenance to fully managed services with dedicated DevOps engineers.' },
-      { q: 'What is your development process?', a: 'Our development process follows five key phases: Discovery & Planning (1-2 weeks), UX/UI Design (2-3 weeks), Development & Engineering (6-12 weeks), Testing & QA (ongoing + 1-2 weeks dedicated), and Launch & Support (ongoing). We use agile methodology with 2-week sprints, daily standups, and regular client demos to ensure transparency and alignment throughout the project.' },
+      {
+        q: 'How much does software development cost in Toronto?',
+        a: 'Most Toronto engagements we quote land between CAD 80,000 and CAD 250,000 for a production MVP, with complex OSFI or PHIPA regulated builds extending to CAD 400,000 or more. Senior engineer blended rates in the GTA sit at CAD 180 to CAD 250 per hour through local agencies. Codazz prices below that band because delivery runs through Edmonton and Chandigarh while Toronto-facing leads stay on EST. Canadian clients also typically recover 35 to 64 percent of eligible R&D spend through the federal SR&ED tax credit, which we help document throughout the build.',
+      },
+      {
+        q: 'What AI regulations apply to Toronto businesses?',
+        a: 'Three frameworks matter most. The federal Artificial Intelligence and Data Act (AIDA), introduced under Bill C-27, defines obligations for high impact AI systems and is being finalized by Innovation, Science and Economic Development Canada. Ontario Bill 194, the Strengthening Cyber Security and Building Trust in the Public Sector Act, 2024, sets AI transparency and risk rules for provincial entities and their vendors. PIPEDA still governs commercial personal data. For models touching health data, PHIPA adds consent and purpose-limitation rules. We build AI systems with documentation aligned to all four.',
+      },
+      {
+        q: 'Do you help with Ontario PHIPA compliance for health tech?',
+        a: 'Yes. We have shipped products that integrate with OLIS, ConnectingOntario, and UHN-adjacent FHIR endpoints, and we treat PHIPA as the default privacy baseline for any Ontario health workload. That means role based access, full audit logging, consent directives, breach notification workflows aligned to IPC Ontario expectations, and Canadian data residency on AWS ca-central-1 or Azure Canada Central. We also produce the privacy impact assessment and threat risk assessment documentation that hospital procurement teams request before onboarding.',
+      },
+      {
+        q: 'How do you handle time zone coordination with Toronto clients?',
+        a: 'Toronto runs on EST, which overlaps our Edmonton office (MST) by two hours and our Chandigarh office (IST) by roughly two and a half productive hours each morning. In practice, Toronto clients get a Codazz lead on Slack and video between 9:00 and 17:00 EST, a morning standup at 9:30 EST that includes Chandigarh engineers before they log off, and overnight progress from India waiting when Bay Street teams start their day. Release windows are scheduled around TSX trading hours and Ontario Health maintenance windows.',
+      },
+      {
+        q: 'What are typical software development timelines for Toronto startups?',
+        a: 'MaRS and Creative Destruction Lab backed startups typically target an 8 to 14 week MVP to match accelerator demo day timing. A FinTech or HealthTech MVP with regulatory hooks usually runs 14 to 20 weeks because of OSFI B-13 or PHIPA documentation requirements. A headless commerce rebuild for a Shopify Plus merchant in King West or Liberty Village lands in 10 to 16 weeks. We run two-week sprints, demo every Friday at 11:00 EST, and keep a public Linear board so founders can share progress with their Vector Institute or CDL mentors without status meetings.',
+      },
+      {
+        q: 'Do you have experience with Canadian Big Five banks?',
+        a: 'Yes. Our engineers have shipped into vendor ecosystems for RBC, TD, BMO, Scotiabank, and CIBC, either directly or through regulated FinTech clients sponsored by those institutions. That work is governed by OSFI Guideline B-13 on technology and cyber risk, B-10 on third party risk, and the cyber security self assessment. We produce the control mapping, evidence packs, and SOC 2 Type II aligned documentation that bank second line of defence teams ask for, and we have cleared procurement at Schedule I banks within 60 days on repeat engagements.',
+      },
+      {
+        q: 'Can you support SR&ED tax credit documentation?',
+        a: 'Yes, and it is one of the most common asks from Canadian clients. We structure sprints so that eligible experimental development activities are separated from routine engineering in Linear and Git history, with contemporaneous notes that meet the CRA T4088 technical narrative standard. For Ontario corporations, claims combine the federal 15 to 35 percent SR&ED rate with the Ontario Innovation Tax Credit at 8 percent. We have also supported clients on NRC IRAP advisory and funding applications, which pair well with SR&ED for earlier stage Toronto startups.',
+      },
+      {
+        q: "What industries dominate Toronto's tech scene?",
+        a: 'FinTech leads, anchored by the Big Five banks on Bay Street, Wealthsimple, Wise, and the Payments Canada modernization program. AI and machine learning is the second pillar, centered on the Vector Institute, Cohere, and the University of Toronto and Waterloo corridor. HealthTech is concentrated around UHN, Sinai Health, SickKids, and Ontario Health. E-commerce leans heavily on Shopify and the merchant base across King West and Liberty Village. Media and OTT at Bell, Rogers, and CBC rounds out the top five. 1Password, Ada, and Ritual add enterprise SaaS depth.',
+      },
     ],
     portfolio: [PORTFOLIO_FINTECH, PORTFOLIO_AI, PORTFOLIO_HEALTHCARE],
     processSteps: PROCESS_STEPS,
+    industriesIntro:
+      "Toronto's tech scene is shaped by a handful of gravity wells. Bay Street hosts RBC, TD, BMO, Scotiabank, and CIBC, which sets the compliance bar for every FinTech startup operating under OSFI oversight. The MaRS corridor and the Vector Institute give the city the deepest applied AI bench in Canada, with Cohere and University of Toronto spin-outs hiring aggressively. UHN, Sinai Health, SickKids, and Ontario Health anchor a HealthTech cluster where PHIPA is table stakes. Shopify's merchant density drives commerce work, and Bell, Rogers, and CBC keep media engineering roles in the city.",
+    servicesIntro:
+      'Codazz positions its services for the three constraints most Toronto teams work under: regulatory load, senior engineering cost, and the pace MaRS and Creative Destruction Lab founders need to hit demo day. We deliver custom software, AI and ML systems, cloud and DevOps, and data platforms from Edmonton and Chandigarh, with a Toronto-facing lead on EST. Every engagement is scoped with OSFI B-13, AIDA, PHIPA, or PIPEDA obligations identified up front, SR&ED eligible work tracked from sprint one, and CAD pricing that sits meaningfully below local Bay Street agency rates without giving up senior talent.',
+    ctaHook:
+      'Building for Bay Street, the MaRS corridor, or an Ontario Health workload? Send us the regulatory brief and the deadline. We will come back with a scoped plan in CAD, an SR&ED eligibility read, and an EST delivery lead within two business days.',
+    metaDescription:
+      'Codazz builds OSFI B-13, AIDA, and PHIPA ready software for Toronto FinTech, AI, and HealthTech teams. Senior engineers on EST, CAD pricing, SR&ED friendly.',
   },
   {
     slug: 'vancouver',

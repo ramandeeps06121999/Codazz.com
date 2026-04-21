@@ -65,10 +65,6 @@ export const metadata: Metadata = {
     google: "rqs8a3Cx1UVYLVumfA1UJaf-VZIt0L35zlmWqHtwCqo",
   },
   manifest: "/manifest.json",
-  icons: {
-    icon: "/favicon.png",
-    apple: "/favicon.png",
-  },
   other: {
     "geo.region": "CA-AB",
     "geo.placename": "Edmonton",

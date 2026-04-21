@@ -1,5 +1,6 @@
 import { CityData, getCityBySlug, cities } from './cities';
 import { ServiceData, getServiceBySlug, services } from './services';
+import { getCityServiceOverride } from './city-service-overrides';
 
 export interface CityServicePageData {
   // City data
@@ -171,20 +172,29 @@ export function getCityServiceData(
       serviceSlug: s.slug,
     }));
 
-  // Process FAQs with city data
-  const processedFaqs = service.faqs.map(faq => ({
+  // Check for hand-crafted override content (Wave-by-wave rollout).
+  // Any override field takes priority over the templated fallback.
+  const override = getCityServiceOverride(citySlug, serviceSlug);
+
+  // Process FAQs with city data (use override if present)
+  const processedFaqs = (override?.faqs ?? service.faqs).map(faq => ({
     q: replacePlaceholders(faq.q, city),
     a: replacePlaceholders(faq.a, city),
   }));
 
-  // Build hero description with city context
-  const heroDescription = replacePlaceholders(service.heroDescription, city);
-
-  // Build city-specific bridge content (unique per city+service combo)
-  const industryExpertise = generateIndustryExpertise(city, service);
-  const servicesIntro = generateServicesIntro(city, service);
-  const processIntro = generateProcessIntro(city, service);
-  const techIntro = generateTechIntro(city, service);
+  // Hero + bridge content — use overrides first, fall back to generators
+  const heroDescription = override?.heroDescription
+    ?? replacePlaceholders(service.heroDescription, city);
+  const industryExpertise = override?.industryExpertise
+    ?? generateIndustryExpertise(city, service);
+  const servicesIntro = override?.servicesIntro
+    ?? generateServicesIntro(city, service);
+  const processIntro = override?.processIntro
+    ?? generateProcessIntro(city, service);
+  const techIntro = override?.techIntro
+    ?? generateTechIntro(city, service);
+  const whyCity = override?.whyCity ?? city.whyCity;
+  const testimonials = override?.testimonials ?? city.testimonials;
 
   // SEO metadata
   const title = `${service.heroHeadlinePrefix} Company in ${city.name}`;
@@ -212,10 +222,10 @@ export function getCityServiceData(
     stats: city.stats,
     largeServices: service.largeServices,
     smallServices: service.smallServices,
-    whyCity: city.whyCity,
+    whyCity,
     steps: service.steps,
     techCategories: service.techCategories,
-    testimonials: city.testimonials,
+    testimonials,
     faqs: processedFaqs,
     relatedSubServices: service.relatedSubServices,
     relatedCityServices,
